@@ -1,6 +1,6 @@
 case,seed,image,ground_truth
-vertical,0,datasets/sintetics/test/images/vertical.png,datasets/sintetics/test/ground_truth/vertical_gt.png
-diagonal,1,datasets/sintetics/test/images/diagonal.png,datasets/sintetics/test/ground_truth/diagonal_gt.png
-circle,2,datasets/sintetics/test/images/circle.png,datasets/sintetics/test/ground_truth/circle_gt.png
-box,3,datasets/sintetics/test/images/box.png,datasets/sintetics/test/ground_truth/box_gt.png
-two_scale,4,datasets/sintetics/test/images/two_scale.png,datasets/sintetics/test/ground_truth/two_scale_gt.png
+vertical,0,datasets/sintetics/test/images/vertical.jpg,datasets/sintetics/test/ground_truth/vertical_gt.png
+diagonal,1,datasets/sintetics/test/images/diagonal.jpg,datasets/sintetics/test/ground_truth/diagonal_gt.png
+circle,2,datasets/sintetics/test/images/circle.jpg,datasets/sintetics/test/ground_truth/circle_gt.png
+box,3,datasets/sintetics/test/images/box.jpg,datasets/sintetics/test/ground_truth/box_gt.png
+two_scale,4,datasets/sintetics/test/images/two_scale.jpg,datasets/sintetics/test/ground_truth/two_scale_gt.png
