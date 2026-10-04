@@ -1,0 +1,63 @@
+name: UDED real-image generalization
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/uded-generalization.yml'
+      - 'benchmark_uded.py'
+      - 'benchmark_measure_competition.py'
+      - 'src/fuzzy_measures.py'
+      - 'src/measure_learning.py'
+      - 'src/operators.py'
+      - 'src/pipeline.py'
+      - 'src/features.py'
+      - 'src/hybrid.py'
+      - 'src/evaluation.py'
+      - 'synthetic_v2.py'
+  workflow_dispatch:
+
+jobs:
+  uded:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Checkout MFI-Edge
+        uses: actions/checkout@v4
+
+      - name: Checkout official UDED repository
+        uses: actions/checkout@v4
+        with:
+          repository: xavysp/UDED
+          path: external/UDED
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Mathematical tests
+        run: python test_math.py
+
+      - name: Generate deterministic synthetic fit/selection benchmark
+        run: python synthetic_v2.py
+
+      - name: Fit and select fuzzy-measure variants on synthetic data
+        run: python benchmark_measure_competition.py
+
+      - name: Evaluate frozen variants on UDED
+        run: python benchmark_uded.py --uded-root external/UDED --thresholds 61
+
+      - name: Upload UDED and measure artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mfi-edge-uded-stage5
+          path: |
+            benchmark_outputs/stage5_measures/
+            benchmark_outputs/uded_stage5/
+          if-no-files-found: warn
+          retention-days: 30
