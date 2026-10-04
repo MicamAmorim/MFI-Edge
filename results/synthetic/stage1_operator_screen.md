@@ -1,4 +1,4 @@
-# Synthetic benchmark — Stage 1 operator screen
+> **SUPERSEDED DATA WARNING (2026-10-04):** the original synthetic diagonal ground truth had a slope mismatch relative to the generated image boundary. Numerical results below are preserved for history but must not be used as current benchmark results. See `results/synthetic/stage3_orientation.md` and re-run the full sweep on the corrected dataset.\n\n# Synthetic benchmark — Stage 1 operator screen
 
 Date: 2026-10-04
 
