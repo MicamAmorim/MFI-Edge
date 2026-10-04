@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 import argparse
+import gc
 import json
 
 import numpy as np
@@ -9,8 +10,8 @@ import pandas as pd
 from skimage.transform import resize
 
 from benchmark_uded import (
-    ROOT, DEFAULT_UDED, MODEL_DIR, OUT,
-    load_uded, prepare, evaluate_measure, evaluate_baseline, save_preview,
+    DEFAULT_UDED, MODEL_DIR, OUT,
+    load_uded, prepare, evaluate_measure, evaluate_baseline,
 )
 from src.fuzzy_measures import measure_registry
 
@@ -23,10 +24,7 @@ def resize_items(items, max_side=256):
         scale=min(1.0, float(max_side)/max(h,w))
         if scale < 1.0:
             nh=max(8,int(round(h*scale))); nw=max(8,int(round(w*scale)))
-            if img.ndim==3:
-                shape=(nh,nw,img.shape[2])
-            else:
-                shape=(nh,nw)
+            shape=(nh,nw,img.shape[2]) if img.ndim==3 else (nh,nw)
             img2=resize(img,shape,order=1,mode='reflect',anti_aliasing=True,preserve_range=True)
             gt2=resize(gt.astype(np.uint8),(nh,nw),order=0,mode='edge',anti_aliasing=False,preserve_range=True)>0.5
         else:
@@ -61,15 +59,16 @@ def main():
     specs=measure_registry(len(names),learned=learned)
     specs=[s for s in specs if s.get('routing')!='oracle']
 
-    rows=[]; cache={}; per_rows=[]
+    rows=[]; per_rows=[]
     for i,spec in enumerate(specs,start=1):
         name=spec['name']; rq=float(roi_by_measure.get(name,0.55))
         print(f'UDED256 MEASURE [{i}/{len(specs)}] {name} ROI={rq:.2f}',flush=True)
         met,scores,curve,per=evaluate_measure(spec,items,context_model,rq,n_thresholds=args.thresholds)
         rows.append({'measure':name,'measure_kind':spec.get('kind',''),
                      'synthetic_selected_roi_q':rq,**met})
-        cache[name]=scores
         for x in per: per_rows.append({'measure':name,**x})
+        del scores, curve, per
+        gc.collect()
     ranking=pd.DataFrame(rows).sort_values(['ODS','AP','OIS','F05_ODS'],ascending=False).reset_index(drop=True)
     ranking.to_csv(out/'uded_measure_ranking.csv',index=False)
     pd.DataFrame(per_rows).to_csv(out/'uded_per_image_roi.csv',index=False)
@@ -82,15 +81,6 @@ def main():
         evaluate_baseline('Canny-persistence',[d['canny_persistence'] for d in items],gts,args.thresholds),
     ]
     pd.DataFrame(baselines).sort_values('ODS',ascending=False).to_csv(out/'uded_classical_baselines.csv',index=False)
-
-    top=ranking.iloc[0]; top_name=str(top.measure)
-    save_preview(items,cache[top_name],float(top.ODS_threshold),out/'uded_top_measure_preview.png',
-                 f'UDED resized <= {args.max_side} — {top_name}, ODS={top.ODS:.4f}, AP={top.AP:.4f}',n=8)
-    for name in ('power_q0.1','power_q1.5','sugeno_learned_sum0.60','sugeno_learned_sum1.40'):
-        if name in cache:
-            r=ranking[ranking.measure==name].iloc[0]
-            save_preview(items,cache[name],float(r.ODS_threshold),out/f'preview_{name.replace(".","p")}.png',
-                         f'UDED <= {args.max_side} — {name}, ODS={r.ODS:.4f}',n=6)
 
     summary={'dataset':'UDED','n_images':len(items),'source':'xavysp/UDED',
              'max_side':int(args.max_side),'resize_policy':'downscale only, preserve aspect ratio; GT nearest-neighbor',
