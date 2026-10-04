@@ -31,7 +31,7 @@ ROOT=Path(__file__).resolve().parent
 DATA=ROOT/'datasets'/'sintetics'/'benchmark_v2'
 OUT=ROOT/'benchmark_outputs'/'stage5_measures'
 SCALES=(25,13,7,5,3)
-ROI_QS=(0.55,0.60,0.65,0.70,0.75,0.80)
+ROI_QS=(0.50,0.55,0.60,0.65,0.70,0.75,0.80,0.85)
 
 
 def coarse_context(family):
