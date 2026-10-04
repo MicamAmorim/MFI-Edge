@@ -2,5 +2,5 @@
 builder = "RAILPACK"
 
 [deploy]
-startCommand = "bash -lc 'rm -rf external/UDED && mkdir -p external && git clone --depth 1 https://github.com/xavysp/UDED.git external/UDED && python synthetic_v2.py && python benchmark_measure_competition.py --skip-full-capacity && python benchmark_uded.py --uded-root external/UDED --thresholds 41 && echo MFI_UDED_BENCHMARK_DONE && python -m http.server ${PORT:-8080} --directory benchmark_outputs'"
+startCommand = "bash -lc 'rm -rf external/UDED external/UDED-main && mkdir -p external && python -c \"import io,zipfile,requests,pathlib,shutil; p=pathlib.Path(\\\"external\\\"); z=zipfile.ZipFile(io.BytesIO(requests.get(\\\"https://github.com/xavysp/UDED/archive/refs/heads/main.zip\\\",timeout=120).content)); z.extractall(p); shutil.move(str(p/\\\"UDED-main\\\"),str(p/\\\"UDED\\\"))\" && python synthetic_v2.py && python benchmark_measure_competition.py --skip-full-capacity && python benchmark_uded.py --uded-root external/UDED --thresholds 41 && echo MFI_UDED_BENCHMARK_DONE && python -m http.server ${PORT:-8080} --directory benchmark_outputs'"
 restartPolicyType = "NEVER"
