@@ -1,0 +1,42 @@
+name: Stage 5 fuzzy-measure competition
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/stage5-measure-competition.yml'
+      - 'src/fuzzy_measures.py'
+      - 'src/measure_learning.py'
+      - 'src/operators.py'
+      - 'src/pipeline.py'
+      - 'benchmark_measure_competition.py'
+      - 'synthetic_v2.py'
+      - 'test_math.py'
+  workflow_dispatch:
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Mathematical and measure tests
+        run: python test_math.py
+      - name: Generate deterministic synthetic benchmark
+        run: python synthetic_v2.py
+      - name: Run adaptive fuzzy-measure competition
+        run: python benchmark_measure_competition.py --skip-full-capacity
+      - name: Upload Stage-5 results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage5-measure-results
+          path: benchmark_outputs/stage5_measures/
+          if-no-files-found: warn
+          retention-days: 14
