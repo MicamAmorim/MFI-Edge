@@ -65,6 +65,8 @@ def run(args):
             orientations[case]=gradient_orientation(img,sigma=1.0)
 
     specs=operator_specs()
+    if args.operator_start is not None or args.operator_stop is not None:
+        specs=specs[args.operator_start:args.operator_stop]
     if args.quick:
         keep={"CF_TP","CF_FGL","CC_TP","CC_TM","CF1F2_TP_TL","CF1F2_FGL_TM"}
         specs=[s for s in specs if s["name"] in keep]
@@ -132,6 +134,8 @@ def main():
     ap.add_argument("--quick",action="store_true")
     ap.add_argument("--q-values",type=float,nargs="+",default=None)
     ap.add_argument("--scale-labels",nargs="+",choices=["S3","S5","S7"],default=None)
+    ap.add_argument("--operator-start",type=int,default=None)
+    ap.add_argument("--operator-stop",type=int,default=None)
     run(ap.parse_args())
 
 if __name__=="__main__":
