@@ -15,8 +15,13 @@ def make_case(kind, n=160, seed=0):
     if kind=="vertical":
         x=n//2; img[:,x:]=0.82; gt[:,x]=1
     elif kind=="diagonal":
-        rr,cc=line(15,10,n-20,n-10); gt[rr,cc]=1
-        Y,X=np.mgrid[:n,:n]; img[(Y-X)>0]=0.78
+        # Exact GT for the same 45-degree step boundary used to generate the image.
+        # The earlier prototype accidentally used a different sloped line for GT.
+        from skimage.segmentation import find_boundaries
+        Y,X=np.mgrid[:n,:n]
+        mask=(Y-X)>0
+        img[mask]=0.78
+        gt=find_boundaries(mask,mode="inner",connectivity=1)
     elif kind=="circle":
         rr,cc=disk((n//2,n//2),n//4,shape=img.shape); img[rr,cc]=0.8
         from scipy import ndimage as ndi

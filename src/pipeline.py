@@ -17,6 +17,7 @@ class ScaleResult:
 def empirical_surprisal(raw, background_mask=None, eps=1e-9, max_samples=250000, seed=0):
     raw=np.asarray(raw,dtype=float)
     if background_mask is None:
+        # self-calibration: lower-gradient/low-score region approximates H0
         cutoff=np.quantile(raw,0.60)
         background_mask=raw<=cutoff
     vals=raw[background_mask & np.isfinite(raw)]
@@ -41,11 +42,12 @@ def aggregate_features(X, family="CF1F2", F="TP", F1="TP", F2="TL", q=0.1):
         return cf1f2_integral(X,FUNCTIONS[F1],FUNCTIONS[F2],q=q)
     raise ValueError(f"Unknown family: {family}")
 
-def precompute_multiscale_features(img, scales=(33,17,9)):
+
+def precompute_multiscale_features(img, scales=(33,17,9), feature_mode='legacy'):
     out=[]
     names=None
     for w in scales:
-        X,names,hetero=extract_features(img,int(w))
+        X,names,hetero=extract_features(img,int(w),mode=feature_mode)
         out.append((int(w),X,hetero))
     return out,names
 
@@ -82,8 +84,8 @@ def multiscale_from_precomputed(precomputed, image_shape, family="CF1F2", F="TP"
 
 def multiscale_detect(img, scales=(33,17,9), family="CF1F2", F="TP", F1="TP", F2="TL",
                       q=0.1, refine_quantile=0.82, heterogeneity_quantile=0.82,
-                      dilation_radius=3, eps=1e-9):
-    pre,names=precompute_multiscale_features(img,scales)
+                      dilation_radius=3, eps=1e-9, feature_mode="legacy"):
+    pre,names=precompute_multiscale_features(img,scales,feature_mode=feature_mode)
     results,final_bits,best_scale=multiscale_from_precomputed(
         pre,np.asarray(img).shape[:2],family=family,F=F,F1=F1,F2=F2,q=q,
         refine_quantile=refine_quantile,
