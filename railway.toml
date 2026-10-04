@@ -1,0 +1,6 @@
+[build]
+builder = "RAILPACK"
+
+[deploy]
+startCommand = "bash -lc 'rm -rf external/UDED && mkdir -p external && git clone --depth 1 https://github.com/xavysp/UDED.git external/UDED && python synthetic_v2.py && python benchmark_measure_competition.py --skip-full-capacity && python benchmark_uded.py --uded-root external/UDED --thresholds 41 && echo MFI_UDED_BENCHMARK_DONE && python -m http.server ${PORT:-8080} --directory benchmark_outputs'"
+restartPolicyType = "NEVER"
