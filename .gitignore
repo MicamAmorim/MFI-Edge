@@ -7,3 +7,4 @@ data/bsds500/
 outputs/
 outputs_synthetic/
 outputs_synthetic_3x3/
+benchmark_outputs/
