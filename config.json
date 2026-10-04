@@ -1,0 +1,33 @@
+{
+  "scales": [
+    33,
+    17,
+    9
+  ],
+  "power_measure_q": 0.1,
+  "surprisal_eps": 1e-09,
+  "refine_quantile": 0.82,
+  "heterogeneity_quantile": 0.82,
+  "refine_dilation_radius": 3,
+  "bsds_split": "val",
+  "bsds_ids": [
+    "101085",
+    "101087",
+    "102061",
+    "103070",
+    "105025",
+    "106024",
+    "108005",
+    "108070",
+    "108082",
+    "109053"
+  ],
+  "default_operator": {
+    "family": "CF1F2",
+    "F1": "TP",
+    "F2": "TL"
+  },
+  "background_mode": "self",
+  "gt_consensus": 0.5,
+  "metric_tolerance_px": 2
+}
