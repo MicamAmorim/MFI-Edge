@@ -1,4 +1,3 @@
-
 # MFI-Edge
 
 MFI-Edge (Multiscale Functional Information Edge Detection) is a research prototype for multiscale edge detection using:
@@ -9,17 +8,43 @@ MFI-Edge (Multiscale Functional Information Edge Detection) is a research protot
 5. coarse-to-fine refinement across configurable scales;
 6. heatmaps, refinement masks, best-scale map and prototype BSDS/synthetic metrics.
 
-
 ## Repository layout
 
 - `src/` — descriptors, fuzzy integrals, multiscale pipeline, evaluation and visualization.
 - `datasets/sintetics/test/` — fixed synthetic test images and exact ground-truth masks.
+- `datasets/sintetics/benchmark_v2.zip` — Stage-4 deterministic validation/test benchmark archive.
 - `synthetic_demo.py` — reproducible synthetic generator and smoke benchmark.
-- `run_synthetic_to_3x3.py` — multiscale experiment down to 3x3 windows.
+- `synthetic_v2.py` — robust synthetic benchmark generator.
+- `benchmark_stage4.py` — conditioning/linking/held-out Stage-4 benchmark.
+- `benchmark_operator_rerank_v2.py` — 183-operator rerank on robust validation.
+- `results/synthetic/stage4_report.md` — latest development report.
+- `results/synthetic/stage4_results.zip` — compact Stage-4 result bundle.
 - `prototype.py` — BSDS500 runner and operator sweeps.
 - `outputs_synthetic/` and `outputs_synthetic_3x3/` — generated experiment artefacts (ignored by Git; reproducible from the scripts).
 
 > The directory name `sintetics` is retained intentionally to match the project layout chosen for this repository.
+
+## Current development model (Stage 4)
+
+The current strongest synthetic-development configuration is **MFI-Edge-SCHARR-GL**:
+
+```text
+median 3x3 conditioning
+  -> orientation-aware multiscale MFI (CF1F2(CL,CL), q=0.1)
+  -> top-40% MFI confidence ROI
+  -> Scharr + NMS
+  -> MFI-guided geodesic linking
+```
+
+A deterministic `benchmark_v2` adds 40 validation and 60 held-out test images spanning nine geometric primitives and ten degradation families (noise, blur, texture, gaps, etc.). Run:
+
+```bash
+python synthetic_v2.py
+python benchmark_operator_rerank_v2.py
+python benchmark_stage4.py
+```
+
+Latest development report: `results/synthetic/stage4_report.md`.
 
 ## Mathematical forms
 
@@ -88,21 +113,8 @@ python prototype.py --download --n-images 10 --operator-mode knownpairs
 python prototype.py --download --n-images 10 --operator-mode allpairs
 ```
 
-## Outputs
-
-For each operator/image:
-- `bits_s33.png`, `bits_s17.png`, `bits_s9.png` — functional-surprisal heatmaps;
-- `refine_s*.png` — regions retained by the coarse-to-fine funnel;
-- `final_bits.png` — max-surprisal across scales;
-- `best_scale.png` — scale producing the maximum surprisal at each pixel;
-- `panel.png` — compact visual summary.
-
-CSV files:
-- `outputs/metrics.csv`
-- `outputs/summary.csv`
-
 ## Important methodological caveat
 
-The included metric is a **prototype tolerant pixel F1** using a small spatial tolerance, not the official Berkeley ODS/OIS/AP evaluation code. Use this version for method development and visual/ablation analysis; for a paper, add the official BSDS benchmark evaluation.
+The included metric is a **prototype tolerant boundary F1/ODS/OIS/AP** using a small spatial tolerance, not the official Berkeley bipartite boundary matching code. Use this version for method development and visual/ablation analysis; for a paper, add the official BSDS benchmark evaluation.
 
 The default surprisal uses **self-calibration** of a background distribution to keep the prototype immediately runnable. A paper-grade experiment should estimate `H0` only from the training split (non-boundary pixels) and freeze that calibration before validation/test.
