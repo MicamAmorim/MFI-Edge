@@ -6,3 +6,4 @@ pandas>=2.0
 Pillow>=10.0
 requests>=2.31
 tqdm>=4.66
+opencv-python>=4.8
