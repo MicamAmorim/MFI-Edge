@@ -1,7 +1,11 @@
 from __future__ import annotations
 
+from dataclasses import replace
 from itertools import product
+from pathlib import Path
 from typing import List
+import json
+import os
 
 import numpy as np
 
@@ -56,7 +60,7 @@ def standard_grid(n_features: int) -> List[CHMFIConfig]:
     """Balanced grid for a Ryzen 7 / 32 GB workstation.
 
     It intentionally keeps every architecture family alive rather than eliminating
-    variants early. Expect roughly 100-200 candidates depending on feature count.
+    variants early. Expect roughly 250 candidates with the current defaults.
     """
     cfgs: List[CHMFIConfig] = []
     for mname, measure in _base_measures(n_features):
@@ -131,19 +135,56 @@ def wide_grid(n_features: int) -> List[CHMFIConfig]:
                 eps=0.25,
                 gamma=1.0,
             ))
-    # Stable unique-by-name preserving first occurrence.
     uniq = {}
     for c in cfgs:
         uniq.setdefault(c.name, c)
     return list(uniq.values())
 
 
+def _append_shapley_variants(cfgs: List[CHMFIConfig], n_features: int) -> List[CHMFIConfig]:
+    """Append Shapley-gated variants when MFI_SHAPLEY_FILE points to a learned file."""
+    raw = os.environ.get("MFI_SHAPLEY_FILE", "").strip()
+    if not raw:
+        return cfgs
+    path = Path(raw)
+    if not path.exists():
+        print(f"WARNING: MFI_SHAPLEY_FILE not found: {path}", flush=True)
+        return cfgs
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    importance = payload.get("normalized_positive_shapley")
+    if not isinstance(importance, list) or len(importance) != int(n_features):
+        print("WARNING: Shapley file feature count does not match current descriptors", flush=True)
+        return cfgs
+
+    additions: List[CHMFIConfig] = []
+    # Apply learned gates to a focused but diverse slice; originals remain in the competition.
+    candidates = [
+        c for c in cfgs
+        if c.controller in ("bilateral_exp", "soft")
+        and c.hierarchy == "global_local"
+        and c.operator_mode in ("fixed", "conditional")
+        and c.dissimilarity is None
+    ][:24]
+    for c in candidates:
+        additions.append(replace(
+            c,
+            name=f"shapley__{c.name}",
+            descriptor_importance=list(map(float, importance)),
+            shapley_threshold=0.05,
+            shapley_temperature=0.04,
+            gate_floor=0.05,
+        ))
+    return cfgs + additions
+
+
 def build_grid(preset: str, n_features: int) -> List[CHMFIConfig]:
     p = str(preset).lower()
     if p == "smoke":
-        return smoke_grid(n_features)
-    if p == "standard":
-        return standard_grid(n_features)
-    if p == "wide":
-        return wide_grid(n_features)
-    raise ValueError("preset must be smoke, standard, or wide")
+        cfgs = smoke_grid(n_features)
+    elif p == "standard":
+        cfgs = standard_grid(n_features)
+    elif p == "wide":
+        cfgs = wide_grid(n_features)
+    else:
+        raise ValueError("preset must be smoke, standard, or wide")
+    return _append_shapley_variants(cfgs, n_features)
