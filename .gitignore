@@ -8,3 +8,5 @@ outputs/
 outputs_synthetic/
 outputs_synthetic_3x3/
 benchmark_outputs/
+results/local_dev/
+cache/local_dev/
