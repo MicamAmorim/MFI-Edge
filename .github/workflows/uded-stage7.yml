@@ -1,0 +1,117 @@
+name: UDED Stage 7 advanced fusion
+
+on:
+  push:
+    branches: [experiment/uded-railway]
+    paths:
+      - '.github/workflows/uded-stage7.yml'
+      - 'benchmark_uded_stage7.py'
+      - 'src/advanced_fusion.py'
+      - 'benchmark_uded.py'
+      - 'benchmark_uded_fusion.py'
+      - 'benchmark_measure_competition.py'
+      - 'src/fuzzy_measures.py'
+      - 'src/measure_learning.py'
+      - 'src/operators.py'
+      - 'src/pipeline.py'
+      - 'src/features.py'
+      - 'src/hybrid.py'
+      - 'src/evaluation.py'
+      - 'src/postprocess.py'
+      - 'synthetic_v2.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: uded-stage7-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      NUMEXPR_NUM_THREADS: '1'
+      PYTHONUNBUFFERED: '1'
+
+    steps:
+      - name: Checkout MFI-Edge
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout UDED
+        uses: actions/checkout@v4
+        with:
+          repository: xavysp/UDED
+          path: external/UDED
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Mathematical sanity tests
+        run: python test_math.py
+
+      - name: Restore learned-measure cache
+        id: stage5-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            benchmark_outputs/stage5_measures
+            datasets/sintetics/benchmark_v2
+          key: mfi-stage5-${{ runner.os }}-${{ hashFiles('synthetic_v2.py', 'benchmark_measure_competition.py', 'src/fuzzy_measures.py', 'src/measure_learning.py', 'src/operators.py', 'src/pipeline.py', 'src/features.py') }}
+          restore-keys: |
+            mfi-stage5-${{ runner.os }}-
+
+      - name: Generate deterministic synthetic benchmark when cache is incomplete
+        if: ${{ hashFiles('benchmark_outputs/stage5_measures/learned_measures.json') == '' }}
+        run: python synthetic_v2.py
+
+      - name: Fit fuzzy measures when cache is incomplete
+        if: ${{ hashFiles('benchmark_outputs/stage5_measures/learned_measures.json') == '' }}
+        run: python benchmark_measure_competition.py
+
+      - name: Run UDED Stage 7 exhaustive measure x fusion benchmark
+        run: |
+          python benchmark_uded_stage7.py \
+            --uded-root external/UDED \
+            --model-dir benchmark_outputs/stage5_measures \
+            --out results/uded/stage7 \
+            --max-side 256 \
+            --thresholds 21 \
+            --bootstrap 5000 \
+            --workers 4 \
+            --preview 6 \
+            --parallel-benchmark-images 8
+
+      - name: Upload complete Stage 7 artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mfi-edge-uded-stage7
+          path: results/uded/stage7/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Commit reproducible UDED results and qualitative images
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/uded/stage7
+          if git diff --cached --quiet; then
+            echo "No new Stage 7 result files to commit."
+          else
+            git commit -m "results: add UDED Stage 7 advanced fusion benchmark [skip ci]"
+            git push
+          fi
