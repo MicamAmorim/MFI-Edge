@@ -1,0 +1,16 @@
+family_type,family,n_configs,mean_heldout_delta,fraction_heldout_above_scharr,mean_transfer_gap
+measure_kind,local_additive,135,-0.090223,0.029630,-0.004781
+measure_kind,heterogeneity_power,90,-0.068098,0.088889,0.001530
+measure_kind,adaptive_power,450,-0.074090,0.068889,0.000398
+measure_kind,power,360,-0.050058,0.150000,0.008166
+measure_kind,sugeno_lambda,225,-0.031016,0.191111,0.013572
+measure_kind,two_additive,45,-0.036499,0.177778,0.009942
+measure_kind,context_router,90,-0.031385,0.288889,0.010605
+measure_kind,scale_router,90,-0.036028,0.033333,0.006844
+measure_kind,additive,90,-0.032445,0.255556,0.011245
+strategy_family,soft,315,-0.004790,0.184127,0.004031
+strategy_family,residual,140,-0.000483,0.557143,0.002162
+strategy_family,adaptive_exp,175,-0.003284,0.320000,0.003830
+strategy_family,proposal,350,-0.072668,0.022857,0.008067
+strategy_family,rank,175,-0.119944,0.000000,0.004398
+strategy_family,geodesic,420,-0.092151,0.000000,0.006807
