@@ -28,26 +28,33 @@ def atomic_json(obj, path):
     os.replace(tmp, path)
 
 
+def phase(out, status, **extra):
+    atomic_json({'status': status, 'updated_unix': time.time(), **extra}, out/'progress.json')
+    print(f'STAGE5_LIGHT PHASE {status}', flush=True)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--out', required=True)
     ap.add_argument('--skip-full-capacity', action='store_true')
     args = ap.parse_args()
     out = Path(args.out); out.mkdir(parents=True, exist_ok=True)
+    phase(out, 'started')
 
     if not (bmc.DATA/'validation'/'manifest.csv').exists():
+        phase(out, 'error_missing_synthetic_validation')
         raise FileNotFoundError('Run synthetic_v2.py first')
 
     # Only the 40 validation images are prepared. The original Stage-5 script also
     # prepared 60 synthetic test images before persisting learned models, which is
     # unnecessary for UDED Stage-7 and caused avoidable memory pressure on 1 GB RAM.
-    print('STAGE5_LIGHT load validation only', flush=True)
+    phase(out, 'loading_validation')
     val = bmc.load_split('validation')
     fit_raw, val_raw = val[:20], val[20:]
 
-    print('STAGE5_LIGHT prepare fit 20', flush=True)
+    phase(out, 'preparing_fit', n_images=len(fit_raw))
     fit, names = bmc.prepare(fit_raw)
-    print('STAGE5_LIGHT prepare select 20', flush=True)
+    phase(out, 'preparing_selection', n_images=len(val_raw))
     select, _ = bmc.prepare(val_raw)
 
     learned_path = out/'learned_measures.json'
@@ -55,25 +62,26 @@ def main():
     feature_path = out/'feature_names.json'
 
     if learned_path.exists() and context_path.exists() and feature_path.exists():
-        print('STAGE5_LIGHT reuse persisted learned capacities', flush=True)
+        phase(out, 'reusing_learned_capacities')
         learned = json.loads(learned_path.read_text(encoding='utf-8'))
         context_model = json.loads(context_path.read_text(encoding='utf-8'))
         names = json.loads(feature_path.read_text(encoding='utf-8'))
     else:
-        print('STAGE5_LIGHT learn capacities', flush=True)
+        phase(out, 'learning_capacities')
         learned, context_model = bmc.fit_learned_specs(
             fit, names, full_capacity=not args.skip_full_capacity
         )
         atomic_json(learned, learned_path)
         atomic_json(context_model, context_path)
         atomic_json(names, feature_path)
-        print('STAGE5_LIGHT learned capacities checkpointed', flush=True)
+        phase(out, 'learned_capacities_checkpointed', n_learned=len(learned))
 
     specs = measure_registry(len(names), learned=learned)
     all_path = out/'validation_all.csv'
     old = pd.read_csv(all_path) if all_path.exists() and all_path.stat().st_size else pd.DataFrame()
     done = set(old.measure.astype(str).unique()) if len(old) else set()
     rows = old.to_dict('records') if len(old) else []
+    phase(out, 'evaluating_measures', completed=len(done), total=len(specs))
 
     for i, spec in enumerate(specs, 1):
         name = str(spec['name'])
@@ -92,8 +100,8 @@ def main():
                 .groupby('measure', as_index=False).first()
                 .sort_values(['ODS','AP','OIS'], ascending=False).reset_index(drop=True))
         atomic_csv(best, out/'validation_best_per_measure.csv')
-        atomic_json({'status':'running','completed':int(best.measure.nunique()),
-                     'total':len(specs),'current':name,'updated_unix':time.time()}, out/'progress.json')
+        phase(out, 'evaluating_measures', completed=int(best.measure.nunique()),
+              total=len(specs), current=name)
         gc.collect()
 
     df = pd.read_csv(all_path)
@@ -101,8 +109,7 @@ def main():
             .groupby('measure', as_index=False).first()
             .sort_values(['ODS','AP','OIS'], ascending=False).reset_index(drop=True))
     atomic_csv(best, out/'validation_best_per_measure.csv')
-    atomic_json({'status':'complete','completed':int(best.measure.nunique()),
-                 'total':len(specs),'updated_unix':time.time()}, out/'progress.json')
+    phase(out, 'complete', completed=int(best.measure.nunique()), total=len(specs))
     print('STAGE5_LIGHT_DONE', flush=True)
     print(best.head(10)[['measure','roi_q','ODS','OIS','AP']].to_string(index=False), flush=True)
 
