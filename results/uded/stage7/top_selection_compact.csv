@@ -1,0 +1,13 @@
+rank,measure,measure_kind,strategy,selection_ODS,heldout_F1,heldout_delta,transfer_gap
+1,local_additive_evidence,local_additive,soft_e0.25_g0.5,0.770589,0.756437,-0.005605,-0.009772
+2,hetero_power_direct,heterogeneity_power,soft_e0.25_g0.5,0.770575,0.754247,-0.007795,-0.011949
+3,local_additive_evidence,local_additive,residual_l1.00,0.770575,0.755419,-0.006624,-0.010777
+4,local_additive_evidence,local_additive,soft_e0.10_g0.5,0.770526,0.750974,-0.011068,-0.015172
+5,hetero_power_direct,heterogeneity_power,soft_e0.10_g0.5,0.770220,0.748819,-0.013224,-0.017023
+6,hetero_power_direct,heterogeneity_power,residual_l1.00,0.770132,0.753619,-0.008423,-0.012134
+7,local_additive_evidence,local_additive,adaptive_exp_a1.00,0.769614,0.756742,-0.005301,-0.008493
+8,hetero_power_direct,heterogeneity_power,adaptive_exp_a1.00,0.769520,0.755205,-0.006837,-0.009936
+9,hetero_power_direct,heterogeneity_power,soft_e0.50_g1,0.769505,0.757282,-0.004761,-0.007844
+10,hetero_power_direct,heterogeneity_power,soft_e0.50_g2,0.769472,0.757628,-0.004414,-0.007465
+11,adaptive_power_geomean,adaptive_power,soft_e0.25_g0.5,0.769314,0.757792,-0.004250,-0.007143
+12,local_additive_evidence,local_additive,soft_e0.25_g1,0.769229,0.750871,-0.011172,-0.013979
