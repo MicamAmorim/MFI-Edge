@@ -1,0 +1,77 @@
+name: Sync UDED Stage 7 results
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - experiment/uded-railway
+    paths:
+      - sync-uded-stage7.trigger
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: experiment/uded-railway
+          fetch-depth: 0
+
+      - name: Download persisted Railway artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="https://mfi-edge-uded-benchmark-production.up.railway.app/stage7"
+          OUT="results/uded/stage7"
+          mkdir -p "$OUT"
+
+          required=(
+            selection_all.csv
+            heldout_fixed_all.csv
+            paired_bootstrap_top10.csv
+            final_selection_top10.csv
+            runtime_by_measure.csv
+            baseline.json
+            prepare_per_image.csv
+            uded_natural_split.csv
+            per_image_best_vs_baseline.csv
+            summary_final.json
+            README_FINAL.md
+            best_contact_sheet.png
+            selection_pr_curve.png
+          )
+
+          for f in "${required[@]}"; do
+            echo "Downloading $f"
+            curl -fSL --retry 8 --retry-delay 5 --retry-all-errors \
+              "$BASE/$f" -o "$OUT/$f"
+          done
+
+          optional=(
+            parallel_scaling.csv
+            parallel_scaling.png
+            parallel_scaling_summary.json
+          )
+          for f in "${optional[@]}"; do
+            echo "Trying optional $f"
+            curl -fSL --retry 4 --retry-delay 5 --retry-all-errors \
+              "$BASE/$f" -o "$OUT/$f" || rm -f "$OUT/$f"
+          done
+
+      - name: Commit Stage 7 results
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/uded/stage7
+          if git diff --cached --quiet; then
+            echo "No result changes to commit"
+            exit 0
+          fi
+          git commit -m "results: sync UDED Stage 7 checkpoints and visuals"
+          git push origin HEAD:experiment/uded-railway
