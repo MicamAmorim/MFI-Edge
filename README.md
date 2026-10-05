@@ -1,120 +1,210 @@
-# MFI-Edge
+# MFI-Edge / CH-MFI
 
-MFI-Edge (Multiscale Functional Information Edge Detection) is a research prototype for multiscale edge detection using:
-1. eight local descriptors per scale;
-2. fuzzy fusion by a standard-form `CF` integral or expanded `CF1F2` integral;
-3. a symmetric power fuzzy measure `m(A)=(|A|/n)^q`;
-4. empirical functional surprisal `I=-log2 P_H0(score >= observed)`;
-5. coarse-to-fine refinement across configurable scales;
-6. heatmaps, refinement masks, best-scale map and prototype BSDS/synthetic metrics.
+MFI-Edge is an experimental edge-detection research project centered on **multiscale fuzzy aggregation, context-aware evidence fusion and precise spatial localization**.  The project started from functional-information-guided multiscale edge detection and has evolved into **CH-MFI (Contextual Hierarchical MFI)**.
 
-## Repository layout
+> This checkout is the **`mfi-edge-local-dev`** research branch.  It is intentionally broader than `main`: many competing variants live here before promotion.
 
-- `src/` — descriptors, fuzzy integrals, multiscale pipeline, evaluation and visualization.
-- `datasets/sintetics/test/` — fixed synthetic test images and exact ground-truth masks.
-- `datasets/sintetics/benchmark_v2.zip` — Stage-4 deterministic validation/test benchmark archive.
-- `synthetic_demo.py` — reproducible synthetic generator and smoke benchmark.
-- `synthetic_v2.py` — robust synthetic benchmark generator.
-- `benchmark_stage4.py` — conditioning/linking/held-out Stage-4 benchmark.
-- `benchmark_operator_rerank_v2.py` — 183-operator rerank on robust validation.
-- `results/synthetic/stage4_report.md` — latest development report.
-- `results/synthetic/stage4_results.zip` — compact Stage-4 result bundle.
-- `prototype.py` — BSDS500 runner and operator sweeps.
-- `outputs_synthetic/` and `outputs_synthetic_3x3/` — generated experiment artefacts (ignored by Git; reproducible from the scripts).
+## Project status
 
-> The directory name `sintetics` is retained intentionally to match the project layout chosen for this repository.
+The current active model family is **CH-MFI-v2**.
 
-## Current development model (Stage 4)
-
-The current strongest synthetic-development configuration is **MFI-Edge-SCHARR-GL**:
+Conceptually:
 
 ```text
-median 3x3 conditioning
-  -> orientation-aware multiscale MFI (CF1F2(CL,CL), q=0.1)
-  -> top-40% MFI confidence ROI
-  -> Scharr + NMS
-  -> MFI-guided geodesic linking
+Image
+  |
+  +--> Context analyzer
+  |      blur / noise / texture / frequency / coherence / heterogeneity
+  |
+  +--> Fuzzy evidence branch
+  |      multiscale descriptors
+  |        -> optional Shapley gating
+  |        -> scale-specific/adaptive fuzzy capacities
+  |        -> standard / SWAFED / d-Choquet / Choquet-inspired families
+  |        -> coarse/fine hierarchical aggregation
+  |        -> MFI attention + uncertainty
+  |
+  +--> Spatial localization branch
+         Scharr / Sobel / DoG bank
+         -> context-routed localizer
+         -> oriented NMS
+
+MFI attention + uncertainty
+          |
+          v
+controls/refines localization
+          |
+          v
+continuous edge score
+          |
+          v
+threshold / hysteresis / geodesic topology repair
 ```
 
-A deterministic `benchmark_v2` adds 40 validation and 60 held-out test images spanning nine geometric primitives and ten degradation families (noise, blur, texture, gaps, etc.). Run:
+The central design change from the early MFI-Edge prototype is that fuzzy evidence is no longer assumed to be best used by simply adding it to a gradient score.  CH-MFI explicitly tests whether it should **select evidence, choose an aggregation behavior, choose scale, control a localizer and guide topology**.
 
-```bash
-python synthetic_v2.py
-python benchmark_operator_rerank_v2.py
-python benchmark_stage4.py
+## Branches
+
+| Branch | Purpose |
+|---|---|
+| `main` | stable/reproducible promoted line |
+| `mfi-edge-local-dev` | active model research and workstation sweeps |
+| `mfi-edge-webui` | local Next.js/FastAPI qualitative comparison interface |
+| `experiment/uded-railway` | historical/server-side UDED experiments |
+
+See **[`ROADMAP.md`](ROADMAP.md)** for the current project-wide checklist and next milestones.
+
+## Quick start on the target Windows workstation
+
+Target environment: Ryzen 7-class CPU, ~32 GB RAM, Windows 11, Python 3.11+.
+
+```powershell
+git fetch
+git switch mfi-edge-local-dev
+git pull
 ```
 
-Latest development report: `results/synthetic/stage4_report.md`.
+Fast v2 smoke test:
 
-## Mathematical forms
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python smoke_local_architecture_v2.py
+```
+
+Expected final marker:
+
+```text
+CH_MFI_V2_SMOKE_DONE
+```
+
+Recommended first research run:
+
+```powershell
+.\run_research_campaign_v2.bat quick 8
+```
+
+The full local campaign, including learned scale capacities, regime-specific Shapley and topology competition:
+
+```powershell
+.\run_research_campaign_v2.bat full 8
+```
+
+Use the `wide` mode only after the standard screen and worker-scaling profile are healthy:
+
+```powershell
+.\run_research_campaign_v2.bat wide 8
+```
+
+Detailed workstation instructions: **[`LOCAL_DEV_V2.md`](LOCAL_DEV_V2.md)**.
+
+## CH-MFI-v2 experimental families
+
+The current `standard` grid contains roughly **519 configurations before optional learned regime/scale variants**.  The wide grid is roughly **4.8k configurations** before those optional variants.
+
+Implemented families include:
+
+- flat and coarse/fine hierarchical multiscale aggregation;
+- fixed and context-conditional fuzzy operators;
+- power, additive, local-adaptive and distorted-probability capacities;
+- regularized pair-interaction capacities;
+- image-neighbourhood SWAFED adaptive exponents;
+- d-Choquet / d-CF / d-CC / d-XC restricted-dissimilarity variants;
+- Choquet-inspired input-dependent aggregation;
+- partition-conditioned aggregation;
+- global and regime-specific Shapley gating;
+- scale-specific learned capacity banks;
+- adaptive classical localizer bank;
+- MFI/uncertainty bilateral and soft localizer control;
+- topology competition: none, hysteresis, geodesic and hysteresis+geodesic.
+
+Research implementations inspired by recent papers are labelled as such; they must not be described as theorem-level or bit-exact reproductions unless separately verified.
+
+## Main v2 files
+
+```text
+src/ch_mfi_v2.py
+src/advanced_fuzzy_v2.py
+src/research_grid_v2.py
+src/context_maps.py
+src/dynamic_localizer.py
+src/linking.py
+learn_scale_capacity_bank.py
+learn_regime_shapley.py
+run_local_research_v2.py
+benchmark_topology_v2.py
+run_research_campaign_v2.bat
+```
+
+The older `src/ch_mfi.py`, `run_local_research.py` and `LOCAL_DEV.md` remain as first-wave research history; use the `*_v2` path for new experiments.
+
+## Datasets and current protocol
+
+### Synthetic
+
+- `datasets/sintetics/test/` — small fixed diagnostic set with exact masks.
+- `synthetic_v2.py` — deterministic robust synthetic benchmark with multiple primitive/degradation families.
+
+The spelling `sintetics` is preserved for repository compatibility.
+
+### UDED
+
+The local development protocol currently uses alternating images as selection and held-out subsets.  Model ranking is selection/inner-CV based; held-out results must never be used to reorder the whole search.
+
+UDED is small and is a development/generalization dataset, **not sufficient for final publication claims**.
+
+### BSDS500
+
+BSDS500 remains a required publication-stage target.  Final reporting must use the official boundary evaluation protocol rather than relying only on our development tolerant matcher.
+
+## Historical experimental line
+
+The repository preserves the progression rather than hiding obsolete approaches:
+
+- Stage 1-4: synthetic MFI, orientation, conditioning and linking;
+- Stage 5-7: fuzzy-measure/fusion competition and UDED generalization;
+- Stage 8: contextual server-side prototype lineage;
+- current local line: CH-MFI-v2.
+
+Stage-7 evidence is particularly important: a configuration can rank well on selection yet fail to establish a held-out advantage.  This is why all current v2 experiments preserve frozen selection/held-out separation.
+
+## Mathematical base
+
+Two central historical generalized Choquet forms remain in the codebase.
 
 ### CF
+
 `CF_m^F(x) = min(1, sum_i F(x_(i)-x_(i-1), m(A_(i))))`
 
 ### CF1F2
+
 `CF_m^(F1,F2)(x) = min(1, x_(1) + sum_{i=2}^n [F1(x_(i),m(A_(i))) - F2(x_(i-1),m(A_(i)))])`
 
-`F1=F2=C` recovers the CC-style expanded construction.  
-With `F=product`, both standard and expanded versions recover the classical discrete Choquet integral.
-
-## The 21 functions implemented
+The repository also contains the original operator bank:
 
 `TP, TM, TL, AVG, THP, TDP, OB, OmM, ODiv, GM, HM, S, CF, CL, ORS, FGL, FBPC, FNA, FNA2, FIM, FIP`.
 
-Not every function is theoretically admissible in every Choquet-like family. `check_cf1f2_pair` numerically checks dominance, first-coordinate monotonicity and key boundaries. This is a screening check, not a proof.
+Numerical admissibility screens are useful engineering checks, not mathematical proofs.
 
-## Install
+## Research notebook for the future paper
 
-```bash
-pip install -r requirements.txt
-```
+The long-term research record is under `docs/paper/`:
 
-## Verify mathematics
+- `ARCHITECTURE_MAP.md` — global and model-specific editable diagrams;
+- `BIBLIOGRAPHY_MATRIX.md` — current architecture-driving literature;
+- `LEGACY_REVIEW_CORPUS.md` — historical SLR literature corpus;
+- `EXPERIMENT_HISTORY.md` — stage-by-stage scientific history;
+- `PAPER_WRITING_PLAN.md` — claims, figures, ablations and manuscript evidence plan;
+- `references.bib` — working bibliography.
 
-```bash
-python test_math.py
-```
+The roadmap and paper notebook should be updated whenever a new model family, paper, dataset or benchmark result changes the project direction.
 
-## Local synthetic smoke test
+## Important methodological caveats
 
-```bash
-python synthetic_demo.py
-```
-
-## BSDS500: 10 validation images + ground truth
-
-```bash
-python prototype.py --download --n-images 10 --operator-mode default
-```
-
-This downloads 10 public BSDS500 validation images and their `.mat` annotations from the BIDS/BSDS500 mirror.
-
-### Run all 21 functions in CF
-
-```bash
-python prototype.py --download --n-images 10 --operator-mode cf21
-```
-
-### Run 21 diagonal expanded variants `CF1F2(F,F)`
-
-```bash
-python prototype.py --download --n-images 10 --operator-mode diagonal21
-```
-
-### Run literature-motivated CF1F2 pairs
-
-```bash
-python prototype.py --download --n-images 10 --operator-mode knownpairs
-```
-
-### Scan all 21 x 21 pairs that pass the numerical admissibility screen
-
-```bash
-python prototype.py --download --n-images 10 --operator-mode allpairs
-```
-
-## Important methodological caveat
-
-The included metric is a **prototype tolerant boundary F1/ODS/OIS/AP** using a small spatial tolerance, not the official Berkeley bipartite boundary matching code. Use this version for method development and visual/ablation analysis; for a paper, add the official BSDS benchmark evaluation.
-
-The default surprisal uses **self-calibration** of a background distribution to keep the prototype immediately runnable. A paper-grade experiment should estimate `H0` only from the training split (non-boundary pixels) and freeze that calibration before validation/test.
+- the current tolerant boundary F1/ODS/OIS/AP implementation is a **development proxy**, not the official Berkeley bipartite matcher;
+- 256-px resizing is currently a development/runtime choice and must receive a resolution-sensitivity study;
+- UDED is too small for strong capacity-learning claims;
+- handcrafted context maps are router features, not calibrated probabilities;
+- held-out/test performance is evaluation only, never a source of post-hoc model selection;
+- paper-inspired experimental operators must be clearly distinguished from faithful reproductions and from our own generalizations.
