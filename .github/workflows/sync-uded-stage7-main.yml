@@ -1,0 +1,61 @@
+name: Sync UDED Stage 7 results from Railway
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/sync-uded-stage7-main.yml
+      - sync-uded-stage7-main.trigger
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout experiment branch
+        uses: actions/checkout@v4
+        with:
+          ref: experiment/uded-railway
+          fetch-depth: 0
+
+      - name: Download Stage 7 artifacts from Railway
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="https://mfi-edge-uded-benchmark-production.up.railway.app/stage7"
+          OUT="results/uded/stage7"
+          mkdir -p "$OUT"
+          files=(
+            selection_all.csv heldout_fixed_all.csv paired_bootstrap_top10.csv
+            final_selection_top10.csv runtime_by_measure.csv baseline.json
+            prepare_per_image.csv uded_natural_split.csv per_image_best_vs_baseline.csv
+            summary_final.json README_FINAL.md best_contact_sheet.png selection_pr_curve.png
+            parallel_scaling.csv parallel_scaling.png parallel_scaling_summary.json
+          )
+          for f in "${files[@]}"; do
+            echo "Downloading $f"
+            if ! curl -fSL --retry 8 --retry-delay 4 --retry-all-errors "$BASE/$f" -o "$OUT/$f"; then
+              case "$f" in
+                parallel_scaling.csv|parallel_scaling.png|parallel_scaling_summary.json) rm -f "$OUT/$f" ;;
+                *) echo "Required artifact missing: $f" >&2; exit 1 ;;
+              esac
+            fi
+          done
+
+      - name: Commit results to experiment branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/uded/stage7
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git commit -m "results: publish UDED Stage 7 exhaustive benchmark"
+          git push origin HEAD:experiment/uded-railway
