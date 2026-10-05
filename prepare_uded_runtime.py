@@ -50,6 +50,11 @@ def download(out: Path, retries: int = 3):
     raise RuntimeError(f"Could not prepare UDED after {retries} attempts: {last}")
 
 
+def prepare_uded(out: Path, retries: int = 3):
+    """Backward/forward compatible alias used by local and cloud runners."""
+    return download(Path(out), retries=retries)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="/tmp/UDED")
