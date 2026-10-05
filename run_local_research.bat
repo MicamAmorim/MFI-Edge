@@ -4,6 +4,7 @@ cd /d %~dp0
 
 set PRESET=%1
 if "%PRESET%"=="" set PRESET=standard
+set WORKERS=%2
 
 if not exist .venv\Scripts\python.exe (
   echo [MFI-Edge] Creating Python virtual environment...
@@ -20,9 +21,21 @@ set MKL_NUM_THREADS=1
 set NUMEXPR_NUM_THREADS=1
 
 echo.
+echo [MFI-Edge] Running local architecture self-test...
+python smoke_local_architecture.py
+if errorlevel 1 (
+  echo [MFI-Edge] Self-test failed. Benchmark was not started.
+  exit /b 1
+)
+
+echo.
 echo [MFI-Edge] Running local CH-MFI preset: %PRESET%
 echo [MFI-Edge] Results: results\local_dev\ch_mfi
 echo.
-python run_local_research.py --preset %PRESET% --profile-workers
+if "%WORKERS%"=="" (
+  python run_local_research.py --preset %PRESET% --profile-workers
+) else (
+  python run_local_research.py --preset %PRESET% --workers %WORKERS% --profile-workers
+)
 
 endlocal
