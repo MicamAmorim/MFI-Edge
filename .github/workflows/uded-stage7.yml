@@ -116,4 +116,4 @@ jobs:
             git push
           fi
 
-# Touch: force a normal contents-API push event after initial workflow creation.
+# Touch: retrigger after Actions re-enabled on 2026-10-04.
