@@ -53,6 +53,31 @@ For every uploaded image:
 
 Multiple files can be processed in one request.
 
+## Comparison mode
+
+The WebUI has two execution modes:
+
+- **single model** — the standard inference view;
+- **compare 2–4 models** — side-by-side research view.
+
+Comparison mode is designed for model competition rather than just presentation:
+
+- models are still listed in declared validation-rank order;
+- quick buttons select the current Top 2, Top 3 or Top 4;
+- the same uploaded image is reused across all selected models;
+- conditioning, oriented multiscale features, orientation and Scharr+NMS are computed **once per image**;
+- only the model-dependent fuzzy measure, confidence and fusion stages are recomputed;
+- one synchronized scale control switches all models together between `Σ, 25, 13, 7, 5, 3`;
+- each model column shows validation/held-out metrics, attention overlay, final edge overlay, final mask, threshold mode and model-only runtime.
+
+The corresponding backend endpoint is:
+
+```text
+POST /api/compare
+```
+
+with a JSON list of 2–4 registry IDs in the multipart field `model_ids`.
+
 ## Model ordering
 
 The selector is always sorted from the highest to the lowest **declared validation metric**. The current registry uses **UDED Stage-7 selection ODS**, not post-hoc held-out F1. Both values are shown so the validation/generalization distinction remains visible.
@@ -65,7 +90,7 @@ A deployable model should ideally contain its frozen validation threshold in `mo
 
 If `threshold` is `null`, the desktop UI uses an image-adaptive score quantile only for visualization/testing. The UI clearly labels this mode as `adaptive-quantile-*`; it must not be reported as the benchmark's frozen-threshold result.
 
-When the complete benchmark export is promoted, put its frozen threshold in the registry and the API will automatically use it.
+When `results/uded/stage7/selection_all.csv` is present, `src/deployable_models.py` automatically enriches matching registry entries with the frozen Stage-7 threshold.
 
 ## Promoting a new validated model
 
@@ -80,7 +105,7 @@ When a model is accepted experimentally:
    - held-out metric for reference;
    - frozen threshold;
    - benchmark/version label;
-4. verify it through the WebUI on arbitrary images.
+4. verify it through the WebUI on arbitrary images and, preferably, in comparison mode against the current leading models.
 
 This keeps experimental sweeps out of the selector while making every promoted model immediately testable on the desktop branch.
 
