@@ -1,6 +1,11 @@
 # MFI-Edge paper research notebook
 
-This directory is the long-term memory for the future MFI-Edge / CH-MFI article. Update it whenever a new experiment or paper changes the project.
+This directory is the long-term scientific memory for the future MFI-Edge / CH-MFI article.  Update it whenever a new experiment or paper changes the project.
+
+For project-level priorities and implementation status, see **[`../../ROADMAP.md`](../../ROADMAP.md)**.  The distinction is intentional:
+
+- `ROADMAP.md` = what is done / active / next;
+- this directory = why decisions were made, what evidence supports them, and how they will be written scientifically.
 
 ## Files
 
@@ -15,7 +20,7 @@ Editable Mermaid diagrams for:
 - uncertainty/granularity-aware model;
 - experimental selection/promotion flow.
 
-These Mermaid diagrams are the **editable source of truth**. They should later be redrawn/exported as publication-quality SVG/PDF figures once the promoted model family is frozen.
+These Mermaid diagrams are the **editable source of truth**.  They should later be redrawn/exported as publication-quality SVG/PDF figures once the promoted model family is frozen.
 
 ### `BIBLIOGRAPHY_MATRIX.md`
 Current architecture-driving literature table connecting each reference to:
@@ -29,7 +34,7 @@ Current architecture-driving literature table connecting each reference to:
 This is the main reading list for the future manuscript.
 
 ### `LEGACY_REVIEW_CORPUS.md`
-Primary-study archive reconstructed from the two earlier systematic reviews. It preserves:
+Primary-study archive reconstructed from the two earlier systematic reviews.  It preserves:
 
 - the 17 explicitly fuzzy edge-detection works highlighted by the 2023 fuzzy SLR;
 - the aggregation/pre-aggregation review corpus grouped into descriptor fusion, aggregated-distance/FCM, and type-2/neutrosophic families;
@@ -42,6 +47,15 @@ Use this file as the **historical literature appendix**, while `BIBLIOGRAPHY_MAT
 ### `EXPERIMENT_HISTORY.md`
 Chronological reconstruction of Stage 0 through the current local CH-MFI-v2 work, including key metrics, failures, corrections and protocol caveats.
 
+Whenever a new benchmark finishes, record:
+
+- branch + commit SHA;
+- dataset/split;
+- exact model-selection rule;
+- frozen test/held-out result;
+- runtime/resources when relevant;
+- whether the result changed the roadmap.
+
 ### `PAPER_WRITING_PLAN.md`
 Section-by-section evidence map for the future manuscript, including:
 
@@ -53,17 +67,18 @@ Section-by-section evidence map for the future manuscript, including:
 - publication-grade experimental protocol.
 
 ### `references.bib`
-Working BibTeX library. Entries containing `TODO` must be verified from the publisher/Crossref before manuscript submission. The file currently prioritizes papers likely to be cited in the final article rather than blindly importing every legacy-review reference; legacy papers should be promoted into the BibTeX file when they become actual manuscript citations.
+Working BibTeX library.  Entries containing `TODO` must be verified from the publisher/Crossref before manuscript submission.  The file prioritizes papers likely to be cited in the final article rather than blindly importing every legacy-review reference; legacy papers should be promoted into the BibTeX file when they become actual manuscript citations.
 
-## Rule for future development
+## Synchronized maintenance rule
 
-Whenever a new paper or experiment changes the research direction, perform all applicable updates:
+Whenever a new paper or experiment changes the research direction, perform all applicable updates **in the same development cycle**:
 
-1. add the paper to `BIBLIOGRAPHY_MATRIX.md` and `references.bib`;
-2. if it belongs to a historical review lineage, also map it in `LEGACY_REVIEW_CORPUS.md`;
-3. record the architectural consequence in `ARCHITECTURE_MAP.md`;
-4. record experimental evidence in `EXPERIMENT_HISTORY.md`;
-5. update the relevant claim/section in `PAPER_WRITING_PLAN.md`;
-6. preserve the code commit and output path that produced the result.
+1. update `../../ROADMAP.md` status/milestone;
+2. add the paper to `BIBLIOGRAPHY_MATRIX.md` and `references.bib`;
+3. if it belongs to a historical review lineage, also map it in `LEGACY_REVIEW_CORPUS.md`;
+4. record the architectural consequence in `ARCHITECTURE_MAP.md`;
+5. record experimental evidence in `EXPERIMENT_HISTORY.md`;
+6. update the relevant claim/section in `PAPER_WRITING_PLAN.md`;
+7. preserve the code commit and output path that produced the result.
 
-This avoids reconstructing the scientific narrative from chat history when the article is eventually written.
+This prevents roadmap drift and avoids reconstructing the scientific narrative from chat history when the article is eventually written.
