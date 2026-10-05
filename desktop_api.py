@@ -4,7 +4,6 @@ from io import BytesIO
 from pathlib import Path
 import base64
 import json
-import math
 import os
 import time
 from typing import List
@@ -26,8 +25,9 @@ from src.postprocess import gradient_orientation, non_maximum_suppression
 
 ROOT = Path(__file__).resolve().parent
 SCALES = (25, 13, 7, 5, 3)
+MAX_COMPARE_MODELS = 4
 
-app = FastAPI(title="MFI-Edge Desktop API", version="0.1.0")
+app = FastAPI(title="MFI-Edge Desktop API", version="0.2.0")
 origins = os.environ.get(
     "MFI_WEB_ORIGINS",
     "http://localhost:3000,http://127.0.0.1:3000",
@@ -153,7 +153,15 @@ def _decode_upload(data: bytes) -> np.ndarray:
         raise HTTPException(status_code=400, detail=f"Invalid image: {exc}") from exc
 
 
-def infer_one(img: np.ndarray, model: dict, max_side: int, edge_quantile: float | None):
+def _get_model(model_id: str) -> dict:
+    try:
+        return model_by_id(model_id)
+    except KeyError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+
+
+def prepare_image(img: np.ndarray, max_side: int) -> dict:
+    """Run all model-independent work once so comparison mode can reuse it."""
     t0 = time.perf_counter()
     img = _resize_max(img, int(max_side))
     pre_img = apply_conditioning(img, "median", size=3)
@@ -162,10 +170,23 @@ def infer_one(img: np.ndarray, model: dict, max_side: int, edge_quantile: float 
     )
     orientation = gradient_orientation(pre_img, 1.0)
     scharr = non_maximum_suppression(detector_score(pre_img, "scharr", 1.0), orientation)
+    return {
+        "img": img,
+        "pre_img": pre_img,
+        "precomputed": precomputed,
+        "feature_names": feature_names,
+        "scharr": scharr,
+        "prepare_ms": 1000.0 * (time.perf_counter() - t0),
+    }
 
-    spec = _measure_spec(str(model["measure"]), len(feature_names))
+
+def infer_prepared(prepared: dict, model: dict, edge_quantile: float | None):
+    """Run only the model-dependent MFI aggregation/fusion stages."""
+    t0 = time.perf_counter()
+    img = prepared["img"]
+    spec = _measure_spec(str(model["measure"]), len(prepared["feature_names"]))
     scale_results, final_bits, best_scale = multiscale_from_precomputed(
-        precomputed,
+        prepared["precomputed"],
         img.shape[:2],
         family="CF1F2",
         F1="CL",
@@ -179,7 +200,7 @@ def infer_one(img: np.ndarray, model: dict, max_side: int, edge_quantile: float 
     )
     confidence = percentile_confidence(final_bits)
     score = fuse_advanced(
-        scharr,
+        prepared["scharr"],
         confidence,
         str(model["strategy"]),
         dict(model.get("params", {})),
@@ -206,14 +227,15 @@ def infer_one(img: np.ndarray, model: dict, max_side: int, edge_quantile: float 
             }
         )
 
-    elapsed_ms = 1000.0 * (time.perf_counter() - t0)
+    model_ms = 1000.0 * (time.perf_counter() - t0)
     return {
         "width": int(img.shape[1]),
         "height": int(img.shape[0]),
-        "runtime_ms": float(elapsed_ms),
+        "runtime_ms": float(prepared["prepare_ms"] + model_ms),
+        "prepare_ms": float(prepared["prepare_ms"]),
+        "model_runtime_ms": float(model_ms),
         "threshold": float(thr),
         "threshold_mode": threshold_mode,
-        "original": _data_url(_rgb_u8(img)),
         "attention": attention,
         "best_scale": _data_url((_norm01(best_scale) * 255).astype(np.uint8)),
         "edge": _data_url((edge.astype(np.uint8) * 255)),
@@ -222,9 +244,21 @@ def infer_one(img: np.ndarray, model: dict, max_side: int, edge_quantile: float 
     }
 
 
+def infer_one(img: np.ndarray, model: dict, max_side: int, edge_quantile: float | None):
+    prepared = prepare_image(img, max_side)
+    out = infer_prepared(prepared, model, edge_quantile)
+    out["original"] = _data_url(_rgb_u8(prepared["img"]))
+    return out
+
+
 @app.get("/api/health")
 def health():
-    return {"ok": True, "scales": list(SCALES), "models": len(load_deployable_models())}
+    return {
+        "ok": True,
+        "scales": list(SCALES),
+        "models": len(load_deployable_models()),
+        "max_compare_models": MAX_COMPARE_MODELS,
+    }
 
 
 @app.get("/api/models")
@@ -236,6 +270,7 @@ def models():
             "Ordering uses the validation/selection metric, not post-hoc held-out performance. "
             "Entries without an exported frozen threshold use an adaptive quantile only for desktop visualization."
         ),
+        "max_compare_models": MAX_COMPARE_MODELS,
         "models": rows,
     }
 
@@ -251,7 +286,7 @@ async def infer(
         raise HTTPException(status_code=400, detail="Upload at least one image")
     if len(files) > 64:
         raise HTTPException(status_code=400, detail="Maximum 64 images per request")
-    model = model_by_id(model_id)
+    model = _get_model(model_id)
     results = []
     for f in files:
         data = await f.read()
@@ -260,3 +295,58 @@ async def infer(
         out["filename"] = f.filename or "image"
         results.append(out)
     return {"model": model, "results": results}
+
+
+@app.post("/api/compare")
+async def compare(
+    files: List[UploadFile] = File(...),
+    model_ids: str = Form(...),
+    max_side: int = Form(768),
+    edge_quantile: float | None = Form(None),
+):
+    """Compare 2–4 ranked models while sharing image preprocessing/features."""
+    if not files:
+        raise HTTPException(status_code=400, detail="Upload at least one image")
+    if len(files) > 64:
+        raise HTTPException(status_code=400, detail="Maximum 64 images per request")
+    try:
+        ids = json.loads(model_ids)
+        if not isinstance(ids, list):
+            raise ValueError
+    except Exception:
+        ids = [x.strip() for x in str(model_ids).split(",") if x.strip()]
+    ids = list(dict.fromkeys(str(x) for x in ids))
+    if len(ids) < 2:
+        raise HTTPException(status_code=400, detail="Comparison requires at least 2 models")
+    if len(ids) > MAX_COMPARE_MODELS:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Comparison supports at most {MAX_COMPARE_MODELS} models",
+        )
+    selected_models = [_get_model(mid) for mid in ids]
+
+    results = []
+    for f in files:
+        data = await f.read()
+        img = _decode_upload(data)
+        prepared = prepare_image(img, max_side=max_side)
+        per_model = []
+        for model in selected_models:
+            out = infer_prepared(prepared, model, edge_quantile=edge_quantile)
+            out["model"] = model
+            per_model.append(out)
+        results.append(
+            {
+                "filename": f.filename or "image",
+                "width": int(prepared["img"].shape[1]),
+                "height": int(prepared["img"].shape[0]),
+                "prepare_ms": float(prepared["prepare_ms"]),
+                "original": _data_url(_rgb_u8(prepared["img"])),
+                "models": per_model,
+            }
+        )
+    return {
+        "models": selected_models,
+        "shared_preprocessing": True,
+        "results": results,
+    }
