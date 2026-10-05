@@ -1,120 +1,131 @@
 # MFI-Edge
 
-MFI-Edge (Multiscale Functional Information Edge Detection) is a research prototype for multiscale edge detection using:
-1. eight local descriptors per scale;
-2. fuzzy fusion by a standard-form `CF` integral or expanded `CF1F2` integral;
-3. a symmetric power fuzzy measure `m(A)=(|A|/n)^q`;
-4. empirical functional surprisal `I=-log2 P_H0(score >= observed)`;
-5. coarse-to-fine refinement across configurable scales;
-6. heatmaps, refinement masks, best-scale map and prototype BSDS/synthetic metrics.
+MFI-Edge is a research project on **multiscale fuzzy edge detection, adaptive aggregation and context-aware spatial localization**.
 
-## Repository layout
+The project began with functional-information-guided multiscale edge detection and has since expanded into the CH-MFI research line.  The repository intentionally keeps stable/promoted work separate from broad exploratory sweeps.
 
-- `src/` — descriptors, fuzzy integrals, multiscale pipeline, evaluation and visualization.
-- `datasets/sintetics/test/` — fixed synthetic test images and exact ground-truth masks.
-- `datasets/sintetics/benchmark_v2.zip` — Stage-4 deterministic validation/test benchmark archive.
-- `synthetic_demo.py` — reproducible synthetic generator and smoke benchmark.
-- `synthetic_v2.py` — robust synthetic benchmark generator.
-- `benchmark_stage4.py` — conditioning/linking/held-out Stage-4 benchmark.
-- `benchmark_operator_rerank_v2.py` — 183-operator rerank on robust validation.
-- `results/synthetic/stage4_report.md` — latest development report.
-- `results/synthetic/stage4_results.zip` — compact Stage-4 result bundle.
-- `prototype.py` — BSDS500 runner and operator sweeps.
-- `outputs_synthetic/` and `outputs_synthetic_3x3/` — generated experiment artefacts (ignored by Git; reproducible from the scripts).
+## Branches
 
-> The directory name `sintetics` is retained intentionally to match the project layout chosen for this repository.
+| Branch | Purpose |
+|---|---|
+| `main` | stable/reproducible promoted line |
+| `mfi-edge-local-dev` | active CH-MFI-v2 research and workstation benchmarking |
+| `mfi-edge-webui` | local Next.js/FastAPI inference and model-comparison interface |
+| `experiment/uded-railway` | server-side UDED experiment lineage |
 
-## Current development model (Stage 4)
+For the current project checklist and next milestones, see **[`ROADMAP.md`](ROADMAP.md)**.
 
-The current strongest synthetic-development configuration is **MFI-Edge-SCHARR-GL**:
+> The active experimental architecture is ahead of `main`.  Do not interpret the `main` branch as automatically containing the best exploratory configuration; candidates move here only after validation/promotion.
+
+## Stable historical core
+
+The original MFI-Edge line uses:
+
+1. local multiscale descriptors;
+2. generalized Choquet-style fuzzy aggregation (`CF`, `CF1F2` and related operators);
+3. fuzzy measures over descriptor evidence;
+4. functional-information/surprisal maps;
+5. coarse-to-fine refinement;
+6. classical spatial localization, NMS and topology/linking experiments;
+7. synthetic and natural-image benchmark infrastructure.
+
+The repository preserves early stages instead of deleting them because they provide the ablation/history required to explain later CH-MFI designs.
+
+## Current research direction
+
+Active development in `mfi-edge-local-dev` tests **CH-MFI-v2**, where contextual fuzzy evidence controls a spatial localizer rather than being assumed to work best as a direct additive score.
+
+The current research families include hierarchical multiscale aggregation, context-conditional operators, SWAFED, restricted-dissimilarity d-Choquet families, distorted/regularized capacities, Shapley gating, scale-specific measures, uncertainty control and topology competition.
+
+See the branch documentation:
 
 ```text
-median 3x3 conditioning
-  -> orientation-aware multiscale MFI (CF1F2(CL,CL), q=0.1)
-  -> top-40% MFI confidence ROI
-  -> Scharr + NMS
-  -> MFI-guided geodesic linking
+README.md
+LOCAL_DEV_V2.md
+ROADMAP.md
+docs/paper/
 ```
 
-A deterministic `benchmark_v2` adds 40 validation and 60 held-out test images spanning nine geometric primitives and ten degradation families (noise, blur, texture, gaps, etc.). Run:
+on `mfi-edge-local-dev`.
 
-```bash
-python synthetic_v2.py
-python benchmark_operator_rerank_v2.py
-python benchmark_stage4.py
-```
+## Repository highlights on `main`
 
-Latest development report: `results/synthetic/stage4_report.md`.
+- `src/` — descriptor, fuzzy-integral, pipeline, evaluation and visualization code;
+- `datasets/sintetics/test/` — fixed synthetic diagnostic cases;
+- `synthetic_demo.py` — reproducible small synthetic smoke benchmark;
+- `synthetic_v2.py` — robust deterministic synthetic benchmark generator;
+- `benchmark_stage4.py` — conditioning/linking/held-out synthetic benchmark lineage;
+- `prototype.py` — BSDS500 development runner/operator sweeps;
+- `results/synthetic/` — preserved early-stage result reports.
 
-## Mathematical forms
+The directory name `sintetics` is retained for repository compatibility.
+
+## Mathematical base
 
 ### CF
+
 `CF_m^F(x) = min(1, sum_i F(x_(i)-x_(i-1), m(A_(i))))`
 
 ### CF1F2
+
 `CF_m^(F1,F2)(x) = min(1, x_(1) + sum_{i=2}^n [F1(x_(i),m(A_(i))) - F2(x_(i-1),m(A_(i)))])`
 
-`F1=F2=C` recovers the CC-style expanded construction.  
-With `F=product`, both standard and expanded versions recover the classical discrete Choquet integral.
+With product-like choices these connect back to the classical discrete Choquet integral; the project also explores broader aggregation/pre-aggregation families.
 
-## The 21 functions implemented
+The historical operator bank includes:
 
 `TP, TM, TL, AVG, THP, TDP, OB, OmM, ODiv, GM, HM, S, CF, CL, ORS, FGL, FBPC, FNA, FNA2, FIM, FIP`.
 
-Not every function is theoretically admissible in every Choquet-like family. `check_cf1f2_pair` numerically checks dominance, first-coordinate monotonicity and key boundaries. This is a screening check, not a proof.
+Numerical admissibility checks are engineering screens, not mathematical proofs.
 
-## Install
+## Basic installation
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Verify mathematics
+Verify the original mathematical implementation:
 
 ```bash
 python test_math.py
 ```
 
-## Local synthetic smoke test
+Run the small synthetic diagnostic set:
 
 ```bash
 python synthetic_demo.py
 ```
 
-## BSDS500: 10 validation images + ground truth
+## Active development checkout
 
-```bash
-python prototype.py --download --n-images 10 --operator-mode default
+For the current CH-MFI-v2 workstation experiments:
+
+```powershell
+git fetch
+git switch mfi-edge-local-dev
+git pull
+python smoke_local_architecture_v2.py
 ```
 
-This downloads 10 public BSDS500 validation images and their `.mat` annotations from the BIDS/BSDS500 mirror.
+Then follow `LOCAL_DEV_V2.md` on that branch.
 
-### Run all 21 functions in CF
+## Web interface
 
-```bash
-python prototype.py --download --n-images 10 --operator-mode cf21
+For qualitative single-model and 2–4 model side-by-side comparison:
+
+```powershell
+git fetch
+git switch mfi-edge-webui
+git pull
+.\run_webui.bat
 ```
 
-### Run 21 diagonal expanded variants `CF1F2(F,F)`
+The WebUI is an inspection surface, not the source of official benchmark rankings.
 
-```bash
-python prototype.py --download --n-images 10 --operator-mode diagonal21
-```
+## Methodological caveats
 
-### Run literature-motivated CF1F2 pairs
-
-```bash
-python prototype.py --download --n-images 10 --operator-mode knownpairs
-```
-
-### Scan all 21 x 21 pairs that pass the numerical admissibility screen
-
-```bash
-python prototype.py --download --n-images 10 --operator-mode allpairs
-```
-
-## Important methodological caveat
-
-The included metric is a **prototype tolerant boundary F1/ODS/OIS/AP** using a small spatial tolerance, not the official Berkeley bipartite boundary matching code. Use this version for method development and visual/ablation analysis; for a paper, add the official BSDS benchmark evaluation.
-
-The default surprisal uses **self-calibration** of a background distribution to keep the prototype immediately runnable. A paper-grade experiment should estimate `H0` only from the training split (non-boundary pixels) and freeze that calibration before validation/test.
+- development F1/ODS/OIS/AP currently includes a tolerant boundary matcher that is **not the official Berkeley bipartite evaluation**;
+- final publication claims require a frozen training/validation/test protocol and official benchmark evaluation;
+- UDED is small and should be treated as a development/generalization dataset rather than the sole source of capacity-learning claims;
+- held-out/test performance must never be used to retrospectively rank a large exploratory search;
+- paper-inspired experimental operators must be distinguished from faithful reproductions and from new generalizations.
