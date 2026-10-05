@@ -2,6 +2,10 @@
 
 Local research interface for testing and comparing deployable MFI-Edge variants on arbitrary images.
 
+Project-wide priorities and model-generation status are maintained in the canonical roadmap on `main`:
+
+https://github.com/MicamAmorim/MFI-Edge/blob/main/ROADMAP.md
+
 ## Architecture
 
 - **Frontend:** Next.js/React (`webui/`).
@@ -123,7 +127,7 @@ Both Selection ODS and Held-out F1 are displayed so that validation performance 
 
 The current Stage-7 entries are experimental screened models. Their presence in the WebUI does **not** mean they statistically outperform Scharr on held-out data.
 
-When a later experiment (for example Stage 8) is formally validated and promoted, its registry entry should replace or outrank older entries according to its own declared validation protocol rather than by looking at the test set.
+CH-MFI-v2 variants currently under development in `mfi-edge-local-dev` must not be copied into the normal selector merely because they exist.  They should be promoted only after the selection rule, frozen threshold and held-out result are preserved.
 
 ## Thresholds and benchmark fidelity
 
@@ -156,18 +160,22 @@ The WebUI renders attention both as heatmaps and as heatmap overlays on the inpu
 
 When a new model is accepted experimentally:
 
-1. promote/merge the scientific implementation and reproducible benchmark result to `main`;
-2. merge/sync the relevant code into `mfi-edge-webui`;
-3. add or update its entry in `models/deployable_registry.json` with:
+1. complete the model-selection protocol in `mfi-edge-local-dev`;
+2. preserve exact code/config, validation metric, frozen threshold and held-out/test result;
+3. promote/merge the scientific implementation and reproducible benchmark result to `main`;
+4. merge/sync the relevant inference code into `mfi-edge-webui`;
+5. add or update its entry in `models/deployable_registry.json` with:
+   - model family/stage;
    - measure;
-   - fusion strategy;
+   - fusion/controller strategy;
    - exact parameters;
    - validation metric and protocol used for ranking;
    - held-out/test metric for reference only;
    - frozen threshold;
-   - benchmark/stage label;
-4. verify the model in single mode;
-5. compare it side by side against the current leading models.
+   - benchmark/result path;
+6. verify the model in single mode;
+7. compare it side by side against the current leading models;
+8. update the project roadmap.
 
 This keeps the thousands of exploratory sweep configurations out of the normal selector while making promoted variants immediately testable.
 
@@ -175,13 +183,13 @@ This keeps the thousands of exploratory sweep configurations out of the normal s
 
 Built-in local/adaptive measures work directly from the source code.
 
-A promoted model that depends on learned capacities may additionally require:
+A promoted model that depends on learned capacities must ship or document the exact learned artefact required for reproduction.  Historical Stage-5 models may use:
 
 ```text
 benchmark_outputs/stage5_measures/learned_measures.json
 ```
 
-When present, the API passes these learned specifications to `measure_registry`.
+Future CH-MFI models may additionally require promoted versions of regime/scale learned artefacts; those files should enter the WebUI branch only together with a validated model entry.
 
 ## Vercel / hosted frontend
 
@@ -204,4 +212,5 @@ The WebUI is an inference/inspection tool, not a replacement for the benchmark s
 - do not rank models by post-hoc test/held-out performance;
 - do not treat adaptive-quantile visualization output as a frozen-threshold benchmark;
 - use the benchmark pipeline for official ODS/OIS/AP/F1 reporting;
-- keep the model registry limited to configurations we intentionally promote for inspection/deployment.
+- keep the model registry limited to configurations we intentionally promote for inspection/deployment;
+- keep the roadmap synchronized whenever the promoted model generation changes.
