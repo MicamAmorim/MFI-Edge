@@ -22,7 +22,7 @@ The project has moved through four practical generations:
 1. **MFI-Classic** — multiscale fuzzy evidence, ROI/refinement, classical localizer, NMS/linking.
 2. **MFI-Fuzzy++ / Stage 5–7** — broad fuzzy-measure/operator/fusion competition and UDED generalization tests.
 3. **CH-MFI-v2 / Stage 10** — context-aware, hierarchical, uncertainty-aware fuzzy evidence controlling localization.
-4. **Edge Signature / Stage 11** — use GT as a scientific instrument to discover which image-derived properties distinguish true boundaries from hard negatives, then translate only stable properties into a generalizable analytical/fuzzy detector.
+4. **Edge Signature / Stage 11–12** — use GT as a scientific instrument to discover which image-derived properties distinguish true boundaries from hard negatives, then translate only stable properties into a generalizable analytical/fuzzy detector.
 
 Guiding question:
 
@@ -44,16 +44,9 @@ The first 519-config UDED workstation screen selected `v2_std__distprob_g055__gl
 
 Held-out delta F1: **-0.04879**, paired-bootstrap 95% CI **[-0.10097, -0.00560]**. Later scale-bank/regime-Shapley variants did not replace the winner. Brute-force reweighting of the same descriptor space is therefore not enough.
 
-## Stage 11 first signature
+## Stage 11 / 11b
 
-Historical `oriented` descriptors produced a modest held-out analytical signature, but post-analysis found **22 exact duplicate descriptor/scale pairs** among nominal fine scales because parameter floors collapsed 3/5/7 responses.
-
-## Stage 11b scale-sensitive rerun — completed
-
-`oriented_ms` fixes the scale-collapse artifact:
-
-- historical `oriented`: **22 / 80** exact duplicate descriptor/scale pairs;
-- `oriented_ms`: **0 / 80** exact duplicate pairs.
+Historical `oriented` descriptors contained **22 / 80** exact duplicate descriptor/scale pairs among nominal fine scales. `oriented_ms` corrected this to **0 / 80**.
 
 Stage-11b diagnostics:
 
@@ -62,15 +55,30 @@ Stage-11b diagnostics:
 | analytical signature | 0.6293 | 0.4169 | 0.6606 | 0.4257 |
 | logistic diagnostic | 0.6887 | 0.4879 | **0.6992** | **0.5029** |
 
-Interpretation:
+The corrected descriptor space contains reproducible information. Edge-v-texture separation is markedly easier than exact edge-v-near-edge localization, and signed logistic coefficients suggest that relational/contrastive information is not fully represented by the current all-positive analytical aggregation.
 
-- the corrected descriptor space contains reproducible boundary information;
-- edge-v-texture discrimination is substantially easier than exact-edge-v-near-edge localization;
-- the logistic upper bound uses both positive and negative coefficients, suggesting relational/contrastive information that a simple all-positive fuzzy score misses;
-- near-edge pixels should be treated primarily as an **ambiguous localization population**, not as clean semantic negatives;
-- descriptor relevance is genuinely scale-specific (e.g. fine-scale Gabor is strong while curvature families prefer different scales).
+## Stage 12a — fixed Scharr + analytical signature gate
 
-Full note: `docs/paper/STAGE11B_SCALE_SENSITIVE_RESULTS.md`.
+Stage 12a separated context from localization and kept Scharr+NMS fixed. The best gate selected on inner-CV was:
+
+`siggate__multiply__a2__floor0.25`
+
+| Metric | Scharr | Stage-12a winner |
+|---|---:|---:|
+| selection CV F1 | 0.73351 | **0.73587** |
+| selection ODS | 0.76642 | **0.76816** |
+| held-out precision | 0.66712 | **0.66863** |
+| held-out recall | **0.88846** | 0.88634 |
+| held-out F1 | 0.76204 | **0.76225** |
+
+Held-out delta F1: **+0.000203**, paired-bootstrap 95% CI **[-0.001326, 0.001842]**, P(delta>0)=**0.5748**.
+
+Interpretation: separating context from localization removes the large CH-MFI-v2 degradation, but a smooth additive signature gate is essentially tied with Scharr. The gate slightly trades recall for precision. The next test is therefore not stronger gating; it is whether **non-additive fuzzy aggregation and explicit texture/anti-edge evidence** can exploit information that the weighted analytical score misses.
+
+Full notes:
+
+- `docs/paper/STAGE11B_SCALE_SENSITIVE_RESULTS.md`
+- `docs/paper/STAGE12A_SIGNATURE_GATE_RESULTS.md`
 
 **Wide remains blocked.**
 
@@ -84,47 +92,57 @@ Full note: `docs/paper/STAGE11B_SCALE_SENSITIVE_RESULTS.md`.
 | first standard screen (519) | 🟢 | negative vs Scharr |
 | scale-bank + regime-Shapley rerun (531) | 🟢 | learned additions did not improve formal winner |
 | Stage 11 analytical signature | 🟢 diagnostic | exposed fine-scale collapse |
-| `oriented_ms` | 🟢 | genuinely distinct 25/13/7/5/3 schedules |
-| multiscale audit | 🟢 | 22 duplicates -> 0 |
+| `oriented_ms` + multiscale audit | 🟢 | 22 duplicates -> 0 |
 | Stage 11b signature | 🟢 | analytical + logistic diagnostics completed |
-| context-vs-localization split | 🟡 **next** | separate texture rejection from ambiguous near-edge localization |
-| cross-scale relational descriptors | 🔴 **next** | generic fine-minus-coarse, scale peak/centroid, entropy/persistence |
-| Stage 12 fixed-Scharr signature gate | 🔴 **next** | test signature as context controller before dynamic localizer |
-| dual/bipolar fuzzy evidence | 🔴 **next** | compare positive+negative evidence against all-positive aggregation |
-| CH-MFI component ablations | 🔴 | fixed Scharr vs dynamic localizer; uncertainty; hierarchy |
+| cross-scale relational descriptors | 🟢 | balance/delta/persistence/entropy/centroid/peak added |
+| Stage 12a fixed-Scharr signature gate | 🟢 | held-out effectively tied with Scharr; +0.00020 F1, CI crosses zero |
+| Stage 12b fuzzy signature | 🟡 **run now** | distorted-capacity Choquet + optional dual texture/anti-edge bank with fixed Scharr |
+| bipolar / bi-capacity formalization | 🔴 conditional | only if Stage 12b shows value from separated positive/negative evidence |
+| CH-MFI component ablations | 🔴 | dynamic localizer and uncertainty remain excluded until fixed-Scharr context becomes useful |
 | topology competition | 🟢 code / 🟡 deferred | only after continuous score is competitive |
 | wide sweep | 🔴 **blocked** | wait for information/modeling bottleneck to be resolved |
 | resolution sensitivity | 🔴 | 256 px is development resolution only |
+
+### Run now
+
+```powershell
+git fetch
+git switch mfi-edge-local-dev
+git pull
+.\run_stage12b_fuzzy_signature.bat
+```
+
+Send the files printed by the launcher before any new wide/monolithic experiment.
 
 ---
 
 # Track B — Stage 12 target architecture
 
-Stage 12 should **not** be another monolithic learned classifier. Preferred line:
+Stage 12 should **not** be another monolithic learned classifier. Current preferred line:
 
 ```text
 image
-  -> scale-sensitive descriptors + cross-scale structural relations
-  -> context / texture-rejection memberships
-  -> positive boundary evidence -----> fuzzy aggregation
-  -> anti-boundary/texture evidence -> fuzzy aggregation
-  -> context gate
+  -> oriented_ms descriptors + cross-scale structural relations
+  -> positive boundary memberships -------> fuzzy aggregation C+
+  -> texture / anti-boundary memberships -> fuzzy aggregation C-
+  -> context contrast / gate
 
-image -> fixed precise localizer (Scharr first)
+image -> fixed precise localizer (Scharr+NMS)
      -> context gate
-     -> optional localization signature
-     -> NMS / frozen threshold
+     -> frozen threshold
      -> edge map
 ```
 
-Compare at least:
+Stage 12b explicitly compares:
 
-1. **all-positive analytical signature**;
-2. **dual-Choquet**: `C_plus - lambda*C_minus` (or equivalent monotone transformed memberships);
-3. **bipolar Choquet / bi-capacity** if theory/implementation is stable;
-4. **logistic diagnostic only as an upper bound**, never as the proposed detector.
+1. additive-capacity control (`gamma=1`);
+2. distorted-capacity Choquet (`gamma != 1`) over positive boundary memberships;
+3. dual positive/texture evidence if independent texture-oriented features exist on selection;
+4. Scharr baseline under the same selection/held-out protocol.
 
-Only after a fixed-Scharr signature gate matches or improves Scharr should the dynamic localizer be reintroduced.
+A formal bipolar Choquet / bi-capacity model should be implemented only if the pilot shows that separated negative evidence contributes reproducibly.
+
+The logistic model remains an **upper-bound diagnostic only**, never the proposed detector.
 
 ---
 
@@ -142,13 +160,16 @@ Only after a fixed-Scharr signature gate matches or improves Scharr should the d
 | d-CF / d-CC / d-XC / d-Choquet | 🟢 |
 | Choquet-inspired aggregation | 🟢 experimental |
 | partition-conditioned aggregation | 🟢 experimental |
-| dynamic classical localizer bank | 🟢; fixed-Scharr ablation pending |
-| multiscale uncertainty | 🟢; redesign/ablation pending |
+| dynamic classical localizer bank | 🟢; parked pending fixed-Scharr evidence |
+| multiscale uncertainty | 🟢; parked/redesign pending |
 | granularity control | 🟡 |
 | `oriented_ms` scale-sensitive descriptors | 🟢 |
 | signature structural evidence | 🟢 diagnostic |
-| cross-scale relational signature features | 🔴 next |
-| dual/bipolar fuzzy evidence | 🔴 next |
+| cross-scale relational signature features | 🟢 |
+| fixed-Scharr analytical signature gate | 🟢 near-null vs baseline |
+| distorted-capacity signature Choquet | 🟡 active Stage 12b |
+| dual positive/texture fuzzy evidence | 🟡 active Stage 12b |
+| formal bipolar / bi-capacity aggregation | 🔴 conditional next |
 | formal k-interactive learning | 🔴 |
 | explicit Fourier/multiband branch | 🔴 |
 | learned router/dynamic convolution | 🔴 v3 |
@@ -188,7 +209,7 @@ Only after the interpretable signature line is understood:
 
 # Track F — WebUI and promotion
 
-No current CH-MFI-v2 or Stage-11 candidate is promoted.
+No current CH-MFI-v2 or Stage-11/12 candidate is promoted.
 
 Promotion requires exact config, selection rule, frozen threshold, held-out/test result, qualitative validation and preserved reproducible outputs.
 
@@ -212,6 +233,7 @@ Maintained under `docs/paper/`:
 - `STAGE11_EDGE_SIGNATURE.md`
 - `STAGE11_EDGE_SIGNATURE_RESULTS.md`
 - `STAGE11B_SCALE_SENSITIVE_RESULTS.md`
+- `STAGE12A_SIGNATURE_GATE_RESULTS.md`
 - `PAPER_WRITING_PLAN.md`
 - `references.bib`
 
