@@ -15,7 +15,7 @@ This document reconstructs the experimental decisions discussed during developme
 
 **Status:** Historical.
 
-The original prototype established the core idea of using generalized Choquet-style aggregation of local image descriptors to build an MFI evidence map.  Early synthetic benchmark values from the first dataset version were later **superseded** after identifying a mismatch in diagonal ground-truth generation/evaluation.  Those numerical results must not be quoted in a paper.
+The original prototype established the core idea of using generalized Choquet-style aggregation of local image descriptors to build an MFI evidence map. Early synthetic benchmark values from the first dataset version were later **superseded** after identifying a mismatch in diagonal ground-truth generation/evaluation. Those numerical results must not be quoted in a paper.
 
 What survived conceptually:
 
@@ -33,7 +33,7 @@ Important methodological lesson: synthetic GT generation and tolerance matching 
 
 ### Main change
 
-The descriptor stack was expanded from legacy/rotation-invariant cues to orientation-aware cues using the local gradient normal/tangent.  Important new responses included normal contrast, normal-minus-tangent contrast, and a steered Hessian response.
+The descriptor stack was expanded from legacy/rotation-invariant cues to orientation-aware cues using the local gradient normal/tangent. Important new responses included normal contrast, normal-minus-tangent contrast, and a steered Hessian response.
 
 ### Hard-angle synthetic test
 
@@ -157,7 +157,7 @@ Continuous held-out comparison:
 | Compound | .78601 |
 | Motion blur | **.76868** |
 
-Weakest regimes: **motion blur, compound degradation, texture**.  These failures directly motivated local context routing, frequency descriptors and a dynamic localizer bank.
+Weakest regimes: **motion blur, compound degradation, texture**. These failures directly motivated local context routing, frequency descriptors and a dynamic localizer bank.
 
 ---
 
@@ -239,7 +239,7 @@ A post-hoc residual .50 variant reached approximately .76434 but **must not be c
 
 ### Architectural consequence
 
-Adaptive MFI confidence was often more concentrated on GT-edge pixels, but direct score fusion failed to turn that ranking advantage into a reliable final-edge improvement.  This strongly motivated separating **context/evidence** from **localization**.
+Adaptive MFI confidence was often more concentrated on GT-edge pixels, but direct score fusion failed to turn that ranking advantage into a reliable final-edge improvement. This strongly motivated separating **context/evidence** from **localization**.
 
 ---
 
@@ -268,7 +268,7 @@ Selection ODS approximately **.77059**.
 
 ### Interpretation
 
-A larger search did **not** prove a natural-image advantage.  The selection winner generalized worse. This is scientifically useful: flexible fuzzy models can overfit a tiny selection set, and direct fusion is likely the bottleneck.
+A larger search did **not** prove a natural-image advantage. The selection winner generalized worse. This is scientifically useful: flexible fuzzy models can overfit a tiny selection set, and direct fusion is likely the bottleneck.
 
 This result motivated:
 
@@ -304,7 +304,7 @@ Do **not** insert a Stage-8 performance number into a manuscript until `summary.
 
 ## Stage 9 / local CH-MFI-v1
 
-**Status:** Current workstation development family.
+**Status:** Workstation architecture prototype; superseded by v2 for active experiments.
 
 First local branch introduced:
 
@@ -320,7 +320,7 @@ First local branch introduced:
 - smoke / standard / wide parameter grids;
 - checkpoint/resume and thread-scaling benchmark.
 
-This is the first architecture explicitly designed around the hypothesis:
+This was the first architecture explicitly designed around the hypothesis:
 
 > **MFI should control/refine a precise edge localizer rather than merely add another edge score.**
 
@@ -328,11 +328,11 @@ This is the first architecture explicitly designed around the hypothesis:
 
 ## Stage 10 / local CH-MFI-v2 — second-wave literature-driven family
 
-**Status:** Implemented, awaiting workstation execution.
+**Status:** **Initial workstation standard screen completed; negative/diagnostic result. Learned regime/scale phase pending.**
 
 Added after the 2026 literature review:
 
-- image-neighbourhood SWAFED q maps (faithful to the official source structure, including a separate literal-repository Lukasiewicz option);
+- image-neighbourhood SWAFED q maps;
 - d-CF, d-CC, d-XC and d-Choquet families;
 - larger restricted-dissimilarity set;
 - Choquet-inspired aggregation;
@@ -342,7 +342,110 @@ Added after the 2026 literature review:
 - **scale-specific learned capacity banks**;
 - second-stage none/hysteresis/geodesic/hysteresis+geodesic topology competition.
 
-The v2 experiments live in the `mfi-edge-local-dev` branch and should be run first with smoke, then standard, then wide only after profiling the Ryzen workstation.
+### First standard screen
+
+Protocol:
+
+- UDED: 15 selection / 15 held-out
+- max side: 256 px
+- 8 descriptors
+- 3-fold inner-CV for selection ranking
+- 31 threshold candidates
+- 519 configurations
+- 8 workers
+- learned regime Shapley: **not enabled**
+- learned scale-capacity bank: **not enabled**
+
+The 519-config sweep completed in approximately **869.1 s (14.5 min)**.
+
+#### Baseline Scharr
+
+- selection CV F1: **0.76610**
+- selection ODS: **0.76642**
+- held-out precision: 0.66712
+- held-out recall: 0.88846
+- held-out F1: **0.76204**
+
+#### Formally selected candidate
+
+`v2_std__distprob_g055__global_local__conditional__g0.75__soft`
+
+- distorted-probability capacity, gamma 0.55
+- global/local hierarchy
+- conditional fuzzy operators
+- granularity 0.75
+- adaptive localizer
+- soft controller
+
+Selection:
+
+- CV F1: **0.71857**
+- ODS: **0.71991**
+- OIS: 0.76247
+- AP: 0.71004
+- R50: 0.92157
+
+Frozen held-out:
+
+- precision: **0.61117**
+- recall: **0.85628**
+- F1: **0.71325**
+- delta F1 vs Scharr: **-0.04879**
+- 95% paired-bootstrap CI: **[-0.10097, -0.00560]**
+- P(delta > 0): **0.0122**
+
+All 12 finalists selected by inner-CV were below Scharr on held-out data and their reported bootstrap confidence intervals remained below zero.
+
+### Family signals
+
+The standard contextual/hierarchical family produced the strongest CV candidate. Among alternative families, d-CF/d-CC/d-XC produced some higher **full-selection ODS** peaks (d-XC reached approximately 0.72472), but their inner-CV F1 was weaker, so these ODS-only peaks were correctly not promoted.
+
+The initial family-level best CV F1 values were approximately:
+
+| Family | Best CV F1 | Best selection ODS |
+|---|---:|---:|
+| standard contextual/hierarchical | **0.71857** | 0.71991 |
+| d-CF | 0.71536 | 0.72232 |
+| d-CC | 0.71176 | 0.72372 |
+| partition-conditioned | 0.70923 | 0.71919 |
+| Choquet-inspired | 0.70786 | 0.72066 |
+| d-XC | 0.70754 | **0.72472** |
+| regularized-pair | 0.70609 | 0.71526 |
+| SWAFED | 0.69593 | 0.69677 |
+
+Granularity showed a useful tension: 0.75 produced the highest ODS peaks, while 0.50 had the best average CV across the grid. This supports the hypothesis that scale preference should be context/regime dependent rather than globally fixed.
+
+### Visual diagnosis
+
+The contact sheet shows that MFI attention and uncertainty are still strongly activated by texture/region structure rather than only by sparse semantic boundaries. The dynamic localizer also remains dense in textured backgrounds. Numerically this appears as a precision drop (0.611 vs 0.667 for Scharr) **and** a recall drop (0.856 vs 0.888), so threshold tuning alone is not an adequate explanation.
+
+### Parallel profile
+
+For eight profile configurations:
+
+| Workers | Time (s) | Speedup |
+|---:|---:|---:|
+| 1 | 35.63 | 1.00x |
+| 2 | 23.23 | 1.53x |
+| 4 | 17.45 | 2.04x |
+| 8 | 13.80 | **2.58x** |
+
+Eight workers are currently a reasonable operating point, although parallel efficiency is already flattening.
+
+### Consequence / next experiment
+
+This result is stronger than a simple held-out generalization failure: Scharr already dominates the v2 candidates on selection inner-CV. Therefore **do not launch the wide sweep yet**.
+
+Next sequence:
+
+1. learn scale-specific capacity banks on selection only;
+2. learn regime-specific Shapley on selection only;
+3. rerun the standard screen with those candidates appended;
+4. add explicit ablations to locate the bottleneck: fixed Scharr vs dynamic localizer, MFI gating vs controller, uncertainty on/off, hierarchy on/off;
+5. only if the continuous score closes the gap, evaluate topology repair;
+6. keep the wide grid blocked until a credible improvement trend appears.
+
+Compact archived report: `results/uded/ch_mfi_v2_standard/STANDARD_SCREEN_REPORT.md`.
 
 ---
 
@@ -355,7 +458,8 @@ The v2 experiments live in the `mfi-edge-local-dev` branch and should be run fir
 - geodesic linking greatly improved synthetic continuity metrics;
 - q=.1 is not uniquely optimal;
 - UDED exposed a generalization gap between selection and held-out;
-- direct MFI+Scharr fusion is not yet supported as superior to Scharr on UDED.
+- direct MFI+Scharr fusion is not yet supported as superior to Scharr on UDED;
+- the first unlearned CH-MFI-v2 screen is clearly below Scharr and therefore motivates learned regime/scale adaptation and stronger ablation rather than a blind wide sweep.
 
 ## Must be rerun before final claims
 
