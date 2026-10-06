@@ -15,5 +15,17 @@
       "results/external/stage13a_bsds_transfer/preview_separable_bicapacity.png",
       "results/external/stage13a_bsds_transfer/preview_ratio_control.png"
     ]
+  },
+  "stage13b_protocol_research": {
+    "description": "Research-planning checkpoint for BIPED frozen replication and official Berkeley evaluation. No external-test tuning is permitted.",
+    "runner": "python",
+    "path": "automation/research_checkpoint.py",
+    "args": [],
+    "role": "research_planning",
+    "feedback_policy": "protocol_and_literature_research_only_no_test_tuning",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage13b_protocol_research/summary.json"
+    ]
   }
 }
