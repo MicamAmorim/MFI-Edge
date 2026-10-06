@@ -22,12 +22,17 @@ from src.fuzzy_measures import measure_registry
 from src.hybrid import percentile_confidence
 from src.pipeline import precompute_multiscale_features, multiscale_from_precomputed
 from src.postprocess import gradient_orientation, non_maximum_suppression
+from src.research_deploy import (
+    infer_signature_arrays,
+    prepare_signature_image,
+    research_source_status,
+)
 
 ROOT = Path(__file__).resolve().parent
 SCALES = (25, 13, 7, 5, 3)
 MAX_COMPARE_MODELS = 4
 
-app = FastAPI(title="MFI-Edge Desktop API", version="0.2.0")
+app = FastAPI(title="MFI-Edge Desktop API", version="0.3.0")
 origins = os.environ.get(
     "MFI_WEB_ORIGINS",
     "http://localhost:3000,http://127.0.0.1:3000",
@@ -104,6 +109,10 @@ def _edge_overlay(img: np.ndarray, edge: np.ndarray) -> np.ndarray:
     return out
 
 
+def _public_model(model: dict) -> dict:
+    return {k: v for k, v in model.items() if not str(k).startswith("_")}
+
+
 def _load_learned() -> dict:
     p = ROOT / "benchmark_outputs" / "stage5_measures" / "learned_measures.json"
     if not p.exists():
@@ -160,10 +169,15 @@ def _get_model(model_id: str) -> dict:
         raise HTTPException(status_code=404, detail=str(exc)) from exc
 
 
-def prepare_image(img: np.ndarray, max_side: int) -> dict:
-    """Run all model-independent work once so comparison mode can reuse it."""
+def prepare_image(img: np.ndarray, max_side: int, engine: str = "stage7") -> dict:
+    """Run model-independent work once per inference engine."""
     t0 = time.perf_counter()
     img = _resize_max(img, int(max_side))
+    if str(engine) == "signature_gate":
+        prepared = prepare_signature_image(img)
+        prepared["prepare_ms"] = 1000.0 * (time.perf_counter() - t0)
+        return prepared
+
     pre_img = apply_conditioning(img, "median", size=3)
     precomputed, feature_names = precompute_multiscale_features(
         pre_img, SCALES, feature_mode="oriented"
@@ -180,8 +194,40 @@ def prepare_image(img: np.ndarray, max_side: int) -> dict:
     }
 
 
-def infer_prepared(prepared: dict, model: dict, edge_quantile: float | None):
-    """Run only the model-dependent MFI aggregation/fusion stages."""
+def _signature_result(prepared: dict, model: dict, edge_quantile: float | None):
+    t0 = time.perf_counter()
+    img = prepared["img"]
+    arrays = infer_signature_arrays(prepared, model)
+    score = arrays["score"]
+    thr, threshold_mode = _threshold(score, model, edge_quantile)
+    edge = np.asarray(score) >= thr
+    attention = []
+    for item in arrays["diagnostics"]:
+        a = np.asarray(item["map"], dtype=float)
+        attention.append({
+            "label": str(item["label"]),
+            "scale": item.get("tick"),
+            "overlay": _data_url(_heat_overlay(img, a)),
+            "heatmap": _data_url((_norm01(a) * 255).astype(np.uint8)),
+        })
+    model_ms = 1000.0 * (time.perf_counter() - t0)
+    return {
+        "width": int(img.shape[1]),
+        "height": int(img.shape[0]),
+        "runtime_ms": float(prepared["prepare_ms"] + model_ms),
+        "prepare_ms": float(prepared["prepare_ms"]),
+        "model_runtime_ms": float(model_ms),
+        "threshold": float(thr),
+        "threshold_mode": threshold_mode,
+        "attention": attention,
+        "best_scale": _data_url((_norm01(arrays["context"]) * 255).astype(np.uint8)),
+        "edge": _data_url((edge.astype(np.uint8) * 255)),
+        "edge_overlay": _data_url(_edge_overlay(img, edge)),
+        "score": _data_url((_norm01(score) * 255).astype(np.uint8)),
+    }
+
+
+def _stage7_result(prepared: dict, model: dict, edge_quantile: float | None):
     t0 = time.perf_counter()
     img = prepared["img"]
     spec = _measure_spec(str(model["measure"]), len(prepared["feature_names"]))
@@ -244,8 +290,14 @@ def infer_prepared(prepared: dict, model: dict, edge_quantile: float | None):
     }
 
 
+def infer_prepared(prepared: dict, model: dict, edge_quantile: float | None):
+    if str(model.get("engine", "stage7")) == "signature_gate":
+        return _signature_result(prepared, model, edge_quantile)
+    return _stage7_result(prepared, model, edge_quantile)
+
+
 def infer_one(img: np.ndarray, model: dict, max_side: int, edge_quantile: float | None):
-    prepared = prepare_image(img, max_side)
+    prepared = prepare_image(img, max_side, str(model.get("engine", "stage7")))
     out = infer_prepared(prepared, model, edge_quantile)
     out["original"] = _data_url(_rgb_u8(prepared["img"]))
     return out
@@ -253,10 +305,13 @@ def infer_one(img: np.ndarray, model: dict, max_side: int, edge_quantile: float 
 
 @app.get("/api/health")
 def health():
+    rows = load_deployable_models()
     return {
         "ok": True,
         "scales": list(SCALES),
-        "models": len(load_deployable_models()),
+        "models": len(rows),
+        "research_models": sum(str(x.get("engine")) == "signature_gate" for x in rows),
+        "research_source": research_source_status(),
         "max_compare_models": MAX_COMPARE_MODELS,
     }
 
@@ -264,14 +319,20 @@ def health():
 @app.get("/api/models")
 def models():
     rows = load_deployable_models()
+    research = research_source_status()
+    note = (
+        "Current Stage-14 research models are shown first when the active local-dev frozen artifact is available. "
+        "Each metric keeps its own protocol label; Stage-7 ODS and Stage-12/14 repeated-CV F1 are not treated as interchangeable. "
+        "Entries without an exported frozen threshold use an adaptive quantile for visualization only."
+    )
+    if not research["available"]:
+        note += " Research artifact not found; set MFI_RESEARCH_ROOT to the local-dev worktree to enable current models."
     return {
-        "rank_basis": "UDED Stage 7 selection ODS",
-        "note": (
-            "Ordering uses the validation/selection metric, not post-hoc held-out performance. "
-            "Entries without an exported frozen threshold use an adaptive quantile only for desktop visualization."
-        ),
+        "rank_basis": "current research status, then declared development metric",
+        "note": note,
+        "research_source_available": bool(research["available"]),
         "max_compare_models": MAX_COMPARE_MODELS,
-        "models": rows,
+        "models": [_public_model(x) for x in rows],
     }
 
 
@@ -294,7 +355,7 @@ async def infer(
         out = infer_one(img, model, max_side=max_side, edge_quantile=edge_quantile)
         out["filename"] = f.filename or "image"
         results.append(out)
-    return {"model": model, "results": results}
+    return {"model": _public_model(model), "results": results}
 
 
 @app.post("/api/compare")
@@ -304,7 +365,6 @@ async def compare(
     max_side: int = Form(768),
     edge_quantile: float | None = Form(None),
 ):
-    """Compare 2–4 ranked models while sharing image preprocessing/features."""
     if not files:
         raise HTTPException(status_code=400, detail="Upload at least one image")
     if len(files) > 64:
@@ -329,24 +389,30 @@ async def compare(
     for f in files:
         data = await f.read()
         img = _decode_upload(data)
-        prepared = prepare_image(img, max_side=max_side)
+        prepared_by_engine = {}
         per_model = []
         for model in selected_models:
+            engine = str(model.get("engine", "stage7"))
+            if engine not in prepared_by_engine:
+                prepared_by_engine[engine] = prepare_image(img, max_side=max_side, engine=engine)
+            prepared = prepared_by_engine[engine]
             out = infer_prepared(prepared, model, edge_quantile=edge_quantile)
-            out["model"] = model
+            out["model"] = _public_model(model)
             per_model.append(out)
+        first = next(iter(prepared_by_engine.values()))
         results.append(
             {
                 "filename": f.filename or "image",
-                "width": int(prepared["img"].shape[1]),
-                "height": int(prepared["img"].shape[0]),
-                "prepare_ms": float(prepared["prepare_ms"]),
-                "original": _data_url(_rgb_u8(prepared["img"])),
+                "width": int(first["img"].shape[1]),
+                "height": int(first["img"].shape[0]),
+                "prepare_ms": float(sum(x["prepare_ms"] for x in prepared_by_engine.values())),
+                "original": _data_url(_rgb_u8(first["img"])),
                 "models": per_model,
             }
         )
     return {
-        "models": selected_models,
-        "shared_preprocessing": True,
+        "models": [_public_model(x) for x in selected_models],
+        "shared_preprocessing": len({str(x.get("engine", "stage7")) for x in selected_models}) == 1,
+        "preprocessing_mode": "shared within each inference engine",
         "results": results,
     }
