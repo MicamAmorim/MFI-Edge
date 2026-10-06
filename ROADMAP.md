@@ -133,6 +133,17 @@ both criteria failed, so d-CC is not retained. RDF robustness remains an
 unsupported hypothesis on this protocol. No external or UDED held-out result
 informed the interpretation.
 
+Stage 14g compared three mechanistically distinct follow-ups. Further RDF
+operator tuning is deferred; conditional experts remain blocked pending
+development-only complementary errors; the d-CC paper's gravitational
+preprocessing result motivates one isolated test of that conditioning step.
+Stage 14h is registered on synthetic validation only: replace the median
+prefilter with the fixed grayscale gravitational smoother before both the
+feature and Scharr branches, with the compact positive controller frozen. The
+source result is a hypothesis for this different multiscale system, not
+evidence of transfer. The experiment must pass its preregistered criteria and
+then receive a separate development confirmation before any retention.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**

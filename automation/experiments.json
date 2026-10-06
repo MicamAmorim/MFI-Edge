@@ -147,5 +147,20 @@
     "result_files": [
       "results/automation/stage14g_post_rdf_research_checkpoint/summary.json"
     ]
+  },
+  "stage14h_gravity_smoothing": {
+    "description": "Paired synthetic development falsification of replacing the median prefilter with fixed gravitational smoothing, holding the compact positive controller and Scharr+NMS architecture fixed.",
+    "runner": "python",
+    "path": "run_stage14h_gravity_smoothing.py",
+    "args": ["--thresholds", "41"],
+    "role": "development_test",
+    "feedback_policy": "synthetic_validation_development_only_gravitational_smoothing_no_external_feedback",
+    "one_shot": true,
+    "result_files": [
+      "results/local_dev/stage14h_gravity_smoothing/summary.json",
+      "results/local_dev/stage14h_gravity_smoothing/condition_metrics.csv",
+      "results/local_dev/stage14h_gravity_smoothing/per_image_metrics.csv",
+      "results/local_dev/stage14h_gravity_smoothing/degradation_by_family_severity.csv"
+    ]
   }
 }

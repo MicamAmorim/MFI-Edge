@@ -147,6 +147,29 @@ used synthetic validation only, with no UDED or external data. d-CC is not
 promoted. The RDF robustness hypothesis remains unsupported by this test, not
 universally disproven.
 
+## Stage 14g/14h — post-RDF literature checkpoint and next test
+
+The Stage-14g checkpoint compared three distinct next directions: further RDF
+operators (deferred after the isolated d-CC test and not to be parameter-tuned),
+development-only complementarity analysis before any conditional experts, and
+the preprocessing mechanism paired with the strongest literature-reported
+d-CC setting. Amorim et al. (2025) report that gravitational smoothing
+consistently improves their single-scale RGB detector and that their strongest
+d-CC setting couples absolute RDF with that smoother. This motivates testing
+the smoother by itself; it does not establish a gain for MFI-Edge's grayscale
+multiscale controller. The diversity literature also cautions that disagreement
+statistics alone do not predict ensemble accuracy, so routing remains deferred
+until paired development errors support a concrete correction mechanism.
+
+Stage 14h is preregistered as one isolated grayscale gravitational-conditioning
+ablation on the fixed synthetic validation split. It replaces the median
+prefilter before both feature and Scharr branches, holding the compact positive
+controller and all other settings fixed. Thresholds use only the clean
+calibration half; paired corruption results are development evidence only.
+Promotion requires the explicit Stage-14h criteria and separate development
+confirmation. No UDED held-out, BSDS500 test, or BIPEDv2 test result informs
+this choice.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels
