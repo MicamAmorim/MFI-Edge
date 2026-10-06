@@ -230,6 +230,24 @@
       "results/local_dev/stage14l_texture_distribution_context/best_method_preview.png"
     ]
   },
+  "stage14m_logistic_cue_fusion": {
+    "description": "Leakage-free repeated-CV falsification of a class-balanced linear logistic probability-of-boundary fusion over the retained compact memberships and Scharr+NMS support.",
+    "runner": "python",
+    "path": "run_stage14m_logistic_cue_fusion.py",
+    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256", "--l2", "1.0", "--max-samples-per-class", "2500"],
+    "role": "development_test",
+    "feedback_policy": "UDED_selection_only_leakage_free_linear_cue_fusion_no_external_feedback",
+    "one_shot": true,
+    "result_files": [
+      "results/local_dev/stage14m_logistic_cue_fusion/summary.json",
+      "results/local_dev/stage14m_logistic_cue_fusion/variant_ranking.csv",
+      "results/local_dev/stage14m_logistic_cue_fusion/fold_results.csv",
+      "results/local_dev/stage14m_logistic_cue_fusion/per_image_metrics.csv",
+      "results/local_dev/stage14m_logistic_cue_fusion/model_coefficients.csv",
+      "results/local_dev/stage14m_logistic_cue_fusion/training_samples.csv",
+      "results/local_dev/stage14m_logistic_cue_fusion/best_method_preview.png"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

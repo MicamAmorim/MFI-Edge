@@ -225,6 +225,18 @@ five-feature controller remains incumbent. Do not tune this texture feature
 from the outcome. A mechanistically distinct autonomous literature escalation
 is next.
 
+That escalation selected Stage 14m, a detector-level aggregation/calibration
+test. Rather than adding another descriptor, it fits one fixed-form,
+class-balanced L2 logistic probability-of-boundary model inside each outer
+training fold from Scharr+NMS, compact Choquet context, their product, and the
+five retained memberships. Candidate predictions are restricted to
+Scharr+NMS support, so the context/localizer role separation is preserved.
+The incumbent and candidate each receive an independently fold-fitted
+threshold. No regularization, feature, interaction, or classifier sweep is
+allowed. This tests whether the Stage-11 linear diagnostic signal can improve
+the actual detector and whether the fixed multiplicative gate, rather than the
+representation, is now the bottleneck.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
@@ -264,7 +276,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | Stage 14k color-tensor localizer | 🟢 completed | fixed Lab tensor replacement failed all promotion criteria; grayscale Scharr retained |
 | post-color mechanism search | 🟢 completed | selected explicit two-sided texture-distribution contrast |
 | Stage 14l texture-distribution context | 🟢 completed | small sub-margin gain; 6/15 wins and 7/15 eligible; not promoted |
-| post-texture mechanism search | 🟡 next | live-literature escalation; select one mechanistically distinct development test |
+| post-texture mechanism search | 🟢 completed | selected fixed-form linear probability-of-boundary cue fusion |
+| Stage 14m linear cue fusion | 🟡 registered | fold-fitted logistic fusion on Scharr+NMS support; no model sweep |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

@@ -395,6 +395,44 @@ repeatable high-reasoning live-literature escalation, which must choose a
 mechanistically distinct development-only falsification without held-out or
 external-test feedback.
 
+## Stage 14m — linear probability-of-boundary cue-fusion checkpoint
+
+The post-texture live-literature checkpoint compared three mechanistically
+distinct non-neural directions: (1) fold-fitted linear probability-of-boundary
+fusion of the retained localizer and compact memberships, (2) spectral
+globalization of local contours, and (3) a structured random forest that
+predicts local edge masks. Arbeláez et al. (2011, DOI
+`10.1109/TPAMI.2010.161`) and Dollár and Zitnick (2015, DOI
+`10.1109/TPAMI.2014.2377715`) establish the latter two as credible classical
+families, but each is a substantially larger representation and inference
+change. The first direction directly follows unresolved repository evidence:
+Stage 11b's linear diagnostic generalized, while subsequent analytical context
+variants have not established that the available information is being
+calibrated optimally as a detector.
+
+Martin, Fowlkes and Malik (2004, DOI `10.1109/TPAMI.2004.1273918`) frame local
+boundary detection as supervised posterior estimation from local cues and
+report that a simple linear logistic model was adequate for cue combination.
+Stage 14m transfers only that methodological principle. It is not a
+reproduction of Pb and imports no external model or target-test feedback.
+
+Stage 14m is preregistered on UDED selection only under the established 5x3
+repeated leakage-free CV. The control remains the five-feature compact
+distorted-Choquet gate. The candidate fits a class-balanced L2 logistic model
+inside each outer training fold from Scharr+NMS, compact Choquet context, their
+product, and the five retained membership maps; its predictions are restricted
+to Scharr+NMS support. Regularization, samples, interactions, and classifier
+family are fixed before scoring, with no sweep. Independent fold-trained
+thresholds are frozen on the paired validation fold. The authoritative
+protocol and conjunction promotion rule are in
+`docs/paper/STAGE14M_PREREGISTRATION.md`.
+
+The deterministic `best_method_preview.png` must use the first validation
+image of the first split and show conditioned input, GT, compact incumbent,
+linear-logistic candidate, and retained best. It is documentary only. The
+2026-10-06 SOTA ledger remains current; this mechanism search found no new
+verified matched-protocol result requiring a target-row change.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels
