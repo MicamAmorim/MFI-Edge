@@ -5,12 +5,17 @@ cd /d %~dp0
 set PYTHONUTF8=1
 set PYTHONIOENCODING=utf-8
 
+if not defined MFI_CODEX_MODEL set MFI_CODEX_MODEL=gpt-5.6-sol
+
 echo ============================================================
-echo MFI-Edge Research Autopilot
-echo Local experiments + on-demand Codex decisions
-echo Codex is NOT kept running while benchmarks execute.
+echo MFI-Edge Research Autopilot v4
+echo Continuous autonomous non-neural SOTA research
+echo Model: %MFI_CODEX_MODEL%
+echo Normal decisions: medium reasoning
+echo Research checkpoints: high reasoning + live web search
+echo Persistent scientific context is injected on every decision.
+echo Soft scientific stops automatically escalate to literature research.
 echo Completed experiments are resumed safely if Codex analysis fails.
-echo Research checkpoints escalate reasoning and enable live web search when supported.
 echo Create automation\STOP at any time to stop before the next step.
 echo ============================================================
 echo.
@@ -29,7 +34,7 @@ where codex >nul 2>nul || (
   exit /b 1
 )
 
-python automation\research_controller_v3.py %*
+python automation\research_controller_v4.py %*
 set RC=%ERRORLEVEL%
 if not "%RC%"=="0" (
   echo.
