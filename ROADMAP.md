@@ -161,6 +161,14 @@ MFI-guided geodesic linking. Stage 14i transfers exactly that linker
 with no parameter sweep and no score-model change. Promotion requires
 predeclared F1/precision noninferiority and natural-image connectivity gains.
 
+Stage 14i completed without promotion. Fixed geodesic linking changed
+aggregate F1 by `-0.01519` and mean fold F1 by `-0.01134` with no fold wins.
+Its mean paired largest-component GT-coverage gain was only `+0.00156`, far
+below the predeclared `+0.03`, even though precision remained within its
+noninferiority margin and coverage improved in 12/15 fold means. The no-link
+compact positive controller remains incumbent. Linker micro-tuning is blocked;
+the autonomous literature/mechanism escalation is next.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
@@ -193,7 +201,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | **Stage 13a BSDS frozen transfer** | 🟡 **RUN NOW** | no BSDS tuning; first external check |
 | BIPEDv2 external replication | 🟡 preflight registered | test split frozen; author-provided download requires human license acceptance |
 | official BSDS500 evaluation | 🔴 | requires official Berkeley MATLAB/CSA++ benchmark tooling; Stage 13a remains a proxy |
-| topology/linking revisit | 🟡 Stage 14i registered | fixed Stage-4 geodesic transfer; UDED selection CV only |
+| topology/linking revisit | 🟢 Stage 14i completed | fixed linker not promoted; F1 and coverage-effect criteria failed |
+| post-topology mechanism search | 🟡 next | high-reasoning live-literature escalation; development feedback only |
 | dynamic localizer revisit | ⚪ | keep parked until fixed-Scharr line is understood |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

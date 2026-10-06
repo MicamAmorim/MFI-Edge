@@ -217,6 +217,26 @@ precision noninferiority plus predeclared largest-component coverage gains.
 The authoritative protocol is `docs/paper/STAGE14I_PREREGISTRATION.md`.
 UDED held-out and both inspected external tests are excluded.
 
+Stage 14i completed without promotion. The no-link control reached aggregate
+CV F1 `0.77334`, versus `0.75815` for fixed geodesic linking (delta
+`-0.01519`). Mean fold F1 changed by `-0.01134`, and the candidate won no F1
+folds. Aggregate precision changed by `-0.00304`, within its `-0.005`
+noninferiority margin. Mean paired per-image largest-component GT coverage
+increased only `+0.00156`, far short of the required `+0.03`, although fold
+mean coverage improved in 12/15 folds. Because the preregistration required
+all four conditions, the candidate failed on F1 noninferiority and coverage
+effect size; the no-link compact positive controller remains incumbent.
+
+The fixed qualitative artifact uses the first validation image of the first
+deterministic split. Its columns are conditioned input, ground truth, no-link
+incumbent, fixed-geodesic candidate, and retained best. It is documentary only
+and did not influence the decision. The natural-image result does not erase
+the earlier synthetic continuity gain, but it shows that this transferred
+linker does not preserve boundary accuracy or deliver a material coverage gain
+in the current architecture. No linker sweep follows from these results. The
+next registered action is the autonomous high-reasoning literature/mechanism
+escalation, excluding UDED held-out and inspected external-test feedback.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

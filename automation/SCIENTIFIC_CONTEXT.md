@@ -92,17 +92,17 @@ Result: d-CC was **not promoted**. Mean absolute corrupted-F1 advantage about `-
 
 Post-RDF high-reasoning literature review selected a targeted gravitational-conditioning ablation as a mechanistically distinct test. Stage 14h did **not** promote gravitational smoothing: mean corrupted-F1 advantage was about `+0.00534`, but clean F1 fell by about `-0.27231` and only the texture family improved (`1/4` families positive). The candidate therefore failed two required criteria and median conditioning remains incumbent. The texture-specific gain is descriptive evidence of regime complementarity, not permission to route on known corruption labels or to tune the smoother. The next step is a literature/mechanism escalation rather than further gravitational or RDF micro-tuning.
 
-### Stage 14i — registered topology-repair falsification
+### Stage 14i — topology-repair falsification
 
-The October 2026 literature escalation identified crispness/continuity as a
-mechanistically distinct next target and found no reason to resume RDF or
-gravitational tuning. Stage 14i is preregistered on UDED selection only under
-5x3 leakage-free CV. It holds the compact positive context and Scharr+NMS
-score fixed and adds the Stage-4 synthetic winner: MFI/context-guided geodesic
-endpoint linking with `max_gap=8`, `max_mean_cost=0.60`, and no parameter
-sweep. Retain it only if F1/precision are noninferior and predeclared
-largest-component GT-coverage criteria pass. The incumbent remains no-link
-until those results exist.
+Stage 14i did **not** promote fixed MFI/context-guided geodesic endpoint
+linking on UDED-selection repeated leakage-free CV. Relative to the no-link
+control, aggregate F1 changed by `-0.01519`, mean fold F1 by `-0.01134` with
+`0/15` fold wins, and mean paired largest-component GT coverage by only
+`+0.00156` versus the preregistered `+0.03` requirement. Precision changed by
+`-0.00304`, and coverage improved in 12/15 folds, but all four criteria were
+required. The no-link compact positive controller remains incumbent. Do not
+micro-tune this linker from Stage-14i outcomes; proceed to a mechanistically
+distinct literature escalation.
 
 ## d-Choquet terminology
 
