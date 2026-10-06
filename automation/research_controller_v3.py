@@ -4,7 +4,12 @@ from __future__ import annotations
 
 Thin compatibility wrapper around v2 that keeps normal iterations cheap but
 escalates research-planning checkpoints to stronger reasoning and live Codex web
-search when the installed CLI exposes a --search option.
+search.
+
+For `codex exec`, web search is requested through the canonical config override
+`web_search="live"`.  Do not infer support by looking for a `--search` flag in
+`codex exec --help`: recent Codex CLI builds may expose `--search` only at a
+different CLI surface while `exec` still supports the `web_search` config key.
 """
 
 from pathlib import Path
@@ -34,36 +39,35 @@ def _call_codex_v3(prompt: str, config: dict, iteration: int, model: str | None)
     if answer_path.exists():
         answer_path.unlink()
 
-    help_proc = subprocess.run(
-        [codex, "exec", "--help"], cwd=str(core.ROOT), capture_output=True,
-        text=True, encoding="utf-8", errors="replace", check=False,
-    )
-    help_text = (help_proc.stdout or "") + (help_proc.stderr or "")
-    has_search = "--search" in help_text
+    reasoning = str(config.get("research_reasoning_effort", "medium"))
+    web_mode = str(config.get("research_web_search", "live"))
+    if web_mode not in {"disabled", "cached", "indexed", "live"}:
+        raise ValueError(
+            "research_web_search must be one of: disabled, cached, indexed, live"
+        )
 
-    cmd = [codex, "exec"]
-    if has_search:
-        cmd.append("--search")
-    cmd.extend([
+    cmd = [
+        codex,
+        "exec",
         "--sandbox", "workspace-write",
         "--config", "approval_policy=never",
-        "--config", f"model_reasoning_effort={config.get('research_reasoning_effort', 'medium')}",
+        "--config", f"model_reasoning_effort={reasoning}",
+        "--config", f'web_search="{web_mode}"',
         "--output-schema", str(core.SCHEMA_FILE),
         "--output-last-message", str(answer_path),
-    ])
+    ]
     if model:
         cmd.extend(["--model", model])
     cmd.append("-")
 
     timeout = float(config.get("codex_timeout_minutes", 25)) * 60.0
     retries = max(0, int(config.get("codex_retries", 2)))
-    logs = [f"RESEARCH_ESCALATION web_search={'live' if has_search else 'unavailable'}"]
+    logs = [f"RESEARCH_ESCALATION web_search={web_mode} reasoning={reasoning}"]
     last_rc = 1
     for attempt in range(1, retries + 2):
         print(
             f"CODEX research attempt {attempt}/{retries + 1} "
-            f"(reasoning={config.get('research_reasoning_effort', 'medium')}, "
-            f"web_search={'on' if has_search else 'off'})...",
+            f"(reasoning={reasoning}, web_search={web_mode})...",
             flush=True,
         )
         try:
