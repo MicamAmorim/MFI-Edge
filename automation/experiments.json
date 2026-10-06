@@ -108,5 +108,17 @@
       "results/local_dev/stage14d_persistence_feature_ablation/fold_results.csv",
       "results/local_dev/stage14d_persistence_feature_ablation/bank_stability.csv"
     ]
+  },
+  "stage14e_rdf_protocol_checkpoint": {
+    "description": "Literature-guided checkpoint to preregister a controlled development-only RDF/d-Choquet robustness experiment after Stage 14d retained the five-feature compact positive bank.",
+    "runner": "python",
+    "path": "automation/stage14e_rdf_protocol_checkpoint.py",
+    "args": [],
+    "role": "research_planning",
+    "feedback_policy": "rdf_protocol_research_only_no_external_feedback",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage14e_rdf_protocol_checkpoint/summary.json"
+    ]
   }
 }
