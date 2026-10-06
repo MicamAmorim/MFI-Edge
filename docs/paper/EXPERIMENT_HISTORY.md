@@ -237,6 +237,37 @@ in the current architecture. No linker sweep follows from these results. The
 next registered action is the autonomous high-reasoning literature/mechanism
 escalation, excluding UDED held-out and inspected external-test feedback.
 
+## Stage 14j — phase-congruency context-feature checkpoint
+
+The post-topology live-literature escalation considered three mechanistically
+distinct non-neural directions: (1) local phase congruency as contrast-
+normalized multiscale context, (2) an interpretable conditional localizer using
+phase-versus-gradient complementarity, and (3) a learned classical structured
+forest on a future larger development split. The second lacks development-only
+complementarity evidence and the third requires a newly designated training
+resource. The smallest justified next test is therefore the first direction.
+
+Local energy theory identifies general features where Fourier components align
+in phase (Morrone and Owens, 1987, DOI
+`10.1016/0167-8655(87)90013-4`). Kovesi's noise-compensated PC2 construction
+turns this into a dimensionless multiscale/multiorientation feature-significance
+measure and uses its maximum covariance moment as an edge indicator (Kovesi,
+1999; 2000, DOI `10.1007/s004260000024`). This differs from the retained
+Gabor/Hessian bank, which is dominated by response amplitude even though its
+Gabor channels are multiscale.
+
+Stage 14j is preregistered as a single-feature addition on UDED selection only,
+using the established 5x3 repeated leakage-free CV. It appends the fixed
+`phasecong3`-default maximum moment to the five retained positive memberships;
+Scharr+NMS, distorted-Choquet gamma, gate, and conditioning remain fixed.
+Membership calibration, singleton weight, an established positive-direction
+eligibility check, and thresholds are learned inside each training fold. No
+phase parameter sweep or localizer replacement is allowed. The authoritative
+protocol and promotion criteria are in
+`docs/paper/STAGE14J_PREREGISTRATION.md`. The SOTA ledger was already refreshed
+on 2026-10-06 and this mechanism search found no primary benchmark result that
+changes its verified targets.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

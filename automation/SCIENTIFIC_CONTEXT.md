@@ -104,6 +104,20 @@ required. The no-link compact positive controller remains incumbent. Do not
 micro-tune this linker from Stage-14i outcomes; proceed to a mechanistically
 distinct literature escalation.
 
+### Stage 14j — registered phase-congruency context test
+
+The post-topology literature escalation selected a representation change:
+append one fixed-default Kovesi PC2 maximum phase-congruency covariance moment
+to the retained five-feature positive bank. Phase congruency tests cross-scale
+phase alignment normalized by local energy, unlike the bank's amplitude-
+dominated Gabor/Hessian evidence. Stage 14j keeps median conditioning,
+distorted-Choquet gamma `0.55`, gate strength `2.0`, floor `0.10`, and
+Scharr+NMS fixed. It uses UDED-selection 5x3 leakage-free repeated CV; phase
+membership, eligibility, weight, and thresholds are fitted inside training
+folds. No phase parameter sweep is permitted. The authoritative protocol is
+`docs/paper/STAGE14J_PREREGISTRATION.md`. A phase/gradient localizer router is
+deferred unless this minimal test establishes development complementarity.
+
 ## d-Choquet terminology
 
 Do not conflate these:
