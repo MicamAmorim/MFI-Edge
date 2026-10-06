@@ -17,6 +17,14 @@ MATLAB evaluator's `double(imread(...))/255` input convention.
 from pathlib import Path
 import argparse
 import json
+import sys
+
+# This exporter is launched by absolute path from the official-evaluation
+# module. In that mode Python places this file's directory, rather than the
+# repository root, on sys.path even though the subprocess cwd is the root.
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 import numpy as np
 from PIL import Image

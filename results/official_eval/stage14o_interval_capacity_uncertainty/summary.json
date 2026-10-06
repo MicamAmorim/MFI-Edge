@@ -1,7 +1,11 @@
 {
-  "status": "manifest_missing",
+  "status": "evaluator_failed",
   "experiment_id": "stage14o_interval_capacity_uncertainty",
   "role": "development_test",
-  "message": "No official_eval_manifest.json was emitted by this experiment. The normal experiment remains valid; future image-based development experiments must emit the manifest so official BSDS development metrics can be attached before Codex decides.",
-  "manifest_sha256": null
+  "returncode": 1,
+  "manifest": "results/local_dev/stage14o_interval_capacity_uncertainty/official_eval_manifest.json",
+  "manifest_sha256": "f76c3cd96feb68dca2bebe54510aecf2f184670466102ff5fe4ca7f05db92272",
+  "stdout_tail": "",
+  "stderr_tail": "Traceback (most recent call last):\n  File \"C:\\Users\\Windows 11\\Documents\\MFI-Edge\\evaluation\\bsds_official\\run_official_bsds.py\", line 537, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"C:\\Users\\Windows 11\\Documents\\MFI-Edge\\evaluation\\bsds_official\\run_official_bsds.py\", line 433, in main\n    pred, meta = _incumbent_predictions(\n                 ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Windows 11\\Documents\\MFI-Edge\\evaluation\\bsds_official\\run_official_bsds.py\", line 323, in _incumbent_predictions\n    p = _run(\n        ^^^^^\n  File \"C:\\Users\\Windows 11\\Documents\\MFI-Edge\\evaluation\\bsds_official\\run_official_bsds.py\", line 64, in _run\n    raise RuntimeError(\nRuntimeError: command failed (1): ['C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\.venv\\\\Scripts\\\\python.exe', 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\evaluation\\\\bsds_official\\\\export_incumbent.py', '--image-dir', 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\evaluation\\\\bsds_official\\\\vendor\\\\BSDS500\\\\BSDS500\\\\data\\\\images\\\\val', '--output-dir', 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\automation\\\\runtime\\\\official_eval_cache\\\\incumbent\\\\val\\\\a97d49f6dbfaac52', '--split', 'val']\nSTDOUT:\n\nSTDERR:\nTraceback (most recent call last):\n  File \"C:\\Users\\Windows 11\\Documents\\MFI-Edge\\evaluation\\bsds_official\\export_incumbent.py\", line 25, in <module>\n    from benchmark_uded import DEFAULT_UDED, load_uded\nModuleNotFoundError: No module named 'benchmark_uded'\n",
+  "failure_policy": "report_and_continue"
 }

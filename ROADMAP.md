@@ -276,6 +276,15 @@ selection repeated CV plus the default-on official BSDS500-validation MATLAB
 attachment. Promotion requires the preregistered conjunction across both
 development axes.
 
+Stage 14o failed every UDED non-collapse condition: aggregate F1 changed by
+`-0.009801`, precision by `-0.015321`, and mean fold F1 by `-0.007976`, with
+`0/15` wins. It cannot be promoted regardless of the pending official metrics.
+The first BSDS-val attachment stopped before export because the incumbent
+exporter lacked the repository root on Python's import path. A plumbing-only
+retry is registered after repairing that path; it does not rerun CV or alter
+the candidate. Once ODS/OIS/AP are documented, move to the distinct
+Ambrosio–Tortorelli phase-field family without interval micro-tuning.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
@@ -320,7 +329,7 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | post-linear-fusion mechanism search | 🟢 completed | selected a bounded shallow edge-forest localizer from primary Structured Forest/OEF literature |
 | Stage 14n shallow edge forest | 🟢 completed | finite in 15/15 folds but large F1/precision loss and only 2/15 wins; not promoted |
 | post-forest mechanism search | 🟢 completed | selected explicit interval ignorance plus convex reliability-conditioned capacity |
-| Stage 14o interval-capacity uncertainty | 🟡 registered | UDED repeated CV plus official BSDS500-val ODS/OIS/AP; no uncertainty or capacity sweep |
+| Stage 14o interval-capacity uncertainty | 🟡 UDED rejected; attachment retry pending | failed all UDED non-collapse criteria with 0/15 wins; retry official BSDS500-val only, then move to Ambrosio–Tortorelli |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

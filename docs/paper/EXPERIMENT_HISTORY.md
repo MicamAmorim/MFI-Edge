@@ -553,6 +553,28 @@ reimplementation reports a lower GED number. The SOTA ledger records this as
 an unresolved frontier rather than changing the matched target from an
 incomparable headline.
 
+### Stage 14o UDED result and pending official attachment
+
+The leakage-free UDED-selection result rejects the fixed interval/capacity
+candidate under every preregistered non-collapse criterion. Relative to the
+compact incumbent, aggregate F1 changed by `-0.009801`, aggregate precision by
+`-0.015321`, and mean fold F1 by `-0.007976`; the candidate won `0/15` folds.
+Recall was essentially unchanged (`+0.000244`), so the interval-width penalty
+primarily amplified the precision problem it was intended to solve. The
+compact five-feature Choquet controller remains incumbent, and the interval
+width, q95 normalization, capacity endpoints, gamma, and gate must not be
+micro-tuned from this outcome.
+
+The required official BSDS500-validation attachment initially failed before
+any evaluation because `evaluation/bsds_official/export_incumbent.py`, launched
+by absolute path, did not place the repository root on Python's import path and
+could not import `benchmark_uded`. This is an evaluator plumbing defect, not a
+scientific rerun condition. The import path was repaired and an attachment-only
+retry registered; Stage-14o CV and the frozen exported methods are unchanged.
+Although no BSDS result can rescue promotion after the UDED conjunction failed,
+ODS/OIS/AP remain required documentary development evidence before Stage 14o
+is closed and work advances to the Ambrosio–Tortorelli phase-field family.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels
