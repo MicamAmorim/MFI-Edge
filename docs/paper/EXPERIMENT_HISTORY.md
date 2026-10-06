@@ -78,6 +78,25 @@ reducing fuzzy-measure learning complexity through k-interactivity
 empirically motivated by Stage-12d feature stability and Stage-14b ablation;
 it does not claim that either paper establishes an MFI-Edge performance gain.
 
+Stage 14d completed the predeclared persistence ablation using the same 15
+UDED-selection images, 5x3 repeated leakage-free CV, positive distorted-
+Choquet aggregation, Scharr+NMS localizer, gate, and fold-fitted thresholds.
+The four-feature bank without `gabor4_scale_persistence` reached aggregate
+CV F1 0.75473 versus 0.75889 for the five-feature compact bank; its mean
+paired fold delta was -0.00322 (3 wins, 12 losses). By the predeclared rule,
+scale persistence is retained and the compact five-feature bank is not
+pruned further on this evidence. Fold counts are descriptive, not independent
+inference. No external test or UDED held-out data informed this result.
+
+The next scientifically distinct direction is an RDF robustness ablation,
+motivated by Amorim et al. (2025), which applies d-CF/d-XC/d-CC operators to
+multi-channel edge cues. The current Stage-14 runners do not yet provide a
+controlled synthetic corruption protocol for comparing these operators on
+the compact multiscale signature. Do not register an RDF experiment until a
+minimal development-only corruption protocol and comparable evaluation have
+been specified; the already-inspected external results cannot choose the
+corruption, operator, or parameters.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

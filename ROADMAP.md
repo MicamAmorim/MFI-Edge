@@ -108,6 +108,14 @@ complementary regimes). The registered Stage-14c test compares the full and
 five-feature stable positive banks under identical repeated leakage-free CV on
 UDED selection. External test results and UDED held-out are excluded.
 
+Stage 14d tested the compact bank without `gabor4_scale_persistence`. The
+four-feature variant scored CV F1 0.75473 versus 0.75889 for the five-feature
+bank, with mean paired fold delta -0.00322 (3 wins, 12 losses). Retain
+persistence and the five-feature compact bank under the predeclared pruning
+rule. Fold events are descriptive only. Next, specify a controlled synthetic
+corruption protocol before registering an RDF-family robustness comparison;
+do not use external-test outcomes to select its design.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
