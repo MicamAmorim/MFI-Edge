@@ -6,6 +6,7 @@ __pycache__/
 data/bsds500/
 datasets/BSDS500/
 datasets/BIPED/
+datasets/BIPEDv2/
 outputs/
 outputs_synthetic/
 outputs_synthetic_3x3/
