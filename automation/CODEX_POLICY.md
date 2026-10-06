@@ -47,6 +47,18 @@ When the controller event has role `research_planning` or `literature_escalation
 - Experiment commands must be repository-local Python scripts or `.bat` launchers. Do not register arbitrary shell pipelines, PowerShell snippets, network administration commands, package-manager commands, or destructive commands.
 - Update the roadmap/paper record when a result changes the scientific interpretation.
 
+## Paper-document synchronization
+
+Treat `docs/paper` as the living scientific record, not merely an archive.
+
+- Update `docs/paper/EXPERIMENT_HISTORY.md` whenever an experiment changes the evidence, interpretation, or status of a hypothesis.
+- Update `ROADMAP.md` whenever the research direction, next sequence, frozen model, or blocked/unblocked mechanism changes.
+- Update `docs/paper/BIBLIOGRAPHY_MATRIX.md` whenever new literature materially motivates an experiment or changes interpretation; record DOI/URL and the exact methodological role.
+- Update `docs/paper/ARCHITECTURE_MAP.md` whenever the implemented or provisionally retained architecture changes materially (added/removed feature bank, controller, aggregation mechanism, localizer, routing, or inference path).
+- Update `docs/paper/PAPER_WRITING_PLAN.md` whenever the manuscript narrative, claims that are safe to make, planned figures/tables, or final-paper protocol changes materially.
+- Do not mechanically rewrite every paper file after every run. Edit only the files whose scientific content actually changed, but ensure none of the relevant records remain stale.
+- Distinguish clearly between exploratory/development evidence and publication-grade/final evidence in all paper documentation.
+
 ## Cost discipline
 
 Use the experiment summary first. Read only the specific result/code files needed to make the next decision. Do not inventory the entire repository unless required. Prefer small targeted edits and low-cost reasoning. Normal experiment-analysis calls should stay at low reasoning. Research-planning/literature escalation may use the configured higher reasoning level and live web search.
