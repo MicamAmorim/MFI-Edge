@@ -287,6 +287,42 @@ the deferred phase/gradient localizer router is not advanced. The next
 registered action is the autonomous high-reasoning literature/mechanism
 escalation, excluding held-out and inspected external-test feedback.
 
+## Stage 14k — CIELAB vector-gradient localizer checkpoint
+
+The post-phase live-literature escalation considered three distinct non-neural
+directions: (1) a fixed vector-color gradient tensor as a more complete precise
+localizer, (2) oriented half-disc CIELAB histogram contrast as a region-scale
+boundary cue, and (3) a classical structured forest trained on a future larger
+development split. The third requires a newly designated training resource,
+while the second adds radius, binning, orientation, and cue-combination choices.
+The first is therefore the smallest falsification and directly tests a known
+information loss in the grayscale localizer.
+
+Di Zenzo's multi-image gradient derives a tensor whose maximum eigenvalue and
+eigenvector give the greatest vector-valued rate of change and its direction
+(1986, DOI `10.1016/0734-189X(86)90223-9`). The natural-boundary literature
+separately established CIELAB brightness and chromatic contrast as useful local
+cues (Martin, Fowlkes, and Malik, 2004, DOI
+`10.1109/TPAMI.2004.1273918`; Arbeláez et al., 2011, DOI
+`10.1109/TPAMI.2010.161`). These sources motivate the mechanism but provide no
+target-test feedback or parameter selection.
+
+Stage 14k is preregistered on UDED selection only under the established 5x3
+repeated leakage-free CV. The compact five-feature context, fold-trained bank,
+distorted-Choquet gamma `0.55`, context gate, and independent fold-fitted
+thresholds remain fixed. The sole candidate change is median conditioning in
+three CIELAB channels followed by fixed Scharr derivatives, the Di Zenzo tensor,
+and NMS along its maximum-change direction. No channel weights, color space,
+kernel, normalization, mixture, router, or parameter sweep is permitted. The
+authoritative protocol is `docs/paper/STAGE14K_PREREGISTRATION.md`.
+
+The runner must write `best_method_preview.png` from the first validation image
+of the first deterministic split. Its columns are RGB input, ground truth,
+grayscale-Scharr incumbent, CIELAB-tensor candidate, and retained best; the
+image is documentary only. The SOTA ledger was refreshed on 2026-10-06 and the
+mechanism search found no verified primary benchmark result that changes its
+current target rows.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

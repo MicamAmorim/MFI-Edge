@@ -189,6 +189,16 @@ phase/gradient router are not justified by this result; the repeatable
 autonomous literature escalation is next and must select a mechanistically
 distinct development-only test.
 
+The live checkpoint selected Stage 14k as a direct localizer-information test.
+The incumbent converts RGB to grayscale before Scharr, so it cannot detect a
+chromatic discontinuity with little luminance contrast. Stage 14k changes only
+the localizer to a fixed CIELAB Di Zenzo tensor built from channel-wise Scharr
+derivatives; the compact fuzzy context, gate, conditioning footprint, repeated
+CV splits, and fold-fitted threshold policy remain fixed. The candidate is a
+replacement, not a tuned grayscale/color fusion or router. Promotion requires
+the preregistered aggregate F1 and precision margins, positive mean fold delta,
+and at least 9/15 fold wins on UDED selection only.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
@@ -224,8 +234,9 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | topology/linking revisit | 🟢 Stage 14i completed | fixed linker not promoted; F1 and coverage-effect criteria failed |
 | post-topology mechanism search | 🟢 completed | selected phase congruency as a distinct representation mechanism |
 | Stage 14j phase context | 🟢 completed | eligible in 15/15 folds but no incremental F1; not promoted |
-| post-phase mechanism search | 🟡 next | autonomous high-reasoning literature escalation; no external feedback |
-| dynamic localizer revisit | ⚪ | keep parked until fixed-Scharr line is understood |
+| post-phase mechanism search | 🟢 completed | selected fixed CIELAB vector-gradient localization |
+| Stage 14k color-tensor localizer | 🟡 registered | UDED-selection repeated CV; one fixed analytical localizer replacement |
+| dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k is fixed and non-routed |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 
 ### Run now

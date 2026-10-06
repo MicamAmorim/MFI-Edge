@@ -197,6 +197,22 @@
       "results/local_dev/stage14j_phase_congruency/best_method_preview.png"
     ]
   },
+  "stage14k_color_tensor_localizer": {
+    "description": "Leakage-free repeated-CV natural-image falsification of replacing the grayscale Scharr+NMS localizer with a fixed CIELAB Di Zenzo tensor Scharr+NMS localizer under the retained compact positive context gate.",
+    "runner": "python",
+    "path": "run_stage14k_color_tensor_localizer.py",
+    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256"],
+    "role": "development_test",
+    "feedback_policy": "UDED_selection_only_leakage_free_color_localizer_falsification_no_external_feedback",
+    "one_shot": true,
+    "result_files": [
+      "results/local_dev/stage14k_color_tensor_localizer/summary.json",
+      "results/local_dev/stage14k_color_tensor_localizer/variant_ranking.csv",
+      "results/local_dev/stage14k_color_tensor_localizer/fold_results.csv",
+      "results/local_dev/stage14k_color_tensor_localizer/per_image_metrics.csv",
+      "results/local_dev/stage14k_color_tensor_localizer/best_method_preview.png"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",
