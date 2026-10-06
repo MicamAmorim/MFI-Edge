@@ -32,6 +32,41 @@ The next registered test is feature pruning: compare the fold-trained full
 positive bank with the five features stable in every Stage-12d split, holding
 aggregation, Scharr+NMS localization, gate, and fold-fitted threshold fixed.
 
+## Stage 14a — literature-guided development checkpoint
+
+The new Stage-14 cycle considers three distinct hypotheses using development
+evidence only:
+
+1. RDF-based d-Choquet/d-CF/d-XC/d-CC aggregation may help under blur, noise,
+   texture, or scale heterogeneity. The earlier UDED-selection family screen
+   did not beat the standard contextual family in inner-CV F1, so a targeted
+   robustness test remains a later candidate rather than a reason to promote
+   the family from isolated full-selection peaks.
+2. Relative positive-vs-negative contextual control may add value beyond a
+   positive signature. Stage 14b did not support spatial negative alignment;
+   its next implication is to prune the stable positive bank before revisiting
+   negative terms.
+3. A compact conditional expert controller could exploit regime-specific
+   complementarity, but should only be considered after development-only
+   ablations establish complementary error patterns.
+
+The single next falsification test is the registered Stage-14c positive-bank
+pruning comparison. It holds positive distorted-Choquet aggregation,
+Scharr+NMS, the context gate, and fold-fitted thresholds fixed while comparing
+the fold-trained full bank against the five features stable in every Stage-12d
+split. The runner uses repeated leakage-free CV on UDED selection only. This
+is the smallest direct test of whether the currently supported mechanism can
+be simplified before adding another mechanism. UDED held-out and both inspected
+external tests play no role.
+
+Literature informed the candidate space, not the experiment ranking: Amorim
+et al. study RDF Choquet-like operators for single-scale multi-channel edge
+detection (https://doi.org/10.3390/app152413273), while Beliakov and Wu discuss
+reducing fuzzy-measure learning complexity through k-interactivity
+(https://doi.org/10.1016/j.ins.2019.04.042). The current pruning test is
+empirically motivated by Stage-12d feature stability and Stage-14b ablation;
+it does not claim that either paper establishes an MFI-Edge performance gain.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

@@ -97,6 +97,17 @@ The positive-only controller narrowly wins. The separable bi-capacity remains ve
 
 The positive bank is very stable: `gabor4_s5`, `hessian_s7`, `gabor4_s13`, `hessian_s13`, and `gabor4_scale_persistence` appeared in all 15 splits. The strongest anti-texture feature, `steered_hessian_scale_centroid`, also appeared in all 15 splits.
 
+### Stage 14a/14c research checkpoint
+
+The Stage-14 checkpoint compared three directions: RDF aggregation under
+controlled corruption (retained as a later robustness question because prior
+UDED inner-CV did not beat the standard family), positive-bank pruning
+(selected now based on Stage-12d feature stability and Stage-14b results), and
+conditional expert routing (deferred until development ablations show
+complementary regimes). The registered Stage-14c test compares the full and
+five-feature stable positive banks under identical repeated leakage-free CV on
+UDED selection. External test results and UDED held-out are excluded.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
