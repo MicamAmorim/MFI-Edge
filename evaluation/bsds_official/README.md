@@ -37,8 +37,14 @@ The module bootstraps pinned third-party sources on first use into the ignored
   `94260b5d0fc068202598312e01a37604972dcc9e`.
 
 On Windows the latter supplies the compatible `correspondPixels.mexw64`. The
-actual evaluation calls the original Berkeley `evaluation_bdry_image.m` and
-`collect_eval_bdry.m`; our `.m` file is only a Windows-safe wrapper.
+actual evaluation uses the original Berkeley matching and accumulation logic.
+For MATLAB R2023a, the wrapper writes a run-local mirror of
+`evaluation_bdry_image.m` that makes the dynamically loaded `groundTruth`
+variable explicit and replaces unsupported chained
+`groundTruth{i}.Boundaries` syntax with an intermediate variable. The pinned
+vendored file is never edited, and the compatibility transform aborts if the
+audited source expressions are absent. `collect_eval_bdry.m` and
+`correspondPixels` remain the pinned originals.
 
 First use may therefore download the pinned benchmark code plus the requested
 BSDS split. Later runs reuse the local vendor checkout and cached incumbent

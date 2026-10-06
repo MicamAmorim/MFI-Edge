@@ -190,11 +190,14 @@ pending BSDS-val metrics. The initial attachment exposed an absolute-path
 import issue in the incumbent exporter; the first retry then exposed the same
 issue in the candidate exporter. The second retry reached MATLAB but exposed
 an evaluator-wrapper bug: MATLAB classifies an existing MEX as file type 3,
-while the wrapper accepted only type 2. These are plumbing failures before
-scoring, not scientific evidence. A third attachment-only retry is registered
-after correcting that existence check. Do not rerun the CV or tune the interval
-mechanism. After the official metrics are documented, proceed to the
-preregistered Ambrosio–Tortorelli phase-field family.
+while the wrapper accepted only type 2. The third retry passed that check but
+MATLAB R2023a could not parse the pinned evaluator's chained
+`groundTruth{i}.Boundaries` access. These are plumbing failures before scoring,
+not scientific evidence. A fourth attachment-only retry is registered using a
+run-local syntax-only compatibility mirror; the pinned vendor source remains
+unchanged. Do not rerun the CV or tune the interval mechanism. After the
+official metrics are documented, proceed to the preregistered
+Ambrosio–Tortorelli phase-field family.
 
 ## d-Choquet terminology
 

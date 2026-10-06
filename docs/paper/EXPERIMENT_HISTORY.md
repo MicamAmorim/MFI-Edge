@@ -576,8 +576,15 @@ received the same explicit repository-root bootstrap, so the second retry
 reached MATLAB. It then stopped in wrapper preflight because MATLAB reports an
 existing MEX binary as `exist(..., 'file') == 3`, while the wrapper incorrectly
 accepted only type 2. The MEX is present at the pinned source size; the wrapper
-now accepts MATLAB file types 2 or 3 and a third attachment-only retry is
-registered. Stage-14o CV and the frozen exported methods remain unchanged.
+now accepts MATLAB file types 2 or 3. The third retry passed preflight and
+reached the pinned Berkeley per-image evaluator, but MATLAB R2023a rejected its
+chained `groundTruth{i}.Boundaries` syntax before scoring the first image. The
+wrapper now creates a run-local compatibility mirror that makes the dynamic
+ground-truth load explicit, assigns the cell element to an intermediate
+variable, and otherwise preserves the pinned source;
+the vendored file is not edited, and the transform aborts if the audited source
+expressions are absent. A fourth attachment-only retry is registered. Stage-14o
+CV and the frozen exported methods remain unchanged.
 Although no BSDS result can rescue promotion after the UDED conjunction failed,
 ODS/OIS/AP remain required documentary development evidence before Stage 14o
 is closed and work advances to the Ambrosio–Tortorelli phase-field family.

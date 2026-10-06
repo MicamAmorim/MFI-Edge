@@ -10,7 +10,43 @@ if nargin < 8, thinpb = 1; end
 if nargin < 7, maxDist = 0.0075; end
 if nargin < 6, nthresh = 99; end
 
-addpath(benchmarkDir);
+% MATLAB R2023a cannot parse the pinned evaluator's chained expression
+% ``groundTruth{i}.Boundaries``.  Do not edit the vendored checkout: create a
+% run-local syntax-compatible mirror whose only changes make the dynamically
+% loaded ground-truth variable explicit and assign its cell element to ``gt_i``
+% before field access.  The matching/counting algorithm is otherwise inherited
+% byte-for-byte from the pinned source.
+compatDir = fullfile(outDir, 'matlab_compat');
+if ~exist(compatDir, 'dir')
+    mkdir(compatDir);
+end
+sourceEval = fullfile(benchmarkDir, 'evaluation_bdry_image.m');
+compatEval = fullfile(compatDir, 'evaluation_bdry_image.m');
+compatSource = fileread(sourceEval);
+oldLoop = 'for i = 1:numel(groundTruth),';
+newLoop = sprintf('for i = 1:numel(groundTruth),\n        gt_i = groundTruth{i};');
+oldAccess = 'groundTruth{i}.Boundaries';
+oldLoad = 'load(gtFile);';
+newLoad = sprintf('gtData = load(gtFile);\ngroundTruth = gtData.groundTruth;');
+if ~contains(compatSource, oldLoop) || ~contains(compatSource, oldAccess) || ...
+        ~contains(compatSource, oldLoad)
+    error('MFIEdge:UnexpectedEvaluatorSource', ...
+        'Pinned evaluation_bdry_image.m no longer matches the audited compatibility transform.');
+end
+compatSource = strrep(compatSource, oldLoop, newLoop);
+compatSource = strrep(compatSource, oldAccess, 'gt_i.Boundaries');
+compatSource = strrep(compatSource, oldLoad, newLoad);
+fid = fopen(compatEval, 'w');
+if fid == -1
+    error('MFIEdge:WriteFailed', 'Could not write MATLAB compatibility mirror: %s', compatEval);
+end
+fprintf(fid, '%s', compatSource);
+fclose(fid);
+
+% Keep the run-local compatibility function ahead of the pinned benchmark
+% directory while leaving all other Berkeley functions/MEX files unchanged.
+addpath(benchmarkDir, '-end');
+addpath(compatDir, '-begin');
 
 mexFile = fullfile(benchmarkDir, ['correspondPixels.' mexext]);
 % MATLAB reports compiled MEX binaries as file type 3, while ordinary
@@ -68,6 +104,7 @@ summary.max_dist = maxDist;
 summary.thinpb = logical(thinpb);
 summary.matcher = 'Berkeley correspondPixels / CSA++';
 summary.annotation_protocol = 'all human boundary annotations, original Berkeley accumulation';
+summary.matlab_compatibility = 'run-local syntax-only explicit groundTruth load/cell assignment; pinned vendor source unchanged';
 
 fid = fopen(fullfile(outDir, 'official_summary.json'), 'w');
 if fid == -1
