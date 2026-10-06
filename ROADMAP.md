@@ -153,6 +153,14 @@ known synthetic corruption labels cannot be used at inference. Further
 gravitational/RDF tuning is deferred, and the repeatable autonomous literature
 checkpoint is next to select one mechanistically distinct development test.
 
+The literature checkpoint selected Stage 14i as that distinct test. Current
+crisp-edge work makes contour continuity an explicit concern, and this
+repository already has independent Stage-4 synthetic evidence for fixed
+MFI-guided geodesic linking. Stage 14i transfers exactly that linker
+(`max_gap=8`, `max_mean_cost=0.60`) to UDED-selection repeated leakage-free CV,
+with no parameter sweep and no score-model change. Promotion requires
+predeclared F1/precision noninferiority and natural-image connectivity gains.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
@@ -185,7 +193,7 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | **Stage 13a BSDS frozen transfer** | 🟡 **RUN NOW** | no BSDS tuning; first external check |
 | BIPEDv2 external replication | 🟡 preflight registered | test split frozen; author-provided download requires human license acceptance |
 | official BSDS500 evaluation | 🔴 | requires official Berkeley MATLAB/CSA++ benchmark tooling; Stage 13a remains a proxy |
-| topology/linking revisit | ⚪ | only after score model is externally competitive |
+| topology/linking revisit | 🟡 Stage 14i registered | fixed Stage-4 geodesic transfer; UDED selection CV only |
 | dynamic localizer revisit | ⚪ | keep parked until fixed-Scharr line is understood |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

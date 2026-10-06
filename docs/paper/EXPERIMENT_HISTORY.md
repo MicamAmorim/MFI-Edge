@@ -188,6 +188,35 @@ parameters. Further RDF/gravitational micro-tuning is deferred; the next
 registered action is the autonomous literature/mechanism escalation. No
 external or UDED held-out feedback informed this decision.
 
+## Stage 14i — literature escalation and fixed topology-repair test
+
+The October 2026 live-literature checkpoint found that the current neural
+frontier increasingly separates edge-score quality from crispness and
+continuity. MatchED (CVPR 2026) aligns learned raw edges to annotations through
+one-to-one matching, while MS2Edge (Pattern Recognition, 2025/2026) explicitly
+identifies sparse contour discontinuities as a remaining crisp-edge failure
+mode. These neural mechanisms are not admissible in MFI-Edge inference and are
+not copied. Their role is to sharpen the evaluation question: after retaining
+Scharr+NMS localization, can a fixed non-neural topology stage improve contour
+continuity without paying for it in boundary accuracy?
+
+The repository already contains independent development-only evidence for one
+such mechanism. In Stage 4, MFI-guided geodesic endpoint linking with
+`max_gap=8` and `max_mean_cost=0.60` improved held-out synthetic F1 by about
+`+0.0060`, increased recall by about `+0.0104`, and raised largest-component GT
+coverage from `0.2827` to `0.4772`. This evidence predates the current compact
+controller and is sufficient to justify a transfer falsification without a new
+parameter search.
+
+Stage 14i is therefore preregistered on UDED selection only under 5x3 repeated
+leakage-free CV. It holds the five-feature positive distorted-Choquet context,
+gate, and Scharr+NMS score fixed, comparing threshold-only output with the
+fixed Stage-4 geodesic linker. Memberships and thresholds are fitted inside
+training folds; linker parameters are not swept. Retention requires F1 and
+precision noninferiority plus predeclared largest-component coverage gains.
+The authoritative protocol is `docs/paper/STAGE14I_PREREGISTRATION.md`.
+UDED held-out and both inspected external tests are excluded.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

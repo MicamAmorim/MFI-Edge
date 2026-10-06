@@ -36,13 +36,34 @@ If a benchmark's strongest neural result cannot be verified under a matching pro
 
 ## Target table
 
-The autonomous research agent should populate and maintain this table through live literature research.
-
 | Benchmark / split | Official primary metric | Strongest verified neural result | Method / source | Protocol match verified? | Literature refreshed | Frozen MFI-Edge result | Status |
 |---|---|---:|---|---|---|---:|---|
-| To be refreshed by literature checkpoint | — | — | — | — | — | — | UNRESOLVED |
-| To be refreshed by literature checkpoint | — | — | — | — | — | — | UNRESOLVED |
-| To be refreshed by literature checkpoint | — | — | — | — | — | — | UNRESOLVED |
+| BSDS500 test, single definite output, SS-VOC | ODS F1 after NMS; author protocol uses 0.0075 diagonal tolerance | 0.849 ODS (OIS 0.869, AP 0.899) | SAUGE-L, [AAAI 2025 primary paper](https://ojs.aaai.org/index.php/AAAI/article/view/32615) | Source-side protocol verified; local official/author evaluator not yet established | 2026-10-06 | — | OPEN TARGET |
+| BSDS500 test, raw-map crispness-emphasized evaluation (CEval) | ODS/OIS/AP without NMS or thinning; AC also reported | 0.854 ODS for SAUGE+MatchED | MatchED, [CVPR 2026 / arXiv primary paper](https://arxiv.org/abs/2602.20689) | Distinct raw-output protocol; not interchangeable with standard SEval | 2026-10-06 | — | OPEN TARGET |
+| NYUDv2 RGB test (654), author protocol | ODS F1; 0.011 diagonal tolerance | 0.794 ODS (OIS 0.803, AP 0.813), zero-shot from BSDS/VOC | SAUGE-L, [AAAI 2025 primary paper](https://ojs.aaai.org/index.php/AAAI/article/view/32615) | Source-side protocol verified; local evaluator/data role not yet predeclared | 2026-10-06 | — | OPEN TARGET |
+| Multi-Cue edge, author 3x random 80/20 protocol | Mean ODS F1 over three splits; 0.0075 tolerance | 0.905 ODS (OIS 0.907, AP 0.939), single definite output | SAUGE, [AAAI 2025 primary paper](https://ojs.aaai.org/index.php/AAAI/article/view/32615) | Author protocol verified; exact random splits/evaluator must be recovered before matching | 2026-10-06 | — | OPEN TARGET |
+| BIPED, author-designated test | ODS/OIS under author edge-evaluation protocol | 0.906 ODS multi-granularity; strongest fixed single output in the same paper is 0.903 | EDMB*, [WACV 2025 primary paper](https://openaccess.thecvf.com/content/WACV2025/html/Li_EDMB_Edge_Detector_with_Mamba_WACV_2025_paper.html) | Multi-granularity result uses best-candidate selection and is not a single deployable map; local historical fixed-F1 diagnostic is incomparable | 2026-10-06 | — | OPEN TARGET |
+
+## October 2026 protocol notes
+
+- Multi-granularity results are a separate protocol family. MuGE reports BSDS500
+  ODS 0.861 under MS-VOC with best matching among granularity candidates, and
+  SAUGE reports 0.859 under SS-VOC with 11 candidates. These oracle-style
+  candidate-selection numbers are not interchangeable with a single frozen
+  output and are not silently used as the single-map target.
+- MatchED reports both standard evaluation (NMS plus thinning) and CEval on raw
+  predictions. Its CEval target is listed separately because applying MFI-Edge's
+  NMS/linking output to that row would be a protocol mismatch.
+- MS2Edge (DOI 10.1016/j.patcog.2025.112883) claims current SOTA across BSDS500,
+  NYUDv2, BIPED, PLDU, and PLDM. The accessible primary abstract and official
+  repository did not expose its complete numeric tables during this refresh.
+  Therefore no headline number from a secondary summary is allowed to replace
+  the verified targets above; its exact protocol/metric entries remain
+  `UNRESOLVED` pending primary full-table verification.
+- These rows refresh the target frontier; they do not predeclare the final
+  three-benchmark suite. Dataset availability, untouched status, evaluator
+  reproducibility, and license constraints must be settled before a frozen
+  generation is taken to final evaluation.
 
 ## Historical external diagnostics that are **not** final SOTA gates
 

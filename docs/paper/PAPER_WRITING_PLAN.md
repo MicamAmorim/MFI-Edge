@@ -385,7 +385,7 @@ Before writing each claim, attach it to evidence.
 | Adaptive fuzzy measures beat a fixed q | final validation-selected capacity family on BSDS test | not established yet |
 | Context-dependent aggregation generalizes better | CH-MFI/Fuzzy++ vs fixed counterpart on multiple datasets | pending local v2 experiments |
 | MFI improves localization | final pixel metrics vs localizer-only | **not yet established on UDED** |
-| MFI improves topology | geodesic/hysteresis topology experiment | strong synthetic evidence; natural test pending |
+| MFI improves topology | fixed geodesic-linking ablation with F1 + connectivity endpoints | strong synthetic evidence; Stage 14i natural development test registered |
 | Compact measures generalize better than free capacity | family-level validation/test gap comparison | pending |
 | Shapley gating improves robustness/interpretability | regime/scale ablation and frozen test | pending |
 | CH-MFI outperforms modern learned methods | official BSDS/BIPED metrics | not tested |
