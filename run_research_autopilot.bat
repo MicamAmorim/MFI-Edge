@@ -2,7 +2,6 @@
 setlocal
 cd /d %~dp0
 
-rem Force UTF-8 text mode so Codex/stdout cannot crash Python decoding on Windows cp1252.
 set PYTHONUTF8=1
 set PYTHONIOENCODING=utf-8
 
@@ -11,6 +10,7 @@ echo MFI-Edge Research Autopilot
 echo Local experiments + on-demand Codex decisions
 echo Codex is NOT kept running while benchmarks execute.
 echo Completed experiments are resumed safely if Codex analysis fails.
+echo Research checkpoints escalate reasoning and enable live web search when supported.
 echo Create automation\STOP at any time to stop before the next step.
 echo ============================================================
 echo.
@@ -29,7 +29,7 @@ where codex >nul 2>nul || (
   exit /b 1
 )
 
-python automation\research_controller_v2.py %*
+python automation\research_controller_v3.py %*
 set RC=%ERRORLEVEL%
 if not "%RC%"=="0" (
   echo.
