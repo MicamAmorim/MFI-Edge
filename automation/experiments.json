@@ -1,0 +1,19 @@
+{
+  "stage13a_bsds_transfer": {
+    "description": "Frozen Stage-12d transfer to BSDS500 test. One-shot external validation; no tuning from this result.",
+    "runner": "bat",
+    "path": "run_stage13_bsds_transfer.bat",
+    "args": [],
+    "role": "external_test",
+    "feedback_policy": "document_only_no_tuning",
+    "one_shot": true,
+    "result_files": [
+      "results/external/stage13a_bsds_transfer/summary.json",
+      "results/external/stage13a_bsds_transfer/external_metrics.csv",
+      "results/external/stage13a_bsds_transfer/per_image_metrics.csv",
+      "results/external/stage13a_bsds_transfer/preview_positive_control.png",
+      "results/external/stage13a_bsds_transfer/preview_separable_bicapacity.png",
+      "results/external/stage13a_bsds_transfer/preview_ratio_control.png"
+    ]
+  }
+}
