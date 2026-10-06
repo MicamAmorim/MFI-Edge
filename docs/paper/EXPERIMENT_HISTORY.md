@@ -59,6 +59,17 @@ is the smallest direct test of whether the currently supported mechanism can
 be simplified before adding another mechanism. UDED held-out and both inspected
 external tests play no role.
 
+Stage 14c completed under the predeclared pruning rule. The five-feature bank
+had aggregate repeated-CV F1 0.75905 versus 0.75889 for the full fold-trained
+bank, with mean paired fold delta +0.000054 (5 wins, 10 losses); all five
+features were selected in every training split. This supports provisional
+pruning to the compact bank, but the tiny aggregate difference and descriptive
+dependent folds do not establish a reliable improvement. The next minimal
+ablation removes only `gabor4_scale_persistence` from that compact bank to test
+whether the stability cue is redundant. It uses the same UDED-selection-only
+repeated-CV protocol, aggregation, localizer, gate, and fold-fitted thresholds.
+No external or held-out result informed this step.
+
 Literature informed the candidate space, not the experiment ranking: Amorim
 et al. study RDF Choquet-like operators for single-scale multi-channel edge
 detection (https://doi.org/10.3390/app152413273), while Beliakov and Wu discuss

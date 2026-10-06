@@ -38,6 +38,9 @@ COMPACT_FEATURES = (
     "hessian_s13",
     "gabor4_scale_persistence",
 )
+COMPACT_NO_PERSISTENCE_FEATURES = tuple(
+    feature for feature in COMPACT_FEATURES if feature != "gabor4_scale_persistence"
+)
 
 
 def _filter_bank(bank, allowed):
@@ -73,6 +76,11 @@ def main() -> int:
     parser.add_argument("--max-negative", type=int, default=8)
     parser.add_argument("--max-abs-corr", type=float, default=.88)
     parser.add_argument("--seed", type=int, default=20261006)
+    parser.add_argument(
+        "--compact-no-persistence",
+        action="store_true",
+        help="Test the four stable compact features excluding scale persistence.",
+    )
     args = parser.parse_args()
 
     out = Path(args.out)
@@ -98,7 +106,11 @@ def main() -> int:
             args.max_positive, args.max_negative, args.max_abs_corr,
         )
         occurrences.update(item["feature"] for item in positive)
-        compact = _filter_bank(positive, COMPACT_FEATURES)
+        compact_features = (
+            COMPACT_NO_PERSISTENCE_FEATURES
+            if args.compact_no_persistence else COMPACT_FEATURES
+        )
+        compact = _filter_bank(positive, compact_features)
         bank_variants = {"positive_full": positive, "positive_compact": compact}
         print(
             f"STAGE14C_SPLIT {split_no:02d}/{len(splits)} "
@@ -172,7 +184,8 @@ def main() -> int:
         "n_validation_events": len(splits),
         "aggregation": {"family": "positive distorted Choquet", "gamma": GAMMA},
         "fixed_localizer_and_gate": {"localizer": "Scharr+NMS", "strength": STRENGTH, "floor": FLOOR},
-        "compact_features": list(COMPACT_FEATURES),
+        "compact_features": list(compact_features),
+        "compact_variant": "positive_compact_no_persistence" if args.compact_no_persistence else "positive_compact",
         "compact_minus_full": {
             "mean_fold_delta_F1": float(np.mean(compact_values - full_folds)),
             "fold_wins": int(np.sum(compact_values > full_folds)),

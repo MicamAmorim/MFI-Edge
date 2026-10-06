@@ -93,5 +93,20 @@
       "results/local_dev/stage14c_positive_bank_pruning/fold_results.csv",
       "results/local_dev/stage14c_positive_bank_pruning/bank_stability.csv"
     ]
+  },
+  "stage14d_persistence_feature_ablation": {
+    "description": "Leakage-free repeated-CV ablation on UDED selection only: compare the validated five-feature compact positive bank with the same bank minus scale persistence, keeping aggregation, localization, gating, and fold-fitted thresholds fixed.",
+    "runner": "python",
+    "path": "run_stage14c_positive_bank_pruning.py",
+    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256", "--compact-no-persistence", "--out", "results/local_dev/stage14d_persistence_feature_ablation"],
+    "role": "development_test",
+    "feedback_policy": "development_only_single_feature_ablation_no_external_feedback",
+    "one_shot": true,
+    "result_files": [
+      "results/local_dev/stage14d_persistence_feature_ablation/summary.json",
+      "results/local_dev/stage14d_persistence_feature_ablation/variant_ranking.csv",
+      "results/local_dev/stage14d_persistence_feature_ablation/fold_results.csv",
+      "results/local_dev/stage14d_persistence_feature_ablation/bank_stability.csv"
+    ]
   }
 }
