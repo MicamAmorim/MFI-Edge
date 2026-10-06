@@ -51,5 +51,18 @@
       "results/external/stage13d_biped_transfer/external_metrics.csv",
       "results/external/stage13d_biped_transfer/per_image_metrics.csv"
     ]
+  },
+  "stage13e_official_bsds_evaluation": {
+    "description": "Publication-grade evaluation of the already frozen Stage-12d BSDS500 test score maps using the official Berkeley boundary benchmark protocol; no model, threshold, or candidate selection from test outcomes.",
+    "runner": "python",
+    "path": "run_stage13e_official_bsds.py",
+    "args": [],
+    "role": "external_test",
+    "feedback_policy": "document_only_no_tuning",
+    "one_shot": true,
+    "result_files": [
+      "results/external/stage13e_official_bsds/summary.json",
+      "results/external/stage13e_official_bsds/official_metrics.json"
+    ]
   }
 }

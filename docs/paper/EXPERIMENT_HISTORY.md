@@ -12,6 +12,8 @@ Sources: BIPEDv2 author repository, https://github.com/xavysp/MBIPED (dataset de
 
 Stage 13c preflight passed: the local BIPEDv2 files contain 200 paired training images and 50 paired test images at 1280×720, and the frozen candidate artifact is present. Stage 13d is registered as a one-shot external replication: it leaves training unused, uses the 50 test pairs at native resolution, applies only Stage-12d frozen candidate thresholds, and fits the Scharr comparator threshold on UDED selection. Results are fixed-threshold diagnostics with paired bootstrap uncertainty; no BIPED-driven threshold selection or ranking is permitted. The runner records runtime and the single-annotator metric limitation.
 
+Stage 13d completed on the frozen BIPEDv2 test split (50 images, native 1280×720; 54.0 s/image average). The ratio-control representative scored fixed F1 0.7461 versus 0.7370 for Scharr (paired delta +0.00906, 95% bootstrap interval [+0.00712, +0.01101]); positive control and separable bicapacity scored 0.7254 and 0.7339, respectively, both below Scharr. These are fixed-threshold, single-annotator BIPED edge-map diagnostics and cannot establish superiority under the distinct Berkeley boundary protocol. No tuning or candidate changes follow from this external result. With the earlier BSDS500 proxy diagnostic also complete, the next predeclared validation step is an official Berkeley evaluation of frozen soft maps, if a compatible benchmark runtime and adapter are available.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels
