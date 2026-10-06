@@ -323,6 +323,22 @@ image is documentary only. The SOTA ledger was refreshed on 2026-10-06 and the
 mechanism search found no verified primary benchmark result that changes its
 current target rows.
 
+Stage 14k completed without promotion. The grayscale incumbent reached
+aggregate F1 `0.759053` and precision `0.671339`; the Lab tensor candidate
+reached F1 `0.747509` and precision `0.658090`. Relative to the incumbent, the
+candidate changed aggregate F1 by `-0.011544`, aggregate precision by
+`-0.013249`, and mean fold F1 by `-0.012055`, with only 1/15 fold wins. It
+therefore failed every preregistered promotion condition. Grayscale Scharr+NMS
+remains the localizer, and no color weights, fusion, routing, or tensor
+parameters may be tuned from this result.
+
+The deterministic `best_method_preview.png` uses the preregistered first
+validation image and shows RGB input, ground truth, grayscale incumbent, Lab
+tensor candidate, and retained best. It is documentary only and was not used
+for model selection. Because the direct fixed vector-color replacement failed
+decisively, the next registered action is the repeatable high-reasoning
+literature/mechanism escalation, without held-out or external-test feedback.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

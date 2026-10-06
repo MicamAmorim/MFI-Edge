@@ -199,6 +199,14 @@ replacement, not a tuned grayscale/color fusion or router. Promotion requires
 the preregistered aggregate F1 and precision margins, positive mean fold delta,
 and at least 9/15 fold wins on UDED selection only.
 
+Stage 14k completed without promotion. The fixed Lab tensor replacement
+changed aggregate F1 by `-0.011544`, precision by `-0.013249`, and mean fold F1
+by `-0.012055`, with 1/15 fold wins. All four promotion conditions failed, so
+grayscale Scharr+NMS remains incumbent. Do not tune color weights, fusion,
+routing, or tensor parameters from this outcome. The next action is the
+repeatable autonomous literature escalation, which must select a
+mechanistically distinct development-only test.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
@@ -235,8 +243,9 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | post-topology mechanism search | 🟢 completed | selected phase congruency as a distinct representation mechanism |
 | Stage 14j phase context | 🟢 completed | eligible in 15/15 folds but no incremental F1; not promoted |
 | post-phase mechanism search | 🟢 completed | selected fixed CIELAB vector-gradient localization |
-| Stage 14k color-tensor localizer | 🟡 registered | UDED-selection repeated CV; one fixed analytical localizer replacement |
-| dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k is fixed and non-routed |
+| Stage 14k color-tensor localizer | 🟢 completed | fixed Lab tensor replacement failed all promotion criteria; grayscale Scharr retained |
+| post-color mechanism search | 🟡 next | autonomous live-literature escalation; no external feedback |
+| dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 
 ### Run now

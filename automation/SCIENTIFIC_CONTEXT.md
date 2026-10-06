@@ -118,18 +118,16 @@ The compact five-feature controller remains incumbent. Do not tune phase
 parameters or advance the deferred phase/gradient router from this result;
 proceed to a mechanistically distinct literature escalation.
 
-### Stage 14k — registered vector-color localization falsification
+### Stage 14k — vector-color localization falsification
 
-The post-phase literature escalation selected a fixed CIELAB Di Zenzo tensor
-localizer as the next minimal test. The rationale is that the incumbent
-grayscale Scharr branch discards chromatic discontinuities, while a vector
-gradient tensor lets aligned Lab-channel derivatives reinforce a shared
-maximum-change direction. Stage 14k uses only UDED selection under the existing
-5x3 repeated leakage-free CV and changes only grayscale Scharr+NMS to fixed
-channel-median-conditioned Lab tensor Scharr+NMS. The compact context bank,
-distorted-Choquet gamma, gate, and fold-fitted thresholds remain unchanged. No
-color weights, mixtures, router, or parameter sweep are permitted. The
-authoritative preregistration is `docs/paper/STAGE14K_PREREGISTRATION.md`.
+Stage 14k did **not** promote the fixed CIELAB Di Zenzo tensor localizer on
+UDED-selection repeated leakage-free CV. Relative to grayscale Scharr+NMS,
+aggregate F1 changed by `-0.01154`, aggregate precision by `-0.01325`, and mean
+fold F1 by `-0.01205`, with only 1/15 fold wins. All preregistered criteria
+failed. Grayscale Scharr+NMS remains incumbent. Do not tune color weights,
+grayscale/color mixtures, routers, or tensor parameters from this result. The
+next step is a mechanistically distinct literature escalation rather than
+vector-color micro-tuning.
 
 ## d-Choquet terminology
 
