@@ -27,5 +27,15 @@
     "result_files": [
       "results/automation/stage13b_protocol_research/summary.json"
     ]
+  },
+  "stage13c_biped_preflight": {
+    "description": "Read-only validation of the manually obtained BIPEDv2 split and frozen Stage-12d artifact before external replication.",
+    "runner": "python",
+    "path": "automation/stage13c_biped_preflight.py",
+    "args": [],
+    "role": "dataset_preflight",
+    "feedback_policy": "validate_dataset_layout_only_no_test_tuning",
+    "one_shot": true,
+    "result_files": ["results/automation/stage13c_biped_preflight/summary.json"]
   }
 }

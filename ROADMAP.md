@@ -116,8 +116,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | Stage 12d repeated bipolar CV | 🟢 | positive wins narrowly; bi-capacity remains close |
 | freeze external candidates | 🟢 | exact banks/configs/thresholds frozen on UDED selection |
 | **Stage 13a BSDS frozen transfer** | 🟡 **RUN NOW** | no BSDS tuning; first external check |
-| BIPED external replication | 🔴 next | second cross-dataset confirmation |
-| official BSDS500 evaluation | 🔴 | required for literature-comparable paper claims |
+| BIPEDv2 external replication | 🟡 preflight registered | test split frozen; author-provided download requires human license acceptance |
+| official BSDS500 evaluation | 🔴 | requires official Berkeley MATLAB/CSA++ benchmark tooling; Stage 13a remains a proxy |
 | topology/linking revisit | ⚪ | only after score model is externally competitive |
 | dynamic localizer revisit | ⚪ | keep parked until fixed-Scharr line is understood |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
@@ -218,6 +218,8 @@ The logistic model remains an upper-bound diagnostic only, not the proposed dete
 | higher-resolution rerun | 🔴 | finalist sensitivity check |
 
 Stage 13a intentionally reports a **consensus-thresholded BSDS + tolerant-dilation proxy**, not official Berkeley bipartite matching. ODS/OIS on BSDS are descriptive only; the primary external transfer metric uses thresholds frozen before BSDS.
+
+Stage 13c targets author-designated BIPEDv2: 250 outdoor RGB/edge-map pairs at 1280×720, with 200 train and 50 test. Train is not used for fitting or calibration; test is a frozen replication. The author distribution carries terms that must be accepted by a human, so the registered read-only preflight validates the locally supplied canonical layout before any inference. Preserve native resolution and frozen Stage-12d settings. The Berkeley project recommends submitting soft, thinned score maps to its official benchmark code; that code uses multi-annotator matching through CSA++ and requires MATLAB, so it should be run as a separate publication-grade evaluation when the compatible toolchain is available.
 
 ---
 

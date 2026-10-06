@@ -1,5 +1,15 @@
 # Experimental history — MFI-Edge research log
 
+## Stage 13b/13c — protocol research and BIPEDv2 preflight
+
+Stage 13a is a one-shot BSDS500 external transfer using a consensus/tolerant-matching proxy. Its test outcomes are excluded from all Stage-12d design and calibration decisions. The independent replication is predeclared on the authors' BIPEDv2 test split: 50 author-designated test images (from 250 total, 200 train), native 1280×720 RGB and edge-map pairs. Training images are unused. Stage 13c only checks the locally supplied dataset and frozen candidate artifact; it does not infer or score test images. Dataset terms require user acceptance before retrieval, so acquisition is a human action.
+
+The canonical layout checked by `automation/stage13c_biped_preflight.py` is `edges/imgs/{train/rgbr/real,test/rgbr}` paired by stem with `edges/edge_maps/{train/rgbr/real,test/rgbr}`. The replication should preserve the frozen UDED-selection thresholds/configurations, report fixed-threshold transfer metrics as such, and must not optimize on BIPED test. BIPEDv2 is single-annotator edge GT, so its results are a distinct edge-dataset replication, not numerically interchangeable with multi-annotator BSDS boundary metrics.
+
+For publication-grade BSDS claims, export full-resolution soft thinned score maps and run the Berkeley benchmark implementation: its bipartite/CSA++ matcher handles localization tolerance and multiple human segmentations; soft maps let the benchmark sweep thresholds. The official project identifies MATLAB as a requirement and reports no Windows support. A compatible MATLAB/CSA++ runtime/tool checkout must be established before implementing an evaluator adapter; do not substitute the local dilation matcher and label it official.
+
+Sources: BIPEDv2 author repository, https://github.com/xavysp/MBIPED (dataset description, split, resolution, and non-commercial-use terms); DexiNed author repository, https://github.com/xavysp/DexiNed (dataset version and test usage); Berkeley BSDS project, https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/bsds/ (official benchmark, CSA++ matching, soft boundary output, MATLAB requirement).
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels
