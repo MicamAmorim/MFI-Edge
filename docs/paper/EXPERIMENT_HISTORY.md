@@ -339,6 +339,41 @@ for model selection. Because the direct fixed vector-color replacement failed
 decisively, the next registered action is the repeatable high-reasoning
 literature/mechanism escalation, without held-out or external-test feedback.
 
+## Stage 14l — oriented texture-distribution context checkpoint
+
+The post-color live-literature checkpoint compared three distinct directions.
+Edge Drawing was not selected because its anchor tracing overlaps the recently
+failed topology/linking family. A structured/random-forest boundary model was
+deferred because it is a larger learned redesign than the next minimal
+falsification requires. The selected mechanism is two-sided texture-
+distribution contrast: unlike the incumbent Gabor/Hessian amplitudes, it asks
+whether the distribution of texture primitives changes across a putative
+boundary.
+
+Martin, Fowlkes and Malik (2004, DOI `10.1109/TPAMI.2004.1273918`) report that
+explicit texture distributions complement brightness gradients and compute
+their texture gradient as chi-square distance between oriented half-disc
+texton histograms. Ojala, Pietikäinen and Mäenpää (2002, DOI
+`10.1109/TPAMI.2002.1017623`) provide a compact rotation-invariant uniform-LBP
+texture code. Stage 14l combines these ideas as a fixed texton-free surrogate;
+it is not presented as a reproduction of the learned Berkeley texton cue.
+
+Stage 14l is preregistered on UDED selection only under the established 5x3
+repeated leakage-free CV. It appends one maximum-oriented chi-square contrast
+of uniform-LBP half-disc histograms to the retained five-feature positive
+bank, while keeping Scharr+NMS, distorted-Choquet gamma, gate, and fold-fitted
+thresholds unchanged. Candidate membership and singleton weight are fitted
+inside each training fold. No radius, bin, descriptor, orientation, or fusion
+sweep is permitted. The authoritative protocol and conjunction promotion rule
+are in `docs/paper/STAGE14L_PREREGISTRATION.md`. UDED held-out and all inspected
+external tests are excluded.
+
+The same live refresh found an official author-repository update reporting DDN
+BSDS500 ODS `0.867` under its multi-granularity strategy. That oracle-style
+candidate-selection protocol is not interchangeable with one frozen edge map,
+so it does not replace the single-output SOTA target or affect Stage 14l. The
+protocol distinction is recorded in `docs/paper/SOTA_TARGETS.md`.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

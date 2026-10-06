@@ -388,6 +388,7 @@ Before writing each claim, attach it to evidence.
 | MFI improves topology | fixed geodesic-linking ablation with F1 + connectivity endpoints | synthetic gain did not transfer in Stage 14i; fixed linker failed F1 and coverage-effect criteria |
 | Phase congruency adds complementary context | fixed-default phase-moment addition with leakage-free repeated CV | not established; Stage 14j was eligible in all folds but slightly reduced aggregate and mean-fold F1 |
 | Fixed vector-color gradients improve localization | CIELAB Di Zenzo replacement under leakage-free repeated CV | not established; Stage 14k reduced F1 and precision and won only 1/15 folds |
+| Two-sided texture-distribution contrast adds context beyond pointwise amplitudes | fixed half-disc uniform-LBP chi-square feature with leakage-free repeated CV | Stage 14l preregistered; pending development result |
 | Compact measures generalize better than free capacity | family-level validation/test gap comparison | pending |
 | Shapley gating improves robustness/interpretability | regime/scale ablation and frozen test | pending |
 | CH-MFI outperforms modern learned methods | official BSDS/BIPED metrics | not tested |

@@ -51,6 +51,14 @@ If a benchmark's strongest neural result cannot be verified under a matching pro
   SAUGE reports 0.859 under SS-VOC with 11 candidates. These oracle-style
   candidate-selection numbers are not interchangeable with a single frozen
   output and are not silently used as the single-map target.
+- The authors' official DDN/EDMB repository now reports BSDS500 ODS 0.867 for
+  DDN using the same multi-granularity strategy
+  (https://github.com/Li-yachuan/EDMB). The peer-reviewed DDN article is
+  DOI 10.1016/j.neucom.2025.129442, but the accessible primary article text
+  describes the original single-output result (ODS 0.836) rather than this
+  later repository update. Treat 0.867 as an author-repository
+  multi-granularity frontier note, not as the frozen single-map target, until
+  its exact candidate-selection protocol is fully documented.
 - MatchED reports both standard evaluation (NMS plus thinning) and CEval on raw
   predictions. Its CEval target is listed separately because applying MFI-Edge's
   NMS/linking output to that row would be a protocol mismatch.

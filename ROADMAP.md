@@ -207,6 +207,16 @@ routing, or tensor parameters from this outcome. The next action is the
 repeatable autonomous literature escalation, which must select a
 mechanistically distinct development-only test.
 
+The post-color checkpoint selected Stage 14l: a fixed oriented half-disc
+texture-distribution feature appended to the compact context bank. This is
+distinct from Stage 14k's pointwise color tensor and from the failed topology,
+phase, smoothing, and RDF mechanisms. It compares uniform-LBP occurrence
+histograms on opposite sides of a putative boundary using chi-square distance,
+while Scharr+NMS remains the localizer. All feature calibration and thresholds
+are fold-fitted on UDED selection only; no external feedback or parameter
+sweep is allowed. The deterministic preview has columns conditioned input,
+GT, incumbent, candidate, and retained best.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
@@ -244,7 +254,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | Stage 14j phase context | 🟢 completed | eligible in 15/15 folds but no incremental F1; not promoted |
 | post-phase mechanism search | 🟢 completed | selected fixed CIELAB vector-gradient localization |
 | Stage 14k color-tensor localizer | 🟢 completed | fixed Lab tensor replacement failed all promotion criteria; grayscale Scharr retained |
-| post-color mechanism search | 🟡 next | autonomous live-literature escalation; no external feedback |
+| post-color mechanism search | 🟢 completed | selected explicit two-sided texture-distribution contrast |
+| Stage 14l texture-distribution context | 🟡 next | fixed half-disc uniform-LBP chi-square cue; UDED-selection repeated CV only |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

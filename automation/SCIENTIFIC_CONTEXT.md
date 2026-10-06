@@ -129,6 +129,19 @@ grayscale/color mixtures, routers, or tensor parameters from this result. The
 next step is a mechanistically distinct literature escalation rather than
 vector-color micro-tuning.
 
+### Stage 14l — texture-distribution context registered
+
+The post-color literature checkpoint selected one mechanistically distinct
+development test: append a fixed oriented half-disc uniform-LBP histogram
+chi-square contrast to the retained five-feature positive context bank. This
+tests two-sided texture-distribution change, which is not encoded by the
+incumbent pointwise Gabor/Hessian amplitudes, while keeping Scharr+NMS as the
+localizer. Stage 14l uses UDED selection only with 5x3 leakage-free repeated
+CV; membership, singleton weight, and thresholds are fit inside training folds.
+No descriptor/radius/orientation sweep is allowed. The authoritative protocol
+is `docs/paper/STAGE14L_PREREGISTRATION.md`. External and held-out outcomes did
+not choose this direction.
+
 ## d-Choquet terminology
 
 Do not conflate these:
