@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "include_incumbent": true,
+  "methods": [
+    {
+      "name": "candidate_name",
+      "export": {
+        "script": "run_candidate.py",
+        "args": [
+          "--export-bsds",
+          "--image-dir",
+          "{image_dir}",
+          "--output-dir",
+          "{output_dir}",
+          "--split",
+          "{split}"
+        ]
+      }
+    }
+  ]
+}
