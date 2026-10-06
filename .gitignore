@@ -21,3 +21,4 @@ automation/STOP
 # Local-only worktrees / downloaded external material
 external/
 webui/
+evaluation/bsds_official/vendor/
