@@ -433,6 +433,21 @@ linear-logistic candidate, and retained best. It is documentary only. The
 2026-10-06 SOTA ledger remains current; this mechanism search found no new
 verified matched-protocol result requiring a target-row change.
 
+Stage 14m completed without promotion. The compact incumbent achieved
+aggregate F1 `0.759053` at precision `0.671339`; the linear fusion achieved
+F1 `0.754080` at precision `0.676571`. Thus aggregate F1 changed by
+`-0.004972`, aggregate precision by `+0.005232`, and mean fold F1 by
+`-0.006046`, with only 4/15 fold wins. All 15 optimizers converged, so the
+failure is not attributable to incomplete fitting, but the candidate failed
+three required performance criteria. The compact five-feature positive
+controller remains incumbent. Per the preregistration, regularization,
+sampling, interactions, and classifier variants must not be tuned from this
+outcome. The deterministic preview contains conditioned input, ground truth,
+incumbent, candidate, and retained best for the predeclared first validation
+image and remains documentary only. The next action is the repeatable
+high-reasoning live-literature escalation for a mechanistically distinct
+development-only falsification.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

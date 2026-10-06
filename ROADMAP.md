@@ -237,6 +237,14 @@ allowed. This tests whether the Stage-11 linear diagnostic signal can improve
 the actual detector and whether the fixed multiplicative gate, rather than the
 representation, is now the bottleneck.
 
+Stage 14m completed without promotion. The linear candidate improved
+precision by `+0.005232`, but aggregate F1 fell by `-0.004972`, mean fold F1
+fell by `-0.006046`, and it won only 4/15 folds. All 15 models converged. The
+compact five-feature Choquet controller remains incumbent, and no logistic
+regularization, sampling, interaction, or classifier micro-tuning is allowed
+from this result. A mechanistically distinct autonomous live-literature
+escalation is next.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
@@ -277,7 +285,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | post-color mechanism search | 🟢 completed | selected explicit two-sided texture-distribution contrast |
 | Stage 14l texture-distribution context | 🟢 completed | small sub-margin gain; 6/15 wins and 7/15 eligible; not promoted |
 | post-texture mechanism search | 🟢 completed | selected fixed-form linear probability-of-boundary cue fusion |
-| Stage 14m linear cue fusion | 🟡 registered | fold-fitted logistic fusion on Scharr+NMS support; no model sweep |
+| Stage 14m linear cue fusion | 🟢 completed | converged in 15/15 folds but reduced aggregate F1; compact Choquet controller retained |
+| post-linear-fusion mechanism search | 🟡 next | live-literature escalation; choose one mechanistically distinct development-only falsification |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

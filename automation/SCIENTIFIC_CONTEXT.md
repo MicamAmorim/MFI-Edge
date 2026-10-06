@@ -142,19 +142,18 @@ Do not tune the LBP descriptor, half-disc geometry, eligibility threshold, or
 fusion from this result. Proceed to a mechanistically distinct live-literature
 escalation without held-out or external-test feedback.
 
-### Stage 14m — registered linear cue-fusion falsification
+### Stage 14m — linear cue-fusion falsification
 
-The post-14l live-literature escalation selected an aggregation/calibration
-test rather than another descriptor. Stage 14m will compare the incumbent
-compact Choquet gate with a fold-fitted, class-balanced L2 logistic
-probability-of-boundary model using the same Scharr+NMS response, compact
-context, their product, and the five retained memberships. Predictions remain
-restricted to Scharr+NMS support. All coefficients, standardization, and
-thresholds are fitted inside UDED-selection outer training folds under 5x3
-repeated CV. The fixed linear model has no hyperparameter sweep and must emit
-the preregistered deterministic preview. This is a detector-level test of the
-Stage-11 diagnostic evidence, not permission for an unconstrained learned
-model search.
+Stage 14m did **not** promote the fold-fitted, class-balanced L2 logistic
+probability-of-boundary fusion on UDED-selection repeated leakage-free CV.
+Relative to the compact Choquet controller, aggregate F1 changed by
+`-0.004972`, mean fold F1 by `-0.006046`, and the candidate won only 4/15
+folds. All 15 models converged and precision increased by `+0.005232`, but
+recall fell enough to fail the aggregate-gain, mean-fold, and fold-win
+requirements. The compact five-feature controller remains incumbent. Do not
+tune regularization, sampling, interactions, or classifier variants from this
+result. Proceed to a mechanistically distinct live-literature escalation
+without held-out or external-test feedback.
 
 ## d-Choquet terminology
 
