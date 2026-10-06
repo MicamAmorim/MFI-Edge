@@ -6,6 +6,7 @@
   "max_wall_hours": 12,
   "experiment_timeout_minutes": 360,
   "codex_timeout_minutes": 25,
+  "codex_retries": 2,
   "reasoning_effort": "low",
   "auto_commit": true,
   "auto_push": true,
