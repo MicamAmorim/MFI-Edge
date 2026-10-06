@@ -4,13 +4,18 @@ from __future__ import annotations
 
 Adds persistent scientific context injection, a default GPT-5.6 Sol model,
 explicit goal-state handling, resilient autonomous literature escalation, and
-an optional official BSDS MATLAB evaluation hook that runs before Codex analyzes
-completed image experiments.
+a default-on official BSDS MATLAB evaluation hook that runs before Codex
+analyzes completed image experiments.
+
+Research-analysis failures are recoverable. If Codex/web research exhausts its
+normal retries, the completed experiment remains pending and the controller
+backs off and retries instead of terminating the scientific program.
 """
 
 from pathlib import Path
 import json
 import os
+import time
 
 import research_controller_v3 as v3
 import official_eval_hook
@@ -23,7 +28,7 @@ _ORIGINAL_ANALYZE_PENDING = core._analyze_pending
 CONTEXT_FILE = core.AUTO / "SCIENTIFIC_CONTEXT.md"
 SOTA_FILE = core.ROOT / "docs" / "paper" / "SOTA_TARGETS.md"
 GOAL_FILE = core.AUTO / "research_goal.json"
-OFFICIAL_EVAL_POLICY_FILE = core.AUTO / "OFFICIAL_EVAL_POLICY.md"
+OFFICIAL_EVAL_POLICY_FILE = core.AUTO / "OFFICIAL_EVAL_POLICY_V2.md"
 
 
 def _read_optional(path: Path) -> str:
@@ -38,12 +43,12 @@ def _research_agenda_file() -> Path:
         rel = str(
             cfg.get(
                 "research_agenda_file",
-                "docs/paper/MECHANISM_RESEARCH_AGENDA_2026-10-06.md",
+                "docs/paper/MECHANISM_RESEARCH_AGENDA_2026-10-06_V2.md",
             )
         )
         return core.ROOT / rel
     except Exception:
-        return core.ROOT / "docs" / "paper" / "MECHANISM_RESEARCH_AGENDA_2026-10-06.md"
+        return core.ROOT / "docs" / "paper" / "MECHANISM_RESEARCH_AGENDA_2026-10-06_V2.md"
 
 
 def _build_prompt_v4(
@@ -69,6 +74,31 @@ def _build_prompt_v4(
         else "(not run / not applicable)"
     )
 
+    hard_rules = """
+## Controller hard requirements for new image experiments
+
+- The official BSDS MATLAB module is default-on auxiliary analysis, not part of
+  detector inference.
+- Every newly registered image-based development experiment must provide an
+  `official_eval_manifest.json` and a repository-local candidate exporter so
+  BSDS500-validation ODS/OIS/AP can be computed before the scientific decision.
+- If the attached official evaluation has `status=completed` and
+  `feedback_allowed=true`, those metrics are decision-capable development
+  evidence and MUST be considered jointly with UDED/synthetic development
+  metrics.
+- A candidate must not be promoted as the new benchmark-aligned incumbent while
+  a required official validation evaluation is missing or failed. The
+  underlying experiment remains scientifically valid; repair/retry the
+  evaluator/export path without rerunning the protected benchmark or silently
+  substituting the historical Python consensus proxy.
+- BSDS500 test and other protected external/test results remain document-only
+  and MUST NOT drive architecture, feature, threshold, routing, or parameter
+  selection.
+- Do not micro-tune a failed mechanism from its outcome. Use the injected
+  mechanism agenda and live literature to choose one preregistered, bounded,
+  mechanistically distinct falsification at a time.
+"""
+
     return (
         "# Persistent scientific memory\n\n"
         "The following context is injected on every decision. Treat "
@@ -80,15 +110,37 @@ def _build_prompt_v4(
         + goal
         + "\n```\n\n## docs/paper/SOTA_TARGETS.md\n\n"
         + sota
-        + "\n\n## automation/OFFICIAL_EVAL_POLICY.md\n\n"
+        + "\n\n## automation/OFFICIAL_EVAL_POLICY_V2.md\n\n"
         + eval_policy
         + "\n\n## Current mechanism research agenda\n\n"
         + agenda
         + "\n\n## Official-evaluation attachment for this event\n\n```json\n"
         + official_block
         + "\n```\n\n"
+        + hard_rules
+        + "\n\n"
         + base
     )
+
+
+def _retry_wait(state: dict, exp_id: str, config: dict) -> float:
+    failures = state.setdefault("analysis_retry_failures", {})
+    n = int(failures.get(exp_id, 0)) + 1
+    failures[exp_id] = n
+    base = max(1.0, float(config.get("analysis_retry_backoff_seconds", 20)))
+    cap = max(base, float(config.get("analysis_retry_backoff_max_seconds", 300)))
+    return min(cap, base * (2.0 ** min(max(n - 1, 0), 6)))
+
+
+def _sleep_with_stop(seconds: float) -> bool:
+    remaining = max(0.0, float(seconds))
+    while remaining > 0:
+        if core.STOP_FILE.exists():
+            return True
+        dt = min(5.0, remaining)
+        time.sleep(dt)
+        remaining -= dt
+    return core.STOP_FILE.exists()
 
 
 def _analyze_pending_v4(
@@ -101,9 +153,50 @@ def _analyze_pending_v4(
     exp_id = str(pending["experiment_id"])
     spec = experiments.get(exp_id, {})
     official_eval_hook.maybe_run(exp_id, spec, config)
-    stop, decision = _ORIGINAL_ANALYZE_PENDING(
-        state, pending, experiments, config, args
-    )
+
+    try:
+        stop, decision = _ORIGINAL_ANALYZE_PENDING(
+            state, pending, experiments, config, args
+        )
+    except RuntimeError as exc:
+        # A completed experiment/result must never be lost because a Codex or
+        # live-web research call transiently failed. v2 has already persisted
+        # pending_analysis and the failure log before raising this exact error.
+        if "Codex failed; result remains pending" not in str(exc):
+            raise
+
+        wait_s = _retry_wait(state, exp_id, config)
+        state["updated_at"] = core._now()
+        core._save_json(core.STATE_FILE, state)
+        print(
+            "\nCodex/research analysis failed after configured fallbacks. "
+            f"Keeping {exp_id!r} pending and retrying after {wait_s:.0f}s. "
+            "The benchmark will NOT rerun.",
+            flush=True,
+        )
+        if _sleep_with_stop(wait_s):
+            print("STOP file detected during analysis backoff; stopping cleanly.")
+            return True, {
+                "continue": False,
+                "next_experiment_id": exp_id,
+                "requires_human": False,
+                "goal_reached": False,
+                "scientific_decision": "Deferred pending analysis because STOP was requested.",
+            }
+        return False, {
+            "continue": True,
+            "next_experiment_id": exp_id,
+            "requires_human": False,
+            "goal_reached": False,
+            "scientific_decision": "Retry pending Codex/research analysis without rerunning the experiment.",
+            "reason": "Transient Codex/web analysis failure; result remains pending and scientifically unchanged.",
+        }
+
+    failures = state.setdefault("analysis_retry_failures", {})
+    if exp_id in failures:
+        failures.pop(exp_id, None)
+        state["updated_at"] = core._now()
+        core._save_json(core.STATE_FILE, state)
 
     goal_reached = bool(decision.get("goal_reached", False))
     hard_blocker = bool(decision.get("requires_human", False))
