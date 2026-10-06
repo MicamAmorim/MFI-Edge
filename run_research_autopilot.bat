@@ -2,6 +2,10 @@
 setlocal
 cd /d %~dp0
 
+rem Force UTF-8 text mode so Codex/stdout cannot crash Python decoding on Windows cp1252.
+set PYTHONUTF8=1
+set PYTHONIOENCODING=utf-8
+
 echo ============================================================
 echo MFI-Edge Research Autopilot
 echo Local experiments + on-demand Codex decisions
