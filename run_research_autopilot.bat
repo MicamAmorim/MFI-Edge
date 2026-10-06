@@ -12,8 +12,9 @@ echo MFI-Edge Research Autopilot v4
 echo Continuous autonomous non-neural SOTA research
 echo Model: %MFI_CODEX_MODEL%
 echo Normal decisions: medium reasoning
-echo Research checkpoints: high reasoning + live web search
-echo Persistent scientific context is injected on every decision.
+echo Research checkpoints: high reasoning + resilient web fallback
+echo Persistent scientific context and mechanism agenda are injected.
+echo Official BSDS-val MATLAB evaluation is enabled by default.
 echo Soft scientific stops automatically escalate to literature research.
 echo Completed experiments are resumed safely if Codex analysis fails.
 echo Create automation\STOP at any time to stop before the next step.
