@@ -88,7 +88,7 @@ Do **not** require a human merely because a hypothesis failed, the next mechanis
 
 ## Visual reporting
 
-Every image-based development experiment created from now on must produce deterministic qualitative artifacts in addition to numeric metrics.
+Every image-based experiment created from now on — **development, confirmation, external, or final** — must produce deterministic qualitative artifacts in addition to numeric metrics. This requirement applies regardless of whether the results live under `results/local_dev`, `results/external`, or another benchmark directory.
 
 Minimum requirement:
 
@@ -102,6 +102,13 @@ Preferred report:
 - candidate prediction;
 - current retained best prediction if it differs;
 - several fixed conditions/regions when the experiment is a robustness test.
+
+Before returning a newly registered image-based experiment as `next_experiment_id`, verify both of the following in the repository edits:
+
+1. the experiment runner actually writes `best_method_preview.png` (or an explicitly justified richer deterministic preview set while still including the canonical file); and
+2. `automation/experiments.json -> result_files` lists that preview artifact.
+
+For external/final evaluation, the preview is **documentary only**. It may be inspected after evaluation, but it must never alter model selection, thresholds, architecture, experiment priority, or any other tuning decision. Historical experiments are not rerun solely to backfill a preview unless the user explicitly asks.
 
 Register qualitative files in `automation/experiments.json -> result_files`, describe panel order in the summary, and preserve historical previews when a new generation is promoted. Qualitative images are inspection/evolution artifacts only; do not silently use them as an optimization signal.
 
