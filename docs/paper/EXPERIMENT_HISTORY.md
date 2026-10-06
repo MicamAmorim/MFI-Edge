@@ -170,6 +170,24 @@ Promotion requires the explicit Stage-14h criteria and separate development
 confirmation. No UDED held-out, BSDS500 test, or BIPEDv2 test result informs
 this choice.
 
+Stage 14h completed on the preregistered synthetic development protocol. The
+gravitational candidate met the corrupted-average threshold with mean absolute
+F1 advantage `+0.00534`, but failed the other two required criteria: clean
+mean-image F1 changed by `-0.27231`, far below the `-0.01` noninferiority
+limit, and only one of four corruption families had positive mean advantage.
+The positive result was confined to periodic texture; gravitational smoothing
+was worse for Gaussian noise, blur, and compound corruption at every tested
+severity. The full conjunction therefore failed and median conditioning is
+retained. The deterministic preview uses the first odd-index evaluation base
+image, with rows clean/Gaussian/blur/texture/compound and columns input,
+ground truth, median incumbent, gravitational candidate, and retained best.
+These qualitative panels are inspection artifacts only. The strong
+texture-specific contrast is descriptive evidence of regime complementarity,
+not support for routing on corruption labels or tuning gravitational
+parameters. Further RDF/gravitational micro-tuning is deferred; the next
+registered action is the autonomous literature/mechanism escalation. No
+external or UDED held-out feedback informed this decision.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

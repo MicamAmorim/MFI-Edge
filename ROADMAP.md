@@ -144,6 +144,15 @@ source result is a hypothesis for this different multiscale system, not
 evidence of transfer. The experiment must pass its preregistered criteria and
 then receive a separate development confirmation before any retention.
 
+Stage 14h completed without promotion. Gravitational smoothing produced mean
+corrupted-F1 advantage `+0.00534`, but clean F1 fell by `-0.27231` and only
+the texture family improved (`1/4` families), so two mandatory criteria failed.
+Median conditioning remains incumbent. The texture-only benefit is a useful
+complementarity observation but does not yet define a valid observable router;
+known synthetic corruption labels cannot be used at inference. Further
+gravitational/RDF tuning is deferred, and the repeatable autonomous literature
+checkpoint is next to select one mechanistically distinct development test.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**

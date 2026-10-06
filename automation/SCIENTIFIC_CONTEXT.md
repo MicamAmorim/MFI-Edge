@@ -88,9 +88,9 @@ Compared retained standard positive distorted-Choquet against d-CC with FBPC and
 
 Result: d-CC was **not promoted**. Mean absolute corrupted-F1 advantage about `-0.00191`, clean delta about `-0.00280`, and positive absolute advantage in `0/4` corruption families. Descriptive clean-referenced degradation advantage was only about `+0.00088`. Conclusion applies to this isolated d-CC/FBPC/abs test; do not claim RDF operators are universally disproven.
 
-### Stage 14g/14h direction
+### Stage 14g/14h — gravitational conditioning falsification
 
-Post-RDF high-reasoning literature checkpoint selected a targeted gravitational-conditioning ablation as the next mechanistically distinct test. Stage 14h compares the incumbent median conditioning against fixed gravitational smoothing while holding the compact positive controller and Scharr+NMS architecture fixed. Interpret it as a conditioning test, not an RDF rescue unless a later preregistered experiment explicitly combines mechanisms.
+Post-RDF high-reasoning literature review selected a targeted gravitational-conditioning ablation as a mechanistically distinct test. Stage 14h did **not** promote gravitational smoothing: mean corrupted-F1 advantage was about `+0.00534`, but clean F1 fell by about `-0.27231` and only the texture family improved (`1/4` families positive). The candidate therefore failed two required criteria and median conditioning remains incumbent. The texture-specific gain is descriptive evidence of regime complementarity, not permission to route on known corruption labels or to tune the smoother. The next step is a literature/mechanism escalation rather than further gravitational or RDF micro-tuning.
 
 ## d-Choquet terminology
 
