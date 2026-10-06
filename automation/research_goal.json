@@ -15,7 +15,7 @@
     "A new model generation is frozen only after stable development evidence; inspected UDED held-out, BSDS500 test, and BIPEDv2 test remain unavailable for optimization or experiment prioritization.",
     "Final SOTA claims use official or author-designated evaluators and matched metrics. Incompatible metric/protocol numbers are not compared as if equivalent.",
     "A genuinely untouched external benchmark/protocol is reserved before the final generalization claim.",
-    "Every image-based development benchmark produces deterministic qualitative artifacts, including best_method_preview.png from fixed/predeclared examples, so model evolution can be visually inspected without cherry-picking."
+    "Every image-based experiment or benchmark report, including development, confirmation, external, and final evaluation, produces deterministic qualitative artifacts including best_method_preview.png from fixed/predeclared examples so model evolution and transfer can be visually inspected without cherry-picking."
   ],
   "optimization_policy": {
     "development_feedback_allowed": [
@@ -50,9 +50,11 @@
   },
   "visual_reporting": {
     "required": true,
+    "scope": "All image-based development, confirmation, external, and final experiments/reports. Historical experiments are not rerun solely to backfill previews unless explicitly requested.",
     "minimum_artifact": "best_method_preview.png",
     "selection_policy": "Use fixed/predeclared representative examples or deterministic manifest positions; do not select examples after seeing which images make a candidate look best.",
     "preferred_layout": "Input, ground truth, incumbent prediction, candidate prediction, and current-best prediction when practical.",
+    "external_rule": "External/final previews are documentary qualitative outputs only and must never become an optimization or model-selection signal.",
     "purpose": "Qualitative inspection and evolution tracking only; images must not silently become the optimization signal."
   },
   "research_families": [
