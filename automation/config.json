@@ -1,9 +1,9 @@
 {
   "branch": "mfi-edge-local-dev",
   "start_experiment": "stage13b_protocol_research",
-  "max_iterations": 8,
-  "max_codex_calls": 8,
-  "max_wall_hours": 12,
+  "max_iterations": 30,
+  "max_codex_calls": 30,
+  "max_wall_hours": 24,
   "experiment_timeout_minutes": 360,
   "codex_timeout_minutes": 25,
   "codex_retries": 2,
