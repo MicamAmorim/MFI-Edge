@@ -248,6 +248,25 @@
       "results/local_dev/stage14m_logistic_cue_fusion/best_method_preview.png"
     ]
   },
+  "stage14n_shallow_edge_forest": {
+    "description": "Leakage-free repeated-CV falsification of a bounded shallow randomized forest that predicts a dense boundary score from raw Scharr and the retained compact signature before fixed gradient-direction NMS.",
+    "runner": "python",
+    "path": "run_stage14n_shallow_edge_forest.py",
+    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256", "--trees", "48", "--max-depth", "8", "--min-leaf", "40", "--thresholds-per-feature", "4", "--max-samples-per-class", "1500"],
+    "role": "development_test",
+    "feedback_policy": "UDED_selection_only_leakage_free_shallow_edge_forest_no_external_feedback",
+    "one_shot": true,
+    "result_files": [
+      "results/local_dev/stage14n_shallow_edge_forest/summary.json",
+      "results/local_dev/stage14n_shallow_edge_forest/variant_ranking.csv",
+      "results/local_dev/stage14n_shallow_edge_forest/fold_results.csv",
+      "results/local_dev/stage14n_shallow_edge_forest/per_image_metrics.csv",
+      "results/local_dev/stage14n_shallow_edge_forest/forest_diagnostics.csv",
+      "results/local_dev/stage14n_shallow_edge_forest/feature_importances.csv",
+      "results/local_dev/stage14n_shallow_edge_forest/training_samples.csv",
+      "results/local_dev/stage14n_shallow_edge_forest/best_method_preview.png"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

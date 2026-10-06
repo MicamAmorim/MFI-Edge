@@ -155,6 +155,20 @@ tune regularization, sampling, interactions, or classifier variants from this
 result. Proceed to a mechanistically distinct live-literature escalation
 without held-out or external-test feedback.
 
+### Stage 14n — registered shallow edge-forest localizer test
+
+The post-14m live-literature escalation selected a bounded non-neural learned
+localizer motivated by Structured Forests and Oriented Edge Forests. Stage 14n
+is preregistered on UDED selection under the established 5x3 leakage-free CV.
+It fits a fixed 48-tree, depth-8 randomized binary forest inside each training
+fold from dense raw Scharr, Scharr+NMS, compact Choquet context, two
+localizer-context products, and the five retained memberships; the dense
+posterior is localized with fixed grayscale gradient-direction NMS. This is a
+minimal nonlinear/dense-score falsification, not a structured-mask
+reproduction. Do not sweep forest size, depth, leaves, sampling, channels, or
+calibration from the outcome. The compact five-feature controller remains the
+incumbent unless the full preregistered conjunction passes.
+
 ## d-Choquet terminology
 
 Do not conflate these:

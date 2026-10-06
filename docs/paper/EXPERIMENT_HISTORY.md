@@ -448,6 +448,46 @@ image and remains documentary only. The next action is the repeatable
 high-reasoning live-literature escalation for a mechanistically distinct
 development-only falsification.
 
+## Stage 14n — shallow edge-forest localizer checkpoint
+
+The post-linear-fusion live-literature checkpoint revisited the classical
+learned-localizer branch that Stage 14m had deliberately deferred. The primary
+sources were Dollár and Zitnick's Structured Forests (DOI
+`10.1109/TPAMI.2014.2377715`) and Hallman and Fowlkes' Oriented Edge Forests
+(DOI `10.1109/CVPR.2015.7298782`). They establish class-balanced randomized
+forests over simple image channels as a credible non-neural boundary family,
+with posterior averaging and explicit localization. The OEF paper also warns
+that large nonparametric systems can be hard to diagnose, so the next test is
+intentionally smaller than either published system.
+
+Three distinct directions were considered: graph-spectral globalization, a
+full structured-patch forest, and a shallow nonlinear forest over the retained
+MFI signature. Spectral globalization was deferred because Stage 14i already
+failed a topology/global-consistency intervention. A full structured forest
+would simultaneously introduce patch labels, offsets, orientation classes,
+sharpening, and compositing. Stage 14n therefore selects the smallest remaining
+question after Stage 14m: whether stable nonlinear interactions and dense
+scoring, rather than another descriptor or linear calibration, are missing.
+
+Stage 14n is preregistered on UDED selection only under the established 5x3
+leakage-free repeated CV. Its candidate is a fixed 48-tree, depth-8 randomized
+binary forest over dense raw Scharr, Scharr+NMS, compact Choquet context, two
+localizer-context products, and the five retained memberships. The forest is
+fit inside each outer training fold with balanced sampling and fixed
+regularization-by-depth/leaf-size, then its dense posterior is localized by
+the existing grayscale gradient-direction NMS. This is an OEF/Structured-
+Edges-inspired falsification, not a reproduction or a structured-mask claim.
+The incumbent remains the compact Choquet gate, and each method receives an
+independently fold-fitted threshold.
+
+The authoritative parameters, conjunction promotion rule, and prohibition on
+post-result forest tuning are in `docs/paper/STAGE14N_PREREGISTRATION.md`.
+The runner must emit a deterministic `best_method_preview.png` with conditioned
+input, GT, incumbent, shallow forest, and retained best for the first
+validation image of the first split. The 2026-10-06 SOTA ledger remains
+current; this checkpoint found no new matched-protocol frontier result that
+changes its target rows.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

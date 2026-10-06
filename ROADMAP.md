@@ -242,8 +242,19 @@ precision by `+0.005232`, but aggregate F1 fell by `-0.004972`, mean fold F1
 fell by `-0.006046`, and it won only 4/15 folds. All 15 models converged. The
 compact five-feature Choquet controller remains incumbent, and no logistic
 regularization, sampling, interaction, or classifier micro-tuning is allowed
-from this result. A mechanistically distinct autonomous live-literature
-escalation is next.
+from this result.
+
+The following autonomous live-literature escalation selected Stage 14n, a
+bounded non-neural learned-localizer test motivated by Structured Forests and
+Oriented Edge Forests. The candidate fits a fixed shallow randomized forest
+inside every UDED-selection training fold from dense raw Scharr, Scharr+NMS,
+the retained compact context/memberships, and two localizer-context products.
+It produces a dense posterior that is localized by the existing fixed
+gradient-direction NMS. This isolates nonlinear cue interaction plus dense
+scoring without introducing the full patch-label, offset, sharpening, and
+compositing machinery of a structured forest. Parameters and the conjunction
+promotion rule are frozen in `docs/paper/STAGE14N_PREREGISTRATION.md`; no
+forest sweep is allowed from the outcome.
 
 Scientific conclusion:
 
@@ -286,7 +297,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | Stage 14l texture-distribution context | 🟢 completed | small sub-margin gain; 6/15 wins and 7/15 eligible; not promoted |
 | post-texture mechanism search | 🟢 completed | selected fixed-form linear probability-of-boundary cue fusion |
 | Stage 14m linear cue fusion | 🟢 completed | converged in 15/15 folds but reduced aggregate F1; compact Choquet controller retained |
-| post-linear-fusion mechanism search | 🟡 next | live-literature escalation; choose one mechanistically distinct development-only falsification |
+| post-linear-fusion mechanism search | 🟢 completed | selected a bounded shallow edge-forest localizer from primary Structured Forest/OEF literature |
+| Stage 14n shallow edge forest | 🟡 registered | fixed nonlinear dense localizer; UDED-selection 5x3 leakage-free CV; no forest sweep |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 
