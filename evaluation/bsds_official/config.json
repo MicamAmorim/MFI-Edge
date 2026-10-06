@@ -1,0 +1,33 @@
+{
+  "matlab_executable": "C:\\Program Files\\MATLAB\\R2023a\\bin\\matlab.exe",
+  "development_split": "val",
+  "feedback_allowed_splits": [
+    "train",
+    "val"
+  ],
+  "protected_splits": [
+    "test"
+  ],
+  "nthresh": 99,
+  "max_dist": 0.0075,
+  "thinpb": true,
+  "png_bit_depth": 8,
+  "incumbent": {
+    "enabled": true,
+    "exporter": "evaluation/bsds_official/export_incumbent.py",
+    "cache_dir": "automation/runtime/official_eval_cache/incumbent"
+  },
+  "sources": {
+    "bsds500": {
+      "repository": "https://github.com/BIDS/BSDS500.git",
+      "commit": "a04b7c6c3a9f0ace74bf205c72a43d32e1c72722",
+      "vendor_dir": "evaluation/bsds_official/vendor/BSDS500"
+    },
+    "pdollar_edges": {
+      "repository": "https://github.com/pdollar/edges.git",
+      "commit": "94260b5d0fc068202598312e01a37604972dcc9e",
+      "vendor_dir": "evaluation/bsds_official/vendor/pdollar_edges"
+    }
+  },
+  "reference_reproduction_verified": false
+}
