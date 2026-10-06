@@ -13,7 +13,9 @@ if nargin < 6, nthresh = 99; end
 addpath(benchmarkDir);
 
 mexFile = fullfile(benchmarkDir, ['correspondPixels.' mexext]);
-if exist(mexFile, 'file') ~= 2
+% MATLAB reports compiled MEX binaries as file type 3, while ordinary
+% source/data files are type 2. Accept either kind of existing file.
+if ~ismember(exist(mexFile, 'file'), [2 3])
     error('MFIEdge:MissingMEX', 'Missing correspondPixels MEX for this platform: %s', mexFile);
 end
 if exist('bwmorph', 'file') == 0

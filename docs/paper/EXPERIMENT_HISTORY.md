@@ -572,9 +572,12 @@ could not import `benchmark_uded`. This is an evaluator plumbing defect, not a
 scientific rerun condition. After that path was repaired, the first retry
 exposed the equivalent absolute-path import assumption in the Stage-14o
 candidate exporter before any candidate map was scored. The candidate runner
-now has the same explicit repository-root bootstrap and a second
-attachment-only retry is registered; Stage-14o CV and the frozen exported
-methods are unchanged.
+received the same explicit repository-root bootstrap, so the second retry
+reached MATLAB. It then stopped in wrapper preflight because MATLAB reports an
+existing MEX binary as `exist(..., 'file') == 3`, while the wrapper incorrectly
+accepted only type 2. The MEX is present at the pinned source size; the wrapper
+now accepts MATLAB file types 2 or 3 and a third attachment-only retry is
+registered. Stage-14o CV and the frozen exported methods remain unchanged.
 Although no BSDS result can rescue promotion after the UDED conjunction failed,
 ODS/OIS/AP remain required documentary development evidence before Stage 14o
 is closed and work advances to the Ambrosio–Tortorelli phase-field family.

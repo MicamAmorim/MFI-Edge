@@ -188,10 +188,12 @@ The UDED portion has now failed all non-collapse criteria: aggregate F1 delta
 `0/15` fold wins. Stage 14o therefore cannot be promoted regardless of its
 pending BSDS-val metrics. The initial attachment exposed an absolute-path
 import issue in the incumbent exporter; the first retry then exposed the same
-issue in the candidate exporter. Both are plumbing failures before scoring,
-not scientific evidence. A second attachment-only retry is registered after
-making the candidate import path explicit. Do not rerun the CV or tune the
-interval mechanism. After the official metrics are documented, proceed to the
+issue in the candidate exporter. The second retry reached MATLAB but exposed
+an evaluator-wrapper bug: MATLAB classifies an existing MEX as file type 3,
+while the wrapper accepted only type 2. These are plumbing failures before
+scoring, not scientific evidence. A third attachment-only retry is registered
+after correcting that existence check. Do not rerun the CV or tune the interval
+mechanism. After the official metrics are documented, proceed to the
 preregistered Ambrosio–Tortorelli phase-field family.
 
 ## d-Choquet terminology
