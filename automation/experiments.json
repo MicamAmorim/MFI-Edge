@@ -120,5 +120,20 @@
     "result_files": [
       "results/automation/stage14e_rdf_protocol_checkpoint/summary.json"
     ]
+  },
+  "stage14f_rdf_robustness": {
+    "description": "Paired synthetic validation falsification of d-CC with FBPC and absolute RDF against the frozen five-feature positive distorted-Choquet control; clean-only calibration thresholds are fixed across corruption strata.",
+    "runner": "python",
+    "path": "run_stage14f_rdf_robustness.py",
+    "args": ["--thresholds", "41"],
+    "role": "development_test",
+    "feedback_policy": "synthetic_validation_development_only_rdf_robustness_no_external_feedback",
+    "one_shot": true,
+    "result_files": [
+      "results/local_dev/stage14f_rdf_robustness/summary.json",
+      "results/local_dev/stage14f_rdf_robustness/condition_metrics.csv",
+      "results/local_dev/stage14f_rdf_robustness/per_image_metrics.csv",
+      "results/local_dev/stage14f_rdf_robustness/degradation_by_family_severity.csv"
+    ]
   }
 }

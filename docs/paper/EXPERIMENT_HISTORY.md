@@ -88,14 +88,43 @@ scale persistence is retained and the compact five-feature bank is not
 pruned further on this evidence. Fold counts are descriptive, not independent
 inference. No external test or UDED held-out data informed this result.
 
-The next scientifically distinct direction is an RDF robustness ablation,
-motivated by Amorim et al. (2025), which applies d-CF/d-XC/d-CC operators to
-multi-channel edge cues. The current Stage-14 runners do not yet provide a
-controlled synthetic corruption protocol for comparing these operators on
-the compact multiscale signature. Do not register an RDF experiment until a
-minimal development-only corruption protocol and comparable evaluation have
-been specified; the already-inspected external results cannot choose the
-corruption, operator, or parameters.
+The next scientifically distinct direction is a narrow d-CC robustness
+falsification, motivated by Amorim et al. (2025). Their strongest reported
+d-CC settings pair FBPC and the absolute RDF with gravitational smoothing;
+this does not establish an isolated RDF benefit for the current multiscale
+controller. Stage 14f therefore changes only the aggregation layer and holds
+the retained five-feature positive bank, Scharr+NMS localizer, gate, and
+threshold-selection procedure fixed. No external result informed this choice.
+
+## Stage 14f — preregistered d-CC robustness falsification (development only)
+
+Compare the frozen five-feature positive distorted-Choquet control against
+d-CC with FBPC and the absolute RDF. Feature definitions and parameters come
+from the Stage-12d frozen positive bank, filtered to the five features
+retained after Stage 14d, with the subset weights renormalized. Both variants
+retain gamma 0.55, Scharr+NMS, context-gate strength 2.0/floor 0.10, and
+train-calibrated thresholds.
+
+Use the fixed 40-item `synthetic_v2` validation manifest only. Manifest rows
+0,2,...,38 generate clean calibration references; rows 1,3,...,39 generate
+paired clean evaluation references and the same base shapes under Gaussian
+noise, Gaussian blur, periodic texture, and compound corruption at the
+generator's predeclared severities 0.35, 0.65, and 1.0. Fit each variant's
+threshold on calibration-clean images with the existing threshold-selection
+routine, then freeze it for all evaluation conditions. Report clean absolute
+F1 separately from absolute F1 and clean-referenced degradation for each
+corruption family/severity, using mean per-image F1 as the primary metric.
+
+The predeclared support criterion is a mean improvement of at least 0.01 in
+clean-referenced degradation across the 12 corruption cells, clean F1
+noninferiority within 0.01, and positive mean degradation advantage in at
+least three of four families. This small development experiment is a
+falsification test, not a final robustness claim. If met, a separately
+registered confirmation is required before retaining d-CC; otherwise it is
+not promoted on these data. The primary methodological source is Amorim et
+al. (2025), DOI https://doi.org/10.3390/app152413273. Their reported d-CC
+advantage is coupled to gravitational smoothing, intentionally excluded here
+to keep aggregation as the sole change.
 
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 

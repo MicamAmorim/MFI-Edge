@@ -112,9 +112,15 @@ Stage 14d tested the compact bank without `gabor4_scale_persistence`. The
 four-feature variant scored CV F1 0.75473 versus 0.75889 for the five-feature
 bank, with mean paired fold delta -0.00322 (3 wins, 12 losses). Retain
 persistence and the five-feature compact bank under the predeclared pruning
-rule. Fold events are descriptive only. Next, specify a controlled synthetic
-corruption protocol before registering an RDF-family robustness comparison;
-do not use external-test outcomes to select its design.
+rule. Fold events are descriptive only.
+
+Stage 14f is registered as a synthetic-validation-only robustness
+falsification: standard positive distorted-Choquet versus d-CC/FBPC/absolute
+RDF, with identical frozen compact features, Scharr+NMS, gate, and clean-fit
+threshold procedure. It reports absolute F1 and clean-referenced degradation
+by Gaussian-noise, blur, texture, and compound family at three predeclared
+severities. The comparison changes only the aggregation layer; external sets
+and UDED held-out remain unavailable for design or feedback.
 
 Scientific conclusion:
 
