@@ -46,6 +46,21 @@ If a benchmark's strongest neural result cannot be verified under a matching pro
 
 ## October 2026 protocol notes
 
+- The primary GED preprint (arXiv:2410.03080) reports BSDS500
+  ODS/OIS/AP `0.870/0.880/0.907`, NYUDv2 ODS `0.800`, and Multi-Cue edge ODS
+  `0.910`. Its model is explicitly granularity-conditioned and described as
+  producing controllable multiple predictions, while no official code was
+  exposed in the sources checked. EasyControlEdge (arXiv:2602.16238) marks its
+  GED rows as an independent reimplementation and obtains BSDS SEval ODS
+  `0.859`, not `0.870`. Therefore the GED headline is an **UNRESOLVED
+  FRONTIER** rather than silently replacing the current matched single-map
+  rows: recover the exact fixed granularity/output-selection and evaluator
+  protocol before using it as a final bar.
+- EasyControlEdge reports BSDS500 SEval ODS `0.857` and CEval ODS `0.807`
+  (K=5), NYUDv2 SEval ODS `0.791`, and BIPED SEval ODS `0.908` with CFG. Its
+  CEval result does not exceed the separately listed MatchED CEval target, and
+  its guidance/inference-step variants must not be conflated with one frozen
+  single-output setting.
 - Multi-granularity results are a separate protocol family. MuGE reports BSDS500
   ODS 0.861 under MS-VOC with best matching among granularity candidates, and
   SAUGE reports 0.859 under SS-VOC with 11 candidates. These oracle-style

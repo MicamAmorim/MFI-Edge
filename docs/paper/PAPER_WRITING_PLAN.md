@@ -195,6 +195,14 @@ U(x)=\alpha_U\,\mathrm{rank}(\operatorname{Var}_s E_s(x))
 
 Explicitly distinguish this from **annotation uncertainty**, which belongs to the future UAED/RankED training extension.
 
+Stage 14o adds a narrower inference-time uncertainty hypothesis for the compact
+controller: disagreement among the five fitted memberships produces an
+interval width, a convex Choquet-to-additive capacity field, and explicit
+reliability attenuation. Keep this separate from both the older broad CH-MFI
+scale/entropy uncertainty expression above and human-annotation uncertainty.
+It is preregistered for UDED repeated CV plus official BSDS500-validation
+ODS/OIS/AP; no positive claim is allowed until both development axes complete.
+
 ## 3.8 Dynamic localization branch
 
 Current bank:
@@ -391,6 +399,7 @@ Before writing each claim, attach it to evidence.
 | Two-sided texture-distribution contrast adds context beyond pointwise amplitudes | fixed half-disc uniform-LBP chi-square feature with leakage-free repeated CV | not established; Stage 14l gained only +0.00031 aggregate F1, won 6/15 folds, and was eligible in 7/15 folds, so it failed promotion |
 | Fold-fitted linear cue calibration improves the compact analytical gate | fixed-form logistic fusion of Scharr+NMS and retained memberships under leakage-free repeated CV | not established; Stage 14m converged in all folds but reduced aggregate F1 by 0.00497 and won only 4/15 folds |
 | A shallow non-neural forest can exploit nonlinear compact-cue interactions and recover a stronger dense localizer | fixed randomized forest versus compact Choquet gate under leakage-free repeated CV | not established; Stage 14n reduced aggregate F1 by 0.02493 and precision by 0.03856, with only 2/15 wins; this bounded binary test is not a full structured-forest reproduction |
+| Interval membership width and a reliability-conditioned capacity improve trust calibration | fixed Stage-14o candidate versus compact incumbent on UDED repeated CV and official BSDS500 validation | registered, not yet tested; promotion requires conjunctive UDED non-collapse and BSDS-val ODS/OIS/AP benefit |
 | Compact measures generalize better than free capacity | family-level validation/test gap comparison | pending |
 | Shapley gating improves robustness/interpretability | regime/scale ablation and frozen test | pending |
 | CH-MFI outperforms modern learned methods | official BSDS/BIPED metrics | not tested |

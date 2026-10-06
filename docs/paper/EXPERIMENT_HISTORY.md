@@ -505,6 +505,54 @@ image and remains documentary only. The next action is the repeatable
 high-reasoning live-literature escalation for a mechanistically distinct
 development-only falsification.
 
+## Stage 14o — interval uncertainty and reliability-conditioned capacity checkpoint
+
+The post-forest live-literature escalation selected the first priority in the
+active mechanism agenda: explicit ignorance over the retained fuzzy context.
+Primary-source verification confirmed that Marco-Detchart et al. (Expert
+Systems 42(2):e13730, DOI `10.1111/exsy.13730`) adapt fuzzy measures from local
+image evidence, while Bustince et al. (Fuzzy Sets and Systems 160(13), DOI
+`10.1016/j.fss.2008.08.005`) construct interval-valued image memberships whose
+width encodes neighborhood-derived uncertainty. These mechanisms address the
+current trust-calibration bottleneck without introducing another learned
+classifier or descriptor. Jacquey et al. (ICIP 2007, DOI
+`10.1109/ICIP.2007.4379243`) independently support interpreting interval
+gradient width as local response reliability under noise.
+
+Stage 14o is preregistered as one fixed synthesis. Pixelwise standard
+deviation across the five compact memberships is normalized by the outer-
+training-fold 95th percentile. The resulting uncertainty defines symmetric
+interval memberships, convexly interpolates the retained gamma-0.55 Choquet
+capacity toward the additive capacity, and attenuates the powered interval-
+envelope midpoint once by one minus envelope width. The compact bank, grayscale Scharr+NMS,
+gate strength 2.0, floor 0.10, and threshold grid remain unchanged. There is
+no uncertainty-width, quantile, gamma, or capacity sweep.
+
+The primary natural-image axis remains 5x3 leakage-free repeated CV on UDED
+selection. Unlike earlier Stage-14 runs, the new default-on official module
+also evaluates the full-development-fitted frozen candidate on BSDS500
+validation with the original MATLAB multi-annotator ODS/OIS/AP protocol.
+Promotion is conjunctive: bounded UDED non-collapse plus BSDS-val ODS delta at
+least `+0.002` and nonnegative OIS/AP deltas. A failed official attachment
+pauses promotion for exporter/evaluator repair but does not authorize changing
+the candidate. The authoritative protocol is
+`docs/paper/STAGE14O_PREREGISTRATION.md`.
+
+The runner must emit `best_method_preview.png` from the first validation image
+of the first deterministic split, with conditioned input, GT, incumbent,
+candidate, uncertainty field, and current retained incumbent pending the
+required official decision. It also emits an
+`official_eval_manifest.json` and a repository-local native-resolution BSDS
+export mode that never reads BSDS ground truth. Protected UDED held-out,
+BSDS500 test, and BIPEDv2 test remain excluded.
+
+The same live frontier check found author-reported GED headline results above
+some current target rows, but the granularity-conditioned output-selection
+protocol and official code remain unresolved; an independent EasyControlEdge
+reimplementation reports a lower GED number. The SOTA ledger records this as
+an unresolved frontier rather than changing the matched target from an
+incomparable headline.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

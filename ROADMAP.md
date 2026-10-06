@@ -264,6 +264,18 @@ five-feature Choquet controller with grayscale Scharr+NMS remains incumbent.
 Do not tune forest capacity, sampling, channels, or calibration from this
 result; a mechanistically distinct live-literature escalation is next.
 
+The post-forest escalation selected Stage 14o: interval uncertainty plus a
+reliability-conditioned capacity field. The five compact memberships remain
+fixed, but their pixelwise disagreement defines an interval width and a convex
+interpolation from the retained gamma-0.55 capacity toward the additive
+capacity. Interval-envelope width explicitly attenuates the powered context
+once;
+Scharr+NMS and the incumbent gate remain unchanged. The experiment is a single
+fixed point, not an interval/capacity sweep, and is registered for UDED
+selection repeated CV plus the default-on official BSDS500-validation MATLAB
+attachment. Promotion requires the preregistered conjunction across both
+development axes.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
@@ -295,7 +307,7 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | freeze external candidates | 🟢 | exact banks/configs/thresholds frozen on UDED selection |
 | **Stage 13a BSDS frozen transfer** | 🟡 **RUN NOW** | no BSDS tuning; first external check |
 | BIPEDv2 external replication | 🟡 preflight registered | test split frozen; author-provided download requires human license acceptance |
-| official BSDS500 evaluation | 🔴 | requires official Berkeley MATLAB/CSA++ benchmark tooling; Stage 13a remains a proxy |
+| official BSDS500 evaluation | 🟢 integrated | default-on MATLAB validation attachment; final claims still require reference reproduction verification |
 | topology/linking revisit | 🟢 Stage 14i completed | fixed linker not promoted; F1 and coverage-effect criteria failed |
 | post-topology mechanism search | 🟢 completed | selected phase congruency as a distinct representation mechanism |
 | Stage 14j phase context | 🟢 completed | eligible in 15/15 folds but no incremental F1; not promoted |
@@ -307,7 +319,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | Stage 14m linear cue fusion | 🟢 completed | converged in 15/15 folds but reduced aggregate F1; compact Choquet controller retained |
 | post-linear-fusion mechanism search | 🟢 completed | selected a bounded shallow edge-forest localizer from primary Structured Forest/OEF literature |
 | Stage 14n shallow edge forest | 🟢 completed | finite in 15/15 folds but large F1/precision loss and only 2/15 wins; not promoted |
-| post-forest mechanism search | 🟡 next | live-literature escalation; select one mechanistically distinct development-only falsification |
+| post-forest mechanism search | 🟢 completed | selected explicit interval ignorance plus convex reliability-conditioned capacity |
+| Stage 14o interval-capacity uncertainty | 🟡 registered | UDED repeated CV plus official BSDS500-val ODS/OIS/AP; no uncertainty or capacity sweep |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

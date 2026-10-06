@@ -267,6 +267,26 @@
       "results/local_dev/stage14n_shallow_edge_forest/best_method_preview.png"
     ]
   },
+  "stage14o_interval_capacity_uncertainty": {
+    "description": "Leakage-free repeated-CV falsification of interval-valued compact memberships with a cue-disagreement reliability field, convex Choquet-to-additive capacity interpolation, and interval-width attenuation; includes default-on official BSDS500-validation evaluation.",
+    "runner": "python",
+    "path": "run_stage14o_interval_capacity_uncertainty.py",
+    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256"],
+    "role": "development_test",
+    "feedback_policy": "UDED_selection_repeated_CV_plus_official_BSDS500_val_development_only_no_protected_feedback",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage14o_interval_capacity_uncertainty/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage14o_interval_capacity_uncertainty/summary.json",
+      "results/local_dev/stage14o_interval_capacity_uncertainty/variant_ranking.csv",
+      "results/local_dev/stage14o_interval_capacity_uncertainty/fold_results.csv",
+      "results/local_dev/stage14o_interval_capacity_uncertainty/per_image_metrics.csv",
+      "results/local_dev/stage14o_interval_capacity_uncertainty/uncertainty_diagnostics.csv",
+      "results/local_dev/stage14o_interval_capacity_uncertainty/best_method_preview.png",
+      "results/local_dev/stage14o_interval_capacity_uncertainty/official_eval_manifest.json",
+      "results/official_eval/stage14o_interval_capacity_uncertainty/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

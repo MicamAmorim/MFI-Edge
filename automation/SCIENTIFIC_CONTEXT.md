@@ -169,6 +169,20 @@ calibration from this result, and do not infer that full structured-patch
 forests were tested. Proceed to a mechanistically distinct live-literature
 escalation without held-out or external-test feedback.
 
+### Stage 14o — registered interval-uncertainty capacity falsification
+
+The post-forest literature escalation selected one fixed interval-valued
+uncertainty mechanism. Cue disagreement across the retained five memberships,
+normalized by outer-training-fold statistics, defines interval width; the same
+uncertainty convexly interpolates the retained gamma-0.55 capacity toward its
+additive counterpart, and Choquet-envelope width attenuates unreliable
+context. The compact bank, grayscale Scharr+NMS, gate strength, and floor are
+unchanged. Stage 14o is registered on UDED-selection 5x3 leakage-free CV and
+must attach official BSDS500-validation MATLAB ODS/OIS/AP through its frozen
+native-resolution exporter. Promotion is conjunctive across the preregistered
+UDED non-collapse and BSDS-val benefit criteria. Do not tune interval width,
+normalization quantile, capacity endpoints, gamma, or gate from the result.
+
 ## d-Choquet terminology
 
 Do not conflate these:
