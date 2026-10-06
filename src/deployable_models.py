@@ -5,20 +5,14 @@ import csv
 import json
 from typing import Any, Dict, List
 
+from .research_deploy import load_research_models
+
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY_PATH = ROOT / "models" / "deployable_registry.json"
 STAGE7_FULL = ROOT / "results" / "uded" / "stage7" / "selection_all.csv"
 
 
 def _enrich_frozen_thresholds(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    """Fill exported Stage-7 frozen thresholds when the full CSV is present.
-
-    The compact result committed during the Railway run contains ranking metrics but
-    not the exact selected threshold. Once `selection_all.csv` is synced into the
-    branch, the desktop registry automatically picks up the benchmark threshold.
-    Until then, `threshold=None` remains explicit and the WebUI uses a clearly
-    labelled adaptive quantile for visualization only.
-    """
     if not STAGE7_FULL.exists():
         return rows
     try:
@@ -48,22 +42,34 @@ def _enrich_frozen_thresholds(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]
     return rows
 
 
-def load_deployable_models(path: Path | None = None) -> List[Dict[str, Any]]:
-    """Load desktop/WebUI model configurations in validation-rank order.
-
-    The WebUI deliberately uses an explicit deployable registry rather than every
-    exploratory configuration from a factorial sweep. New validated models should
-    be promoted into this registry. Ranking is based on the declared validation
-    metric (currently UDED selection ODS), never on a post-hoc held-out view.
-    """
-    p = Path(path or REGISTRY_PATH)
-    rows = json.loads(p.read_text(encoding="utf-8"))
+def _legacy_models(path: Path) -> List[Dict[str, Any]]:
+    rows = json.loads(path.read_text(encoding="utf-8"))
     rows = _enrich_frozen_thresholds([dict(x) for x in rows])
-    rows.sort(key=lambda x: float(x.get("selection_ODS", float("-inf"))), reverse=True)
-    for i, row in enumerate(rows, start=1):
-        row["rank"] = i
+    for row in rows:
+        row.setdefault("engine", "stage7")
+        row.setdefault("status", "legacy-stage7-screened")
         row.setdefault("rank_basis", "selection_ODS")
         row.setdefault("threshold_fallback_quantile", 0.90)
+        row.setdefault("metric_label", "Stage 7 selection ODS")
+        row.setdefault("metric_value", row.get("selection_ODS"))
+        row.setdefault("secondary_label", "Historical held-out F1")
+        row.setdefault("secondary_value", row.get("heldout_F1"))
+        row.setdefault("display_priority", 1000.0 + float(row.get("selection_ODS", 0.0)))
+    return rows
+
+
+def load_deployable_models(path: Path | None = None) -> List[Dict[str, Any]]:
+    """Load current research models plus the historical Stage-7 registry.
+
+    Research models are shown first when the WebUI can see the active local-dev
+    frozen artifact. Metrics from different protocols are labelled explicitly and
+    are not silently treated as directly comparable.
+    """
+    p = Path(path or REGISTRY_PATH)
+    rows = load_research_models() + _legacy_models(p)
+    rows.sort(key=lambda x: float(x.get("display_priority", 0.0)), reverse=True)
+    for i, row in enumerate(rows, start=1):
+        row["rank"] = i
     return rows
 
 
