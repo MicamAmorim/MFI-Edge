@@ -35,6 +35,16 @@ When the controller event has role `research_planning` or `literature_escalation
 - If three consecutive development hypotheses from the same mechanism family fail to improve the declared development metric, mark that mechanism as stagnant and seek a different mechanism class instead of micro-tuning parameters.
 - Never use an external/final test result as the optimization signal for literature-driven redesign. A redesigned model must be developed on allowed data, frozen, and only then taken to a new untouched external validation.
 
+## Protocol-record precedence
+
+When scientific records disagree, resolve them by provenance rather than by whichever file was read first.
+
+- An experiment-specific preregistration recorded before result inspection is authoritative for that experiment.
+- If that preregistration explicitly says it supersedes an older generic/history criterion, the superseded paragraph is historical only and must not be treated as an active competing protocol.
+- `EXPERIMENT_HISTORY.md` is a narrative record, not automatically the highest-precedence protocol source.
+- A post-result clarification may document provenance and resolve wording, but must not retroactively change thresholds, endpoints, or promotion criteria.
+- If precedence still cannot be established from timestamps/commits and explicit supersession language, stop and request human review.
+
 ## Execution rules
 
 - You may inspect the repository and the result paths named by the controller.
