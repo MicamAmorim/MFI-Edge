@@ -1,0 +1,23 @@
+{
+  "phase": "external_transfer_and_replication",
+  "goal": "Determine whether the frozen Stage-12d MFI-Edge signature controller generalizes beyond UDED, while preserving strict separation between development data and external/final test data.",
+  "success_criteria": [
+    "A frozen Stage-12d representative is evaluated without tuning on BSDS500 external test.",
+    "The same frozen family is independently replicated on another external dataset/protocol such as BIPED without using BSDS test feedback for tuning.",
+    "Any publication-grade BSDS claim is reproduced with the official Berkeley evaluation protocol before promotion to main.",
+    "Runtime, resolution policy, qualitative outputs, exact frozen configuration, and calibration source are documented."
+  ],
+  "optimization_policy": {
+    "development_feedback_allowed": ["synthetic development sets", "UDED selection repeated leakage-free CV"],
+    "development_confirmation_only": ["UDED held-out"],
+    "external_test_no_tuning": ["BSDS500 test", "future untouched final test splits"],
+    "rule": "Never choose or alter hyperparameters, descriptors, thresholds, or architecture using an external/final test result."
+  },
+  "stop_conditions": [
+    "human STOP file exists",
+    "controller budget is reached",
+    "Codex requires a protected scientific-file change",
+    "no scientifically valid allow-listed next experiment exists",
+    "a dataset/evaluator ambiguity requires human methodological review"
+  ]
+}
