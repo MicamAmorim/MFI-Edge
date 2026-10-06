@@ -1,23 +1,39 @@
 {
-  "phase": "external_transfer_and_replication",
-  "goal": "Determine whether the frozen Stage-12d MFI-Edge signature controller generalizes beyond UDED, while preserving strict separation between development data and external/final test data.",
+  "phase": "external_transfer_replication_and_publication_validation",
+  "goal": "Determine whether the frozen Stage-12d MFI-Edge signature controller generalizes beyond UDED, while preserving strict separation between development data and external/final test data; then decide whether to close this model generation or open a new literature-guided development cycle.",
   "success_criteria": [
     "A frozen Stage-12d representative is evaluated without tuning on BSDS500 external test.",
     "The same frozen family is independently replicated on another external dataset/protocol such as BIPED without using BSDS test feedback for tuning.",
     "Any publication-grade BSDS claim is reproduced with the official Berkeley evaluation protocol before promotion to main.",
-    "Runtime, resolution policy, qualitative outputs, exact frozen configuration, and calibration source are documented."
+    "Runtime, resolution policy, qualitative outputs, exact frozen configuration, and calibration source are documented.",
+    "If the frozen family fails to generalize sufficiently, a new development cycle is opened only on development data; literature escalation must propose mechanistically distinct hypotheses and a minimal falsification experiment."
   ],
   "optimization_policy": {
-    "development_feedback_allowed": ["synthetic development sets", "UDED selection repeated leakage-free CV"],
+    "development_feedback_allowed": ["synthetic development sets", "UDED selection repeated leakage-free CV", "future explicitly designated development splits"],
     "development_confirmation_only": ["UDED held-out"],
-    "external_test_no_tuning": ["BSDS500 test", "future untouched final test splits"],
-    "rule": "Never choose or alter hyperparameters, descriptors, thresholds, or architecture using an external/final test result."
+    "external_test_no_tuning": ["BSDS500 test", "BIPED test when used as frozen replication", "future untouched final test splits"],
+    "rule": "Never choose or alter hyperparameters, descriptors, thresholds, operator choices, or architecture using an external/final test result."
   },
+  "autonomy_policy": {
+    "normal_mode": "Use low reasoning and repository-local evidence to interpret a completed experiment and prepare one next allow-listed experiment.",
+    "research_escalation": "Use medium reasoning plus live web search when available for protocol planning, exhausted hypothesis queues, contradictory evidence, or repeated development stagnation.",
+    "stagnation_rule": "After three consecutive failed development hypotheses from the same mechanism family, stop micro-tuning that family and research a mechanistically different direction.",
+    "literature_priority": ["official dataset/benchmark sources", "peer-reviewed papers", "recent preprints", "author repositories"],
+    "one_change_rule": "Prefer one interpretable mechanism change per development iteration and a minimal falsification test."
+  },
+  "next_sequence": [
+    "Stage 13b protocol research checkpoint",
+    "BIPED frozen replication",
+    "official Berkeley boundary evaluation",
+    "cross-dataset synthesis and model-generation decision",
+    "literature-guided development escalation only if a new generation is scientifically warranted"
+  ],
   "stop_conditions": [
     "human STOP file exists",
     "controller budget is reached",
     "Codex requires a protected scientific-file change",
     "no scientifically valid allow-listed next experiment exists",
-    "a dataset/evaluator ambiguity requires human methodological review"
+    "a dataset/evaluator ambiguity requires human methodological review",
+    "an external dataset requires credentials or license acceptance that cannot be automated safely"
   ]
 }
