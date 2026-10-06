@@ -1,38 +1,60 @@
 {
-  "phase": "external_transfer_replication_and_publication_validation",
-  "goal": "Determine whether the frozen Stage-12d MFI-Edge signature controller generalizes beyond UDED, while preserving strict separation between development data and external/final test data; then decide whether to close this model generation or open a new literature-guided development cycle.",
+  "phase": "stage14_literature_guided_development",
+  "goal": "Open a new development generation for MFI-Edge using only development-authorized data. Explain and improve contextual fuzzy control of Scharr+NMS through interpretable mechanisms, then freeze a new generation before any future untouched external test.",
   "success_criteria": [
-    "A frozen Stage-12d representative is evaluated without tuning on BSDS500 external test.",
-    "The same frozen family is independently replicated on another external dataset/protocol such as BIPED without using BSDS test feedback for tuning.",
-    "Any publication-grade BSDS claim is reproduced with the official Berkeley evaluation protocol before promotion to main.",
-    "Runtime, resolution policy, qualitative outputs, exact frozen configuration, and calibration source are documented.",
-    "If the frozen family fails to generalize sufficiently, a new development cycle is opened only on development data; literature escalation must propose mechanistically distinct hypotheses and a minimal falsification experiment."
+    "All Stage-14 architecture selection, feature selection, thresholds, and hyperparameters use only synthetic development sets and UDED selection with leakage-free repeated CV, or a future split explicitly designated as development before inspection.",
+    "At least three mechanistically distinct hypotheses are considered at the research checkpoint, with exactly one minimal falsification experiment registered at a time.",
+    "Candidate directions include the already implemented d-Choquet/d-CF/d-XC/d-CC RDF family, analysis/ablation of relative positive-vs-negative contextual control, and conditional/mixture-of-experts routing only when complementarity is demonstrated on development data.",
+    "Feature and mechanism ablations are used to prune redundant components before any larger combination model is attempted.",
+    "A new model generation is frozen only after repeated leakage-free development evidence is stable; BSDS500 test, BIPEDv2 test, and UDED held-out remain unavailable for tuning or model selection.",
+    "A future external validation is performed only on a genuinely untouched dataset/protocol reserved before observing its labels/results."
   ],
   "optimization_policy": {
-    "development_feedback_allowed": ["synthetic development sets", "UDED selection repeated leakage-free CV", "future explicitly designated development splits"],
-    "development_confirmation_only": ["UDED held-out"],
-    "external_test_no_tuning": ["BSDS500 test", "BIPED test when used as frozen replication", "future untouched final test splits"],
-    "rule": "Never choose or alter hyperparameters, descriptors, thresholds, operator choices, or architecture using an external/final test result."
+    "development_feedback_allowed": [
+      "synthetic development sets",
+      "UDED selection repeated leakage-free CV",
+      "future explicitly predesignated development splits"
+    ],
+    "development_confirmation_only": ["UDED held-out (historically inspected; do not optimize on it)"],
+    "external_test_no_tuning": [
+      "BSDS500 test",
+      "BIPEDv2 test",
+      "any future untouched final/external split"
+    ],
+    "rule": "Never choose or alter hyperparameters, descriptors, thresholds, operator choices, architecture, or experiment priority from external/final test outcomes. External results may be documented but are not an optimization signal."
   },
   "autonomy_policy": {
-    "normal_mode": "Use low reasoning and repository-local evidence to interpret a completed experiment and prepare one next allow-listed experiment.",
-    "research_escalation": "Use medium reasoning plus live web search when available for protocol planning, exhausted hypothesis queues, contradictory evidence, or repeated development stagnation.",
+    "normal_mode": "Use low reasoning and repository-local evidence to interpret a completed development experiment and prepare exactly one next allow-listed experiment.",
+    "research_escalation": "Use medium reasoning plus live web search when available at research-planning checkpoints, after contradictory development evidence, or after repeated stagnation.",
     "stagnation_rule": "After three consecutive failed development hypotheses from the same mechanism family, stop micro-tuning that family and research a mechanistically different direction.",
-    "literature_priority": ["official dataset/benchmark sources", "peer-reviewed papers", "recent preprints", "author repositories"],
-    "one_change_rule": "Prefer one interpretable mechanism change per development iteration and a minimal falsification test."
+    "literature_priority": [
+      "peer-reviewed primary method papers",
+      "official author repositories",
+      "recent preprints when necessary",
+      "benchmark/dataset primary sources"
+    ],
+    "one_change_rule": "Prefer one interpretable mechanism change per iteration and the smallest valid falsification experiment.",
+    "combination_rule": "Do not build a large ensemble by default. First prune models/features; combine surviving mechanisms only if development-only ablations show complementary errors or regime-specific benefit."
   },
+  "stage14_initial_questions": [
+    "Do RDF-based d-Choquet/d-CF/d-XC/d-CC operators improve robustness of the multiscale signature under blur, noise, texture, or scale heterogeneity?",
+    "Does relative positive-vs-negative contextual evidence provide a reproducible development-only advantage over positive-only and separable bi-capacity controls, and which terms are essential?",
+    "Are there identifiable regimes where distinct fuzzy controllers are complementary enough to justify a small interpretable conditional expert model?"
+  ],
   "next_sequence": [
-    "Stage 13b protocol research checkpoint",
-    "BIPED frozen replication",
-    "official Berkeley boundary evaluation",
-    "cross-dataset synthesis and model-generation decision",
-    "literature-guided development escalation only if a new generation is scientifically warranted"
+    "Stage 14a literature and architecture research checkpoint",
+    "one minimal development-only falsification experiment",
+    "development-only ablation/pruning",
+    "repeat or switch mechanism according to stagnation policy",
+    "freeze a new generation only after stable repeated-CV evidence",
+    "reserve a new untouched external validation before any final claim"
   ],
   "stop_conditions": [
     "human STOP file exists",
     "controller budget is reached",
     "Codex requires a protected scientific-file change",
     "no scientifically valid allow-listed next experiment exists",
+    "a proposed experiment would use BSDS500 test, BIPEDv2 test, or UDED held-out as optimization feedback",
     "a dataset/evaluator ambiguity requires human methodological review",
     "an external dataset requires credentials or license acceptance that cannot be automated safely"
   ]
