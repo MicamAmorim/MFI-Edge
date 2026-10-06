@@ -37,5 +37,19 @@
     "feedback_policy": "validate_dataset_layout_only_no_test_tuning",
     "one_shot": true,
     "result_files": ["results/automation/stage13c_biped_preflight/summary.json"]
+  },
+  "stage13d_biped_transfer": {
+    "description": "One-shot frozen Stage-12d replication on the author-designated BIPEDv2 test split at native resolution; fixed-threshold diagnostics only.",
+    "runner": "python",
+    "path": "run_stage13d_biped_transfer.py",
+    "args": [],
+    "role": "external_test",
+    "feedback_policy": "document_only_no_tuning",
+    "one_shot": true,
+    "result_files": [
+      "results/external/stage13d_biped_transfer/summary.json",
+      "results/external/stage13d_biped_transfer/external_metrics.csv",
+      "results/external/stage13d_biped_transfer/per_image_metrics.csv"
+    ]
   }
 }

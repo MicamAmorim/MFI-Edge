@@ -10,6 +10,8 @@ For publication-grade BSDS claims, export full-resolution soft thinned score map
 
 Sources: BIPEDv2 author repository, https://github.com/xavysp/MBIPED (dataset description, split, resolution, and non-commercial-use terms); DexiNed author repository, https://github.com/xavysp/DexiNed (dataset version and test usage); Berkeley BSDS project, https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/bsds/ (official benchmark, CSA++ matching, soft boundary output, MATLAB requirement).
 
+Stage 13c preflight passed: the local BIPEDv2 files contain 200 paired training images and 50 paired test images at 1280×720, and the frozen candidate artifact is present. Stage 13d is registered as a one-shot external replication: it leaves training unused, uses the 50 test pairs at native resolution, applies only Stage-12d frozen candidate thresholds, and fits the Scharr comparator threshold on UDED selection. Results are fixed-threshold diagnostics with paired bootstrap uncertainty; no BIPED-driven threshold selection or ranking is permitted. The runner records runtime and the single-annotator metric limitation.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels
