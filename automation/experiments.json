@@ -1,9 +1,9 @@
 {
   "stage13a_bsds_transfer": {
     "description": "Frozen Stage-12d transfer to BSDS500 test. One-shot external validation; no tuning from this result.",
-    "runner": "bat",
-    "path": "run_stage13_bsds_transfer.bat",
-    "args": [],
+    "runner": "python",
+    "path": "run_stage13_bsds_transfer.py",
+    "args": ["--split", "test", "--max-side", "256", "--thresholds", "61", "--bootstrap", "5000"],
     "role": "external_test",
     "feedback_policy": "document_only_no_tuning",
     "one_shot": true,
