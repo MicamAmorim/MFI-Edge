@@ -13,3 +13,7 @@ results/external/
 cache/local_dev/
 automation/runtime/
 automation/STOP
+
+# Local-only worktrees / downloaded external material
+external/
+webui/
