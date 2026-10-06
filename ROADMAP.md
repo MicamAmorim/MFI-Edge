@@ -217,6 +217,14 @@ are fold-fitted on UDED selection only; no external feedback or parameter
 sweep is allowed. The deterministic preview has columns conditioned input,
 GT, incumbent, candidate, and retained best.
 
+Stage 14l completed without promotion. Aggregate F1 improved by only
+`+0.000310` (below the preregistered `+0.001` margin), mean fold F1 by
+`+0.000370`, and precision changed by `-0.000040`; however, the candidate won
+only 6/15 folds and the feature was eligible in only 7/15 folds. The compact
+five-feature controller remains incumbent. Do not tune this texture feature
+from the outcome. A mechanistically distinct autonomous literature escalation
+is next.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
@@ -255,7 +263,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | post-phase mechanism search | 🟢 completed | selected fixed CIELAB vector-gradient localization |
 | Stage 14k color-tensor localizer | 🟢 completed | fixed Lab tensor replacement failed all promotion criteria; grayscale Scharr retained |
 | post-color mechanism search | 🟢 completed | selected explicit two-sided texture-distribution contrast |
-| Stage 14l texture-distribution context | 🟡 next | fixed half-disc uniform-LBP chi-square cue; UDED-selection repeated CV only |
+| Stage 14l texture-distribution context | 🟢 completed | small sub-margin gain; 6/15 wins and 7/15 eligible; not promoted |
+| post-texture mechanism search | 🟡 next | live-literature escalation; select one mechanistically distinct development test |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

@@ -374,6 +374,27 @@ candidate-selection protocol is not interchangeable with one frozen edge map,
 so it does not replace the single-output SOTA target or affect Stage 14l. The
 protocol distinction is recorded in `docs/paper/SOTA_TARGETS.md`.
 
+### Stage 14l result
+
+Stage 14l completed on the 15 UDED selection images under the preregistered
+5x3 repeated leakage-free CV. Appending the fixed half-disc uniform-LBP
+chi-square feature changed aggregate F1 from `0.759053` to `0.759362`
+(`+0.000310`) and aggregate precision by `-0.000040`. Mean fold F1 changed by
+`+0.000370`, but the candidate won only 6/15 folds and the feature met its
+training-only eligibility rule in only 7/15 folds. The preregistration required
+at least `+0.001` aggregate F1, 9/15 wins, and eligibility in 12/15 folds, so
+the conjunction promotion rule failed.
+
+The compact five-feature positive controller remains incumbent. The small
+positive aggregate change is descriptive only and does not authorize tuning
+the LBP code, half-disc radius/orientations, eligibility rule, or fusion. The
+deterministic `best_method_preview.png` shows conditioned input, ground truth,
+incumbent, candidate, and retained best for the first validation image of the
+first split; it was documentary only. The next registered action is the
+repeatable high-reasoning live-literature escalation, which must choose a
+mechanistically distinct development-only falsification without held-out or
+external-test feedback.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels
