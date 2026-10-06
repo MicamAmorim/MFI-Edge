@@ -21,10 +21,11 @@ Legend: 🟢 completed/implemented · 🟡 active/partial · 🔴 planned · ⚪
 2. **MFI-Fuzzy++ / Stages 5–7** — broad fuzzy-measure/operator competition and UDED generalization.
 3. **CH-MFI-v2 / Stage 10** — context/hierarchy/uncertainty controlling localization; ultimately below Scharr on UDED.
 4. **Edge Signature / Stages 11–12** — use GT to discover stable properties that distinguish true boundaries from high-gradient texture, then translate those properties into an interpretable analytical/fuzzy controller while keeping precise localization separate.
+5. **External transfer / Stage 13** — freeze the UDED-development representatives and test whether the learned structural signature transfers unchanged to other edge datasets.
 
 Guiding question:
 
-> **Can stable multiscale structural evidence tell a precise edge localizer where to trust or distrust its response, and can positive and anti-texture evidence be represented by a generalizable fuzzy model?**
+> **Can stable multiscale structural evidence tell a precise edge localizer where to trust or distrust its response, and can that controller transfer across datasets without re-fitting?**
 
 ---
 
@@ -66,43 +67,37 @@ The large CH-MFI degradation disappeared when Scharr+NMS remained the fixed loca
 
 Conclusion: context should **control** localization, not compete with it.
 
-## Stage 12b — fuzzy positive/dual evidence
+## Stage 12b / 12c — fuzzy positive and anti-texture evidence
 
-A positive distorted-capacity Choquet was the formal selection winner, but several dual positive+anti-texture candidates showed encouraging development-confirmation gains.
+Stage 12b suggested that explicit anti-texture evidence could help. Stage 12c repaired feature-bank leakage by rebuilding positive/negative banks inside each outer fold. Several dual models looked promising on the already-inspected UDED held-out half, but that split is now development confirmation only.
 
-This motivated a leakage audit.
+## Stage 12d — repeated leakage-free bipolar CV
 
-## Stage 12c — leakage-free evidence-bank CV
+Stage 12d used only the 15 UDED selection images, with **5 repeats × 3 folds = 15 outer validations**. UDED held-out was not used.
 
-Feature banks and thresholds were rebuilt inside each outer fold.
-
-Selection-only leakage-free CV:
-
-| candidate | CV F1 | delta vs Scharr CV |
+| candidate | repeated CV F1 | delta vs Scharr |
 |---|---:|---:|
-| Scharr | 0.73351 | — |
-| positive fuzzy winner | **0.76376** | +0.03024 |
-| best dual | 0.76347 | +0.02996 |
+| Scharr | 0.75095 | — |
+| positive distorted-Choquet | **0.75889** | **+0.00794** |
+| separable bi-capacity | 0.75811 | +0.00715 |
+| ratio control | 0.75669 | +0.00573 |
 
-The positive winner did not improve the repeatedly inspected UDED held-out split (0.76133 vs 0.76204), but multiple top-ranked dual candidates did. The best inspected dual reached 0.77023, +0.00819 over Scharr with a positive bootstrap CI. **This held-out result is architectural evidence only and must not be used to choose exact hyperparameters.**
+The positive-only controller narrowly wins. The separable bi-capacity remains very close and occupies **12 of the global top 20** configurations, versus 8 positive controls, but current repeated-CV evidence does not support claiming that negative evidence adds performance beyond the positive bank.
 
-Feature-bank stability is encouraging:
+The positive bank is very stable: `gabor4_s5`, `hessian_s7`, `gabor4_s13`, `hessian_s13`, and `gabor4_scale_persistence` appeared in all 15 splits. The strongest anti-texture feature, `steered_hessian_scale_centroid`, also appeared in all 15 splits.
 
-- 8 positive features occurred in all 3 folds;
-- 3 anti-texture features occurred in all 3 folds;
-- positive evidence is dominated by scale-specific Gabor/Hessian responses;
-- anti-texture evidence is dominated by scale-centroid / peak-fineness properties of curvature-like responses.
+Scientific conclusion:
 
-Full note: `docs/paper/STAGE12C_LEAKFREE_RESULTS.md`.
+> **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
 
-### Validation policy change
+Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 
-The UDED held-out half has now been inspected too many times to serve as a publication test. From Stage 12d onward:
+### Validation policy
 
-- **do not use UDED held-out for architecture selection**;
-- develop/freeze using UDED selection-only repeated leakage-free CV;
-- next validation must be external (BSDS/BIPED);
-- later publication claims require official untouched test protocols.
+- **do not use UDED held-out for further architecture selection**;
+- Stage-12d candidates are frozen from UDED selection only;
+- Stage 13 must apply them unchanged to external datasets;
+- official paper claims still require official dataset-specific evaluation protocols.
 
 ---
 
@@ -117,11 +112,12 @@ The UDED held-out half has now been inspected too many times to serve as a publi
 | cross-scale relational descriptors | 🟢 | balance/delta/persistence/entropy/centroid/peak |
 | Stage 12a fixed-Scharr gate | 🟢 | near-null vs Scharr |
 | Stage 12b fuzzy signature | 🟢 | dual family became promising |
-| Stage 12c leakage-free bank CV | 🟢 | dual pattern survives leakage correction |
-| **Stage 12d repeated bipolar CV** | 🟡 **RUN NOW** | formal separable bi-capacity + repeated CV; no UDED held-out |
-| freeze external candidates | 🔴 next | selection-only model specs + thresholds |
-| BSDS/BIPED external validation | 🔴 next | first truly external generalization check |
-| official BSDS500 evaluation | 🔴 | required for paper claims |
+| Stage 12c leakage-free bank CV | 🟢 | leakage fixed; UDED held-out retired |
+| Stage 12d repeated bipolar CV | 🟢 | positive wins narrowly; bi-capacity remains close |
+| freeze external candidates | 🟢 | exact banks/configs/thresholds frozen on UDED selection |
+| **Stage 13a BSDS frozen transfer** | 🟡 **RUN NOW** | no BSDS tuning; first external check |
+| BIPED external replication | 🔴 next | second cross-dataset confirmation |
+| official BSDS500 evaluation | 🔴 | required for literature-comparable paper claims |
 | topology/linking revisit | ⚪ | only after score model is externally competitive |
 | dynamic localizer revisit | ⚪ | keep parked until fixed-Scharr line is understood |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
@@ -132,48 +128,47 @@ The UDED held-out half has now been inspected too many times to serve as a publi
 git fetch
 git switch mfi-edge-local-dev
 git pull
-.\run_stage12d_bipolar_cv.bat
+.\run_stage13_bsds_transfer.bat
 ```
+
+By default this attempts the complete BSDS500 **test** split at max side 256. Do not pass `--limit` for the real frozen transfer run. The script downloads missing BSDS files automatically.
 
 Send:
 
 ```text
-results\local_dev\stage12d_bipolar_cv\summary.json
-results\local_dev\stage12d_bipolar_cv\repeated_cv_ranking.csv
-results\local_dev\stage12d_bipolar_cv\family_summary.csv
-results\local_dev\stage12d_bipolar_cv\bank_stability.csv
-results\local_dev\stage12d_bipolar_cv\frozen_candidates.json
-results\local_dev\stage12d_bipolar_cv\selection_winner_preview.png
+results\external\stage13a_bsds_transfer\summary.json
+results\external\stage13a_bsds_transfer\external_metrics.csv
+results\external\stage13a_bsds_transfer\per_image_metrics.csv
+results\external\stage13a_bsds_transfer\preview_positive_control.png
+results\external\stage13a_bsds_transfer\preview_separable_bicapacity.png
+results\external\stage13a_bsds_transfer\preview_ratio_control.png
 ```
 
 ---
 
-# Track B — Stage 12 target architecture
-
-Current preferred architecture:
+# Track B — current candidate architecture
 
 ```text
 image
   -> oriented_ms descriptors + cross-scale relations
   -> positive boundary memberships -------> C_plus
   -> texture / anti-boundary memberships -> C_minus
-  -> bipolar / bi-capacity context
 
 image -> median conditioning -> Scharr -> NMS
-     -> context gate
-     -> frozen threshold
-     -> edge map
+
+positive control:
+  C_plus -> context gate -> frozen threshold -> edge map
+
+separable bi-capacity control:
+  B(x) = normalize(C_plus - lambda*C_minus)
+  -> context gate -> frozen threshold -> edge map
 ```
 
-Stage 12d formalizes a separable bi-capacity:
+Stage 12d froze three unique representatives for transfer:
 
-```text
-v(A,B) = mu_plus(A) - lambda * mu_minus(B)
-
-B(x) = C_mu_plus(p(x)) - lambda * C_mu_minus(n(x))
-```
-
-with independent distorted-capacity exponents for positive and negative evidence. Positive-only and Stage-12 ratio models remain controls.
+1. `positive__gp0.55__a2__floor0.1`;
+2. `bicap__gp0.55__gm1.75__l0.35__a2__floor0.1`;
+3. `ratioctl__gp0.55__gm1__l1__a2__floor0.1`.
 
 The logistic model remains an upper-bound diagnostic only, not the proposed detector.
 
@@ -195,9 +190,9 @@ The logistic model remains an upper-bound diagnostic only, not the proposed dete
 | partition-conditioned aggregation | 🟢 experimental |
 | `oriented_ms` descriptors | 🟢 |
 | cross-scale relational signature | 🟢 |
-| positive fuzzy signature | 🟢 |
-| explicit anti-texture bank | 🟢 |
-| separable bipolar / bi-capacity model | 🟡 Stage 12d |
+| positive fuzzy signature | 🟢 stable development signal |
+| explicit anti-texture bank | 🟢 stable features, incremental value unresolved |
+| separable bipolar / bi-capacity model | 🟢 implemented/tested |
 | general non-separable bi-capacity | 🔴 conditional future |
 | formal k-interactive learning | 🔴 |
 | Fourier/multiband branch | 🔴 |
@@ -214,13 +209,15 @@ The logistic model remains an upper-bound diagnostic only, not the proposed dete
 | Dataset/protocol | Status | Role |
 |---|:---:|---|
 | synthetic v2 | 🟢 | mechanism diagnosis |
-| UDED selection 15 | 🟢 | current development/calibration |
+| UDED selection 15 | 🟢 | completed development/calibration source |
 | UDED held-out 15 | ⚪ exhausted for final testing | development confirmation only |
-| BSDS500 | 🔴 next | external validation + later official test |
+| BSDS500 consensus transfer proxy | 🟡 **Stage 13a** | external frozen generalization check |
 | BIPED | 🔴 next | cross-dataset replication |
 | official Berkeley matching | 🔴 | publication-grade evaluation |
-| multi-annotator uncertainty | 🔴 | preserve individual BSDS annotations |
+| multi-annotator BSDS uncertainty | 🔴 | preserve individual annotations |
 | higher-resolution rerun | 🔴 | finalist sensitivity check |
+
+Stage 13a intentionally reports a **consensus-thresholded BSDS + tolerant-dilation proxy**, not official Berkeley bipartite matching. ODS/OIS on BSDS are descriptive only; the primary external transfer metric uses thresholds frozen before BSDS.
 
 ---
 
@@ -235,13 +232,13 @@ Planned `automation/research_controller.py`:
 - no held-out/test feedback inside iterative optimization;
 - only allow-listed experiment commands may execute automatically.
 
-This should be implemented after Stage 12d/external-validation scripts are stable.
+Implement after the Stage-13 external-validation runners are stable.
 
 ---
 
 # Track F — promotion
 
-No Stage-12 model is promoted to `main` yet.
+No Stage-12/13 model is promoted to `main` yet.
 
 Promotion requires:
 
@@ -250,7 +247,8 @@ Promotion requires:
 3. untouched external validation/test;
 4. reproducible threshold/evaluation protocol;
 5. qualitative inspection;
-6. runtime/resolution report.
+6. runtime/resolution report;
+7. external evidence that the controller improves or robustly matches the fixed localizer.
 
 ```text
 mfi-edge-local-dev -> validated candidate -> main -> mfi-edge-webui
@@ -272,6 +270,7 @@ Maintain together:
 - `STAGE12A_SIGNATURE_GATE_RESULTS.md`
 - `STAGE12B_FUZZY_SIGNATURE_RESULTS.md`
 - `STAGE12C_LEAKFREE_RESULTS.md`
+- `STAGE12D_REPEATED_BIPOLAR_RESULTS.md`
 - `PAPER_WRITING_PLAN.md`
 - `references.bib`
 
