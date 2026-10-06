@@ -1,0 +1,22 @@
+{
+  "branch": "mfi-edge-local-dev",
+  "start_experiment": "stage13a_bsds_transfer",
+  "max_iterations": 8,
+  "max_codex_calls": 8,
+  "max_wall_hours": 12,
+  "experiment_timeout_minutes": 360,
+  "codex_timeout_minutes": 25,
+  "reasoning_effort": "low",
+  "auto_commit": true,
+  "auto_push": true,
+  "remote": "origin",
+  "protected_paths": [
+    "run_stage12d_bipolar_cv.py",
+    "src/bipolar_fuzzy.py",
+    "src/edge_signature.py",
+    "src/edge_signature_relational.py"
+  ],
+  "validation_commands": [
+    ["git", "diff", "--check"]
+  ]
+}
