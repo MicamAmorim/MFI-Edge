@@ -102,3 +102,20 @@ The corresponding memberships, weights, midpoints, scales and thresholds are sto
 Do not inspect or optimize on the UDED held-out half again.
 
 Stage 13a applies the frozen representatives unchanged to BSDS500.  The first runner uses consensus-thresholded BSDS ground truth and the project's tolerant-dilation metric only as an external-transfer diagnostic.  A later stage must implement the official Berkeley multi-annotator bipartite matching protocol before publication-level comparisons are made.
+
+## Stage 13a external transfer record (BSDS500 test)
+
+The frozen candidates were evaluated on all 200 BSDS500 test images at max-side
+256 using the UDED-selection thresholds. Mean inference time was 2.373 s/image
+(474.6 s total). Under the project's consensus-thresholded GT and tolerant-
+dilation matcher, fixed F1 was 0.19104 for Scharr+NMS, 0.19309 for the positive
+control, 0.19352 for the separable bi-capacity, and 0.19437 for the ratio
+control. Paired bootstrap intervals for the three frozen candidates' F1 deltas
+versus Scharr were respectively [0.00160, 0.00253], [0.00196, 0.00300], and
+[0.00268, 0.00407]. This is descriptive evidence that all three fixed
+representatives slightly exceed the baseline under this transfer diagnostic;
+the ratio control has the largest observed delta. It does not establish
+publication-grade generalization or identify a preferred family: BSDS test is
+one-shot and these comparisons use a nonofficial matcher. No candidate or
+threshold is changed based on the result. An independent frozen replication
+(for example BIPED) and official Berkeley evaluation remain outstanding.
