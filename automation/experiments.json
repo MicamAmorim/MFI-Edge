@@ -160,7 +160,20 @@
       "results/local_dev/stage14h_gravity_smoothing/summary.json",
       "results/local_dev/stage14h_gravity_smoothing/condition_metrics.csv",
       "results/local_dev/stage14h_gravity_smoothing/per_image_metrics.csv",
-      "results/local_dev/stage14h_gravity_smoothing/degradation_by_family_severity.csv"
+      "results/local_dev/stage14h_gravity_smoothing/degradation_by_family_severity.csv",
+      "results/local_dev/stage14h_gravity_smoothing/best_method_preview.png"
+    ]
+  },
+  "autonomous_literature_escalation": {
+    "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
+    "runner": "python",
+    "path": "automation/autonomous_literature_escalation.py",
+    "args": [],
+    "role": "literature_escalation",
+    "feedback_policy": "autonomous_non_neural_sota_research_no_external_test_tuning",
+    "one_shot": false,
+    "result_files": [
+      "results/automation/autonomous_literature_escalation/summary.json"
     ]
   }
 }
