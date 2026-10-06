@@ -11,9 +11,31 @@
   "reasoning_effort": "medium",
   "research_reasoning_effort": "high",
   "research_web_search": "live",
+  "research_web_search_fallbacks": [
+    "live",
+    "indexed",
+    "disabled"
+  ],
+  "research_fallback_to_normal_codex": true,
   "autonomous_research_fallback": "autonomous_literature_escalation",
+  "research_agenda_file": "docs/paper/MECHANISM_RESEARCH_AGENDA_2026-10-06.md",
   "require_visual_preview": true,
   "visual_preview_filename": "best_method_preview.png",
+  "official_evaluation": {
+    "enabled": true,
+    "run_before_codex": true,
+    "module": "evaluation/bsds_official/run_official_bsds.py",
+    "config": "evaluation/bsds_official/config.json",
+    "manifest_filename": "official_eval_manifest.json",
+    "feedback_allowed_splits": [
+      "train",
+      "val"
+    ],
+    "protected_splits": [
+      "test"
+    ],
+    "failure_policy": "report_and_continue"
+  },
   "auto_commit": true,
   "auto_push": true,
   "remote": "origin",
@@ -24,6 +46,10 @@
     "src/edge_signature_relational.py"
   ],
   "validation_commands": [
-    ["git", "diff", "--check"]
+    [
+      "git",
+      "diff",
+      "--check"
+    ]
   ]
 }
