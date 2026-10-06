@@ -18,7 +18,7 @@ import pandas as pd
 from benchmark_uded_stage7 import fixed_eval, selection_metric
 from run_stage12b_fuzzy_signature import membership_stack, distorted_choquet
 from run_stage14f_rdf_robustness import (
-    _condition, _frozen_compact_bank,
+    _condition, _frozen_compact_bank, _capacity,
     FEATURES, GAMMA, GATE_STRENGTH, GATE_FLOOR, CORRUPTIONS, SEVERITIES,
 )
 from src.classical_detectors import detector_score
@@ -28,6 +28,7 @@ from src.postprocess import gradient_orientation, non_maximum_suppression
 from benchmark_uded import SCALES
 from src.bipolar_fuzzy import context_gate
 from synthetic_v2 import BASE as SYNTHETIC_BASE, build_split, make_sample
+from automation.visual_report import write_panel_grid
 
 ROOT = Path(__file__).resolve().parent
 DEFAULT_OUT = ROOT / "results" / "local_dev" / "stage14h_gravity_smoothing"
@@ -140,11 +141,28 @@ def main() -> int:
     clean_delta = clean["gravitational"] - clean["median_control"]
     positive_families = sum(float(np.mean(x)) > 0 for x in family_adv.values())
     criterion = mean_adv >= .005 and clean_delta >= -.01 and positive_families >= 3
+
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     pd.DataFrame(condition_rows).to_csv(out / "condition_metrics.csv", index=False)
     pd.DataFrame(image_rows).to_csv(out / "per_image_metrics.csv", index=False)
     pd.DataFrame(degradation).to_csv(out / "degradation_by_family_severity.csv", index=False)
+
+    # Deterministic qualitative evolution panel. Use the first odd-index
+    # evaluation base image and fixed severity-1.0 conditions; never pick an
+    # example based on post-hoc visual appeal. The retained best remains the
+    # median incumbent unless the preregistered promotion criterion is met.
+    retained_best = "gravitational" if criterion else "median_control"
+    preview_labels = ["clean"] + [f"{family}_s1.00" for family in CORRUPTIONS]
+    preview_rows = []
+    for label in preview_labels:
+        item = eval_items[label][0]
+        incumbent_pred = eval_scores["median_control"][label][0] >= thresholds["median_control"]
+        candidate_pred = eval_scores["gravitational"][label][0] >= thresholds["gravitational"]
+        best_pred = incumbent_pred if retained_best == "median_control" else candidate_pred
+        preview_rows.append([item["img"], item["gt"], incumbent_pred, candidate_pred, best_pred])
+    preview_path = write_panel_grid(out / "best_method_preview.png", preview_rows)
+
     summary = {"stage": "14h-gravitational-smoothing-falsification",
                "dataset_role": "synthetic_v2 validation only; development", "external_or_uded_data_used": False,
                "calibration": "20 even-index clean images; thresholds frozen for all conditions",
@@ -157,11 +175,19 @@ def main() -> int:
                "promotion_rule": "mean corrupted F1 advantage >= +0.005; clean delta >= -0.01; positive mean advantage in at least 3 of 4 families",
                "primary_result": {"mean_corrupted_F1_advantage": mean_adv, "clean_F1_delta": clean_delta,
                                   "families_with_positive_advantage": positive_families, "criterion_met": criterion},
+               "retained_best_method": retained_best,
                "thresholds": thresholds, "metrics": results,
-               "files": ["condition_metrics.csv", "per_image_metrics.csv", "degradation_by_family_severity.csv"]}
+               "visual_preview": {
+                   "file": preview_path.name,
+                   "selection": "first odd-index evaluation base image; deterministic, not result-selected",
+                   "rows": preview_labels,
+                   "columns": ["input", "ground_truth", "median_incumbent", "gravitational_candidate", "retained_best"]
+               },
+               "files": ["condition_metrics.csv", "per_image_metrics.csv", "degradation_by_family_severity.csv", "best_method_preview.png"]}
     (out / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print("STAGE14H_GRAVITY_SMOOTHING_COMPLETE")
     print(out / "summary.json")
+    print(preview_path)
     return 0
 
 
