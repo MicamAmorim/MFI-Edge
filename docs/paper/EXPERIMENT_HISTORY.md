@@ -14,6 +14,24 @@ Stage 13c preflight passed: the local BIPEDv2 files contain 200 paired training 
 
 Stage 13d completed on the frozen BIPEDv2 test split (50 images, native 1280×720; 54.0 s/image average). The ratio-control representative scored fixed F1 0.7461 versus 0.7370 for Scharr (paired delta +0.00906, 95% bootstrap interval [+0.00712, +0.01101]); positive control and separable bicapacity scored 0.7254 and 0.7339, respectively, both below Scharr. These are fixed-threshold, single-annotator BIPED edge-map diagnostics and cannot establish superiority under the distinct Berkeley boundary protocol. No tuning or candidate changes follow from this external result. With the earlier BSDS500 proxy diagnostic also complete, the next predeclared validation step is an official Berkeley evaluation of frozen soft maps, if a compatible benchmark runtime and adapter are available.
 
+## Stage 14b — spatial polarity mechanism ablation (development only)
+
+Using only the 15 UDED selection images in 5×3 repeated leakage-free CV, the
+spatial positive-vs-negative ratio controller did not support the preregistered
+hypothesis that aligned anti-texture localization adds value beyond negative
+burden alone. Its aggregate CV F1 was 0.75669, versus 0.75922 for the
+image-mean-negative control and 0.75889 for positive-only. The mean paired fold
+difference against image-mean negative was −0.00213 (6 wins, 9 losses); repeated
+folds are descriptive and not independent significance evidence. Spatial ratio
+control also trailed positive-only by 0.00202 mean fold F1. The no-negative ratio
+control (0.75144) was lower, so this test does not show that all negative
+information is irrelevant; it specifically fails to support spatial alignment.
+No external results or UDED held-out data informed this interpretation.
+
+The next registered test is feature pruning: compare the fold-trained full
+positive bank with the five features stable in every Stage-12d split, holding
+aggregation, Scharr+NMS localization, gate, and fold-fitted threshold fixed.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

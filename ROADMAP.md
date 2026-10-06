@@ -82,6 +82,17 @@ Stage 12d used only the 15 UDED selection images, with **5 repeats × 3 folds = 
 | separable bi-capacity | 0.75811 | +0.00715 |
 | ratio control | 0.75669 | +0.00573 |
 
+## Stage 14b â€” spatial polarity mechanism ablation
+
+On UDED selection only (5 repeats × 3 folds), the spatial negative-evidence ratio
+scored CV F1 0.75669, below positive-only (0.75889) and marginally below the
+image-mean-negative control (0.75922). Its mean fold delta against the image-mean
+control was −0.00213; the preregistered criterion for spatial anti-texture support
+was not met. This does not establish that negative evidence is universally
+useless, but it removes spatial negative localization as a supported mechanism
+for the current candidate. The next Stage-14 step prunes the positive feature
+bank before any conditional combination is considered.
+
 The positive-only controller narrowly wins. The separable bi-capacity remains very close and occupies **12 of the global top 20** configurations, versus 8 positive controls, but current repeated-CV evidence does not support claiming that negative evidence adds performance beyond the positive bank.
 
 The positive bank is very stable: `gabor4_s5`, `hessian_s7`, `gabor4_s13`, `hessian_s13`, and `gabor4_scale_persistence` appeared in all 15 splits. The strongest anti-texture feature, `steered_hessian_scale_centroid`, also appeared in all 15 splits.

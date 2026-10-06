@@ -78,5 +78,20 @@
       "results/local_dev/stage14b_polarity_ablation/fold_results.csv",
       "results/local_dev/stage14b_polarity_ablation/bank_stability.csv"
     ]
+  },
+  "stage14c_positive_bank_pruning": {
+    "description": "Leakage-free repeated-CV pruning test on UDED selection only: compare the fold-trained full positive signature bank against a compact subset of universally stable positive features, with identical positive-only aggregation and fold-fitted thresholds.",
+    "runner": "python",
+    "path": "run_stage14c_positive_bank_pruning.py",
+    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256"],
+    "role": "development_test",
+    "feedback_policy": "development_only_feature_pruning_no_external_feedback",
+    "one_shot": true,
+    "result_files": [
+      "results/local_dev/stage14c_positive_bank_pruning/summary.json",
+      "results/local_dev/stage14c_positive_bank_pruning/variant_ranking.csv",
+      "results/local_dev/stage14c_positive_bank_pruning/fold_results.csv",
+      "results/local_dev/stage14c_positive_bank_pruning/bank_stability.csv"
+    ]
   }
 }
