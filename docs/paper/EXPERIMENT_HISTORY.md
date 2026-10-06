@@ -488,6 +488,23 @@ validation image of the first split. The 2026-10-06 SOTA ledger remains
 current; this checkpoint found no new matched-protocol frontier result that
 changes its target rows.
 
+Stage 14n completed without promotion. The compact incumbent achieved
+aggregate F1 `0.759053` at precision `0.671339`; the shallow forest achieved
+F1 `0.734127` at precision `0.632782`. Aggregate F1 therefore changed by
+`-0.024925`, aggregate precision by `-0.038556`, and mean fold F1 by
+`-0.025724`, with only 2/15 fold wins. All 15 forest models produced finite
+predictions, and recall was nearly unchanged (`+0.000993`), so the failure is
+specifically a large precision deficit rather than invalid fitting or a recall
+collapse. The full preregistered conjunction failed. The compact five-feature
+positive controller with grayscale Scharr+NMS remains incumbent; forest size,
+depth, leaves, sampling, channels, and calibration must not be tuned from this
+outcome. This bounded binary forest does not falsify full structured-patch
+forests. The deterministic preview contains conditioned input, ground truth,
+incumbent, candidate, and retained best for the predeclared first validation
+image and remains documentary only. The next action is the repeatable
+high-reasoning live-literature escalation for a mechanistically distinct
+development-only falsification.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

@@ -256,6 +256,14 @@ compositing machinery of a structured forest. Parameters and the conjunction
 promotion rule are frozen in `docs/paper/STAGE14N_PREREGISTRATION.md`; no
 forest sweep is allowed from the outcome.
 
+Stage 14n completed without promotion. The shallow forest changed aggregate
+F1 by `-0.024925`, aggregate precision by `-0.038556`, and mean fold F1 by
+`-0.025724`, with only 2/15 fold wins. All 15 models were finite and recall
+was nearly unchanged, isolating a large precision deficit. The compact
+five-feature Choquet controller with grayscale Scharr+NMS remains incumbent.
+Do not tune forest capacity, sampling, channels, or calibration from this
+result; a mechanistically distinct live-literature escalation is next.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
@@ -298,7 +306,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | post-texture mechanism search | 🟢 completed | selected fixed-form linear probability-of-boundary cue fusion |
 | Stage 14m linear cue fusion | 🟢 completed | converged in 15/15 folds but reduced aggregate F1; compact Choquet controller retained |
 | post-linear-fusion mechanism search | 🟢 completed | selected a bounded shallow edge-forest localizer from primary Structured Forest/OEF literature |
-| Stage 14n shallow edge forest | 🟡 registered | fixed nonlinear dense localizer; UDED-selection 5x3 leakage-free CV; no forest sweep |
+| Stage 14n shallow edge forest | 🟢 completed | finite in 15/15 folds but large F1/precision loss and only 2/15 wins; not promoted |
+| post-forest mechanism search | 🟡 next | live-literature escalation; select one mechanistically distinct development-only falsification |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 
