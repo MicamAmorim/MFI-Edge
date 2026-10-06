@@ -5,8 +5,8 @@ cd /d %~dp0
 echo ============================================================
 echo MFI-Edge Research Autopilot
 echo Local experiments + on-demand Codex decisions
-
 echo Codex is NOT kept running while benchmarks execute.
+echo Completed experiments are resumed safely if Codex analysis fails.
 echo Create automation\STOP at any time to stop before the next step.
 echo ============================================================
 echo.
@@ -25,7 +25,7 @@ where codex >nul 2>nul || (
   exit /b 1
 )
 
-python automation\research_controller.py %*
+python automation\research_controller_v2.py %*
 set RC=%ERRORLEVEL%
 if not "%RC%"=="0" (
   echo.
