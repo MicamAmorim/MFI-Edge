@@ -1,13 +1,21 @@
 {
-  "phase": "stage14_literature_guided_development",
-  "goal": "Open a new development generation for MFI-Edge using only development-authorized data. Explain and improve contextual fuzzy control of Scharr+NMS through interpretable mechanisms, then freeze a new generation before any future untouched external test.",
+  "phase": "autonomous_non_neural_sota_research",
+  "goal": "Develop an interpretable non-neural edge/boundary detector that surpasses the strongest verified neural-network methods under matched official protocols across multiple diverse benchmarks, while preserving strict development/test separation and generalization.",
+  "ultimate_goal": {
+    "constraint": "Final inference must contain no neural network, pretrained neural feature extractor, neural embedding, or neural postprocessor.",
+    "target": "Beat the highest verified neural-network literature metrics on a predeclared multi-benchmark generalization suite under matched official or author-designated protocols.",
+    "generalization_gate": "At least three diverse datasets/protocols, with at least one genuinely untouched external evaluation at the time the frozen generation is selected; no final/test outcome may drive model selection.",
+    "sota_ledger": "docs/paper/SOTA_TARGETS.md",
+    "success_flag": "Set goal_reached=true only after the SOTA ledger is freshly verified from primary literature and the frozen non-neural generation satisfies the full multi-benchmark gate."
+  },
   "success_criteria": [
-    "All Stage-14 architecture selection, feature selection, thresholds, and hyperparameters use only synthetic development sets and UDED selection with leakage-free repeated CV, or a future split explicitly designated as development before inspection.",
-    "At least three mechanistically distinct hypotheses are considered at the research checkpoint, with exactly one minimal falsification experiment registered at a time.",
-    "Candidate directions include the already implemented d-Choquet/d-CF/d-XC/d-CC RDF family, analysis/ablation of relative positive-vs-negative contextual control, and conditional/mixture-of-experts routing only when complementarity is demonstrated on development data.",
-    "Feature and mechanism ablations are used to prune redundant components before any larger combination model is attempted.",
-    "A new model generation is frozen only after repeated leakage-free development evidence is stable; BSDS500 test, BIPEDv2 test, and UDED held-out remain unavailable for tuning or model selection.",
-    "A future external validation is performed only on a genuinely untouched dataset/protocol reserved before observing its labels/results."
+    "All architecture selection, feature selection, thresholds, routing rules, and hyperparameters use only development-authorized data: synthetic development sets, UDED selection with leakage-free repeated CV, or a future split explicitly designated as development before target inspection.",
+    "The agent may autonomously prune, combine, redesign, promote, and replace classical/fuzzy/non-neural models and methodologies when development evidence and preregistered protocol justify the change.",
+    "New mechanisms are evaluated with interpretable ablations or bounded hypothesis-led searches; repeated failures in one mechanism family trigger research into a mechanistically distinct family instead of endless micro-tuning.",
+    "A new model generation is frozen only after stable development evidence; inspected UDED held-out, BSDS500 test, and BIPEDv2 test remain unavailable for optimization or experiment prioritization.",
+    "Final SOTA claims use official or author-designated evaluators and matched metrics. Incompatible metric/protocol numbers are not compared as if equivalent.",
+    "A genuinely untouched external benchmark/protocol is reserved before the final generalization claim.",
+    "Every image-based development benchmark produces deterministic qualitative artifacts, including best_method_preview.png from fixed/predeclared examples, so model evolution can be visually inspected without cherry-picking."
   ],
   "optimization_policy": {
     "development_feedback_allowed": [
@@ -15,47 +23,66 @@
       "UDED selection repeated leakage-free CV",
       "future explicitly predesignated development splits"
     ],
-    "development_confirmation_only": ["UDED held-out (historically inspected; do not optimize on it)"],
+    "development_confirmation_only": [
+      "UDED held-out (historically inspected; do not optimize on it)"
+    ],
     "external_test_no_tuning": [
       "BSDS500 test",
       "BIPEDv2 test",
-      "any future untouched final/external split"
+      "any future untouched final/external split after inspection"
     ],
-    "rule": "Never choose or alter hyperparameters, descriptors, thresholds, operator choices, architecture, or experiment priority from external/final test outcomes. External results may be documented but are not an optimization signal."
+    "rule": "Never choose or alter hyperparameters, descriptors, thresholds, operator choices, architecture, experiment priority, or routing rules from external/final test outcomes. External results may be documented but are not an optimization signal."
   },
   "autonomy_policy": {
-    "normal_mode": "Use low reasoning and repository-local evidence to interpret a completed development experiment and prepare exactly one next allow-listed experiment.",
-    "research_escalation": "Use medium reasoning plus live web search when available at research-planning checkpoints, after contradictory development evidence, or after repeated stagnation.",
-    "stagnation_rule": "After three consecutive failed development hypotheses from the same mechanism family, stop micro-tuning that family and research a mechanistically different direction.",
+    "normal_mode": "Use medium reasoning and the injected persistent scientific context to interpret completed development experiments, update records, and register the next scientifically justified experiment.",
+    "research_escalation": "Use high reasoning plus live web search at research-planning/literature-escalation checkpoints, after contradictions, when no obvious next experiment exists, after repeated stagnation, and before final SOTA verification.",
+    "fallback": "If an experiment fails or Codex has no immediate next experiment but no hard human blocker exists and the ultimate goal is not reached, automatically escalate to a literature/mechanism research checkpoint instead of stopping.",
+    "stagnation_rule": "After three consecutive failed development hypotheses from the same mechanism family, mark that family stagnant and seek a mechanistically different direction before further tuning.",
     "literature_priority": [
       "peer-reviewed primary method papers",
       "official author repositories",
-      "recent preprints when necessary",
-      "benchmark/dataset primary sources"
+      "official benchmark/dataset sources",
+      "recent preprints when necessary for the current SOTA frontier"
     ],
-    "one_change_rule": "Prefer one interpretable mechanism change per iteration and the smallest valid falsification experiment.",
-    "combination_rule": "Do not build a large ensemble by default. First prune models/features; combine surviving mechanisms only if development-only ablations show complementary errors or regime-specific benefit."
+    "one_change_rule": "Prefer one interpretable mechanism change per falsification iteration; larger bounded searches are allowed after a research checkpoint justifies the mechanism family and preregisters the search space.",
+    "combination_rule": "Prune first. Combine surviving mechanisms when development-only evidence shows complementary errors/regimes or when a preregistered mechanistic rationale justifies an interpretable combination.",
+    "human_blocker_rule": "Routine scientific uncertainty, documentation conflicts with resolvable provenance, failed hypotheses, literature review, ablation design, pruning, and combination design are not human blockers. requires_human=true is reserved for credentials/license acceptance, protected-lineage changes, unsafe/destructive external actions, or irreducible methodological ambiguity that would invalidate a final claim."
   },
-  "stage14_initial_questions": [
-    "Do RDF-based d-Choquet/d-CF/d-XC/d-CC operators improve robustness of the multiscale signature under blur, noise, texture, or scale heterogeneity?",
-    "Does relative positive-vs-negative contextual evidence provide a reproducible development-only advantage over positive-only and separable bi-capacity controls, and which terms are essential?",
-    "Are there identifiable regimes where distinct fuzzy controllers are complementary enough to justify a small interpretable conditional expert model?"
+  "visual_reporting": {
+    "required": true,
+    "minimum_artifact": "best_method_preview.png",
+    "selection_policy": "Use fixed/predeclared representative examples or deterministic manifest positions; do not select examples after seeing which images make a candidate look best.",
+    "preferred_layout": "Input, ground truth, incumbent prediction, candidate prediction, and current-best prediction when practical.",
+    "purpose": "Qualitative inspection and evolution tracking only; images must not silently become the optimization signal."
+  },
+  "research_families": [
+    "multiscale structural/context signature refinement",
+    "fuzzy measures and Choquet-like/nonadditive aggregation",
+    "RDF/d-Choquet-like operators when mechanistically justified",
+    "classical conditioning and denoising that preserves boundaries",
+    "topology/connectivity repair and geometric consistency",
+    "non-neural statistical calibration or interpretable routing",
+    "frequency/phase/curvature/scale-space descriptors",
+    "non-neural mixture/conditional experts after complementarity evidence",
+    "bounded combinations of independently supported mechanisms"
   ],
   "next_sequence": [
-    "Stage 14a literature and architecture research checkpoint",
-    "one minimal development-only falsification experiment",
-    "development-only ablation/pruning",
-    "repeat or switch mechanism according to stagnation policy",
-    "freeze a new generation only after stable repeated-CV evidence",
-    "reserve a new untouched external validation before any final claim"
+    "continue from the current registered development experiment",
+    "interpret with persistent scientific context",
+    "update paper/history/context and qualitative artifacts",
+    "register exactly one next falsification or a bounded preregistered search",
+    "if direction is unclear, run autonomous literature escalation with high reasoning and live web search",
+    "freeze generations only after stable development evidence",
+    "periodically refresh the SOTA target ledger",
+    "reserve a new untouched final benchmark before declaring generalized SOTA",
+    "continue until goal_reached=true or the user explicitly stops, except for hard external blockers"
   ],
   "stop_conditions": [
-    "human STOP file exists",
-    "controller budget is reached",
-    "Codex requires a protected scientific-file change",
-    "no scientifically valid allow-listed next experiment exists",
-    "a proposed experiment would use BSDS500 test, BIPEDv2 test, or UDED held-out as optimization feedback",
-    "a dataset/evaluator ambiguity requires human methodological review",
-    "an external dataset requires credentials or license acceptance that cannot be automated safely"
+    "goal_reached=true after the full generalized non-neural SOTA gate is verified",
+    "human STOP file exists or the user terminates the process",
+    "a protected scientific-lineage change is scientifically necessary and policy forbids autonomous modification",
+    "external credentials, license acceptance, payment, or other user-only action is required",
+    "an unsafe/destructive environment action outside the permitted sandbox is required",
+    "an irreducible methodological ambiguity would make a final claim invalid and cannot be resolved from code, provenance, literature, or official benchmark documentation"
   ]
 }
