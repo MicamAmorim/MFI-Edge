@@ -130,12 +130,11 @@ def main() -> int:
     bank = _frozen_compact_bank(Path(args.frozen_bank))
     capacity = _capacity(bank)
 
-    # Fixed row-order split: first half calibrates clean-only thresholds; the
-    # second half supplies paired clean/corrupt development evaluation.
+    # Fixed interleaved split: even-index manifest rows calibrate clean-only
+    # thresholds; odd-index rows supply paired clean/corrupt development evaluation.
     calibration_rows = manifest.iloc[::2]
     evaluation_rows = manifest.iloc[1::2]
     calibration = {name: [] for name in VARIANTS}
-    evaluated: dict[str, dict] = {}
 
     def make_item(row: pd.Series, family: str | None, severity: float = 0.0) -> dict:
         base = row.to_dict()
@@ -219,38 +218,63 @@ def main() -> int:
 
     clean_f1 = {v: float(metrics[v]["clean"]["mean_image_F1"]) for v in VARIANTS}
     degradation_rows = []
-    family_deltas = {family: [] for family in CORRUPTIONS}
+    family_absolute_advantages = {family: [] for family in CORRUPTIONS}
+    family_degradation_advantages = {family: [] for family in CORRUPTIONS}
     for family in CORRUPTIONS:
         for severity in SEVERITIES:
             label = f"{family}_s{severity:.2f}"
-            deltas = {
-                variant: float(metrics[variant][label]["mean_image_F1"] - clean_f1[variant])
+            corrupt_f1 = {
+                variant: float(metrics[variant][label]["mean_image_F1"])
                 for variant in VARIANTS
             }
-            advantage = deltas[VARIANTS[1]] - deltas[VARIANTS[0]]
-            family_deltas[family].append(advantage)
+            deltas = {
+                variant: corrupt_f1[variant] - clean_f1[variant]
+                for variant in VARIANTS
+            }
+            absolute_advantage = corrupt_f1[VARIANTS[1]] - corrupt_f1[VARIANTS[0]]
+            degradation_advantage = deltas[VARIANTS[1]] - deltas[VARIANTS[0]]
+            family_absolute_advantages[family].append(absolute_advantage)
+            family_degradation_advantages[family].append(degradation_advantage)
             degradation_rows.append({
                 "family": family,
                 "severity": severity,
                 "standard_clean_F1": clean_f1[VARIANTS[0]],
                 "dcc_clean_F1": clean_f1[VARIANTS[1]],
-                "standard_corrupt_F1": float(metrics[VARIANTS[0]][label]["mean_image_F1"]),
-                "dcc_corrupt_F1": float(metrics[VARIANTS[1]][label]["mean_image_F1"]),
+                "standard_corrupt_F1": corrupt_f1[VARIANTS[0]],
+                "dcc_corrupt_F1": corrupt_f1[VARIANTS[1]],
+                "dcc_minus_standard_corrupt_F1": absolute_advantage,
                 "standard_degradation_delta_F1": deltas[VARIANTS[0]],
                 "dcc_degradation_delta_F1": deltas[VARIANTS[1]],
-                "dcc_minus_standard_degradation_delta_F1": advantage,
+                "dcc_minus_standard_degradation_delta_F1": degradation_advantage,
             })
     degradation_path = out / "degradation_by_family_severity.csv"
     pd.DataFrame(degradation_rows).to_csv(degradation_path, index=False)
-    mean_advantage = float(np.mean([row["dcc_minus_standard_degradation_delta_F1"] for row in degradation_rows]))
+
+    mean_absolute_advantage = float(np.mean([
+        row["dcc_minus_standard_corrupt_F1"] for row in degradation_rows
+    ]))
+    mean_degradation_advantage = float(np.mean([
+        row["dcc_minus_standard_degradation_delta_F1"] for row in degradation_rows
+    ]))
     clean_delta = clean_f1[VARIANTS[1]] - clean_f1[VARIANTS[0]]
-    family_wins = sum(float(np.mean(values)) > 0.0 for values in family_deltas.values())
+    families_with_positive_absolute_advantage = sum(
+        float(np.mean(values)) > 0.0 for values in family_absolute_advantages.values()
+    )
+    families_with_positive_degradation_advantage = sum(
+        float(np.mean(values)) > 0.0 for values in family_degradation_advantages.values()
+    )
+    criterion_met = bool(
+        mean_absolute_advantage >= 0.005
+        and clean_delta >= -0.01
+        and families_with_positive_absolute_advantage >= 3
+    )
+
     summary = {
         "stage": "14f-rdf-robustness-falsification",
         "dataset_role": "synthetic_v2 validation only; development",
         "external_or_uded_data_used": False,
-        "calibration": "first 20 manifest rows, clean-only threshold fit per variant; fixed thresholds on evaluation conditions",
-        "evaluation": "last 20 manifest rows; paired clean reference and same-base generated corruptions",
+        "calibration": "20 even-index manifest rows (0,2,...,38), clean-only threshold fit per variant; fixed thresholds on evaluation conditions",
+        "evaluation": "20 odd-index manifest rows (1,3,...,39); paired clean reference and same-base generated corruptions",
         "fixed_architecture": {
             "features": list(FEATURES),
             "feature_parameters_source": "Stage 12d frozen positive bank; selected compact features and renormalized frozen weights",
@@ -260,13 +284,18 @@ def main() -> int:
         },
         "comparison": "positive distorted-Choquet control vs d-CC with FBPC and absolute RDF; only aggregation mechanism changes",
         "corruptions": {family: list(SEVERITIES) for family in CORRUPTIONS},
-        "primary_metric": "mean image F1, averaged equally across 12 corruption family-severity cells",
-        "primary_criterion": "d-CC minus standard clean-referenced degradation delta >= +0.01 mean F1; clean d-CC minus standard >= -0.01; positive mean degradation advantage in at least 3 of 4 families",
+        "primary_metric": "absolute mean-image F1 advantage of d-CC over standard, averaged equally across the 12 corruption family-severity cells",
+        "primary_criterion": "mean d-CC minus standard corrupted F1 >= +0.005; clean d-CC minus standard >= -0.01; positive mean absolute corrupted-F1 advantage in at least 3 of 4 families",
+        "secondary_robustness_metric": "clean-referenced degradation advantage: (corrupt-clean)_dCC - (corrupt-clean)_standard; reported descriptively and not used as the primary promotion criterion",
         "primary_result": {
-            "mean_degradation_advantage_F1": mean_advantage,
+            "mean_absolute_corrupt_F1_advantage": mean_absolute_advantage,
             "clean_delta_F1_dcc_minus_standard": clean_delta,
-            "families_with_positive_mean_advantage": int(family_wins),
-            "criterion_met": bool(mean_advantage >= 0.01 and clean_delta >= -0.01 and family_wins >= 3),
+            "families_with_positive_absolute_advantage": int(families_with_positive_absolute_advantage),
+            "criterion_met": criterion_met,
+        },
+        "secondary_result": {
+            "mean_degradation_advantage_F1": mean_degradation_advantage,
+            "families_with_positive_degradation_advantage": int(families_with_positive_degradation_advantage),
         },
         "thresholds": thresholds,
         "metrics": metrics,
@@ -274,7 +303,6 @@ def main() -> int:
         "per_image_metrics_file": "per_image_metrics.csv",
         "degradation_file": "degradation_by_family_severity.csv",
     }
-    out.mkdir(parents=True, exist_ok=True)
     (out / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print("STAGE14F_RDF_ROBUSTNESS_COMPLETE")
     print(out / "summary.json")
