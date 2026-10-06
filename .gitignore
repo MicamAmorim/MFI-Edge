@@ -4,6 +4,7 @@ __pycache__/
 .env
 .DS_Store
 data/bsds500/
+datasets/BSDS500/
 outputs/
 outputs_synthetic/
 outputs_synthetic_3x3/
