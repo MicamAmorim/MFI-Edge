@@ -569,8 +569,12 @@ The required official BSDS500-validation attachment initially failed before
 any evaluation because `evaluation/bsds_official/export_incumbent.py`, launched
 by absolute path, did not place the repository root on Python's import path and
 could not import `benchmark_uded`. This is an evaluator plumbing defect, not a
-scientific rerun condition. The import path was repaired and an attachment-only
-retry registered; Stage-14o CV and the frozen exported methods are unchanged.
+scientific rerun condition. After that path was repaired, the first retry
+exposed the equivalent absolute-path import assumption in the Stage-14o
+candidate exporter before any candidate map was scored. The candidate runner
+now has the same explicit repository-root bootstrap and a second
+attachment-only retry is registered; Stage-14o CV and the frozen exported
+methods are unchanged.
 Although no BSDS result can rescue promotion after the UDED conjunction failed,
 ODS/OIS/AP remain required documentary development evidence before Stage 14o
 is closed and work advances to the Ambrosio–Tortorelli phase-field family.

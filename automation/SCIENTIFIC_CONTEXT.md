@@ -186,12 +186,13 @@ normalization quantile, capacity endpoints, gamma, or gate from the result.
 The UDED portion has now failed all non-collapse criteria: aggregate F1 delta
 `-0.00980`, precision delta `-0.01532`, mean fold-F1 delta `-0.00798`, and
 `0/15` fold wins. Stage 14o therefore cannot be promoted regardless of its
-pending BSDS-val metrics. Its first official attachment failed before export
-because the incumbent exporter lacked the repository root on `sys.path`; an
-attachment-only retry is registered after repairing that technical path. Do
-not rerun the CV or tune the interval mechanism. After the official metrics
-are documented, proceed to the preregistered Ambrosio–Tortorelli phase-field
-family.
+pending BSDS-val metrics. The initial attachment exposed an absolute-path
+import issue in the incumbent exporter; the first retry then exposed the same
+issue in the candidate exporter. Both are plumbing failures before scoring,
+not scientific evidence. A second attachment-only retry is registered after
+making the candidate import path explicit. Do not rerun the CV or tune the
+interval mechanism. After the official metrics are documented, proceed to the
+preregistered Ambrosio–Tortorelli phase-field family.
 
 ## d-Choquet terminology
 

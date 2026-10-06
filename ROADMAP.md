@@ -329,7 +329,7 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | post-linear-fusion mechanism search | 🟢 completed | selected a bounded shallow edge-forest localizer from primary Structured Forest/OEF literature |
 | Stage 14n shallow edge forest | 🟢 completed | finite in 15/15 folds but large F1/precision loss and only 2/15 wins; not promoted |
 | post-forest mechanism search | 🟢 completed | selected explicit interval ignorance plus convex reliability-conditioned capacity |
-| Stage 14o interval-capacity uncertainty | 🟡 UDED rejected; attachment retry pending | failed all UDED non-collapse criteria with 0/15 wins; retry official BSDS500-val only, then move to Ambrosio–Tortorelli |
+| Stage 14o interval-capacity uncertainty | 🟡 UDED rejected; second attachment retry pending | failed all UDED non-collapse criteria with 0/15 wins; candidate export import path repaired for BSDS500-val retry, then move to Ambrosio–Tortorelli |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

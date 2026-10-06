@@ -1,0 +1,11 @@
+{
+  "status": "evaluator_failed",
+  "experiment_id": "stage14o_official_eval_retry",
+  "role": "official_eval_retry",
+  "returncode": 1,
+  "manifest": "results/local_dev/stage14o_interval_capacity_uncertainty/official_eval_manifest.json",
+  "manifest_sha256": "f76c3cd96feb68dca2bebe54510aecf2f184670466102ff5fe4ca7f05db92272",
+  "stdout_tail": "",
+  "stderr_tail": "Traceback (most recent call last):\n  File \"C:\\Users\\Windows 11\\Documents\\MFI-Edge\\evaluation\\bsds_official\\run_official_bsds.py\", line 537, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"C:\\Users\\Windows 11\\Documents\\MFI-Edge\\evaluation\\bsds_official\\run_official_bsds.py\", line 440, in main\n    pred, meta = _export_method(\n                 ^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Windows 11\\Documents\\MFI-Edge\\evaluation\\bsds_official\\run_official_bsds.py\", line 285, in _export_method\n    p = _run(\n        ^^^^^\n  File \"C:\\Users\\Windows 11\\Documents\\MFI-Edge\\evaluation\\bsds_official\\run_official_bsds.py\", line 64, in _run\n    raise RuntimeError(\nRuntimeError: command failed (1): ['C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\.venv\\\\Scripts\\\\python.exe', 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\run_stage14o_interval_capacity_uncertainty.py', '--export-bsds', '--image-dir', 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\evaluation\\\\bsds_official\\\\vendor\\\\BSDS500\\\\BSDS500\\\\data\\\\images\\\\val', '--output-dir', 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\automation\\\\runtime\\\\official_eval_cache\\\\experiments\\\\stage14o_official_eval_retry\\\\interval_capacity_uncertainty\\\\val', '--split', 'val']\nSTDOUT:\n\nSTDERR:\nTraceback (most recent call last):\n  File \"C:\\Users\\Windows 11\\Documents\\MFI-Edge\\run_stage14o_interval_capacity_uncertainty.py\", line 26, in <module>\n    from automation.visual_report import write_panel_grid\nModuleNotFoundError: No module named 'automation'\n",
+  "failure_policy": "report_and_continue"
+}

@@ -17,6 +17,14 @@ from collections import defaultdict
 from pathlib import Path
 import argparse
 import json
+import sys
+
+# The official evaluator launches this exporter by absolute path from its own
+# module directory. Make repository-local imports independent of subprocess
+# working-directory and Python path details.
+ROOT = Path(__file__).resolve().parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 import numpy as np
 import pandas as pd
@@ -41,7 +49,6 @@ from run_stage14c_positive_bank_pruning import (
 from src.bipolar_fuzzy import context_gate, distorted_choquet
 
 
-ROOT = Path(__file__).resolve().parent
 DEFAULT_OUT = ROOT / "results" / "local_dev" / "stage14o_interval_capacity_uncertainty"
 VARIANTS = ("compact_incumbent", "interval_capacity_uncertainty")
 UNCERTAINTY_QUANTILE = 0.95
