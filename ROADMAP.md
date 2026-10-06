@@ -122,6 +122,17 @@ by Gaussian-noise, blur, texture, and compound family at three predeclared
 severities. The comparison changes only the aggregation layer; external sets
 and UDED held-out remain unavailable for design or feedback.
 
+Stage 14f completed and did not support d-CC promotion. Its absolute mean
+corrupted-F1 advantage was -0.00191; clean mean-image F1 changed by -0.00280;
+there were zero corruption families with positive absolute advantage. The
+descriptive clean-referenced degradation advantage was +0.00088 (positive in
+three families), below the +0.01 threshold in the history. The runner summary
+instead labels absolute corrupted F1 with a +0.005 threshold as primary. This
+preregistration/reporting mismatch is recorded in `docs/paper/EXPERIMENT_HISTORY.md`;
+both criteria failed, so d-CC is not retained. RDF robustness remains an
+unsupported hypothesis on this protocol. No external or UDED held-out result
+informed the interpretation.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**

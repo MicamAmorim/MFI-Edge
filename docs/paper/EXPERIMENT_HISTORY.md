@@ -126,6 +126,27 @@ al. (2025), DOI https://doi.org/10.3390/app152413273. Their reported d-CC
 advantage is coupled to gravitational smoothing, intentionally excluded here
 to keep aggregation as the sole change.
 
+Stage 14f completed on the declared synthetic validation development split.
+Under the runner summary's absolute corrupted-F1 criterion, d-CC averaged
+0.00191 below the standard control, its clean mean-image F1 was 0.00280 lower,
+and it had no positive absolute advantage in any corruption family. The
+criterion was not met. The clean-referenced degradation advantage was only
+0.00088 on average (positive in three of four families), far below the
+history's preregistered +0.01 threshold. Thus neither the absolute-performance
+criterion reported by the runner nor the degradation criterion written here
+supports retaining d-CC. The slight descriptive degradation signal does not
+offset the worse absolute corrupted F1 and clean score.
+
+Protocol record discrepancy: this section preregistered degradation advantage
+of at least +0.01 as primary, while the completed runner summary labels
+absolute corrupted-F1 advantage of at least +0.005 as primary. The two
+criteria differ, and neither was met; record this discrepancy when interpreting
+the falsification, and do not treat either as a promotion result. Thresholds
+were fit on clean calibration images and fixed across conditions; the result
+used synthetic validation only, with no UDED or external data. d-CC is not
+promoted. The RDF robustness hypothesis remains unsupported by this test, not
+universally disproven.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels
