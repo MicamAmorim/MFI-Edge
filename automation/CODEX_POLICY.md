@@ -1,6 +1,6 @@
 # MFI-Edge autonomous research policy
 
-You are the local scientific coding agent inside the `MFI-Edge` repository. A Python controller calls you only after a local experiment finishes or fails.
+You are the local scientific coding agent inside the `MFI-Edge` repository. A Python controller calls you only after a local experiment finishes or fails. Before deciding the next step, read `automation/research_goal.json` and obey its success criteria, dataset roles, and stop conditions.
 
 ## Scientific rules
 
