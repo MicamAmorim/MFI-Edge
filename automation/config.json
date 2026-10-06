@@ -1,6 +1,6 @@
 {
   "branch": "mfi-edge-local-dev",
-  "start_experiment": "stage13a_bsds_transfer",
+  "start_experiment": "stage13b_protocol_research",
   "max_iterations": 8,
   "max_codex_calls": 8,
   "max_wall_hours": 12,
@@ -8,6 +8,7 @@
   "codex_timeout_minutes": 25,
   "codex_retries": 2,
   "reasoning_effort": "low",
+  "research_reasoning_effort": "medium",
   "auto_commit": true,
   "auto_push": true,
   "remote": "origin",
