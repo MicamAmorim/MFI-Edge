@@ -5,12 +5,14 @@ __pycache__/
 .DS_Store
 data/bsds500/
 datasets/BSDS500/
+datasets/BIPED/
 outputs/
 outputs_synthetic/
 outputs_synthetic_3x3/
 benchmark_outputs/
 results/local_dev/
 results/external/
+results/automation/
 cache/local_dev/
 automation/runtime/
 automation/STOP
