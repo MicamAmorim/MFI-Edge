@@ -104,19 +104,19 @@ required. The no-link compact positive controller remains incumbent. Do not
 micro-tune this linker from Stage-14i outcomes; proceed to a mechanistically
 distinct literature escalation.
 
-### Stage 14j — registered phase-congruency context test
+### Stage 14j — phase-congruency context falsification
 
-The post-topology literature escalation selected a representation change:
-append one fixed-default Kovesi PC2 maximum phase-congruency covariance moment
-to the retained five-feature positive bank. Phase congruency tests cross-scale
-phase alignment normalized by local energy, unlike the bank's amplitude-
-dominated Gabor/Hessian evidence. Stage 14j keeps median conditioning,
-distorted-Choquet gamma `0.55`, gate strength `2.0`, floor `0.10`, and
-Scharr+NMS fixed. It uses UDED-selection 5x3 leakage-free repeated CV; phase
-membership, eligibility, weight, and thresholds are fitted inside training
-folds. No phase parameter sweep is permitted. The authoritative protocol is
-`docs/paper/STAGE14J_PREREGISTRATION.md`. A phase/gradient localizer router is
-deferred unless this minimal test establishes development complementarity.
+Appending one fixed-default Kovesi PC2 maximum phase-congruency covariance
+moment to the retained five-feature positive bank did **not** pass the
+preregistered UDED-selection repeated-CV promotion rule. The phase feature was
+training-eligible in 15/15 folds, but aggregate F1 changed by `-0.000361`, mean
+fold F1 by `-0.000251`, and the candidate won only 6/15 folds. Aggregate
+precision changed by `-0.000589`. This shows that the fixed phase moment is
+individually discriminative under the training eligibility test but does not
+establish incremental context value in the current distorted-Choquet gate.
+The compact five-feature controller remains incumbent. Do not tune phase
+parameters or advance the deferred phase/gradient router from this result;
+proceed to a mechanistically distinct literature escalation.
 
 ## d-Choquet terminology
 

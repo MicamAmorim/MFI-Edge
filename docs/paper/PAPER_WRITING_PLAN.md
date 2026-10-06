@@ -386,6 +386,7 @@ Before writing each claim, attach it to evidence.
 | Context-dependent aggregation generalizes better | CH-MFI/Fuzzy++ vs fixed counterpart on multiple datasets | pending local v2 experiments |
 | MFI improves localization | final pixel metrics vs localizer-only | **not yet established on UDED** |
 | MFI improves topology | fixed geodesic-linking ablation with F1 + connectivity endpoints | synthetic gain did not transfer in Stage 14i; fixed linker failed F1 and coverage-effect criteria |
+| Phase congruency adds complementary context | fixed-default phase-moment addition with leakage-free repeated CV | not established; Stage 14j was eligible in all folds but slightly reduced aggregate and mean-fold F1 |
 | Compact measures generalize better than free capacity | family-level validation/test gap comparison | pending |
 | Shapley gating improves robustness/interpretability | regime/scale ablation and frozen test | pending |
 | CH-MFI outperforms modern learned methods | official BSDS/BIPED metrics | not tested |

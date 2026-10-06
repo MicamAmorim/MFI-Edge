@@ -180,6 +180,15 @@ weight only within training folds, and permits no phase-parameter sweep. A
 conditional phase/gradient localizer is deferred until this single-feature
 test establishes complementarity.
 
+Stage 14j completed without promotion. Compact-plus-phase changed aggregate F1
+by `-0.000361` and mean fold F1 by `-0.000251`, with 6/15 fold wins. The phase
+feature was training-eligible in every fold and precision remained within its
+allowed margin, but the three F1 criteria failed. The compact five-feature
+controller remains incumbent. Phase-parameter tuning and the conditional
+phase/gradient router are not justified by this result; the repeatable
+autonomous literature escalation is next and must select a mechanistically
+distinct development-only test.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
@@ -214,7 +223,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | official BSDS500 evaluation | 🔴 | requires official Berkeley MATLAB/CSA++ benchmark tooling; Stage 13a remains a proxy |
 | topology/linking revisit | 🟢 Stage 14i completed | fixed linker not promoted; F1 and coverage-effect criteria failed |
 | post-topology mechanism search | 🟢 completed | selected phase congruency as a distinct representation mechanism |
-| Stage 14j phase context | 🟡 registered next | fixed PC2 defaults; sixth positive membership; UDED-selection CV only |
+| Stage 14j phase context | 🟢 completed | eligible in 15/15 folds but no incremental F1; not promoted |
+| post-phase mechanism search | 🟡 next | autonomous high-reasoning literature escalation; no external feedback |
 | dynamic localizer revisit | ⚪ | keep parked until fixed-Scharr line is understood |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

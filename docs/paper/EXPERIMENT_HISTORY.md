@@ -268,6 +268,25 @@ protocol and promotion criteria are in
 on 2026-10-06 and this mechanism search found no primary benchmark result that
 changes its verified targets.
 
+Stage 14j completed without promotion. The compact incumbent reached aggregate
+F1 `0.759053`, while compact-plus-phase reached `0.758692` (delta
+`-0.000361`). Mean fold F1 changed by `-0.000251`, aggregate precision by
+`-0.000589`, and the candidate won 6/15 folds. Although the phase feature was
+training-eligible in all 15 folds, the preregistered aggregate-F1, positive
+mean-fold-delta, and 9/15-win criteria failed. Thus fixed-default phase
+congruency is discriminative by the training-only eligibility diagnostic but
+has not shown incremental benefit as a sixth positive membership in the
+current gate. The five-feature compact controller remains incumbent.
+
+The deterministic qualitative artifact uses the first validation image of the
+first split. Its columns are conditioned input, ground truth, compact
+incumbent, compact-plus-phase, and retained best; it was not used for model
+selection. The preregistration prohibits tuning phase parameters from this
+outcome. Because the minimal context test did not establish complementarity,
+the deferred phase/gradient localizer router is not advanced. The next
+registered action is the autonomous high-reasoning literature/mechanism
+escalation, excluding held-out and inspected external-test feedback.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels
