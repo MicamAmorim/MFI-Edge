@@ -4,6 +4,29 @@ import { useEffect, useMemo, useState } from 'react'
 
 const API = process.env.NEXT_PUBLIC_MFI_API || 'http://127.0.0.1:8000'
 
+function fmt(value, digits = 4) {
+  if (value === null || value === undefined || Number.isNaN(Number(value))) return '—'
+  return Number(value).toFixed(digits)
+}
+
+function metricLabel(model) {
+  return model?.metric_label || 'Métrica declarada'
+}
+
+function metricValue(model) {
+  return fmt(model?.metric_value ?? model?.selection_ODS)
+}
+
+function secondaryLabel(model) {
+  return model?.secondary_label || 'Secundária'
+}
+
+function secondaryValue(model) {
+  const value = model?.secondary_value ?? model?.heldout_F1
+  if (typeof value === 'number') return fmt(value)
+  return value ?? '—'
+}
+
 function Metric({ label, value }) {
   return (
     <div className="metric">
@@ -32,7 +55,7 @@ function ScaleControl({ attention, scaleIndex, setScaleIndex }) {
             onClick={() => setScaleIndex(i)}
             className={i === scaleIndex ? 'active' : ''}
           >
-            {a.scale ? a.scale : 'Σ'}
+            {a.scale || 'Σ'}
           </button>
         ))}
       </div>
@@ -52,7 +75,7 @@ function ResultCard({ item }) {
           <p className="eyebrow">{item.filename}</p>
           <h3>{item.width} × {item.height}</h3>
         </div>
-        <div className="runtime">{item.runtime_ms.toFixed(0)} ms</div>
+        <div className="runtime">{Number(item.runtime_ms || 0).toFixed(0)} ms</div>
       </div>
 
       <div className="visual-grid">
@@ -60,18 +83,15 @@ function ResultCard({ item }) {
           <figcaption>Original</figcaption>
           <img src={item.original} alt="Original" />
         </figure>
-
         <figure className="attention-panel">
-          <figcaption>Atenção · {selected?.label || '—'}</figcaption>
-          {selected && <img src={selected.overlay} alt="Attention overlay" />}
+          <figcaption>Diagnóstico · {selected?.label || '—'}</figcaption>
+          {selected && <img src={selected.overlay} alt="Diagnostic overlay" />}
           <ScaleControl attention={attention} scaleIndex={scaleIndex} setScaleIndex={setScaleIndex} />
         </figure>
-
         <figure>
           <figcaption>Borda final · máscara</figcaption>
           <img src={item.edge} alt="Final edge map" />
         </figure>
-
         <figure>
           <figcaption>Borda final · overlay</figcaption>
           <img src={item.edge_overlay} alt="Final edge overlay" />
@@ -79,7 +99,7 @@ function ResultCard({ item }) {
       </div>
 
       <div className="result-meta">
-        <span>threshold {item.threshold.toFixed(5)}</span>
+        <span>threshold {fmt(item.threshold, 5)}</span>
         <span>{item.threshold_mode}</span>
         <span>prep {Number(item.prepare_ms || 0).toFixed(0)} ms</span>
         <span>modelo {Number(item.model_runtime_ms || 0).toFixed(0)} ms</span>
@@ -91,17 +111,13 @@ function ResultCard({ item }) {
 }
 
 function CompareResultCard({ item }) {
-  const [scaleIndex, setScaleIndex] = useState(0)
   const modelResults = item.models || []
-  const attention = modelResults[0]?.attention || []
-  const selectedLabel = attention[Math.min(scaleIndex, Math.max(attention.length - 1, 0))]?.label || '—'
-
   return (
     <article className="result-card compare-card">
       <div className="result-head">
         <div>
           <p className="eyebrow">COMPARAÇÃO · {item.filename}</p>
-          <h3>{item.width} × {item.height} · preprocessamento compartilhado {Number(item.prepare_ms || 0).toFixed(0)} ms</h3>
+          <h3>{item.width} × {item.height} · preprocessamento por motor {Number(item.prepare_ms || 0).toFixed(0)} ms</h3>
         </div>
         <div className="runtime">{modelResults.length} modelos</div>
       </div>
@@ -112,17 +128,16 @@ function CompareResultCard({ item }) {
           <img src={item.original} alt="Original" />
         </figure>
         <div className="compare-scale">
-          <p className="eyebrow">ESCALA SINCRONIZADA</p>
-          <strong>{selectedLabel}</strong>
-          <p className="fineprint">O mesmo controle altera o mapa de atenção de todos os modelos para facilitar a comparação visual.</p>
-          <ScaleControl attention={attention} scaleIndex={scaleIndex} setScaleIndex={setScaleIndex} />
+          <p className="eyebrow">PROTOCOLOS EXPLÍCITOS</p>
+          <strong>Stage 14 + Stage 12d + legado Stage 7</strong>
+          <p className="fineprint">Métricas de protocolos diferentes permanecem rotuladas separadamente; o WebUI não trata ODS Stage 7 e F1 de CV Stage 12/14 como números equivalentes.</p>
         </div>
       </div>
 
       <div className="compare-grid" style={{ '--compare-cols': Math.min(modelResults.length, 4) }}>
         {modelResults.map((r) => {
           const m = r.model || {}
-          const att = r.attention?.[Math.min(scaleIndex, Math.max((r.attention?.length || 1) - 1, 0))]
+          const att = r.attention?.[0]
           return (
             <section className="compare-model" key={m.id || `${m.measure}-${m.strategy}`}>
               <div className="compare-model-head">
@@ -130,15 +145,16 @@ function CompareResultCard({ item }) {
                 <div>
                   <strong>{m.name || m.measure}</strong>
                   <p>{m.measure} · {m.strategy}</p>
+                  <small>{m.status}</small>
                 </div>
               </div>
               <div className="compare-metrics">
-                <Metric label="Selection ODS" value={Number(m.selection_ODS).toFixed(4)} />
-                <Metric label="Held-out F1" value={Number(m.heldout_F1).toFixed(4)} />
+                <Metric label={metricLabel(m)} value={metricValue(m)} />
+                <Metric label={secondaryLabel(m)} value={secondaryValue(m)} />
               </div>
               <figure>
-                <figcaption>Atenção · {att?.label || selectedLabel}</figcaption>
-                {att && <img src={att.overlay} alt={`Attention ${m.name || m.measure}`} />}
+                <figcaption>Diagnóstico · {att?.label || '—'}</figcaption>
+                {att && <img src={att.overlay} alt={`Diagnostic ${m.name || m.measure}`} />}
               </figure>
               <figure>
                 <figcaption>Borda final · overlay</figcaption>
@@ -149,7 +165,7 @@ function CompareResultCard({ item }) {
                 <img src={r.edge} alt={`Edge mask ${m.name || m.measure}`} />
               </figure>
               <div className="result-meta compact-meta">
-                <span>thr {Number(r.threshold).toFixed(5)}</span>
+                <span>thr {fmt(r.threshold, 5)}</span>
                 <span>{r.threshold_mode}</span>
                 <span>{Number(r.model_runtime_ms || 0).toFixed(0)} ms</span>
                 <a href={r.edge} download={`${item.filename}-${m.id || m.rank}-edge.png`}>máscara</a>
@@ -166,6 +182,7 @@ function CompareResultCard({ item }) {
 export default function Home() {
   const [models, setModels] = useState([])
   const [rankNote, setRankNote] = useState('')
+  const [researchAvailable, setResearchAvailable] = useState(false)
   const [modelId, setModelId] = useState('')
   const [compareIds, setCompareIds] = useState([])
   const [maxCompare, setMaxCompare] = useState(4)
@@ -188,6 +205,7 @@ export default function Home() {
         const rows = data.models || []
         setModels(rows)
         setRankNote(data.note || '')
+        setResearchAvailable(Boolean(data.research_source_available))
         setMaxCompare(Number(data.max_compare_models || 4))
         if (rows.length) {
           setModelId(rows[0].id)
@@ -259,15 +277,16 @@ export default function Home() {
       <section className="hero shell">
         <div>
           <p className="eyebrow">MFI-EDGE · DESKTOP LAB</p>
-          <h1>Teste e compare modelos<br />com atenção multiescala.</h1>
+          <h1>Teste o incumbente atual<br />e compare linhagens.</h1>
           <p className="hero-copy">
-            Interface local em Next.js para inferência e comparação lado a lado. O ranking é sempre exibido do melhor
-            para o pior segundo a métrica de validação declarada, sem reordenar pelo held-out pós-hoc.
+            A interface carrega o Stage 14 atual diretamente dos artefatos do worktree local-dev quando disponível,
+            mantém os representantes congelados do Stage 12d e conserva o Stage 7 como histórico comparável apenas dentro do próprio protocolo.
           </p>
         </div>
         <div className="status-card">
           <span className="dot" /> API local
           <strong>{API}</strong>
+          <small>{researchAvailable ? 'artefatos local-dev conectados' : 'somente registro legado; configure MFI_RESEARCH_ROOT'}</small>
         </div>
       </section>
 
@@ -282,11 +301,11 @@ export default function Home() {
 
             {mode === 'single' ? (
               <>
-                <label>Modelo ranqueado</label>
+                <label>Modelo</label>
                 <select value={modelId} onChange={(e) => setModelId(e.target.value)}>
                   {models.map((m) => (
                     <option key={m.id} value={m.id}>
-                      #{m.rank} · {m.name} · ODS {Number(m.selection_ODS).toFixed(4)}
+                      #{m.rank} · {m.name} · {metricLabel(m)} {metricValue(m)}
                     </option>
                   ))}
                 </select>
@@ -294,12 +313,13 @@ export default function Home() {
                   <div className="model-card">
                     <div className="model-rank">#{selectedModel.rank}</div>
                     <div>
-                      <strong>{selectedModel.measure}</strong>
-                      <p>{selectedModel.strategy}</p>
+                      <strong>{selectedModel.name || selectedModel.measure}</strong>
+                      <p>{selectedModel.measure}</p>
+                      <small>{selectedModel.status}</small>
                     </div>
                     <div className="metric-row">
-                      <Metric label="Selection ODS" value={Number(selectedModel.selection_ODS).toFixed(4)} />
-                      <Metric label="Held-out F1" value={Number(selectedModel.heldout_F1).toFixed(4)} />
+                      <Metric label={metricLabel(selectedModel)} value={metricValue(selectedModel)} />
+                      <Metric label={secondaryLabel(selectedModel)} value={secondaryValue(selectedModel)} />
                     </div>
                   </div>
                 )}
@@ -322,7 +342,7 @@ export default function Home() {
                         <span className="choice-rank">#{m.rank}</span>
                         <span className="choice-copy">
                           <strong>{m.name || m.measure}</strong>
-                          <small>ODS {Number(m.selection_ODS).toFixed(4)} · F1 {Number(m.heldout_F1).toFixed(4)}</small>
+                          <small>{metricLabel(m)} {metricValue(m)} · {m.status}</small>
                         </span>
                       </label>
                     )
@@ -360,9 +380,9 @@ export default function Home() {
             <input type="range" min="256" max="1536" step="128" value={maxSide} onChange={(e) => setMaxSide(Number(e.target.value))} />
             <label>Quantil de borda*: {quantile.toFixed(2)}</label>
             <input type="range" min="0.70" max="0.99" step="0.01" value={quantile} onChange={(e) => setQuantile(Number(e.target.value))} />
-            <p className="fineprint">*Usado somente quando o registro ainda não possui o threshold congelado exportado do benchmark.</p>
+            <p className="fineprint">*Somente para modelos sem threshold final exportado. O Stage 14 compacto usa este modo para visualização; os representantes Stage 12d usam seus thresholds congelados.</p>
             {mode === 'compare' && (
-              <p className="fineprint accent-note">No modo comparação, condicionamento, features multiescala, orientação e Scharr são calculados uma única vez por imagem e reutilizados pelos modelos.</p>
+              <p className="fineprint accent-note">O preprocessamento é compartilhado entre modelos do mesmo motor de inferência; comparações Stage 14/12d × Stage 7 mantêm seus pipelines próprios.</p>
             )}
             <button className="run" disabled={runDisabled} onClick={run}>
               {busy ? 'Processando…' : mode === 'compare' ? `Comparar ${compareIds.length} modelos` : `Executar ${files.length || ''}`}
@@ -376,7 +396,7 @@ export default function Home() {
               <p className="eyebrow">SAÍDA</p>
               <h2>{results.length ? `${results.length} imagem(ns) processada(s)` : 'Aguardando imagens'}</h2>
               {results.length > 0 && resultMode === 'compare' && (
-                <p className="result-subtitle">Comparação sincronizada de {selectedCompareModels.length} modelos</p>
+                <p className="result-subtitle">Comparação de {selectedCompareModels.length} modelos</p>
               )}
             </div>
             {busy && <div className="spinner" />}
@@ -385,8 +405,8 @@ export default function Home() {
           {!results.length && !busy && !error && (
             <div className="empty">
               <div className="empty-grid" />
-              <h3>Original · atenção · borda · comparação</h3>
-              <p>Use modelo único ou selecione de 2 a {maxCompare} modelos. Na comparação, um slider único percorre Σ, 25, 13, 7, 5 e 3 em todos os modelos simultaneamente.</p>
+              <h3>Original · contexto · borda · comparação</h3>
+              <p>Use o incumbente Stage 14 para inspeção atual ou compare com os representantes Stage 12d e o histórico Stage 7.</p>
             </div>
           )}
           <div className="result-stack">
