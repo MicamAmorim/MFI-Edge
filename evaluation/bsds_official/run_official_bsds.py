@@ -360,7 +360,7 @@ def _evaluate_one(
     max_dist = float(cfg.get("max_dist", 0.0075))
     thinpb = 1 if bool(cfg.get("thinpb", True)) else 0
 
-    expr = (
+    expr_base = (
         f"addpath('{_matlab_quote(MATLAB_WRAPPER_DIR)}');"
         "evaluate_bsds_official("
         f"'{_matlab_quote(benchmark_dir)}',"
@@ -368,20 +368,51 @@ def _evaluate_one(
         f"'{_matlab_quote(gt_dir)}',"
         f"'{_matlab_quote(pred_dir)}',"
         f"'{_matlab_quote(out_dir)}',"
-        f"{nthresh},{max_dist:.12g},{thinpb});"
+        f"{nthresh},{max_dist:.12g},{thinpb}"
     )
-    p = _run(
-        [str(matlab), "-batch", expr],
+    # Keep the native correspondPixels MEX lifecycle separate from the
+    # allocation-heavy pure-MATLAB aggregation.  On Windows/R2023a the pinned
+    # MEX can leave latent heap state that is detected only after all 100 image
+    # files have been written, causing a false evaluator failure during
+    # collection or process teardown.  This process boundary changes no score
+    # computation and leaves the pinned sources untouched.
+    p_eval = _run(
+        [str(matlab), "-batch", expr_base + ",'evaluate');"],
+        timeout=4 * 60 * 60,
+        check=False,
+    )
+    expected_ids = sorted(path.stem for path in image_dir.glob("*.jpg"))
+    missing_eval = [
+        image_id
+        for image_id in expected_ids
+        if not (out_dir / f"{image_id}_ev1.txt").exists()
+    ]
+    if missing_eval:
+        raise RuntimeError(
+            "MATLAB native matching did not produce a complete evaluation set; "
+            f"returncode={p_eval.returncode}, missing={missing_eval[:10]}\n"
+            f"STDOUT:\n{p_eval.stdout}\nSTDERR:\n{p_eval.stderr}"
+        )
+    p_collect = _run(
+        [str(matlab), "-batch", expr_base + ",'collect');"],
         timeout=4 * 60 * 60,
     )
     summary_path = out_dir / "official_summary.json"
     if not summary_path.exists():
         raise RuntimeError(
             "MATLAB evaluator returned successfully but did not create "
-            f"{summary_path}\nSTDOUT:\n{p.stdout}\nSTDERR:\n{p.stderr}"
+            f"{summary_path}\nEVAL STDOUT:\n{p_eval.stdout}\n"
+            f"EVAL STDERR:\n{p_eval.stderr}\nCOLLECT STDOUT:\n{p_collect.stdout}\n"
+            f"COLLECT STDERR:\n{p_collect.stderr}"
         )
     result = _load_json(summary_path)
-    result["matlab_stdout_tail"] = "\n".join((p.stdout or "").splitlines()[-30:])
+    result["matlab_evaluate_returncode"] = int(p_eval.returncode)
+    result["matlab_evaluate_stdout_tail"] = "\n".join(
+        (p_eval.stdout or "").splitlines()[-30:]
+    )
+    result["matlab_collect_stdout_tail"] = "\n".join(
+        (p_collect.stdout or "").splitlines()[-30:]
+    )
     return result
 
 

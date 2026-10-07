@@ -588,8 +588,18 @@ then rejected the pinned source's four-output `fileparts` call; the fourth
 output is unused and modern MATLAB supports three. The audited run-local
 transform now removes only that unused output, and a fifth attachment-only
 retry is registered. Stage-14o CV, vendor sources, predictions, and frozen
-exported methods remain unchanged.
-Although no BSDS result can rescue promotion after the UDED conjunction failed,
+exported methods remain unchanged. Although no BSDS result can rescue promotion
+after the UDED conjunction failed, the attachment remains required documentary
+development evidence.
+
+The fifth retry completed native matching and the aggregation pass read all 100
+incumbent result files, after which MATLAB terminated with Windows heap
+corruption before writing its summary. This is still evaluator plumbing, not a
+score or candidate result. A sixth attachment-only retry separates the native
+`correspondPixels` lifecycle from pure-MATLAB aggregation by running those
+unchanged phases in fresh MATLAB processes. Cached predictions, the audited
+run-local compatibility transform, and pinned vendor sources remain unchanged.
+
 ODS/OIS/AP remain required documentary development evidence before Stage 14o
 is closed and work advances to the Ambrosio–Tortorelli phase-field family.
 

@@ -284,9 +284,11 @@ path exporter imports, MEX existence semantics, and MATLAB R2023a's inability
 to parse chained cell/field indexing in the pinned evaluator. No attempt
 reached scoring. The fourth retry reached its run-local compatibility mirror
 but exposed an unused four-output `fileparts` call that MATLAB R2023a rejects.
-A fifth plumbing-only retry is registered after removing only that unused
-output in the mirror, leaving the vendored source, predictions, and frozen
-methods unchanged. Once ODS/OIS/AP are documented, move to the distinct
+A fifth plumbing-only retry completed matching and read all 100 incumbent
+result files, then MATLAB terminated with Windows heap corruption before it
+could write the summary. A sixth retry isolates native matching and pure-MATLAB
+aggregation in fresh processes, leaving the vendored source, predictions, and
+frozen methods unchanged. Once ODS/OIS/AP are documented, move to the distinct
 Ambrosio–Tortorelli phase-field family without interval micro-tuning.
 
 Scientific conclusion:
@@ -333,7 +335,7 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | post-linear-fusion mechanism search | 🟢 completed | selected a bounded shallow edge-forest localizer from primary Structured Forest/OEF literature |
 | Stage 14n shallow edge forest | 🟢 completed | finite in 15/15 folds but large F1/precision loss and only 2/15 wins; not promoted |
 | post-forest mechanism search | 🟢 completed | selected explicit interval ignorance plus convex reliability-conditioned capacity |
-| Stage 14o interval-capacity uncertainty | 🟡 UDED rejected; fifth attachment retry pending | failed all UDED non-collapse criteria with 0/15 wins; MATLAB R2023a legacy-source compatibility isolated without editing vendor source, then move to Ambrosio–Tortorelli |
+| Stage 14o interval-capacity uncertainty | 🟡 UDED rejected; sixth attachment retry pending | failed all UDED non-collapse criteria with 0/15 wins; native matching and aggregation isolated after a post-matching MATLAB heap fault, then move to Ambrosio–Tortorelli |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

@@ -195,10 +195,13 @@ MATLAB R2023a could not parse the pinned evaluator's chained
 `groundTruth{i}.Boundaries` access. The fourth retry reached that mirror but
 exposed a further legacy source incompatibility: the pinned evaluator requests
 an unused fourth output from `fileparts`, while MATLAB R2023a supports three.
-These are plumbing failures before scoring, not scientific evidence. A fifth
-attachment-only retry is registered with that unused output removed in the
-run-local mirror; the pinned vendor source remains unchanged. Do not rerun the
-CV or tune the interval mechanism. After the
+These are plumbing failures before scoring, not scientific evidence. The fifth
+retry completed native matching and read all 100 incumbent result files, but
+Windows then reported heap corruption before a summary could be written. A
+sixth attachment-only retry isolates native per-image matching from pure-MATLAB
+aggregation in fresh MATLAB processes; the pinned vendor source, frozen maps,
+and methods remain unchanged. Do not rerun the CV or tune the interval
+mechanism. After the
 official metrics are documented, proceed to the preregistered
 Ambrosio–Tortorelli phase-field family.
 
