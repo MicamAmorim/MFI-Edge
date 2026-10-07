@@ -352,15 +352,16 @@ remain conjunctive; the runner includes the required preview and frozen
 exporter. Dempster–Shafer ignorance and pure threshold persistence are deferred.
 
 Stage 14t is closed without promotion after reducing both UDED and official
-BSDS500-validation performance. The post-Stage-14t live checkpoint selected
-Stage 14u: a fixed three-source Yager-rule evidential fusion. Scharr+NMS,
-four-cue Choquet context, and scale persistence receive separate binary mass
-assignments; conflict becomes explicit ignorance, and the pignistic edge
-probability enters the unchanged gate. This avoids another component-filtration
-attenuator and does not return to smoothing. UDED repeated CV and official
-BSDS-val remain conjunctive; the runner includes a frozen exporter and fixed
-preview. Threshold persistence and uncertainty-controlled PDE conditioning
-remain deferred.
+BSDS500-validation performance. Stage 14u then tested a fixed three-source
+Yager-rule evidential fusion. It failed the UDED gate: aggregate F1 changed by
+`-0.00245`, mean fold F1 by `-0.00171`, recall by `-0.00781`, and only `3/15`
+folds won, despite a `+0.00072` precision change. The candidate is not promoted
+or tunable. Its official BSDS-val attachment encountered the known intermittent
+MATLAB heap-corruption exit after 37/100 incumbent images; a frozen
+attachment-only retry is next. After documentary closure, run a live
+literature/mechanism checkpoint. Threshold persistence and
+uncertainty-controlled PDE conditioning remain deferred, not automatically
+selected.
 
 Scientific conclusion:
 
@@ -416,7 +417,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | post-fractional mechanism search | 🟢 completed | selected fixed a-contrario connected-support meaningfulness rather than another localizer |
 | Stage 14t a-contrario meaningfulness | 🟢 completed; not promoted | Failed all UDED criteria and reduced official BSDS-val ODS/OIS/AP by 0.01257/0.01761/0.02830; compact controller retained |
 | post-a-contrario mechanism search | 🟢 completed | selected fixed Yager-rule evidential ignorance over disjoint incumbent sources |
-| Stage 14u Yager evidential ignorance | 🟡 registered | explicit edge/non-edge/ignorance fusion; UDED repeated CV plus official BSDS-val, no mass-rule sweep |
+| Stage 14u Yager evidential ignorance | 🟡 UDED failed; official attachment retry pending | F1/mean-fold/3-of-15 win criteria failed despite a tiny precision gain; no mass-rule tuning |
+| Stage 14u official BSDS-val retry | 🟡 registered | frozen attachment only after intermittent MATLAB heap corruption; no CV or prediction changes |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

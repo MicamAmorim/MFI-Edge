@@ -853,6 +853,29 @@ required frozen exporter and deterministic preview. The SOTA ledger was
 reviewed but not changed because this mechanism checkpoint found no newer
 verified matched-protocol neural target than the 2026-10-06 refresh.
 
+### Stage 14u UDED result and pending official attachment
+
+Stage 14u failed its preregistered UDED-selection gate. Relative to the compact
+Choquet controller, aggregate F1 changed by `-0.002450`, aggregate precision by
+`+0.000720`, and mean fold F1 by `-0.001708`; recall changed by `-0.007806`, and
+the candidate won only `3/15` folds. Thus the small precision increase did not
+offset the recall loss, and the candidate failed the aggregate-F1, mean-fold,
+and fold-win requirements. This fixed three-source least-committed Yager
+realization is not promoted, and its masses, source partition, conflict rule,
+decision transform, gamma, and gate must not be tuned from this result.
+
+The deterministic preview used the preregistered first validation image of the
+first split with columns conditioned input, ground truth, incumbent prediction,
+candidate prediction, fused ignorance, and fused conflict; it remains
+documentary only. The required official BSDS500-validation attachment stopped
+during incumbent native matching after 37/100 images with the known intermittent
+Windows MATLAB heap-corruption exit (`0xc0000374`). This is an attachment failure,
+not a scientific rerun condition. A frozen attachment-only retry is registered;
+it preserves CV, predictions, candidate parameters, and vendored evaluator
+sources. The compact controller remains incumbent regardless of the attachment
+because the conjunctive UDED conditions already failed. After documentary
+closure, the next scientific action is a live literature/mechanism checkpoint.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

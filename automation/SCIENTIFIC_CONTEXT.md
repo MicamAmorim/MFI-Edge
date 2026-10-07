@@ -274,19 +274,20 @@ incumbent. Route next to a live-literature/mechanism checkpoint before choosing
 among deferred Dempster–Shafer ignorance, threshold persistence, PDE
 conditioning, or a mechanistically different alternative.
 
-### Post-Stage-14t checkpoint - Stage 14u registered
+### Stage 14u - Yager evidential-ignorance falsification pending attachment
 
-The live primary-literature checkpoint selected one fixed Yager-rule
-evidential-ignorance fusion rather than another connected-component filter or
-immediate return to smoothing. Stage 14u separates the incumbent evidence into
-three non-overlapping sources: Scharr+NMS strength, four-cue gamma-0.55 Choquet
-context, and the separately retained scale-persistence membership. Each cue uses the
-parameter-free maximally ignorant binary mass assignment preserving its
-pignistic probability. Three-way conjunctive conflict is assigned to the
-universal hypothesis, and the resulting pignistic edge probability enters the
-unchanged strength-2.0, floor-0.10 Scharr gate. UDED-selection repeated CV and
-official BSDS500 validation are conjunctive. Do not tune sources, masses,
-conflict handling, decision transform, gamma, or gate from the result.
+The fixed three-source Yager-rule fusion failed the preregistered UDED gate.
+Relative to the compact controller, aggregate F1 changed by `-0.00245`, mean
+fold F1 by `-0.00171`, and recall by `-0.00781`; precision increased only
+`+0.00072`, and the candidate won `3/15` folds. The fixed realization therefore
+cannot be promoted or tuned. The required official BSDS500-validation
+attachment failed during incumbent native matching after 37/100 images with
+intermittent Windows MATLAB heap corruption. An attachment-only retry is
+registered; it does not rerun CV, alter predictions, or change the scientific
+decision from UDED. The compact Choquet-gated grayscale Scharr+NMS controller
+remains incumbent. After the frozen attachment completes, route to a live
+literature/mechanism checkpoint rather than tuning masses, sources, conflict
+handling, the decision transform, gamma, or the gate.
 
 ## d-Choquet terminology
 
