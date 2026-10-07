@@ -1,0 +1,11 @@
+{
+  "status": "evaluator_failed",
+  "experiment_id": "stage14q_shearlet_localizer",
+  "role": "development_test",
+  "returncode": 1,
+  "manifest": "results/local_dev/stage14q_shearlet_localizer/official_eval_manifest.json",
+  "manifest_sha256": "51dd5fd68522715fdbde3a3426487f10f0ec83eac718bc57102d12a233822ef4",
+  "stdout_tail": "BSDS_OFFICIAL_EVAL incumbent_compact_positive_choquet split=val",
+  "stderr_tail": "Traceback (most recent call last):\n  File \"C:\\Users\\Windows 11\\Documents\\MFI-Edge\\evaluation\\bsds_official\\run_official_bsds.py\", line 568, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"C:\\Users\\Windows 11\\Documents\\MFI-Edge\\evaluation\\bsds_official\\run_official_bsds.py\", line 495, in main\n    results[name] = _evaluate_one(\n                    ^^^^^^^^^^^^^^\n  File \"C:\\Users\\Windows 11\\Documents\\MFI-Edge\\evaluation\\bsds_official\\run_official_bsds.py\", line 391, in _evaluate_one\n    raise RuntimeError(\nRuntimeError: MATLAB native matching did not produce a complete evaluation set; returncode=3221226356, missing=['119082', '12084', '123074', '126007', '130026', '134035', '14037', '143090', '145086', '147091']\nSTDOUT:\nMFI_BSDS_EVAL 1/100 101085\nMFI_BSDS_EVAL 2/100 101087\nMFI_BSDS_EVAL 3/100 102061\nMFI_BSDS_EVAL 4/100 103070\nMFI_BSDS_EVAL 5/100 105025\nMFI_BSDS_EVAL 6/100 106024\nMFI_BSDS_EVAL 7/100 108005\nMFI_BSDS_EVAL 8/100 108070\nMFI_BSDS_EVAL 9/100 108082\nMFI_BSDS_EVAL 10/100 109053\n\nSTDERR:\nERROR: MATLAB error Exit Status: 0xc0000374, Heap corruption\n",
+  "failure_policy": "report_and_continue"
+}

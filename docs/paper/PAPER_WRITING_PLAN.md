@@ -215,8 +215,11 @@ variational improvement or retained model.
 Stage 14q tests a fixed small anisotropic directional atom bank
 as a shearlet-motivated singularity localizer under the unchanged compact
 Choquet gate. Be explicit that this is a bounded discrete operationalization,
-not a reproduction of the continuous shearlet transform. No positive claim is
-allowed until both UDED repeated CV and official BSDS-val criteria pass.
+not a reproduction of the continuous shearlet transform. It failed the UDED
+gate: precision rose, but recall and aggregate F1 fell substantially and only
+1/15 folds improved. Present it as a rejected fixed-bank sharpening trade-off,
+not as evidence against continuous shearlet theory. Official BSDS-val metrics
+remain pending an attachment-only retry after MATLAB heap corruption.
 
 ## 3.8 Dynamic localization branch
 

@@ -206,18 +206,18 @@ and AP by `-0.04888`. The conjunction therefore failed decisively. The
 compact positive Choquet gate with grayscale Scharr+NMS remains incumbent.
 Do not tune the phase-field coefficients or discretization from this result.
 
-### Stage 14q — registered fixed anisotropic singularity localizer
+### Stage 14q — anisotropic singularity localizer falsification pending attachment
 
-Stage 14q moves to the agenda's shearlet/singularity family without using
-Stage-14p outcomes to tune parameters. One fixed bank of eight odd anisotropic
-Gaussian-derivative atoms uses normal scales 1 and 2 pixels, tangent scale
-twice the normal scale, and four edge-normal orientations. Maximum modulus and
-the winning atom orientation replace Scharr+NMS; the retained compact context
-gate is unchanged. Evaluation is UDED-selection 5x3 leakage-free CV plus the
-required official BSDS500-validation attachment and deterministic preview.
-The implementation is a bounded shearlet-motivated discrete operationalization,
-not a claim to reproduce a continuous shearlet transform. The authoritative
-protocol is `docs/paper/STAGE14Q_PREREGISTRATION.md`.
+The fixed eight-atom shearlet-motivated localizer failed the UDED portion of
+its conjunctive rule. Relative to compact Choquet-gated Scharr+NMS, aggregate
+F1 changed by `-0.03116`, mean fold F1 by `-0.03135`, and recall by
+`-0.10655`, with only `1/15` fold wins; precision increased by `+0.01979`.
+This is a recall-collapse falsification of this fixed discrete atom bank, not
+of continuous shearlet theory. It cannot be promoted or tuned. The first
+official BSDS500-validation attachment exited after 10/100 incumbent images
+with intermittent Windows MATLAB heap corruption; a frozen attachment-only
+retry is pending and must not rerun UDED or change predictions. Grayscale
+Scharr+NMS remains the incumbent.
 
 ## d-Choquet terminology
 

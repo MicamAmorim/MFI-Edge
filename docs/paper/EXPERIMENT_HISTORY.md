@@ -658,6 +658,24 @@ official BSDS500-validation ODS/OIS/AP remain conjunctive development axes.
 The deterministic preview and native-resolution exporter are mandatory. The
 authoritative protocol is `docs/paper/STAGE14Q_PREREGISTRATION.md`.
 
+### Stage 14q UDED result and pending official attachment
+
+Stage 14q failed the UDED portion of its conjunctive promotion rule. The fixed
+anisotropic localizer increased aggregate precision from `0.67248` to
+`0.69227`, but reduced recall from `0.88850` to `0.78195`. Aggregate F1 fell
+from `0.76555` to `0.73438` (delta `-0.03116`), mean fold F1 changed by
+`-0.03135`, and the candidate won only `1/15` folds. This fixed bank is not
+promoted and must not be tuned from the result; the outcome does not disprove
+continuous shearlet edge theory.
+
+The required official BSDS500-validation attachment failed during incumbent
+native matching after 10/100 images because MATLAB exited with Windows heap
+corruption (`0xc0000374`). This is an evaluator failure, not a detector score.
+An attachment-only retry preserves the manifest, cached frozen predictions,
+candidate, preview, pinned vendor sources, and completed UDED result. Official
+ODS/OIS/AP remain pending documentary development evidence before Stage 14q is
+closed and the next mechanistically distinct family is selected.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

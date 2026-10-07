@@ -306,6 +306,15 @@ orientations, not a continuous-shearlet reproduction. It uses UDED repeated
 leakage-free CV plus the default official BSDS500-validation attachment, with
 no bank sweep and a deterministic preview.
 
+Stage 14q then failed its UDED gate: aggregate F1 fell by `0.03116`, mean fold
+F1 by `0.03135`, recall by `0.10655`, and the candidate won only `1/15` folds,
+despite a `0.01979` precision increase. The fixed atom bank is not promoted or
+tuned, and grayscale Scharr+NMS remains incumbent. Its first official
+BSDS500-validation attachment ended after 10/100 incumbent images with an
+intermittent MATLAB heap-corruption exit. A frozen attachment-only retry is
+next; it does not rerun CV or change predictions. After the attachment is
+documented, advance to a mechanistically distinct agenda family.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
@@ -352,7 +361,7 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | post-forest mechanism search | 🟢 completed | selected explicit interval ignorance plus convex reliability-conditioned capacity |
 | Stage 14o interval-capacity uncertainty | 🟢 completed; not promoted | UDED failed all criteria; BSDS ODS/OIS rose slightly but AP fell, so the conjunctive rule failed |
 | Stage 14p Ambrosio–Tortorelli phase field | 🟢 completed; not promoted | large UDED F1/recall and BSDS AP losses despite a small BSDS ODS gain |
-| Stage 14q anisotropic singularity localizer | 🟡 registered | fixed eight-atom shearlet-motivated bank; UDED 5x3 CV plus official BSDS-val, no parameter sweep |
+| Stage 14q anisotropic singularity localizer | 🟡 attachment retry | UDED F1/recall gate failed with 1/15 wins; fixed candidate rejected, official BSDS-val attachment pending heap-failure retry |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 
