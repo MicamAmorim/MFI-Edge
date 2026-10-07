@@ -799,6 +799,26 @@ resolution exporter and deterministic preview. The SOTA ledger was reviewed
 but not changed because this mechanism search found no newer verified matched-
 protocol neural target than the 2026-10-06 refresh.
 
+### Stage 14t result — UDED failure; frozen official attachment retry required
+
+Stage 14t failed every preregistered UDED condition. The fixed a-contrario
+candidate changed aggregate F1 by `-0.017248`, aggregate precision by
+`-0.020834`, and mean fold F1 by `-0.016024`, with only `1/15` fold-F1 wins.
+The reliability attenuation reduced both precision and recall, so the fixed
+connected-support NFA surrogate did not deliver the claimed trust benefit.
+
+The deterministic preview was emitted at
+`results/local_dev/stage14t_acontrario_meaningfulness/best_method_preview.png`
+with conditioned input, ground truth, incumbent prediction, candidate
+prediction, meaningfulness reliability, and retained incumbent; it remains
+documentary only. The official BSDS500-validation attachment did not complete:
+native MATLAB matching exited with Windows heap corruption after partial
+progress. Per the preregistration and evaluation policy, this triggers only an
+attachment retry over the frozen maps. CV, predictions, parameters, and vendor
+sources must not change. Because the UDED criteria are conjunctive and already
+failed, the candidate cannot be promoted irrespective of the pending BSDS
+metrics. Do not tune this mechanism from the result.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels
