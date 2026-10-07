@@ -203,6 +203,15 @@ scale/entropy uncertainty expression above and human-annotation uncertainty.
 It is preregistered for UDED repeated CV plus official BSDS500-validation
 ODS/OIS/AP; no positive claim is allowed until both development axes complete.
 
+Stage 14o ultimately failed its conjunctive rule: all UDED non-collapse
+conditions failed, and the completed official BSDS-val attachment improved
+ODS/OIS slightly while reducing AP. Present this as a mixed operating-point
+shift, not as a benchmark improvement. Stage 14p therefore moves to a
+mechanistically distinct variational hypothesis: a fixed Ambrosio–Tortorelli
+phase field uses the retained compact Choquet context only as a weak spatial
+prior and is evaluated on the same two development axes. Do not describe it
+as retained unless every preregistered UDED and BSDS-val criterion passes.
+
 ## 3.8 Dynamic localization branch
 
 Current bank:

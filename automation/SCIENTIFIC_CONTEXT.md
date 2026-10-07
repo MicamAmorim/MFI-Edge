@@ -183,27 +183,28 @@ native-resolution exporter. Promotion is conjunctive across the preregistered
 UDED non-collapse and BSDS-val benefit criteria. Do not tune interval width,
 normalization quantile, capacity endpoints, gamma, or gate from the result.
 
-The UDED portion has now failed all non-collapse criteria: aggregate F1 delta
+The UDED portion failed all non-collapse criteria: aggregate F1 delta
 `-0.00980`, precision delta `-0.01532`, mean fold-F1 delta `-0.00798`, and
-`0/15` fold wins. Stage 14o therefore cannot be promoted regardless of its
-pending BSDS-val metrics. The initial attachment exposed an absolute-path
-import issue in the incumbent exporter; the first retry then exposed the same
-issue in the candidate exporter. The second retry reached MATLAB but exposed
-an evaluator-wrapper bug: MATLAB classifies an existing MEX as file type 3,
-while the wrapper accepted only type 2. The third retry passed that check but
-MATLAB R2023a could not parse the pinned evaluator's chained
-`groundTruth{i}.Boundaries` access. The fourth retry reached that mirror but
-exposed a further legacy source incompatibility: the pinned evaluator requests
-an unused fourth output from `fileparts`, while MATLAB R2023a supports three.
-These are plumbing failures before scoring, not scientific evidence. The fifth
-retry completed native matching and read all 100 incumbent result files, but
-Windows then reported heap corruption before a summary could be written. A
-sixth attachment-only retry isolates native per-image matching from pure-MATLAB
-aggregation in fresh MATLAB processes; the pinned vendor source, frozen maps,
-and methods remain unchanged. Do not rerun the CV or tune the interval
-mechanism. After the
-official metrics are documented, proceed to the preregistered
-Ambrosio–Tortorelli phase-field family.
+`0/15` fold wins. The sixth attachment-only retry then completed official
+BSDS500-validation scoring. The candidate improved ODS by `+0.00225` and OIS
+by `+0.00182`, but reduced AP by `-0.00100`, failing the required AP
+condition. Together with the decisive UDED failure, Stage 14o is closed
+without promotion. The evaluator now completes through isolated native
+matching and pure-MATLAB aggregation processes, but reference-detector
+reproduction remains unverified and no final SOTA claim may rely on it. Do not
+rerun the CV or tune the interval mechanism.
+
+### Stage 14p — registered MFI-coupled Ambrosio–Tortorelli phase field
+
+Stage 14p restores the retained crisp compact Choquet context and uses it only
+as a weak nonnegative spatial prior in one fixed Ambrosio–Tortorelli energy.
+The candidate localizer is NMS of the optimized diffuse discontinuity field;
+the comparator remains compact Choquet-gated grayscale Scharr+NMS. Fixed
+normalized parameters are alpha `1.0`, beta `0.10`, epsilon `1.5` pixels, MFI
+coupling `0.005`, and 16 alternating iterations. No parameter sweep is
+allowed. Evaluation is UDED-selection 5x3 leakage-free CV plus required
+official BSDS500-validation ODS/OIS/AP and a deterministic preview. The
+authoritative protocol is `docs/paper/STAGE14P_PREREGISTRATION.md`.
 
 ## d-Choquet terminology
 

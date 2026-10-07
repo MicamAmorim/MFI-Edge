@@ -603,6 +603,40 @@ run-local compatibility transform, and pinned vendor sources remain unchanged.
 ODS/OIS/AP remain required documentary development evidence before Stage 14o
 is closed and work advances to the Ambrosio–Tortorelli phase-field family.
 
+### Stage 14o official result and final decision
+
+The sixth attachment-only retry completed the original Berkeley
+BSDS500-validation evaluation for all 100 images. The incumbent obtained ODS
+`0.54545`, OIS `0.57957`, and AP `0.53428`; the interval candidate obtained
+ODS `0.54770`, OIS `0.58139`, and AP `0.53328`. The deltas were ODS `+0.00225`,
+OIS `+0.00182`, and AP `-0.00100`. Although ODS and OIS improved, AP failed
+the preregistered nonnegative requirement, and all four conjunctive UDED
+conditions had already failed. Stage 14o is closed without promotion. This
+mixed result suggests an operating-point shift rather than stable ranking
+improvement and does not justify interval micro-tuning. Reference-detector
+reproduction remains unverified, so these development metrics cannot support
+a final SOTA claim.
+
+### Stage 14p — MFI-coupled Ambrosio–Tortorelli preregistration
+
+Stage 14p follows the mechanism agenda rather than tuning Stage 14o. It
+restores the retained compact crisp Choquet context and inserts it as a weak
+nonnegative prior in a fixed classical Ambrosio–Tortorelli phase-field energy.
+The candidate map is NMS of the optimized diffuse discontinuity field along
+the unchanged image-gradient orientation; the comparator remains compact
+Choquet-gated grayscale Scharr+NMS.
+
+One normalized configuration is frozen: alpha `1.0`, beta `0.10`, epsilon
+`1.5` pixels, context coupling `0.005`, and 16 alternating iterations. UDED
+uses 5x3 leakage-free repeated CV, with bank and threshold fitting inside
+folds. BSDS500 validation uses the official MATLAB attachment and a
+full-UDED-selection frozen exporter that never reads BSDS ground truth.
+Promotion requires nonnegative UDED aggregate F1 and precision changes,
+nonnegative mean fold-F1 change, at least 9/15 fold wins, BSDS ODS improvement
+of at least `+0.002`, and nonnegative OIS/AP changes. The fixed preview is
+documentary. The authoritative protocol is
+`docs/paper/STAGE14P_PREREGISTRATION.md`.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels
