@@ -403,7 +403,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | post-SE(2) mechanism search | 🟢 completed | selected one fixed half-order Riesz-gradient localizer from primary fractional-edge literature |
 | Stage 14s fractional Riesz localizer | 🟢 completed; not promoted | BSDS ODS/OIS/AP improved strongly, but UDED F1/precision collapsed and the candidate won 0/15 folds |
 | post-fractional mechanism search | 🟢 completed | selected fixed a-contrario connected-support meaningfulness rather than another localizer |
-| Stage 14t a-contrario meaningfulness | 🟡 UDED failed; official retry pending | F1/precision fell and only 1/15 folds won; frozen BSDS-val attachment retries after MATLAB heap corruption, with no CV rerun or tuning |
+| Stage 14t a-contrario meaningfulness | 🟢 completed; not promoted | Failed all UDED criteria and reduced official BSDS-val ODS/OIS/AP by 0.01257/0.01761/0.02830; compact controller retained |
+| post-a-contrario mechanism search | 🟡 next | live primary-literature checkpoint before selecting another bounded trust, topology, PDE, or distinct mechanism |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

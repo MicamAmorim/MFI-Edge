@@ -408,10 +408,13 @@ item 6; do not assume that another smoothing/localization operator is the
 correct next move without addressing that development-domain discrepancy.
 
 The post-Stage-14s checkpoint selected a statistically calibrated trust
-mechanism before Priority F. Stage 14t tests one fixed a-contrario
+mechanism before Priority F. Stage 14t tested one fixed a-contrario
 connected-support NFA gate over the unchanged incumbent score, motivated by
 the Helmholtz-principle edge literature. This is distinct from a new localizer,
 hard topology repair, or PDE conditioner and directly addresses the repeated
 domain discrepancy through an image-internal null. Dempster–Shafer ignorance,
-pure threshold persistence, and Priority F remain deferred until this bounded
-test is resolved.
+pure threshold persistence, and Priority F remain alternatives. Stage 14t
+failed all UDED criteria and reduced official BSDS500-validation ODS/OIS/AP by
+`0.01257/0.01761/0.02830`; this fixed surrogate is closed without promotion or
+tuning. A new live-literature/mechanism checkpoint must select the next bounded
+falsification rather than treating the prior ordering as automatic.

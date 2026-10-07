@@ -260,18 +260,19 @@ BSDS500 validation remain conjunctive, and no NFA, quantization, connectivity,
 sampling, or attenuation parameter may be tuned from the result. Dempster–
 Shafer ignorance and pure threshold-persistence remain deferred alternatives.
 
-### Stage 14t — a-contrario meaningfulness UDED failure; official attachment pending
+### Stage 14t — a-contrario meaningfulness falsification
 
 The fixed connected-support NFA surrogate failed every preregistered UDED
 condition. Relative to the unchanged compact controller, aggregate F1 changed
 by `-0.01725`, aggregate precision by `-0.02083`, and mean fold F1 by
-`-0.01602`, with only `1/15` fold wins. The candidate therefore cannot be
-promoted regardless of its pending BSDS result. The first official BSDS500-
-validation attachment exited during native MATLAB matching with Windows heap
-corruption; retry the frozen attachment only, without rerunning CV or changing
-predictions. Do not tune the NFA, null, quantization, connectivity, sampling,
-floor, or fusion from this result. The compact Choquet-gated grayscale
-Scharr+NMS controller remains incumbent.
+`-0.01602`, with only `1/15` fold wins. The frozen official BSDS500-validation
+attachment also changed ODS/OIS/AP by `-0.01257/-0.01761/-0.02830`. The
+candidate therefore failed both development axes and is not promoted. Do not
+tune the NFA, null, quantization, connectivity, sampling, floor, or fusion from
+this result. The compact Choquet-gated grayscale Scharr+NMS controller remains
+incumbent. Route next to a live-literature/mechanism checkpoint before choosing
+among deferred Dempster–Shafer ignorance, threshold persistence, PDE
+conditioning, or a mechanistically different alternative.
 
 ## d-Choquet terminology
 

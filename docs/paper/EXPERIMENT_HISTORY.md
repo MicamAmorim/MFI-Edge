@@ -799,7 +799,7 @@ resolution exporter and deterministic preview. The SOTA ledger was reviewed
 but not changed because this mechanism search found no newer verified matched-
 protocol neural target than the 2026-10-06 refresh.
 
-### Stage 14t result — UDED failure; frozen official attachment retry required
+### Stage 14t result — rejected on UDED and official BSDS500 validation
 
 Stage 14t failed every preregistered UDED condition. The fixed a-contrario
 candidate changed aggregate F1 by `-0.017248`, aggregate precision by
@@ -811,13 +811,16 @@ The deterministic preview was emitted at
 `results/local_dev/stage14t_acontrario_meaningfulness/best_method_preview.png`
 with conditioned input, ground truth, incumbent prediction, candidate
 prediction, meaningfulness reliability, and retained incumbent; it remains
-documentary only. The official BSDS500-validation attachment did not complete:
-native MATLAB matching exited with Windows heap corruption after partial
-progress. Per the preregistration and evaluation policy, this triggers only an
-attachment retry over the frozen maps. CV, predictions, parameters, and vendor
-sources must not change. Because the UDED criteria are conjunctive and already
-failed, the candidate cannot be promoted irrespective of the pending BSDS
-metrics. Do not tune this mechanism from the result.
+documentary only. The attachment-only retry completed on the frozen maps.
+Relative to the incumbent, official BSDS500-validation ODS/OIS/AP changed by
+`-0.012569/-0.017611/-0.028297`. Thus the candidate also failed every official
+metric condition, and the preregistered conjunction rejects it on both
+development axes. This closes Stage 14t without promotion. The compact
+Choquet-gated grayscale Scharr+NMS controller remains incumbent; no NFA, null,
+quantization, connectivity, sampling, floor, or fusion tuning is authorized.
+Because another trust-calibration mechanism failed, the next action is a live
+primary-literature/mechanism checkpoint rather than automatically advancing a
+deferred family.
 
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
