@@ -247,6 +247,7 @@ def _call_codex(prompt: str, config: dict, iteration: int, model: str | None) ->
         try:
             p = subprocess.run(
                 cmd, cwd=str(ROOT), input=prompt, text=True,
+                encoding="utf-8", errors="replace",
                 capture_output=True, timeout=timeout, check=False,
             )
             last_rc = int(p.returncode)

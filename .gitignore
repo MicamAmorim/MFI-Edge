@@ -25,3 +25,6 @@ evaluation/bsds_official/vendor/
 
 # Runtime-only MATLAB compatibility mirrors
 results/official_eval/**/matlab_compat/
+
+# Runtime-only official MATLAB per-image outputs
+results/official_eval/**/matlab/

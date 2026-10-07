@@ -112,7 +112,11 @@ def _same_completed(summary_path: Path, manifest_hash: str | None) -> bool:
         old = _load_json(summary_path)
     except Exception:
         return False
-    return old.get("status") == "completed" and old.get("manifest_sha256") == manifest_hash
+    terminal = {"completed", "evaluator_failed", "evaluator_timeout"}
+    return (
+        old.get("status") in terminal
+        and old.get("manifest_sha256") == manifest_hash
+    )
 
 
 def maybe_run(exp_id: str, spec: dict, config: dict) -> dict | None:
