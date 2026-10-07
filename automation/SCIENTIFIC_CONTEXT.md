@@ -216,9 +216,21 @@ This is a recall-collapse falsification of this fixed discrete atom bank, not
 of continuous shearlet theory. On official BSDS500 validation, ODS improved by
 `+0.00334`, but OIS changed by `-0.00089` and AP by `-0.01526`. The conjunctive
 rule therefore failed on both development axes. The candidate cannot be
-promoted or tuned; grayscale Scharr+NMS remains the incumbent. Proceed through
-a live-literature/mechanism checkpoint before registering the next distinct
-falsification.
+promoted or tuned; grayscale Scharr+NMS remains the incumbent. This triggered
+the live-literature/mechanism checkpoint documented below.
+
+### Stage 14r — registered SE(2) contour-enhancement falsification
+
+The post-Stage-14q live-literature checkpoint selected a fixed orientation-
+lifted geometry test rather than tuning another replacement localizer. Stage
+14r hard-lifts the complete compact Choquet-gated Scharr score into 32
+unoriented tangent bins, applies five fixed explicit steps of equal tangent and
+angular left-invariant diffusion with the compact context gate as a stopping
+coefficient, then max-projects and applies unchanged gradient-normal NMS. It
+uses UDED-selection 5x3 leakage-free CV, a preregistered largest-component
+coverage condition, and required official BSDS500-validation ODS/OIS/AP. No
+SE(2) discretization or fusion parameter may be tuned from the result. The
+incumbent remains unchanged pending the conjunctive decision.
 
 ## d-Choquet terminology
 

@@ -432,6 +432,27 @@
       "results/official_eval/stage14q_official_eval_retry/summary.json"
     ]
   },
+  "stage14r_se2_contour_enhancement": {
+    "description": "Leakage-free repeated-CV falsification of one fixed confidence-stopped SE(2) tangent/angular diffusion applied to the retained compact Choquet-gated Scharr score; includes continuity diagnostics and default-on official BSDS500-validation evaluation.",
+    "runner": "python",
+    "path": "run_stage14r_se2_contour_enhancement.py",
+    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256"],
+    "role": "development_test",
+    "feedback_policy": "UDED_selection_repeated_CV_plus_official_BSDS500_val_development_only_no_protected_feedback",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage14r_se2_contour_enhancement/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage14r_se2_contour_enhancement/summary.json",
+      "results/local_dev/stage14r_se2_contour_enhancement/variant_ranking.csv",
+      "results/local_dev/stage14r_se2_contour_enhancement/fold_results.csv",
+      "results/local_dev/stage14r_se2_contour_enhancement/per_image_metrics.csv",
+      "results/local_dev/stage14r_se2_contour_enhancement/continuity_diagnostics.csv",
+      "results/local_dev/stage14r_se2_contour_enhancement/se2_diagnostics.csv",
+      "results/local_dev/stage14r_se2_contour_enhancement/best_method_preview.png",
+      "results/local_dev/stage14r_se2_contour_enhancement/official_eval_manifest.json",
+      "results/official_eval/stage14r_se2_contour_enhancement/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

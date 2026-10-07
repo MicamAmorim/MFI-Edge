@@ -1,6 +1,6 @@
 # MFI-Edge research roadmap
 
-Last updated: **2026-10-06**
+Last updated: **2026-10-07**
 
 Legend: 🟢 completed/implemented · 🟡 active/partial · 🔴 planned · ⚪ parked.
 
@@ -317,6 +317,15 @@ AP by `-0.01526`. The cross-dataset conjunctive rule therefore failed, and
 Stage 14q is closed. A live-literature checkpoint is next to select one
 mechanistically distinct falsification rather than tune this atom bank.
 
+The checkpoint selected Stage 14r: a fixed `SE(2)` orientation-lifted linear
+contour-enhancement step applied to the complete compact Choquet-gated Scharr
+score. Unlike Stage 14i, it transports confidence in position-orientation
+space rather than linking image-plane endpoints; unlike Stages 14p-q, it does
+not replace the incumbent localizer. The 32-bin lift, equal tangent/angular
+coefficients, five explicit steps, context stopping field, max projection, and
+NMS are frozen. UDED 5x3 CV, largest-component coverage, and official BSDS-val
+ODS/OIS/AP form the conjunctive decision. No parameter sweep is permitted.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
@@ -364,7 +373,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | Stage 14o interval-capacity uncertainty | 🟢 completed; not promoted | UDED failed all criteria; BSDS ODS/OIS rose slightly but AP fell, so the conjunctive rule failed |
 | Stage 14p Ambrosio–Tortorelli phase field | 🟢 completed; not promoted | large UDED F1/recall and BSDS AP losses despite a small BSDS ODS gain |
 | Stage 14q anisotropic singularity localizer | 🟢 completed; not promoted | UDED F1/recall collapsed; BSDS ODS rose slightly but OIS/AP fell, so the conjunctive rule failed |
-| post-singularity mechanism search | 🟡 next | live primary-literature checkpoint to select one mechanistically distinct bounded falsification |
+| post-singularity mechanism search | 🟢 completed | selected fixed SE(2) orientation-lifted contour enhancement from primary literature |
+| Stage 14r SE(2) contour enhancement | 🟡 registered | fixed confidence-stopped tangent/angular diffusion; UDED CV + continuity + official BSDS-val |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

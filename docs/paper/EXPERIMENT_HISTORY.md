@@ -683,6 +683,28 @@ Scharr+NMS controller remains incumbent; the next action is a live-literature
 checkpoint selecting one mechanistically distinct falsification without using
 protected test feedback.
 
+### Post-Stage-14q literature checkpoint and Stage 14r decision
+
+The live primary-literature checkpoint selected orientation-lifted geometry
+on `SE(2)` rather than tuning the failed singularity bank. Duits and Franken
+(2010, DOI `10.1090/S0033-569X-10-01172-0`) establish linear left-invariant
+contour enhancement in position-orientation space; Franken and Duits (2009,
+DOI `10.1007/s11263-009-0213-5`) establish the crossing-preserving rationale;
+and Zhang et al. (2016, DOI `10.4208/nmtma.2015.m1411`) document numerical
+realizations of the linear process. This geometry is distinct from Stage 14i's
+image-plane endpoint linking and Stages 14p-q's replacement localizers.
+
+Stage 14r therefore retains the complete compact Choquet-gated Scharr score,
+lifts it into 32 unoriented tangent bins, applies one fixed confidence-stopped
+linear tangent/angular diffusion, projects by maximum, and applies the
+unchanged gradient-normal NMS. UDED-selection 5x3 leakage-free CV and official
+BSDS500-validation ODS/OIS/AP are conjunctive development axes. A
+largest-component GT-coverage condition is included because the mechanism
+specifically claims continuity. No diffusion, lift, projection, or fusion
+sweep is permitted. The deterministic preview and frozen native-resolution
+exporter are mandatory. The authoritative protocol is
+`docs/paper/STAGE14R_PREREGISTRATION.md`.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

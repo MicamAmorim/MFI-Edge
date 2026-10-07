@@ -223,6 +223,14 @@ BSDS-val attachment likewise showed sharpening rather than consistent benefit:
 ODS rose by `0.00334`, while OIS fell by `0.00089` and AP by `0.01526`. The
 candidate failed the preregistered conjunction and was not promoted.
 
+Stage 14r is the next preregistered mechanism: a fixed `SE(2)` orientation
+lift and linear tangent/angular diffusion applied to the complete incumbent
+score. Position it as an orientation-consistent continuity regularizer, not a
+new localizer and not an exact invertible orientation-score reproduction. Its
+claim requires both non-collapsing UDED F1, improved preregistered component
+coverage, and consistent official BSDS-val ODS/OIS/AP; no positive manuscript
+claim is allowed before that conjunction completes.
+
 ## 3.8 Dynamic localization branch
 
 Current bank:
