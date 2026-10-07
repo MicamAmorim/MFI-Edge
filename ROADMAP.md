@@ -317,14 +317,14 @@ AP by `-0.01526`. The cross-dataset conjunctive rule therefore failed, and
 Stage 14q is closed. A live-literature checkpoint is next to select one
 mechanistically distinct falsification rather than tune this atom bank.
 
-The checkpoint selected Stage 14r: a fixed `SE(2)` orientation-lifted linear
-contour-enhancement step applied to the complete compact Choquet-gated Scharr
-score. Unlike Stage 14i, it transports confidence in position-orientation
-space rather than linking image-plane endpoints; unlike Stages 14p-q, it does
-not replace the incumbent localizer. The 32-bin lift, equal tangent/angular
-coefficients, five explicit steps, context stopping field, max projection, and
-NMS are frozen. UDED 5x3 CV, largest-component coverage, and official BSDS-val
-ODS/OIS/AP form the conjunctive decision. No parameter sweep is permitted.
+Stage 14r is closed without promotion. The fixed `SE(2)` enhancement improved
+official BSDS-val ODS/OIS/AP by `+0.00381/+0.00169/+0.00779`, but reduced UDED
+aggregate F1 by `0.00276`, reduced precision by `0.00699`, won only `5/15`
+folds, and reduced rather than improved largest-component GT coverage. The
+preregistered conjunction therefore failed. Do not tune the 32-bin hard lift,
+diffusion, projection, or fusion from this mixed result. The compact
+Choquet-gated grayscale Scharr+NMS controller remains incumbent. Route next to
+a live-literature checkpoint for one mechanistically distinct falsification.
 
 Scientific conclusion:
 
@@ -374,7 +374,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | Stage 14p Ambrosio–Tortorelli phase field | 🟢 completed; not promoted | large UDED F1/recall and BSDS AP losses despite a small BSDS ODS gain |
 | Stage 14q anisotropic singularity localizer | 🟢 completed; not promoted | UDED F1/recall collapsed; BSDS ODS rose slightly but OIS/AP fell, so the conjunctive rule failed |
 | post-singularity mechanism search | 🟢 completed | selected fixed SE(2) orientation-lifted contour enhancement from primary literature |
-| Stage 14r SE(2) contour enhancement | 🟡 registered | fixed confidence-stopped tangent/angular diffusion; UDED CV + continuity + official BSDS-val |
+| Stage 14r SE(2) contour enhancement | 🟢 completed; not promoted | BSDS ODS/OIS/AP rose, but UDED F1/precision and preregistered continuity coverage fell |
+| post-SE(2) mechanism search | 🟡 next | live primary-literature checkpoint; select one bounded, mechanistically distinct falsification |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

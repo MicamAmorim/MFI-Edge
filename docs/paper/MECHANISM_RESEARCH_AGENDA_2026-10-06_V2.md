@@ -391,8 +391,8 @@ mechanistic justification, continue from entry 4:
 1. ~~interval uncertainty + convex reliability-conditioned capacity field~~ — Stage 14o not promoted;
 2. ~~MFI-coupled Ambrosio–Tortorelli phase field~~ — Stage 14p not promoted;
 3. ~~shearlet singularity localizer~~ — Stage 14q not promoted;
-4. **SE(2) orientation-lifted diffusion/completion** — Stage 14r registered as one fixed linear contour-enhancement test;
-5. fractional-order localizer;
+4. ~~SE(2) orientation-lifted diffusion/completion~~ — Stage 14r not promoted; official BSDS-val improved, but UDED F1/precision and the preregistered continuity endpoint failed;
+5. **live primary-literature checkpoint**, then select one distinct bounded test (fractional-order localization remains the next listed family unless stronger evidence supersedes it);
 6. uncertainty-controlled anisotropic diffusion / shock filtering;
 7. Dempster–Shafer explicit ignorance;
 8. threshold-persistence topology;

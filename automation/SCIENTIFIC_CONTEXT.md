@@ -219,18 +219,19 @@ rule therefore failed on both development axes. The candidate cannot be
 promoted or tuned; grayscale Scharr+NMS remains the incumbent. This triggered
 the live-literature/mechanism checkpoint documented below.
 
-### Stage 14r — registered SE(2) contour-enhancement falsification
+### Stage 14r — SE(2) contour-enhancement falsification
 
-The post-Stage-14q live-literature checkpoint selected a fixed orientation-
-lifted geometry test rather than tuning another replacement localizer. Stage
-14r hard-lifts the complete compact Choquet-gated Scharr score into 32
-unoriented tangent bins, applies five fixed explicit steps of equal tangent and
-angular left-invariant diffusion with the compact context gate as a stopping
-coefficient, then max-projects and applies unchanged gradient-normal NMS. It
-uses UDED-selection 5x3 leakage-free CV, a preregistered largest-component
-coverage condition, and required official BSDS500-validation ODS/OIS/AP. No
-SE(2) discretization or fusion parameter may be tuned from the result. The
-incumbent remains unchanged pending the conjunctive decision.
+Stage 14r did **not** promote the fixed confidence-stopped SE(2) contour
+enhancement. It improved official BSDS500-validation ODS/OIS/AP by
+`+0.00381/+0.00169/+0.00779`, respectively, but failed every preregistered
+UDED/continuity condition: aggregate F1 `-0.00276`, precision `-0.00699`, mean
+fold F1 `-0.00203`, only `5/15` fold-F1 wins, mean largest-component GT
+coverage `-0.00201`, and only `4/15` coverage wins. The conjunctive rule
+therefore rejects the candidate. This is evidence against this fixed hard
+lift, diffusion, and max-projection realization, not against SE(2) theory.
+Do not tune its discretization or fusion from the mixed result. The compact
+Choquet-gated grayscale Scharr+NMS controller remains incumbent; proceed to a
+live-literature checkpoint for a mechanistically distinct falsification.
 
 ## d-Choquet terminology
 

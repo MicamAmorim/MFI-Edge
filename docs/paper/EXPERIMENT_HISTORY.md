@@ -705,6 +705,28 @@ sweep is permitted. The deterministic preview and frozen native-resolution
 exporter are mandatory. The authoritative protocol is
 `docs/paper/STAGE14R_PREREGISTRATION.md`.
 
+### Stage 14r result — mixed cross-dataset signal, no promotion
+
+Stage 14r failed its preregistered conjunctive promotion rule. On UDED
+selection, the fixed SE(2) candidate changed aggregate F1 by `-0.002762`,
+aggregate precision by `-0.006990`, and mean fold F1 by `-0.002026`, with only
+`5/15` fold-F1 wins. Its claimed continuity endpoint also failed: mean paired
+largest-component GT coverage changed by `-0.002008`, with only `4/15` fold
+wins, versus required values of at least `+0.005` and `9/15`.
+
+Official BSDS500-validation evaluation completed and was directionally
+positive: ODS/OIS/AP changed by `+0.003807/+0.001687/+0.007795`. Those gains
+satisfy the BSDS portion but cannot override the explicitly conjunctive UDED
+and continuity failures. The compact Choquet-gated grayscale Scharr+NMS
+controller remains incumbent. The result rejects this fixed hard-lift,
+five-step diffusion, max-projection realization only; it does not reject
+invertible orientation-score or SE(2) contour theory. No Stage-14r parameter
+may be tuned from this outcome. The deterministic preview is
+`results/local_dev/stage14r_se2_contour_enhancement/best_method_preview.png`,
+with conditioned input, ground truth, incumbent prediction, candidate
+prediction, soft projection, and retained incumbent; it is documentary only.
+A live-literature checkpoint is next before selecting a distinct mechanism.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

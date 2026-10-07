@@ -223,13 +223,14 @@ BSDS-val attachment likewise showed sharpening rather than consistent benefit:
 ODS rose by `0.00334`, while OIS fell by `0.00089` and AP by `0.01526`. The
 candidate failed the preregistered conjunction and was not promoted.
 
-Stage 14r is the next preregistered mechanism: a fixed `SE(2)` orientation
-lift and linear tangent/angular diffusion applied to the complete incumbent
-score. Position it as an orientation-consistent continuity regularizer, not a
-new localizer and not an exact invertible orientation-score reproduction. Its
-claim requires both non-collapsing UDED F1, improved preregistered component
-coverage, and consistent official BSDS-val ODS/OIS/AP; no positive manuscript
-claim is allowed before that conjunction completes.
+Stage 14r did not establish an orientation-consistent continuity improvement.
+The fixed `SE(2)` lift increased official BSDS-val ODS/OIS/AP by
+`+0.00381/+0.00169/+0.00779`, but UDED aggregate F1 and precision changed by
+`-0.00276/-0.00699`, and largest-component GT coverage changed by `-0.00201`.
+Only `5/15` folds improved F1 and `4/15` improved coverage. Report this as a
+mixed development result and a falsification of the fixed repository-specific
+hard lift/diffusion/projection, not of invertible orientation-score theory.
+No positive continuity claim or promotion is supported.
 
 ## 3.8 Dynamic localization branch
 
@@ -427,7 +428,8 @@ Before writing each claim, attach it to evidence.
 | Two-sided texture-distribution contrast adds context beyond pointwise amplitudes | fixed half-disc uniform-LBP chi-square feature with leakage-free repeated CV | not established; Stage 14l gained only +0.00031 aggregate F1, won 6/15 folds, and was eligible in 7/15 folds, so it failed promotion |
 | Fold-fitted linear cue calibration improves the compact analytical gate | fixed-form logistic fusion of Scharr+NMS and retained memberships under leakage-free repeated CV | not established; Stage 14m converged in all folds but reduced aggregate F1 by 0.00497 and won only 4/15 folds |
 | A shallow non-neural forest can exploit nonlinear compact-cue interactions and recover a stronger dense localizer | fixed randomized forest versus compact Choquet gate under leakage-free repeated CV | not established; Stage 14n reduced aggregate F1 by 0.02493 and precision by 0.03856, with only 2/15 wins; this bounded binary test is not a full structured-forest reproduction |
-| Interval membership width and a reliability-conditioned capacity improve trust calibration | fixed Stage-14o candidate versus compact incumbent on UDED repeated CV and official BSDS500 validation | not established; UDED F1 fell by 0.00980 with 0/15 fold wins and precision fell by 0.01532; official BSDS-val attachment is pending a plumbing-only retry |
+| Interval membership width and a reliability-conditioned capacity improve trust calibration | fixed Stage-14o candidate versus compact incumbent on UDED repeated CV and official BSDS500 validation | not established; UDED F1 fell by 0.00980 with 0/15 fold wins and precision fell by 0.01532; BSDS-val ODS/OIS rose slightly but AP fell by 0.00100 |
+| Fixed SE(2) score diffusion improves contour continuity without sacrificing detection | Stage-14r UDED repeated CV, preregistered component coverage, and official BSDS500 validation | not established; BSDS ODS/OIS/AP improved, but UDED F1 and precision fell and largest-component coverage changed by -0.00201 with only 4/15 wins |
 | Compact measures generalize better than free capacity | family-level validation/test gap comparison | pending |
 | Shapley gating improves robustness/interpretability | regime/scale ablation and frozen test | pending |
 | CH-MFI outperforms modern learned methods | official BSDS/BIPED metrics | not tested |
