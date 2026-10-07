@@ -406,3 +406,12 @@ Because Stages 14r and 14s both improved all BSDS-val headline metrics while
 failing UDED, run a live-literature/mechanism checkpoint before instantiating
 item 6; do not assume that another smoothing/localization operator is the
 correct next move without addressing that development-domain discrepancy.
+
+The post-Stage-14s checkpoint selected a statistically calibrated trust
+mechanism before Priority F. Stage 14t tests one fixed a-contrario
+connected-support NFA gate over the unchanged incumbent score, motivated by
+the Helmholtz-principle edge literature. This is distinct from a new localizer,
+hard topology repair, or PDE conditioner and directly addresses the repeated
+domain discrepancy through an image-internal null. Dempster–Shafer ignorance,
+pure threshold persistence, and Priority F remain deferred until this bounded
+test is resolved.

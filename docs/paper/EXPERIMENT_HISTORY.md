@@ -771,6 +771,34 @@ prediction, fractional magnitude, and retained incumbent; it is documentary
 only. The sharp UDED/BSDS discrepancy routes next to a live-literature and
 mechanism checkpoint rather than directly choosing a nearby derivative.
 
+### Post-Stage-14s literature checkpoint and Stage 14t decision
+
+The live primary-literature checkpoint compared three non-neural trust
+mechanisms: Dempster–Shafer explicit ignorance, component-tree persistence, and
+a-contrario statistical meaningfulness. It selected the a-contrario direction
+because it directly controls expected accidental detections under an
+image-internal null, whereas a first Dempster–Shafer test would require more
+arbitrary mass assignments and persistence alone lacks a false-alarm scale.
+
+Desolneux, Moisan, and Morel (2001, DOI
+`10.1023/A:1011290230196`) establish edge detection by the Helmholtz principle.
+Tepper, Musé, and Almansa (2013, DOI
+`10.1007/s10851-012-0411-6`) extend meaningful-boundary analysis to partially
+salient level lines and combined gestalts. Stage 14t tests a much narrower,
+clearly labeled connected-component surrogate: a fixed 8-bit upper-level
+filtration of the retained compact Choquet-gated Scharr score, conservative
+Bonferroni test count, two-pixel independent sampling, `epsilon=1`, and an NFA
+reliability gate with the existing `0.10` floor. It does not replace Scharr,
+link components, route by dataset, or reproduce the full level-line method.
+
+UDED-selection 5×3 leakage-free CV and official BSDS500-validation ODS/OIS/AP
+are conjunctive. No NFA, null, quantization, connectivity, sampling, floor, or
+fusion sweep is permitted. The authoritative protocol is
+`docs/paper/STAGE14T_PREREGISTRATION.md`; the runner includes a frozen native-
+resolution exporter and deterministic preview. The SOTA ledger was reviewed
+but not changed because this mechanism search found no newer verified matched-
+protocol neural target than the 2026-10-06 refresh.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

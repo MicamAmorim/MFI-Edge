@@ -341,6 +341,16 @@ UDED aggregate F1 by `0.03599`, precision by `0.02286`, and mean fold F1 by
 tune the fractional implementation from this mixed result; retain grayscale
 Scharr+NMS and route to a live-literature/mechanism checkpoint.
 
+The post-Stage-14s checkpoint selected Stage 14t: one fixed a-contrario
+connected-support meaningfulness gate over the unchanged compact Choquet-gated
+Scharr score. The test asks whether an image-internal number-of-false-alarms
+model can reject accidental strong responses without another localizer or a
+learned domain router. It uses a fixed 8-bit upper-level filtration,
+conservative test-count bound, two-pixel effective sampling, `epsilon=1`, and
+the retained `0.10` attenuation floor. UDED repeated CV and official BSDS-val
+remain conjunctive; the runner includes the required preview and frozen
+exporter. Dempster–Shafer ignorance and pure threshold persistence are deferred.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
@@ -392,7 +402,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | Stage 14r SE(2) contour enhancement | 🟢 completed; not promoted | BSDS ODS/OIS/AP rose, but UDED F1/precision and preregistered continuity coverage fell |
 | post-SE(2) mechanism search | 🟢 completed | selected one fixed half-order Riesz-gradient localizer from primary fractional-edge literature |
 | Stage 14s fractional Riesz localizer | 🟢 completed; not promoted | BSDS ODS/OIS/AP improved strongly, but UDED F1/precision collapsed and the candidate won 0/15 folds |
-| post-fractional mechanism search | 🟡 next | reconcile the repeated BSDS-positive/UDED-negative localizer pattern and select one distinct bounded falsification from live primary literature |
+| post-fractional mechanism search | 🟢 completed | selected fixed a-contrario connected-support meaningfulness rather than another localizer |
+| Stage 14t a-contrario meaningfulness | 🟡 registered | unchanged incumbent score plus a conservative image-internal NFA reliability gate; UDED CV and official BSDS-val are conjunctive |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

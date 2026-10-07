@@ -246,6 +246,20 @@ fractional order, padding, normalization, orientation, or fusion from the
 result. Grayscale Scharr+NMS remains incumbent. The discrepancy triggers a
 live-literature/mechanism checkpoint before the next bounded falsification.
 
+### Post-Stage-14s checkpoint — Stage 14t registered
+
+The live primary-literature checkpoint did not select another localizer. The
+repeated BSDS-positive/UDED-negative pattern in Stages 14r–14s instead motivates
+one fixed a-contrario reliability test over the unchanged incumbent score.
+Stage 14t uses a conservative number-of-false-alarms model over connected upper
+level components to attenuate responses without statistically meaningful
+support. It is explicitly a repository-specific connected-component surrogate,
+not a reproduction of the full level-line meaningful-boundaries algorithms of
+Desolneux et al. or Tepper et al. UDED-selection repeated CV and official
+BSDS500 validation remain conjunctive, and no NFA, quantization, connectivity,
+sampling, or attenuation parameter may be tuned from the result. Dempster–
+Shafer ignorance and pure threshold-persistence remain deferred alternatives.
+
 ## d-Choquet terminology
 
 Do not conflate these:
