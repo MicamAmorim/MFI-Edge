@@ -282,9 +282,11 @@ fold F1 by `-0.00171`, and recall by `-0.00781`; precision increased only
 `+0.00072`, and the candidate won `3/15` folds. The fixed realization therefore
 cannot be promoted or tuned. The required official BSDS500-validation
 attachment failed during incumbent native matching after 37/100 images with
-intermittent Windows MATLAB heap corruption. An attachment-only retry is
-registered; it does not rerun CV, alter predictions, or change the scientific
-decision from UDED. The compact Choquet-gated grayscale Scharr+NMS controller
+intermittent Windows MATLAB heap corruption, and its first frozen retry failed
+after 12/100. A second attachment-only retry is registered with resumable
+per-image matching across fresh MATLAB processes; it does not rerun CV, alter
+predictions or vendor matching code, or change the scientific decision from
+UDED. The compact Choquet-gated grayscale Scharr+NMS controller
 remains incumbent. After the frozen attachment completes, route to a live
 literature/mechanism checkpoint rather than tuning masses, sources, conflict
 handling, the decision transform, gamma, or the gate.

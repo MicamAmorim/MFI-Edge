@@ -376,22 +376,44 @@ def _evaluate_one(
     # files have been written, causing a false evaluator failure during
     # collection or process teardown.  This process boundary changes no score
     # computation and leaves the pinned sources untouched.
-    p_eval = _run(
-        [str(matlab), "-batch", expr_base + ",'evaluate');"],
-        timeout=4 * 60 * 60,
-        check=False,
-    )
     expected_ids = sorted(path.stem for path in image_dir.glob("*.jpg"))
-    missing_eval = [
-        image_id
-        for image_id in expected_ids
-        if not (out_dir / f"{image_id}_ev1.txt").exists()
-    ]
+    eval_runs: list[subprocess.CompletedProcess] = []
+    missing_eval = list(expected_ids)
+    # The pinned Windows MEX intermittently terminates MATLAB with heap
+    # corruption after it has successfully written a prefix of per-image
+    # results. Resume those immutable results in fresh MATLAB processes rather
+    # than discarding valid work or changing the matcher. The MATLAB wrapper
+    # skips only nonempty result files, so each image is still matched exactly
+    # once by the original Berkeley implementation.
+    for _ in range(len(expected_ids) + 1):
+        before = len(missing_eval)
+        p_eval = _run(
+            [str(matlab), "-batch", expr_base + ",'evaluate');"],
+            timeout=4 * 60 * 60,
+            check=False,
+        )
+        eval_runs.append(p_eval)
+        missing_eval = [
+            image_id
+            for image_id in expected_ids
+            if not (out_dir / f"{image_id}_ev1.txt").exists()
+            or (out_dir / f"{image_id}_ev1.txt").stat().st_size == 0
+        ]
+        if not missing_eval:
+            break
+        if len(missing_eval) >= before:
+            raise RuntimeError(
+                "MATLAB native matching made no resumable progress; "
+                f"returncode={p_eval.returncode}, missing={missing_eval[:10]}\n"
+                f"STDOUT:\n{p_eval.stdout}\nSTDERR:\n{p_eval.stderr}"
+            )
     if missing_eval:
+        p_eval = eval_runs[-1]
         raise RuntimeError(
             "MATLAB native matching did not produce a complete evaluation set; "
-            f"returncode={p_eval.returncode}, missing={missing_eval[:10]}\n"
-            f"STDOUT:\n{p_eval.stdout}\nSTDERR:\n{p_eval.stderr}"
+            f"attempts={len(eval_runs)}, returncode={p_eval.returncode}, "
+            f"missing={missing_eval[:10]}\nSTDOUT:\n{p_eval.stdout}\n"
+            f"STDERR:\n{p_eval.stderr}"
         )
     p_collect = _run(
         [str(matlab), "-batch", expr_base + ",'collect');"],
@@ -406,9 +428,10 @@ def _evaluate_one(
             f"COLLECT STDERR:\n{p_collect.stderr}"
         )
     result = _load_json(summary_path)
-    result["matlab_evaluate_returncode"] = int(p_eval.returncode)
+    result["matlab_evaluate_returncode"] = int(eval_runs[-1].returncode)
+    result["matlab_evaluate_processes"] = len(eval_runs)
     result["matlab_evaluate_stdout_tail"] = "\n".join(
-        (p_eval.stdout or "").splitlines()[-30:]
+        (eval_runs[-1].stdout or "").splitlines()[-30:]
     )
     result["matlab_collect_stdout_tail"] = "\n".join(
         (p_collect.stdout or "").splitlines()[-30:]

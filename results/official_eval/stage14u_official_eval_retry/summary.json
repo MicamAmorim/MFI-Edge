@@ -1,0 +1,11 @@
+{
+  "status": "evaluator_failed",
+  "experiment_id": "stage14u_official_eval_retry",
+  "role": "official_eval_retry",
+  "returncode": 1,
+  "manifest": "results/local_dev/stage14u_yager_evidential_ignorance/official_eval_manifest.json",
+  "manifest_sha256": "6bfbae7b6f0a45468c7355039f1ddbeae7db34c46fe23c525e4d38443b3d36ca",
+  "stdout_tail": "BSDS_OFFICIAL_EVAL incumbent_compact_positive_choquet split=val\nBSDS_OFFICIAL_EVAL fixed_yager_evidential_ignorance split=val",
+  "stderr_tail": "Traceback (most recent call last):\n  File \"C:\\Users\\Windows 11\\Documents\\MFI-Edge\\evaluation\\bsds_official\\run_official_bsds.py\", line 568, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"C:\\Users\\Windows 11\\Documents\\MFI-Edge\\evaluation\\bsds_official\\run_official_bsds.py\", line 495, in main\n    results[name] = _evaluate_one(\n                    ^^^^^^^^^^^^^^\n  File \"C:\\Users\\Windows 11\\Documents\\MFI-Edge\\evaluation\\bsds_official\\run_official_bsds.py\", line 391, in _evaluate_one\n    raise RuntimeError(\nRuntimeError: MATLAB native matching did not produce a complete evaluation set; returncode=3221226356, missing=['126007', '130026', '134035', '14037', '143090', '145086', '147091', '148026', '148089', '156065']\nSTDOUT:\nMFI_BSDS_EVAL 1/100 101085\nMFI_BSDS_EVAL 2/100 101087\nMFI_BSDS_EVAL 3/100 102061\nMFI_BSDS_EVAL 4/100 103070\nMFI_BSDS_EVAL 5/100 105025\nMFI_BSDS_EVAL 6/100 106024\nMFI_BSDS_EVAL 7/100 108005\nMFI_BSDS_EVAL 8/100 108070\nMFI_BSDS_EVAL 9/100 108082\nMFI_BSDS_EVAL 10/100 109053\nMFI_BSDS_EVAL 11/100 119082\nMFI_BSDS_EVAL 12/100 12084\n\nSTDERR:\nERROR: MATLAB error Exit Status: 0xc0000374, Heap corruption\n",
+  "failure_policy": "report_and_continue"
+}

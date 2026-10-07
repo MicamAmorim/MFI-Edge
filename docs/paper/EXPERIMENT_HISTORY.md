@@ -876,6 +876,15 @@ sources. The compact controller remains incumbent regardless of the attachment
 because the conjunctive UDED conditions already failed. After documentary
 closure, the next scientific action is a live literature/mechanism checkpoint.
 
+The first attachment-only retry again encountered the native Windows MATLAB
+heap-corruption exit, this time after writing 12/100 incumbent per-image match
+files. Because successful prefixes survive the fault, the evaluator plumbing
+now checkpoints nonempty per-image Berkeley outputs and resumes the remaining
+images in a fresh MATLAB process before running aggregation separately. A
+second frozen attachment-only retry is registered. This changes neither the
+matcher nor any scientific artifact and does not reopen Stage 14u's failed
+UDED decision.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

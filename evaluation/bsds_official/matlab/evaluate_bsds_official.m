@@ -93,6 +93,11 @@ if ~strcmp(phase, 'collect')
         end
 
         evFile = fullfile(outDir, [iid '_ev1.txt']);
+        evInfo = dir(evFile);
+        if exist(evFile, 'file') && ~isempty(evInfo) && evInfo(1).bytes > 0
+            fprintf('MFI_BSDS_SKIP %d/%d %s\n', i, numel(imgs), iid);
+            continue;
+        end
         evaluation_bdry_image(inFile, gtFile, evFile, nthresh, maxDist, logical(thinpb));
         fprintf('MFI_BSDS_EVAL %d/%d %s\n', i, numel(imgs), iid);
     end
@@ -119,7 +124,7 @@ summary.max_dist = maxDist;
 summary.thinpb = logical(thinpb);
 summary.matcher = 'Berkeley correspondPixels / CSA++';
 summary.annotation_protocol = 'all human boundary annotations, original Berkeley accumulation';
-summary.matlab_compatibility = 'run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching and aggregation may run in isolated MATLAB processes; pinned vendor source unchanged';
+summary.matlab_compatibility = 'run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged';
 
 fid = fopen(fullfile(outDir, 'official_summary.json'), 'w');
 if fid == -1

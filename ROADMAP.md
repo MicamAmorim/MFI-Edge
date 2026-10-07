@@ -358,7 +358,9 @@ Yager-rule evidential fusion. It failed the UDED gate: aggregate F1 changed by
 folds won, despite a `+0.00072` precision change. The candidate is not promoted
 or tunable. Its official BSDS-val attachment encountered the known intermittent
 MATLAB heap-corruption exit after 37/100 incumbent images; a frozen
-attachment-only retry is next. After documentary closure, run a live
+attachment-only retry then exited after 12/100. A resumable second retry now
+checkpoints completed per-image Berkeley matches across fresh MATLAB processes
+without changing the evaluator, predictions, or candidate. After documentary closure, run a live
 literature/mechanism checkpoint. Threshold persistence and
 uncertainty-controlled PDE conditioning remain deferred, not automatically
 selected.
@@ -418,7 +420,7 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | Stage 14t a-contrario meaningfulness | 🟢 completed; not promoted | Failed all UDED criteria and reduced official BSDS-val ODS/OIS/AP by 0.01257/0.01761/0.02830; compact controller retained |
 | post-a-contrario mechanism search | 🟢 completed | selected fixed Yager-rule evidential ignorance over disjoint incumbent sources |
 | Stage 14u Yager evidential ignorance | 🟡 UDED failed; official attachment retry pending | F1/mean-fold/3-of-15 win criteria failed despite a tiny precision gain; no mass-rule tuning |
-| Stage 14u official BSDS-val retry | 🟡 registered | frozen attachment only after intermittent MATLAB heap corruption; no CV or prediction changes |
+| Stage 14u official BSDS-val retry | 🟡 retry 2 registered | resumable frozen attachment after two intermittent MATLAB heap-corruption exits; no CV, prediction, matcher, or vendor changes |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 
