@@ -194,17 +194,30 @@ matching and pure-MATLAB aggregation processes, but reference-detector
 reproduction remains unverified and no final SOTA claim may rely on it. Do not
 rerun the CV or tune the interval mechanism.
 
-### Stage 14p — registered MFI-coupled Ambrosio–Tortorelli phase field
+### Stage 14p — MFI-coupled Ambrosio–Tortorelli falsification
 
-Stage 14p restores the retained crisp compact Choquet context and uses it only
-as a weak nonnegative spatial prior in one fixed Ambrosio–Tortorelli energy.
-The candidate localizer is NMS of the optimized diffuse discontinuity field;
-the comparator remains compact Choquet-gated grayscale Scharr+NMS. Fixed
-normalized parameters are alpha `1.0`, beta `0.10`, epsilon `1.5` pixels, MFI
-coupling `0.005`, and 16 alternating iterations. No parameter sweep is
-allowed. Evaluation is UDED-selection 5x3 leakage-free CV plus required
-official BSDS500-validation ODS/OIS/AP and a deterministic preview. The
-authoritative protocol is `docs/paper/STAGE14P_PREREGISTRATION.md`.
+Stage 14p did **not** promote the fixed MFI-coupled Ambrosio–Tortorelli phase
+field. Relative to the compact controller, UDED aggregate F1 changed by
+`-0.08044`, aggregate precision by `+0.05194`, and mean fold F1 by `-0.08243`,
+with `0/15` fold wins. The recall collapse defeated the UDED F1 and fold-win
+conditions despite higher precision. On official
+BSDS500 validation, ODS improved by `+0.00522`, but OIS changed by `-0.00286`
+and AP by `-0.04888`. The conjunction therefore failed decisively. The
+compact positive Choquet gate with grayscale Scharr+NMS remains incumbent.
+Do not tune the phase-field coefficients or discretization from this result.
+
+### Stage 14q — registered fixed anisotropic singularity localizer
+
+Stage 14q moves to the agenda's shearlet/singularity family without using
+Stage-14p outcomes to tune parameters. One fixed bank of eight odd anisotropic
+Gaussian-derivative atoms uses normal scales 1 and 2 pixels, tangent scale
+twice the normal scale, and four edge-normal orientations. Maximum modulus and
+the winning atom orientation replace Scharr+NMS; the retained compact context
+gate is unchanged. Evaluation is UDED-selection 5x3 leakage-free CV plus the
+required official BSDS500-validation attachment and deterministic preview.
+The implementation is a bounded shearlet-motivated discrete operationalization,
+not a claim to reproduce a continuous shearlet transform. The authoritative
+protocol is `docs/paper/STAGE14Q_PREREGISTRATION.md`.
 
 ## d-Choquet terminology
 

@@ -637,6 +637,27 @@ of at least `+0.002`, and nonnegative OIS/AP changes. The fixed preview is
 documentary. The authoritative protocol is
 `docs/paper/STAGE14P_PREREGISTRATION.md`.
 
+### Stage 14p result and Stage 14q decision
+
+Stage 14p failed its conjunctive promotion rule. On UDED selection repeated
+CV, the phase field increased aggregate precision from `0.67248` to `0.72442`
+but reduced recall from `0.88850` to `0.64983`, producing aggregate F1
+`0.68510` versus `0.76555` (delta `-0.08044`). Mean fold F1 changed from
+`0.76472` to `0.68229` (delta `-0.08243`), with `0/15` fold wins. On official BSDS500 validation,
+ODS changed by `+0.00522`, while OIS changed by `-0.00286` and AP by
+`-0.04888`. Thus the candidate failed the UDED F1 conditions and the required
+nonnegative BSDS OIS/AP conditions. It is not promoted, and its fixed
+coefficients must not be tuned from this outcome.
+
+Stage 14q advances to the preregistered fallback family: a fixed small
+anisotropic directional atom bank for multiscale singularity
+localization. It changes only the localizer; the compact five-feature Choquet
+context gate is retained. The bank has two normal scales, four fixed
+orientations, and a fixed 2:1 tangent elongation. UDED 5x3 leakage-free CV and
+official BSDS500-validation ODS/OIS/AP remain conjunctive development axes.
+The deterministic preview and native-resolution exporter are mandatory. The
+authoritative protocol is `docs/paper/STAGE14Q_PREREGISTRATION.md`.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

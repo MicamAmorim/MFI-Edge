@@ -292,11 +292,19 @@ candidate changed ODS/OIS/AP by `+0.00225/+0.00182/-0.00100`; the negative AP
 change failed the official criterion, while the UDED conjunction had already
 failed decisively. Stage 14o is closed without promotion.
 
-Stage 14p is registered as the distinct next mechanism: one fixed MFI-coupled
-Ambrosio–Tortorelli phase field replaces localization while the retained
-compact Choquet context supplies only a weak spatial prior. It uses UDED
-repeated leakage-free CV plus the default official BSDS500-validation
-attachment, with no coefficient sweep and a deterministic preview.
+Stage 14p completed without promotion. Its precision gain was overwhelmed by
+a UDED recall collapse: aggregate F1 changed by `-0.08044` and mean fold F1 by
+`-0.08243`. Official BSDS500-validation ODS rose by `+0.00522`, but OIS fell
+by `-0.00286` and AP by `-0.04888`; the conjunctive cross-dataset rule failed.
+Do not tune the phase-field coefficients from this outcome.
+
+Stage 14q is registered as the distinct next mechanism: a fixed eight-atom
+anisotropic directional bank replaces Scharr localization while
+the retained compact Choquet gate remains unchanged. This is a bounded
+shearlet-motivated singularity test with two fixed scales and four fixed
+orientations, not a continuous-shearlet reproduction. It uses UDED repeated
+leakage-free CV plus the default official BSDS500-validation attachment, with
+no bank sweep and a deterministic preview.
 
 Scientific conclusion:
 
@@ -343,7 +351,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | Stage 14n shallow edge forest | 🟢 completed | finite in 15/15 folds but large F1/precision loss and only 2/15 wins; not promoted |
 | post-forest mechanism search | 🟢 completed | selected explicit interval ignorance plus convex reliability-conditioned capacity |
 | Stage 14o interval-capacity uncertainty | 🟢 completed; not promoted | UDED failed all criteria; BSDS ODS/OIS rose slightly but AP fell, so the conjunctive rule failed |
-| Stage 14p Ambrosio–Tortorelli phase field | 🟡 registered | fixed MFI-coupled variational localizer; UDED 5x3 CV plus official BSDS-val, no parameter sweep |
+| Stage 14p Ambrosio–Tortorelli phase field | 🟢 completed; not promoted | large UDED F1/recall and BSDS AP losses despite a small BSDS ODS gain |
+| Stage 14q anisotropic singularity localizer | 🟡 registered | fixed eight-atom shearlet-motivated bank; UDED 5x3 CV plus official BSDS-val, no parameter sweep |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 
