@@ -22,3 +22,6 @@ automation/STOP
 external/
 webui/
 evaluation/bsds_official/vendor/
+
+# Runtime-only MATLAB compatibility mirrors
+results/official_eval/**/matlab_compat/

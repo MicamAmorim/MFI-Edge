@@ -282,9 +282,11 @@ Stage 14o failed every UDED non-collapse condition: aggregate F1 changed by
 The first three BSDS-val attachment attempts exposed, in sequence, absolute-
 path exporter imports, MEX existence semantics, and MATLAB R2023a's inability
 to parse chained cell/field indexing in the pinned evaluator. No attempt
-reached scoring. A fourth plumbing-only retry is registered with a run-local
-syntax compatibility mirror that leaves the vendored source and frozen methods
-unchanged. Once ODS/OIS/AP are documented, move to the distinct
+reached scoring. The fourth retry reached its run-local compatibility mirror
+but exposed an unused four-output `fileparts` call that MATLAB R2023a rejects.
+A fifth plumbing-only retry is registered after removing only that unused
+output in the mirror, leaving the vendored source, predictions, and frozen
+methods unchanged. Once ODS/OIS/AP are documented, move to the distinct
 Ambrosio–Tortorelli phase-field family without interval micro-tuning.
 
 Scientific conclusion:
@@ -331,7 +333,7 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | post-linear-fusion mechanism search | 🟢 completed | selected a bounded shallow edge-forest localizer from primary Structured Forest/OEF literature |
 | Stage 14n shallow edge forest | 🟢 completed | finite in 15/15 folds but large F1/precision loss and only 2/15 wins; not promoted |
 | post-forest mechanism search | 🟢 completed | selected explicit interval ignorance plus convex reliability-conditioned capacity |
-| Stage 14o interval-capacity uncertainty | 🟡 UDED rejected; fourth attachment retry pending | failed all UDED non-collapse criteria with 0/15 wins; MATLAB R2023a syntax compatibility isolated without editing vendor source, then move to Ambrosio–Tortorelli |
+| Stage 14o interval-capacity uncertainty | 🟡 UDED rejected; fifth attachment retry pending | failed all UDED non-collapse criteria with 0/15 wins; MATLAB R2023a legacy-source compatibility isolated without editing vendor source, then move to Ambrosio–Tortorelli |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

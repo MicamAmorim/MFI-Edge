@@ -26,15 +26,19 @@ compatSource = fileread(sourceEval);
 oldLoop = 'for i = 1:numel(groundTruth),';
 newLoop = sprintf('for i = 1:numel(groundTruth),\n        gt_i = groundTruth{i};');
 oldAccess = 'groundTruth{i}.Boundaries';
+oldFileparts = '[p,n,e,v]=fileparts(inFile);';
 oldLoad = 'load(gtFile);';
 newLoad = sprintf('gtData = load(gtFile);\ngroundTruth = gtData.groundTruth;');
 if ~contains(compatSource, oldLoop) || ~contains(compatSource, oldAccess) || ...
-        ~contains(compatSource, oldLoad)
+        ~contains(compatSource, oldFileparts) || ~contains(compatSource, oldLoad)
     error('MFIEdge:UnexpectedEvaluatorSource', ...
         'Pinned evaluation_bdry_image.m no longer matches the audited compatibility transform.');
 end
 compatSource = strrep(compatSource, oldLoop, newLoop);
 compatSource = strrep(compatSource, oldAccess, 'gt_i.Boundaries');
+% The pinned source asks fileparts for a fourth output that modern MATLAB
+% does not provide. That legacy value is never used by the evaluator.
+compatSource = strrep(compatSource, oldFileparts, '[p,n,e]=fileparts(inFile);');
 compatSource = strrep(compatSource, oldLoad, newLoad);
 fid = fopen(compatEval, 'w');
 if fid == -1
@@ -104,7 +108,7 @@ summary.max_dist = maxDist;
 summary.thinpb = logical(thinpb);
 summary.matcher = 'Berkeley correspondPixels / CSA++';
 summary.annotation_protocol = 'all human boundary annotations, original Berkeley accumulation';
-summary.matlab_compatibility = 'run-local syntax-only explicit groundTruth load/cell assignment; pinned vendor source unchanged';
+summary.matlab_compatibility = 'run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; pinned vendor source unchanged';
 
 fid = fopen(fullfile(outDir, 'official_summary.json'), 'w');
 if fid == -1

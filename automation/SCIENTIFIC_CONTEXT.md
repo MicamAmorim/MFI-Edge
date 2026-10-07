@@ -192,10 +192,13 @@ issue in the candidate exporter. The second retry reached MATLAB but exposed
 an evaluator-wrapper bug: MATLAB classifies an existing MEX as file type 3,
 while the wrapper accepted only type 2. The third retry passed that check but
 MATLAB R2023a could not parse the pinned evaluator's chained
-`groundTruth{i}.Boundaries` access. These are plumbing failures before scoring,
-not scientific evidence. A fourth attachment-only retry is registered using a
-run-local syntax-only compatibility mirror; the pinned vendor source remains
-unchanged. Do not rerun the CV or tune the interval mechanism. After the
+`groundTruth{i}.Boundaries` access. The fourth retry reached that mirror but
+exposed a further legacy source incompatibility: the pinned evaluator requests
+an unused fourth output from `fileparts`, while MATLAB R2023a supports three.
+These are plumbing failures before scoring, not scientific evidence. A fifth
+attachment-only retry is registered with that unused output removed in the
+run-local mirror; the pinned vendor source remains unchanged. Do not rerun the
+CV or tune the interval mechanism. After the
 official metrics are documented, proceed to the preregistered
 Ambrosio–Tortorelli phase-field family.
 

@@ -583,8 +583,12 @@ wrapper now creates a run-local compatibility mirror that makes the dynamic
 ground-truth load explicit, assigns the cell element to an intermediate
 variable, and otherwise preserves the pinned source;
 the vendored file is not edited, and the transform aborts if the audited source
-expressions are absent. A fourth attachment-only retry is registered. Stage-14o
-CV and the frozen exported methods remain unchanged.
+expressions are absent. The fourth retry reached the mirror but MATLAB R2023a
+then rejected the pinned source's four-output `fileparts` call; the fourth
+output is unused and modern MATLAB supports three. The audited run-local
+transform now removes only that unused output, and a fifth attachment-only
+retry is registered. Stage-14o CV, vendor sources, predictions, and frozen
+exported methods remain unchanged.
 Although no BSDS result can rescue promotion after the UDED conjunction failed,
 ODS/OIS/AP remain required documentary development evidence before Stage 14o
 is closed and work advances to the Ambrosio–Tortorelli phase-field family.
