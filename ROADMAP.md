@@ -334,6 +334,13 @@ without tuning an order or revisiting SE(2). UDED repeated leakage-free CV and
 official BSDS500-validation ODS/OIS/AP are conjunctive, and the runner includes
 the required deterministic preview and frozen exporter.
 
+Stage 14s is closed without promotion. The candidate improved official
+BSDS500-validation ODS/OIS/AP by `+0.01161/+0.00505/+0.01804`, but reduced
+UDED aggregate F1 by `0.03599`, precision by `0.02286`, and mean fold F1 by
+`0.03583`, with `0/15` wins. The conjunctive rule failed decisively. Do not
+tune the fractional implementation from this mixed result; retain grayscale
+Scharr+NMS and route to a live-literature/mechanism checkpoint.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
@@ -384,7 +391,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | post-singularity mechanism search | 🟢 completed | selected fixed SE(2) orientation-lifted contour enhancement from primary literature |
 | Stage 14r SE(2) contour enhancement | 🟢 completed; not promoted | BSDS ODS/OIS/AP rose, but UDED F1/precision and preregistered continuity coverage fell |
 | post-SE(2) mechanism search | 🟢 completed | selected one fixed half-order Riesz-gradient localizer from primary fractional-edge literature |
-| Stage 14s fractional Riesz localizer | 🟡 registered | run UDED 5x3 leakage-free CV plus official BSDS500-validation attachment; no order sweep |
+| Stage 14s fractional Riesz localizer | 🟢 completed; not promoted | BSDS ODS/OIS/AP improved strongly, but UDED F1/precision collapsed and the candidate won 0/15 folds |
+| post-fractional mechanism search | 🟡 next | reconcile the repeated BSDS-positive/UDED-negative localizer pattern and select one distinct bounded falsification from live primary literature |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

@@ -233,16 +233,18 @@ Do not tune its discretization or fusion from the mixed result. The compact
 Choquet-gated grayscale Scharr+NMS controller remains incumbent; proceed to a
 live-literature checkpoint for a mechanistically distinct falsification.
 
-### Stage 14s — registered fractional Riesz localizer
+### Stage 14s — fractional Riesz localizer falsification
 
-The post-SE(2) live-literature checkpoint selected one fixed half-order
-isotropic spectral Riesz-gradient replacement for Scharr+NMS. The retained
-median conditioning, compact five-feature distorted-Choquet context, gate,
-and fold-fitting semantics remain unchanged. Stage 14s is preregistered on
-UDED-selection 5x3 leakage-free CV with a mandatory official BSDS500-validation
-attachment and deterministic preview. Promotion is conjunctive across UDED
-non-collapse/fold wins and BSDS-val ODS/OIS/AP. No fractional-order, padding,
-normalization, orientation, or fusion sweep is allowed from the result.
+Stage 14s did **not** promote the fixed half-order isotropic spectral
+Riesz-gradient localizer. It improved official BSDS500-validation ODS/OIS/AP
+by `+0.01161/+0.00505/+0.01804`, but failed every preregistered UDED condition:
+aggregate F1 `-0.03599`, precision `-0.02286`, mean fold F1 `-0.03583`, and
+`0/15` fold wins. The explicitly conjunctive rule therefore rejects the
+candidate. This is a mixed cross-dataset result against this fixed spectral
+realization, not against fractional differentiation generally. Do not tune
+fractional order, padding, normalization, orientation, or fusion from the
+result. Grayscale Scharr+NMS remains incumbent. The discrepancy triggers a
+live-literature/mechanism checkpoint before the next bounded falsification.
 
 ## d-Choquet terminology
 

@@ -394,7 +394,7 @@ mechanistic justification, continue from entry 4:
 2. ~~MFI-coupled Ambrosio–Tortorelli phase field~~ — Stage 14p not promoted;
 3. ~~shearlet singularity localizer~~ — Stage 14q not promoted;
 4. ~~SE(2) orientation-lifted diffusion/completion~~ — Stage 14r not promoted; official BSDS-val improved, but UDED F1/precision and the preregistered continuity endpoint failed;
-5. **live primary-literature checkpoint completed; Stage 14s registered** — one fixed half-order isotropic Riesz-gradient localizer, with no order sweep;
+5. ~~fixed half-order isotropic Riesz-gradient localizer~~ — Stage 14s not promoted; BSDS-val ODS/OIS/AP improved, but all UDED conditions failed with 0/15 fold wins;
 6. uncertainty-controlled anisotropic diffusion / shock filtering;
 7. Dempster–Shafer explicit ignorance;
 8. threshold-persistence topology;
@@ -402,3 +402,7 @@ mechanistic justification, continue from entry 4:
 
 Each item is a hypothesis family, not a hyperparameter sweep. A failed bounded
 falsification should trigger a mechanistic move, not dozens of nearby variants.
+Because Stages 14r and 14s both improved all BSDS-val headline metrics while
+failing UDED, run a live-literature/mechanism checkpoint before instantiating
+item 6; do not assume that another smoothing/localization operator is the
+correct next move without addressing that development-domain discrepancy.

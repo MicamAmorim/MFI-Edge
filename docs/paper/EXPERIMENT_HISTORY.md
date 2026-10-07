@@ -749,6 +749,28 @@ fractional-order or implementation sweep is permitted. The authoritative
 protocol is `docs/paper/STAGE14S_PREREGISTRATION.md`; a deterministic preview
 and frozen native-resolution exporter are required.
 
+### Stage 14s result — BSDS benefit with decisive UDED failure, no promotion
+
+Stage 14s failed its preregistered conjunctive promotion rule. On UDED
+selection, the fixed half-order Riesz candidate changed aggregate F1 by
+`-0.035994`, aggregate precision by `-0.022856`, and mean fold F1 by
+`-0.035832`, with `0/15` fold-F1 wins. Thus every UDED non-collapse/stability
+condition failed.
+
+Official BSDS500-validation evaluation completed and was strongly positive
+relative to the incumbent: ODS/OIS/AP changed by
+`+0.011613/+0.005046/+0.018042`. These gains satisfy the BSDS portion but do
+not override the predeclared conjunction. The compact Choquet-gated grayscale
+Scharr+NMS controller remains incumbent. The result rejects this fixed
+half-order spectral Riesz realization only; no fractional-order, padding,
+normalization, orientation, or fusion tuning is authorized. The deterministic
+preview is
+`results/local_dev/stage14s_fractional_riesz_localizer/best_method_preview.png`,
+with conditioned input, ground truth, incumbent prediction, candidate
+prediction, fractional magnitude, and retained incumbent; it is documentary
+only. The sharp UDED/BSDS discrepancy routes next to a live-literature and
+mechanism checkpoint rather than directly choosing a nearby derivative.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels
