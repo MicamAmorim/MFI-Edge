@@ -27,6 +27,14 @@ should therefore add principled uncertainty, geometry, global regularization,
 or a genuinely new localization basis rather than another classifier over the
 same cues.
 
+Stages 14o–14q have now completed the first three priorities below without a
+promotion. Interval-capacity uncertainty collapsed on UDED and lost BSDS AP;
+the Ambrosio–Tortorelli phase field and fixed anisotropic singularity bank both
+acted mainly as sharpening mechanisms, raising precision or BSDS ODS while
+losing recall, OIS, and/or AP. These fixed forms must not be tuned from their
+outcomes. The active next step is a live primary-literature checkpoint before
+choosing a bounded mechanism at Priority D or later.
+
 From this revision onward, every new image-based development experiment should
 also expose a frozen exporter to the default-on official BSDS500-validation
 MATLAB evaluator. UDED repeated-CV remains the historical development axis;
@@ -376,13 +384,14 @@ split remain outside the optimization loop.
 
 ## 13. Recommended autonomous order
 
-Unless a new primary source found by live research gives stronger mechanistic
-justification, prefer:
+The first three entries have been tested and rejected in their registered
+fixed forms. Unless a new primary source found by live research gives stronger
+mechanistic justification, continue from entry 4:
 
-1. **interval uncertainty + convex reliability-conditioned capacity field**;
-2. MFI-coupled Ambrosio–Tortorelli phase field;
-3. shearlet singularity localizer;
-4. SE(2) orientation-lifted diffusion/completion;
+1. ~~interval uncertainty + convex reliability-conditioned capacity field~~ — Stage 14o not promoted;
+2. ~~MFI-coupled Ambrosio–Tortorelli phase field~~ — Stage 14p not promoted;
+3. ~~shearlet singularity localizer~~ — Stage 14q not promoted;
+4. **SE(2) orientation-lifted diffusion/completion**;
 5. fractional-order localizer;
 6. uncertainty-controlled anisotropic diffusion / shock filtering;
 7. Dempster–Shafer explicit ignorance;

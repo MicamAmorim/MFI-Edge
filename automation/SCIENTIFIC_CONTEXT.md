@@ -206,18 +206,19 @@ and AP by `-0.04888`. The conjunction therefore failed decisively. The
 compact positive Choquet gate with grayscale Scharr+NMS remains incumbent.
 Do not tune the phase-field coefficients or discretization from this result.
 
-### Stage 14q — anisotropic singularity localizer falsification pending attachment
+### Stage 14q — anisotropic singularity localizer falsification
 
 The fixed eight-atom shearlet-motivated localizer failed the UDED portion of
 its conjunctive rule. Relative to compact Choquet-gated Scharr+NMS, aggregate
 F1 changed by `-0.03116`, mean fold F1 by `-0.03135`, and recall by
 `-0.10655`, with only `1/15` fold wins; precision increased by `+0.01979`.
 This is a recall-collapse falsification of this fixed discrete atom bank, not
-of continuous shearlet theory. It cannot be promoted or tuned. The first
-official BSDS500-validation attachment exited after 10/100 incumbent images
-with intermittent Windows MATLAB heap corruption; a frozen attachment-only
-retry is pending and must not rerun UDED or change predictions. Grayscale
-Scharr+NMS remains the incumbent.
+of continuous shearlet theory. On official BSDS500 validation, ODS improved by
+`+0.00334`, but OIS changed by `-0.00089` and AP by `-0.01526`. The conjunctive
+rule therefore failed on both development axes. The candidate cannot be
+promoted or tuned; grayscale Scharr+NMS remains the incumbent. Proceed through
+a live-literature/mechanism checkpoint before registering the next distinct
+falsification.
 
 ## d-Choquet terminology
 

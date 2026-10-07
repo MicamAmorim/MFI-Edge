@@ -311,9 +311,11 @@ F1 by `0.03135`, recall by `0.10655`, and the candidate won only `1/15` folds,
 despite a `0.01979` precision increase. The fixed atom bank is not promoted or
 tuned, and grayscale Scharr+NMS remains incumbent. Its first official
 BSDS500-validation attachment ended after 10/100 incumbent images with an
-intermittent MATLAB heap-corruption exit. A frozen attachment-only retry is
-next; it does not rerun CV or change predictions. After the attachment is
-documented, advance to a mechanistically distinct agenda family.
+intermittent MATLAB heap-corruption exit. A frozen attachment-only retry then
+completed all 100 images: ODS changed by `+0.00334`, but OIS by `-0.00089` and
+AP by `-0.01526`. The cross-dataset conjunctive rule therefore failed, and
+Stage 14q is closed. A live-literature checkpoint is next to select one
+mechanistically distinct falsification rather than tune this atom bank.
 
 Scientific conclusion:
 
@@ -361,7 +363,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | post-forest mechanism search | 🟢 completed | selected explicit interval ignorance plus convex reliability-conditioned capacity |
 | Stage 14o interval-capacity uncertainty | 🟢 completed; not promoted | UDED failed all criteria; BSDS ODS/OIS rose slightly but AP fell, so the conjunctive rule failed |
 | Stage 14p Ambrosio–Tortorelli phase field | 🟢 completed; not promoted | large UDED F1/recall and BSDS AP losses despite a small BSDS ODS gain |
-| Stage 14q anisotropic singularity localizer | 🟡 attachment retry | UDED F1/recall gate failed with 1/15 wins; fixed candidate rejected, official BSDS-val attachment pending heap-failure retry |
+| Stage 14q anisotropic singularity localizer | 🟢 completed; not promoted | UDED F1/recall collapsed; BSDS ODS rose slightly but OIS/AP fell, so the conjunctive rule failed |
+| post-singularity mechanism search | 🟡 next | live primary-literature checkpoint to select one mechanistically distinct bounded falsification |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

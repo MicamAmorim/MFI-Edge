@@ -658,7 +658,7 @@ official BSDS500-validation ODS/OIS/AP remain conjunctive development axes.
 The deterministic preview and native-resolution exporter are mandatory. The
 authoritative protocol is `docs/paper/STAGE14Q_PREREGISTRATION.md`.
 
-### Stage 14q UDED result and pending official attachment
+### Stage 14q result
 
 Stage 14q failed the UDED portion of its conjunctive promotion rule. The fixed
 anisotropic localizer increased aggregate precision from `0.67248` to
@@ -668,13 +668,20 @@ from `0.76555` to `0.73438` (delta `-0.03116`), mean fold F1 changed by
 promoted and must not be tuned from the result; the outcome does not disprove
 continuous shearlet edge theory.
 
-The required official BSDS500-validation attachment failed during incumbent
-native matching after 10/100 images because MATLAB exited with Windows heap
-corruption (`0xc0000374`). This is an evaluator failure, not a detector score.
-An attachment-only retry preserves the manifest, cached frozen predictions,
-candidate, preview, pinned vendor sources, and completed UDED result. Official
-ODS/OIS/AP remain pending documentary development evidence before Stage 14q is
-closed and the next mechanistically distinct family is selected.
+The first required official BSDS500-validation attachment failed during
+incumbent native matching after 10/100 images because MATLAB exited with
+Windows heap corruption (`0xc0000374`). The attachment-only retry preserved
+the manifest, cached frozen predictions, candidate, preview, pinned vendor
+sources, and completed UDED result. It completed all 100 images. Relative to
+the incumbent, the fixed anisotropic localizer changed official BSDS-val ODS
+by `+0.00334`, OIS by `-0.00089`, and AP by `-0.01526`. Thus it passed only
+the ODS-margin condition and failed the required nonnegative OIS/AP conditions,
+in addition to its decisive UDED failure. Stage 14q is closed without
+promotion. The result is a cross-dataset sharpening trade-off, not evidence
+against continuous shearlet theory. The compact Choquet-gated grayscale
+Scharr+NMS controller remains incumbent; the next action is a live-literature
+checkpoint selecting one mechanistically distinct falsification without using
+protected test feedback.
 
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 

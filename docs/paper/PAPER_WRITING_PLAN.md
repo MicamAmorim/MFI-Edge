@@ -218,8 +218,10 @@ Choquet gate. Be explicit that this is a bounded discrete operationalization,
 not a reproduction of the continuous shearlet transform. It failed the UDED
 gate: precision rose, but recall and aggregate F1 fell substantially and only
 1/15 folds improved. Present it as a rejected fixed-bank sharpening trade-off,
-not as evidence against continuous shearlet theory. Official BSDS-val metrics
-remain pending an attachment-only retry after MATLAB heap corruption.
+not as evidence against continuous shearlet theory. The repaired official
+BSDS-val attachment likewise showed sharpening rather than consistent benefit:
+ODS rose by `0.00334`, while OIS fell by `0.00089` and AP by `0.01526`. The
+candidate failed the preregistered conjunction and was not promoted.
 
 ## 3.8 Dynamic localization branch
 
