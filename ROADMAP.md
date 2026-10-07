@@ -326,6 +326,14 @@ diffusion, projection, or fusion from this mixed result. The compact
 Choquet-gated grayscale Scharr+NMS controller remains incumbent. Route next to
 a live-literature checkpoint for one mechanistically distinct falsification.
 
+The post-Stage-14r live-literature checkpoint selected Stage 14s: one fixed
+half-order isotropic spectral Riesz-gradient localizer, with the retained
+compact Choquet context and all fitting semantics unchanged. This tests the
+nonlocal selectivity/noise-immunity rationale of fractional differentiation
+without tuning an order or revisiting SE(2). UDED repeated leakage-free CV and
+official BSDS500-validation ODS/OIS/AP are conjunctive, and the runner includes
+the required deterministic preview and frozen exporter.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
@@ -375,7 +383,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | Stage 14q anisotropic singularity localizer | 🟢 completed; not promoted | UDED F1/recall collapsed; BSDS ODS rose slightly but OIS/AP fell, so the conjunctive rule failed |
 | post-singularity mechanism search | 🟢 completed | selected fixed SE(2) orientation-lifted contour enhancement from primary literature |
 | Stage 14r SE(2) contour enhancement | 🟢 completed; not promoted | BSDS ODS/OIS/AP rose, but UDED F1/precision and preregistered continuity coverage fell |
-| post-SE(2) mechanism search | 🟡 next | live primary-literature checkpoint; select one bounded, mechanistically distinct falsification |
+| post-SE(2) mechanism search | 🟢 completed | selected one fixed half-order Riesz-gradient localizer from primary fractional-edge literature |
+| Stage 14s fractional Riesz localizer | 🟡 registered | run UDED 5x3 leakage-free CV plus official BSDS500-validation attachment; no order sweep |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 

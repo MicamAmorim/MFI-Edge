@@ -233,6 +233,17 @@ Do not tune its discretization or fusion from the mixed result. The compact
 Choquet-gated grayscale Scharr+NMS controller remains incumbent; proceed to a
 live-literature checkpoint for a mechanistically distinct falsification.
 
+### Stage 14s — registered fractional Riesz localizer
+
+The post-SE(2) live-literature checkpoint selected one fixed half-order
+isotropic spectral Riesz-gradient replacement for Scharr+NMS. The retained
+median conditioning, compact five-feature distorted-Choquet context, gate,
+and fold-fitting semantics remain unchanged. Stage 14s is preregistered on
+UDED-selection 5x3 leakage-free CV with a mandatory official BSDS500-validation
+attachment and deterministic preview. Promotion is conjunctive across UDED
+non-collapse/fold wins and BSDS-val ODS/OIS/AP. No fractional-order, padding,
+normalization, orientation, or fusion sweep is allowed from the result.
+
 ## d-Choquet terminology
 
 Do not conflate these:

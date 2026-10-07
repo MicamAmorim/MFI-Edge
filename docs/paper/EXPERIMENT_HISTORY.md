@@ -727,6 +727,28 @@ with conditioned input, ground truth, incumbent prediction, candidate
 prediction, soft projection, and retained incumbent; it is documentary only.
 A live-literature checkpoint is next before selecting a distinct mechanism.
 
+### Post-Stage-14r literature checkpoint and Stage 14s decision
+
+The live primary-literature checkpoint moved to fractional-order localization
+rather than tuning the failed SE(2) realization. Mathieu et al. (2003, DOI
+`10.1016/S0165-1684(03)00194-4`) establish the noninteger
+selectivity/noise-immunity trade-off; Zhang et al. (2020, DOI
+`10.1016/j.dsp.2019.102639`) place fractional Gaussian derivatives in a
+Canny-like NMS pipeline; and Belhadi et al. (2025, DOI
+`10.5269/bspm.78430`) provide a recent non-neural fractional-gradient method.
+No inspected external/test outcome was used. The SOTA ledger was reviewed but
+not changed because this mechanism search did not reveal a newer verified
+matched-protocol neural target than the 2026-10-06 refresh.
+
+Stage 14s tests exactly one fixed half-order isotropic spectral Riesz gradient
+as a replacement for Scharr+NMS. Median conditioning, the retained compact
+five-feature context, distorted-Choquet gamma, gate strength/floor, outer-fold
+fitting, and threshold fitting are unchanged. UDED-selection repeated CV and
+official BSDS500-validation ODS/OIS/AP are conjunctive development axes. No
+fractional-order or implementation sweep is permitted. The authoritative
+protocol is `docs/paper/STAGE14S_PREREGISTRATION.md`; a deterministic preview
+and frozen native-resolution exporter are required.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

@@ -32,8 +32,10 @@ promotion. Interval-capacity uncertainty collapsed on UDED and lost BSDS AP;
 the Ambrosio–Tortorelli phase field and fixed anisotropic singularity bank both
 acted mainly as sharpening mechanisms, raising precision or BSDS ODS while
 losing recall, OIS, and/or AP. These fixed forms must not be tuned from their
-outcomes. The active next step is a live primary-literature checkpoint before
-choosing a bounded mechanism at Priority D or later.
+outcomes. Stage 14r subsequently rejected its fixed SE(2) realization after a
+mixed result (positive official BSDS validation, negative UDED/continuity).
+The resulting live primary-literature checkpoint registered Stage 14s as the
+next bounded test: one fixed half-order isotropic Riesz-gradient localizer.
 
 From this revision onward, every new image-based development experiment should
 also expose a frozen exporter to the default-on official BSDS500-validation
@@ -229,9 +231,9 @@ Primary anchor: B. Mathieu, P. Melchior, A. Oustaloup, Ch. Ceyral,
 *Fractional differentiation for edge detection*, Signal Processing 83(11),
 2003, DOI `10.1016/S0165-1684(03)00194-4`.
 
-Minimal test: one literature-motivated fractional order versus Scharr, with the
-same MFI context and NMS semantics. No order sweep unless the single-point test
-shows real cross-dataset promise.
+Registered test: Stage 14s uses one canonical half-order isotropic spectral
+Riesz gradient versus Scharr, with the same MFI context and NMS semantics.
+No order sweep is allowed from this result.
 
 ---
 
@@ -392,7 +394,7 @@ mechanistic justification, continue from entry 4:
 2. ~~MFI-coupled Ambrosio–Tortorelli phase field~~ — Stage 14p not promoted;
 3. ~~shearlet singularity localizer~~ — Stage 14q not promoted;
 4. ~~SE(2) orientation-lifted diffusion/completion~~ — Stage 14r not promoted; official BSDS-val improved, but UDED F1/precision and the preregistered continuity endpoint failed;
-5. **live primary-literature checkpoint**, then select one distinct bounded test (fractional-order localization remains the next listed family unless stronger evidence supersedes it);
+5. **live primary-literature checkpoint completed; Stage 14s registered** — one fixed half-order isotropic Riesz-gradient localizer, with no order sweep;
 6. uncertainty-controlled anisotropic diffusion / shock filtering;
 7. Dempster–Shafer explicit ignorance;
 8. threshold-persistence topology;
