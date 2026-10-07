@@ -508,6 +508,26 @@
       "results/official_eval/stage14t_official_eval_retry/summary.json"
     ]
   },
+  "stage14u_yager_evidential_ignorance": {
+    "description": "Leakage-free repeated-CV falsification of one fixed three-source Yager-rule evidence fusion with explicit edge, non-edge, conflict, and ignorance masses under the retained Scharr gate; includes default-on official BSDS500-validation evaluation.",
+    "runner": "python",
+    "path": "run_stage14u_yager_evidential_ignorance.py",
+    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256"],
+    "role": "development_test",
+    "feedback_policy": "UDED_selection_repeated_CV_plus_official_BSDS500_val_development_only_no_protected_feedback",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage14u_yager_evidential_ignorance/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage14u_yager_evidential_ignorance/summary.json",
+      "results/local_dev/stage14u_yager_evidential_ignorance/variant_ranking.csv",
+      "results/local_dev/stage14u_yager_evidential_ignorance/fold_results.csv",
+      "results/local_dev/stage14u_yager_evidential_ignorance/per_image_metrics.csv",
+      "results/local_dev/stage14u_yager_evidential_ignorance/evidential_diagnostics.csv",
+      "results/local_dev/stage14u_yager_evidential_ignorance/best_method_preview.png",
+      "results/local_dev/stage14u_yager_evidential_ignorance/official_eval_manifest.json",
+      "results/official_eval/stage14u_yager_evidential_ignorance/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

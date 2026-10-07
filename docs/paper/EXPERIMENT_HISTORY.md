@@ -822,6 +822,37 @@ Because another trust-calibration mechanism failed, the next action is a live
 primary-literature/mechanism checkpoint rather than automatically advancing a
 deferred family.
 
+### Post-Stage-14t literature checkpoint and Stage 14u decision
+
+The live primary-literature checkpoint compared explicit evidential ignorance,
+threshold-filtration persistence, and uncertainty-controlled PDE conditioning.
+It selected evidential ignorance because Stage 14t already showed that another
+connected upper-level-set attenuation is poorly motivated, while earlier
+conditioning screens and Stage 14h caution against immediately returning to a
+smoother. The selected mechanism instead changes how the incumbent's existing
+sources represent disagreement.
+
+Seo, Sivakumar, and Kwon (2011, DOI
+`10.5391/IJFIS.2011.11.1.019`) establish an edge-detection precedent for
+Dempster-Shafer evidence. Yager (1987, DOI
+`10.1016/0020-0255(87)90007-7`) motivates preserving conjunctive conflict as
+ignorance rather than normalizing it away, and Smets and Kennes (1994, DOI
+`10.1016/0004-3702(94)90026-4`) provide the pignistic decision transform.
+
+Stage 14u therefore uses three non-overlapping sources: Scharr+NMS strength,
+the four non-persistence compact memberships aggregated by the retained
+gamma-0.55 Choquet capacity, and the scale-persistence membership. Each scalar
+cue receives the fixed maximally ignorant binary mass assignment that preserves
+its pignistic probability. Three-way conjunctive fusion assigns all conflict
+to the universal hypothesis by Yager's rule; the pignistic edge probability
+then enters the unchanged strength-2.0, floor-0.10 gate. No mass coefficient,
+source weight, or conflict rule is fit or swept. The authoritative protocol is
+`docs/paper/STAGE14U_PREREGISTRATION.md`; UDED-selection repeated CV and
+official BSDS500 validation remain conjunctive, and the runner includes the
+required frozen exporter and deterministic preview. The SOTA ledger was
+reviewed but not changed because this mechanism checkpoint found no newer
+verified matched-protocol neural target than the 2026-10-06 refresh.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

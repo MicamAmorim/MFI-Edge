@@ -274,6 +274,20 @@ incumbent. Route next to a live-literature/mechanism checkpoint before choosing
 among deferred Dempster–Shafer ignorance, threshold persistence, PDE
 conditioning, or a mechanistically different alternative.
 
+### Post-Stage-14t checkpoint - Stage 14u registered
+
+The live primary-literature checkpoint selected one fixed Yager-rule
+evidential-ignorance fusion rather than another connected-component filter or
+immediate return to smoothing. Stage 14u separates the incumbent evidence into
+three non-overlapping sources: Scharr+NMS strength, four-cue gamma-0.55 Choquet
+context, and the separately retained scale-persistence membership. Each cue uses the
+parameter-free maximally ignorant binary mass assignment preserving its
+pignistic probability. Three-way conjunctive conflict is assigned to the
+universal hypothesis, and the resulting pignistic edge probability enters the
+unchanged strength-2.0, floor-0.10 Scharr gate. UDED-selection repeated CV and
+official BSDS500 validation are conjunctive. Do not tune sources, masses,
+conflict handling, decision transform, gamma, or gate from the result.
+
 ## d-Choquet terminology
 
 Do not conflate these:

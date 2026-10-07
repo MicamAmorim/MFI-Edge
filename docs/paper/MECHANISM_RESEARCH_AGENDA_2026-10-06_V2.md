@@ -418,3 +418,11 @@ failed all UDED criteria and reduced official BSDS500-validation ODS/OIS/AP by
 `0.01257/0.01761/0.02830`; this fixed surrogate is closed without promotion or
 tuning. A new live-literature/mechanism checkpoint must select the next bounded
 falsification rather than treating the prior ordering as automatic.
+
+The post-Stage-14t checkpoint selected Stage 14u: one fixed three-source
+Yager-rule evidential fusion. It uses disjoint Scharr+NMS, four-cue Choquet
+context, and scale-persistence sources; the least-committed binary mass map
+preserves each cue's pignistic probability, and conjunctive conflict is assigned
+to explicit ignorance. This is preferred over another component-filtration
+attenuator or an immediate return to smoothing. No mass transform, source,
+conflict rule, decision transform, gamma, or gate sweep is permitted.

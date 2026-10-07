@@ -351,6 +351,17 @@ the retained `0.10` attenuation floor. UDED repeated CV and official BSDS-val
 remain conjunctive; the runner includes the required preview and frozen
 exporter. Dempster–Shafer ignorance and pure threshold persistence are deferred.
 
+Stage 14t is closed without promotion after reducing both UDED and official
+BSDS500-validation performance. The post-Stage-14t live checkpoint selected
+Stage 14u: a fixed three-source Yager-rule evidential fusion. Scharr+NMS,
+four-cue Choquet context, and scale persistence receive separate binary mass
+assignments; conflict becomes explicit ignorance, and the pignistic edge
+probability enters the unchanged gate. This avoids another component-filtration
+attenuator and does not return to smoothing. UDED repeated CV and official
+BSDS-val remain conjunctive; the runner includes a frozen exporter and fixed
+preview. Threshold persistence and uncertainty-controlled PDE conditioning
+remain deferred.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**
@@ -404,7 +415,8 @@ Full note: `docs/paper/STAGE12D_REPEATED_BIPOLAR_RESULTS.md`.
 | Stage 14s fractional Riesz localizer | 🟢 completed; not promoted | BSDS ODS/OIS/AP improved strongly, but UDED F1/precision collapsed and the candidate won 0/15 folds |
 | post-fractional mechanism search | 🟢 completed | selected fixed a-contrario connected-support meaningfulness rather than another localizer |
 | Stage 14t a-contrario meaningfulness | 🟢 completed; not promoted | Failed all UDED criteria and reduced official BSDS-val ODS/OIS/AP by 0.01257/0.01761/0.02830; compact controller retained |
-| post-a-contrario mechanism search | 🟡 next | live primary-literature checkpoint before selecting another bounded trust, topology, PDE, or distinct mechanism |
+| post-a-contrario mechanism search | 🟢 completed | selected fixed Yager-rule evidential ignorance over disjoint incumbent sources |
+| Stage 14u Yager evidential ignorance | 🟡 registered | explicit edge/non-edge/ignorance fusion; UDED repeated CV plus official BSDS-val, no mass-rule sweep |
 | dynamic localizer revisit | ⚪ | learned/routed localizers remain parked; Stage 14k does not justify a color router |
 | wide sweep | 🔴 blocked | no brute-force expansion before external evidence |
 
