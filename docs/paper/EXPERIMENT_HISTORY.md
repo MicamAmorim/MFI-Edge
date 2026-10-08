@@ -1737,3 +1737,21 @@ repair. The harness directly imports the exact installed `opencv_core3420`,
 `opencv_imgproc3420`, and `zlib` artifacts and repeats the unchanged synthetic
 smoke test. It does not alter author source, OpenCV version, EDPF parameters,
 data roles, or MFI architecture.
+
+### Stage 15d dependency retry 4 - irrelevant color source in grayscale build
+
+Retry 4 successfully configured the direct imports and reached author-source
+compilation. It then stopped because the external grayscale harness included
+`EDColor.cpp`, whose unused diagnostic `imwrite` statement requires OpenCV's
+imgcodecs declaration and library. The preregistered detector is the grayscale
+`EDPF(Mat)` constructor, whose compiled implementation requires `ED.cpp` and
+`EDPF.cpp`; the `EDPF(EDColor)` overload needs the class definition but does not
+require linking the color detector implementation unless it is called. No
+dataset, detector benchmark, or smoke executable ran, so this is build-harness
+feedback only.
+
+`stage15d_edpf_build_preflight_retry5` is registered as an attachment-only
+source-surface repair. It compiles the unmodified pinned `ED.cpp` and
+`EDPF.cpp`, retains the same pinned OpenCV `core`/`imgproc`/`zlib` artifacts,
+and repeats the unchanged deterministic grayscale smoke test. It does not add
+imgcodecs, modify author bytes or parameters, run BSDS, or change MFI.

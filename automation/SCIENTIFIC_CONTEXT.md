@@ -578,3 +578,12 @@ attachment-only retry is registered to import the exact installed
 `core`/`imgproc`/`zlib` artifacts directly and repeat the unchanged synthetic
 smoke test. No dataset was read and validation and architecture work remain
 deferred.
+
+The fourth retry configured the direct imports and reached compilation, but the
+grayscale harness unnecessarily included `EDColor.cpp`; its unused diagnostic
+`imwrite` call requires the deliberately excluded imgcodecs module. No linking,
+smoke test, dataset read, or benchmark occurred. A fifth attachment-only retry
+is registered to compile only the unmodified `ED.cpp` and `EDPF.cpp` translation
+units required by the selected grayscale `EDPF(Mat)` path, using the same pinned
+OpenCV artifacts and unchanged smoke test. Validation and architecture work
+remain deferred.

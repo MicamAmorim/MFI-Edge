@@ -1,0 +1,7 @@
+{
+  "status": "manifest_missing",
+  "experiment_id": "stage15d_edpf_build_preflight_retry4",
+  "role": "reproduction_dependency_preflight",
+  "message": "No official_eval_manifest.json was emitted by this experiment. The normal experiment remains valid; future image-based development experiments must emit the manifest so official BSDS development metrics can be attached before Codex decides.",
+  "manifest_sha256": null
+}

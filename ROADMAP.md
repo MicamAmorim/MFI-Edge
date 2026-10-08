@@ -771,3 +771,14 @@ repair that imports the exact installed `core`, `imgproc`, and `zlib` artifacts
 directly and repeats the unchanged synthetic smoke test. Dependency/source
 versions, detector parameters, validation deferral, and architecture remain
 unchanged.
+
+Retry 4 configured successfully and began compiling the pinned author source,
+but the grayscale-only harness unnecessarily included `EDColor.cpp`. Its unused
+diagnostic `imwrite` call depends on the deliberately excluded OpenCV imgcodecs
+module, so compilation stopped before linking or smoke execution. The selected
+grayscale `EDPF(Mat)` path uses only `ED.cpp` and `EDPF.cpp`; author bytes and
+detector behavior remain unchanged. The active action is
+`stage15d_edpf_build_preflight_retry5`, an attachment-only source-surface repair
+that compiles those exact required translation units and repeats the unchanged
+synthetic smoke test. No dataset was read; validation and architecture work
+remain deferred.

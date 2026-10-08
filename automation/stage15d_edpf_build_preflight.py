@@ -215,9 +215,11 @@ def _write_build_harness(opencv_install: Path | None = None) -> tuple[Path, Path
     build_dir = OUT / "build"
     source_dir.mkdir(parents=True, exist_ok=True)
     author = AUTHOR_VENDOR.resolve().as_posix()
-    # Compile only the transitive author source surface needed by grayscale
-    # EDPF; unrelated line/circle executables cannot become build blockers.
-    sources = ["ED.cpp", "EDColor.cpp", "EDPF.cpp"]
+    # Compile only the author source surface needed by the selected grayscale
+    # EDPF constructor. EDPF.cpp declares an overload accepting EDColor, but
+    # that overload needs only the EDColor type definition inherited from ED;
+    # the color detector implementation is not linked or executed here.
+    sources = ["ED.cpp", "EDPF.cpp"]
     source_lines = "\n".join(f'  "${{AUTHOR_DIR}}/{name}"' for name in sources)
     if opencv_install is None:
         opencv_setup = "find_package(OpenCV REQUIRED COMPONENTS core imgproc)"
