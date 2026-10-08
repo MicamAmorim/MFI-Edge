@@ -907,6 +907,24 @@
       "results/automation/stage15d_edpf_build_preflight_retry6/smoke.log"
     ]
   },
+  "stage15d_edpf_build_preflight_retry7": {
+    "description": "Attachment-only retry after OpenCV 3.4's generated static export table rejected absent unused libprotobuf/quirc archives before author compilation; directly imports the exact installed core/imgproc/imgcodecs and codec artifacts, preserves the matched /MT runtime and unmodified ED.cpp/EDColor.cpp/EDPF.cpp sources, and repeats the unchanged synthetic smoke test.",
+    "runner": "python",
+    "path": "automation/stage15d_edpf_build_preflight.py",
+    "args": ["--bootstrap-opencv", "--out", "results/automation/stage15d_edpf_build_preflight_retry7"],
+    "role": "reproduction_dependency_preflight",
+    "feedback_policy": "attachment_only_exact_required_artifact_import_repair_no_dataset_feedback_no_architecture_change",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage15d_edpf_build_preflight_retry7/summary.json",
+      "results/automation/stage15d_edpf_build_preflight_retry7/dependency_contract.json",
+      "results/automation/stage15d_edpf_build_preflight_retry7/opencv_configure.log",
+      "results/automation/stage15d_edpf_build_preflight_retry7/opencv_build.log",
+      "results/automation/stage15d_edpf_build_preflight_retry7/cmake_configure.log",
+      "results/automation/stage15d_edpf_build_preflight_retry7/cmake_build.log",
+      "results/automation/stage15d_edpf_build_preflight_retry7/smoke.log"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

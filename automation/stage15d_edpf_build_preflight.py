@@ -203,9 +203,9 @@ def _bootstrap_opencv() -> tuple[Path, dict]:
     config_dir = static_configs[0].parent
     source["cmake_config_dir"] = str(config_dir.relative_to(ROOT)).replace("\\", "/")
     source["config_selection"] = (
-        "repository harness selects the installed static-package config directly; "
-        "the pinned build includes core/imgproc/imgcodecs and their exact generated "
-        "dependencies, bypassing OpenCV 3.4's obsolete MSVC dispatcher"
+        "repository harness imports only the installed core/imgproc/imgcodecs and "
+        "codec artifacts required by the selected author sources; this bypasses "
+        "OpenCV 3.4's obsolete MSVC dispatcher and stale unused export targets"
     )
     return install_dir, source
 
@@ -228,11 +228,40 @@ def _write_build_harness(opencv_install: Path | None = None) -> tuple[Path, Path
         opencv_libs = "${OpenCV_LIBS}"
     else:
         install = opencv_install.resolve().as_posix()
-        opencv_setup = f'''set(OPENCV_INSTALL "{install}")
-find_package(OpenCV REQUIRED CONFIG COMPONENTS core imgproc imgcodecs
-  PATHS "${{OPENCV_INSTALL}}/staticlib" NO_DEFAULT_PATH)'''
-        opencv_includes = "${OpenCV_INCLUDE_DIRS}"
-        opencv_libs = "${OpenCV_LIBS}"
+        # The generated OpenCV 3.4 export table contains libprotobuf and quirc
+        # targets even though BUILD_LIST excludes their consuming modules. The
+        # install target therefore omits those archives, and merely loading the
+        # table fails before CMake can select components. Import only the exact
+        # installed artifacts transitively required by core/imgproc/imgcodecs.
+        dependency_names = [
+            ("opencv_zlib", "zlib.lib", ""),
+            ("opencv_jpeg", "libjpeg-turbo.lib", ""),
+            ("opencv_webp", "libwebp.lib", ""),
+            ("opencv_png", "libpng.lib", "opencv_zlib"),
+            ("opencv_tiff", "libtiff.lib", "opencv_zlib"),
+            ("opencv_jasper", "libjasper.lib", ""),
+            ("opencv_openexr", "IlmImf.lib", "opencv_zlib"),
+            ("opencv_core", "opencv_core3420.lib", "opencv_zlib"),
+            ("opencv_imgproc", "opencv_imgproc3420.lib", "opencv_core"),
+            (
+                "opencv_imgcodecs", "opencv_imgcodecs3420.lib",
+                "opencv_core;opencv_imgproc;opencv_jpeg;opencv_webp;opencv_png;"
+                "opencv_tiff;opencv_jasper;opencv_openexr;opencv_zlib",
+            ),
+        ]
+        import_lines = [f'set(OPENCV_INSTALL "{install}")']
+        for target, filename, links in dependency_names:
+            import_lines.extend([
+                f"add_library({target} STATIC IMPORTED)",
+                f"set_target_properties({target} PROPERTIES",
+                f'  IMPORTED_LOCATION "${{OPENCV_INSTALL}}/staticlib/{filename}"',
+            ])
+            if links:
+                import_lines.append(f'  INTERFACE_LINK_LIBRARIES "{links}"')
+            import_lines.append(")")
+        opencv_setup = "\n".join(import_lines)
+        opencv_includes = "${OPENCV_INSTALL}/include"
+        opencv_libs = "opencv_imgcodecs opencv_imgproc opencv_core"
     cmake = f"""cmake_minimum_required(VERSION 3.16)
 cmake_policy(SET CMP0091 NEW)
 project(stage15d_edpf_preflight LANGUAGES CXX)

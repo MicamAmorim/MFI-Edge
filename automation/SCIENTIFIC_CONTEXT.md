@@ -596,3 +596,12 @@ attachment-only retry is registered to match `/MT`, build pinned OpenCV
 imgcodecs and its generated dependencies, compile unmodified
 `ED.cpp`/`EDColor.cpp`/`EDPF.cpp`, and repeat the unchanged synthetic smoke
 test. Validation and architecture work remain deferred.
+
+The sixth retry installed the required pinned OpenCV artifacts but stopped at
+CMake configuration because OpenCV 3.4's generated export table validates
+absent `libprotobuf` and `quirc` archives belonging to unused modules. No
+author compilation, smoke execution, or dataset read occurred. A seventh
+attachment-only retry is registered to import only the exact installed
+core/imgproc/imgcodecs and codec artifacts required by the unchanged author
+source surface. The `/MT` runtime, immutable sources, smoke test, validation
+deferral, and architecture remain unchanged.

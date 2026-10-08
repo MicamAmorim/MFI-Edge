@@ -792,3 +792,12 @@ path. No smoke executable or dataset result was produced. The active action is
 the static runtime and compiles the complete required author surface against a
 pinned OpenCV build including imgcodecs. Detector code, fixed parameters,
 synthetic input, validation deferral, and MFI architecture are unchanged.
+
+Retry 6 installed the required pinned OpenCV artifacts but its generated
+static export table rejected absent `libprotobuf` and `quirc` archives for
+unused modules before compiling the author source. The active action is
+`stage15d_edpf_build_preflight_retry7`, an attachment-only CMake repair that
+imports only the installed core/imgproc/imgcodecs and codec artifacts required
+by the unchanged author source surface. The matched `/MT` runtime, synthetic
+smoke input, detector parameters, validation deferral, and architecture remain
+unchanged.

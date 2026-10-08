@@ -1773,3 +1773,18 @@ matches the external harness to OpenCV's `/MT` runtime, builds pinned OpenCV
 unmodified `ED.cpp`, `EDColor.cpp`, and `EDPF.cpp` translation units. The
 synthetic grayscale smoke test and all EDPF parameters remain unchanged.
 Validation and MFI architecture work remain deferred.
+
+### Stage 15d dependency retry 6 - stale unused OpenCV exports
+
+Retry 6 rebuilt and installed the pinned OpenCV libraries but stopped during
+harness configuration. OpenCV 3.4's generated static export table validates
+`libprotobuf` and `quirc` archives even though the registered minimal build did
+not build any consuming modules and did not install those archives. The exact
+required `core`, `imgproc`, `imgcodecs`, and codec artifacts are present. No
+author source was compiled, no smoke executable ran, and no dataset was read.
+
+`stage15d_edpf_build_preflight_retry7` is registered as an attachment-only
+CMake import repair. It directly imports only the exact installed artifacts
+required by the unchanged `ED.cpp`/`EDColor.cpp`/`EDPF.cpp` surface, retains
+the `/MT` runtime and immutable source revisions, and repeats the unchanged
+synthetic smoke test. Validation and MFI architecture work remain deferred.
