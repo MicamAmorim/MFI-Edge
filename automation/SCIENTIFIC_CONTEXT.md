@@ -526,3 +526,24 @@ training class, build/output conventions, and a matched BSDS500-validation plan
 before one fidelity-labeled run. Stage 14t's connected-component NFA surrogate
 is not a reproduction or falsification of full chain-level EDPF. Architecture
 invention remains prohibited through Stage 15o.
+
+### Stage-15d checkpoint - exact EDPF source resolved; build preflight registered
+
+Primary papers and the official ED_Lib repository support an exact grayscale
+EDPF reproduction at immutable MIT-licensed commit
+`69b8d081bd6d28192d816ec0ed02aff9186d73c1`. It is strictly untrained with
+fixed author-code settings and returns a native binary `CV_8UC1` map. ED first
+constructs contiguous pixel chains; EDPF then applies the author chain-level
+Helmholtz/NFA validation. Stage 14t's connected-component attenuation is not
+equivalent. A future official BSDS500-validation run must preserve the binary
+0/255 output, report the single-operating-point AP limitation, and retain the
+Stage-15a stochastic/reference-uncertified matcher caveat.
+
+The current workstation has no resolved C++ OpenCV development configuration,
+and its Python OpenCV lacks the Edge Drawing binding. The single registered next
+action is the dataset-free `stage15d_edpf_build_preflight`: hash-verify and
+compile the unmodified pinned author source through an external harness, then
+run a deterministic synthetic binary-output smoke test. Only a pass may advance
+to exact native-resolution BSDS500-validation reproduction. A failure permits
+dependency/harness repair only, not EDPF reimplementation, parameter tuning, or
+MFI architecture work.

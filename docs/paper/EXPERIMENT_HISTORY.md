@@ -1647,3 +1647,32 @@ contract, training class, and matched-validation plan before registering one
 fidelity-labeled run. Stage 14t remains only a connected-component surrogate
 and does not count as an EDPF test. Architecture invention remains forbidden
 through Stage 15o.
+
+### Stage 15d literature/provenance checkpoint - exact-source build preflight registered
+
+Live primary-source review verified the official ED_Lib repository and pinned
+commit `69b8d081bd6d28192d816ec0ed02aff9186d73c1` under its MIT license. The
+selected grayscale `EDPF(src)` path is strictly untrained and user-parameter-
+free, while the author implementation itself is fixed: Prewitt ED with gradient
+threshold 11 and anchor threshold 3, followed by chain-level Helmholtz
+validation with embedded `divForTestSegment=2.25` and `EPSILON=1.0`. Its native
+scalar output is the binary `CV_8UC1` edge image returned by `getEdgeImage()`.
+This supports an exact-code reproduction, not a repository surrogate.
+
+Metric compatibility is bounded but usable. The future candidate export must
+preserve the native binary 0/255 map without normalization or softening, and
+the common official BSDS500-validation path may report ODS/OIS/AP. Because a
+binary map provides only one nontrivial operating point, the resulting AP must
+carry that limitation and cannot be interpreted as a soft-map ranking curve.
+The local matcher also retains Stage 15a's stochastic/reference-uncertified
+caveat. No BSDS or protected data were inspected at this checkpoint.
+
+The workstation currently exposes Python OpenCV 5.0 without `ximgproc` and no
+resolved C++ `OpenCV_DIR`, so a detector run is not yet registered. The single
+next action is `stage15d_edpf_build_preflight`: clone and hash-verify the pinned
+author source in ignored vendor storage, compile the unmodified sources through
+an external repository-local harness, and run a deterministic synthetic binary-
+output smoke test. Only a passing preflight may advance to one exact native-
+resolution BSDS500-validation reproduction. Failure permits dependency/harness
+repair only, not an algorithm substitution or EDPF tuning. Stage 14t remains a
+different connected-component surrogate, and MFI architecture stays unchanged.

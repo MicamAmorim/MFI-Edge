@@ -783,6 +783,22 @@
       "results/automation/stage15d_ed_edpf_reproduction_checkpoint/summary.json"
     ]
   },
+  "stage15d_edpf_build_preflight": {
+    "description": "Dataset-free dependency and exact-source preflight for grayscale EDPF at the immutable MIT-licensed ED_Lib author commit; verifies hashes, attempts an external CMake build of unmodified sources, and runs a deterministic synthetic binary-output smoke test before any BSDS execution.",
+    "runner": "python",
+    "path": "automation/stage15d_edpf_build_preflight.py",
+    "args": [],
+    "role": "reproduction_dependency_preflight",
+    "feedback_policy": "source_and_build_fidelity_only_no_dataset_feedback_no_architecture_change",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage15d_edpf_build_preflight/summary.json",
+      "results/automation/stage15d_edpf_build_preflight/dependency_contract.json",
+      "results/automation/stage15d_edpf_build_preflight/cmake_configure.log",
+      "results/automation/stage15d_edpf_build_preflight/cmake_build.log",
+      "results/automation/stage15d_edpf_build_preflight/smoke.log"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

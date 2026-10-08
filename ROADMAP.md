@@ -721,3 +721,20 @@ parameters, training class, scalar output convention, and matched BSDS500-
 validation plan before one exact or explicitly fidelity-labeled run is
 registered. Stage 14t is not treated as EDPF, and MFI architecture invention
 remains forbidden through Stage 15o.
+
+The Stage-15d checkpoint verified a reproducible exact-code target: official
+MIT-licensed ED_Lib commit `69b8d081bd6d28192d816ec0ed02aff9186d73c1`,
+using its fixed grayscale EDPF constructor and native binary edge image. The
+paper/code distinction between ED chain construction and EDPF chain-level
+Helmholtz validation is resolved; Stage 14t remains a non-equivalent surrogate.
+The binary output can be evaluated on the common official validation path, but
+AP will have a documented single-operating-point limitation and the Stage-15a
+matcher caveat remains.
+
+The active next action is `stage15d_edpf_build_preflight`, a dataset-free,
+hash-verified build and deterministic synthetic-output smoke test. It is needed
+because the current Python OpenCV lacks the Edge Drawing binding and no C++
+OpenCV development configuration is yet resolved. A pass advances to one exact
+BSDS500-validation reproduction; a failure permits build/dependency repair
+only. No dataset is read, no official-evaluation manifest or preview is needed,
+and architecture invention remains forbidden through Stage 15o.
