@@ -422,6 +422,13 @@ after separator normalization. This repair changes no source bytes, matcher
 logic, fixture, tolerance, validation policy, or detector architecture; full
 validation and Stage 15b remain deferred.
 
+The separator-normalized retry stopped before matching because the local
+fixture harness omitted the audited MATLAB R2023a syntax mirror used by the
+main evaluator. A third attachment-only retry now applies that run-local
+syntax transform without changing vendored bytes, matcher logic, fixture
+inputs, tolerance, validation policy, or architecture. Stage 15a and Stage 15b
+remain pending.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**

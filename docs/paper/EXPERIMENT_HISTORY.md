@@ -982,6 +982,16 @@ retry is registered after separator normalization in that assertion. The
 rebuilt source, vendored bytes, matching logic, fixture, tolerance, validation
 policy, and architecture remain unchanged.
 
+The separator-normalized retry again stopped before matching. Its fixture-only
+harness called the pinned `evaluation_bdry_image.m` without applying the
+repository's audited MATLAB R2023a syntax mirror, so MATLAB rejected the legacy
+`groundTruth{i}.Boundaries` expression at parse time. This is a harness
+compatibility omission and supplies no fixture or detector evidence. A third
+attachment-only retry is registered with the same syntax-only run-local
+transform used by the official repository wrapper. Vendored bytes, rebuilt
+matcher logic, fixture inputs, tolerance, validation deferral, and architecture
+remain unchanged.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

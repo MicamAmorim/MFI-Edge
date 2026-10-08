@@ -354,6 +354,13 @@ slash conventions. A second attachment-only retry is registered after path
 separator normalization. This is harness-only repair: matcher sources and
 logic, fixture, tolerance, validation deferral, and architecture are unchanged.
 
+The separator-normalized retry stopped at MATLAB parse time because its local
+fixture harness omitted the audited R2023a syntax mirror already used by the
+repository evaluator for pinned `evaluation_bdry_image.m`. A third
+attachment-only retry is registered with that syntax-only run-local transform;
+vendored bytes, rebuilt matching logic, fixture, `1e-4` tolerance, validation
+deferral, and architecture remain unchanged.
+
 ## d-Choquet terminology
 
 Do not conflate these:
