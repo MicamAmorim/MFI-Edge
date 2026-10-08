@@ -2332,3 +2332,12 @@ detectors or routers. Stage 15p is justified only if cross-boundary texture
 contrast adds directionally consistent held-out AUC/AP on both development
 datasets beyond gradient+persistence and beyond all other fixed cues. The
 incumbent remains frozen through this decision.
+
+The first Stage-15o launch stopped before reading either dataset because the
+runner imported scikit-learn, which is not part of the repository environment.
+No cue, sample, model, preview, or scientific result was produced. A single
+harness-only dependency retry is registered after expressing the unchanged
+fold-fitted standardization, class-balanced L2 logistic probe, ROC AUC, and
+average precision contract with the repository-supported SciPy/NumPy stack.
+The cue definitions, deterministic samples, folds, decision rule, dataset
+roles, and architecture freeze are unchanged.

@@ -975,3 +975,11 @@ multiscale persistence, and structural-support cues on UDED selection and
 BSDS validation. Image-blocked diagnostic models are association probes only.
 Stage 15p may be registered only if cross-boundary texture adds consistent
 held-out AUC/AP on both datasets; MFI remains unchanged meanwhile.
+
+The first Stage-15o launch failed before dataset access because its runner
+imported undeclared scikit-learn. No scientific output was produced. A
+harness-only dependency retry is registered using the repository-supported
+SciPy/NumPy stack for the unchanged fold-fitted standardized, class-balanced
+L2 logistic diagnostic and AUC/AP calculations. Cue maps, deterministic
+sampling, folds, decision rule, dataset roles, and the architecture freeze are
+unchanged.

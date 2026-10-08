@@ -16,9 +16,8 @@ import numpy as np
 import pandas as pd
 from scipy import ndimage
 from scipy.io import loadmat
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import average_precision_score, roc_auc_score
-from sklearn.preprocessing import StandardScaler
+from scipy.optimize import minimize
+from scipy.special import expit
 from skimage.color import rgb2gray
 from skimage.filters import gaussian, scharr, scharr_h, scharr_v
 from skimage.io import imread
@@ -49,6 +48,74 @@ MODELS = {
     "all_five_cues": CUE_NAMES,
 }
 SAMPLES_PER_CLASS = 512
+
+
+def _fit_standardized_logistic(train_x: np.ndarray, train_y: np.ndarray, test_x: np.ndarray) -> np.ndarray:
+    """Fit the preregistered balanced L2 logistic probe without optional sklearn."""
+    mean = np.mean(train_x, axis=0)
+    scale = np.std(train_x, axis=0)
+    scale[scale == 0.0] = 1.0
+    x_train = (train_x - mean) / scale
+    x_test = (test_x - mean) / scale
+    y = np.asarray(train_y, dtype=np.float64)
+    counts = np.bincount(y.astype(np.int64), minlength=2).astype(np.float64)
+    weights = np.where(y > 0.5, len(y) / (2.0 * counts[1]), len(y) / (2.0 * counts[0]))
+    design = np.column_stack((x_train, np.ones(len(x_train), dtype=np.float64)))
+
+    def objective(parameters: np.ndarray) -> tuple[float, np.ndarray]:
+        logits = design @ parameters
+        probabilities = expit(logits)
+        loss = np.sum(weights * (np.logaddexp(0.0, logits) - y * logits))
+        loss += 0.5 * np.dot(parameters[:-1], parameters[:-1])
+        gradient = design.T @ (weights * (probabilities - y))
+        gradient[:-1] += parameters[:-1]
+        return float(loss), gradient
+
+    fitted = minimize(
+        objective,
+        np.zeros(design.shape[1], dtype=np.float64),
+        method="L-BFGS-B",
+        jac=True,
+        options={"maxiter": 1000, "ftol": 1e-12},
+    )
+    if not fitted.success:
+        raise RuntimeError(f"Diagnostic logistic probe did not converge: {fitted.message}")
+    return expit(np.column_stack((x_test, np.ones(len(x_test), dtype=np.float64))) @ fitted.x)
+
+
+def _roc_auc(labels: np.ndarray, scores: np.ndarray) -> float:
+    labels = np.asarray(labels, dtype=bool)
+    positive = int(np.sum(labels))
+    negative = int(len(labels) - positive)
+    if positive == 0 or negative == 0:
+        raise RuntimeError("ROC AUC requires both classes")
+    order = np.argsort(scores, kind="mergesort")
+    sorted_scores = scores[order]
+    ranks = np.empty(len(scores), dtype=np.float64)
+    start = 0
+    while start < len(scores):
+        stop = start + 1
+        while stop < len(scores) and sorted_scores[stop] == sorted_scores[start]:
+            stop += 1
+        ranks[order[start:stop]] = 0.5 * (start + stop - 1) + 1.0
+        start = stop
+    return float((np.sum(ranks[labels]) - positive * (positive + 1) / 2.0) / (positive * negative))
+
+
+def _average_precision(labels: np.ndarray, scores: np.ndarray) -> float:
+    labels = np.asarray(labels, dtype=bool)
+    positives = int(np.sum(labels))
+    if positives == 0:
+        raise RuntimeError("Average precision requires positive samples")
+    order = np.argsort(-scores, kind="mergesort")
+    ranked = labels[order]
+    ranked_scores = scores[order]
+    cumulative_true = np.cumsum(ranked)
+    group_ends = np.r_[np.flatnonzero(np.diff(ranked_scores) != 0), len(ranked_scores) - 1]
+    true_at_threshold = cumulative_true[group_ends]
+    precision = true_at_threshold / (group_ends + 1)
+    recall = true_at_threshold / positives
+    return float(np.sum(np.diff(np.r_[0.0, recall]) * precision))
 
 
 def _gray(image: np.ndarray) -> np.ndarray:
@@ -126,18 +193,19 @@ def _cross_validated_models(samples: pd.DataFrame) -> pd.DataFrame:
             test_mask = table.id.map(fold_by_id).to_numpy() == fold
             train, test = table.loc[~test_mask], table.loc[test_mask]
             for model_name, features in MODELS.items():
-                scaler = StandardScaler().fit(train[list(features)])
-                model = LogisticRegression(C=1.0, class_weight="balanced", max_iter=1000, solver="lbfgs")
-                model.fit(scaler.transform(train[list(features)]), train.label)
-                score = model.predict_proba(scaler.transform(test[list(features)]))[:, 1]
+                score = _fit_standardized_logistic(
+                    train[list(features)].to_numpy(dtype=np.float64),
+                    train.label.to_numpy(dtype=np.uint8),
+                    test[list(features)].to_numpy(dtype=np.float64),
+                )
                 rows.append({
                     "dataset": dataset,
                     "fold": fold,
                     "model": model_name,
                     "features": "+".join(features),
                     "n_test": len(test),
-                    "roc_auc": float(roc_auc_score(test.label, score)),
-                    "average_precision": float(average_precision_score(test.label, score)),
+                    "roc_auc": _roc_auc(test.label.to_numpy(dtype=np.uint8), score),
+                    "average_precision": _average_precision(test.label.to_numpy(dtype=np.uint8), score),
                 })
     return pd.DataFrame(rows)
 

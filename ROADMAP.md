@@ -1100,3 +1100,11 @@ directionally consistent incremental result on both development datasets may
 justify registering Stage 15p; otherwise Stage 15o must route to one bounded
 alternative or a live-literature checkpoint. No detector candidate or router
 is fitted in Stage 15o.
+
+The first Stage 15o launch failed at import time because scikit-learn is not a
+declared repository dependency; neither UDED nor BSDS was read and no
+scientific output exists. The active next action is the harness-only
+`stage15o_texture_evidence_decomposition_dependency_retry`, using the same
+registered diagnostic contract through the available SciPy/NumPy runtime.
+No cue, sampling, fold, decision, detector, matcher, or MFI architecture
+change is authorized.

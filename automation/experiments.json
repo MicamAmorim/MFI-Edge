@@ -1261,6 +1261,26 @@
       "results/official_eval/stage15o_texture_evidence_decomposition/summary.json"
     ]
   },
+  "stage15o_texture_evidence_decomposition_dependency_retry": {
+    "description": "Harness-only retry of the unchanged Stage-15o diagnostic after replacing its undeclared scikit-learn runtime dependency with repository-supported SciPy implementations of the same fold-fitted standardization, class-balanced L2 logistic probe, ROC AUC, and average precision contract; no dataset, cue, sample, fold, decision rule, detector, matcher, or MFI architecture changes.",
+    "runner": "python",
+    "path": "run_stage15o_texture_evidence_decomposition.py",
+    "args": [],
+    "role": "development_diagnostic_feature_decomposition_dependency_retry",
+    "feedback_policy": "UDED_selection_and_BSDS500_validation_diagnostic_only_no_detector_candidate_no_router_no_architecture_change",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage15o_texture_evidence_decomposition/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage15o_texture_evidence_decomposition/summary.json",
+      "results/local_dev/stage15o_texture_evidence_decomposition/official_eval_manifest.json",
+      "results/local_dev/stage15o_texture_evidence_decomposition/cue_samples.csv",
+      "results/local_dev/stage15o_texture_evidence_decomposition/cue_group_summary.csv",
+      "results/local_dev/stage15o_texture_evidence_decomposition/diagnostic_cv_metrics.csv",
+      "results/local_dev/stage15o_texture_evidence_decomposition/diagnostic_cv_aggregate.csv",
+      "results/local_dev/stage15o_texture_evidence_decomposition/best_method_preview.png",
+      "results/official_eval/stage15o_texture_evidence_decomposition/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",
