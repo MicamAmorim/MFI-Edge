@@ -1139,6 +1139,24 @@
       "results/automation/stage15i_qfrd_runtime_preflight_retry1/runtime_preflight.log"
     ]
   },
+  "stage15i_qfrd_exact_reproduction": {
+    "description": "Exact pinned-author-code QFrD reproduction at the published fixed defaults over all 100 native-resolution BSDS500-validation images after the immutable-source/runtime preflight passed; preserves soft maps, runtimes and hashes, emits the fixed positions 1/50/100 preview, and attaches the unchanged official evaluator against the incumbent.",
+    "runner": "python",
+    "path": "run_stage15i_qfrd_reproduction.py",
+    "args": [],
+    "role": "matched_protocol_reproduction",
+    "feedback_policy": "development_validation_reproduction_only_no_qfrd_or_fractional_tuning_no_mfi_architecture_change",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage15i_qfrd_exact_reproduction/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage15i_qfrd_exact_reproduction/summary.json",
+      "results/local_dev/stage15i_qfrd_exact_reproduction/official_eval_manifest.json",
+      "results/local_dev/stage15i_qfrd_exact_reproduction/best_method_preview.png",
+      "results/local_dev/stage15i_qfrd_exact_reproduction/predictions/export_manifest.json",
+      "results/local_dev/stage15i_qfrd_exact_reproduction/predictions/per_image_runtime.csv",
+      "results/local_dev/stage15i_qfrd_exact_reproduction/predictions/map_hashes.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

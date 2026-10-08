@@ -854,3 +854,14 @@ registered with a fresh ignored checkout populated before cleanliness checks
 and pinned CPU `torch==2.9.0`/`torchvision==0.24.0`; the author commit, source
 bytes, fixed parameters, synthetic input, dataset prohibition, and MFI remain
 unchanged. Only a passing retry may advance to validation reproduction.
+
+The retry passed: the pinned 59-file author tree reproduced its registered
+manifest hash, all fixed source-contract checks passed, the pinned CPU tensor
+runtime is available, and the synthetic QFrD result was finite, native-size,
+and bitwise repeatable. No dataset was read. The registered next action is
+`stage15i_qfrd_exact_reproduction`: run the unchanged fixed-default author
+path over all 100 native-resolution BSDS500-validation images, retain maps,
+runtimes and hashes, emit the fixed positions 1/50/100 preview, and attach the
+unchanged official evaluator against the incumbent. It is a reproduction
+baseline only; the paper/code multiplication-order caveat remains, and no
+QFrD/fractional tuning or MFI architecture change is authorized.

@@ -1001,3 +1001,12 @@ populates the pinned commit before the cleanliness check, installs pinned CPU
 `torch==2.9.0` and `torchvision==0.24.0`, and repeats the identical dataset-free
 source/synthetic preflight. BSDS access, QFrD parameter changes, author-source
 changes, and MFI architecture work remain prohibited.
+
+The repaired Stage-15i preflight passed immutable-source verification,
+dependency checks, and bitwise-repeatable native-shape synthetic execution.
+No benchmark was read. The active next action is
+`stage15i_qfrd_exact_reproduction`: run the pinned exact author code once at
+the frozen published defaults over BSDS500 validation, retain maps, runtimes
+and hashes, emit the fixed positions 1/50/100 preview, and attach the common
+official evaluator against the unchanged incumbent. This remains a baseline
+reproduction; QFrD/fractional tuning and MFI redesign remain prohibited.

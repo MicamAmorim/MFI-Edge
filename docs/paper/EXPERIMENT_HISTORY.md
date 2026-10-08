@@ -2165,3 +2165,23 @@ cleanliness audit, installs pinned CPU `torch==2.9.0` and
 It may not read BSDS, change author bytes or detector parameters, tune the
 fractional family, or modify MFI. Only a pass may register the exact validation
 reproduction.
+
+### Stage 15i runtime preflight passed; exact reproduction registered
+
+The repaired dataset-free preflight passed. The ignored author checkout is at
+the pinned commit, its 59 tracked files reproduce the registered aggregate
+manifest hash, all fixed source-contract checks passed, and pinned CPU
+PyTorch/torchvision are available. Two executions on the fixed synthetic RGB
+input were bitwise identical, finite, and native-size. No benchmark image or
+ground truth was read, so this result contains no detector-performance
+feedback.
+
+The single registered next action is `stage15i_qfrd_exact_reproduction`. It
+runs the unchanged author QFrD path at alpha `0.8`, full Hilbert rotation,
+symmetric RGB quaternion axis, sigma `2.0`, 64-pixel replicate padding, and
+the fixed author NMS/hysteresis defaults over all 100 native-resolution
+BSDS500-validation images. It preserves direct-clipped soft maps, runtimes and
+hashes, emits the preregistered positions 1/50/100 preview, and attaches the
+unchanged official evaluator against the incumbent. This is a reproduction
+baseline only; the paper/code multiplication-order caveat remains, and neither
+fractional tuning nor MFI architecture work is authorized.
