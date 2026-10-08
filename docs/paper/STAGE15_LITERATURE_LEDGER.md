@@ -1,0 +1,65 @@
+# Stage 15 literature decision ledger
+
+Purpose: append-only scientific provenance for literature-driven Stage-15 decisions.
+
+This file complements `BIBLIOGRAPHY_MATRIX.md`. The matrix is the paper-wide bibliography map; this ledger records **which source materially caused which Stage-15 decision**.
+
+## Mandatory fields
+
+Every new literature-driven decision must add or update a row with:
+
+- `ID` — stable source identifier;
+- `Reference` — authors/year/title;
+- `DOI / official URL`;
+- `Source type` — primary peer-reviewed / primary preprint / official code / official benchmark / secondary;
+- `Training class` — strictly untrained / author-fixed / trained classical / neural / uncertain;
+- `Protocol evidence` — dataset, split, metric family and known compatibility caveats;
+- `Mechanistic role` — what scientific idea the source supports;
+- `Decision role` — reproduce / baseline / diagnostic / defer / exclude;
+- `Stage(s)` — Stage-15 stage IDs materially linked to this source;
+- `Verification state` — verified / partly verified / verification debt;
+- `Decision note` — concise explanation of why this source affected the plan.
+
+Do not silently delete a row because a paper later proves incompatible. Update its state and preserve the historical decision.
+
+## Initial ledger — 2026-10-07 transition review
+
+| ID | Reference | DOI / official URL | Source type | Training class | Protocol evidence | Mechanistic role | Decision role | Stage(s) | Verification state | Decision note |
+|---|---|---|---|---|---|---|---|---|---|---|
+| S15-E01 | Canny (1986), *A Computational Approach to Edge Detection* | `10.1109/TPAMI.1986.4767851` | primary peer-reviewed | strictly untrained | predates BSDS500; later implementations vary | local gradient + NMS/hysteresis reference | baseline/protocol audit | 15a | verified bibliographic metadata | required measurement floor |
+| S15-E02 | Ruzon & Tomasi (1999), *Color Edge Detection with the Compass Operator* | `10.1109/CVPR.1999.784624` | primary peer-reviewed | strictly untrained | original CVPR protocol; not assumed Berkeley500-compatible | oriented half-disc **distribution** contrast | reproduce/diagnostic | 15f,15o | DOI/title verified; implementation debt | directly tests distribution change beyond mean gradient |
+| S15-E03 | Grigorescu et al. (2003), non-classical receptive-field surround inhibition | `10.1109/TIP.2003.814250` | primary peer-reviewed | strictly untrained | historical natural-image evaluation | oriented surround texture suppression | mechanistic baseline | 15q | bibliographic role verified | ancestor of strong contextual family |
+| S15-E04 | Topal & Akinlar (2012), *Edge Drawing* | `10.1016/j.jvcir.2012.05.004` | primary peer-reviewed + official author code | strictly untrained | edge-chain/segment detector | chain construction and continuity | reproduce/diagnostic | 15d,15s | paper/code verified | structural support mechanism missing from Stage 14t |
+| S15-E05 | Akinlar & Topal (2012), *EDPF* | `10.1142/S0218001412550026`; code `https://github.com/CihanTopal/ED_Lib` | primary peer-reviewed + official author code | strictly untrained / parameter-free claim | paper uses false-detection control over Edge Drawing chains | chain-level Helmholtz/a-contrario meaningfulness | reproduce/diagnostic | 15d,15t | DOI and author code verified | Stage 14t is not equivalent and cannot falsify EDPF |
+| S15-E06 | Yang et al. (2013), *Efficient Color Boundary Detection with Color-Opponent Mechanisms* | `10.1109/CVPR.2013.362`; CVF paper; public MATLAB code mirror | primary peer-reviewed + public code | strictly untrained | BSDS-family evaluation; exact metric reproduction to verify | color opponency and contextual boundary representation | reproduce/baseline | 15e | DOI/paper/code mirror verified; protocol details debt | separates color/context contribution from Scharr-only localization |
+| S15-E07 | Yang et al. (2015), SCO / double-opponency + sparseness constraint | `10.1109/TIP.2015.2425538` | primary peer-reviewed | strictly untrained | reported strong BSDS contextual performance; exact author code/protocol to verify | contextual sparseness/surround | reproduce if fidelity possible | 15e | partial; code/protocol debt | strong member of non-trained bio-inspired family |
+| S15-E08 | Akbarinia & Párraga (2018), **SED — Feedback and Surround Modulated Boundary Detection** | `10.1007/s11263-017-1035-5` | primary peer-reviewed | strictly untrained | BSDS500 contextual boundary evaluation; exact table/split/code must be verified before run | V1/V2 surround + feedback contextual integration | **priority reproduction baseline** | 15b | bibliographic metadata verified; code/protocol verification debt | strongest reliable-looking contextual non-trained target from transition review |
+| S15-E09 | Lu et al. (2021), **Vector co-occurrence morphological edge detection for colour image** | `10.1049/ipr2.12290` | primary peer-reviewed open access | strictly untrained | BSDS500 ODS/AP reported; comparison pattern raises protocol/implementation questions | color morphology + boundary co-occurrence | **independent protocol audit** | 15c | paper/DOI verified; code and exact reproduction debt | unusually strong reported result must be independently tested before frontier use |
+| S15-E10 | Zhang et al. (2025 issue), *Contour detection model inspired by V1 surround modulation* | `10.1007/s11760-024-03634-y` | primary peer-reviewed | strictly untrained | reports average optimal F-score `0.703` on BSDS500 and NYUD follow-up; metric not assumed identical to Berkeley ODS | adaptive multiscale surround modulation | reproduce/diagnostic | 15h | DOI/result statement verified; code debt | directly relevant to image-internal adaptation without dataset router |
+| S15-E11 | Yang, Peng & Wu (2025), **Edge Detection Using Texture Gradients and Surround Modulation** | `10.1007/s11760-025-04339-6` | primary peer-reviewed | strictly untrained | BSDS500/MBDD paper claims improvement over bio-inspired comparisons; exact code/protocol debt | **positive texture-boundary evidence + surround** | **priority-max reproduce/diagnostic** | 15g,15o,15p | DOI/abstract thesis verified; implementation/protocol debt | motivates separating interior texture suppression from cross-boundary texture change |
+| S15-E12 | *Fractional Dirac Operators for Edge Detection* (2026) | `10.3390/fractalfract10060412` | primary peer-reviewed | strictly untrained | reports BSDS ODS/OIS/AP including proposed fractional Dirac detector | modern analytic/fractional reference | benchmark/audit | 15i | paper/DOI verified; exact code release debt | useful contemporary baseline; does not justify reopening Stage-14s tuning |
+| S15-E13 | Amorim et al. (2025), *Generalizations of Choquet-like Integrals by Restricted Dissimilarity Functions Applied to Multi-Channel Edge Detection Problems* | `10.3390/app152413273` | primary peer-reviewed / project lineage | strictly untrained | BSDS500/UDED under Bezdek/Estrada–Jepson-style evaluation; not directly official Berkeley ODS/OIS/AP | fuzzy aggregation lineage | historical/core project context | all Stage 15 | verified project source | Stage-15 matched evaluator is needed to connect lineage to official boundary metrics |
+
+## Excluded-but-contextual source classes
+
+These methods can appear in the general bibliography/SOTA target ledger but must not be mislabeled as strictly non-trained:
+
+| Class | Examples | Reason |
+|---|---|---|
+| trained classical boundary detectors | gPb learned combinations, SCG, Sketch Tokens, Structured Edges, OEF | learned weights/dictionaries/classifiers/forests from data |
+| trained neural boundary detectors | HED, RCF, BDCN, DexiNed, PiDiNet, EDTER and successors | trained neural inference path |
+| pretrained/foundation-model edge systems | any detector relying on pretrained neural features | violates Stage-15 strict non-trained inference constraint |
+
+## Agent update rule
+
+For every `research_planning` or `literature_escalation` decision during Stage 15:
+
+1. inspect this ledger first;
+2. use primary sources/live web for new claims;
+3. add the source **before or in the same commit** that preregisters the experiment it motivates;
+4. store reported metrics with protocol qualifiers;
+5. state whether implementation is exact author code, faithful reimplementation, or repository-specific surrogate;
+6. if a source is later found trained or protocol-incompatible, preserve the row and update the classification/decision note;
+7. synchronize `BIBLIOGRAPHY_MATRIX.md` when the source is important enough for the future manuscript.
+
+A Stage-15 experiment whose core mechanism is literature-motivated but has no corresponding ledger entry is considered incompletely preregistered.
