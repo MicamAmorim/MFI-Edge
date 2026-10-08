@@ -1,4 +1,4 @@
-function stage15a_compare_eval_paths(pdollarDir, benchmarkDir, imageDir, gtDir, outDir)
+function stage15a_compare_eval_paths(pdollarDir, benchmarkDir, predictionDir, gtDir, outDir)
 % Compare Piotr Dollar's BSDS-compatible image evaluator with the pinned path.
 %
 % This is a fixture-only Stage-15a diagnostic. It does not edit vendored code
@@ -11,14 +11,14 @@ if ~exist(outDir, 'dir')
     mkdir(outDir);
 end
 
-imgs = dir(fullfile(imageDir, '*.jpg'));
-if numel(imgs) ~= 5
-    error('MFIEdge:FixtureSize', 'Expected five fixture images, found %d.', numel(imgs));
+predictions = dir(fullfile(predictionDir, '*.png'));
+if numel(predictions) ~= 5
+    error('MFIEdge:FixtureSize', 'Expected five fixture predictions, found %d.', numel(predictions));
 end
 
-for i = 1:numel(imgs)
-    [~, iid, ~] = fileparts(imgs(i).name);
-    inFile = fullfile(imageDir, imgs(i).name);
+for i = 1:numel(predictions)
+    [~, iid, ~] = fileparts(predictions(i).name);
+    inFile = fullfile(predictionDir, predictions(i).name);
     gtFile = fullfile(gtDir, [iid '.mat']);
     prFile = fullfile(outDir, [iid '_ev1.txt']);
     edgesEvalImg(inFile, gtFile, 'out', prFile, 'thrs', 5, ...

@@ -938,6 +938,15 @@ explicit `out`, `thrs`, `maxDist`, and `thin` arguments. Vendored evaluator
 code, matcher binaries, fixture inputs, aggregation, and the `1e-4` decision
 tolerance remain unchanged; full validation scoring remains deferred.
 
+The parser-repaired retry also stopped before matching, now because the local
+diagnostic harness passed the fixture's RGB source photographs to
+`edgesEvalImg` instead of the shipped single-channel PNG boundary predictions.
+The resulting three-dimensional threshold map was rejected by `bwmorph`.
+This is a harness input-selection defect, not evaluator evidence. A second
+attachment-only retry is registered with the PNG prediction directory; it
+does not alter the pinned evaluator, matcher, fixture artifacts, aggregation,
+or tolerance, and still does not score BSDS500 validation.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

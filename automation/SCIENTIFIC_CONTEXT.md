@@ -323,6 +323,13 @@ a strict repository-local parser for the explicit diagnostic arguments; no
 vendored evaluator code, tolerance, fixture, or detector is changed. Full
 validation and Stage 15b remain deferred; no architecture work is authorized.
 
+That parser-repaired retry stopped before matching because the local harness
+passed RGB fixture photographs instead of the shipped single-channel PNG
+boundary predictions to `edgesEvalImg`; `bwmorph` rejected the resulting 3-D
+map. This is a diagnostic-harness defect and provides no evaluator or detector
+feedback. A second attachment-only retry is registered with the correct PNG
+inputs, leaving evaluator code, matcher, tolerance, and architecture unchanged.
+
 ## d-Choquet terminology
 
 Do not conflate these:

@@ -390,6 +390,12 @@ repository-local parser for the diagnostic's explicit name/value arguments is
 now registered for one attachment-only retry. This changes neither evaluator
 math nor the frozen fixture tolerance; Stage 15a, full validation, and Stage
 15b remain pending that result.
+The parser-repaired retry exposed a separate local harness error before
+matching: it supplied the RGB fixture photographs rather than the shipped
+single-channel PNG boundary predictions, so `bwmorph` correctly rejected the
+three-dimensional threshold map. A second attachment-only retry now supplies
+the PNG predictions. This changes no evaluator semantics, fixture tolerance,
+validation result, or architecture.
 
 Scientific conclusion:
 
