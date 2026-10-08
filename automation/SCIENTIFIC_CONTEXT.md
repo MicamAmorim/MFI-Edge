@@ -801,3 +801,19 @@ contract audit. Do not score a hand-completed surrogate or read a benchmark. If
 the blockers remain, close Stage 15h fidelity-unresolved and proceed to the
 Stage-15i fractional-reference checkpoint. MFI architecture remains unchanged
 through Stage 15o.
+
+### Stage-15h closure and Stage-15i transition
+
+The dataset-free fidelity preflight confirmed that public primary material does
+not resolve the adaptive-surround detector's output-affecting implementation
+contract. No detector or dataset was run, no related-paper surrogate was
+scored, and the reported metrics remain documentary and protocol-unverified.
+Stage 15h closes fidelity-unresolved without changing MFI.
+
+The registered next action is
+`stage15i_fractional_reference_reproduction_checkpoint`, a high-reasoning live
+primary-source and official-code audit of the 2026 Fractional Dirac detector
+(DOI `10.3390/fractalfract10060412`). It must resolve fidelity, fixed
+parameters, training class, output/evaluator conventions, and its distinction
+from the failed Stage-14s spectral Riesz realization before one run or
+preflight. This does not authorize fractional tuning or MFI architecture work.

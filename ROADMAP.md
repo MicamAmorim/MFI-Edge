@@ -958,3 +958,17 @@ parameters, or combine related methods into a surrogate. If fidelity remains
 blocked, Stage 15h closes unresolved and advances to the Stage-15i modern
 fractional-reference checkpoint. MFI architecture remains frozen through Stage
 15o.
+
+The Stage-15h preflight confirmed the missing executable contract without
+running a detector or reading a dataset. Complete filters, adaptation,
+multiscale/orientation fusion, scalar output/postprocessing, and matched metric
+conventions remain unresolved, and the non-equivalent predecessor cannot fill
+them. Stage 15h is closed fidelity-unresolved; its reported metrics remain
+documentary only.
+
+The active next action is
+`stage15i_fractional_reference_reproduction_checkpoint`. It will use live
+primary literature and official/author code to audit the 2026 Fractional Dirac
+detector, distinguish it from Stage 14s, and register exactly one exact
+reproduction, faithful fixed reimplementation, or dataset-free fidelity
+preflight. Fractional tuning and MFI architecture invention remain prohibited.

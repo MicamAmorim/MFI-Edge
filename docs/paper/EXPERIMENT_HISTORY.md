@@ -2089,3 +2089,25 @@ a detector, read a benchmark, borrow parameters from the related predecessor,
 or synthesize a surrogate. If the blockers remain, Stage 15h closes
 fidelity-unresolved and advances to the Stage-15i fractional-reference
 checkpoint without changing MFI.
+
+### Stage 15h closure: fidelity unresolved
+
+The deterministic preflight confirmed that public primary material does not
+resolve the target article's executable contract. Article-specific code and a
+supplement remain unavailable, while the complete receptive-field filters,
+contrast statistic and adaptive transfer, multiscale/orientation fusion,
+scalar output and postprocessing, and matched evaluation protocol remain
+output-affecting blockers. The related same-group predecessor is not proven
+equivalent and cannot supply those choices. No detector or dataset was run,
+and no surrogate was scored. Stage 15h therefore closes fidelity-unresolved;
+its reported metrics remain documentary and protocol-unverified.
+
+The single registered next action is
+`stage15i_fractional_reference_reproduction_checkpoint`, a high-reasoning
+live-primary-literature and official-code audit of *Fractional Dirac Operators
+for Edge Detection* (DOI `10.3390/fractalfract10060412`). It must resolve
+executable fidelity, fixed parameters, training class, output conventions,
+the exact reported evaluator, and the method's distinction from the failed
+Stage-14s spectral Riesz realization before one fidelity-labeled run or
+preflight. This is a reference audit, not permission to tune fractional
+operators or alter MFI before Stage 15p.
