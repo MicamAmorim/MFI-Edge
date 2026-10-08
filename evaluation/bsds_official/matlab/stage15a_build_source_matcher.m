@@ -1,4 +1,4 @@
-function stage15a_build_source_matcher(sourceDir, outDir)
+function stage15a_build_source_matcher(sourceDir, outDir, compatDir)
 % Build the pinned Berkeley correspondPixels sources outside the vendor tree.
 
 if ~exist(outDir, 'dir')
@@ -11,7 +11,9 @@ sources = cell(size(names));
 for i = 1:numel(names)
     sources{i} = fullfile(sourceDir, names{i});
 end
-mex('-outdir', outDir, '-DNOBLAS', sources{:});
+forcedInclude = ['COMPFLAGS=$COMPFLAGS /FI"' ...
+    fullfile(compatDir, 'stage15a_win_compat.h') '"'];
+mex('-outdir', outDir, '-DNOBLAS', forcedInclude, ['-I' compatDir], sources{:});
 
 cfg = mex.getCompilerConfigurations('C++', 'Selected');
 fid = fopen(fullfile(outDir, 'build_metadata.txt'), 'w');
@@ -21,6 +23,7 @@ end
 cleanup = onCleanup(@() fclose(fid));
 fprintf(fid, 'matlab=%s\n', version);
 fprintf(fid, 'mexext=%s\n', mexext);
+fprintf(fid, 'compat_include=%s\n', compatDir);
 if isempty(cfg)
     fprintf(fid, 'compiler=unknown\n');
 else

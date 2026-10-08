@@ -2,11 +2,12 @@ from __future__ import annotations
 
 """Rebuild the pinned Berkeley matcher source and retest its five-image fixture."""
 
-from pathlib import Path
+import argparse
 import csv
 import hashlib
 import json
 import os
+from pathlib import Path
 import shutil
 import subprocess
 
@@ -16,7 +17,8 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 CFG = ROOT / "evaluation" / "bsds_official" / "config.json"
 HELPERS = ROOT / "evaluation" / "bsds_official" / "matlab"
-OUT = ROOT / "results" / "automation" / "stage15a_source_matcher_rebuild"
+COMPAT = HELPERS / "stage15a_win_compat"
+DEFAULT_OUT = ROOT / "results" / "automation" / "stage15a_source_matcher_rebuild"
 
 
 def _q(path: Path) -> str:
@@ -57,6 +59,11 @@ def _matlab(matlab: Path, expression: str, prefdir: Path) -> dict:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
+    args = parser.parse_args()
+    out = args.out if args.out.is_absolute() else ROOT / args.out
+
     cfg = json.loads(CFG.read_text(encoding="utf-8"))
     matlab = Path(cfg["matlab_executable"])
     bsds = ROOT / cfg["sources"]["bsds500"]["vendor_dir"]
@@ -65,12 +72,12 @@ def main() -> int:
     fixture = bsds / "bench" / "data"
     shipped = fixture / "test_2"
 
-    if OUT.exists():
-        shutil.rmtree(OUT)
-    OUT.mkdir(parents=True)
-    build_dir = OUT / "matcher"
+    if out.exists():
+        shutil.rmtree(out)
+    out.mkdir(parents=True)
+    build_dir = out / "matcher"
     build_dir.mkdir()
-    prefdir = OUT / "matlab_prefs"
+    prefdir = out / "matlab_prefs"
     prefdir.mkdir()
 
     processes = []
@@ -78,14 +85,14 @@ def main() -> int:
         _matlab(
             matlab,
             f"addpath('{_q(HELPERS)}');stage15a_build_source_matcher("
-            f"'{_q(source)}','{_q(build_dir)}');",
+            f"'{_q(source)}','{_q(build_dir)}','{_q(COMPAT)}');",
             prefdir,
         )
     )
 
     run_dirs = []
     for index in (1, 2):
-        run_dir = OUT / f"rebuilt_run{index}"
+        run_dir = out / f"rebuilt_run{index}"
         run_dirs.append(run_dir)
         processes.append(
             _matlab(
@@ -116,7 +123,7 @@ def main() -> int:
             }
         )
 
-    with (OUT / "aggregate_rebuild_deltas.csv").open(
+    with (out / "aggregate_rebuild_deltas.csv").open(
         "w", newline="", encoding="utf-8"
     ) as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
@@ -133,17 +140,29 @@ def main() -> int:
         "full_validation_scored": False,
         "registered_tolerance_changed": False,
         "source_commit": cfg["sources"]["bsds500"]["commit"],
-        "source_files": [
-            "correspondPixels.cc",
-            "csa.cc",
-            "kofn.cc",
-            "match.cc",
-            "Exception.cc",
-            "Matrix.cc",
-            "Random.cc",
-            "String.cc",
-            "Timer.cc",
-        ],
+        "source_sha256": {
+            name: _sha256(source / name)
+            for name in (
+                "correspondPixels.cc",
+                "csa.cc",
+                "kofn.cc",
+                "match.cc",
+                "Exception.cc",
+                "Matrix.cc",
+                "Random.cc",
+                "String.cc",
+                "Timer.cc",
+            )
+        },
+        "windows_compile_compatibility_headers": {
+            str(path.relative_to(ROOT)).replace("\\", "/"): _sha256(path)
+            for path in sorted(COMPAT.rglob("*.h"))
+        },
+        "windows_compile_compatibility_scope": (
+            "Forced-include typedef/API/legacy-macro shims plus POSIX timing and "
+            "IEEE-754 declarations required by MSVC; vendored matcher sources are "
+            "byte-unchanged and the assignment/matching algorithm is unmodified."
+        ),
         "rebuilt_mex_sha256": _sha256(mex_path),
         "build_metadata": (build_dir / "build_metadata.txt").read_text(
             encoding="utf-8"
@@ -162,7 +181,7 @@ def main() -> int:
             "detector maps, and does not score BSDS validation."
         ),
     }
-    (OUT / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    (out / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print("STAGE15A_SOURCE_MATCHER_REBUILD_READY", flush=True)
     return 0
 

@@ -341,6 +341,13 @@ BSDS500 C++ matcher sources outside the vendor tree, record build provenance,
 and repeat the unchanged fixture. Full validation, Stage 15b, and architecture
 work remain deferred.
 
+The first source-build launch failed before matching because the pinned
+Unix-era sources require POSIX/legacy declarations absent under MSVC. A hashed
+repository-local compatibility include layer now permits an MSVC 2022 compile
+smoke test without changing vendored source bytes or matching logic. One
+attachment-only fixture retry is registered; validation scoring, Stage 15b,
+and architecture work remain deferred.
+
 ## d-Choquet terminology
 
 Do not conflate these:

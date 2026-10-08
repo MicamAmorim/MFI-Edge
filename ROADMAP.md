@@ -407,6 +407,14 @@ pinned Berkeley C++ matcher sources outside the vendor tree, records compiler
 provenance, and repeats only the five-image fixture. Full validation and Stage
 15b remain deferred.
 
+That first build stopped before matching because MSVC lacks the POSIX and
+legacy GNU declarations used by the pinned sources. The registered
+attachment-only retry supplies a hashed repository-local compatibility include
+layer while leaving the vendored source bytes and matching logic unchanged; a
+Microsoft Visual C++ 2022 compile smoke test now succeeds. The retry still
+scores only the five-image fixture, and full validation and Stage 15b remain
+deferred.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**

@@ -962,6 +962,17 @@ result directory with the selected MATLAB compiler and repeat the unchanged
 fixture in fresh processes. No vendored file, tolerance, validation result, or
 detector architecture is changed. Stage 15b remains deferred.
 
+The first source-build launch stopped before producing a matcher because the
+pinned Unix-era code includes POSIX timing headers unavailable to MSVC. This
+is a compiler-portability failure, not fixture or detector evidence. An
+attachment-only retry is registered with a repository-local compatibility
+include layer for the missing timing declarations, legacy integer aliases,
+MATLAB API rename, IEEE-754 layout, and legacy macros. A compile smoke test
+completed with Microsoft Visual C++ 2022. The vendored source files remain
+byte-unchanged, compatibility-header hashes are recorded, and the matcher
+algorithm, fixture, `1e-4` tolerance, and deferred-validation policy are
+unchanged.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels
