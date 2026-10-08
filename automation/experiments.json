@@ -1154,7 +1154,20 @@
       "results/local_dev/stage15i_qfrd_exact_reproduction/best_method_preview.png",
       "results/local_dev/stage15i_qfrd_exact_reproduction/predictions/export_manifest.json",
       "results/local_dev/stage15i_qfrd_exact_reproduction/predictions/per_image_runtime.csv",
-      "results/local_dev/stage15i_qfrd_exact_reproduction/predictions/map_hashes.json"
+      "results/local_dev/stage15i_qfrd_exact_reproduction/predictions/map_hashes.json",
+      "results/official_eval/stage15i_qfrd_exact_reproduction/summary.json"
+    ]
+  },
+  "stage15j_high_number_protocol_audit_checkpoint": {
+    "description": "High-reasoning live-primary-literature protocol audit of recent non-trained edge detectors with unusually high reported F/F1 values after the exact QFrD reproduction; resolves metric/evaluator compatibility and selects at most one fidelity-labeled next reproduction or advances to Stage 15k without changing MFI.",
+    "runner": "python",
+    "path": "automation/stage15j_high_number_protocol_audit_checkpoint.py",
+    "args": [],
+    "role": "research_planning",
+    "feedback_policy": "primary_literature_protocol_audit_only_no_dataset_feedback_no_baseline_tuning_no_architecture_change",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage15j_high_number_protocol_audit_checkpoint/summary.json"
     ]
   },
   "autonomous_literature_escalation": {

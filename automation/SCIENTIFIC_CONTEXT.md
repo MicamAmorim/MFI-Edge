@@ -865,3 +865,21 @@ runtimes and hashes, emit the fixed positions 1/50/100 preview, and attach the
 unchanged official evaluator against the incumbent. It is a reproduction
 baseline only; the paper/code multiplication-order caveat remains, and no
 QFrD/fractional tuning or MFI architecture change is authorized.
+
+### Stage-15i exact QFrD reproduction complete; Stage-15j registered
+
+The exact pinned-author-code QFrD run completed on all 100 native-resolution
+BSDS500 validation images. Under the common local official path, QFrD obtained
+ODS/OIS/AP `0.587261/0.618621/0.583650`, improving the unchanged MFI incumbent
+by `+0.041849/+0.039265/+0.049373`. Mean detector runtime was about `1.168`
+seconds per image. Maps, hashes, runtimes, and the fixed positions 1/50/100
+preview are complete. The author-code/paper multiplication-order caveat and
+the stochastic/reference-uncertified Windows matcher caveat remain.
+
+QFrD is retained only as a parameter-fixed, author-tuned exact-code reference.
+It does not alter MFI and does not reopen fractional tuning. The registered
+next action is `stage15j_high_number_protocol_audit_checkpoint`, a high-
+reasoning live-primary-literature audit of unusually high non-trained edge
+metrics to distinguish Berkeley ODS from average-optimal, per-image,
+multi-output, or otherwise incompatible F/F1 protocols. No MFI architecture
+invention is authorized before Stage 15p.

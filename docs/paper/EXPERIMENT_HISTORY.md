@@ -2185,3 +2185,28 @@ hashes, emits the preregistered positions 1/50/100 preview, and attaches the
 unchanged official evaluator against the incumbent. This is a reproduction
 baseline only; the paper/code multiplication-order caveat remains, and neither
 fractional tuning nor MFI architecture work is authorized.
+
+### Stage 15i exact QFrD reproduction complete; Stage 15j audit registered
+
+The exact pinned-author-code QFrD reproduction completed for all 100
+native-resolution BSDS500 validation images at the published fixed defaults.
+The common local evaluator produced ODS/OIS/AP
+`0.587261/0.618621/0.583650`, versus
+`0.545412/0.579356/0.534277` for the unchanged compact MFI incumbent. The
+paired deltas were therefore `+0.041849/+0.039265/+0.049373`. Mean detector
+runtime was `1.168` seconds per image. The frozen maps, hashes, per-image
+runtimes, and deterministic positions 1/50/100 preview are complete.
+
+This establishes QFrD as a useful parameter-fixed but author-tuned fractional
+reference under the common validation path; it does not establish paper/code
+algebraic equivalence, promote QFrD into MFI, or reopen fractional tuning. The
+Windows matcher remains stochastic and reference-uncertified, so these are
+development/reproduction metrics rather than a final protocol-certified claim.
+
+The single registered next action is
+`stage15j_high_number_protocol_audit_checkpoint`. It uses live primary-source
+research to determine whether unusually high reported non-trained F/F1 values
+are Berkeley ODS or instead use average-optimal, per-image, multi-output, or
+otherwise incompatible protocols. It may select at most one exact reproduction
+or fidelity preflight, or close Stage 15j and advance to Stage 15k. It may not
+score protected data, tune reproduced methods, or change MFI architecture.

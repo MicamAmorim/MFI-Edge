@@ -1010,3 +1010,18 @@ the frozen published defaults over BSDS500 validation, retain maps, runtimes
 and hashes, emit the fixed positions 1/50/100 preview, and attach the common
 official evaluator against the unchanged incumbent. This remains a baseline
 reproduction; QFrD/fractional tuning and MFI redesign remain prohibited.
+
+The exact Stage-15i QFrD reproduction is complete. On BSDS500 validation it
+obtained ODS/OIS/AP `0.587261/0.618621/0.583650`, improving the unchanged MFI
+incumbent by `+0.041849/+0.039265/+0.049373`; mean runtime was about `1.168`
+seconds per image. QFrD remains a parameter-fixed, author-tuned reference only.
+Its paper/code multiplication-order caveat and the local evaluator's
+reference-uncertified status remain explicit, and no fractional or MFI tuning
+is permitted from this result.
+
+The active next action is `stage15j_high_number_protocol_audit_checkpoint`.
+This live-primary-literature checkpoint will classify unusually high reported
+non-trained edge F/F1 values by split, threshold scope, matcher/tolerance,
+annotation protocol, thinning/NMS, resizing, and output multiplicity. It will
+register at most one fidelity-labeled reproduction/preflight, or close the
+audit and transition to Stage 15k. Architecture invention remains prohibited.
