@@ -972,3 +972,22 @@ primary literature and official/author code to audit the 2026 Fractional Dirac
 detector, distinguish it from Stage 14s, and register exactly one exact
 reproduction, faithful fixed reimplementation, or dataset-free fidelity
 preflight. Fractional tuning and MFI architecture invention remain prohibited.
+
+The Stage-15i audit found the official one-commit QFrD repository at
+`8dcc8d846e6dcbe1bc4b931b89f1c814f5f9a245` and a complete code-defined
+fixed detector path. QFrD is parameter-fixed but author-tuned, not learned. Its
+paper reports BSDS500-test ODS/OIS/AP `0.6145/0.6361/0.5996`, which remain
+documentary and protocol-separated from our future validation run. The audit
+also records that the paper specifies left multiplier application while the
+author code applies it on the right; exact-code reproduction is still possible,
+but paper/code algebraic equivalence is not assumed. No code license or
+requirements file is present, and the current project environment lacks
+PyTorch/torchvision.
+
+The active next action is `stage15i_qfrd_runtime_preflight`, a dataset-free
+immutable-source/dependency audit and fixed synthetic repeatability smoke test.
+It may repair runtime dependencies only after a recorded failure and may not
+read BSDS, alter the author source, tune fractional parameters, or change MFI.
+Only a pass may advance to one exact author-code BSDS500-validation
+reproduction with maps, runtimes, hashes, the fixed positions 1/50/100 preview,
+and the unchanged official evaluation attachment.

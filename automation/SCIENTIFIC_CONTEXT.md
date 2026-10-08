@@ -817,3 +817,30 @@ primary-source and official-code audit of the 2026 Fractional Dirac detector
 parameters, training class, output/evaluator conventions, and its distinction
 from the failed Stage-14s spectral Riesz realization before one run or
 preflight. This does not authorize fractional tuning or MFI architecture work.
+
+### Stage-15i checkpoint - official QFrD code found; runtime preflight registered
+
+The primary paper's official public QFrD repository is pinned at its sole
+commit `8dcc8d846e6dcbe1bc4b931b89f1c814f5f9a245`. The detector is
+parameter-fixed but author-tuned: the fixed code path uses fractional order
+`0.8`, full Hilbert rotation, the symmetric RGB quaternion axis, Gaussian sigma
+`2.0`, 64-pixel replicate padding, bilinear NMS, and absolute hysteresis
+defaults. The reported BSDS500-test ODS/OIS/AP
+`0.6145/0.6361/0.5996` remain documentary and protocol-separated from a future
+common validation run.
+
+The repository has no explicit license or requirements file. The manuscript
+specifies left multiplier application, while pinned code computes
+`q_mul(Q, M_full)`; any future result must therefore be labeled an exact
+author-code reproduction rather than proof of paper/code algebraic equivalence.
+QFrD is distinct from Stage 14s because it jointly processes RGB through a
+quaternion QFT at order `0.8`; Stage 14s tested a grayscale half-order isotropic
+Riesz-gradient localizer. No fractional family is reopened for tuning.
+
+The registered next action is `stage15i_qfrd_runtime_preflight`, a dataset-free
+source-hash, dependency, and fixed synthetic-repeatability check. The current
+project environment lacks PyTorch/torchvision; a failure permits only a
+dependency repair and identical retry. Do not read BSDS, alter author bytes or
+parameters, or change MFI. Only a pass may register one exact QFrD
+BSDS500-validation reproduction with maps, hashes, runtimes, fixed positions
+1/50/100 preview, and the unchanged official evaluator.

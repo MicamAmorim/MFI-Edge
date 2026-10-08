@@ -1111,6 +1111,20 @@
       "results/automation/stage15i_fractional_reference_reproduction_checkpoint/summary.json"
     ]
   },
+  "stage15i_qfrd_runtime_preflight": {
+    "description": "Dataset-free immutable-source and runtime preflight of Huang, Hu and Lian's official QFrD author code at commit 8dcc8d846e6dcbe1bc4b931b89f1c814f5f9a245; records the paper/code multiplication-order caveat, dependency state, source hashes, and fixed-default synthetic repeatability without reading BSDS or changing any author byte.",
+    "runner": "python",
+    "path": "automation/stage15i_qfrd_runtime_preflight.py",
+    "args": [],
+    "role": "reproduction_dependency_preflight",
+    "feedback_policy": "immutable_source_dependency_and_synthetic_smoke_only_no_dataset_feedback_no_fractional_tuning_no_architecture_change",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage15i_qfrd_runtime_preflight/summary.json",
+      "results/automation/stage15i_qfrd_runtime_preflight/source_manifest.json",
+      "results/automation/stage15i_qfrd_runtime_preflight/runtime_preflight.log"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

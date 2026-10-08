@@ -2111,3 +2111,38 @@ the exact reported evaluator, and the method's distinction from the failed
 Stage-14s spectral Riesz realization before one fidelity-labeled run or
 preflight. This is a reference audit, not permission to tune fractional
 operators or alter MFI before Stage 15p.
+
+### Stage 15i checkpoint: official QFrD code found; runtime preflight registered
+
+The CC BY primary paper identifies the public author repository, now pinned at
+its sole commit `8dcc8d846e6dcbe1bc4b931b89f1c814f5f9a245`. The proposed
+detector is non-learned but is classified as parameter-fixed and author-tuned:
+the paper selects fractional order `alpha=0.8` after comparing several orders
+and reports BSDS500-test ODS checks supporting `theta=pi/2`; the symmetric
+quaternion axis is fixed as `(0,1,1,1)/sqrt(3)`. The fixed author path also uses
+64-pixel replicate padding, Gaussian sigma `2.0`, fixed-range response scaling,
+bilinear NMS at radius `1.5`, and absolute hysteresis defaults `0.8/2.5`.
+
+The paper's BSDS500-test QFrD ODS/OIS/AP `0.6145/0.6361/0.5996` remain
+documentary. It names Piotr's Structured Edge Toolbox but not an immutable
+evaluator commit or binary, and Stage 15a's local Windows matcher remains
+stochastic and reference-uncertified. The code has no explicit license or
+requirements file. A further fidelity caveat is recorded rather than silently
+repaired: the manuscript describes left multiplication `M(alpha,theta)Q`, while
+the pinned implementation computes `q_mul(Q, M_full)`. A later run can be an
+exact author-code reproduction, but cannot claim independent algebraic
+equivalence between paper and code.
+
+This target is mechanistically different from Stage 14s: it processes native
+RGB jointly in a quaternion QFT at order `0.8` with a Hilbert rotation, whereas
+Stage 14s tested a grayscale half-order isotropic spectral Riesz-gradient
+localizer. The present audit does not reopen fractional tuning.
+
+The single registered next action is `stage15i_qfrd_runtime_preflight`. It will
+hash-verify the immutable author checkout, record the paper/code caveat and
+runtime dependencies, and attempt a fixed-default deterministic synthetic
+smoke test only. The repository environment currently lacks PyTorch and
+torchvision, so a failure permits a dependency-only retry; it may not read
+BSDS, alter author bytes or parameters, or change MFI. Only a passing preflight
+may register one exact native-resolution BSDS500-validation reproduction with
+the required fixed positions 1/50/100 preview and common official evaluator.
