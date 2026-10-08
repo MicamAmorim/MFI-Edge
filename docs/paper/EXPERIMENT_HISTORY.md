@@ -2146,3 +2146,22 @@ torchvision, so a failure permits a dependency-only retry; it may not read
 BSDS, alter author bytes or parameters, or change MFI. Only a passing preflight
 may register one exact native-resolution BSDS500-validation reproduction with
 the required fixed positions 1/50/100 preview and common official evaluator.
+
+### Stage 15i runtime preflight 1: checkout/runtime repair registered
+
+The first dataset-free preflight stopped before source-contract verification
+or synthetic execution. The harness cloned with `--no-checkout` and then
+applied its cleanliness guard before populating the pinned tree, so Git
+reported every tracked file as deleted. The dependency inventory separately
+confirmed that PyTorch and torchvision were absent. No benchmark image was
+read, no detector output was produced, and this failure supplies no fractional
+or MFI performance evidence.
+
+The single registered next action is
+`stage15i_qfrd_runtime_preflight_retry1`. This attachment-only harness repair
+uses a separate ignored checkout, populates the immutable commit before the
+cleanliness audit, installs pinned CPU `torch==2.9.0` and
+`torchvision==0.24.0`, and repeats the unchanged fixed synthetic smoke test.
+It may not read BSDS, change author bytes or detector parameters, tune the
+fractional family, or modify MFI. Only a pass may register the exact validation
+reproduction.

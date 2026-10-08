@@ -991,3 +991,13 @@ read BSDS, alter the author source, tune fractional parameters, or change MFI.
 Only a pass may advance to one exact author-code BSDS500-validation
 reproduction with maps, runtimes, hashes, the fixed positions 1/50/100 preview,
 and the unchanged official evaluation attachment.
+
+The first preflight produced no scientific feedback: a fresh `--no-checkout`
+clone appeared dirty to the subsequent guard because all tracked files were
+intentionally absent, and the runtime inventory confirmed missing
+PyTorch/torchvision. The active next action is the harness-only
+`stage15i_qfrd_runtime_preflight_retry1`. It uses a separate ignored checkout,
+populates the pinned commit before the cleanliness check, installs pinned CPU
+`torch==2.9.0` and `torchvision==0.24.0`, and repeats the identical dataset-free
+source/synthetic preflight. BSDS access, QFrD parameter changes, author-source
+changes, and MFI architecture work remain prohibited.

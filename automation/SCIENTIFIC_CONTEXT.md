@@ -844,3 +844,13 @@ dependency repair and identical retry. Do not read BSDS, alter author bytes or
 parameters, or change MFI. Only a pass may register one exact QFrD
 BSDS500-validation reproduction with maps, hashes, runtimes, fixed positions
 1/50/100 preview, and the unchanged official evaluator.
+
+The first runtime preflight stopped before source verification or synthetic
+execution. Its `--no-checkout` clone was correctly seen as a worktree of
+deleted tracked files by the later cleanliness guard, and the project runtime
+also confirmed that PyTorch/torchvision are absent. No dataset or detector ran,
+so this is harness/dependency evidence only. One attachment-only retry is
+registered with a fresh ignored checkout populated before cleanliness checks
+and pinned CPU `torch==2.9.0`/`torchvision==0.24.0`; the author commit, source
+bytes, fixed parameters, synthetic input, dataset prohibition, and MFI remain
+unchanged. Only a passing retry may advance to validation reproduction.
