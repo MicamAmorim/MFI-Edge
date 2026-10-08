@@ -1086,6 +1086,19 @@
       "results/automation/stage15h_adaptive_surround_reproduction_checkpoint/summary.json"
     ]
   },
+  "stage15h_adaptive_surround_fidelity_preflight": {
+    "description": "Deterministic dataset-free fidelity preflight for Zhang et al.'s adaptive multiscale V1 surround-modulation detector after the live audit found no article-specific code or supplement and an incomplete public executable contract; records unresolved filtering, adaptation, fusion, output, and metric conventions without inventing a surrogate.",
+    "runner": "python",
+    "path": "automation/stage15h_adaptive_surround_fidelity_preflight.py",
+    "args": [],
+    "role": "reproduction_fidelity_preflight",
+    "feedback_policy": "primary_source_fidelity_audit_only_no_dataset_feedback_no_architecture_change",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage15h_adaptive_surround_fidelity_preflight/summary.json",
+      "results/automation/stage15h_adaptive_surround_fidelity_preflight/implementation_contract.csv"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

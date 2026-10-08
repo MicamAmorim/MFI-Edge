@@ -2062,3 +2062,30 @@ multiscale V1 surround-modulation model. It must resolve executable fidelity,
 fixed parameters, training class, output conventions, and metric compatibility
 before one fidelity-labeled run or preflight. MFI remains unchanged, and no
 architecture invention is authorized before Stage 15p.
+
+### Stage 15h checkpoint: public contract is insufficient for a detector run
+
+The live primary-source audit verified the target as a strictly untrained
+analytic adaptive/multiscale surround detector, but found no article-specific
+author code, supplement, or executable archive. The publisher record is
+subscription-only. Its public abstract and figures establish contrast-dependent
+suppression/facilitation, multiscale surround modulation, and four butterfly
+orientations, but do not fix the complete receptive-field kernels, local
+contrast statistic and adaptive transfer, scale schedule and fusion, scalar
+output/postprocessing, or native map convention.
+
+The paper's BSDS500 average optimal F-score `0.703` and NYUD follow-up remain
+documentary: the public record does not resolve the scored split, per-image
+versus dataset-wide optimization, matcher, tolerance, thinning, threshold grid,
+annotation handling, or output convention. A same-group contrast-adaptive
+predecessor (`10.1007/s11042-024-19666-y`) is not an implementation substitute;
+it adds retinal color antagonism, LGN gain control, and LIF processing and is
+not stated to be equivalent to the target.
+
+The single registered next action is
+`stage15h_adaptive_surround_fidelity_preflight`. It records each unresolved
+output-affecting item in a deterministic dataset-free contract and may not run
+a detector, read a benchmark, borrow parameters from the related predecessor,
+or synthesize a surrogate. If the blockers remain, Stage 15h closes
+fidelity-unresolved and advances to the Stage-15i fractional-reference
+checkpoint without changing MFI.

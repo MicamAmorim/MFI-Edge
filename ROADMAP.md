@@ -941,3 +941,20 @@ surround-modulation detector. It must settle implementation fidelity, fixed
 parameters, training class, output conventions, and matched-validation
 feasibility before registering one detector run or dataset-free fidelity
 preflight. MFI remains frozen through Stage 15o.
+
+The Stage-15h live audit found no article-specific code or supplement and no
+complete public executable contract. Public primary material establishes a
+strictly untrained contrast-adaptive, multiscale V1 surround mechanism and four
+butterfly orientations, but leaves the full filters, adaptation law, scale and
+orientation fusion, output/postprocessing, and matched evaluator unresolved.
+The reported BSDS500 average optimal F-score `0.703` and NYUD follow-up remain
+documentary and protocol-unverified. A related same-group contrast-adaptive
+paper is not proven equivalent and may not supply missing choices.
+
+The active next action is therefore
+`stage15h_adaptive_surround_fidelity_preflight`, a deterministic dataset-free
+implementation-contract audit. It may not run a detector or benchmark, invent
+parameters, or combine related methods into a surrogate. If fidelity remains
+blocked, Stage 15h closes unresolved and advances to the Stage-15i modern
+fractional-reference checkpoint. MFI architecture remains frozen through Stage
+15o.

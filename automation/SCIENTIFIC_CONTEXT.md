@@ -781,3 +781,23 @@ surround-modulation detector (DOI `10.1007/s11760-024-03634-y`). It must resolve
 code availability, fixed parameters, training class, output conventions, and
 matched-validation feasibility before one fidelity-labeled run or preflight.
 Architecture invention remains prohibited through Stage 15o.
+
+### Stage-15h checkpoint - fidelity preflight registered
+
+No article-specific author code, supplement, or executable archive was located
+for Zhang et al.'s adaptive multiscale V1 surround-modulation detector. Public
+primary material verifies a strictly untrained analytic method, contrast-
+dependent suppression/facilitation, multiscale surround behavior, and four
+butterfly orientations, but does not fix the complete filters, adaptation
+transfer, scale/orientation fusion, scalar output/postprocessing, or matched
+evaluation contract. The reported BSDS500 average optimal F-score `0.703` and
+NYUD follow-up are documentary and protocol-unverified. A related same-group
+contrast-adaptive paper is mechanistically distinct and not an authorized
+source of missing target parameters.
+
+The registered next action is
+`stage15h_adaptive_surround_fidelity_preflight`, a deterministic dataset-free
+contract audit. Do not score a hand-completed surrogate or read a benchmark. If
+the blockers remain, close Stage 15h fidelity-unresolved and proceed to the
+Stage-15i fractional-reference checkpoint. MFI architecture remains unchanged
+through Stage 15o.
