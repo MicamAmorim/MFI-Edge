@@ -558,6 +558,24 @@
       "results/official_eval/stage14u_official_eval_retry2/summary.json"
     ]
   },
+  "stage15a_protocol_audit": {
+    "description": "Reproduce the pinned five-image Berkeley boundary-evaluator fixture, audit BSDS500-validation protocol/data invariants, and establish fixed Canny, repository Scharr+NMS, and unchanged-incumbent measurement floors without altering MFI architecture.",
+    "runner": "python",
+    "path": "run_stage15a_protocol_audit.py",
+    "args": [],
+    "role": "reproduction_protocol_audit",
+    "feedback_policy": "BSDS500_val_development_protocol_audit_no_protected_feedback_no_architecture_change",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage15a_protocol_audit/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage15a_protocol_audit/summary.json",
+      "results/local_dev/stage15a_protocol_audit/protocol_matrix.csv",
+      "results/local_dev/stage15a_protocol_audit/reference_eval/official_summary.json",
+      "results/local_dev/stage15a_protocol_audit/best_method_preview.png",
+      "results/local_dev/stage15a_protocol_audit/official_eval_manifest.json",
+      "results/official_eval/stage15a_protocol_audit/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

@@ -291,6 +291,18 @@ remains incumbent. After the frozen attachment completes, route to a live
 literature/mechanism checkpoint rather than tuning masses, sources, conflict
 handling, the decision transform, gamma, or the gate.
 
+### Stage 15 transition — reproduction and diagnosis program active
+
+The project has paused architecture invention through Stage 15o. Stage 15a is
+registered as the first action: reproduce the five-image evaluator fixture
+shipped with the pinned BSDS500 code, audit native validation images and all
+annotations, and establish fixed Canny, ungated repository Scharr+NMS, and the
+unchanged incumbent under the same official BSDS500-validation path. This is a
+measurement/reproduction stage, not a promotion experiment. Its deterministic
+preview uses sorted validation positions 1, 50, and 100. After Stage 15a is
+closed, follow the preregistered Stage-15 reproduction sequence beginning with
+the SED baseline; do not design a new MFI architecture before Stage 15p.
+
 ## d-Choquet terminology
 
 Do not conflate these:

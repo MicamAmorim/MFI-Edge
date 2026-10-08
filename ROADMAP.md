@@ -365,6 +365,14 @@ literature/mechanism checkpoint. Threshold persistence and
 uncertainty-controlled PDE conditioning remain deferred, not automatically
 selected.
 
+Stage 15 is now active and temporarily forbids new MFI architecture through
+Stage 15o. Stage 15a is registered first: reproduce the pinned BSDS five-image
+boundary-evaluator fixture, audit all validation pairs/annotations and protocol
+invariants, and score fixed Canny, repository Scharr+NMS, and the unchanged
+incumbent through one matched official path. On successful closure, continue
+the preregistered reproduction campaign with Stage 15b SED rather than resume
+one-shot mechanism invention.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**

@@ -885,6 +885,27 @@ second frozen attachment-only retry is registered. This changes neither the
 matcher nor any scientific artifact and does not reopen Stage 14u's failed
 UDED decision.
 
+### Stage 15 transition and Stage 15a registration
+
+After the Stage-14 sequence of bounded failures and mixed UDED/BSDS behavior,
+the research mode is now reproduction, matched-protocol audit, and error
+diagnosis before any new architecture. Live verification of the official
+Berkeley benchmark description and the pinned BIDS mirror confirmed that the
+local path should operate on soft boundary maps, sweep thresholds, and match
+against every human annotation. The pinned checkout also contains a stronger
+local reference than configuration inspection alone: five example PNG maps
+with shipped aggregate boundary-evaluation outputs.
+
+Stage 15a is therefore registered to reproduce that fixture within `1e-4` on
+ODS/OIS/AP through the same Windows/MATLAB wrapper, audit all 100 BSDS500
+validation image/GT pairs and evaluator source hashes, then attach official
+validation ODS/OIS/AP for fixed full Canny, ungated repository Scharr+NMS, and
+the unchanged compact incumbent. These values establish a measurement floor;
+they cannot promote a method or tune a parameter. The deterministic preview
+uses sorted validation positions 1, 50, and 100 with input, mean-annotator GT,
+Canny, Scharr, and incumbent columns. The authoritative frozen protocol is
+`docs/paper/STAGE15A_PREREGISTRATION.md`.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels
