@@ -1187,6 +1187,22 @@
       "results/local_dev/stage15k_per_image_oracle_matrix/best_method_preview.png"
     ]
   },
+  "stage15l_image_regime_characterization": {
+    "description": "Predeclared BSDS500-validation image-regime diagnosis over frozen Stage-15 outputs; measures texture, contrast, edge density, fragmentation, orientation/curvature, scale distribution, GT density, and annotator agreement, then relates them descriptively to fixed-threshold method deltas without fitting a router or rerunning detectors/matcher.",
+    "runner": "python",
+    "path": "run_stage15l_image_regime_characterization.py",
+    "args": [],
+    "role": "frozen_output_image_regime_diagnosis",
+    "feedback_policy": "BSDS500_validation_existing_outputs_diagnosis_only_no_detector_or_matcher_rerun_no_router_no_architecture_change",
+    "one_shot": true,
+    "result_files": [
+      "results/local_dev/stage15l_image_regime_characterization/summary.json",
+      "results/local_dev/stage15l_image_regime_characterization/image_regime_features.csv",
+      "results/local_dev/stage15l_image_regime_characterization/regime_associations.csv",
+      "results/local_dev/stage15l_image_regime_characterization/quartile_winner_counts.csv",
+      "results/local_dev/stage15l_image_regime_characterization/best_method_preview.png"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

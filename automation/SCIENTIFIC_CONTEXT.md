@@ -901,3 +901,20 @@ existing official per-image count tables to build fixed-threshold and
 per-image-best metrics, pairwise win/loss matrices and a descriptive
 ground-truth oracle bound. No detector or matcher is rerun. The oracle is not a
 deployable router, and MFI architecture remains frozen through Stage 15o.
+
+### Stage-15k oracle diagnosis complete; Stage-15l registered
+
+Across frozen BSDS500-validation outputs, exact SED was the strongest single
+method at its nearest raw ODS threshold (aggregate F1 `0.678500`). A
+ground-truth-informed per-image method oracle reached `0.697054`, a descriptive
+`+0.018554` upper bound, selecting SED on 52 images, SCO 18, CO 14, Compass 9,
+MFI 4, EDPF 3, and QFrD 0. At per-image-best thresholds the analogous oracle
+gain was `+0.015459`. These results establish limited but real per-image
+complementarity; they do not define ODS/OIS, authorize a deployable router, or
+change the incumbent. The Stage-15a matcher caveat remains.
+
+The registered next action is `stage15l_image_regime_characterization`, a
+predeclared association analysis between fixed image-internal regime measures
+and frozen-method F1 deltas. It may not fit a classifier/router, rerun a
+detector or matcher, or alter MFI. Architecture remains frozen through Stage
+15o.

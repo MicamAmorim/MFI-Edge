@@ -1039,3 +1039,15 @@ Compass and QFrD outputs, produces pairwise win/loss and descriptive oracle
 complementarity artifacts, and emits the fixed positions 1/50/100 preview. It
 does not rerun detectors or the stochastic matcher and cannot authorize a
 router or MFI architecture change. Stage 15l follows after this diagnosis.
+
+Stage 15k is complete. Exact SED was the strongest frozen single reference at
+the nearest raw ODS threshold (aggregate F1 `0.678500`), while the descriptive
+ground-truth per-image method oracle reached `0.697054` (`+0.018554`). The
+oracle selected non-SED methods on 48/100 images, but it is not deployable and
+does not authorize routing or MFI redesign.
+
+The active next action is `stage15l_image_regime_characterization`. It uses
+only frozen validation outputs and existing per-image counts to test
+predeclared image-regime associations. No detector/matcher rerun, fitted
+router, architecture change, or protected-split access is permitted. Stage
+15m follows after this diagnostic.

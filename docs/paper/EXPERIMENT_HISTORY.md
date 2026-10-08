@@ -2233,3 +2233,23 @@ precision/recall/F1, pairwise win/loss tables, a descriptive ground-truth
 method-oracle upper bound, and the fixed positions 1/50/100 qualitative panel.
 No detector or matcher is rerun, no router is authorized, and MFI remains
 unchanged through Stage 15o.
+
+### Stage 15k per-image oracle diagnosis complete; Stage 15l registered
+
+Stage 15k parsed the existing official per-image count tables for the seven
+frozen methods without rerunning a detector or matcher. At each method's
+nearest raw ODS threshold, exact SED was the best single method with aggregate
+F1 `0.678500`. A ground-truth-informed per-image method oracle reached
+`0.697054`, a descriptive gain of `+0.018554`; its 100 winners were SED 52,
+SCO 18, CO 14, Compass 9, MFI 4, EDPF 3, and QFrD 0. Under per-image-best raw
+thresholds, the analogous oracle gain over SED was `+0.015459`. These are
+upper-bound diagnostics, not ODS/OIS results or a deployable router. The fixed
+positions 1/50/100 preview is complete, and the Stage-15a matcher caveat
+continues to apply.
+
+The single registered next action is
+`stage15l_image_regime_characterization`. It measures a fixed set of
+image-internal texture, contrast, density, fragmentation, orientation,
+curvature, scale, and annotation properties, then reports preregistered
+Spearman and quartile associations with frozen-method F1 deltas. It may not
+fit a router, select a threshold, rerun a detector/matcher, or change MFI.
