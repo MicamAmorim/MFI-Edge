@@ -1845,3 +1845,30 @@ color baselines. It must resolve provenance, license, fixed variants and
 parameters, training class, output/evaluator conventions, and the matched
 validation plan before exactly one fidelity-labeled action is registered. MFI
 architecture invention remains prohibited through Stage 15o.
+
+### Stage 15e CO/SCO checkpoint: exact paired reproduction registered
+
+Live primary-source and official-code review resolved both author releases on
+the UESTC project page. The institutional CO code-v1 and SCO code-v2 archives
+are pinned respectively by SHA-256
+`a8563d595d6db78698ece7c30ac0a31d8e7298e424e187cdcf84658c9a4bcb39`
+and `01f928da7c9ecacfd3b0ebc0ce5a095fb561d2366745eee6e72e56234a6c9071`;
+all reachable MATLAB sources have separate registered hashes. Both exact
+native-size R2023a smoke tests returned finite soft maps in `[0,1]`.
+
+The methods are not learned, but they are classified more precisely as
+**parameter-fixed but author-tuned**: the 2015 paper selected sigma `1.1`, cone
+weight `-0.7`, and SSC window `5` on the 200-image BSDS300 training set. The
+registered `stage15e_co_sco_exact_reproduction` therefore runs the unmodified
+CO and SCO author functions at that common published setting on all 100
+BSDS500-validation images. This paired design isolates the published modified
+spatial-sparseness constraint while preserving intrinsic author normalization
+and NMS. It emits both map sets, per-image runtimes and hashes, a positions
+1/50/100 five-column preview, and one common official-evaluation attachment.
+
+The archives state research-purpose use but provide no open-source license, so
+they remain ignored local dependencies and are not redistributed. Literature
+BSDS300/500 test numbers remain documentary because archive-era evaluator
+equivalence is not assumed. No CO/SCO tuning and no MFI architecture change are
+authorized from the validation result; architecture invention remains deferred
+through Stage 15o.

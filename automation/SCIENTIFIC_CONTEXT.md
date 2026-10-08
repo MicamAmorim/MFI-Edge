@@ -636,3 +636,22 @@ still applies. The registered next action is
 `stage15e_co_sco_reproduction_checkpoint`: a live primary-source and code audit
 of the CO/SCO color-opponent contextual baselines before any fidelity-labeled
 run. Architecture invention remains prohibited through Stage 15o.
+
+### Stage-15e checkpoint - exact paired CO/SCO reproduction registered
+
+The official UESTC author page provides complete research-purpose-only MATLAB
+archives for both CO and SCO. Their archives and reachable source files are
+hash-pinned, and native-resolution R2023a smoke tests passed with finite soft
+outputs in `[0,1]`. The 2015 paper establishes that sigma `1.1`, cone weight
+`-0.7`, and SSC window `5` were selected on BSDS300 train, so the methods are
+classified as parameter-fixed but author-tuned rather than learned.
+
+The registered next action is `stage15e_co_sco_exact_reproduction`: run exact
+CO without SSC and exact SCO with the published modified spatial-sparseness
+weighting at the common fixed setting over BSDS500 validation, retain separate
+maps/runtime/hashes and the fixed positions 1/50/100 preview, then attach the
+unchanged official evaluator against the incumbent. This is a paired baseline
+and SSC mechanism decomposition, not an MFI promotion experiment. Do not tune
+CO/SCO from validation results or change MFI before Stage 15p. The author code
+has no open-source license and remains ignored/unredistributed; paper test
+metrics stay documentary and protocol-separated.

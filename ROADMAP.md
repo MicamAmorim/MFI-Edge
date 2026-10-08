@@ -829,3 +829,15 @@ fixed variants and parameters, training class, output conventions, and metric
 compatibility, then register exactly one exact reproduction or fidelity
 preflight. No dataset result may select parameters or variants, and MFI
 architecture invention remains forbidden through Stage 15o.
+
+The Stage-15e checkpoint resolved complete official institutional author-code
+contracts for both CO and SCO. The active next action is now
+`stage15e_co_sco_exact_reproduction`, a single paired native-resolution
+BSDS500-validation run at the 2015 paper's BSDS300-train-fitted setting
+(`sigma=1.1`, eight orientations, cone weight `-0.7`, SSC window `5`). Exact
+CO provides the no-SSC control and exact SCO adds only the published modified
+spatial-sparseness weighting. Both archives and every reachable source file are
+hash-pinned; the research-only code remains ignored and unredistributed. The
+run must preserve separate maps/runtime/hashes, emit the fixed positions
+1/50/100 preview, and attach the common official evaluator. It is reproduction
+and mechanism diagnosis only: no CO/SCO tuning or MFI change is authorized.
