@@ -771,6 +771,18 @@
       "results/automation/stage15c_vcm_fidelity_preflight/implementation_contract.csv"
     ]
   },
+  "stage15d_ed_edpf_reproduction_checkpoint": {
+    "description": "High-reasoning live-literature and provenance checkpoint for exact Edge Drawing / EDPF reproduction after Stage 15c closed as fidelity-unresolved; resolves official code lineage, fixed parameters, training class, buildability, output convention, and metric compatibility before any detector run.",
+    "runner": "python",
+    "path": "automation/stage15d_ed_edpf_reproduction_checkpoint.py",
+    "args": [],
+    "role": "research_planning",
+    "feedback_policy": "primary_literature_and_reproduction_protocol_only_no_dataset_feedback_no_architecture_change",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage15d_ed_edpf_reproduction_checkpoint/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

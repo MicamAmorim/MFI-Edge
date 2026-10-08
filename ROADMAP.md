@@ -708,3 +708,16 @@ documentary and protocol-unverified. The active next action is
 that will not invent parameters, emit maps, or score a surrogate. If the
 contract remains unresolved, Stage 15c closes and the reproduction sequence
 advances to Stage 15d; architecture invention remains forbidden.
+
+The Stage-15c preflight confirmed the unresolved implementation contract. No
+dataset was read, no detector was executed, and no VCM surrogate was scored;
+the reported `0.76/0.79/0.77` remains documentary and protocol-unverified.
+Stage 15c is closed as non-reproducible from the available public material.
+
+The active next action is `stage15d_ed_edpf_reproduction_checkpoint`. It will
+use live primary literature and the official ED_Lib repository to establish an
+immutable code lineage, license/build contract, fixed published variant and
+parameters, training class, scalar output convention, and matched BSDS500-
+validation plan before one exact or explicitly fidelity-labeled run is
+registered. Stage 14t is not treated as EDPF, and MFI architecture invention
+remains forbidden through Stage 15o.

@@ -510,3 +510,19 @@ documentary and protocol-unverified. A single deterministic, dataset-free
 implementation contract. Do not invent parameters or score a VCM surrogate.
 If the preflight confirms the blockers, close Stage 15c as unresolved and
 advance to the Stage-15d Edge Drawing/EDPF checkpoint without changing MFI.
+
+### Stage-15c closure and Stage-15d transition
+
+The dataset-free VCM fidelity preflight confirmed that public primary material
+does not resolve the output-affecting implementation contract. No detector or
+dataset was run, no surrogate was scored, and the reported BSDS500
+`0.76/0.79/0.77` remains documentary and protocol-unverified. Stage 15c closes
+as fidelity-unresolved without changing MFI.
+
+The registered next action is `stage15d_ed_edpf_reproduction_checkpoint`, a
+high-reasoning live-primary-literature and official-code audit of Edge Drawing
+and EDPF. It must establish immutable author-code provenance, fixed parameters,
+training class, build/output conventions, and a matched BSDS500-validation plan
+before one fidelity-labeled run. Stage 14t's connected-component NFA surrogate
+is not a reproduction or falsification of full chain-level EDPF. Architecture
+invention remains prohibited through Stage 15o.

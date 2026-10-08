@@ -1623,3 +1623,27 @@ registered rule forbids a detector run unless fixed primary evidence resolves
 all output-affecting blockers without validation-driven choices; otherwise
 Stage 15c closes as fidelity-unresolved and the campaign proceeds to the
 Stage-15d Edge Drawing/EDPF checkpoint. No MFI architecture changes are made.
+
+### Stage 15c fidelity preflight - closed unresolved; Stage 15d checkpoint registered
+
+The deterministic preflight read no dataset and executed no detector. It
+confirmed that the public VCM material does not provide author code,
+supplementary implementation, or enough fixed output-affecting details to
+support either an exact reproduction or a faithful reimplementation. The
+unresolved contract includes the local window and kernel scales, sigma and
+selection constants, HSV coordinate and hue-reference conventions,
+morphological boundary rules, gradient variant, scalar-map conversion,
+postprocessing, scored BSDS split, and matcher. The paper's reported
+ODS/OIS/AP `0.76/0.79/0.77` therefore remain documentary and
+protocol-unverified. No parameter-invented surrogate was run, and MFI is
+unchanged.
+
+Stage 15c closes as fidelity-unresolved. The next registered action is
+`stage15d_ed_edpf_reproduction_checkpoint`, a high-reasoning live-primary-
+literature and official-code audit of Edge Drawing and EDPF. It must separate
+chain construction from EDPF's chain-level Helmholtz false-detection control,
+resolve the immutable author-code lineage, fixed parameters, build and output
+contract, training class, and matched-validation plan before registering one
+fidelity-labeled run. Stage 14t remains only a connected-component surrogate
+and does not count as an EDPF test. Architecture invention remains forbidden
+through Stage 15o.
