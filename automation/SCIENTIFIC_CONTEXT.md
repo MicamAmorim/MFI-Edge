@@ -918,3 +918,20 @@ predeclared association analysis between fixed image-internal regime measures
 and frozen-method F1 deltas. It may not fit a classifier/router, rerun a
 detector or matcher, or alter MFI. Architecture remains frozen through Stage
 15o.
+
+### Stage-15l regime diagnosis complete; Stage-15m registered
+
+Stage 15l found its clearest corrected associations in structural properties.
+EDPF improved relative to MFI as incumbent fragmentation and edge density
+increased (`rho=0.451` and `0.382`) and worsened as mean incumbent component
+size increased (`rho=-0.451`). SED's advantage over MFI also increased with
+fragmentation (`rho=0.325`) and edge density (`rho=0.318`). These are
+descriptive BSDS-validation associations over frozen outputs, not routing or
+feature-selection evidence; MFI remains unchanged.
+
+The registered next action is `stage15m_pixel_segment_complementarity`. It
+uses the seven frozen maps and already reported ODS thresholds to quantify
+unique GT-supported response, shared unsupported response, weak-gradient
+support, and component continuity under a fixed diagnostic spatial contract.
+The proximity counts are not Berkeley ODS/OIS/AP. No router or architecture
+change is authorized before the remaining Stage-15 diagnostic sequence.

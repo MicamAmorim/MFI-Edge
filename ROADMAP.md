@@ -1051,3 +1051,17 @@ only frozen validation outputs and existing per-image counts to test
 predeclared image-regime associations. No detector/matcher rerun, fitted
 router, architecture change, or protected-split access is permitted. Stage
 15m follows after this diagnostic.
+
+Stage 15l is complete. Structural regime measures carried the clearest
+associations: SED and especially EDPF improved relative to MFI as incumbent
+fragmentation and edge density rose, while larger incumbent components showed
+the reverse pattern. These descriptive validation associations cannot define
+a router or alter MFI.
+
+The active next action is `stage15m_pixel_segment_complementarity`. It analyzes
+the seven frozen methods at their previously reported thresholds using fixed
+pixel-support and connected-component definitions, with a deterministic
+positions 1/50/100 preview and an official attachment over frozen maps. It may
+characterize localization, weak-boundary recovery, texture/unsupported
+response, and continuity, but it may not fit a router or change MFI before the
+Stage-15 diagnostic sequence reaches its preregistered redesign gate.

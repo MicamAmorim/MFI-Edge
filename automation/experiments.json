@@ -1203,6 +1203,24 @@
       "results/local_dev/stage15l_image_regime_characterization/best_method_preview.png"
     ]
   },
+  "stage15m_pixel_segment_complementarity": {
+    "description": "Predeclared BSDS500-validation pixel/segment complementarity diagnosis over frozen MFI, SED, EDPF, CO, SCO, Compass, and QFrD outputs at their already reported ODS thresholds; quantifies unique GT-supported responses, shared unsupported responses, weak-gradient support, and connected-component continuity without fitting a router or changing MFI.",
+    "runner": "python",
+    "path": "run_stage15m_pixel_segment_complementarity.py",
+    "args": [],
+    "role": "frozen_output_spatial_complementarity_diagnosis",
+    "feedback_policy": "BSDS500_validation_frozen_outputs_diagnosis_only_no_detector_regeneration_no_router_no_architecture_change",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage15m_pixel_segment_complementarity/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage15m_pixel_segment_complementarity/summary.json",
+      "results/local_dev/stage15m_pixel_segment_complementarity/official_eval_manifest.json",
+      "results/local_dev/stage15m_pixel_segment_complementarity/method_segment_profiles.csv",
+      "results/local_dev/stage15m_pixel_segment_complementarity/pairwise_spatial_complementarity.csv",
+      "results/local_dev/stage15m_pixel_segment_complementarity/best_method_preview.png",
+      "results/official_eval/stage15m_pixel_segment_complementarity/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

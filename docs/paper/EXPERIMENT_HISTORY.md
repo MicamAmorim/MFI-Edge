@@ -2253,3 +2253,25 @@ image-internal texture, contrast, density, fragmentation, orientation,
 curvature, scale, and annotation properties, then reports preregistered
 Spearman and quartile associations with frozen-method F1 deltas. It may not
 fit a router, select a threshold, rerun a detector/matcher, or change MFI.
+
+### Stage 15l image-regime diagnosis complete; Stage 15m registered
+
+Stage 15l completed over the 100 frozen BSDS500-validation outputs. Its
+strongest globally corrected associations were structural: EDPF's delta over
+MFI increased with incumbent fragmentation (`rho=0.451`, BH `q=0.000164`) and
+edge density (`rho=0.382`, `q=0.00228`), and decreased with mean incumbent
+component size (`rho=-0.451`). SED's advantage over MFI also increased with
+incumbent fragmentation (`rho=0.325`, `q=0.0130`) and edge density
+(`rho=0.318`, `q=0.0139`). These are descriptive associations over frozen
+development outputs, not evidence for a deployable router or a feature choice.
+The deterministic positions 1/50/100 preview is complete. No detector or
+matcher was rerun; the Stage-15a evaluator caveat remains.
+
+The single registered next action is
+`stage15m_pixel_segment_complementarity`. At each method's already reported
+ODS threshold it uses a fixed spatial-support contract to quantify unique
+GT-supported response, shared unsupported response, weak-gradient recovery,
+and connected-component continuity. The proximity analysis is explicitly not
+Berkeley one-to-one matching. A required official attachment reuses frozen MFI
+and SED maps only. No router, threshold selection, detector regeneration, or
+MFI architecture change is authorized.
