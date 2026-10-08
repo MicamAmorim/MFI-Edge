@@ -916,6 +916,19 @@ fixture diagnostic records exact table/source hashes and localizes the
 Windows-MEX or evaluator-path drift. The full validation attachment and Stage
 15b remain downstream of that fidelity decision.
 
+The first fixture diagnostic confirmed that the discrepancy is systematic:
+all three shipped aggregate tables differ from their local regenerations, with
+maximum numeric deltas of `0.000287` (aggregate), `0.001068` (per-image), and
+`0.000260` (per-threshold). The pinned evaluator and matcher hashes were
+preserved, but those deltas alone do not distinguish a repository wrapper
+defect from compiled-platform variation. A second fixture-only diagnostic is
+therefore registered. It compares raw and aggregate results from the wrapper
+against Piotr Dollár's independently written `edgesEvalImg`, which documents
+BSDS compatibility, using the same pinned Windows MEX, then repeats that path
+in a fresh MATLAB process. Exact agreement will rule out the compatibility
+transform, aggregation, and process nondeterminism without relaxing the
+registered tolerance or scoring BSDS500 validation.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

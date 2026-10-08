@@ -379,6 +379,11 @@ five-image fixture artifacts miss the preregistered `1e-4` agreement bound on
 ODS/OIS while passing it on AP. Route evaluator/export scripts through the
 repository environment, quantify the fixture drift without changing tolerance,
 and defer full validation scoring and Stage 15b until fidelity is resolved.
+The first diagnostic found systematic table-level drift but did not localize
+it. The next registered fixture-only test compares the repository wrapper with
+the documented BSDS-compatible `edgesEvalImg` path under the identical Windows
+matcher and repeats it in a fresh MATLAB process; no validation images or new
+detector maps are involved.
 
 Scientific conclusion:
 

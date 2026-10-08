@@ -311,6 +311,14 @@ agreement bound on ODS and OIS (`0.000171` and `0.000259`; AP error
 drift without relaxing the registered tolerance or running the full validation
 attachment; this is evaluator fidelity work, not detector feedback.
 
+The first fixture diagnostic preserved hashes and found systematic differences
+in aggregate, per-image, and per-threshold tables, but could not yet separate a
+wrapper defect from compiled-platform variation. A fixture-only equivalence
+test is registered between the repository compatibility path and Piotr
+Dollár's documented BSDS-compatible `edgesEvalImg`, using the same pinned
+Windows matcher and fresh-process repetition. Full validation and Stage 15b
+remain deferred; no architecture work is authorized.
+
 ## d-Choquet terminology
 
 Do not conflate these:
