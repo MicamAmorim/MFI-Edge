@@ -67,8 +67,13 @@ def _run(command: list[str], *, timeout: float, env: dict[str, str] | None = Non
 
 def _git(*args: str, cwd: Path | None = None, timeout: float = 300) -> str:
     prefix = ["-C", str(cwd)] if cwd is not None else []
+    # The controller may materialize ignored dependencies under a sandbox
+    # account and execute them later under the interactive account. Trust only
+    # this explicitly supplied, hash-verified checkout for this invocation;
+    # do not mutate either user's global Git configuration.
+    trust = ["-c", f"safe.directory={cwd.resolve().as_posix()}"] if cwd else []
     result = _run(
-        ["git", *prefix, *args],
+        ["git", *trust, *prefix, *args],
         timeout=timeout,
     )
     return (result.stdout or "").strip()

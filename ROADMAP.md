@@ -673,3 +673,11 @@ attaches the unchanged official validation path against the incumbent. The
 author source remains an ignored local dependency because no explicit license
 was found. This is a reproduction baseline only; no MFI architecture work or
 post-result SED tuning is authorized.
+
+The initial launch failed before detector execution because Git's ownership
+guard rejected the ignored author checkout created by a different local
+account. The active action is now
+`stage15b_sed_exact_reproduction_retry1`, using a process-local trust override
+only for the immutable, hash-verified checkout. No author source, detector
+parameter, dataset role, output convention, preview position, or evaluation
+protocol changes.

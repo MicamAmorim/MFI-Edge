@@ -470,3 +470,10 @@ This is a baseline reproduction, not an MFI promotion experiment. Stage-15a's
 stochastic/reference-uncertified Windows matcher caveat remains, and the
 fixed-seed diagnostic matcher is forbidden for dataset scoring. No SED tuning
 or MFI architecture change is authorized.
+
+The first exact-run launch failed before SED execution because Git's ownership
+guard rejected the ignored author checkout created under the sandbox account.
+This provides no scientific feedback. A harness-only retry is registered with
+a process-local trust override limited to the immutable, hash-verified author
+checkout; no global Git setting, author byte, detector parameter, dataset role,
+serialization rule, preview position, or evaluator protocol changes.

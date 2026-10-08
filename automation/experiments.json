@@ -727,6 +727,25 @@
       "results/official_eval/stage15b_sed_exact_reproduction/summary.json"
     ]
   },
+  "stage15b_sed_exact_reproduction_retry1": {
+    "description": "Harness-only retry of the exact Stage-15b author-MATLAB SED reproduction after adding a process-local Git safe.directory override for the immutable, hash-verified ignored author checkout; detector sources, parameters, data, serialization, preview positions, and evaluation protocol are unchanged.",
+    "runner": "python",
+    "path": "run_stage15b_sed_reproduction.py",
+    "args": [],
+    "role": "matched_protocol_reproduction",
+    "feedback_policy": "bsds500_validation_development_reproduction_only_no_sed_tuning_no_mfi_architecture_change",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage15b_sed_exact_reproduction/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage15b_sed_exact_reproduction/summary.json",
+      "results/local_dev/stage15b_sed_exact_reproduction/best_method_preview.png",
+      "results/local_dev/stage15b_sed_exact_reproduction/official_eval_manifest.json",
+      "results/local_dev/stage15b_sed_exact_reproduction/predictions/export_manifest.json",
+      "results/local_dev/stage15b_sed_exact_reproduction/predictions/per_image_runtime.csv",
+      "results/local_dev/stage15b_sed_exact_reproduction/predictions/map_hashes.json",
+      "results/official_eval/stage15b_sed_exact_reproduction_retry1/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

@@ -1560,3 +1560,13 @@ evaluator caveat remains explicit: the unmodified Windows matcher is
 stochastic and reference-uncertified, and the fixed-seed diagnostic binary is
 forbidden for dataset scoring. No MFI architecture work or SED tuning is
 authorized from this stage.
+
+The first exact-run launch stopped before SED execution because Git rejected
+the ignored author checkout as dubious ownership: it had been materialized by
+the sandbox account and was read by the interactive account. This is a harness
+failure and supplies no detector or evaluator evidence. A repository-local
+repair now passes a process-scoped `safe.directory` value only to Git commands
+against that immutable, hash-verified checkout; it does not change global Git
+configuration or author bytes. `stage15b_sed_exact_reproduction_retry1` is
+registered with the detector, parameters, split, serialization, fixed preview,
+and official protocol unchanged.
