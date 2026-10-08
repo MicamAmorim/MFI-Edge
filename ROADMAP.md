@@ -782,3 +782,13 @@ detector behavior remain unchanged. The active action is
 that compiles those exact required translation units and repeats the unchanged
 synthetic smoke test. No dataset was read; validation and architecture work
 remain deferred.
+
+Retry 5 reached final linking but exposed two harness contracts: its default
+`/MD` runtime did not match the pinned static OpenCV `/MT` build, and the
+`ED(EDColor&)` overload compiled into `ED.cpp` requires author `EDColor`
+definitions even when the selected grayscale constructor is the only executed
+path. No smoke executable or dataset result was produced. The active action is
+`stage15d_edpf_build_preflight_retry6`, an attachment-only repair that matches
+the static runtime and compiles the complete required author surface against a
+pinned OpenCV build including imgcodecs. Detector code, fixed parameters,
+synthetic input, validation deferral, and MFI architecture are unchanged.

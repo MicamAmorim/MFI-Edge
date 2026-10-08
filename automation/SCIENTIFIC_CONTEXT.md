@@ -587,3 +587,12 @@ is registered to compile only the unmodified `ED.cpp` and `EDPF.cpp` translation
 units required by the selected grayscale `EDPF(Mat)` path, using the same pinned
 OpenCV artifacts and unchanged smoke test. Validation and architecture work
 remain deferred.
+
+That retry compiled the selected author sources and reached final linking, but
+the harness defaulted to `/MD` against OpenCV's `/MT` static libraries and
+`ED.cpp`'s same-object `ED(EDColor&)` overload left unresolved author `EDColor`
+symbols. No smoke executable or dataset result was produced. A sixth
+attachment-only retry is registered to match `/MT`, build pinned OpenCV
+imgcodecs and its generated dependencies, compile unmodified
+`ED.cpp`/`EDColor.cpp`/`EDPF.cpp`, and repeat the unchanged synthetic smoke
+test. Validation and architecture work remain deferred.

@@ -1755,3 +1755,21 @@ source-surface repair. It compiles the unmodified pinned `ED.cpp` and
 `EDPF.cpp`, retains the same pinned OpenCV `core`/`imgproc`/`zlib` artifacts,
 and repeats the unchanged deterministic grayscale smoke test. It does not add
 imgcodecs, modify author bytes or parameters, run BSDS, or change MFI.
+
+### Stage 15d dependency retry 5 - link contract exposed
+
+Retry 5 compiled the selected pinned author sources and reached final linking,
+but did not produce the smoke executable. The repository harness used MSVC's
+dynamic `/MD` runtime while the pinned static OpenCV build used `/MT`.
+Separately, `ED.cpp` defines `ED(EDColor&)` in the same object file as the
+selected grayscale constructor, so the linker requires the author `EDColor`
+member definitions even though the grayscale smoke path never invokes that
+overload. No dataset was read and no detector output or benchmark was produced.
+
+`stage15d_edpf_build_preflight_retry6` is registered as an attachment-only
+link-contract repair. It keeps the immutable author and OpenCV revisions,
+matches the external harness to OpenCV's `/MT` runtime, builds pinned OpenCV
+`core`/`imgproc`/`imgcodecs` plus generated dependencies, and compiles the
+unmodified `ED.cpp`, `EDColor.cpp`, and `EDPF.cpp` translation units. The
+synthetic grayscale smoke test and all EDPF parameters remain unchanged.
+Validation and MFI architecture work remain deferred.

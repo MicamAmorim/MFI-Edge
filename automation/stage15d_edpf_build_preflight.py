@@ -173,7 +173,7 @@ def _bootstrap_opencv() -> tuple[Path, dict]:
         "cmake", "-S", str(OPENCV_VENDOR), "-B", str(build_dir),
         "-DCMAKE_BUILD_TYPE=Release",
         f"-DCMAKE_INSTALL_PREFIX={install_dir}",
-        "-DBUILD_LIST=core,imgproc", "-DBUILD_SHARED_LIBS=OFF",
+        "-DBUILD_LIST=core,imgproc,imgcodecs", "-DBUILD_SHARED_LIBS=OFF",
         "-DBUILD_TESTS=OFF", "-DBUILD_PERF_TESTS=OFF",
         "-DBUILD_EXAMPLES=OFF", "-DBUILD_opencv_apps=OFF",
         "-DBUILD_JAVA=OFF", "-DBUILD_opencv_python2=OFF",
@@ -203,9 +203,9 @@ def _bootstrap_opencv() -> tuple[Path, dict]:
     config_dir = static_configs[0].parent
     source["cmake_config_dir"] = str(config_dir.relative_to(ROOT)).replace("\\", "/")
     source["config_selection"] = (
-        "repository harness imports the installed core/imgproc/zlib artifacts "
-        "directly; this bypasses both the obsolete MSVC dispatcher and stale "
-        "unused-codec targets in OpenCV 3.4's generated static package"
+        "repository harness selects the installed static-package config directly; "
+        "the pinned build includes core/imgproc/imgcodecs and their exact generated "
+        "dependencies, bypassing OpenCV 3.4's obsolete MSVC dispatcher"
     )
     return install_dir, source
 
@@ -215,35 +215,30 @@ def _write_build_harness(opencv_install: Path | None = None) -> tuple[Path, Path
     build_dir = OUT / "build"
     source_dir.mkdir(parents=True, exist_ok=True)
     author = AUTHOR_VENDOR.resolve().as_posix()
-    # Compile only the author source surface needed by the selected grayscale
-    # EDPF constructor. EDPF.cpp declares an overload accepting EDColor, but
-    # that overload needs only the EDColor type definition inherited from ED;
-    # the color detector implementation is not linked or executed here.
-    sources = ["ED.cpp", "EDPF.cpp"]
+    # ED.cpp defines an ED(EDColor&) overload in the same translation unit as
+    # the selected grayscale constructor. Static linking therefore requires
+    # the author EDColor definitions even though the smoke test never invokes
+    # that overload. Compile the unmodified author translation units rather
+    # than substituting harness stubs.
+    sources = ["ED.cpp", "EDColor.cpp", "EDPF.cpp"]
     source_lines = "\n".join(f'  "${{AUTHOR_DIR}}/{name}"' for name in sources)
     if opencv_install is None:
-        opencv_setup = "find_package(OpenCV REQUIRED COMPONENTS core imgproc)"
+        opencv_setup = "find_package(OpenCV REQUIRED COMPONENTS core imgproc imgcodecs)"
         opencv_includes = "${OpenCV_INCLUDE_DIRS}"
         opencv_libs = "${OpenCV_LIBS}"
     else:
         install = opencv_install.resolve().as_posix()
         opencv_setup = f'''set(OPENCV_INSTALL "{install}")
-add_library(opencv_zlib STATIC IMPORTED)
-set_target_properties(opencv_zlib PROPERTIES IMPORTED_LOCATION "${{OPENCV_INSTALL}}/staticlib/zlib.lib")
-add_library(opencv_core STATIC IMPORTED)
-set_target_properties(opencv_core PROPERTIES
-  IMPORTED_LOCATION "${{OPENCV_INSTALL}}/staticlib/opencv_core3420.lib"
-  INTERFACE_LINK_LIBRARIES opencv_zlib)
-add_library(opencv_imgproc STATIC IMPORTED)
-set_target_properties(opencv_imgproc PROPERTIES
-  IMPORTED_LOCATION "${{OPENCV_INSTALL}}/staticlib/opencv_imgproc3420.lib"
-  INTERFACE_LINK_LIBRARIES opencv_core)'''
-        opencv_includes = "${OPENCV_INSTALL}/include"
-        opencv_libs = "opencv_imgproc opencv_core opencv_zlib"
+find_package(OpenCV REQUIRED CONFIG COMPONENTS core imgproc imgcodecs
+  PATHS "${{OPENCV_INSTALL}}/staticlib" NO_DEFAULT_PATH)'''
+        opencv_includes = "${OpenCV_INCLUDE_DIRS}"
+        opencv_libs = "${OpenCV_LIBS}"
     cmake = f"""cmake_minimum_required(VERSION 3.16)
+cmake_policy(SET CMP0091 NEW)
 project(stage15d_edpf_preflight LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 {opencv_setup}
 set(AUTHOR_DIR "{author}")
 add_library(edlib_author STATIC
