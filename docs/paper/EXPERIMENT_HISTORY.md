@@ -1970,3 +1970,20 @@ directly to 8-bit without per-image normalization. The run retains maps,
 runtimes, hashes, and the fixed positions 1/50/100 four-column preview, and
 attaches the common official evaluator against the unchanged incumbent. This
 is a reproduction baseline only; neither Compass nor MFI may be tuned from it.
+
+### Stage 15f exact-run finalization failure and frozen-map retry
+
+The exact Compass detector completed all 100 validation images and wrote all
+100 native-resolution maps and ordered runtime rows. MATLAB printed the
+registered completion marker, then exited during process teardown with Windows
+heap corruption (`0xc0000374`). Because Python correctly treated the nonzero
+exit as failure, hashes, provenance, preview, and the official-evaluation
+manifest were not emitted; consequently no score was attached. This is an
+environment/harness finalization failure after detector completion, not a
+Compass result and not permission for a second randomized detector draw.
+
+`stage15f_compass_exact_reproduction_retry1` is registered as an
+attachment-only recovery. It validates and hashes the exact frozen maps and
+runtime rows, emits the preregistered fixed preview and manifest, and invokes
+only the unchanged evaluator. Compass parameters, RNG behavior, predictions,
+dataset role, and MFI architecture remain unchanged.

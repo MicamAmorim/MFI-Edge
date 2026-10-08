@@ -715,3 +715,13 @@ runtimes and hashes, emit the fixed positions 1/50/100 preview, and attach the
 unchanged official evaluator against the incumbent. The source's clock-seeded
 clustering is left untouched and recorded as provenance. This is a baseline
 reproduction, not permission to tune Compass or alter MFI before Stage 15o.
+
+The exact run generated all 100 native-resolution maps and all 100 runtime
+rows, then MATLAB emitted `STAGE15F_COMPASS_EXPORT_OK images=100` before its
+process exited with Windows heap corruption (`0xc0000374`). Python therefore
+did not write hashes, provenance, preview, or the official-evaluation manifest,
+and no score was produced. One attachment-only finalization is registered to
+validate and hash those exact frozen maps, create the missing documentary
+artifacts, and attach the unchanged evaluator without invoking Compass or
+regenerating its clock-seeded predictions. No Compass tuning or MFI change is
+authorized.

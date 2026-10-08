@@ -1029,6 +1029,26 @@
       "results/local_dev/stage15f_compass_exact_reproduction/predictions/map_hashes.json"
     ]
   },
+  "stage15f_compass_exact_reproduction_retry1": {
+    "description": "Attachment-only finalization of the 100 frozen Stage-15f Compass maps after MATLAB emitted its completion marker and then exited with Windows heap corruption; validates the existing maps/runtime rows, writes hashes/provenance/preview/manifest, and attaches the unchanged official evaluator without invoking Compass or regenerating predictions.",
+    "runner": "python",
+    "path": "automation/stage15f_compass_exact_reproduction_retry1.py",
+    "args": [],
+    "role": "matched_protocol_reproduction_attachment",
+    "feedback_policy": "frozen_BSDS500_val_maps_attachment_only_no_detector_rerun_no_compass_tuning_no_mfi_architecture_change",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage15f_compass_exact_reproduction/official_eval_manifest.json",
+    "result_files": [
+      "results/automation/stage15f_compass_exact_reproduction_retry1/summary.json",
+      "results/local_dev/stage15f_compass_exact_reproduction/summary.json",
+      "results/local_dev/stage15f_compass_exact_reproduction/official_eval_manifest.json",
+      "results/local_dev/stage15f_compass_exact_reproduction/best_method_preview.png",
+      "results/local_dev/stage15f_compass_exact_reproduction/predictions/export_manifest.json",
+      "results/local_dev/stage15f_compass_exact_reproduction/predictions/per_image_runtime.csv",
+      "results/local_dev/stage15f_compass_exact_reproduction/predictions/map_hashes.json",
+      "results/official_eval/stage15f_compass_exact_reproduction_retry1/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

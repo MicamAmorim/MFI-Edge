@@ -891,3 +891,11 @@ defaults. It preserves maps/runtime/hashes, emits the preregistered positions
 1/50/100 preview, and attaches the common official evaluator. The author's
 clock-seeded clustering remains untouched and documented; no Compass tuning or
 MFI architecture change is authorized.
+
+The fixed Compass run generated all 100 validation maps and runtime rows, but
+MATLAB exited with heap corruption only after printing its 100-image completion
+marker. The active next action is the attachment-only
+`stage15f_compass_exact_reproduction_retry1`: validate and hash those frozen
+maps, emit the missing preview/provenance/official manifest, and attach the
+unchanged evaluator without rerunning the randomized author detector. No
+Compass tuning or MFI architecture change is authorized.
