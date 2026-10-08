@@ -551,7 +551,14 @@ MFI architecture work.
 The first build preflight passed ED_Lib source/hash/license checks but stopped
 at CMake configuration because the workstation has no C++ OpenCV package. No
 dataset or detector benchmark ran. One attachment-only retry is registered to
-build the author-documented OpenCV 3.4 dependency from pinned upstream commit
+build the author-documented OpenCV 3.4 dependency from pinned upstream tag object
 `404ca455aeed9d26946e281b0383829bd0c533b1`, then repeat the unchanged
 dataset-free exact-source compile and binary-output smoke test. Validation and
 architecture work remain deferred until that smoke test passes.
+
+That retry stopped before configuration because `404ca455...` is the annotated
+OpenCV 3.4.20 tag object, whereas Git correctly placed peeled release commit
+`1eb1d4c3708f2bd95562cedd58d28461505c2d37` in `HEAD`. No dataset, detector,
+compiler, or benchmark ran. A second attachment-only retry is registered with
+separate immutable tag-object and peeled-commit checks; the dependency version,
+EDPF source and parameters, validation deferral, and architecture are unchanged.

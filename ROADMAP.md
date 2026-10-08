@@ -746,3 +746,11 @@ dataset was read and no detector result was produced. The active action is now
 builds pinned upstream OpenCV 3.4.20 core/imgproc and repeats the unchanged
 EDPF compile/smoke test. No reimplementation, parameter change, benchmark run,
 or MFI architecture work is authorized by this retry.
+
+Retry 1 stopped before dependency configuration because the immutable OpenCV
+3.4.20 identifier had been recorded as an annotated-tag object while the
+harness compared it directly with the peeled commit in `HEAD`. The source is
+the intended release; no dataset or detector ran. The active action is now
+`stage15d_edpf_build_preflight_retry2`, which verifies tag object `404ca455`
+and peeled commit `1eb1d4c` separately before repeating the unchanged build
+and synthetic smoke test. This is provenance/harness repair only.

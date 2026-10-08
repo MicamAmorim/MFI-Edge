@@ -22,10 +22,13 @@ AUTHOR_VENDOR = (
 )
 OPENCV_REPOSITORY = "https://github.com/opencv/opencv.git"
 OPENCV_VERSION = "3.4.20"
-OPENCV_COMMIT = "404ca455aeed9d26946e281b0383829bd0c533b1"
+# GitHub exposes 3.4.20 as an annotated tag. Keep both immutable object IDs:
+# checking out the tag object peels it to the release commit in HEAD.
+OPENCV_TAG_OBJECT = "404ca455aeed9d26946e281b0383829bd0c533b1"
+OPENCV_COMMIT = "1eb1d4c3708f2bd95562cedd58d28461505c2d37"
 OPENCV_VENDOR = (
     ROOT / "evaluation" / "bsds_official" / "vendor"
-    / f"opencv_{OPENCV_VERSION.replace('.', '_')}_{OPENCV_COMMIT[:12]}"
+    / f"opencv_{OPENCV_VERSION.replace('.', '_')}_{OPENCV_TAG_OBJECT[:12]}"
 )
 
 # Hashes recorded from the immutable author commit before registration. This
@@ -131,8 +134,16 @@ def _ensure_opencv_source() -> dict:
             "OpenCV clone",
         )
         _require_ok(
-            _git("checkout", "--detach", OPENCV_COMMIT, cwd=OPENCV_VENDOR),
+            _git("checkout", "--detach", OPENCV_TAG_OBJECT, cwd=OPENCV_VENDOR),
             "OpenCV checkout",
+        )
+    tag_object = _require_ok(
+        _git("rev-parse", "3.4.20^{tag}", cwd=OPENCV_VENDOR),
+        "OpenCV tag-object resolution",
+    )
+    if tag_object != OPENCV_TAG_OBJECT:
+        raise RuntimeError(
+            f"OpenCV tag object is {tag_object}, expected {OPENCV_TAG_OBJECT}"
         )
     head = _require_ok(_git("rev-parse", "HEAD", cwd=OPENCV_VENDOR), "OpenCV rev-parse")
     if head != OPENCV_COMMIT:
@@ -146,6 +157,7 @@ def _ensure_opencv_source() -> dict:
     return {
         "repository": OPENCV_REPOSITORY,
         "version": OPENCV_VERSION,
+        "tag_object": tag_object,
         "commit": head,
         "checkout": str(OPENCV_VENDOR.relative_to(ROOT)).replace("\\", "/"),
         "tracked_clean": True,

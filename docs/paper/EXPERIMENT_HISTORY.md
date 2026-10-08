@@ -1687,7 +1687,22 @@ change the EDPF fidelity claim or MFI architecture.
 
 The single next action is `stage15d_edpf_build_preflight_retry1`. It resolves
 only the missing author-documented dependency by building OpenCV 3.4.20 from
-upstream commit `404ca455aeed9d26946e281b0383829bd0c533b1` with a minimal
+upstream tag object `404ca455aeed9d26946e281b0383829bd0c533b1` with a minimal
 core/imgproc configuration, then repeats the unchanged exact-source compile and
 deterministic synthetic binary-output smoke test. It remains dataset-free and
 may advance to validation only if the smoke test passes.
+
+### Stage 15d dependency retry 1 - annotated-tag provenance repair registered
+
+The retry stopped before OpenCV configuration because the harness compared
+Git `HEAD` with the object ID of the annotated `3.4.20` tag. Git correctly
+peeled tag object `404ca455aeed9d26946e281b0383829bd0c533b1` to release commit
+`1eb1d4c3708f2bd95562cedd58d28461505c2d37`; the checkout was therefore the
+registered release, and the failure was solely a provenance-assertion defect.
+No dataset, detector, compiler, or benchmark ran.
+
+`stage15d_edpf_build_preflight_retry2` is registered as an attachment-only
+harness repair. It verifies both immutable Git object IDs separately and then
+repeats the unchanged minimal OpenCV build and exact EDPF synthetic smoke test.
+No dependency version, author source, detector parameter, data role, or MFI
+architecture changes.
