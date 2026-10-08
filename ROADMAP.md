@@ -912,3 +912,18 @@ texture-gradient plus surround-modulation detector, resolve its fidelity and
 complete fixed implementation contract, and register exactly one reproduction
 or fidelity preflight. No MFI architecture invention is authorized before
 Stage 15p.
+
+The Stage-15g checkpoint found no article-specific author code or supplement.
+A same-inventor patent (`CN115830051A/B`) strongly corroborates the published
+retina/V1 texture-gradient/V2 endpoint/V4 mechanism, and the official BESD
+repository at `eeb1f7e...` exposes related code, but neither is an exact
+implementation contract for the target article. They conflict on Gaussian and
+surround geometry, the patent leaves weights and output conventions unresolved,
+and BESD accompanies a different paper with segment linking and feedback.
+
+The active next action is therefore
+`stage15g_texture_surround_fidelity_preflight`, a deterministic dataset-free
+contract audit. It may not execute a detector, read a benchmark, or combine the
+patent and BESD code into a surrogate. If the recorded conflicts remain, Stage
+15g closes fidelity-unresolved and advances to the Stage-15h checkpoint. MFI
+architecture remains unchanged and frozen through Stage 15o.

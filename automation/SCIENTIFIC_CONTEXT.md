@@ -746,3 +746,22 @@ surround-modulation detector. It must resolve fidelity, fixed parameters,
 training class, output conventions, and matched validation feasibility before
 one detector run or fidelity preflight. No MFI architecture invention is
 authorized before Stage 15p.
+
+### Stage-15g checkpoint - fidelity preflight registered
+
+No article-specific author code or supplement was located for Yang, Peng and
+Wu's 2025 texture-gradient plus surround-modulation detector. A same-inventor
+patent (`CN115830051A/B`) corroborates the mechanism, and the official related
+BESD repository is pinned at
+`eeb1f7eddcff0c998d8a96083f0579c7f1644b61`, but neither establishes the target
+article's executable contract. The sources conflict on Gaussian/surround
+values; the patent leaves weights, texture scales, nonlinearities, and output
+conventions unresolved; and BESD accompanies a different paper and adds
+segment linking/feedback.
+
+The registered next action is
+`stage15g_texture_surround_fidelity_preflight`, a deterministic dataset-free
+contract audit. Do not combine the patent and BESD implementation into a
+surrogate or score a detector. If the conflicts remain, close Stage 15g as
+fidelity-unresolved and proceed to the Stage-15h literature checkpoint. MFI
+architecture remains unchanged through Stage 15o.

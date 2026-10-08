@@ -2017,3 +2017,29 @@ fixed parameters, training class, output and evaluator conventions before one
 fidelity-labeled run or preflight. Stage 14l and Compass do not substitute for
 this method, and MFI architecture invention remains prohibited before Stage
 15p.
+
+### Stage 15g checkpoint: related sources do not establish executable fidelity
+
+The live audit verified the target peer-reviewed article as a strictly
+untrained analytic hierarchy, but found no article-specific author code or
+supplement. A same-inventor Southwest Jiaotong University patent
+(`CN115830051A/B`) describes the same square-root retinal encoding, oriented
+Gaussian responses, three-part surround modulation, texture gradients,
+endpoint cells, and channel fusion. The author's public BESD repository at
+commit `eeb1f7eddcff0c998d8a96083f0579c7f1644b61` contains closely related
+Python code.
+
+Those sources are not interchangeable with the target article. The patent and
+BESD code conflict on Gaussian and surround parameters, the patent leaves
+several weights, texture scales, nonlinearities, and output conventions
+unfixed, and BESD accompanies a different paper and adds segment construction
+plus feedback. The paper reports BSDS500/MBDD while the patent reports a
+separate BSDS/NYUDv2 evaluation, so their metrics also remain documentary and
+protocol-separated.
+
+The single registered next action is
+`stage15g_texture_surround_fidelity_preflight`. It records the discrepancies in
+a deterministic, dataset-free implementation contract. It may not score a
+hybrid surrogate or read any benchmark. If article-specific primary material
+does not resolve every output-affecting item, Stage 15g will close
+fidelity-unresolved and advance to Stage 15h without changing MFI.
