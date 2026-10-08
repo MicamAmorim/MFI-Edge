@@ -882,3 +882,12 @@ generated. The active next action is the attachment-only
 array-dimensions build mode for the unchanged author sources and repeats the
 same synthetic smoke test. BSDS validation and MFI architecture work remain
 deferred.
+
+The compatible-array-dimensions retry passed: unchanged author code produced a
+finite bounded synthetic maximum-EMD map, and no dataset was read. The active
+next action is `stage15f_compass_exact_reproduction`, the single fixed
+native-resolution BSDS500-validation run at published sigma `4` and author
+defaults. It preserves maps/runtime/hashes, emits the preregistered positions
+1/50/100 preview, and attaches the common official evaluator. The author's
+clock-seeded clustering remains untouched and documented; no Compass tuning or
+MFI architecture change is authorized.

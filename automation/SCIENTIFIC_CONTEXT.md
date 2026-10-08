@@ -705,3 +705,13 @@ detector output was produced. One attachment-only retry is registered using
 MATLAB's legacy compatible array-dimensions build mode with the same unmodified
 author bytes, parameters, and synthetic smoke test. Validation and MFI
 architecture work remain deferred.
+
+That retry passed. The unchanged author MEX produced a finite bounded
+maximum-EMD map on the fixed synthetic input under MATLAB's compatible array
+dimensions mode; no dataset was read. The registered next action is
+`stage15f_compass_exact_reproduction`: run the fixed published sigma-4 author
+path over all 100 native-resolution BSDS500 validation images, preserve maps,
+runtimes and hashes, emit the fixed positions 1/50/100 preview, and attach the
+unchanged official evaluator against the incumbent. The source's clock-seeded
+clustering is left untouched and recorded as provenance. This is a baseline
+reproduction, not permission to tune Compass or alter MFI before Stage 15o.

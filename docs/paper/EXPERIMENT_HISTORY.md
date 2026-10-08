@@ -1951,3 +1951,22 @@ The single registered next action is
 author bytes with MATLAB's documented compatible array-dimensions mode and
 repeats the unchanged synthetic smoke/repeatability test. No source byte,
 Compass parameter, RNG behavior, dataset role, or MFI architecture changes.
+
+### Stage 15f Compass dependency preflight passed; exact reproduction registered
+
+The compatible-array-dimensions retry passed the preregistered source/build
+gate. The unchanged, hash-verified 2004 author MEX emitted a finite bounded
+maximum-EMD response on the fixed synthetic RGB input (`41 x 57`, range
+`0` to `0.9959797263`). The two calls in that process were identical, while
+the source's `srand(clock())` behavior remains unchanged and is recorded as a
+repeatability caveat rather than patched. No dataset or benchmark was read.
+
+The single next action is `stage15f_compass_exact_reproduction`. It runs the
+unmodified author detector at the preregistered sigma `4`, spacing `1`,
+180-degree, six-wedge, ten-cluster setting over all 100 native-resolution
+BSDS500 validation images. Author-valid centers are restored to native image
+coordinates with a zero radius-12 border, then the response is serialized
+directly to 8-bit without per-image normalization. The run retains maps,
+runtimes, hashes, and the fixed positions 1/50/100 four-column preview, and
+attaches the common official evaluator against the unchanged incumbent. This
+is a reproduction baseline only; neither Compass nor MFI may be tuned from it.
