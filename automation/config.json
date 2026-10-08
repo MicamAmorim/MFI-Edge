@@ -1,6 +1,6 @@
 {
-  "branch": "mfi-edge-local-dev",
-  "start_experiment": "stage13b_protocol_research",
+  "branch": "mfi-edge-stage15",
+  "start_experiment": "autonomous_literature_escalation",
   "default_model": "gpt-5.6-sol",
   "max_iterations": 1000000,
   "max_codex_calls": 1000000,
@@ -20,7 +20,7 @@
   "analysis_retry_backoff_seconds": 20,
   "analysis_retry_backoff_max_seconds": 300,
   "autonomous_research_fallback": "autonomous_literature_escalation",
-  "research_agenda_file": "docs/paper/MECHANISM_RESEARCH_AGENDA_2026-10-06_V2.md",
+  "research_agenda_file": "docs/paper/STAGE15_RESEARCH_PROGRAM.md",
   "require_visual_preview": true,
   "visual_preview_filename": "best_method_preview.png",
   "official_evaluation": {
