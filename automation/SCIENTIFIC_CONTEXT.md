@@ -562,3 +562,11 @@ OpenCV 3.4.20 tag object, whereas Git correctly placed peeled release commit
 compiler, or benchmark ran. A second attachment-only retry is registered with
 separate immutable tag-object and peeled-commit checks; the dependency version,
 EDPF source and parameters, validation deferral, and architecture are unchanged.
+
+The second retry verified provenance and successfully built the pinned OpenCV
+static libraries, but the EDPF CMake step selected OpenCV 3.4's legacy
+Windows-pack dispatcher, which cannot classify MSVC 19.42 even though the
+direct installed static-package config exists. No EDPF compile or dataset run
+occurred. A third attachment-only retry is registered to select that exact
+static config and repeat the unchanged synthetic smoke test. Validation and
+architecture work remain deferred.

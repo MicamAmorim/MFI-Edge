@@ -754,3 +754,11 @@ the intended release; no dataset or detector ran. The active action is now
 `stage15d_edpf_build_preflight_retry2`, which verifies tag object `404ca455`
 and peeled commit `1eb1d4c` separately before repeating the unchanged build
 and synthetic smoke test. This is provenance/harness repair only.
+
+Retry 2 built and installed pinned OpenCV 3.4.20 successfully, but the EDPF
+CMake step selected OpenCV's legacy top-level Windows-pack dispatcher, which
+cannot classify the workstation's MSVC 19.42 runtime. The direct installed
+static-package config exists and is the exact output of that build. The active
+action is `stage15d_edpf_build_preflight_retry3`, an attachment-only repair
+that selects that direct config and repeats the unchanged dataset-free compile
+and smoke test. Validation and architecture work remain deferred.

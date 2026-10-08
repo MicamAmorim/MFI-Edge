@@ -190,13 +190,23 @@ def _bootstrap_opencv() -> tuple[Path, dict]:
         ], timeout=7200)
     (OUT / "opencv_build.log").write_text(build["output"], encoding="utf-8")
     configs = sorted(install_dir.rglob("OpenCVConfig.cmake")) if install_dir.exists() else []
-    if configure["returncode"] != 0 or build["returncode"] != 0 or not configs:
+    # OpenCV 3.4's top-level Windows-pack dispatcher predates MSVC 19.4x and
+    # cannot infer its vc runtime directory.  The build also installs the
+    # direct static-package config, which contains the exact imported targets
+    # produced by this compile and does not perform that obsolete dispatch.
+    static_configs = [path for path in configs if path.parent.name == "staticlib"]
+    if configure["returncode"] != 0 or build["returncode"] != 0 or not static_configs:
         raise RuntimeError(
             "pinned OpenCV dependency bootstrap failed; inspect opencv_configure.log "
             "and opencv_build.log"
         )
-    source["cmake_config_dir"] = str(configs[0].parent.relative_to(ROOT)).replace("\\", "/")
-    return configs[0].parent, source
+    config_dir = static_configs[0].parent
+    source["cmake_config_dir"] = str(config_dir.relative_to(ROOT)).replace("\\", "/")
+    source["config_selection"] = (
+        "direct installed static-package config; bypasses the OpenCV 3.4 "
+        "Windows-pack dispatcher that cannot classify MSVC 19.4x"
+    )
+    return config_dir, source
 
 
 def _write_build_harness() -> tuple[Path, Path]:
