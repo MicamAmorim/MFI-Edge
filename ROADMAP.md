@@ -738,3 +738,11 @@ OpenCV development configuration is yet resolved. A pass advances to one exact
 BSDS500-validation reproduction; a failure permits build/dependency repair
 only. No dataset is read, no official-evaluation manifest or preview is needed,
 and architecture invention remains forbidden through Stage 15o.
+
+That preflight stopped before compilation because the workstation has no C++
+OpenCV package configuration. Source identity and license checks passed; no
+dataset was read and no detector result was produced. The active action is now
+`stage15d_edpf_build_preflight_retry1`, an attachment-only harness repair that
+builds pinned upstream OpenCV 3.4.20 core/imgproc and repeats the unchanged
+EDPF compile/smoke test. No reimplementation, parameter change, benchmark run,
+or MFI architecture work is authorized by this retry.

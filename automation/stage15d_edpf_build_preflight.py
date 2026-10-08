@@ -3,6 +3,7 @@ from __future__ import annotations
 """Dataset-free source and build preflight for the exact Stage-15d EDPF path."""
 
 from datetime import datetime, timezone
+import argparse
 import hashlib
 import json
 import os
@@ -18,6 +19,13 @@ AUTHOR_COMMIT = "69b8d081bd6d28192d816ec0ed02aff9186d73c1"
 AUTHOR_VENDOR = (
     ROOT / "evaluation" / "bsds_official" / "vendor"
     / f"ed_lib_author_{AUTHOR_COMMIT[:12]}"
+)
+OPENCV_REPOSITORY = "https://github.com/opencv/opencv.git"
+OPENCV_VERSION = "3.4.20"
+OPENCV_COMMIT = "404ca455aeed9d26946e281b0383829bd0c533b1"
+OPENCV_VENDOR = (
+    ROOT / "evaluation" / "bsds_official" / "vendor"
+    / f"opencv_{OPENCV_VERSION.replace('.', '_')}_{OPENCV_COMMIT[:12]}"
 )
 
 # Hashes recorded from the immutable author commit before registration. This
@@ -110,6 +118,75 @@ def _ensure_author_source() -> dict:
     }
 
 
+def _ensure_opencv_source() -> dict:
+    """Resolve the author-documented OpenCV 3.4 dependency immutably."""
+    if not (OPENCV_VENDOR / ".git").exists():
+        OPENCV_VENDOR.parent.mkdir(parents=True, exist_ok=True)
+        if OPENCV_VENDOR.exists():
+            raise RuntimeError(
+                f"incomplete OpenCV checkout exists without .git: {OPENCV_VENDOR}"
+            )
+        _require_ok(
+            _git("clone", "--no-checkout", OPENCV_REPOSITORY, str(OPENCV_VENDOR)),
+            "OpenCV clone",
+        )
+        _require_ok(
+            _git("checkout", "--detach", OPENCV_COMMIT, cwd=OPENCV_VENDOR),
+            "OpenCV checkout",
+        )
+    head = _require_ok(_git("rev-parse", "HEAD", cwd=OPENCV_VENDOR), "OpenCV rev-parse")
+    if head != OPENCV_COMMIT:
+        raise RuntimeError(f"OpenCV checkout is {head}, expected {OPENCV_COMMIT}")
+    dirty = _require_ok(
+        _git("status", "--porcelain", "--untracked-files=no", cwd=OPENCV_VENDOR),
+        "OpenCV source status",
+    )
+    if dirty:
+        raise RuntimeError("tracked files in the OpenCV checkout were modified")
+    return {
+        "repository": OPENCV_REPOSITORY,
+        "version": OPENCV_VERSION,
+        "commit": head,
+        "checkout": str(OPENCV_VENDOR.relative_to(ROOT)).replace("\\", "/"),
+        "tracked_clean": True,
+        "role": "build dependency only; detector source and parameters unchanged",
+    }
+
+
+def _bootstrap_opencv() -> tuple[Path, dict]:
+    source = _ensure_opencv_source()
+    build_dir = OUT / "opencv_build"
+    install_dir = OUT / "opencv_install"
+    configure = _run([
+        "cmake", "-S", str(OPENCV_VENDOR), "-B", str(build_dir),
+        "-DCMAKE_BUILD_TYPE=Release",
+        f"-DCMAKE_INSTALL_PREFIX={install_dir}",
+        "-DBUILD_LIST=core,imgproc", "-DBUILD_SHARED_LIBS=OFF",
+        "-DBUILD_TESTS=OFF", "-DBUILD_PERF_TESTS=OFF",
+        "-DBUILD_EXAMPLES=OFF", "-DBUILD_opencv_apps=OFF",
+        "-DBUILD_JAVA=OFF", "-DBUILD_opencv_python2=OFF",
+        "-DBUILD_opencv_python3=OFF", "-DBUILD_opencv_world=OFF",
+        "-DWITH_CUDA=OFF", "-DWITH_IPP=OFF", "-DWITH_OPENCL=OFF",
+        "-DWITH_TBB=OFF", "-DWITH_ITT=OFF",
+    ], timeout=1800)
+    (OUT / "opencv_configure.log").write_text(configure["output"], encoding="utf-8")
+    build = {"command": [], "returncode": None, "output": "configure did not pass"}
+    if configure["returncode"] == 0:
+        build = _run([
+            "cmake", "--build", str(build_dir), "--config", "Release",
+            "--target", "INSTALL", "--parallel", "2",
+        ], timeout=7200)
+    (OUT / "opencv_build.log").write_text(build["output"], encoding="utf-8")
+    configs = sorted(install_dir.rglob("OpenCVConfig.cmake")) if install_dir.exists() else []
+    if configure["returncode"] != 0 or build["returncode"] != 0 or not configs:
+        raise RuntimeError(
+            "pinned OpenCV dependency bootstrap failed; inspect opencv_configure.log "
+            "and opencv_build.log"
+        )
+    source["cmake_config_dir"] = str(configs[0].parent.relative_to(ROOT)).replace("\\", "/")
+    return configs[0].parent, source
+
+
 def _write_build_harness() -> tuple[Path, Path]:
     source_dir = OUT / "build_harness"
     build_dir = OUT / "build"
@@ -179,15 +256,26 @@ def _python_opencv_contract() -> dict:
 
 
 def main() -> int:
+    global OUT
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--out", type=Path, default=OUT)
+    parser.add_argument("--bootstrap-opencv", action="store_true")
+    args = parser.parse_args()
+    OUT = args.out if args.out.is_absolute() else ROOT / args.out
     OUT.mkdir(parents=True, exist_ok=True)
     source = _ensure_author_source()
+    opencv_source = None
+    opencv_dir = os.environ.get("OpenCV_DIR")
+    if args.bootstrap_opencv:
+        bootstrapped_dir, opencv_source = _bootstrap_opencv()
+        opencv_dir = str(bootstrapped_dir)
     source_dir, build_dir = _write_build_harness()
     configure_command = [
         "cmake", "-S", str(source_dir), "-B", str(build_dir),
         "-DCMAKE_BUILD_TYPE=Release",
     ]
-    if os.environ.get("OpenCV_DIR"):
-        configure_command.append(f"-DOpenCV_DIR={os.environ['OpenCV_DIR']}")
+    if opencv_dir:
+        configure_command.append(f"-DOpenCV_DIR={opencv_dir}")
     configure = _run(configure_command)
     (OUT / "cmake_configure.log").write_text(configure["output"], encoding="utf-8")
 
@@ -223,7 +311,8 @@ def main() -> int:
         "tools": {
             "git": shutil.which("git"),
             "cmake": shutil.which("cmake"),
-            "opencv_dir_environment": os.environ.get("OpenCV_DIR"),
+            "opencv_dir": opencv_dir,
+            "bootstrapped_opencv": opencv_source,
             "python_opencv": _python_opencv_contract(),
         },
         "author_implementation": {
@@ -255,6 +344,7 @@ def main() -> int:
         "protected_split_used": False,
         "implementation_fidelity": "unmodified hash-verified author C++ sources with repository-local external build/smoke harness",
         "source": source,
+        "opencv_dependency": opencv_source,
         "build_preflight_passed": passed,
         "dependency_contract": str(contract_path.relative_to(ROOT)).replace("\\", "/"),
         "decision_rule": (

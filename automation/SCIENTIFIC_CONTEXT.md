@@ -547,3 +547,11 @@ run a deterministic synthetic binary-output smoke test. Only a pass may advance
 to exact native-resolution BSDS500-validation reproduction. A failure permits
 dependency/harness repair only, not EDPF reimplementation, parameter tuning, or
 MFI architecture work.
+
+The first build preflight passed ED_Lib source/hash/license checks but stopped
+at CMake configuration because the workstation has no C++ OpenCV package. No
+dataset or detector benchmark ran. One attachment-only retry is registered to
+build the author-documented OpenCV 3.4 dependency from pinned upstream commit
+`404ca455aeed9d26946e281b0383829bd0c533b1`, then repeat the unchanged
+dataset-free exact-source compile and binary-output smoke test. Validation and
+architecture work remain deferred until that smoke test passes.

@@ -1676,3 +1676,18 @@ output smoke test. Only a passing preflight may advance to one exact native-
 resolution BSDS500-validation reproduction. Failure permits dependency/harness
 repair only, not an algorithm substitution or EDPF tuning. Stage 14t remains a
 different connected-component surrogate, and MFI architecture stays unchanged.
+
+### Stage 15d build preflight - pinned OpenCV dependency repair registered
+
+The dataset-free preflight verified the immutable ED_Lib checkout, source
+hashes, and MIT license, but CMake stopped before compilation because no C++
+OpenCV package configuration was installed (`OpenCV_DIR` was unset). No dataset
+or detector benchmark ran, so this is dependency feedback only and does not
+change the EDPF fidelity claim or MFI architecture.
+
+The single next action is `stage15d_edpf_build_preflight_retry1`. It resolves
+only the missing author-documented dependency by building OpenCV 3.4.20 from
+upstream commit `404ca455aeed9d26946e281b0383829bd0c533b1` with a minimal
+core/imgproc configuration, then repeats the unchanged exact-source compile and
+deterministic synthetic binary-output smoke test. It remains dataset-free and
+may advance to validation only if the smoke test passes.
