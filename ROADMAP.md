@@ -652,9 +652,16 @@ rebuilt under MSVC remained non-repeatable (`0.000104`, `0.000433`, and
 the shipped fixture by as much as `0.001083`. The registered `1e-4`
 certification therefore still fails.
 
-The next and final Stage-15a diagnostic fixes only the clock-seeded global
-random stream to the preregistered seed `1` in a result-local source copy and
-repeats the five-image fixture twice. If exact repetition results, Stage 15a
-closes as an uncertified reproduction and the controlled matcher is never used
-for dataset scoring; otherwise the platform/source behavior remains unresolved
-and Stage 15b stays deferred.
+The final Stage-15a diagnostic fixed only the clock-seeded global random stream
+to preregistered seed `1` in a result-local source copy. Two fresh processes
+then produced byte-identical fixture tables, establishing clock-seeded matcher
+sampling as the cause of the observed repeat drift. Stage 15a is closed without
+reference reproduction verification: the controlled matcher is diagnostic-only
+and must never score datasets, while the unmodified official Windows path
+remains stochastic and uncertified for final claims.
+
+The active next action is `stage15b_sed_reproduction_checkpoint`, a
+high-reasoning/live-literature step that must recover the exact SED method,
+author code or a clearly fidelity-labeled alternative, frozen published
+parameters, training classification, and protocol before one executable
+reproduction is registered. No MFI architecture work is authorized.

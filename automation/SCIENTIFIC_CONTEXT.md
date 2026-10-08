@@ -432,15 +432,20 @@ Do not declare success because one development split beats one neural number. Be
 
 Until that gate is met or the user stops the process, continue autonomously within the scientific firewall.
 
-### Latest Stage-15a evaluator diagnosis
+### Stage-15a closure and Stage-15b transition
 
-The syntax-repaired source-build retry completed, but the exact pinned-source
-MSVC matcher remained non-repeatable: fresh-process fixture-table deltas reached
-`0.000104`, `0.000433`, and `0.000180`, and shipped-table disagreement reached
-`0.001083`. The registered `1e-4` Stage-15a certification therefore still
-fails. Pinned-source inspection shows that the global RNG is clock-seeded via
-`reseed(0)` and then consumed by `kofn.cc`. One final fixture-only causal
-diagnostic is registered with seed `1` in a result-local source copy. Exact
-repeatability will close Stage 15a without reference verification; the
-controlled binary is diagnostic only and may not score datasets. Otherwise
-Stage 15b remains deferred for unresolved platform/source behavior.
+The final fixture-only causal diagnostic fixed the pinned matcher's global RNG
+to preregistered seed `1` in a result-local source copy. Two fresh MATLAB
+processes then produced identical aggregate, per-image, and per-threshold
+fixture tables (all repeat deltas exactly zero), confirming clock-seeded random
+sampling as the source of the earlier drift. Controlled-versus-shipped table
+differences still reached `0.000866`. Stage 15a therefore closes without
+reference reproduction verification: the fixed-seed binary is diagnostic-only
+and may not score datasets, and the unmodified Windows official path remains
+stochastic and uncertified for final claims.
+
+The next registered action is a high-reasoning/live-literature Stage-15b SED
+reproduction checkpoint. It must establish author-code availability, published
+fixed parameters, training classification, implementation fidelity, and the
+matched evaluation plan before registering one detector run. Architecture
+invention remains prohibited through Stage 15o.

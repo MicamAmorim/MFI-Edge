@@ -1508,3 +1508,27 @@ controlled binary cannot score a dataset, the shipped target is not tuned to,
 and the Stage-15a tolerance remains unchanged. Exact repetition will close
 Stage 15a as a failed reference certification rather than convert the control
 into an official evaluator.
+
+### Stage 15a closure — clock-seeded matcher sampling confirmed
+
+The preregistered fixed-seed causal diagnostic completed successfully. With
+the pinned matcher sources copied into the result directory and only the
+global default seed changed from the clock request `reseed(0)` to fixed seed
+`1`, two fresh MATLAB processes produced identical `eval_bdry.txt`,
+`eval_bdry_img.txt`, and `eval_bdry_thr.txt` tables. Every repeat maximum
+absolute delta was exactly zero and the paired table hashes were identical.
+This isolates clock-seeded randomized sampling in `kofn.cc` as the cause of
+the fresh-process fixture drift observed with the unmodified matcher.
+
+The control does not reproduce the shipped reference: maximum table
+differences were `0.000287`, `0.000866`, and `0.000344`, respectively. Per the
+registered rule, Stage 15a therefore closes **without** reference reproduction
+verification. The fixed-seed binary is a diagnostic artifact only and may not
+score any dataset; official Windows-path results remain stochastic and
+uncertified for final claims. No detector prediction, BSDS validation image,
+protected split, or MFI architecture was involved in this diagnostic.
+
+The next registered action is a high-reasoning/live-literature Stage-15b
+checkpoint for the exact or explicitly fidelity-labeled reproduction of SED.
+It must resolve author code, published parameters, training classification,
+and evaluation conventions before registering a detector run.

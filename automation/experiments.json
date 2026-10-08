@@ -696,6 +696,18 @@
       "results/automation/stage15a_seed_determinism_diagnostic/fixed_seed_deltas.csv"
     ]
   },
+  "stage15b_sed_reproduction_checkpoint": {
+    "description": "High-reasoning live-literature and provenance checkpoint to specify one exact or fidelity-labeled reproduction of Akbarinia and Parraga's SED after Stage 15a closed without evaluator reference verification; no detector maps or architecture changes occur in this checkpoint.",
+    "runner": "python",
+    "path": "automation/stage15b_sed_reproduction_checkpoint.py",
+    "args": [],
+    "role": "research_planning",
+    "feedback_policy": "primary_literature_and_reproduction_protocol_only_no_dataset_feedback_no_architecture_change",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage15b_sed_reproduction_checkpoint/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",
