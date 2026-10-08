@@ -1082,3 +1082,21 @@ dataset/error-regime explanation for their opposite cross-dataset deltas
 without rerunning detectors or matching, fitting a router, or changing MFI.
 Stage 15o remains the next and final diagnostic gate before any conditional
 generation-2 architecture experiment.
+
+Stage 15n is complete. The strongest dataset shift is structural: UDED GT is
+far more fragmented, whereas BSDS GT has much larger connected components.
+Within BSDS, the frozen Riesz improvement is positively associated with
+gradient and texture-residual activity; SE(2) shows weaker associations in the
+same direction. The 15-image UDED association analysis is underpowered, and
+none of these descriptive results authorizes routing or architecture changes.
+
+The active next action is `stage15o_texture_evidence_decomposition`. It is the
+final frozen-architecture diagnostic and uses fixed analytic cue maps plus
+deterministic image-blocked association models on UDED selection and BSDS500
+validation. It tests whether cross-boundary texture contrast contributes
+consistently beyond local gradient, retained multiscale persistence, interior
+texture activity, and a fixed structural-support surrogate. Only a
+directionally consistent incremental result on both development datasets may
+justify registering Stage 15p; otherwise Stage 15o must route to one bounded
+alternative or a live-literature checkpoint. No detector candidate or router
+is fitted in Stage 15o.

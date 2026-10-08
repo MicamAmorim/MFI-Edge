@@ -2304,3 +2304,31 @@ deltas are averaged across the existing repeated-CV validation appearances;
 BSDS deltas are reconstructed at the already reported raw ODS thresholds from
 existing official count tables. No detector or matcher is rerun, no router is
 fit, and MFI remains frozen through Stage 15o.
+
+### Stage 15n UDED/BSDS discrepancy audit complete; Stage 15o registered
+
+The frozen-result audit confirms that the Stage-14r/14s reversal accompanies
+large dataset-regime differences rather than a uniform mechanism effect.
+BSDS validation has far fewer GT components per megapixel than UDED selection
+(standardized mean difference `-3.251`, BH `q=4.57e-12`) and much larger mean
+GT components (`+1.080`, the same `q`). BSDS also has lower global intensity
+variation, but higher mean gradient and texture-residual activity. Within
+BSDS, Riesz delta increases with gradient mean (`rho=0.341`, BH `q=0.00840`),
+gradient density (`rho=0.342`, `q=0.00840`), texture residual (`rho=0.319`,
+`q=0.0131`), and gradient q90 (`rho=0.294`, `q=0.0242`); SE(2) shows weaker
+positive gradient-density and mean-gradient associations. UDED contains only
+15 images, so its within-dataset associations are underpowered and remain
+descriptive. These findings do not authorize a dataset router or feature
+choice.
+
+The final registered diagnostic is
+`stage15o_texture_evidence_decomposition`. It separates fixed analytic maps
+for interior texture activity, cross-boundary texture contrast, local Scharr
+strength, existing multiscale persistence, and a fixed high-gradient
+component-support surrogate. Deterministic boundary and hard-interior samples
+from UDED selection and BSDS validation feed image-blocked diagnostic logistic
+models with fold-fitted scaling. The models are association probes, not
+detectors or routers. Stage 15p is justified only if cross-boundary texture
+contrast adds directionally consistent held-out AUC/AP on both development
+datasets beyond gradient+persistence and beyond all other fixed cues. The
+incumbent remains frozen through this decision.

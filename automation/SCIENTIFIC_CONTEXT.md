@@ -956,3 +956,22 @@ measures to test which dataset-distribution and error-regime differences
 accompany the opposite SE(2)/fractional deltas. It does not rerun a detector or
 matcher, fit a router, or change MFI. Architecture remains frozen through
 Stage 15o.
+
+### Stage-15n discrepancy diagnosis complete; Stage-15o registered
+
+BSDS validation GT is much less fragmented than UDED selection
+(components-per-megapixel standardized difference `-3.251`, BH
+`q=4.57e-12`) and has much larger mean components (`+1.080`, same `q`).
+Within BSDS, Riesz benefit rises with gradient mean/density, texture residual,
+and gradient q90 after global correction; SE(2) shows weaker positive gradient
+associations. UDED has only 15 images, so its association estimates are
+descriptive. This explains part of the cross-dataset reversal but does not
+authorize a router or feature choice.
+
+The registered next action is `stage15o_texture_evidence_decomposition`, the
+final frozen-architecture Stage-15 diagnostic. It decomposes fixed analytic
+interior texture, cross-boundary texture contrast, local gradient, retained
+multiscale persistence, and structural-support cues on UDED selection and
+BSDS validation. Image-blocked diagnostic models are association probes only.
+Stage 15p may be registered only if cross-boundary texture adds consistent
+held-out AUC/AP on both datasets; MFI remains unchanged meanwhile.
