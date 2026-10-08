@@ -1936,3 +1936,18 @@ evaluation, or qualitative benchmark preview is involved. Only a passing
 exact-source smoke test may advance to one fixed BSDS500-validation
 reproduction; a harness failure permits harness-only repair, not author-code
 editing, scale search, a surrogate, or MFI architecture work.
+
+The first build preflight compiled the hash-verified author source under the
+default R2018a MEX API, then failed at the first `compassmex` output allocation
+with MATLAB's maximum-variable-size error. Inspection localized the failure to
+the unchanged 2004 gateway's `int dims[3]` passed to `mxCreateNumericArray`:
+the modern default ABI expects a 64-bit dimension vector and therefore reads a
+spurious enormous extent. This is an external build-compatibility failure, not
+Compass output or benchmark evidence; no dataset was read and no response map
+was produced.
+
+The single registered next action is
+`stage15f_compass_build_preflight_retry1`. It rebuilds the same immutable
+author bytes with MATLAB's documented compatible array-dimensions mode and
+repeats the unchanged synthetic smoke/repeatability test. No source byte,
+Compass parameter, RNG behavior, dataset role, or MFI architecture changes.

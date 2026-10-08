@@ -873,3 +873,12 @@ It must characterize the source's clock-seeded randomized clustering without
 patching the seed. A pass may register one exact-response validation run; a
 build failure permits only external harness repair. No scale sweep, surrogate,
 benchmark scoring, or MFI architecture change is authorized.
+
+The initial preflight compiled but could not allocate its first output because
+the 2004 gateway supplies a 32-bit `int` dimension vector to a modern default
+MEX ABI expecting 64-bit dimensions. No dataset was read and no Compass map was
+generated. The active next action is the attachment-only
+`stage15f_compass_build_preflight_retry1`, which selects MATLAB's compatible
+array-dimensions build mode for the unchanged author sources and repeats the
+same synthetic smoke test. BSDS validation and MFI architecture work remain
+deferred.

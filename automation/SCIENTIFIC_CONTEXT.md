@@ -696,3 +696,12 @@ clustering without fixing its seed. Only a pass may advance to one fixed
 BSDS500-validation reproduction. Harness repair is allowed if needed, but no
 author-source change, scale/parameter tuning, surrogate, or MFI architecture
 work is authorized.
+
+The first build preflight compiled the hash-verified author MEX successfully
+but failed on its first output allocation because the 2004 gateway's `int`
+dimension vector was consumed through MATLAB's default 64-bit array-dimension
+ABI, producing a spurious oversized-array request. No dataset was read and no
+detector output was produced. One attachment-only retry is registered using
+MATLAB's legacy compatible array-dimensions build mode with the same unmodified
+author bytes, parameters, and synthetic smoke test. Validation and MFI
+architecture work remain deferred.

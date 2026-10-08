@@ -2,6 +2,7 @@ from __future__ import annotations
 
 """Dataset-free source/build preflight for the exact author Compass operator."""
 
+import argparse
 from datetime import datetime, timezone
 import hashlib
 import io
@@ -15,7 +16,7 @@ import urllib.request
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "results" / "automation" / "stage15f_compass_build_preflight"
+DEFAULT_OUT = ROOT / "results" / "automation" / "stage15f_compass_build_preflight"
 AUTHOR_URL = "https://ai.stanford.edu/~ruzon/compass/ruzon.tar.gz"
 ARCHIVE_SHA256 = "43e2ab843af620f5b6405843be0c5478b6953039c36b1e32b2a3ac725ddce7ea"
 AUTHOR_VENDOR = (
@@ -96,16 +97,22 @@ def _matlab_quote(path: Path) -> str:
     return str(path.resolve()).replace("'", "''")
 
 
-def _write_smoke_harness(source_dir: Path, build_dir: Path) -> Path:
-    harness = OUT / "run_compass_smoke.m"
+def _write_smoke_harness(
+    source_dir: Path,
+    build_dir: Path,
+    out: Path,
+    compatible_array_dims: bool,
+) -> Path:
+    harness = out / "run_compass_smoke.m"
     src = _matlab_quote(source_dir)
     build = _matlab_quote(build_dir)
+    api_flag = "'-compatibleArrayDims'" if compatible_array_dims else "'-R2018a'"
     harness.write_text(
         f"""try
 build_dir = '{build}';
 source_dir = '{src}';
 if ~exist(build_dir, 'dir'), mkdir(build_dir); end
-mex('-R2018a', '-outdir', build_dir, '-output', 'compassmex', ...
+mex({api_flag}, '-outdir', build_dir, '-output', 'compassmex', ...
     fullfile(source_dir, 'compassmex.c'), fullfile(source_dir, 'compass.c'), ...
     fullfile(source_dir, 'bs.c'), fullfile(source_dir, 'RGBLab.c'), ...
     fullfile(source_dir, 'emd.c'));
@@ -140,13 +147,15 @@ exit(0);
     return harness
 
 
-def main() -> int:
-    OUT.mkdir(parents=True, exist_ok=True)
+def main(out: Path, compatible_array_dims: bool) -> int:
+    out.mkdir(parents=True, exist_ok=True)
     data = _download()
     observed = _safe_extract(data)
     source_dir = AUTHOR_VENDOR / "ruzon"
-    build_dir = OUT / "matlab_build"
-    harness = _write_smoke_harness(source_dir, build_dir)
+    build_dir = out / "matlab_build"
+    harness = _write_smoke_harness(
+        source_dir, build_dir, out, compatible_array_dims
+    )
 
     if not MATLAB.exists():
         completed = None
@@ -164,7 +173,7 @@ def main() -> int:
         )
         output = completed.stdout or ""
         returncode = completed.returncode
-    (OUT / "matlab_build_and_smoke.log").write_text(output, encoding="utf-8")
+    (out / "matlab_build_and_smoke.log").write_text(output, encoding="utf-8")
     passed = returncode == 0 and "SMOKE_OK" in output
 
     source_manifest = {
@@ -177,7 +186,7 @@ def main() -> int:
         "local_checkout": str(AUTHOR_VENDOR.relative_to(ROOT)).replace("\\", "/"),
         "license": "no explicit software license located in the archive or author page; ignored local dependency, not redistributed",
     }
-    (OUT / "source_manifest.json").write_text(
+    (out / "source_manifest.json").write_text(
         json.dumps(source_manifest, indent=2), encoding="utf-8"
     )
     summary = {
@@ -208,10 +217,11 @@ def main() -> int:
         "known_repeatability_risk": "compass.c calls srand(clock()) before randomized clustering; the smoke records, but does not suppress, fresh-call response deltas",
         "build": {
             "matlab": str(MATLAB),
+            "compatible_array_dims": compatible_array_dims,
             "returncode": returncode,
             "passed": passed,
             "smoke_line": next((line for line in output.splitlines() if "SMOKE_OK" in line), None),
-            "log": str((OUT / "matlab_build_and_smoke.log").relative_to(ROOT)).replace("\\", "/"),
+            "log": str((out / "matlab_build_and_smoke.log").relative_to(ROOT)).replace("\\", "/"),
         },
         "decision_rule": (
             "If the unchanged source builds and emits finite bounded output, register one exact-response BSDS500-validation reproduction at the fixed published sigma-4 path. "
@@ -220,13 +230,18 @@ def main() -> int:
         "official_eval_manifest_omission": "Justified: dataset-free source/build preflight; no benchmark image or prediction map is generated.",
         "visual_preview_omission": "Justified: dataset-free synthetic smoke only; best_method_preview.png becomes mandatory for the later image reproduction.",
     }
-    (OUT / "summary.json").write_text(
+    (out / "summary.json").write_text(
         json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8"
     )
     print("STAGE15F_COMPASS_BUILD_PREFLIGHT_COMPLETE")
-    print(OUT / "summary.json")
+    print(out / "summary.json")
     return 0 if passed else 2
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
+    parser.add_argument("--compatible-array-dims", action="store_true")
+    args = parser.parse_args()
+    output_dir = args.out if args.out.is_absolute() else ROOT / args.out
+    raise SystemExit(main(output_dir, args.compatible_array_dims))

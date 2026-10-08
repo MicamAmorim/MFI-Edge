@@ -997,6 +997,20 @@
       "results/automation/stage15f_compass_build_preflight/matlab_build_and_smoke.log"
     ]
   },
+  "stage15f_compass_build_preflight_retry1": {
+    "description": "Attachment-only build retry after the unchanged 2004 Compass gateway compiled under MATLAB's default 64-bit array-dimension ABI but its legacy int dimension vector was interpreted as an enormous allocation; rebuilds the same hash-verified author bytes with MATLAB's compatible array-dimensions mode and repeats the unchanged dataset-free synthetic smoke test.",
+    "runner": "python",
+    "path": "automation/stage15f_compass_build_preflight.py",
+    "args": ["--out", "results/automation/stage15f_compass_build_preflight_retry1", "--compatible-array-dims"],
+    "role": "reproduction_dependency_preflight",
+    "feedback_policy": "attachment_only_legacy_mex_array_abi_repair_no_dataset_feedback_no_parameter_tuning_no_architecture_change",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage15f_compass_build_preflight_retry1/summary.json",
+      "results/automation/stage15f_compass_build_preflight_retry1/source_manifest.json",
+      "results/automation/stage15f_compass_build_preflight_retry1/matlab_build_and_smoke.log"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",
