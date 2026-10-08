@@ -1872,3 +1872,36 @@ BSDS300/500 test numbers remain documentary because archive-era evaluator
 equivalence is not assumed. No CO/SCO tuning and no MFI architecture change are
 authorized from the validation result; architecture invention remains deferred
 through Stage 15o.
+
+### Stage 15e exact CO/SCO reproduction result
+
+Both hash-verified institutional author implementations completed on all 100
+native-resolution BSDS500 validation images at the fixed published setting.
+CO obtained local official-path ODS/OIS/AP
+`0.635925/0.665489/0.651767`; SCO obtained
+`0.656582/0.682564/0.694939`. Relative to the unchanged compact MFI
+incumbent (`0.545462/0.579027/0.534288`), the CO deltas were
+`+0.090463/+0.086462/+0.117478` and the SCO deltas were
+`+0.111120/+0.103538/+0.160651`. The paired SCO-minus-CO changes were
+`+0.020656/+0.017076/+0.043173`, providing matched reproduction evidence
+that the published modified spatial-sparseness step adds material value to
+this color-opponent baseline. This is mechanism decomposition, not permission
+to integrate or tune SCO before the diagnostic program finishes.
+
+Mean detector time was about `0.2522` seconds per image for CO and `0.3424`
+seconds per image for SCO. All maps, hashes, runtimes, and the deterministic
+positions 1/50/100 five-column preview are preserved. Both methods remain
+parameter-fixed but author-tuned external references, not MFI components.
+Their paper test metrics remain protocol-separated, and the Stage-15a local
+matcher remains stochastic and reference-uncertified, so these validation
+results do not support a final SOTA claim. The unchanged MFI controller remains
+the incumbent.
+
+The next action is `stage15f_compass_reproduction_checkpoint`, a
+high-reasoning live-primary-source and code audit of Ruzon and Tomasi's Compass
+distribution-gradient detector. It must resolve code availability, immutable
+provenance, training class, all output-affecting half-disc/distribution
+parameters, scalar-map conventions, and protocol compatibility before exactly
+one fidelity-labeled action is registered. Stage 14l's failed fixed LBP context
+feature is not treated as a Compass reproduction. Architecture invention
+remains prohibited through Stage 15o.

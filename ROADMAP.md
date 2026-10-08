@@ -841,3 +841,20 @@ hash-pinned; the research-only code remains ignored and unredistributed. The
 run must preserve separate maps/runtime/hashes, emit the fixed positions
 1/50/100 preview, and attach the common official evaluator. It is reproduction
 and mechanism diagnosis only: no CO/SCO tuning or MFI change is authorized.
+
+The exact Stage-15e paired run is complete. CO scored local official-path
+ODS/OIS/AP `0.635925/0.665489/0.651767`, while SCO scored
+`0.656582/0.682564/0.694939`; SCO therefore improved over its paired no-SSC
+control by `+0.020656/+0.017076/+0.043173`. Both substantially exceeded the
+unchanged MFI incumbent on this development validation split, but remain
+parameter-fixed, author-tuned reference baselines. They are not integrated or
+tuned, and the Stage-15a matcher-certification caveat still prevents a final
+claim.
+
+The active next action is `stage15f_compass_reproduction_checkpoint`. It will
+use live primary literature and official/author-designated code to determine
+whether Ruzon and Tomasi's Compass operator can be reproduced exactly or
+faithfully under the common validation protocol. It must resolve the full
+half-disc distribution-gradient contract before registering one run or one
+fidelity preflight. Stage 14l is not a Compass reproduction, and MFI
+architecture invention remains forbidden through Stage 15o.

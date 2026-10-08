@@ -655,3 +655,25 @@ and SSC mechanism decomposition, not an MFI promotion experiment. Do not tune
 CO/SCO from validation results or change MFI before Stage 15p. The author code
 has no open-source license and remains ignored/unredistributed; paper test
 metrics stay documentary and protocol-separated.
+
+### Stage-15e exact CO/SCO reproduction complete; Stage-15f checkpoint registered
+
+The exact author-code CO/SCO pair completed on all 100 native-resolution
+BSDS500 validation images. CO obtained ODS/OIS/AP
+`0.635925/0.665489/0.651767`; SCO obtained
+`0.656582/0.682564/0.694939`. Against the unchanged MFI incumbent, SCO changed
+the three metrics by `+0.111120/+0.103538/+0.160651`; against paired CO, the
+published modified spatial-sparseness step changed them by
+`+0.020656/+0.017076/+0.043173`. This is strong matched development evidence
+for contextual sparseness within that external color-opponent method, not an
+MFI architecture decision. Both methods remain parameter-fixed but
+author-tuned baselines, and the incumbent is unchanged. The fixed preview,
+maps, hashes, and runtimes are complete; the stochastic/reference-uncertified
+Windows matcher caveat remains.
+
+The registered next action is `stage15f_compass_reproduction_checkpoint`, a
+live primary-source and code audit of the Compass half-disc distribution-
+gradient detector. It must resolve fidelity, fixed parameters, training class,
+output conventions, and matched validation feasibility before one detector
+run or fidelity preflight. Stage 14l is not a Compass reproduction, and no MFI
+architecture invention is authorized before Stage 15p.
