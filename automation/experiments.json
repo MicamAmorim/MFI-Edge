@@ -1049,6 +1049,18 @@
       "results/official_eval/stage15f_compass_exact_reproduction_retry1/summary.json"
     ]
   },
+  "stage15g_texture_surround_reproduction_checkpoint": {
+    "description": "High-reasoning live-primary-literature and official-code audit of the Stage-15g texture-gradient plus surround-modulation detector after exact Compass reproduction; resolves code availability, immutable provenance, fixed parameters, training class, output conventions, and matched BSDS500-validation feasibility before any detector run.",
+    "runner": "python",
+    "path": "automation/stage15g_texture_surround_reproduction_checkpoint.py",
+    "args": [],
+    "role": "research_planning",
+    "feedback_policy": "primary_literature_and_reproduction_protocol_only_no_dataset_feedback_no_architecture_change",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage15g_texture_surround_reproduction_checkpoint/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

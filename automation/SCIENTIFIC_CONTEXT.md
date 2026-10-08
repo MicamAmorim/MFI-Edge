@@ -725,3 +725,24 @@ validate and hash those exact frozen maps, create the missing documentary
 artifacts, and attach the unchanged evaluator without invoking Compass or
 regenerating its clock-seeded predictions. No Compass tuning or MFI change is
 authorized.
+
+### Stage-15f exact Compass reproduction complete; Stage-15g checkpoint registered
+
+The attachment-only finalization preserved the original 100 frozen Compass
+maps and completed hashes, provenance, runtime accounting, the fixed positions
+1/50/100 preview, and official validation scoring without invoking Compass.
+Exact author-code Compass obtained ODS/OIS/AP
+`0.630841/0.656565/0.518359`, changing the unchanged MFI incumbent by
+`+0.085418/+0.077086/-0.015936`. Its stronger ODS/OIS but lower AP is a mixed
+ranking profile, not permission to tune or integrate the cue. Mean detector
+runtime was about `9.783` seconds per image. Compass remains a strictly
+untrained exact-code reference; the source's clock-seeded clustering and the
+Stage-15a stochastic/reference-uncertified evaluator caveat remain recorded.
+
+The registered next action is
+`stage15g_texture_surround_reproduction_checkpoint`, a high-reasoning live
+primary-source and code audit of Yang, Peng and Wu's 2025 texture-gradient plus
+surround-modulation detector. It must resolve fidelity, fixed parameters,
+training class, output conventions, and matched validation feasibility before
+one detector run or fidelity preflight. No MFI architecture invention is
+authorized before Stage 15p.

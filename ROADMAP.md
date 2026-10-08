@@ -899,3 +899,16 @@ marker. The active next action is the attachment-only
 maps, emit the missing preview/provenance/official manifest, and attach the
 unchanged evaluator without rerunning the randomized author detector. No
 Compass tuning or MFI architecture change is authorized.
+
+The Compass attachment is complete. Exact author-code Compass scored local
+official-path ODS/OIS/AP `0.630841/0.656565/0.518359`, changing the unchanged
+MFI incumbent by `+0.085418/+0.077086/-0.015936`. It is retained as a strictly
+untrained external reference with a mixed best-F/full-ranking profile, not as
+an MFI component; the fixed preview, hashes, maps and runtimes are complete.
+
+The active next action is `stage15g_texture_surround_reproduction_checkpoint`.
+It will use live primary literature and official/author code to audit the 2025
+texture-gradient plus surround-modulation detector, resolve its fidelity and
+complete fixed implementation contract, and register exactly one reproduction
+or fidelity preflight. No MFI architecture invention is authorized before
+Stage 15p.

@@ -1987,3 +1987,33 @@ attachment-only recovery. It validates and hashes the exact frozen maps and
 runtime rows, emits the preregistered fixed preview and manifest, and invokes
 only the unchanged evaluator. Compass parameters, RNG behavior, predictions,
 dataset role, and MFI architecture remain unchanged.
+
+### Stage 15f exact Compass reproduction result
+
+The attachment-only recovery validated the exact 100 frozen maps and runtime
+rows, wrote their hashes and provenance, emitted the deterministic sorted
+positions 1/50/100 preview, and attached the unchanged official evaluator
+without rerunning Compass. The exact author maximum-EMD response obtained
+local official-path ODS/OIS/AP `0.630841/0.656565/0.518359`. Relative to the
+unchanged compact MFI incumbent (`0.545423/0.579478/0.534295`), the deltas
+were `+0.085418/+0.077086/-0.015936`. Thus Compass gives materially stronger
+best-threshold and per-image-optimal F-measures but a lower full precision-
+recall ranking area. This mixed profile is retained for later Stage-15
+complementarity diagnosis and is not an MFI architecture decision.
+
+The detector accumulated `978.256` seconds across 100 images, about `9.783`
+seconds per image. Compass remains a strictly untrained exact-code baseline;
+its clock-seeded author clustering was not modified or repeated for selection.
+The fixed preview panel order is input, mean annotator boundary for display,
+retained MFI incumbent, and exact Compass maximum-EMD strength. All validation
+evidence remains subject to the Stage-15a stochastic/reference-uncertified
+Windows matcher caveat and cannot support a final SOTA claim.
+
+The next action is `stage15g_texture_surround_reproduction_checkpoint`, a
+high-reasoning live-primary-literature and official-code audit of Yang, Peng
+and Wu's 2025 texture-gradient plus surround-modulation method (DOI
+`10.1007/s11760-025-04339-6`). It must resolve fidelity, immutable provenance,
+fixed parameters, training class, output and evaluator conventions before one
+fidelity-labeled run or preflight. Stage 14l and Compass do not substitute for
+this method, and MFI architecture invention remains prohibited before Stage
+15p.
