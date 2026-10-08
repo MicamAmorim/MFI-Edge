@@ -883,3 +883,21 @@ reasoning live-primary-literature audit of unusually high non-trained edge
 metrics to distinguish Berkeley ODS from average-optimal, per-image,
 multi-output, or otherwise incompatible F/F1 protocols. No MFI architecture
 invention is authorized before Stage 15p.
+
+### Stage-15j closure; Stage-15k per-image diagnosis registered
+
+The live high-number audit found no additional reproducible matched-protocol
+baseline. Gao and Gao's reported BSDS500 F1 `0.888` and BPAED's generic F1
+claims omit the Berkeley ODS matcher/tolerance, split, annotation, threshold
+and thinning contract and have no immutable author implementation. FACAFCV's
+primary paper demonstrates the metric distinction directly: optimal F reaches
+`0.8910` on its noisy-image experiment, while its separate BSDS500
+ODS/OIS/AP are `0.589/0.608/0.533`. These headlines do not change the matched
+frontier and no surrogate is authorized.
+
+The registered next action is `stage15k_per_image_oracle_matrix`. It uses only
+frozen MFI, SED, EDPF, CO, SCO, Compass and QFrD validation outputs plus their
+existing official per-image count tables to build fixed-threshold and
+per-image-best metrics, pairwise win/loss matrices and a descriptive
+ground-truth oracle bound. No detector or matcher is rerun. The oracle is not a
+deployable router, and MFI architecture remains frozen through Stage 15o.

@@ -1170,6 +1170,23 @@
       "results/automation/stage15j_high_number_protocol_audit_checkpoint/summary.json"
     ]
   },
+  "stage15k_per_image_oracle_matrix": {
+    "description": "Frozen-output BSDS500-validation diagnosis across the unchanged MFI incumbent and exact Stage-15 SED, EDPF, CO, SCO, Compass, and QFrD references; parses existing official per-image count tables to produce fixed-threshold and per-image-best precision/recall/F1, pairwise win/loss matrices, and a descriptive method-oracle upper bound without rerunning any detector or matcher.",
+    "runner": "python",
+    "path": "run_stage15k_per_image_oracle.py",
+    "args": [],
+    "role": "frozen_output_complementarity_diagnosis",
+    "feedback_policy": "BSDS500_validation_existing_outputs_diagnosis_only_no_detector_or_matcher_rerun_no_router_no_architecture_change",
+    "one_shot": true,
+    "result_files": [
+      "results/local_dev/stage15k_per_image_oracle_matrix/summary.json",
+      "results/local_dev/stage15k_per_image_oracle_matrix/per_image_metrics.csv",
+      "results/local_dev/stage15k_per_image_oracle_matrix/pairwise_win_loss.csv",
+      "results/local_dev/stage15k_per_image_oracle_matrix/method_ranking.csv",
+      "results/local_dev/stage15k_per_image_oracle_matrix/oracle_complementarity.csv",
+      "results/local_dev/stage15k_per_image_oracle_matrix/best_method_preview.png"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

@@ -2210,3 +2210,26 @@ are Berkeley ODS or instead use average-optimal, per-image, multi-output, or
 otherwise incompatible protocols. It may select at most one exact reproduction
 or fidelity preflight, or close Stage 15j and advance to Stage 15k. It may not
 score protected data, tune reproduced methods, or change MFI architecture.
+
+### Stage 15j high-number protocol audit closed; Stage 15k registered
+
+Live primary-source review found no additional non-trained detector with both a
+high matched Berkeley result and a complete immutable implementation contract.
+The 2026 multiscale-Gabor/directional-Sobel paper reports BSDS500 precision,
+recall and F1 `0.913/0.865/0.888`, but defines neither ODS/OIS nor a Berkeley
+matcher, tolerance, split, annotator aggregation, threshold scope or thinning
+contract; its direct-pixel metric and empirically optimal settings are not a
+Berkeley ODS result. BPAED likewise reports generic accuracy/F1/Pratt metrics
+without a matched Berkeley contract or public implementation. As a useful
+source-internal control, the FACAFCV paper reports noisy-image optimal F up to
+`0.8910` separately from BSDS500 ODS/OIS/AP `0.589/0.608/0.533`.
+
+Stage 15j therefore closes without another reproduction or any change to the
+non-trained matched frontier. The single registered next action is
+`stage15k_per_image_oracle_matrix`. It analyzes only already frozen MFI, SED,
+EDPF, CO, SCO, Compass and QFrD validation maps and their existing official
+per-image count tables. It will emit fixed-threshold and per-image-best
+precision/recall/F1, pairwise win/loss tables, a descriptive ground-truth
+method-oracle upper bound, and the fixed positions 1/50/100 qualitative panel.
+No detector or matcher is rerun, no router is authorized, and MFI remains
+unchanged through Stage 15o.

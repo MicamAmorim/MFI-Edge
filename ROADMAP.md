@@ -1025,3 +1025,17 @@ non-trained edge F/F1 values by split, threshold scope, matcher/tolerance,
 annotation protocol, thinning/NMS, resizing, and output multiplicity. It will
 register at most one fidelity-labeled reproduction/preflight, or close the
 audit and transition to Stage 15k. Architecture invention remains prohibited.
+
+Stage 15j closed without a new reproduction target. Primary sources showed
+that the Gao Gabor-Sobel `0.888` F1 and BPAED headline F1 use incompletely
+specified direct/generic metrics rather than a verified Berkeley ODS contract.
+FACAFCV independently illustrates the mismatch: its noisy-image optimal F can
+reach `0.8910`, while its separate BSDS500 ODS is `0.589`. These numbers do not
+alter the matched non-trained frontier or justify a surrogate implementation.
+
+The active next action is `stage15k_per_image_oracle_matrix`. It parses the
+existing official per-image count tables for frozen MFI, SED, EDPF, CO, SCO,
+Compass and QFrD outputs, produces pairwise win/loss and descriptive oracle
+complementarity artifacts, and emits the fixed positions 1/50/100 preview. It
+does not rerun detectors or the stochastic matcher and cannot authorize a
+router or MFI architecture change. Stage 15l follows after this diagnosis.
