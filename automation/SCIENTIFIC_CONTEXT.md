@@ -431,3 +431,16 @@ Do not declare success because one development split beats one neural number. Be
 7. ensure no final/test data influenced development choices.
 
 Until that gate is met or the user stops the process, continue autonomously within the scientific firewall.
+
+### Latest Stage-15a evaluator diagnosis
+
+The syntax-repaired source-build retry completed, but the exact pinned-source
+MSVC matcher remained non-repeatable: fresh-process fixture-table deltas reached
+`0.000104`, `0.000433`, and `0.000180`, and shipped-table disagreement reached
+`0.001083`. The registered `1e-4` Stage-15a certification therefore still
+fails. Pinned-source inspection shows that the global RNG is clock-seeded via
+`reseed(0)` and then consumed by `kofn.cc`. One final fixture-only causal
+diagnostic is registered with seed `1` in a result-local source copy. Exact
+repeatability will close Stage 15a without reference verification; the
+controlled binary is diagnostic only and may not score datasets. Otherwise
+Stage 15b remains deferred for unresolved platform/source behavior.

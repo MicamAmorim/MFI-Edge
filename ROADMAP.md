@@ -643,3 +643,18 @@ Maintain together:
 - `references.bib`
 
 Update this roadmap whenever a result changes the scientific direction.
+
+## Current Stage-15a diagnostic
+
+The syntax-repaired source-build retry completed, but the exact pinned source
+rebuilt under MSVC remained non-repeatable (`0.000104`, `0.000433`, and
+`0.000180` maximum deltas across the three fixture tables) and differed from
+the shipped fixture by as much as `0.001083`. The registered `1e-4`
+certification therefore still fails.
+
+The next and final Stage-15a diagnostic fixes only the clock-seeded global
+random stream to the preregistered seed `1` in a result-local source copy and
+repeats the five-image fixture twice. If exact repetition results, Stage 15a
+closes as an uncertified reproduction and the controlled matcher is never used
+for dataset scoring; otherwise the platform/source behavior remains unresolved
+and Stage 15b stays deferred.

@@ -1488,3 +1488,23 @@ Report:
 - connectivity metrics for topology variants;
 - runtime, memory, throughput and parameter count where applicable;
 - Shapley and interaction analyses as explanatory outputs rather than only leaderboard metrics.
+
+### Stage 15a source rebuild result and clock-seed diagnostic
+
+The syntax-repaired source-build retry completed and rejected the hoped-for
+platform repair. The exact pinned source rebuilt with MSVC still varied across
+fresh processes: maximum repeat deltas were `0.000104` for `eval_bdry.txt`,
+`0.000433` for `eval_bdry_img.txt`, and `0.000180` for
+`eval_bdry_thr.txt`. Differences from the shipped tables reached `0.001083`.
+Thus neither the shipped binary nor a source-pinned Windows rebuild can certify
+the registered `1e-4` fixture requirement.
+
+Source inspection supplies a bounded causal hypothesis: the pinned matcher
+constructs its global random stream with `reseed(0)`, which seeds from the
+clock, and `kofn.cc` consumes that stream for randomized sampling. One final
+fixture-only diagnostic is registered with a predeclared seed of `1` in a
+run-local source copy. It tests exact fresh-process repeatability only; the
+controlled binary cannot score a dataset, the shipped target is not tuned to,
+and the Stage-15a tolerance remains unchanged. Exact repetition will close
+Stage 15a as a failed reference certification rather than convert the control
+into an official evaluator.

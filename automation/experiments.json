@@ -683,6 +683,19 @@
       "results/automation/stage15a_source_matcher_rebuild_retry3/aggregate_rebuild_deltas.csv"
     ]
   },
+  "stage15a_seed_determinism_diagnostic": {
+    "description": "Final fixture-only Stage-15a causal diagnostic fixing the pinned matcher's documented clock-seeded global RNG to predeclared seed 1 in a result-local source copy, then repeating the unchanged five-image fixture in fresh MATLAB processes; the controlled binary cannot score datasets.",
+    "runner": "python",
+    "path": "automation/stage15a_seed_determinism_diagnostic.py",
+    "args": [],
+    "role": "evaluator_diagnostic",
+    "feedback_policy": "fixture_fixed_seed_causal_diagnostic_only_no_dataset_feedback_no_architecture_change",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage15a_seed_determinism_diagnostic/summary.json",
+      "results/automation/stage15a_seed_determinism_diagnostic/fixed_seed_deltas.csv"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",
