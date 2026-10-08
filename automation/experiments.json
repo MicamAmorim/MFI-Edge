@@ -1221,6 +1221,26 @@
       "results/official_eval/stage15m_pixel_segment_complementarity/summary.json"
     ]
   },
+  "stage15n_uded_bsds_discrepancy_audit": {
+    "description": "Predeclared cross-development-dataset discrepancy audit using only UDED-selection Stage-14r/14s repeated-CV tables, existing BSDS500-validation official count tables, and fixed image-internal regime measures; tests which distribution/error-regime differences accompany the opposite SE(2) and fractional deltas without rerunning a detector or matcher, fitting a router, or changing MFI.",
+    "runner": "python",
+    "path": "run_stage15n_uded_bsds_discrepancy.py",
+    "args": [],
+    "role": "frozen_result_cross_development_dataset_diagnosis",
+    "feedback_policy": "UDED_selection_and_BSDS500_validation_existing_results_diagnosis_only_no_detector_or_matcher_rerun_no_router_no_architecture_change",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage15n_uded_bsds_discrepancy_audit/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage15n_uded_bsds_discrepancy_audit/summary.json",
+      "results/local_dev/stage15n_uded_bsds_discrepancy_audit/official_eval_manifest.json",
+      "results/local_dev/stage15n_uded_bsds_discrepancy_audit/dataset_regime_features.csv",
+      "results/local_dev/stage15n_uded_bsds_discrepancy_audit/dataset_distribution_shifts.csv",
+      "results/local_dev/stage15n_uded_bsds_discrepancy_audit/per_image_mechanism_deltas.csv",
+      "results/local_dev/stage15n_uded_bsds_discrepancy_audit/mechanism_regime_associations.csv",
+      "results/local_dev/stage15n_uded_bsds_discrepancy_audit/best_method_preview.png",
+      "results/official_eval/stage15n_uded_bsds_discrepancy_audit/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

@@ -935,3 +935,24 @@ unique GT-supported response, shared unsupported response, weak-gradient
 support, and component continuity under a fixed diagnostic spatial contract.
 The proximity counts are not Berkeley ODS/OIS/AP. No router or architecture
 change is authorized before the remaining Stage-15 diagnostic sequence.
+
+### Stage-15m spatial complementarity complete; Stage-15n registered
+
+Stage 15m completed its frozen-map diagnosis despite the redundant official
+attachment failing during incumbent matching with the already documented
+intermittent Windows MATLAB heap corruption. The diagnostic itself did not
+need a detector or matcher rerun. At the fixed spatial contract, SED had fewer
+unsupported pixels than MFI (`182,413` versus `353,416`), a higher supported
+pixel fraction (`0.678` versus `0.519`), and larger supported components
+(`8.71` versus `6.15` pixels). MFI and SED nevertheless retained substantial
+unique GT-supported response relative to one another (`35.6%` and `32.0%`).
+These proximity counts are not Berkeley ODS/OIS/AP and do not authorize a
+router or architecture change.
+
+The registered next action is `stage15n_uded_bsds_discrepancy_audit`. It uses
+only existing Stage-14r/14s UDED-selection repeated-CV tables, existing
+BSDS500-validation official count tables, and fixed image-internal regime
+measures to test which dataset-distribution and error-regime differences
+accompany the opposite SE(2)/fractional deltas. It does not rerun a detector or
+matcher, fit a router, or change MFI. Architecture remains frozen through
+Stage 15o.

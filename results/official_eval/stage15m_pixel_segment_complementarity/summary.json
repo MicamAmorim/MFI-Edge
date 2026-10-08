@@ -1,0 +1,11 @@
+{
+  "status": "evaluator_failed",
+  "experiment_id": "stage15m_pixel_segment_complementarity",
+  "role": "frozen_output_spatial_complementarity_diagnosis",
+  "returncode": 1,
+  "manifest": "results/local_dev/stage15m_pixel_segment_complementarity/official_eval_manifest.json",
+  "manifest_sha256": "62c5c45dfd72a58f491b5ee9606c552d3755c0d0a0da82cebed484b6a0a73b45",
+  "stdout_tail": "BSDS_OFFICIAL_EVAL incumbent_compact_positive_choquet split=val",
+  "stderr_tail": "Traceback (most recent call last):\n  File \"C:\\Users\\Windows 11\\Documents\\MFI-Edge\\evaluation\\bsds_official\\run_official_bsds.py\", line 591, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"C:\\Users\\Windows 11\\Documents\\MFI-Edge\\evaluation\\bsds_official\\run_official_bsds.py\", line 518, in main\n    results[name] = _evaluate_one(\n                    ^^^^^^^^^^^^^^\n  File \"C:\\Users\\Windows 11\\Documents\\MFI-Edge\\evaluation\\bsds_official\\run_official_bsds.py\", line 405, in _evaluate_one\n    raise RuntimeError(\nRuntimeError: MATLAB native matching made no resumable progress; returncode=3221226356, missing=['101085', '101087', '102061', '103070', '105025', '106024', '108005', '108070', '108082', '109053']\nSTDOUT:\n\nSTDERR:\nERROR: MATLAB error Exit Status: 0xc0000374, Heap corruption\n",
+  "failure_policy": "report_and_continue"
+}

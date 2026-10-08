@@ -1065,3 +1065,20 @@ positions 1/50/100 preview and an official attachment over frozen maps. It may
 characterize localization, weak-boundary recovery, texture/unsupported
 response, and continuity, but it may not fit a router or change MFI before the
 Stage-15 diagnostic sequence reaches its preregistered redesign gate.
+
+Stage 15m is complete. The frozen-map proximity diagnosis found that SED has a
+much lower unsupported response and stronger supported-component profile than
+MFI, while both preserve substantial unique GT-supported pixels. The result is
+descriptive complementarity, not a routing or architecture decision. The
+redundant official attachment failed under the known intermittent Windows
+MATLAB matcher corruption and will not be retried because no new detector or
+official metric was required by the diagnosis.
+
+The active next action is `stage15n_uded_bsds_discrepancy_audit`. It uses
+existing UDED-selection repeated-CV tables and existing BSDS500-validation
+official count tables for the fixed Stage-14r SE(2) and Stage-14s Riesz
+mechanisms, together with fixed image-internal regime measures. It tests the
+dataset/error-regime explanation for their opposite cross-dataset deltas
+without rerunning detectors or matching, fitting a router, or changing MFI.
+Stage 15o remains the next and final diagnostic gate before any conditional
+generation-2 architecture experiment.

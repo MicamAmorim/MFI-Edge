@@ -2275,3 +2275,32 @@ and connected-component continuity. The proximity analysis is explicitly not
 Berkeley one-to-one matching. A required official attachment reuses frozen MFI
 and SED maps only. No router, threshold selection, detector regeneration, or
 MFI architecture change is authorized.
+
+### Stage 15m pixel/segment complementarity complete; Stage 15n registered
+
+Stage 15m completed the preregistered spatial diagnosis over all seven frozen
+BSDS500-validation methods. Under the diagnostic proximity contract, exact SED
+had `383,993` GT-supported and `182,413` unsupported pixels, versus `380,970`
+and `353,416` for MFI. Its supported-pixel and supported-component fractions
+were `0.678` and `0.607`, versus `0.519` and `0.430` for MFI, and its mean
+supported component was larger (`8.71` versus `6.15` pixels). Relative to one
+another, `35.6%` of MFI's supported pixels and `32.0%` of SED's were unique
+outside the fixed two-pixel overlap radius. This establishes descriptive
+spatial complementarity and stronger SED support/precision, but the counts are
+not Berkeley one-to-one matches and cannot define a router or feature choice.
+The deterministic positions 1/50/100 preview is complete.
+
+The default-on official attachment failed while redundantly matching the
+unchanged incumbent, after MATLAB reported the previously documented Windows
+heap corruption. Because Stage 15m consumed frozen maps and does not make a new
+ODS/OIS/AP claim, this attachment failure does not invalidate its diagnostic
+outputs and is not retried.
+
+The single registered next action is
+`stage15n_uded_bsds_discrepancy_audit`. It compares fixed image-internal regime
+distributions for UDED selection and BSDS500 validation and relates them to
+the already frozen per-image Stage-14r SE(2) and Stage-14s Riesz deltas. UDED
+deltas are averaged across the existing repeated-CV validation appearances;
+BSDS deltas are reconstructed at the already reported raw ODS thresholds from
+existing official count tables. No detector or matcher is rerun, no router is
+fit, and MFI remains frozen through Stage 15o.
