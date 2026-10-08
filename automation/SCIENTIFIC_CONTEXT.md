@@ -570,3 +570,11 @@ direct installed static-package config exists. No EDPF compile or dataset run
 occurred. A third attachment-only retry is registered to select that exact
 static config and repeat the unchanged synthetic smoke test. Validation and
 architecture work remain deferred.
+
+The third retry reached that static config but stopped before EDPF compilation
+because OpenCV 3.4's generated import table referenced unused codec targets
+excluded from the registered minimal `core`/`imgproc` build. A fourth
+attachment-only retry is registered to import the exact installed
+`core`/`imgproc`/`zlib` artifacts directly and repeat the unchanged synthetic
+smoke test. No dataset was read and validation and architecture work remain
+deferred.

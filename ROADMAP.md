@@ -762,3 +762,12 @@ static-package config exists and is the exact output of that build. The active
 action is `stage15d_edpf_build_preflight_retry3`, an attachment-only repair
 that selects that direct config and repeats the unchanged dataset-free compile
 and smoke test. Validation and architecture work remain deferred.
+
+Retry 3 reached the direct static package, but OpenCV 3.4's generated import
+table referenced unused codec libraries excluded by the registered minimal
+`core`/`imgproc` build. No EDPF source compiled and no dataset ran. The active
+action is `stage15d_edpf_build_preflight_retry4`, an attachment-only harness
+repair that imports the exact installed `core`, `imgproc`, and `zlib` artifacts
+directly and repeats the unchanged synthetic smoke test. Dependency/source
+versions, detector parameters, validation deferral, and architecture remain
+unchanged.

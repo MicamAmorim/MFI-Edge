@@ -203,13 +203,14 @@ def _bootstrap_opencv() -> tuple[Path, dict]:
     config_dir = static_configs[0].parent
     source["cmake_config_dir"] = str(config_dir.relative_to(ROOT)).replace("\\", "/")
     source["config_selection"] = (
-        "direct installed static-package config; bypasses the OpenCV 3.4 "
-        "Windows-pack dispatcher that cannot classify MSVC 19.4x"
+        "repository harness imports the installed core/imgproc/zlib artifacts "
+        "directly; this bypasses both the obsolete MSVC dispatcher and stale "
+        "unused-codec targets in OpenCV 3.4's generated static package"
     )
-    return config_dir, source
+    return install_dir, source
 
 
-def _write_build_harness() -> tuple[Path, Path]:
+def _write_build_harness(opencv_install: Path | None = None) -> tuple[Path, Path]:
     source_dir = OUT / "build_harness"
     build_dir = OUT / "build"
     source_dir.mkdir(parents=True, exist_ok=True)
@@ -218,20 +219,39 @@ def _write_build_harness() -> tuple[Path, Path]:
     # EDPF; unrelated line/circle executables cannot become build blockers.
     sources = ["ED.cpp", "EDColor.cpp", "EDPF.cpp"]
     source_lines = "\n".join(f'  "${{AUTHOR_DIR}}/{name}"' for name in sources)
+    if opencv_install is None:
+        opencv_setup = "find_package(OpenCV REQUIRED COMPONENTS core imgproc)"
+        opencv_includes = "${OpenCV_INCLUDE_DIRS}"
+        opencv_libs = "${OpenCV_LIBS}"
+    else:
+        install = opencv_install.resolve().as_posix()
+        opencv_setup = f'''set(OPENCV_INSTALL "{install}")
+add_library(opencv_zlib STATIC IMPORTED)
+set_target_properties(opencv_zlib PROPERTIES IMPORTED_LOCATION "${{OPENCV_INSTALL}}/staticlib/zlib.lib")
+add_library(opencv_core STATIC IMPORTED)
+set_target_properties(opencv_core PROPERTIES
+  IMPORTED_LOCATION "${{OPENCV_INSTALL}}/staticlib/opencv_core3420.lib"
+  INTERFACE_LINK_LIBRARIES opencv_zlib)
+add_library(opencv_imgproc STATIC IMPORTED)
+set_target_properties(opencv_imgproc PROPERTIES
+  IMPORTED_LOCATION "${{OPENCV_INSTALL}}/staticlib/opencv_imgproc3420.lib"
+  INTERFACE_LINK_LIBRARIES opencv_core)'''
+        opencv_includes = "${OPENCV_INSTALL}/include"
+        opencv_libs = "opencv_imgproc opencv_core opencv_zlib"
     cmake = f"""cmake_minimum_required(VERSION 3.16)
 project(stage15d_edpf_preflight LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-find_package(OpenCV REQUIRED COMPONENTS core imgproc)
+{opencv_setup}
 set(AUTHOR_DIR "{author}")
 add_library(edlib_author STATIC
 {source_lines}
 )
-target_include_directories(edlib_author PRIVATE "${{AUTHOR_DIR}}" ${{OpenCV_INCLUDE_DIRS}})
-target_link_libraries(edlib_author PUBLIC ${{OpenCV_LIBS}})
+target_include_directories(edlib_author PRIVATE "${{AUTHOR_DIR}}" {opencv_includes})
+target_link_libraries(edlib_author PUBLIC {opencv_libs})
 add_executable(edpf_smoke smoke.cpp)
-target_include_directories(edpf_smoke PRIVATE "${{AUTHOR_DIR}}" ${{OpenCV_INCLUDE_DIRS}})
-target_link_libraries(edpf_smoke PRIVATE edlib_author ${{OpenCV_LIBS}})
+target_include_directories(edpf_smoke PRIVATE "${{AUTHOR_DIR}}" {opencv_includes})
+target_link_libraries(edpf_smoke PRIVATE edlib_author {opencv_libs})
 """
     smoke = r'''#include "EDPF.h"
 #include <iostream>
@@ -288,10 +308,11 @@ def main() -> int:
     source = _ensure_author_source()
     opencv_source = None
     opencv_dir = os.environ.get("OpenCV_DIR")
+    opencv_install = None
     if args.bootstrap_opencv:
-        bootstrapped_dir, opencv_source = _bootstrap_opencv()
-        opencv_dir = str(bootstrapped_dir)
-    source_dir, build_dir = _write_build_harness()
+        opencv_install, opencv_source = _bootstrap_opencv()
+        opencv_dir = None
+    source_dir, build_dir = _write_build_harness(opencv_install)
     configure_command = [
         "cmake", "-S", str(source_dir), "-B", str(build_dir),
         "-DCMAKE_BUILD_TYPE=Release",
