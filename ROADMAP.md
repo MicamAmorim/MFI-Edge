@@ -373,6 +373,13 @@ incumbent through one matched official path. On successful closure, continue
 the preregistered reproduction campaign with Stage 15b SED rather than resume
 one-shot mechanism invention.
 
+Stage 15a is currently pending evaluator diagnosis. The initial controller
+launch used a Python interpreter without scikit-image, and the frozen
+five-image fixture artifacts miss the preregistered `1e-4` agreement bound on
+ODS/OIS while passing it on AP. Route evaluator/export scripts through the
+repository environment, quantify the fixture drift without changing tolerance,
+and defer full validation scoring and Stage 15b until fidelity is resolved.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**

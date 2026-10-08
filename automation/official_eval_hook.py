@@ -16,6 +16,7 @@ optimization signal.
 from pathlib import Path
 import hashlib
 import json
+import os
 import subprocess
 import sys
 from typing import Any
@@ -27,6 +28,7 @@ SKIP_ROLES = {
     "research_planning",
     "literature_escalation",
     "dataset_preflight",
+    "evaluator_diagnostic",
 }
 
 
@@ -101,6 +103,20 @@ def _module_path(config: dict) -> Path:
     return p
 
 
+def _python_executable() -> Path:
+    """Use the repository environment for detector exporters when available."""
+    configured = os.environ.get("MFI_PYTHON_EXE")
+    candidates = [
+        Path(configured) if configured else None,
+        ROOT / ".venv" / "Scripts" / "python.exe",
+        Path(sys.executable),
+    ]
+    for candidate in candidates:
+        if candidate is not None and candidate.exists():
+            return candidate.resolve()
+    return Path(sys.executable)
+
+
 def _summary_path(exp_id: str) -> Path:
     return RESULT_ROOT / exp_id / "summary.json"
 
@@ -158,7 +174,7 @@ def maybe_run(exp_id: str, spec: dict, config: dict) -> dict | None:
         official.get("config", "evaluation/bsds_official/config.json")
     )
     cmd = [
-        sys.executable,
+        str(_python_executable()),
         str(module),
         "--manifest",
         str(manifest),

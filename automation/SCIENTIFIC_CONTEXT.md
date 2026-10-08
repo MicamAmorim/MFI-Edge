@@ -303,6 +303,14 @@ preview uses sorted validation positions 1, 50, and 100. After Stage 15a is
 closed, follow the preregistered Stage-15 reproduction sequence beginning with
 the SED baseline; do not design a new MFI architecture before Stage 15p.
 
+The first Stage-15a controller attempt failed because it launched under a
+system Python without scikit-image. A repository-environment repair is now in
+place, but an existing frozen fixture run also missed the preregistered `1e-4`
+agreement bound on ODS and OIS (`0.000171` and `0.000259`; AP error
+`0.000059`). Stage 15a therefore remains open. Diagnose the fixture/platform
+drift without relaxing the registered tolerance or running the full validation
+attachment; this is evaluator fidelity work, not detector feedback.
+
 ## d-Choquet terminology
 
 Do not conflate these:

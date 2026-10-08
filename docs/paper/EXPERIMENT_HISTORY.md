@@ -906,6 +906,16 @@ uses sorted validation positions 1, 50, and 100 with input, mean-annotator GT,
 Canny, Scharr, and incumbent columns. The authoritative frozen protocol is
 `docs/paper/STAGE15A_PREREGISTRATION.md`.
 
+The first controller launch did not complete because the controller's system
+Python lacked scikit-image. Inspection of the already generated frozen audit
+artifacts also exposed a separate protocol issue: AP reproduced within the
+registered `1e-4` bound, but ODS and OIS differed from the shipped five-image
+table by `0.000171` and `0.000259`. This is not grounds to relax a
+preregistered tolerance. Stage 15a remains open while an architecture-free
+fixture diagnostic records exact table/source hashes and localizes the
+Windows-MEX or evaluator-path drift. The full validation attachment and Stage
+15b remain downstream of that fidelity decision.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

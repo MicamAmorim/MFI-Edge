@@ -576,6 +576,19 @@
       "results/official_eval/stage15a_protocol_audit/summary.json"
     ]
   },
+  "stage15a_fixture_diagnostic": {
+    "description": "Architecture-free evaluator diagnostic that quantifies the preregistered five-image Berkeley fixture mismatch, preserves shipped/local table and evaluator-source hashes, and determines the next fidelity repair without relaxing tolerance or scoring the full validation split.",
+    "runner": "python",
+    "path": "automation/stage15a_fixture_diagnostic.py",
+    "args": [],
+    "role": "evaluator_diagnostic",
+    "feedback_policy": "fixture_and_protocol_diagnostic_only_no_dataset_feedback_no_architecture_change",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage15a_fixture_diagnostic/summary.json",
+      "results/automation/stage15a_fixture_diagnostic/fixture_table_deltas.csv"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",
