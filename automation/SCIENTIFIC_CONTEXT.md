@@ -348,6 +348,12 @@ smoke test without changing vendored source bytes or matching logic. One
 attachment-only fixture retry is registered; validation scoring, Stage 15b,
 and architecture work remain deferred.
 
+That retry built the matcher but stopped before fixture matching because a
+repository-local assertion compared equivalent Windows paths with different
+slash conventions. A second attachment-only retry is registered after path
+separator normalization. This is harness-only repair: matcher sources and
+logic, fixture, tolerance, validation deferral, and architecture are unchanged.
+
 ## d-Choquet terminology
 
 Do not conflate these:

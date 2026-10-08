@@ -657,6 +657,19 @@
       "results/automation/stage15a_source_matcher_rebuild_retry/aggregate_rebuild_deltas.csv"
     ]
   },
+  "stage15a_source_matcher_rebuild_retry2": {
+    "description": "Second attachment-only retry of the fixture source-build diagnostic after normalizing Windows path separators in the repository-local matcher-resolution assertion; the successfully rebuilt matcher, vendored source bytes, fixture, tolerance, evaluator logic, validation policy, and architecture remain unchanged.",
+    "runner": "python",
+    "path": "automation/stage15a_source_matcher_rebuild.py",
+    "args": ["--out", "results/automation/stage15a_source_matcher_rebuild_retry2"],
+    "role": "evaluator_diagnostic",
+    "feedback_policy": "fixture_source_build_only_no_dataset_feedback_no_architecture_change",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage15a_source_matcher_rebuild_retry2/summary.json",
+      "results/automation/stage15a_source_matcher_rebuild_retry2/aggregate_rebuild_deltas.csv"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

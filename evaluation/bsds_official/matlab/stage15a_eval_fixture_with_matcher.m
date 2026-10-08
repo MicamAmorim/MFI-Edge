@@ -4,7 +4,9 @@ function stage15a_eval_fixture_with_matcher(matcherDir, benchmarkDir, prediction
 addpath(matcherDir, '-begin');
 addpath(benchmarkDir, '-end');
 resolved = which('correspondPixels');
-if ~startsWith(lower(resolved), lower(matcherDir))
+resolvedNorm = strrep(lower(resolved), '\', '/');
+matcherNorm = strip(strrep(lower(matcherDir), '\', '/'), 'right', '/');
+if ~(strcmp(resolvedNorm, matcherNorm) || startsWith(resolvedNorm, [matcherNorm '/']))
     error('MFIEdge:MatcherResolution', ...
         'Expected matcher under %s, resolved %s.', matcherDir, resolved);
 end

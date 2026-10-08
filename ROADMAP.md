@@ -415,6 +415,13 @@ Microsoft Visual C++ 2022 compile smoke test now succeeds. The retry still
 scores only the five-image fixture, and full validation and Stage 15b remain
 deferred.
 
+That retry built the matcher but stopped before matching because the local
+resolution assertion compared MATLAB's backslash-form path with the harness's
+forward-slash-form directory. One second attachment-only retry is registered
+after separator normalization. This repair changes no source bytes, matcher
+logic, fixture, tolerance, validation policy, or detector architecture; full
+validation and Stage 15b remain deferred.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**

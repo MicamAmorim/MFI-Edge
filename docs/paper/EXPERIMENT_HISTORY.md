@@ -973,6 +973,15 @@ byte-unchanged, compatibility-header hashes are recorded, and the matcher
 algorithm, fixture, `1e-4` tolerance, and deferred-validation policy are
 unchanged.
 
+The compatibility-layer retry successfully built the matcher but stopped
+before fixture matching because the repository-local resolution assertion
+compared MATLAB's backslash-form resolved path against the harness's
+forward-slash-form matcher directory. This is a diagnostic-harness defect and
+provides no fixture, evaluator, or detector feedback. A second attachment-only
+retry is registered after separator normalization in that assertion. The
+rebuilt source, vendored bytes, matching logic, fixture, tolerance, validation
+policy, and architecture remain unchanged.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels
