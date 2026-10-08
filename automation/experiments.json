@@ -983,6 +983,20 @@
       "results/automation/stage15f_compass_reproduction_checkpoint/summary.json"
     ]
   },
+  "stage15f_compass_build_preflight": {
+    "description": "Dataset-free hash-verified build and repeatability preflight of Ruzon and Tomasi's unmodified author Compass MATLAB/C MEX code at the preregistered published sigma-4 edge setting; no benchmark dataset is read and no surrogate is permitted.",
+    "runner": "python",
+    "path": "automation/stage15f_compass_build_preflight.py",
+    "args": [],
+    "role": "reproduction_dependency_preflight",
+    "feedback_policy": "source_build_and_synthetic_smoke_only_no_dataset_feedback_no_parameter_tuning_no_architecture_change",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage15f_compass_build_preflight/summary.json",
+      "results/automation/stage15f_compass_build_preflight/source_manifest.json",
+      "results/automation/stage15f_compass_build_preflight/matlab_build_and_smoke.log"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

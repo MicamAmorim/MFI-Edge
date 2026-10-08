@@ -1905,3 +1905,34 @@ parameters, scalar-map conventions, and protocol compatibility before exactly
 one fidelity-labeled action is registered. Stage 14l's failed fixed LBP context
 feature is not treated as a Compass reproduction. Architecture invention
 remains prohibited through Stage 15o.
+
+### Stage 15f Compass checkpoint: exact-code build preflight registered
+
+Live primary-source review recovered the complete official author MATLAB/C
+archive from the Stanford Compass page. The archive is pinned by SHA-256
+`43e2ab843af620f5b6405843be0c5478b6953039c36b1e32b2a3ac725ddce7ea`,
+and all 26 contained files have separately registered hashes. The source
+implements the published adaptive CIE-Lab color signatures, binary-split
+vector quantization, bounded perceptual ground distance, EMD comparison of
+oriented half-windows, and maximum-EMD strength. No explicit software license
+was located, so the ignored local dependency will not be redistributed.
+
+Compass is classified as strictly untrained. The fixed prospective path uses
+the CVPR paper's full-image sigma `4` comparison (radius `12`) with author
+defaults: spacing `1`, edge angle `180`, six wedges per quadrant (15-degree
+sampling), and 10 clusters. The dense strength `S` in `[0,1]` is the future
+scalar response; the author-trimmed radius border will be zero-padded to native
+size and serialized directly to 8-bit without per-image normalization. The
+papers did not report Berkeley ODS/OIS/AP, so their qualitative results remain
+protocol-separated.
+
+The registered next action is `stage15f_compass_build_preflight`. It downloads
+and hash-verifies the archive, compiles only the unmodified author MEX surface
+under R2023a, and runs a fixed synthetic RGB smoke test twice. This is needed
+because the 2004 build predates the current MEX API and `compass.c` calls
+`srand(clock())` before randomized clustering. The preflight records response
+repeatability but may not fix the seed. No benchmark dataset, official
+evaluation, or qualitative benchmark preview is involved. Only a passing
+exact-source smoke test may advance to one fixed BSDS500-validation
+reproduction; a harness failure permits harness-only repair, not author-code
+editing, scale search, a surrogate, or MFI architecture work.

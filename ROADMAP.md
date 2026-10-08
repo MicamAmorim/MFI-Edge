@@ -858,3 +858,18 @@ faithfully under the common validation protocol. It must resolve the full
 half-disc distribution-gradient contract before registering one run or one
 fidelity preflight. Stage 14l is not a Compass reproduction, and MFI
 architecture invention remains forbidden through Stage 15o.
+
+The Stage-15f checkpoint recovered the complete official author MATLAB/C
+archive and pinned it at SHA-256
+`43e2ab843af620f5b6405843be0c5478b6953039c36b1e32b2a3ac725ddce7ea`.
+The method is strictly untrained, and the prospective fixed path is the
+published full-image sigma `4` setting with author defaults (spacing `1`,
+180-degree edge model, six wedges per quadrant, 10 clusters). The papers do
+not provide Berkeley metrics, and no validation result has been inspected.
+
+The active next action is `stage15f_compass_build_preflight`, a dataset-free
+compile and synthetic repeatability test of the unmodified 2004 MEX source.
+It must characterize the source's clock-seeded randomized clustering without
+patching the seed. A pass may register one exact-response validation run; a
+build failure permits only external harness repair. No scale sweep, surrogate,
+benchmark scoring, or MFI architecture change is authorized.

@@ -677,3 +677,22 @@ gradient detector. It must resolve fidelity, fixed parameters, training class,
 output conventions, and matched validation feasibility before one detector
 run or fidelity preflight. Stage 14l is not a Compass reproduction, and no MFI
 architecture invention is authorized before Stage 15p.
+
+### Stage-15f Compass checkpoint - exact source found; build preflight registered
+
+The complete official author MATLAB/C Compass archive is available from the
+Stanford project page and is pinned by SHA-256
+`43e2ab843af620f5b6405843be0c5478b6953039c36b1e32b2a3ac725ddce7ea`.
+Compass is strictly untrained. The prospective fixed path uses the CVPR
+paper's full-image sigma `4` setting (radius `12`) with author defaults:
+spacing `1`, a 180-degree edge model, six wedges per quadrant, and 10 color
+clusters. The output is the maximum-EMD strength in `[0,1]`; literature
+examples are qualitative and remain separate from matched validation.
+
+The registered next action is `stage15f_compass_build_preflight`, a
+dataset-free hash/build/synthetic-smoke test of the unmodified 2004 MEX code.
+It must record the effect of the source's `srand(clock())` randomized
+clustering without fixing its seed. Only a pass may advance to one fixed
+BSDS500-validation reproduction. Harness repair is allowed if needed, but no
+author-source change, scale/parameter tuning, surrogate, or MFI architecture
+work is authorized.
