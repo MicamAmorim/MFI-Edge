@@ -765,3 +765,19 @@ contract audit. Do not combine the patent and BESD implementation into a
 surrogate or score a detector. If the conflicts remain, close Stage 15g as
 fidelity-unresolved and proceed to the Stage-15h literature checkpoint. MFI
 architecture remains unchanged through Stage 15o.
+
+### Stage-15g closure and Stage-15h transition
+
+The dataset-free fidelity preflight confirmed that public primary material does
+not resolve the target article's output-affecting implementation contract. No
+detector or dataset was run, no patent/BESD hybrid was scored, and Stage 15g
+closes fidelity-unresolved without changing MFI. The reported metrics remain
+documentary and protocol-unverified.
+
+The registered next action is
+`stage15h_adaptive_surround_reproduction_checkpoint`, a high-reasoning live
+primary-source and official-code audit of Zhang et al.'s adaptive multiscale V1
+surround-modulation detector (DOI `10.1007/s11760-024-03634-y`). It must resolve
+code availability, fixed parameters, training class, output conventions, and
+matched-validation feasibility before one fidelity-labeled run or preflight.
+Architecture invention remains prohibited through Stage 15o.

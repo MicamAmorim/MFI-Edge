@@ -927,3 +927,17 @@ contract audit. It may not execute a detector, read a benchmark, or combine the
 patent and BESD code into a surrogate. If the recorded conflicts remain, Stage
 15g closes fidelity-unresolved and advances to the Stage-15h checkpoint. MFI
 architecture remains unchanged and frozen through Stage 15o.
+
+The preflight confirmed those conflicts and closed Stage 15g as
+fidelity-unresolved without executing a detector or reading a dataset. The
+patent and BESD implementation remain related evidence, not an executable
+contract for the target article, and no surrogate may be synthesized from
+them.
+
+The active next action is
+`stage15h_adaptive_surround_reproduction_checkpoint`, a high-reasoning live
+primary-source and official-code audit of Zhang et al.'s adaptive multiscale V1
+surround-modulation detector. It must settle implementation fidelity, fixed
+parameters, training class, output conventions, and matched-validation
+feasibility before registering one detector run or dataset-free fidelity
+preflight. MFI remains frozen through Stage 15o.

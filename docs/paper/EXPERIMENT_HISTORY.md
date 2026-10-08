@@ -2043,3 +2043,22 @@ a deterministic, dataset-free implementation contract. It may not score a
 hybrid surrogate or read any benchmark. If article-specific primary material
 does not resolve every output-affecting item, Stage 15g will close
 fidelity-unresolved and advance to Stage 15h without changing MFI.
+
+### Stage 15g closure: fidelity unresolved
+
+The deterministic preflight confirmed that the public primary-source contract
+is incomplete. No article-specific code or supplement was found, the related
+patent is not proven equivalent, and the BESD repository implements a different
+paper. Output-affecting conflicts remain in Gaussian and surround construction,
+weights, texture scales, nonlinearities, endpoint modulation, fusion,
+postprocessing, and evaluation protocol. No detector or dataset was run, and no
+hybrid surrogate was scored. Stage 15g therefore closes fidelity-unresolved;
+its reported and patent metrics remain documentary and protocol-unverified.
+
+The single registered next action is
+`stage15h_adaptive_surround_reproduction_checkpoint`, a high-reasoning live
+primary-literature and official-code audit of Zhang et al.'s adaptive
+multiscale V1 surround-modulation model. It must resolve executable fidelity,
+fixed parameters, training class, output conventions, and metric compatibility
+before one fidelity-labeled run or preflight. MFI remains unchanged, and no
+architecture invention is authorized before Stage 15p.
