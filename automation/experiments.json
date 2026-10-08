@@ -631,6 +631,19 @@
       "results/automation/stage15a_evaluator_path_equivalence_retry2/per_image_raw_path_deltas.csv"
     ]
   },
+  "stage15a_source_matcher_rebuild": {
+    "description": "Fixture-only build diagnostic compiling correspondPixels from the exact pinned BSDS500 C++ sources with the selected MATLAB compiler, then repeating the shipped five-image fixture in fresh processes; no validation scoring, tolerance change, vendored edit, or architecture work.",
+    "runner": "python",
+    "path": "automation/stage15a_source_matcher_rebuild.py",
+    "args": [],
+    "role": "evaluator_diagnostic",
+    "feedback_policy": "fixture_source_build_only_no_dataset_feedback_no_architecture_change",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage15a_source_matcher_rebuild/summary.json",
+      "results/automation/stage15a_source_matcher_rebuild/aggregate_rebuild_deltas.csv"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

@@ -947,6 +947,21 @@ attachment-only retry is registered with the PNG prediction directory; it
 does not alter the pinned evaluator, matcher, fixture artifacts, aggregation,
 or tolerance, and still does not score BSDS500 validation.
 
+The corrected path-equivalence retry completed, but it did not meet its exact
+agreement condition. Wrapper-versus-`edgesEvalImg` aggregate-table differences
+reached `0.000757`, and two fresh runs of the identical Piotr Dollar path
+differed by as much as `0.000507`; raw integer match counts changed by up to
+eight between paths and up to seven between repeats. Because the two evaluator
+paths use the byte-identical pinned Windows matcher, repeat drift rules out a
+simple wrapper-only explanation and demonstrates that this binary/path is not
+deterministic enough to certify the `1e-4` fixture tolerance on this platform.
+
+Stage 15a remains open. A fixture-only source-build diagnostic is registered:
+compile `correspondPixels` from the exact pinned BSDS500 C++ sources into the
+result directory with the selected MATLAB compiler and repeat the unchanged
+fixture in fresh processes. No vendored file, tolerance, validation result, or
+detector architecture is changed. Stage 15b remains deferred.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

@@ -397,6 +397,16 @@ three-dimensional threshold map. A second attachment-only retry now supplies
 the PNG predictions. This changes no evaluator semantics, fixture tolerance,
 validation result, or architecture.
 
+The corrected retry then exposed genuine repeat instability in the pinned
+Windows matcher path: identical fresh-process runs differed by up to
+`0.000507` in aggregate tables and seven raw matched-count units, while the two
+nominally compatible evaluator wrappers differed by up to `0.000757`. This
+fails the exact-agreement branch and is too large for the registered `1e-4`
+fixture certification. The next and only registered action rebuilds the exact
+pinned Berkeley C++ matcher sources outside the vendor tree, records compiler
+provenance, and repeats only the five-image fixture. Full validation and Stage
+15b remain deferred.
+
 Scientific conclusion:
 
 > **Positive multiscale edge-signature evidence is reproducibly useful on UDED development. Anti-texture evidence is stable and interpretable, but its incremental value is unresolved. External transfer must decide whether either mechanism generalizes.**

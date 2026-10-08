@@ -330,6 +330,17 @@ map. This is a diagnostic-harness defect and provides no evaluator or detector
 feedback. A second attachment-only retry is registered with the correct PNG
 inputs, leaving evaluator code, matcher, tolerance, and architecture unchanged.
 
+The corrected retry completed but failed its equivalence condition. The two
+fresh runs of the identical Piotr Dollar path differed by up to `0.000507` in
+aggregate tables and seven raw match-count units; wrapper-versus-Piotr-Dollar
+differences reached `0.000757`. Thus the pinned Windows binary/path is not
+repeatable enough to certify the registered `1e-4` fixture tolerance, and the
+drift cannot be assigned solely to the repository wrapper. Stage 15a remains
+open. One fixture-only diagnostic is registered to compile the exact pinned
+BSDS500 C++ matcher sources outside the vendor tree, record build provenance,
+and repeat the unchanged fixture. Full validation, Stage 15b, and architecture
+work remain deferred.
+
 ## d-Choquet terminology
 
 Do not conflate these:
