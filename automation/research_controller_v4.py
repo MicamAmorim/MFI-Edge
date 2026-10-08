@@ -15,7 +15,15 @@ backs off and retries instead of terminating the scientific program.
 from pathlib import Path
 import json
 import os
+import sys
 import time
+
+# Some Windows/Codex environments run Python with safe_path=True, which removes
+# the script directory from sys.path. The v4 controller imports sibling modules
+# from automation/, so add this directory explicitly before those imports.
+_THIS_DIR = Path(__file__).resolve().parent
+if str(_THIS_DIR) not in sys.path:
+    sys.path.insert(0, str(_THIS_DIR))
 
 import research_controller_v3 as v3
 import official_eval_hook
