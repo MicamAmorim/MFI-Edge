@@ -1570,3 +1570,28 @@ against that immutable, hash-verified checkout; it does not change global Git
 configuration or author bytes. `stage15b_sed_exact_reproduction_retry1` is
 registered with the detector, parameters, split, serialization, fixed preview,
 and official protocol unchanged.
+
+### Stage 15b exact SED reproduction — matched validation baseline established
+
+The harness-only retry completed the pinned, unmodified author MATLAB full
+model on all 100 native-resolution BSDS500 validation images. Under the common
+repository official path, SED obtained ODS/OIS/AP
+`0.678546/0.709152/0.712814`, compared with
+`0.545424/0.579337/0.534296` for the unchanged compact MFI incumbent. The
+corresponding deltas were `+0.133122/+0.129816/+0.178518`. Mean detector runtime
+was `3.419` seconds per image (`341.876` seconds total; MATLAB export only).
+
+This is a matched development reproduction, not an MFI promotion or a final
+SOTA claim. SED remains classified as strictly untrained with fixed author
+parameters, and its published BSDS500-test values remain documentary and
+separate. The deterministic positions 1/50/100 preview is at
+`results/local_dev/stage15b_sed_exact_reproduction/best_method_preview.png`
+with panels input / mean annotation display / MFI incumbent / exact SED. The
+Windows matcher remains stochastic and reference-uncertified, so these local
+metrics can support Stage-15 diagnosis but cannot certify a final claim.
+
+Stage 15b closes with SED retained as the first verified exact-code non-trained
+reference baseline. No SED tuning or MFI architecture change is authorized.
+The next registered action is `stage15c_vcm_reproduction_checkpoint`, a live
+primary-literature and provenance audit of Lu et al.'s vector co-occurrence
+morphological colour-edge detector before any implementation or scoring.

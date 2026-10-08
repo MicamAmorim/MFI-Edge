@@ -477,3 +477,23 @@ This provides no scientific feedback. A harness-only retry is registered with
 a process-local trust override limited to the immutable, hash-verified author
 checkout; no global Git setting, author byte, detector parameter, dataset role,
 serialization rule, preview position, or evaluator protocol changes.
+
+### Stage-15b exact SED reproduction complete; Stage-15c checkpoint registered
+
+The harness-only retry completed the exact pinned author MATLAB SED full model
+on all 100 native-resolution BSDS500 validation images. Under the common local
+official path, SED obtained ODS/OIS/AP
+`0.678546/0.709152/0.712814`, exceeding the unchanged MFI incumbent by
+`+0.133122/+0.129816/+0.178518`. Mean detector export runtime was `3.419`
+seconds per image. The fixed positions 1/50/100 preview, per-image maps,
+runtimes, and hashes are complete.
+
+SED is retained only as a strictly untrained exact-code reference baseline;
+this reproduction does not promote or alter MFI, and the paper's BSDS500-test
+numbers remain separate. The unmodified Windows matcher is still stochastic
+and reference-uncertified, so no final SOTA claim may rely on the local score.
+The next action is `stage15c_vcm_reproduction_checkpoint`: live primary-source
+research must resolve code availability, fixed parameters, training class, and
+metric compatibility for Lu et al.'s vector co-occurrence morphological colour
+edge detector before registering one fidelity-labeled run. Architecture
+invention remains prohibited through Stage 15o.

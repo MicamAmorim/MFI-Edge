@@ -746,6 +746,18 @@
       "results/official_eval/stage15b_sed_exact_reproduction_retry1/summary.json"
     ]
   },
+  "stage15c_vcm_reproduction_checkpoint": {
+    "description": "High-reasoning live-literature and provenance checkpoint for the Stage-15c vector co-occurrence morphological colour-edge audit after exact SED reproduction; resolves code, fixed parameters, training class, and metric compatibility before any detector run.",
+    "runner": "python",
+    "path": "automation/stage15c_vcm_reproduction_checkpoint.py",
+    "args": [],
+    "role": "research_planning",
+    "feedback_policy": "primary_literature_and_reproduction_protocol_only_no_dataset_feedback_no_architecture_change",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage15c_vcm_reproduction_checkpoint/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

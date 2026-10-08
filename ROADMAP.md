@@ -681,3 +681,19 @@ account. The active action is now
 only for the immutable, hash-verified checkout. No author source, detector
 parameter, dataset role, output convention, preview position, or evaluation
 protocol changes.
+
+Stage 15b is now complete. The exact author MATLAB SED full model scored
+BSDS500-validation ODS/OIS/AP `0.678546/0.709152/0.712814`, improving over the
+unchanged MFI incumbent by `+0.133122/+0.129816/+0.178518` under the same local
+official path. It is retained as a strictly untrained external baseline, not
+integrated into MFI. The fixed positions 1/50/100 preview and per-image maps,
+runtimes, and hashes are complete. The Stage-15a caveat remains: the Windows
+matcher is stochastic and not reference-certified, so no final claim may rely
+on this result alone.
+
+The active next action is `stage15c_vcm_reproduction_checkpoint`. It will use
+live primary-source research to resolve author code, fixed parameters,
+training class, output convention, and Berkeley-protocol compatibility for Lu
+et al.'s 2021 vector co-occurrence morphological colour-edge method before one
+fidelity-labeled reproduction is registered. Architecture invention remains
+forbidden through Stage 15o.
