@@ -929,6 +929,15 @@ in a fresh MATLAB process. Exact agreement will rule out the compatibility
 transform, aggregation, and process nondeterminism without relaxing the
 registered tolerance or scoring BSDS500 validation.
 
+The first launch of that path-equivalence diagnostic stopped before matching:
+the pinned `edgesEvalImg` source depends on `getPrmDflt` from Piotr Dollár's
+separate MATLAB toolbox, while only the pinned `edges` repository was on the
+MATLAB path. No fixture result was produced. An attachment-only retry is
+registered with a strict repository-local name/value parser covering the
+explicit `out`, `thrs`, `maxDist`, and `thin` arguments. Vendored evaluator
+code, matcher binaries, fixture inputs, aggregation, and the `1e-4` decision
+tolerance remain unchanged; full validation scoring remains deferred.
+
 This document reconstructs the experimental decisions discussed during development so the future manuscript can distinguish **historical exploration**, **current evidence**, and **results that are publication-grade only after rerunning with the final protocol**.
 
 ## Status labels

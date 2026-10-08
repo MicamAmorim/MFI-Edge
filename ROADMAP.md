@@ -384,6 +384,12 @@ it. The next registered fixture-only test compares the repository wrapper with
 the documented BSDS-compatible `edgesEvalImg` path under the identical Windows
 matcher and repeats it in a fresh MATLAB process; no validation images or new
 detector maps are involved.
+The first launch stopped before matching because the pinned `edgesEvalImg`
+requires `getPrmDflt` from Piotr Dollár's separate MATLAB toolbox. A strict
+repository-local parser for the diagnostic's explicit name/value arguments is
+now registered for one attachment-only retry. This changes neither evaluator
+math nor the frozen fixture tolerance; Stage 15a, full validation, and Stage
+15b remain pending that result.
 
 Scientific conclusion:
 

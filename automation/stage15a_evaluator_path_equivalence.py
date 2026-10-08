@@ -15,8 +15,9 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 CFG = ROOT / "evaluation" / "bsds_official" / "config.json"
 PRIOR = ROOT / "results" / "local_dev" / "stage15a_protocol_audit" / "reference_eval"
-OUT = ROOT / "results" / "automation" / "stage15a_evaluator_path_equivalence"
+OUT = ROOT / "results" / "automation" / "stage15a_evaluator_path_equivalence_retry"
 MATLAB_HELPERS = ROOT / "evaluation" / "bsds_official" / "matlab"
+PDOLLAR_COMPAT = MATLAB_HELPERS / "stage15a_pdollar_compat"
 
 
 def _q(path: Path) -> str:
@@ -80,6 +81,7 @@ def main() -> int:
 
     expression_base = (
         f"addpath('{_q(MATLAB_HELPERS)}');"
+        f"addpath('{_q(PDOLLAR_COMPAT)}');"
         "stage15a_compare_eval_paths("
         f"'{_q(pdollar)}','{_q(benchmark)}','{_q(fixture / 'images')}',"
         f"'{_q(fixture / 'groundTruth')}',{{out}});"
@@ -154,6 +156,11 @@ def main() -> int:
         "detector_predictions_generated": False,
         "full_validation_scored": False,
         "registered_tolerance_changed": False,
+        "dependency_repair": (
+            "Repository-local strict name/value parser supplies the documented "
+            "getPrmDflt dependency omitted from the pinned edges repository. It "
+            "does not alter edgesEvalImg, matcher, fixture, or evaluator math."
+        ),
         "comparison": {
             "paths": [
                 "repository syntax-compatible pinned evaluation_bdry_image",

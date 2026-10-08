@@ -316,8 +316,12 @@ in aggregate, per-image, and per-threshold tables, but could not yet separate a
 wrapper defect from compiled-platform variation. A fixture-only equivalence
 test is registered between the repository compatibility path and Piotr
 Dollár's documented BSDS-compatible `edgesEvalImg`, using the same pinned
-Windows matcher and fresh-process repetition. Full validation and Stage 15b
-remain deferred; no architecture work is authorized.
+Windows matcher and fresh-process repetition. Its first launch stopped before
+matching because the pinned `edgesEvalImg` depends on `getPrmDflt` from
+Dollár's separate MATLAB toolbox. An attachment-only retry is registered with
+a strict repository-local parser for the explicit diagnostic arguments; no
+vendored evaluator code, tolerance, fixture, or detector is changed. Full
+validation and Stage 15b remain deferred; no architecture work is authorized.
 
 ## d-Choquet terminology
 
