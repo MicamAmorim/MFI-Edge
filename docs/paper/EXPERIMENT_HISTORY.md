@@ -1595,3 +1595,31 @@ reference baseline. No SED tuning or MFI architecture change is authorized.
 The next registered action is `stage15c_vcm_reproduction_checkpoint`, a live
 primary-literature and provenance audit of Lu et al.'s vector co-occurrence
 morphological colour-edge detector before any implementation or scoring.
+
+### Stage 15c literature/provenance checkpoint - fidelity preflight registered
+
+The open-access primary paper confirms a strictly untrained HSV/HDHSV vector
+morphology method with 8-level quantization, co-occurrence-weighted local
+support, and adaptive dilation/erosion structuring elements. Table 5 reports
+BSDS500 boundary ODS/OIS/AP `0.76/0.79/0.77`; these values remain documentary.
+The paper does not bind the scored split or specify the matcher version,
+distance tolerance, thinning, threshold grid, annotation treatment, or output
+map convention, so metric compatibility with the repository's Berkeley path
+is unverified.
+
+No official author code or implementation supplement was located through the
+publisher, DOI record, indexed web search, or GitHub search. The paper also
+omits output-affecting fixed details including the local window R, spatial and
+range scales, sigma terms, d/T/S/J values, hue reference, HSV coordinate
+construction, padding/tie rules, vector-to-scalar map conversion, the selected
+gradient variant, normalization, and postprocessing. Choosing these values
+would create a repository-specific surrogate rather than reproduce the
+published detector.
+
+The single next action is therefore `stage15c_vcm_fidelity_preflight`, a
+deterministic dataset-free implementation-contract audit. It generates no edge
+maps and requires no official-evaluation manifest or qualitative preview. Its
+registered rule forbids a detector run unless fixed primary evidence resolves
+all output-affecting blockers without validation-driven choices; otherwise
+Stage 15c closes as fidelity-unresolved and the campaign proceeds to the
+Stage-15d Edge Drawing/EDPF checkpoint. No MFI architecture changes are made.

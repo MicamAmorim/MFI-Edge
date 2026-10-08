@@ -697,3 +697,14 @@ training class, output convention, and Berkeley-protocol compatibility for Lu
 et al.'s 2021 vector co-occurrence morphological colour-edge method before one
 fidelity-labeled reproduction is registered. Architecture invention remains
 forbidden through Stage 15o.
+
+The Stage-15c primary-source checkpoint found the method strictly untrained but
+not reproducible exactly or faithfully from public material. No author code or
+supplement was located, and the paper omits multiple fixed parameters, the
+vector-to-scalar output convention, gradient selection/postprocessing, and the
+exact BSDS evaluation path. Its reported ODS/OIS/AP `0.76/0.79/0.77` remain
+documentary and protocol-unverified. The active next action is
+`stage15c_vcm_fidelity_preflight`, a dataset-free implementation-contract audit
+that will not invent parameters, emit maps, or score a surrogate. If the
+contract remains unresolved, Stage 15c closes and the reproduction sequence
+advances to Stage 15d; architecture invention remains forbidden.

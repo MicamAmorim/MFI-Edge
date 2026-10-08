@@ -497,3 +497,16 @@ research must resolve code availability, fixed parameters, training class, and
 metric compatibility for Lu et al.'s vector co-occurrence morphological colour
 edge detector before registering one fidelity-labeled run. Architecture
 invention remains prohibited through Stage 15o.
+
+### Stage-15c checkpoint - VCM fidelity unresolved
+
+The primary Lu et al. paper describes a strictly untrained HSV/HDHSV vector
+morphology detector and reports BSDS500 ODS/OIS/AP `0.76/0.79/0.77`, but no
+author code or supplement was located. The paper omits enough fixed parameters
+and output/evaluator conventions that neither an exact reproduction nor a
+faithful reimplementation is currently justified; the reported metrics remain
+documentary and protocol-unverified. A single deterministic, dataset-free
+`stage15c_vcm_fidelity_preflight` is registered to preserve the missing
+implementation contract. Do not invent parameters or score a VCM surrogate.
+If the preflight confirms the blockers, close Stage 15c as unresolved and
+advance to the Stage-15d Edge Drawing/EDPF checkpoint without changing MFI.
