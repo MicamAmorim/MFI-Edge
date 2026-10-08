@@ -605,3 +605,14 @@ attachment-only retry is registered to import only the exact installed
 core/imgproc/imgcodecs and codec artifacts required by the unchanged author
 source surface. The `/MT` runtime, immutable sources, smoke test, validation
 deferral, and architecture remain unchanged.
+
+The seventh retry passed. The immutable author `ED.cpp`/`EDColor.cpp`/`EDPF.cpp`
+surface compiled against pinned OpenCV 3.4.20, and two executions on the fixed
+synthetic input produced the same native binary map (`122` edge pixels, values
+`0/255`). No dataset was read. The registered next action is
+`stage15d_edpf_exact_reproduction`: execute the unmodified grayscale author
+EDPF over all 100 native-resolution BSDS500-validation images, retain the
+binary maps, per-image runtimes and hashes, emit the fixed positions 1/50/100
+preview, and attach the unchanged official validation path against the
+incumbent. This is a reproduction baseline, not an MFI promotion experiment;
+EDPF parameters and MFI architecture remain frozen.

@@ -925,6 +925,23 @@
       "results/automation/stage15d_edpf_build_preflight_retry7/smoke.log"
     ]
   },
+  "stage15d_edpf_exact_reproduction": {
+    "description": "Exact unmodified-author-code grayscale EDPF reproduction on all 100 native-resolution BSDS500 validation images after the pinned build preflight passed; preserves the native binary map, records per-image runtime/hashes, emits the fixed positions 1/50/100 preview, and attaches the common official evaluator against the unchanged incumbent.",
+    "runner": "python",
+    "path": "run_stage15d_edpf_reproduction.py",
+    "args": [],
+    "role": "matched_protocol_reproduction",
+    "feedback_policy": "development_validation_reproduction_only_no_edpf_tuning_no_mfi_architecture_change",
+    "one_shot": true,
+    "result_files": [
+      "results/local_dev/stage15d_edpf_exact_reproduction/summary.json",
+      "results/local_dev/stage15d_edpf_exact_reproduction/official_eval_manifest.json",
+      "results/local_dev/stage15d_edpf_exact_reproduction/best_method_preview.png",
+      "results/local_dev/stage15d_edpf_exact_reproduction/predictions/export_manifest.json",
+      "results/local_dev/stage15d_edpf_exact_reproduction/predictions/per_image_runtime.csv",
+      "results/local_dev/stage15d_edpf_exact_reproduction/predictions/map_hashes.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

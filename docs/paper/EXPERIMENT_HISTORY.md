@@ -1788,3 +1788,24 @@ CMake import repair. It directly imports only the exact installed artifacts
 required by the unchanged `ED.cpp`/`EDColor.cpp`/`EDPF.cpp` surface, retains
 the `/MT` runtime and immutable source revisions, and repeats the unchanged
 synthetic smoke test. Validation and MFI architecture work remain deferred.
+
+### Stage 15d dependency preflight passed; exact reproduction registered
+
+Retry 7 completed the preregistered source/build gate. The immutable ED_Lib
+commit `69b8d081bd6d28192d816ec0ed02aff9186d73c1` compiled from unmodified
+`ED.cpp`, `EDColor.cpp`, and `EDPF.cpp` against the pinned OpenCV 3.4.20 peeled
+commit `1eb1d4c3708f2bd95562cedd58d28461505c2d37`. The fixed synthetic input was
+processed twice and produced identical native `CV_8UC1` binary output with 122
+edge pixels and range `0/255`. No dataset or benchmark was read, so this is
+build-fidelity evidence rather than detector-performance evidence.
+
+The single next action is `stage15d_edpf_exact_reproduction`. It runs the exact
+grayscale author `EDPF(Mat)` path over all 100 native-resolution BSDS500
+validation images, serializes the binary output unchanged, records per-image
+runtime and map hashes, and emits `best_method_preview.png` from sorted
+positions 1, 50, and 100 with panel order input / mean-GT display / incumbent /
+exact EDPF. Its manifest attaches the default official evaluator against the
+unchanged incumbent. Native binary output provides only one nontrivial
+operating point, so AP will be reported with that limitation. The Stage-15a
+stochastic/reference-uncertified matcher caveat remains. This is a reproduction
+baseline and cannot tune EDPF or modify MFI.

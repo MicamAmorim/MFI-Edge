@@ -801,3 +801,14 @@ imports only the installed core/imgproc/imgcodecs and codec artifacts required
 by the unchanged author source surface. The matched `/MT` runtime, synthetic
 smoke input, detector parameters, validation deferral, and architecture remain
 unchanged.
+
+Retry 7 passed the complete dependency gate. The hash-verified, unmodified
+author EDPF sources compiled against the pinned OpenCV 3.4.20 artifacts, and
+the unchanged deterministic smoke test returned the same binary map in both
+executions (`122` edge pixels; only `0/255`). The active action is now
+`stage15d_edpf_exact_reproduction`, the single registered native-resolution
+BSDS500-validation run. It preserves the author binary output, records
+per-image runtime and hashes, emits the preregistered positions 1/50/100
+qualitative panel, and attaches the common official evaluator. This is a
+matched-protocol reproduction baseline only; MFI architecture work remains
+deferred.
