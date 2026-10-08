@@ -708,6 +708,25 @@
       "results/automation/stage15b_sed_reproduction_checkpoint/summary.json"
     ]
   },
+  "stage15b_sed_exact_reproduction": {
+    "description": "Exact unmodified author-MATLAB reproduction of the fixed, strictly untrained SED full model on native-resolution BSDS500 validation, with per-image maps/runtime/hashes, deterministic positions 1/50/100 preview, and matched official attachment against the unchanged incumbent.",
+    "runner": "python",
+    "path": "run_stage15b_sed_reproduction.py",
+    "args": [],
+    "role": "matched_protocol_reproduction",
+    "feedback_policy": "bsds500_validation_development_reproduction_only_no_sed_tuning_no_mfi_architecture_change",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage15b_sed_exact_reproduction/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage15b_sed_exact_reproduction/summary.json",
+      "results/local_dev/stage15b_sed_exact_reproduction/best_method_preview.png",
+      "results/local_dev/stage15b_sed_exact_reproduction/official_eval_manifest.json",
+      "results/local_dev/stage15b_sed_exact_reproduction/predictions/export_manifest.json",
+      "results/local_dev/stage15b_sed_exact_reproduction/predictions/per_image_runtime.csv",
+      "results/local_dev/stage15b_sed_exact_reproduction/predictions/map_hashes.json",
+      "results/official_eval/stage15b_sed_exact_reproduction/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

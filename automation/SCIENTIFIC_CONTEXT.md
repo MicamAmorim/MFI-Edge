@@ -449,3 +449,24 @@ reproduction checkpoint. It must establish author-code availability, published
 fixed parameters, training classification, implementation fidelity, and the
 matched evaluation plan before registering one detector run. Architecture
 invention remains prohibited through Stage 15o.
+
+### Stage-15b checkpoint closure and exact reproduction registration
+
+Primary-source review verified the authors' public MATLAB SED implementation
+at commit `11514b80162e5cd93fd244515189649656105a14`. The method is strictly
+untrained with fixed author parameters, and the repository states that the
+MATLAB implementation produced the manuscript F-measures; the C++ path was
+timing-only. The paper's colour BSDS500-test ODS/OIS/AP
+`0.71/0.74/0.74` remains documentary and separate from our validation run. A
+one-image R2023a smoke test passed with finite native-size output in `[0,1]`.
+No explicit source license was found, so the hash-verified author code remains
+an ignored local dependency and is not redistributed.
+
+The registered next action is `stage15b_sed_exact_reproduction`: run the
+unmodified author full model over native-resolution BSDS500 validation, emit
+per-image maps/runtime/hashes and fixed positions 1/50/100 preview, then attach
+the default official validation evaluator against the unchanged incumbent.
+This is a baseline reproduction, not an MFI promotion experiment. Stage-15a's
+stochastic/reference-uncertified Windows matcher caveat remains, and the
+fixed-seed diagnostic matcher is forbidden for dataset scoring. No SED tuning
+or MFI architecture change is authorized.

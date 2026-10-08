@@ -660,8 +660,16 @@ reference reproduction verification: the controlled matcher is diagnostic-only
 and must never score datasets, while the unmodified official Windows path
 remains stochastic and uncertified for final claims.
 
-The active next action is `stage15b_sed_reproduction_checkpoint`, a
-high-reasoning/live-literature step that must recover the exact SED method,
-author code or a clearly fidelity-labeled alternative, frozen published
-parameters, training classification, and protocol before one executable
-reproduction is registered. No MFI architecture work is authorized.
+The Stage-15b checkpoint recovered and smoke-tested the unmodified author
+MATLAB SED implementation at pinned commit
+`11514b80162e5cd93fd244515189649656105a14`. It is classified as strictly
+untrained with fixed author parameters; the paper's BSDS500-test
+`0.71/0.74/0.74` remains documentary and separate from local validation.
+
+The active next action is `stage15b_sed_exact_reproduction`. It runs the exact
+author full model on native-resolution BSDS500 validation, writes per-image
+maps/runtime/hashes and the fixed positions 1/50/100 qualitative panel, then
+attaches the unchanged official validation path against the incumbent. The
+author source remains an ignored local dependency because no explicit license
+was found. This is a reproduction baseline only; no MFI architecture work or
+post-result SED tuning is authorized.
