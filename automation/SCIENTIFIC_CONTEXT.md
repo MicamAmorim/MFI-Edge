@@ -616,3 +616,23 @@ binary maps, per-image runtimes and hashes, emit the fixed positions 1/50/100
 preview, and attach the unchanged official validation path against the
 incumbent. This is a reproduction baseline, not an MFI promotion experiment;
 EDPF parameters and MFI architecture remain frozen.
+
+### Stage-15d exact EDPF reproduction complete; Stage-15e checkpoint registered
+
+The exact unmodified-author-code grayscale EDPF run completed on all 100
+native-resolution BSDS500 validation images. Under the common local official
+path, EDPF obtained ODS/OIS/AP `0.548048/0.548596/0.000000`, changing the
+unchanged MFI incumbent by `+0.002577/-0.030732/-0.534289`. The AP value is a
+documented consequence of evaluating the native binary map, which exposes only
+one nontrivial operating point; it is not evidence of a dense confidence
+ranking. Mean detector runtime was about `0.00485` seconds per image. The
+fixed positions 1/50/100 preview, all binary maps, runtimes, and hashes are
+complete.
+
+EDPF is retained only as an exact, strictly untrained chain-first baseline.
+It does not alter or promote MFI, and no EDPF parameter may be tuned from this
+result. The Stage-15a stochastic/reference-uncertified Windows matcher caveat
+still applies. The registered next action is
+`stage15e_co_sco_reproduction_checkpoint`: a live primary-source and code audit
+of the CO/SCO color-opponent contextual baselines before any fidelity-labeled
+run. Architecture invention remains prohibited through Stage 15o.

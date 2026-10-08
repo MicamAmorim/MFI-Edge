@@ -1809,3 +1809,39 @@ unchanged incumbent. Native binary output provides only one nontrivial
 operating point, so AP will be reported with that limitation. The Stage-15a
 stochastic/reference-uncertified matcher caveat remains. This is a reproduction
 baseline and cannot tune EDPF or modify MFI.
+
+### Stage 15d exact EDPF reproduction result
+
+The exact hash-verified author implementation completed on all 100
+native-resolution BSDS500 validation images. The executed path was the fixed
+grayscale `EDPF(Mat)` constructor from ED_Lib commit
+`69b8d081bd6d28192d816ec0ed02aff9186d73c1`, compiled without source changes
+against pinned OpenCV 3.4.20. It is strictly untrained and emitted the native
+binary `CV_8UC1` maps unchanged. Total detector time was `0.4847363` seconds,
+or about `0.00485` seconds per image; batch export wall time was `0.8308333`
+seconds.
+
+Under the common local official BSDS500-validation path, EDPF obtained
+ODS/OIS/AP `0.548048/0.548596/0.000000`. Relative to the unchanged compact
+MFI controller (`0.545470/0.579328/0.534289`), the deltas were
+`+0.002577/-0.030732/-0.534289`. The native detector has only one nontrivial
+binary operating point, so AP is retained for protocol completeness but must
+not be interpreted as a dense-ranking comparison. The local matcher remains
+stochastic and reference-uncertified under the Stage-15a caveat, so this is
+development reproduction evidence and not a final SOTA claim.
+
+The deterministic qualitative panel is
+`results/local_dev/stage15d_edpf_exact_reproduction/best_method_preview.png`
+for sorted validation positions 1, 50, and 100. Its columns are input, mean
+annotator boundary for display, retained MFI incumbent, and exact EDPF. All
+100 maps, hashes, and per-image runtimes are preserved. EDPF is retained as an
+exact chain-first, chain-level Helmholtz baseline; it is not promoted into MFI
+and will not be tuned. Stage 14t remains a non-equivalent connected-component
+surrogate.
+
+The next action is `stage15e_co_sco_reproduction_checkpoint`, a high-reasoning
+live-primary-source and official-code audit of Yang et al.'s CO/SCO contextual
+color baselines. It must resolve provenance, license, fixed variants and
+parameters, training class, output/evaluator conventions, and the matched
+validation plan before exactly one fidelity-labeled action is registered. MFI
+architecture invention remains prohibited through Stage 15o.

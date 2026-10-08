@@ -812,3 +812,20 @@ per-image runtime and hashes, emits the preregistered positions 1/50/100
 qualitative panel, and attaches the common official evaluator. This is a
 matched-protocol reproduction baseline only; MFI architecture work remains
 deferred.
+
+The exact Stage-15d EDPF reproduction completed on all 100 BSDS500 validation
+images. It obtained local official-path ODS/OIS/AP
+`0.548048/0.548596/0.000000`, versus incumbent
+`0.545470/0.579328/0.534289`; the binary author output makes AP a documented
+single-operating-point limitation. EDPF is retained as an exact, strictly
+untrained chain-first reference baseline and does not change MFI. Its maps,
+runtime/hashes, and fixed positions 1/50/100 preview are complete, while the
+Stage-15a matcher-certification caveat remains.
+
+The active next action is `stage15e_co_sco_reproduction_checkpoint`. It will
+use live primary literature and official/author-designated code to audit the
+CO and SCO color-opponent contextual methods, resolve immutable provenance,
+fixed variants and parameters, training class, output conventions, and metric
+compatibility, then register exactly one exact reproduction or fidelity
+preflight. No dataset result may select parameters or variants, and MFI
+architecture invention remains forbidden through Stage 15o.
