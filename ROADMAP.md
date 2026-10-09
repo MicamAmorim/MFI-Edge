@@ -1219,3 +1219,20 @@ live-primary-literature escalation must choose exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It must address the recurrent cross-dataset localizer reversal without using a
 dataset-identity router or tuning the failed Stage-16b, 16d, or 16f families.
+
+## Stage 16g closed - connected hysteresis persistence selected
+
+Stage 16g selected a fixed all-threshold extension of Canny hysteresis over the
+unchanged compact-MFI score. The mechanism boosts a weak response only when it
+is 8-connected to a stronger seed under the fixed 2:1 high/low relation. It
+cannot lower a serialized incumbent score or introduce a pixel outside the
+incumbent support, so it preserves the retained median-conditioned
+grayscale-Scharr+NMS localizer instead of risking another cross-dataset
+localizer reversal.
+
+The active next action is `stage16h_hysteresis_persistence_boost`. UDED
+selection uses 5x3 leakage-free CV and BSDS500 validation uses the official
+attachment. Promotion requires the preregistered F1/recall/precision/stability
+conditions, exact score-floor/support invariants, and BSDS ODS/OIS/AP benefit.
+The fixed ratio, 8-connectivity, 8-bit lattice, threshold grid, compact
+context, and localizer may not be tuned from the result.

@@ -2537,3 +2537,31 @@ interpretable non-neural falsification and preregister a conjunctive UDED-
 selection/BSDS500-validation rule. It must account for the repeated BSDS-
 positive/UDED-negative localizer pattern without using dataset identity or
 protected feedback.
+
+### Stage 16g checkpoint closure; Stage 16h hysteresis persistence registered
+
+The live primary-literature checkpoint selected a fixed connected-threshold
+mechanism that preserves the incumbent localizer. Canny's original hysteresis
+uses strong seeds to retain connected weak contour responses, and its Figure 7
+demonstrates the fixed `T1`/`2*T1` relation used here. Salembier, Oliveras, and
+Garrido's connected-operator theory provides the upper-level-component view
+and the contour-support preservation rationale.
+
+The registered next action is `stage16h_hysteresis_persistence_boost`. It
+serializes the unchanged compact-MFI score to the common 8-bit lattice and,
+over all 255 high levels, assigns each supported pixel the greatest high level
+for which it is 8-connected through pixels above half that level to a strong
+seed. The candidate is pointwise no smaller than the serialized incumbent and
+has exactly the same nonzero support. Thus median conditioning, the compact
+Choquet context, grayscale Scharr+NMS localization, and fold fitting are all
+unchanged.
+
+Stage 16h is a repository-specific soft hysteresis extension, not an exact
+Canny or max-tree reproduction. It is distinct from Stage 14i endpoint
+creation, Stage 14t NFA attenuation, Stage 16d region-shape stability, Stage
+16f image conditioning, and Stage 16b expert averaging. Promotion is
+conjunctive across UDED repeated CV and official BSDS500 validation, including
+a registered UDED recall gain and asserted support/floor invariants. No
+high/low ratio, connectivity, quantization, propagation, threshold, context,
+or localizer parameter may be tuned from the outcome. The compact controller
+remains incumbent pending the result.

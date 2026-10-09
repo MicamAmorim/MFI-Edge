@@ -1390,6 +1390,26 @@
       "results/automation/stage16g_generation2_mechanism_checkpoint/summary.json"
     ]
   },
+  "stage16h_hysteresis_persistence_boost": {
+    "description": "Preregistered generation-2 falsification of a fixed all-threshold 2:1 hysteresis-persistence boost over the unchanged serialized compact-MFI score; preserves Scharr+NMS support and evaluates UDED-selection repeated CV plus official BSDS500 validation conjunctively.",
+    "runner": "python",
+    "path": "run_stage16h_hysteresis_persistence_boost.py",
+    "args": [],
+    "role": "generation_2_connected_threshold_persistence_falsification",
+    "feedback_policy": "UDED_selection_repeated_leakage_free_CV_and_BSDS500_validation_joint_development_no_protected_feedback",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage16h_hysteresis_persistence_boost/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage16h_hysteresis_persistence_boost/summary.json",
+      "results/local_dev/stage16h_hysteresis_persistence_boost/variant_ranking.csv",
+      "results/local_dev/stage16h_hysteresis_persistence_boost/fold_results.csv",
+      "results/local_dev/stage16h_hysteresis_persistence_boost/per_image_metrics.csv",
+      "results/local_dev/stage16h_hysteresis_persistence_boost/persistence_diagnostics.csv",
+      "results/local_dev/stage16h_hysteresis_persistence_boost/best_method_preview.png",
+      "results/local_dev/stage16h_hysteresis_persistence_boost/official_eval_manifest.json",
+      "results/official_eval/stage16h_hysteresis_persistence_boost/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

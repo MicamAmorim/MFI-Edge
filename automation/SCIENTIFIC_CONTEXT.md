@@ -1117,3 +1117,22 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It must account for
 the repeated BSDS-positive/UDED-negative localizer pattern without fitting a
 dataset-identity router or tuning the failed Stage-16b, 16d, or 16f families.
+
+### Stage 16g closure — all-threshold hysteresis persistence registered
+
+The live primary-literature checkpoint selected one fixed connected-threshold
+test over the unchanged compact-MFI score. Stage 16h uses Canny's strong-seed/
+weak-connected-response principle with the fixed Figure-7 2:1 high/low
+relation, extended across all 255 serialized score levels with 8-connectivity.
+Each pixel receives the greatest high threshold at which it remains connected
+through half-threshold support to a strong seed. The transform is boost-only
+and exactly preserves nonzero support, so median conditioning, compact Choquet
+context, and grayscale Scharr+NMS localization remain unchanged.
+
+`stage16h_hysteresis_persistence_boost` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, including a
+UDED recall-gain endpoint and asserted floor/support invariants. This is a
+repository-specific soft extension, not an exact Canny or max-tree
+reproduction. Do not tune its ratio, connectivity, quantization, propagation,
+thresholds, context, gate, or localizer from the result. The compact controller
+remains incumbent pending the outcome.
