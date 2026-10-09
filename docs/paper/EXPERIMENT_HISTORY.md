@@ -2729,3 +2729,35 @@ The single registered next action is
 literature escalation that must choose exactly one mechanistically distinct,
 interpretable non-neural falsification with a preregistered joint UDED/BSDS
 rule and no protected feedback.
+
+### Stage 16m checkpoint closure; Stage 16n SUSAN context registered
+
+The live primary-literature checkpoint selected one fixed local-self-
+similarity test. Smith and Brady's SUSAN principle measures the size of the
+neighbourhood whose brightness is similar to its nucleus, producing an initial
+edge response without image derivatives. The official Oxford material fixes a
+radius-3.4, 37-pixel circular mask, a smooth sixth-power brightness comparison,
+and a geometric threshold at three quarters of the maximum USAN area; a
+published edge example supplies the fixed 8-bit brightness threshold `20`.
+
+The authoritative preregistration is
+`docs/paper/STAGE16N_PREREGISTRATION.md`. The registered next action is
+`stage16n_susan_context`. It computes the normalized initial USAN-area deficit
+on the unchanged median-conditioned grayscale image and, only when eligible
+inside an outer UDED training fold, appends it as one positive membership to
+the compact distorted-Choquet context. It does not import SUSAN direction,
+NMS, thinning, or linking and does not replace the Scharr+NMS localizer. This
+centre-referenced self-similarity representation is distinct from failed
+detector averaging, component/region support, conditioning, connected-
+threshold persistence, normal-profile fitting, half-disc texture contrast,
+and exact EDPF chain support.
+
+Promotion is conjunctive. UDED selection requires aggregate F1 delta at least
+`+0.002`, precision at least `-0.002`, recall at least `-0.003`, nonnegative
+mean fold-F1 delta, at least `9/15` fold wins, and eligibility in at least
+`12/15` folds. The official BSDS500-validation attachment must complete with
+ODS delta at least `+0.002` and nonnegative OIS/AP deltas. Fixed positions
+1/8/15 provide the required preview. Mask geometry, brightness threshold,
+similarity exponent, geometric threshold, boundary handling, calibration,
+context, gate, localizer, and threshold grid are frozen before results. The
+compact controller remains incumbent pending the outcome.

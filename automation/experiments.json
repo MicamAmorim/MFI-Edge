@@ -1489,6 +1489,26 @@
       "results/automation/stage16m_generation2_mechanism_checkpoint/summary.json"
     ]
   },
+  "stage16n_susan_context": {
+    "description": "Preregistered generation-2 falsification of the fixed 37-pixel SUSAN/USAN initial local-self-similarity response as one training-eligible positive membership in the unchanged compact Choquet context; evaluates UDED-selection 5x3 leakage-free CV and official BSDS500 validation conjunctively.",
+    "runner": "python",
+    "path": "run_stage16n_susan_context.py",
+    "args": [],
+    "role": "generation_2_local_self_similarity_context_falsification",
+    "feedback_policy": "UDED_selection_repeated_leakage_free_CV_and_BSDS500_validation_joint_development_no_protected_feedback",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage16n_susan_context/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage16n_susan_context/summary.json",
+      "results/local_dev/stage16n_susan_context/variant_ranking.csv",
+      "results/local_dev/stage16n_susan_context/fold_results.csv",
+      "results/local_dev/stage16n_susan_context/per_image_metrics.csv",
+      "results/local_dev/stage16n_susan_context/susan_calibration.csv",
+      "results/local_dev/stage16n_susan_context/best_method_preview.png",
+      "results/local_dev/stage16n_susan_context/official_eval_manifest.json",
+      "results/official_eval/stage16n_susan_context/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

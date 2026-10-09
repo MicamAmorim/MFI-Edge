@@ -529,6 +529,15 @@ not part of author EDPF. The failure closes this exact support integration to
 outcome-driven tuning and must not be described as falsifying Edge Drawing or
 EDPF generally.
 
+Stage 16n is the next bounded context-feature test. Frame it as a derivative-
+free, centre-referenced local-self-similarity experiment grounded in Smith and
+Brady's SUSAN principle. State explicitly that the repository implements only
+the published initial 37-pixel USAN-area response as an MFI membership; it is
+not a reproduction of the complete SUSAN direction, NMS, thinning, or subpixel
+detector. Report eligibility and both development axes under the preregistered
+joint rule. A failure closes this fixed mask/threshold/calibration realization
+to outcome-driven tuning but does not falsify SUSAN generally.
+
 ---
 
 # 9. Supplementary-material candidates

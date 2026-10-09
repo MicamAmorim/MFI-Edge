@@ -1238,3 +1238,26 @@ preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 EDPF alignment, eligibility, weighting, integration, or any earlier closed
 family, use dataset identity, relax the cross-dataset rule, or use protected
 feedback.
+
+### Stage 16m closure - SUSAN local-self-similarity context registered
+
+The live primary-literature checkpoint selected one fixed derivative-free
+context test. Stage 16n computes Smith and Brady's initial SUSAN response on
+the unchanged median-conditioned grayscale image: a radius-3.4, 37-pixel
+circular mask; brightness similarity
+`exp(-((I-I0)/(20/255))^6)`; and normalized deficit below the published
+three-quarter geometric threshold. It intentionally omits SUSAN direction,
+NMS, thinning, and subpixel localization because the response enters only as
+one outer-training-fold-eligible positive membership in the retained
+distorted-Choquet context. This local self-similarity representation is
+distinct from the closed detector-fusion, component/region gating,
+conditioning, connected-threshold persistence, step-profile, half-disc
+texture, and exact-chain integrations.
+
+The authoritative protocol is `docs/paper/STAGE16N_PREREGISTRATION.md`.
+`stage16n_susan_context` is registered with conjunctive UDED-selection 5x3
+leakage-free CV and official BSDS500-validation criteria plus a fixed positions
+1/8/15 preview. Do not tune the SUSAN mask, brightness threshold, exponent,
+geometric threshold, boundary handling, eligibility, calibration, context,
+gate, localizer, or threshold grid from the result. The compact Choquet-gated
+grayscale Scharr+NMS controller remains incumbent.

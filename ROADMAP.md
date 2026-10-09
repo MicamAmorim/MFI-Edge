@@ -1326,3 +1326,23 @@ distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It must account for the repeated BSDS-positive/UDED-nonpositive pattern without
 tuning EDPF chain integration, fitting dataset identity, relaxing the joint
 rule, or using protected feedback.
+
+## Stage 16m closed - fixed SUSAN context selected
+
+Stage 16m selected a derivative-free local-self-similarity representation
+grounded in Smith and Brady's SUSAN/USAN formulation. Unlike the failed
+profile, chain, component, conditioning, persistence, and detector-fusion
+tests, the candidate measures how much of a fixed circular neighbourhood is
+photometrically assimilated by its centre pixel. The equation-level initial
+response uses the published radius-3.4 37-pixel mask, sixth-power brightness
+comparison, three-quarter geometric threshold, and fixed 8-bit brightness
+threshold `20`.
+
+The active next action is `stage16n_susan_context`. The initial SUSAN response
+is appended as one outer-training-fold-eligible positive membership; the
+retained five memberships, distorted-Choquet gamma, gate, median conditioning,
+Scharr+NMS localizer, and threshold fitting remain unchanged. UDED-selection
+5x3 leakage-free CV and official BSDS500 validation are conjunctive, and fixed
+positions 1/8/15 generate `best_method_preview.png`. No SUSAN parameter,
+calibration, context, gate, localizer, or threshold may be tuned from the
+result. The compact controller remains incumbent pending the outcome.
