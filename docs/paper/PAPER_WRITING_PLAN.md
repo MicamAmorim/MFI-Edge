@@ -464,6 +464,16 @@ Report the deterministic preview and both development axes, retain the compact
 controller, and state that all stability and gating constants were closed to
 post-result tuning.
 
+Stage 16f is the next planned single-mechanism result. Frame rolling guidance
+as a scale-aware image-domain conditioning hypothesis: suppress small
+structures before the retained Scharr+NMS localizer while iteratively restoring
+larger boundaries. The method must be labeled an equation-level grayscale
+repository reimplementation, not an exact reproduction of Zhang et al.'s code
+or a literature benchmark replication. Report the fixed parameters, both
+development axes, the precision-specific mechanism endpoint, runtime and fixed
+preview. If rejected, state only that this fixed realization failed; do not
+generalize to all scale-aware filtering or tune from its outcome.
+
 ---
 
 # 9. Supplementary-material candidates

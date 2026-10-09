@@ -1184,3 +1184,21 @@ live-primary-literature escalation must choose exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not tune the failed stability gate, the Stage-16b fusion family, or any
 protected-feedback-derived choice.
+
+## Stage 16e closed - rolling-guidance localizer conditioning selected
+
+Stage 16e selected one fixed image-domain scale-aware conditioning test from
+Zhang et al.'s ECCV 2014 Rolling Guidance Filter. The mechanism removes small
+structures according to spatial scale and iteratively restores larger boundary
+sharpness, addressing the incumbent's unsupported dense response without
+another response-component gate or detector average.
+
+The active next action is `stage16f_rolling_guidance_localizer`. It inserts a
+fixed grayscale rolling-guidance pass (`sigma_space=3`, `sigma_range=0.1`, four
+iterations) after the incumbent median conditioning and before unchanged
+Scharr+NMS. Compact Choquet context construction and all fold fitting remain
+unchanged. UDED-selection repeated CV and official BSDS500 validation are
+conjunctive, the deterministic preview is mandatory, and the compact controller
+remains incumbent unless every preregistered F1/precision/recall/stability and
+ODS/OIS/AP condition passes. No RGF or neighboring architecture parameter may
+be tuned from the result.

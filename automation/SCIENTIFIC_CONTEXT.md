@@ -1076,3 +1076,24 @@ high-reasoning live-primary-literature escalation that must select exactly one
 mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not revisit
 the failed Stage-16d stability gate or tune the failed Stage-16b fusion family.
+
+### Stage 16e closure — fixed rolling-guidance conditioning registered
+
+The live primary-literature checkpoint selected one fixed image-domain
+scale-aware test. Stage 16f places an equation-level grayscale Rolling Guidance
+Filter (Zhang et al., ECCV 2014, DOI `10.1007/978-3-319-10578-9_53`) between
+the retained median conditioning and unchanged Scharr+NMS localizer. Spatial
+sigma `3`, range sigma `0.1`, four iterations, and three-sigma numerical
+support are fixed before results; the compact Choquet context and all fold
+fitting remain unchanged. The test targets documented unsupported small-scale
+response while iterative guidance is intended to restore larger boundary
+sharpness. It is distinct from Stage 14h gravitational smoothing, Stage 16d
+response-derived stability gating, and Stage 16b detector averaging.
+
+`stage16f_rolling_guidance_localizer` is registered with conjunctive UDED-
+selection repeated-CV and official BSDS500-validation criteria plus a fixed
+positions 1/8/15 preview. The implementation is a repository reimplementation,
+not exact author code. Do not tune RGF parameters, support, color handling,
+conditioning order, localizer fusion, context, gate, or threshold grid from
+the result. The compact Choquet-gated median-conditioned grayscale Scharr+NMS
+controller remains incumbent pending the outcome.

@@ -2484,3 +2484,31 @@ literature escalation that must select exactly one mechanistically distinct
 bounded generation-2 falsification with a preregistered conjunctive UDED-
 selection/BSDS500-validation rule. The compact Choquet-gated grayscale
 Scharr+NMS controller remains incumbent.
+
+### Stage 16e checkpoint closure; Stage 16f rolling-guidance conditioning registered
+
+The live primary-literature checkpoint selected one fixed image-domain,
+scale-aware conditioning test. Zhang, Shen, Xu, and Jia's *Rolling Guidance
+Filter* (ECCV 2014, DOI `10.1007/978-3-319-10578-9_53`) explicitly separates
+structure scale from edge magnitude: Gaussian-scale removal suppresses small
+structures, then iterative joint guidance restores the sharpness of surviving
+larger boundaries. The primary paper and official author project page also
+demonstrate the mechanism before classical edge detection.
+
+The registered next action is `stage16f_rolling_guidance_localizer`. It is an
+equation-level repository reimplementation, not an exact author-code
+reproduction. It fixes grayscale spatial sigma `3`, range sigma `0.1`, four
+iterations, and three-sigma numerical support between the retained median
+conditioning and unchanged Scharr+NMS localizer. The compact five-feature
+Choquet context, gamma, gate, outer-fold fitting, and threshold fitting remain
+unchanged. This tests whether scale-aware suppression addresses the incumbent's
+documented unsupported/fragmented response without revisiting Stage 16d's
+response gate, Stage 16b's fusion, or Stage 14h's gravitational parameters.
+
+Promotion is conjunctive. UDED selection requires at least `+0.002` aggregate
+F1, at least `+0.002` precision, recall no worse than `-0.01`, nonnegative mean
+paired fold-F1, and at least `9/15` fold wins. The official BSDS500-validation
+attachment must complete with ODS at least `+0.002` and nonnegative OIS/AP.
+No rolling-guidance, conditioning-order, color, localizer, context, gate, or
+threshold parameter may be tuned from the outcome. The compact controller
+remains incumbent pending the result.

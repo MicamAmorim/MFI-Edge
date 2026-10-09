@@ -1358,6 +1358,26 @@
       "results/automation/stage16e_generation2_mechanism_checkpoint/summary.json"
     ]
   },
+  "stage16f_rolling_guidance_localizer": {
+    "description": "Preregistered generation-2 falsification of fixed grayscale rolling-guidance small-structure removal between the incumbent median conditioning and unchanged Scharr+NMS localizer; retains the compact Choquet context and evaluates UDED-selection repeated CV plus official BSDS500 validation conjunctively.",
+    "runner": "python",
+    "path": "run_stage16f_rolling_guidance_localizer.py",
+    "args": [],
+    "role": "generation_2_scale_aware_conditioning_falsification",
+    "feedback_policy": "UDED_selection_repeated_leakage_free_CV_and_BSDS500_validation_joint_development_no_protected_feedback",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage16f_rolling_guidance_localizer/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage16f_rolling_guidance_localizer/summary.json",
+      "results/local_dev/stage16f_rolling_guidance_localizer/variant_ranking.csv",
+      "results/local_dev/stage16f_rolling_guidance_localizer/fold_results.csv",
+      "results/local_dev/stage16f_rolling_guidance_localizer/per_image_metrics.csv",
+      "results/local_dev/stage16f_rolling_guidance_localizer/conditioning_diagnostics.csv",
+      "results/local_dev/stage16f_rolling_guidance_localizer/best_method_preview.png",
+      "results/local_dev/stage16f_rolling_guidance_localizer/official_eval_manifest.json",
+      "results/official_eval/stage16f_rolling_guidance_localizer/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",
