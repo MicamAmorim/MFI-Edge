@@ -514,17 +514,20 @@ that fixed local profile evidence was individually discriminative and stable
 on UDED but did not add jointly transferable context under the registered
 fusion. Do not describe this as a general failure of parametric edge models.
 
-Stage 16l is the next planned bounded structural-context result. Frame it as
-an exact-author-detector/repository-integration decomposition: EDPF supplies
-fixed contiguous chains with chain-level Helmholtz validation, while MFI keeps
-its own Scharr+NMS localization and uses the chain map only as an eligible
-positive context membership. State explicitly that the one-pixel
-8-neighbourhood expansion is a preregistered raster-alignment adapter and not
-part of author EDPF. Report author commit and hashes, eligibility frequency,
-UDED F1/precision/recall and largest-component coverage, official BSDS
-ODS/OIS/AP, runtime, and fixed preview. A failure closes this exact support
-integration and its alignment adapter to outcome-driven tuning; it must not be
-described as falsifying Edge Drawing or EDPF generally.
+Stage 16l is now a cross-dataset negative-result paragraph. Frame it as an
+exact-author-detector/repository-integration decomposition: EDPF supplied fixed
+contiguous chains with chain-level Helmholtz validation, while MFI retained its
+own Scharr+NMS localization and used the chain map only as an eligible positive
+context membership. The cue was eligible in `15/15` UDED folds, but aggregate
+F1 and mean fold F1 changed by `-0.000191/-0.000013`, with only `8/15` fold-F1
+and `3/15` coverage wins. In contrast, official BSDS ODS/OIS/AP improved by
+`+0.013847/+0.005044/+0.014949`. The safe claim is that the fixed chain cue
+was discriminative and beneficial on BSDS validation but did not establish
+stable cross-dataset incremental context value. State that the one-pixel
+8-neighbourhood expansion was a preregistered repository alignment adapter,
+not part of author EDPF. The failure closes this exact support integration to
+outcome-driven tuning and must not be described as falsifying Edge Drawing or
+EDPF generally.
 
 ---
 

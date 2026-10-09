@@ -1309,3 +1309,20 @@ with ODS/OIS/AP conditions. Fixed positions 1/8/15 provide the deterministic
 preview. The author detector, alignment dilation, eligibility, integration,
 context, gate, localizer, and threshold grid are frozen before results. The
 compact controller remains incumbent pending the outcome.
+
+## Stage 16l closed - exact EDPF chain context rejected
+
+The chain cue was eligible in all `15/15` UDED folds but changed aggregate F1
+by `-0.000191`, mean fold F1 by `-0.000013`, and won only `8/15` fold-F1 and
+`3/15` largest-component-coverage comparisons. Official BSDS500-validation
+ODS/OIS/AP improved substantially by `+0.013847/+0.005044/+0.014949`, but the
+joint rule was conjunctive and the UDED conditions failed. The candidate is
+rejected, its fixed integration is closed to tuning, and the compact controller
+remains incumbent.
+
+The active next action is `stage16m_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It must account for the repeated BSDS-positive/UDED-nonpositive pattern without
+tuning EDPF chain integration, fitting dataset identity, relaxing the joint
+rule, or using protected feedback.

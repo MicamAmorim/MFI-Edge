@@ -1216,3 +1216,25 @@ largest-component coverage endpoint and fixed positions 1/8/15 preview. Do not
 tune author EDPF parameters, the one-pixel alignment dilation, eligibility,
 integration, context, gate, localizer, or threshold grid from the result. The
 compact controller remains incumbent pending the outcome.
+
+### Stage 16l closure - exact EDPF chain context rejected; Stage 16m registered
+
+The fixed exact-author EDPF chain-support membership failed its conjunctive
+promotion rule. On UDED selection, aggregate F1/precision/recall and mean fold
+F1 changed by `-0.000191/-0.000244/-0.000090/-0.000013`; the candidate won
+only `8/15` fold-F1 comparisons. The cue was eligible in `15/15` folds and
+mean largest-component GT coverage changed by `+0.000030`, but coverage won
+only `3/15` comparisons. Official BSDS500-validation ODS/OIS/AP improved by
+`+0.013847/+0.005044/+0.014949`, satisfying that axis, but all conditions were
+required. The fixed integration is rejected and must not be tuned. This is
+another BSDS-positive/UDED-nonpositive mechanism result, not a falsification of
+EDPF generally. The compact Choquet-gated grayscale Scharr+NMS controller
+remains incumbent.
+
+The registered next action is `stage16m_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+EDPF alignment, eligibility, weighting, integration, or any earlier closed
+family, use dataset identity, relax the cross-dataset rule, or use protected
+feedback.

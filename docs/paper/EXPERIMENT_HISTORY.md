@@ -2696,3 +2696,36 @@ positions 1/8/15 produce the mandatory preview. EDPF parameters, the one-pixel
 alignment adapter, eligibility, integration, context, gate, localizer, and
 threshold grid may not be tuned from the result. The compact controller
 remains incumbent pending the outcome.
+
+### Stage 16l exact EDPF chain context rejected; Stage 16m registered
+
+Stage 16l completed exact-author source/hash checks, finite-map checks, its
+fixed positions 1/8/15 preview, and the official attachment. The EDPF chain
+cue was training-eligible in all `15/15` folds, but it did not add stable UDED
+value. Relative to compact MFI, aggregate precision/recall/F1 changed by
+`-0.000244/-0.000090/-0.000191`; mean fold F1 changed by `-0.000013`, and the
+candidate won only `8/15` fold-F1 comparisons. Mean paired largest-component
+GT coverage changed by `+0.000030`, but only `3/15` coverage comparisons were
+wins. It therefore failed the aggregate-F1, mean-fold, fold-win, and coverage-
+win conditions.
+
+Under the common official BSDS500-validation path, ODS/OIS/AP improved by
+`+0.013847/+0.005044/+0.014949`. Those substantial gains satisfy every BSDS
+condition but cannot override the UDED failures because the rule was explicitly
+conjunctive. The Windows matcher remains stochastic and reference-uncertified,
+so these are development rather than final-claim metrics.
+
+The fixed chain-support membership is rejected and the compact Choquet-gated
+grayscale Scharr+NMS controller remains incumbent. This is evidence that exact
+EDPF chain support is individually discriminative and useful on BSDS validation
+but does not establish stable cross-dataset incremental context value in this
+fixed integration. It does not falsify EDPF chain construction or chain-level
+Helmholtz validation generally. Author parameters, the one-pixel alignment
+dilation, eligibility, membership weighting, Choquet context, gate, localizer,
+and thresholds are closed to result-driven tuning.
+
+The single registered next action is
+`stage16m_generation2_mechanism_checkpoint`, a high-reasoning live-primary-
+literature escalation that must choose exactly one mechanistically distinct,
+interpretable non-neural falsification with a preregistered joint UDED/BSDS
+rule and no protected feedback.
