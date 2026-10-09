@@ -455,6 +455,15 @@ development metrics, and avoid claiming an exact reproduction. If the joint
 gate fails, report the structural-stability hypothesis as bounded negative
 evidence rather than tuning its published constants.
 
+Stage 16d is now bounded negative evidence. The repository-specific stability
+gate reduced UDED aggregate F1 by `0.009035` with only `4/15` fold wins and
+reduced official BSDS-validation ODS/OIS/AP by
+`0.000319/0.000637/0.001587`. The paper must not present this as a falsification
+of Donoser et al.'s complete method; it tests only the registered surrogate.
+Report the deterministic preview and both development axes, retain the compact
+controller, and state that all stability and gating constants were closed to
+post-result tuning.
+
 ---
 
 # 9. Supplementary-material candidates

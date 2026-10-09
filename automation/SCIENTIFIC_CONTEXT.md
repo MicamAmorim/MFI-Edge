@@ -1058,3 +1058,21 @@ registered with conjunctive UDED-selection repeated-CV and official
 BSDS500-validation criteria. The compact Choquet-gated grayscale Scharr+NMS
 controller remains incumbent pending the result, and no stability or gate
 parameter may be tuned afterward.
+
+### Stage 16d closure — stable-region-boundary support rejected; Stage 16e registered
+
+The fixed component-tree-inspired support gate failed both development axes.
+Relative to compact MFI on UDED selection, aggregate F1 changed by `-0.00904`,
+precision by `-0.00752`, recall by `-0.01120`, and mean fold F1 by `-0.00827`,
+with only `4/15` fold wins. Official BSDS500-validation ODS/OIS/AP changed by
+`-0.000319/-0.000637/-0.001587`. The candidate is not promoted, and its
+stability, component, gate, and threshold parameters must not be tuned from
+this result. This falsifies only the fixed repository surrogate, not the full
+published region-boundary-stability method. The compact Choquet-gated
+grayscale Scharr+NMS controller remains incumbent.
+
+The registered next action is `stage16e_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not revisit
+the failed Stage-16d stability gate or tune the failed Stage-16b fusion family.

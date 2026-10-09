@@ -2453,3 +2453,34 @@ validation uses the official attachment. Promotion requires all preregistered
 UDED F1/precision/recall/stability conditions plus BSDS ODS/OIS/AP benefit.
 No stability parameter, gate, serialization, or threshold-grid choice may be
 tuned from the result; the incumbent remains unchanged pending the outcome.
+
+### Stage 16d stable-region-boundary gate rejected; Stage 16e registered
+
+Stage 16d completed its deterministic fixed-position preview and official
+BSDS500-validation attachment, but failed its preregistered conjunctive rule.
+On UDED selection, the candidate obtained aggregate precision/recall/F1
+`0.661605/0.862135/0.748675`, versus `0.669124/0.873332/0.757710` for the
+compact incumbent. Precision, recall, and F1 changed by `-0.007519`,
+`-0.011196`, and `-0.009035`; mean fold F1 changed by `-0.008272`, and the
+candidate won only
+`4/15` folds. It therefore failed every registered UDED performance and
+stability condition.
+
+Under the common official BSDS500-validation path, the stable-region candidate
+changed ODS/OIS/AP by `-0.000319/-0.000637/-0.001587`. Thus the candidate also
+failed every BSDS benefit condition. The local matcher remains stochastic and
+reference-uncertified, so these remain development metrics rather than final
+claim evidence.
+
+The fixed repository-specific component-tree surrogate is rejected and no
+architecture is promoted. This bounded result does not falsify the published
+region-boundary-stability method, but it closes outcome-driven tuning of the
+surrogate's quantization, connectivity, region area, level displacement,
+chamfer distance, fragment length, gate exponent, floor, and threshold grid.
+
+The single registered next action is
+`stage16e_generation2_mechanism_checkpoint`, a high-reasoning live-primary-
+literature escalation that must select exactly one mechanistically distinct
+bounded generation-2 falsification with a preregistered conjunctive UDED-
+selection/BSDS500-validation rule. The compact Choquet-gated grayscale
+Scharr+NMS controller remains incumbent.

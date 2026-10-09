@@ -1170,3 +1170,17 @@ fold fitting, adding only fixed region-boundary stability support through the
 already retained gate exponent and floor. UDED-selection repeated CV and
 official BSDS500 validation are conjunctive. No Stage-16b fusion tuning, SED
 dependency, endpoint linking, NFA revision, or protected feedback is allowed.
+
+## Stage 16d closed - stable region-boundary support rejected
+
+The candidate reduced UDED aggregate F1 by `0.009035`, precision by `0.007519`,
+recall by `0.011196`, and mean fold F1 by `0.008272`, with only `4/15` fold
+wins. It also reduced official BSDS500-validation ODS/OIS/AP by
+`0.000319/0.000637/0.001587`. The joint rule therefore rejects the fixed
+component-tree-inspired gate, and the compact controller remains incumbent.
+
+The active next action is `stage16e_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not tune the failed stability gate, the Stage-16b fusion family, or any
+protected-feedback-derived choice.
