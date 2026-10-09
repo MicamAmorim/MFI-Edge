@@ -2372,3 +2372,25 @@ synthesis of the complete Stage-15 evidence and must select exactly one
 bounded, interpretable, non-neural generation-2 falsification with a
 preregistered conjunctive UDED-selection and BSDS-validation rule. The compact
 Choquet-gated grayscale Scharr+NMS controller remains incumbent meanwhile.
+
+### Stage-16a checkpoint closure; Stage-16b fixed expert mean registered
+
+The live primary-literature synthesis selected one fixed detector-level
+combination rather than another isolated cue or localizer. Exact SED is the
+strongest matched non-trained Stage-15 reference, its primary component
+analysis attributes benefit to contour continuation and texture suppression,
+and Stage 15m found substantial two-way unique GT-supported response between
+SED and MFI (`32.0%` and `35.6%`). Kittler et al.'s primary classifier-
+combination analysis supports the sum rule as a conservative robust fixed
+combiner. This rationale does not imply calibrated posterior maps.
+
+The registered next action is `stage16b_fixed_sed_mfi_fusion`. It tests only
+the equal arithmetic mean `0.5*MFI + 0.5*SED`, after common 8-bit score
+serialization, against both constituents. UDED selection uses 5x3 outer CV
+with fold-fitted compact memberships and per-variant thresholds. Official
+BSDS500 validation evaluates incumbent, frozen exact SED, and fusion under the
+unchanged path. Promotion is conjunctive and requires the fusion to exceed
+both constituents on UDED stability/F1 and the better constituent on all three
+BSDS metrics, including at least `+0.002` ODS. No weight search, learned
+router, dataset identity, Stage-15p texture cue, protected split, or
+architecture promotion occurs at registration.

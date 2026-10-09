@@ -1122,3 +1122,19 @@ structural dataset discrepancy, spatial complementarity, and failed texture
 gate, then registers exactly one bounded generation-2 falsification. The next
 candidate must have a pre-result conjunctive UDED-selection/BSDS-validation
 promotion rule and cannot use dataset identity or protected feedback.
+
+## Stage 16a closed — fixed expert fusion selected
+
+Stage 16a selected a single minimal generation-2 test: a fixed equal arithmetic
+mean of the compact MFI score and exact author-code SED score. The choice is
+grounded in SED's matched non-trained lead, its primary-paper contour-
+continuation/texture-suppression mechanism, Stage-15m's two-way supported-
+response complementarity, and the robustness rationale for fixed sum fusion in
+Kittler et al. (1998). It is not a texture-cue revival or a learned router.
+
+The active next action is `stage16b_fixed_sed_mfi_fusion`. UDED selection will
+use the existing 5x3 leakage-free CV, while BSDS500 validation will use the
+official attachment. The candidate is exactly `0.5*MFI + 0.5*SED`; no weights
+are searched. The preregistered gate requires improvement over both
+constituents on UDED and over the better constituent on BSDS ODS/OIS/AP. The
+compact controller remains incumbent until every condition passes.

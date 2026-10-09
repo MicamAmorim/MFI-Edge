@@ -1293,6 +1293,27 @@
       "results/automation/stage16a_generation2_mechanism_checkpoint/summary.json"
     ]
   },
+  "stage16b_fixed_sed_mfi_fusion": {
+    "description": "Preregistered generation-2 falsification of one fixed equal arithmetic mean of the compact MFI soft map and exact author-code SED; evaluates both constituents and the fusion on UDED-selection 5x3 leakage-free CV and official BSDS500 validation under a conjunctive rule, with no learned weight, router, dataset identity, or protected feedback.",
+    "runner": "python",
+    "path": "run_stage16b_fixed_sed_mfi_fusion.py",
+    "args": [],
+    "role": "generation_2_bounded_fixed_expert_fusion",
+    "feedback_policy": "UDED_selection_repeated_leakage_free_CV_and_BSDS500_validation_joint_development_no_protected_feedback",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage16b_fixed_sed_mfi_fusion/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage16b_fixed_sed_mfi_fusion/summary.json",
+      "results/local_dev/stage16b_fixed_sed_mfi_fusion/variant_ranking.csv",
+      "results/local_dev/stage16b_fixed_sed_mfi_fusion/fold_results.csv",
+      "results/local_dev/stage16b_fixed_sed_mfi_fusion/per_image_metrics.csv",
+      "results/local_dev/stage16b_fixed_sed_mfi_fusion/uded_sed_maps/map_hashes.json",
+      "results/local_dev/stage16b_fixed_sed_mfi_fusion/uded_sed_maps/per_image_runtime.csv",
+      "results/local_dev/stage16b_fixed_sed_mfi_fusion/best_method_preview.png",
+      "results/local_dev/stage16b_fixed_sed_mfi_fusion/official_eval_manifest.json",
+      "results/official_eval/stage16b_fixed_sed_mfi_fusion/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

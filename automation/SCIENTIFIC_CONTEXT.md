@@ -1004,3 +1004,21 @@ reproduction and diagnostic program. It must choose exactly one bounded,
 interpretable, non-neural generation-2 falsification with a preregistered joint
 UDED-selection/BSDS-validation rule. It may not revive Stage 15p, fit a
 dataset-identity router, or use protected-split feedback.
+
+### Stage-16a closure — fixed SED/MFI expert mean registered
+
+The live checkpoint selected one fixed detector-level expert combination.
+Exact SED is the strongest matched non-trained Stage-15 baseline; its primary
+paper attributes gains to contour strengthening/continuation and texture
+suppression. Stage 15m found substantial two-way unique GT-supported response
+between MFI and SED, and Kittler et al. (1998) supplies a conservative
+robustness rationale for fixed sum fusion. Stage 16b therefore tests only
+`0.5 * compact_MFI + 0.5 * exact_SED` after common 8-bit score serialization.
+
+`stage16b_fixed_sed_mfi_fusion` is registered with UDED-selection 5x3
+leakage-free CV and official BSDS500-validation scoring. It compares both
+constituents and the fusion under a conjunctive rule: the fusion must improve
+over each constituent on UDED and over the better constituent on BSDS
+ODS/OIS/AP. No weight search, router, dataset identity, Stage-15p texture cue,
+or protected feedback is allowed. The compact Choquet-gated grayscale
+Scharr+NMS controller remains incumbent pending the result.
