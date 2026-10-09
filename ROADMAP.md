@@ -1202,3 +1202,20 @@ conjunctive, the deterministic preview is mandatory, and the compact controller
 remains incumbent unless every preregistered F1/precision/recall/stability and
 ODS/OIS/AP condition passes. No RGF or neighboring architecture parameter may
 be tuned from the result.
+
+## Stage 16f closed - rolling-guidance localizer rejected
+
+Rolling guidance produced a decisive cross-dataset reversal. On UDED selection
+it reduced aggregate F1 by `0.103203`, precision by `0.038523`, recall by
+`0.195051`, and mean fold F1 by `0.102773`, with `0/15` fold wins. On official
+BSDS500 validation it improved ODS/OIS/AP by
+`0.035113/0.028126/0.009010`. Because every registered condition was required,
+the severe UDED collapse rejects the candidate. The compact controller remains
+incumbent, and the fixed RGF realization and neighboring parameters are closed
+to result-driven tuning.
+
+The active next action is `stage16g_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It must address the recurrent cross-dataset localizer reversal without using a
+dataset-identity router or tuning the failed Stage-16b, 16d, or 16f families.

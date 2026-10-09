@@ -474,6 +474,16 @@ development axes, the precision-specific mechanism endpoint, runtime and fixed
 preview. If rejected, state only that this fixed realization failed; do not
 generalize to all scale-aware filtering or tune from its outcome.
 
+Stage 16f is now bounded negative evidence with a marked cross-dataset
+reversal. Report that the fixed grayscale RGF realization improved official
+BSDS-validation ODS/OIS/AP by `0.035113/0.028126/0.009010` while reducing UDED
+aggregate F1 by `0.103203`, recall by `0.195051`, and winning `0/15` folds.
+The manuscript must not average these axes into a favorable claim, generalize
+the result to all rolling-guidance conditioning, or imply that the local
+reference-uncertified matcher supports a final benchmark claim. The compact
+controller remains incumbent and Stage 16g is a literature checkpoint rather
+than an RGF tuning stage.
+
 ---
 
 # 9. Supplementary-material candidates

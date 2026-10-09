@@ -1097,3 +1097,23 @@ not exact author code. Do not tune RGF parameters, support, color handling,
 conditioning order, localizer fusion, context, gate, or threshold grid from
 the result. The compact Choquet-gated median-conditioned grayscale Scharr+NMS
 controller remains incumbent pending the outcome.
+
+### Stage 16f closure — rolling-guidance conditioning rejected; Stage 16g registered
+
+The fixed rolling-guidance localizer failed the preregistered conjunctive rule.
+Relative to compact MFI on UDED selection, aggregate F1 changed by `-0.10320`,
+precision by `-0.03852`, recall by `-0.19505`, and mean fold F1 by `-0.10277`,
+with `0/15` fold wins. Official BSDS500-validation ODS/OIS/AP nevertheless
+improved by `+0.03511/+0.02813/+0.00901`. The severe UDED recall collapse
+rejects the candidate despite the clear BSDS benefit. This falsifies only the
+fixed grayscale RGF realization, not scale-aware conditioning generally. Do
+not tune RGF parameters, conditioning order, color handling, fusion, context,
+gate, or thresholds from this result. The compact Choquet-gated median-
+conditioned grayscale Scharr+NMS controller remains incumbent.
+
+The registered next action is `stage16g_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It must account for
+the repeated BSDS-positive/UDED-negative localizer pattern without fitting a
+dataset-identity router or tuning the failed Stage-16b, 16d, or 16f families.

@@ -2512,3 +2512,28 @@ attachment must complete with ODS at least `+0.002` and nonnegative OIS/AP.
 No rolling-guidance, conditioning-order, color, localizer, context, gate, or
 threshold parameter may be tuned from the outcome. The compact controller
 remains incumbent pending the result.
+
+### Stage 16f rolling-guidance localizer rejected; Stage 16g registered
+
+Stage 16f completed its fixed-position preview and official attachment but
+failed the preregistered conjunctive rule. On UDED selection, rolling guidance
+obtained aggregate precision/recall/F1 `0.623991/0.681130/0.651310`, versus
+`0.662514/0.876181/0.754512` for compact MFI. The corresponding changes were
+`-0.038523/-0.195051/-0.103203`; mean fold F1 changed by `-0.102773`, and the
+candidate won `0/15` folds. It therefore failed every UDED requirement.
+
+Under the common official BSDS500-validation path, the candidate improved
+ODS/OIS/AP by `+0.035113/+0.028126/+0.009010`. These gains are development
+evidence, but the rule required both datasets to pass and the local matcher
+remains stochastic and reference-uncertified. The candidate is rejected, the
+incumbent is unchanged, and no RGF, conditioning-order, color, localizer-
+fusion, context, gate, or threshold parameter may be tuned from the outcome.
+This bounded result does not falsify rolling-guidance filtering generally.
+
+The single registered next action is
+`stage16g_generation2_mechanism_checkpoint`, a high-reasoning live-primary-
+literature escalation. It must select exactly one mechanistically distinct,
+interpretable non-neural falsification and preregister a conjunctive UDED-
+selection/BSDS500-validation rule. It must account for the repeated BSDS-
+positive/UDED-negative localizer pattern without using dataset identity or
+protected feedback.
