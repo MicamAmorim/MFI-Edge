@@ -484,6 +484,17 @@ reference-uncertified matcher supports a final benchmark claim. The compact
 controller remains incumbent and Stage 16g is a literature checkpoint rather
 than an RGF tuning stage.
 
+Stage 16h is now bounded negative evidence. Report that the fixed soft
+hysteresis-persistence transform preserved its pointwise-floor and exact-
+support invariants but reduced UDED aggregate F1 by `0.004328` and recall by
+`0.005380`, with `3/15` fold wins. Official BSDS-validation ODS/OIS/AP changed
+by `-0.000783/+0.002205/-0.020691`. The isolated OIS gain does not offset the
+conjunctive failure. Do not present this as falsifying classical Canny
+hysteresis or connected filtering generally, and do not imply that the local
+reference-uncertified matcher supports a final benchmark claim. The compact
+controller remains incumbent; Stage 16i is a literature checkpoint rather
+than persistence tuning.
+
 ---
 
 # 9. Supplementary-material candidates

@@ -1,0 +1,85 @@
+{
+  "status": "completed",
+  "experiment_id": "stage16h_hysteresis_persistence_boost",
+  "dataset": "BSDS500",
+  "split": "val",
+  "dataset_role": "development_official_metric",
+  "feedback_allowed": true,
+  "metric_policy": "Agent may use these metrics for development decisions.",
+  "evaluator": {
+    "family": "original Berkeley BSDS boundary benchmark",
+    "matlab": "C:\\Program Files\\MATLAB\\R2023a\\bin\\matlab.exe",
+    "nthresh": 99,
+    "max_dist": 0.0075,
+    "thinpb": true,
+    "multi_annotator": true,
+    "bsds500_commit": "a04b7c6c3a9f0ace74bf205c72a43d32e1c72722",
+    "windows_correspondPixels_source_commit": "94260b5d0fc068202598312e01a37604972dcc9e",
+    "reference_reproduction_verified": false
+  },
+  "methods": {
+    "incumbent_compact_positive_choquet": {
+      "ODS": 0.5454487048170847,
+      "ODS_precision": 0.4626848355728057,
+      "ODS_recall": 0.6642719582984573,
+      "ODS_threshold": 0.18,
+      "OIS": 0.5793794758593436,
+      "OIS_precision": 0.48716168229404777,
+      "OIS_recall": 0.7146622297531797,
+      "AP": 0.5342843634995724,
+      "n_images": 100,
+      "nthresh": 99,
+      "max_dist": 0.0075,
+      "thinpb": true,
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+      "matlab_evaluate_returncode": 0,
+      "matlab_evaluate_processes": 1,
+      "matlab_evaluate_stdout_tail": "MFI_BSDS_EVAL 71/100 37073\nMFI_BSDS_EVAL 72/100 376043\nMFI_BSDS_EVAL 73/100 38082\nMFI_BSDS_EVAL 74/100 38092\nMFI_BSDS_EVAL 75/100 385039\nMFI_BSDS_EVAL 76/100 41033\nMFI_BSDS_EVAL 77/100 41069\nMFI_BSDS_EVAL 78/100 42012\nMFI_BSDS_EVAL 79/100 42049\nMFI_BSDS_EVAL 80/100 43074\nMFI_BSDS_EVAL 81/100 45096\nMFI_BSDS_EVAL 82/100 54082\nMFI_BSDS_EVAL 83/100 55073\nMFI_BSDS_EVAL 84/100 58060\nMFI_BSDS_EVAL 85/100 62096\nMFI_BSDS_EVAL 86/100 65033\nMFI_BSDS_EVAL 87/100 66053\nMFI_BSDS_EVAL 88/100 69015\nMFI_BSDS_EVAL 89/100 69020\nMFI_BSDS_EVAL 90/100 69040\nMFI_BSDS_EVAL 91/100 76053\nMFI_BSDS_EVAL 92/100 78004\nMFI_BSDS_EVAL 93/100 8023\nMFI_BSDS_EVAL 94/100 85048\nMFI_BSDS_EVAL 95/100 86000\nMFI_BSDS_EVAL 96/100 86016\nMFI_BSDS_EVAL 97/100 86068\nMFI_BSDS_EVAL 98/100 87046\nMFI_BSDS_EVAL 99/100 89072\nMFI_BSDS_EVAL 100/100 97033",
+      "matlab_collect_stdout_tail": ""
+    },
+    "hysteresis_persistence_boost": {
+      "ODS": 0.5446660028747623,
+      "ODS_precision": 0.4626506859954966,
+      "ODS_recall": 0.6620249202104131,
+      "ODS_threshold": 0.24,
+      "OIS": 0.5815843234889605,
+      "OIS_precision": 0.496603479654581,
+      "OIS_recall": 0.7016543154427727,
+      "AP": 0.5135933071596803,
+      "n_images": 100,
+      "nthresh": 99,
+      "max_dist": 0.0075,
+      "thinpb": true,
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+      "matlab_evaluate_returncode": 0,
+      "matlab_evaluate_processes": 1,
+      "matlab_evaluate_stdout_tail": "MFI_BSDS_EVAL 71/100 37073\nMFI_BSDS_EVAL 72/100 376043\nMFI_BSDS_EVAL 73/100 38082\nMFI_BSDS_EVAL 74/100 38092\nMFI_BSDS_EVAL 75/100 385039\nMFI_BSDS_EVAL 76/100 41033\nMFI_BSDS_EVAL 77/100 41069\nMFI_BSDS_EVAL 78/100 42012\nMFI_BSDS_EVAL 79/100 42049\nMFI_BSDS_EVAL 80/100 43074\nMFI_BSDS_EVAL 81/100 45096\nMFI_BSDS_EVAL 82/100 54082\nMFI_BSDS_EVAL 83/100 55073\nMFI_BSDS_EVAL 84/100 58060\nMFI_BSDS_EVAL 85/100 62096\nMFI_BSDS_EVAL 86/100 65033\nMFI_BSDS_EVAL 87/100 66053\nMFI_BSDS_EVAL 88/100 69015\nMFI_BSDS_EVAL 89/100 69020\nMFI_BSDS_EVAL 90/100 69040\nMFI_BSDS_EVAL 91/100 76053\nMFI_BSDS_EVAL 92/100 78004\nMFI_BSDS_EVAL 93/100 8023\nMFI_BSDS_EVAL 94/100 85048\nMFI_BSDS_EVAL 95/100 86000\nMFI_BSDS_EVAL 96/100 86016\nMFI_BSDS_EVAL 97/100 86068\nMFI_BSDS_EVAL 98/100 87046\nMFI_BSDS_EVAL 99/100 89072\nMFI_BSDS_EVAL 100/100 97033",
+      "matlab_collect_stdout_tail": ""
+    }
+  },
+  "comparisons_vs_incumbent": {
+    "hysteresis_persistence_boost": {
+      "delta_ODS": -0.0007827019423224391,
+      "delta_OIS": 0.002204847629616924,
+      "delta_AP": -0.0206910563398921
+    }
+  },
+  "export": {
+    "incumbent_compact_positive_choquet": {
+      "source": "incumbent_cache",
+      "fingerprint": "e4fa09acaf61ec23"
+    },
+    "hysteresis_persistence_boost": {
+      "source": "export_script",
+      "script": "run_stage16h_hysteresis_persistence_boost.py",
+      "stdout_tail": "STAGE16H_BSDS_EXPORT 086/100 65033\nSTAGE12B_PREP 01/1 65033\nSTAGE16H_BSDS_EXPORT 087/100 66053\nSTAGE12B_PREP 01/1 66053\nSTAGE16H_BSDS_EXPORT 088/100 69015\nSTAGE12B_PREP 01/1 69015\nSTAGE16H_BSDS_EXPORT 089/100 69020\nSTAGE12B_PREP 01/1 69020\nSTAGE16H_BSDS_EXPORT 090/100 69040\nSTAGE12B_PREP 01/1 69040\nSTAGE16H_BSDS_EXPORT 091/100 76053\nSTAGE12B_PREP 01/1 76053\nSTAGE16H_BSDS_EXPORT 092/100 78004\nSTAGE12B_PREP 01/1 78004\nSTAGE16H_BSDS_EXPORT 093/100 8023\nSTAGE12B_PREP 01/1 8023\nSTAGE16H_BSDS_EXPORT 094/100 85048\nSTAGE12B_PREP 01/1 85048\nSTAGE16H_BSDS_EXPORT 095/100 86000\nSTAGE12B_PREP 01/1 86000\nSTAGE16H_BSDS_EXPORT 096/100 86016\nSTAGE12B_PREP 01/1 86016\nSTAGE16H_BSDS_EXPORT 097/100 86068\nSTAGE12B_PREP 01/1 86068\nSTAGE16H_BSDS_EXPORT 098/100 87046\nSTAGE12B_PREP 01/1 87046\nSTAGE16H_BSDS_EXPORT 099/100 89072\nSTAGE12B_PREP 01/1 89072\nSTAGE16H_BSDS_EXPORT 100/100 97033\nSTAGE12B_PREP 01/1 97033"
+    }
+  },
+  "manifest": "results/local_dev/stage16h_hysteresis_persistence_boost/official_eval_manifest.json",
+  "final_claim_guard": "Development metrics are decision-capable on train/val, but a final SOTA claim still requires an independently verified reference reproduction and the project's protected multi-benchmark gate.",
+  "manifest_sha256": "8e8f1a45f9ad0db459d60c0f200f134b51712c15662b14ada9e0f5c23f30da35"
+}

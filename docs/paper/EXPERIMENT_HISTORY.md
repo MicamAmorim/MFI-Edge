@@ -2565,3 +2565,34 @@ a registered UDED recall gain and asserted support/floor invariants. No
 high/low ratio, connectivity, quantization, propagation, threshold, context,
 or localizer parameter may be tuned from the outcome. The compact controller
 remains incumbent pending the result.
+
+### Stage 16h hysteresis persistence rejected; Stage 16i registered
+
+Stage 16h completed its deterministic fixed-position preview and official
+attachment but failed the preregistered conjunctive rule. On UDED selection,
+the candidate obtained aggregate precision/recall/F1
+`0.658916/0.870800/0.750184`, versus
+`0.662514/0.876181/0.754512` for compact MFI. The corresponding deltas were
+`-0.003598/-0.005380/-0.004328`; mean fold F1 changed by `-0.004378`, and the
+candidate won only `3/15` folds. The pointwise-floor and exact-support
+invariants held, so this is a mechanism failure rather than an invariant or
+export failure.
+
+Under the common official BSDS500-validation path, ODS/OIS/AP changed by
+`-0.000783/+0.002205/-0.020691`. The isolated OIS gain cannot satisfy the
+required joint rule because ODS and AP regressed and every UDED requirement
+failed. The local matcher remains stochastic and reference-uncertified, so
+these metrics are development evidence rather than final-claim evidence.
+
+The fixed repository-specific soft hysteresis transform is rejected and no
+architecture is promoted. This does not falsify classical Canny hysteresis or
+connected filtering generally, but it closes outcome-driven tuning of the
+ratio, connectivity, quantization, propagation, threshold grid, context,
+gate, and localizer.
+
+The single registered next action is
+`stage16i_generation2_mechanism_checkpoint`, a high-reasoning live-primary-
+literature escalation that must select exactly one mechanistically distinct,
+interpretable non-neural falsification and preregister a conjunctive UDED-
+selection/BSDS500-validation rule. The compact Choquet-gated grayscale
+Scharr+NMS controller remains incumbent.

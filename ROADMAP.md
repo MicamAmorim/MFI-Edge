@@ -1236,3 +1236,19 @@ attachment. Promotion requires the preregistered F1/recall/precision/stability
 conditions, exact score-floor/support invariants, and BSDS ODS/OIS/AP benefit.
 The fixed ratio, 8-connectivity, 8-bit lattice, threshold grid, compact
 context, and localizer may not be tuned from the result.
+
+## Stage 16h closed - hysteresis persistence rejected
+
+The fixed support-preserving persistence boost reduced UDED aggregate F1 by
+`0.004328`, precision by `0.003598`, recall by `0.005380`, and mean fold F1
+by `0.004378`, with only `3/15` fold wins. Official BSDS500-validation
+ODS/OIS/AP changed by `-0.000783/+0.002205/-0.020691`. Although the registered
+pointwise-floor and exact-support invariants held, the joint rule rejects the
+candidate. The compact controller remains incumbent and the connected-
+threshold family is closed to result-driven tuning.
+
+The active next action is `stage16i_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not tune the failed fusion, stability, conditioning, or persistence
+families, and it may not use dataset identity or protected feedback.

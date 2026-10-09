@@ -1136,3 +1136,21 @@ repository-specific soft extension, not an exact Canny or max-tree
 reproduction. Do not tune its ratio, connectivity, quantization, propagation,
 thresholds, context, gate, or localizer from the result. The compact controller
 remains incumbent pending the outcome.
+
+### Stage 16h closure - hysteresis persistence rejected; Stage 16i registered
+
+The fixed all-threshold hysteresis-persistence boost failed its conjunctive
+rule despite preserving the registered pointwise-floor and exact-support
+invariants. Relative to compact MFI on UDED selection, aggregate F1 changed by
+`-0.00433`, precision by `-0.00360`, recall by `-0.00538`, and mean fold F1
+by `-0.00438`, with only `3/15` fold wins. Official BSDS500-validation
+ODS/OIS/AP changed by `-0.00078/+0.00220/-0.02069`. The candidate is rejected,
+and the connected-threshold parameters may not be tuned from this result. The
+compact Choquet-gated grayscale Scharr+NMS controller remains incumbent.
+
+The registered next action is `stage16i_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+the failed persistence, fusion, stability, or rolling-guidance families, use
+dataset identity, or use protected feedback.
