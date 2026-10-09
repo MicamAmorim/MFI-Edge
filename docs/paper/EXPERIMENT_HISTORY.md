@@ -2623,3 +2623,34 @@ endpoint and deterministic fixed-position preview. No profile geometry,
 template width, interpolation, calibration, Choquet, gate, localizer, or
 threshold parameter may be tuned from the result. The compact controller
 remains incumbent pending the outcome.
+
+### Stage 16j step-profile context rejected; Stage 16k registered
+
+Stage 16j completed its fixed positions 1/8/15 preview and official
+attachment. On UDED selection, compact-plus-profile obtained aggregate
+precision/recall/F1 `0.662442/0.880593/0.756096`, versus
+`0.662514/0.876181/0.754512` for compact MFI. The deltas were
+`-0.000072/+0.004412/+0.001584`; mean fold F1 improved by `+0.001563`, the
+candidate won `12/15` folds, and the cue was eligible in `14/15` folds.
+Although all other UDED conditions passed, the aggregate gain missed the
+registered `+0.002` requirement.
+
+Under the common official BSDS500-validation path, ODS/OIS/AP changed by
+`-0.001980/-0.001964/+0.001585`. The AP gain does not compensate for the ODS
+and OIS regressions because all conditions were required. The Windows matcher
+remains stochastic and reference-uncertified, so these are development rather
+than final-claim metrics.
+
+The fixed repository-specific profile cue is rejected and the incumbent is
+unchanged. The result shows that this cue was locally discriminative and
+stable on UDED, but it does not establish jointly transferable incremental
+context value. Its geometry, template widths, interpolation, eligibility,
+calibration, Choquet context, gate, localizer, and thresholds are closed to
+outcome-driven tuning. This does not falsify parametric edge modeling or local
+scale control generally.
+
+The single registered next action is
+`stage16k_generation2_mechanism_checkpoint`, a high-reasoning live-primary-
+literature escalation that must choose exactly one mechanistically distinct,
+interpretable non-neural falsification with a preregistered joint UDED/BSDS
+rule and no protected feedback.

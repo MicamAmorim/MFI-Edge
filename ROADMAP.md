@@ -1271,3 +1271,20 @@ preview. The profile scale set, sampling, interpolation, eligibility,
 calibration, context, gate, localizer, and threshold grid are closed to
 post-result tuning. The compact controller remains incumbent pending the
 result.
+
+## Stage 16j closed - step-profile context rejected
+
+The fixed cue improved UDED aggregate F1 by `0.001584`, recall by `0.004412`,
+and mean fold F1 by `0.001563`, with `12/15` fold wins and `14/15` eligible
+folds, but it missed the registered `+0.002` aggregate-F1 margin. Official
+BSDS500-validation ODS/OIS regressed by `0.001980/0.001964` while AP improved
+by `0.001585`. The conjunctive rule therefore rejects the candidate. The
+compact controller remains incumbent and the fixed profile realization is
+closed to result-driven tuning.
+
+The active next action is `stage16k_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not tune the failed profile, fusion, stability, conditioning, or
+persistence families, and it may not use dataset identity or protected
+feedback.

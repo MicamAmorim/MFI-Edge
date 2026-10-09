@@ -1173,3 +1173,23 @@ repeated CV and official BSDS500-validation criteria plus a fixed positions
 1/8/15 preview. Do not tune profile extent, offsets, template widths,
 interpolation, eligibility, calibration, context, gate, localizer, or
 threshold grid from the result. The compact controller remains incumbent.
+
+### Stage 16j closure - step-profile context rejected; Stage 16k registered
+
+The fixed step-profile membership failed its conjunctive promotion rule. On
+UDED selection it improved aggregate F1 by `+0.00158`, recall by `+0.00441`,
+and mean fold F1 by `+0.00156`, with `12/15` fold wins and eligibility in
+`14/15` folds; precision changed by only `-0.00007`. However, aggregate F1
+missed the preregistered `+0.002` margin. Official BSDS500-validation
+ODS/OIS/AP changed by `-0.00198/-0.00196/+0.00158`, so the candidate also
+failed the BSDS conditions. It is rejected despite useful local
+discriminativeness and UDED stability. Do not tune its profile geometry,
+templates, calibration, eligibility, context, gate, localizer, or thresholds.
+The compact Choquet-gated grayscale Scharr+NMS controller remains incumbent.
+
+The registered next action is `stage16k_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+the failed profile, persistence, fusion, stability, or conditioning families,
+use dataset identity, or use protected feedback.

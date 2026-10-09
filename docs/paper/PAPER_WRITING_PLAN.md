@@ -506,6 +506,14 @@ and do not imply an exact reproduction. A failure closes this fixed profile
 geometry and calibration to outcome-driven tuning; it does not falsify
 parametric edge fitting or local scale control generally.
 
+Stage 16j is now a negative-result paragraph. Report that the cue was eligible
+in `14/15` folds, won `12/15` UDED fold comparisons, and improved UDED F1 by
+`+0.001584`, but missed the registered `+0.002` margin; also report the mixed
+BSDS changes `-0.001980/-0.001964/+0.001585` for ODS/OIS/AP. The safe claim is
+that fixed local profile evidence was individually discriminative and stable
+on UDED but did not add jointly transferable context under the registered
+fusion. Do not describe this as a general failure of parametric edge models.
+
 ---
 
 # 9. Supplementary-material candidates
