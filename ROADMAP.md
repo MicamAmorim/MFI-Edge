@@ -1154,3 +1154,19 @@ live-primary-literature escalation must choose exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not tune fusion weights, normalizations, nonlinear means, routers, or
 SED/MFI constituent parameters from Stage 16b outcomes.
+
+## Stage 16c closed — stable region-boundary support selected
+
+Stage 16c selected a fixed component-tree-inspired region-boundary stability
+gate. The choice follows the structural fragmentation evidence from Stages
+15l-15n and Donoser, Riemenschneider, and Bischof's primary CVPR 2010 method,
+which tests whether contours of adjacent regions remain shape-stable across
+gradient levels. The repository implementation is preregistered as a
+mechanism surrogate, not an exact reproduction of unpublished author code.
+
+The active next action is `stage16d_stable_region_boundary_gate`. It preserves
+the compact MFI bank, Choquet gamma, Scharr+NMS localizer, serialization, and
+fold fitting, adding only fixed region-boundary stability support through the
+already retained gate exponent and floor. UDED-selection repeated CV and
+official BSDS500 validation are conjunctive. No Stage-16b fusion tuning, SED
+dependency, endpoint linking, NFA revision, or protected feedback is allowed.

@@ -1041,3 +1041,20 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS-validation rule. Protected feedback,
 dataset-identity routing, and outcome-driven SED/MFI fusion tuning remain
 forbidden.
+
+### Stage 16c closure — stable-region-boundary support registered
+
+The live primary-literature checkpoint selected one fixed mid-level structural
+test. Stage 16d applies a repository-specific surrogate of Donoser,
+Riemenschneider, and Bischof's component-tree region-boundary shape stability
+(CVPR 2010, DOI `10.1109/CVPR.2010.5539833`) to the unchanged serialized
+compact-MFI score. Published fixed settings are retained: minimum region area
+`400`, level delta `5`, chamfer radius `10`, and minimum fragment length `70`;
+the incumbent gate exponent `2.0` and floor `0.10` are reused without search.
+This is not an exact reproduction of unpublished author node selection. It is
+mechanistically distinct from Stage 14t's upper-level response-component NFA,
+Stage 14i endpoint linking, and Stage 16b detector averaging. Stage 16d is
+registered with conjunctive UDED-selection repeated-CV and official
+BSDS500-validation criteria. The compact Choquet-gated grayscale Scharr+NMS
+controller remains incumbent pending the result, and no stability or gate
+parameter may be tuned afterward.

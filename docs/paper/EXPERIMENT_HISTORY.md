@@ -2429,3 +2429,27 @@ literature escalation that must select one mechanistically distinct bounded
 generation-2 falsification with a preregistered conjunctive UDED-selection and
 BSDS500-validation rule. The compact Choquet-gated grayscale Scharr+NMS
 controller remains incumbent.
+
+### Stage 16c checkpoint closure; Stage 16d stable-region-boundary gate registered
+
+The live primary-literature checkpoint selected one mid-level structural
+mechanism rather than another detector average or localizer replacement.
+Donoser, Riemenschneider, and Bischof (CVPR 2010, DOI
+`10.1109/CVPR.2010.5539833`) analyze the shape stability of region boundaries
+across levels of an inverted gradient component tree. Their fixed settings
+are minimum region area `400`, level displacement `5`, maximum chamfer
+distance `10`, and minimum retained fragment length `70`. Their evaluation is
+not matched BSDS500 ODS/OIS/AP and no public exact node-selection code was
+established, so Stage 16d is explicitly a repository-specific mechanism
+surrogate rather than a reproduction claim.
+
+The registered next action is `stage16d_stable_region_boundary_gate`. It
+constructs a fixed stability-support map from the serialized compact-MFI
+score's lower-level adjacent regions and applies that map through the retained
+gate exponent `2.0` and floor `0.10`. This is distinct from Stage 14t's NFA on
+upper-level edge-response components, Stage 14i endpoint linking, and Stage
+16b detector averaging. UDED selection uses 5x3 leakage-free CV and BSDS500
+validation uses the official attachment. Promotion requires all preregistered
+UDED F1/precision/recall/stability conditions plus BSDS ODS/OIS/AP benefit.
+No stability parameter, gate, serialization, or threshold-grid choice may be
+tuned from the result; the incumbent remains unchanged pending the outcome.

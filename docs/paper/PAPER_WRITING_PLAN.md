@@ -447,6 +447,14 @@ Before writing each claim, attach it to evidence.
 
 This ledger should be updated after every major run. If a claim cannot point to a frozen experiment, it does not go into the abstract/conclusion.
 
+Stage 16d adds a planned negative-or-positive mechanism result for
+component-tree-inspired region-boundary shape stability. The manuscript must
+label the implementation a fixed repository-specific surrogate, keep the
+original ETHZ/Weizmann binary-edge evidence separate from local UDED/BSDS
+development metrics, and avoid claiming an exact reproduction. If the joint
+gate fails, report the structural-stability hypothesis as bounded negative
+evidence rather than tuning its published constants.
+
 ---
 
 # 9. Supplementary-material candidates
