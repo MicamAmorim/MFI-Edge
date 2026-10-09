@@ -2341,3 +2341,34 @@ fold-fitted standardization, class-balanced L2 logistic probe, ROC AUC, and
 average precision contract with the repository-supported SciPy/NumPy stack.
 The cue definitions, deterministic samples, folds, decision rule, dataset
 roles, and architecture freeze are unchanged.
+
+### Stage 15o texture-evidence decomposition complete; Stage 15p not justified
+
+The dependency-repaired diagnostic completed on the preregistered deterministic
+samples and image-blocked folds. On BSDS500 validation, cross-boundary texture
+contrast was strongly incremental: relative to gradient plus persistence,
+mean AUC/AP changed from `0.588330/0.577389` to
+`0.653711/0.655504` (`+0.065381/+0.078115`), with both metrics positive in
+`5/5` folds. Relative to the four-cue model without cross-boundary texture,
+the all-five model changed AUC/AP from `0.587147/0.576627` to
+`0.653283/0.654730` (`+0.066136/+0.078103`), again positive in `5/5` folds.
+
+The UDED-selection result reversed. Relative to gradient plus persistence,
+the cross-texture model changed AUC/AP from `0.814649/0.816702` to
+`0.806495/0.805110` (`-0.008154/-0.011592`); relative to all cues except
+cross-texture, the all-five model changed them from `0.820745/0.815340` to
+`0.804159/0.800043` (`-0.016586/-0.015297`). Only `2/5` UDED folds were
+positive in either contrast. The registered rule required directionally
+consistent incremental AUC and AP on both datasets, so Stage 15p is not
+authorized. This is evidence against integrating this fixed analytic cue, not
+against all texture-distribution boundaries. The deterministic positions
+1/50/100 cue preview is complete. The official attachment re-evaluated only
+the unchanged incumbent (`0.545424/0.579469/0.534295` ODS/OIS/AP) and therefore
+does not provide candidate evidence; the reference-reproduction caveat remains.
+
+The single registered next action is
+`stage16a_generation2_mechanism_checkpoint`. It is a live-primary-literature
+synthesis of the complete Stage-15 evidence and must select exactly one
+bounded, interpretable, non-neural generation-2 falsification with a
+preregistered conjunctive UDED-selection and BSDS-validation rule. The compact
+Choquet-gated grayscale Scharr+NMS controller remains incumbent meanwhile.

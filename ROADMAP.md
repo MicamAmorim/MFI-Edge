@@ -1108,3 +1108,17 @@ scientific output exists. The active next action is the harness-only
 registered diagnostic contract through the available SciPy/NumPy runtime.
 No cue, sampling, fold, decision, detector, matcher, or MFI architecture
 change is authorized.
+
+Stage 15o is complete and closes the frozen-architecture diagnostic sequence.
+The tested cross-boundary texture cue improved BSDS-validation image-blocked
+AUC/AP in every fold, but reduced both aggregate metrics on UDED selection and
+was positive in only two of five UDED folds. It therefore fails the explicitly
+cross-dataset Stage-15p gate. Stage 15p is not registered, and the incumbent is
+unchanged.
+
+The active next action is `stage16a_generation2_mechanism_checkpoint`. This
+live-primary-literature checkpoint synthesizes the reproduction frontier,
+structural dataset discrepancy, spatial complementarity, and failed texture
+gate, then registers exactly one bounded generation-2 falsification. The next
+candidate must have a pre-result conjunctive UDED-selection/BSDS-validation
+promotion rule and cannot use dataset identity or protected feedback.

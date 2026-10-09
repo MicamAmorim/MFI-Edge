@@ -155,6 +155,13 @@ Separate at least:
 
 This stage decides whether a Stage-16/MFI-generation-2 feature integration is scientifically justified.
 
+Outcome: the fixed analytic cross-boundary texture contrast was strongly
+incremental on BSDS500 validation but regressed mean AUC and AP on UDED
+selection, with only two of five positive UDED folds. The preregistered
+cross-dataset condition therefore failed. Stage 15p was not registered, and
+the program transitions to a live-literature generation-2 mechanism checkpoint
+rather than integrating or tuning this cue.
+
 ---
 
 # Phase III — hypothesis-led MFI generation 2

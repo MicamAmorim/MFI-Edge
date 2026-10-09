@@ -983,3 +983,24 @@ SciPy/NumPy stack for the unchanged fold-fitted standardized, class-balanced
 L2 logistic diagnostic and AUC/AP calculations. Cue maps, deterministic
 sampling, folds, decision rule, dataset roles, and the architecture freeze are
 unchanged.
+
+### Stage-15o closure; Stage-16a generation-2 checkpoint registered
+
+The dependency-repaired Stage-15o diagnostic completed, but the preregistered
+cross-dataset gate for Stage 15p failed. On BSDS500 validation, adding the
+cross-boundary texture cue to gradient plus persistence improved mean AUC/AP
+by about `+0.06538/+0.07812`, and adding it to the other four cues improved
+them by `+0.06614/+0.07810`; all five folds were positive. On UDED selection,
+the same contrasts changed mean AUC/AP by about `-0.00815/-0.01159` and
+`-0.01659/-0.01530`, respectively, with only `2/5` positive folds. Stage 15p
+is therefore not registered, the tested analytic cross-texture cue is not
+integrated, and the compact Choquet-gated grayscale Scharr+NMS controller
+remains incumbent. The completed official attachment scored only that frozen
+incumbent and supplies no candidate promotion evidence.
+
+The registered next action is `stage16a_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature synthesis of the completed Stage-15
+reproduction and diagnostic program. It must choose exactly one bounded,
+interpretable, non-neural generation-2 falsification with a preregistered joint
+UDED-selection/BSDS-validation rule. It may not revive Stage 15p, fit a
+dataset-identity router, or use protected-split feedback.
