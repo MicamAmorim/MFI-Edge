@@ -1154,3 +1154,22 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 the failed persistence, fusion, stability, or rolling-guidance families, use
 dataset identity, or use protected feedback.
+
+### Stage 16i closure - step-profile context registered
+
+The live primary-literature checkpoint selected one fixed local edge-profile
+test. Stage 16j compares a seven-sample intensity profile along the incumbent
+Scharr normal against smooth linear shading and a closed three-width family of
+centered tanh step templates. The normalized fit advantage is calibrated
+inside each outer UDED training fold and, when eligible, appended as one
+positive membership to the retained five-feature distorted-Choquet context.
+Median conditioning, grayscale Scharr+NMS localization, gamma, gate, and
+threshold fitting remain unchanged. The test is a repository-specific bounded
+surrogate of Nalwa-Binford surface-model selection, informed by Elder-Zucker
+variable-blur analysis, not an exact reproduction.
+
+`stage16j_step_profile_context` is registered with conjunctive UDED-selection
+repeated CV and official BSDS500-validation criteria plus a fixed positions
+1/8/15 preview. Do not tune profile extent, offsets, template widths,
+interpolation, eligibility, calibration, context, gate, localizer, or
+threshold grid from the result. The compact controller remains incumbent.

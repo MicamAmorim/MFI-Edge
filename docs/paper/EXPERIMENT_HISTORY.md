@@ -2596,3 +2596,30 @@ literature escalation that must select exactly one mechanistically distinct,
 interpretable non-neural falsification and preregister a conjunctive UDED-
 selection/BSDS500-validation rule. The compact Choquet-gated grayscale
 Scharr+NMS controller remains incumbent.
+
+### Stage 16i checkpoint closure; Stage 16j step-profile context registered
+
+The live primary-literature checkpoint selected one local profile-model test
+that preserves the incumbent localizer. Nalwa and Binford's one-dimensional
+surface-fitting formulation identifies a hyperbolic tangent as an adequate
+step-edge basis and distinguishes discontinuities from smoother surface
+explanations. Elder and Zucker establish that natural edges span varying blur
+scales. Together they motivate a fixed multiscale profile-shape reliability
+cue rather than another response-component operation or localizer replacement.
+
+The registered next action is `stage16j_step_profile_context`. Along the
+incumbent Scharr normal it samples seven fixed positions and measures the
+normalized least-squares advantage of the best of three fixed centered tanh
+step templates over a smooth linear template. Its training-fold-fitted
+positive membership is appended to the retained five-feature distorted-
+Choquet context only when it passes the pre-existing AUC eligibility rule.
+Median conditioning, grayscale Scharr+NMS, gamma, gate, and fold-threshold
+fitting remain unchanged.
+
+Stage 16j is a repository-specific bounded surrogate, not an exact Nalwa-
+Binford or Elder-Zucker reproduction. Promotion is conjunctive across UDED-
+selection repeated CV and official BSDS500 validation, with a cue-eligibility
+endpoint and deterministic fixed-position preview. No profile geometry,
+template width, interpolation, calibration, Choquet, gate, localizer, or
+threshold parameter may be tuned from the result. The compact controller
+remains incumbent pending the outcome.

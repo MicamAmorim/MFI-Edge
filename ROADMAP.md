@@ -1252,3 +1252,22 @@ live-primary-literature escalation must choose exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not tune the failed fusion, stability, conditioning, or persistence
 families, and it may not use dataset identity or protected feedback.
+
+## Stage 16i closed - step-profile context evidence selected
+
+Stage 16i selected a fixed local one-dimensional surface-model cue grounded in
+Nalwa and Binford's step-edge fitting and Elder and Zucker's variable-blur
+analysis. The candidate measures whether a seven-sample profile along the
+incumbent Scharr normal is better fit by one of three fixed centered tanh step
+templates than by smooth linear shading. This supplies profile-shape evidence
+without replacing localization or operating on connected response components.
+
+The active next action is `stage16j_step_profile_context`. Its positive
+membership and singleton weight are fitted inside each UDED outer-training
+fold and appended to the unchanged compact distorted-Choquet context only
+when training-eligible. UDED-selection repeated CV and official BSDS500
+validation are conjunctive, and fixed positions 1/8/15 produce the mandatory
+preview. The profile scale set, sampling, interpolation, eligibility,
+calibration, context, gate, localizer, and threshold grid are closed to
+post-result tuning. The compact controller remains incumbent pending the
+result.

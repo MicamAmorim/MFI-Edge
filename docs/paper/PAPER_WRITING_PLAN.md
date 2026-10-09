@@ -495,6 +495,17 @@ reference-uncertified matcher supports a final benchmark claim. The compact
 controller remains incumbent; Stage 16i is a literature checkpoint rather
 than persistence tuning.
 
+Stage 16j is the next planned bounded context-feature result. Frame it as a
+local edge-profile model test: a fixed family of centered tanh templates is
+compared with smooth linear shading along the unchanged Scharr normal, and the
+result enters only as a positive contextual membership. Attribute the
+one-dimensional step-model rationale to Nalwa and Binford and the variable-
+blur motivation to Elder and Zucker. Label the implementation a repository-
+specific surrogate, report both development axes and eligibility frequency,
+and do not imply an exact reproduction. A failure closes this fixed profile
+geometry and calibration to outcome-driven tuning; it does not falsify
+parametric edge fitting or local scale control generally.
+
 ---
 
 # 9. Supplementary-material candidates

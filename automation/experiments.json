@@ -1422,6 +1422,26 @@
       "results/automation/stage16i_generation2_mechanism_checkpoint/summary.json"
     ]
   },
+  "stage16j_step_profile_context": {
+    "description": "Preregistered generation-2 falsification of a fixed oriented step-profile-versus-linear-shading context cue appended to the retained compact positive Choquet bank; leaves median-conditioned grayscale Scharr+NMS localization unchanged and evaluates UDED-selection repeated CV plus official BSDS500 validation conjunctively.",
+    "runner": "python",
+    "path": "run_stage16j_step_profile_context.py",
+    "args": [],
+    "role": "generation_2_local_profile_model_falsification",
+    "feedback_policy": "UDED_selection_repeated_leakage_free_CV_and_BSDS500_validation_joint_development_no_protected_feedback",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage16j_step_profile_context/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage16j_step_profile_context/summary.json",
+      "results/local_dev/stage16j_step_profile_context/variant_ranking.csv",
+      "results/local_dev/stage16j_step_profile_context/fold_results.csv",
+      "results/local_dev/stage16j_step_profile_context/per_image_metrics.csv",
+      "results/local_dev/stage16j_step_profile_context/step_profile_calibration.csv",
+      "results/local_dev/stage16j_step_profile_context/best_method_preview.png",
+      "results/local_dev/stage16j_step_profile_context/official_eval_manifest.json",
+      "results/official_eval/stage16j_step_profile_context/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",
