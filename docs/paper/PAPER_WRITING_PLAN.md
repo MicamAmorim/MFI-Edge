@@ -514,6 +514,18 @@ that fixed local profile evidence was individually discriminative and stable
 on UDED but did not add jointly transferable context under the registered
 fusion. Do not describe this as a general failure of parametric edge models.
 
+Stage 16l is the next planned bounded structural-context result. Frame it as
+an exact-author-detector/repository-integration decomposition: EDPF supplies
+fixed contiguous chains with chain-level Helmholtz validation, while MFI keeps
+its own Scharr+NMS localization and uses the chain map only as an eligible
+positive context membership. State explicitly that the one-pixel
+8-neighbourhood expansion is a preregistered raster-alignment adapter and not
+part of author EDPF. Report author commit and hashes, eligibility frequency,
+UDED F1/precision/recall and largest-component coverage, official BSDS
+ODS/OIS/AP, runtime, and fixed preview. A failure closes this exact support
+integration and its alignment adapter to outcome-driven tuning; it must not be
+described as falsifying Edge Drawing or EDPF generally.
+
 ---
 
 # 9. Supplementary-material candidates

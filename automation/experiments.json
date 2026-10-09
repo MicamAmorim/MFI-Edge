@@ -1454,6 +1454,29 @@
       "results/automation/stage16k_generation2_mechanism_checkpoint/summary.json"
     ]
   },
+  "stage16l_edpf_chain_context": {
+    "description": "Preregistered generation-2 falsification of exact author EDPF contiguous-chain support as one training-eligible positive membership in the unchanged compact Choquet context; uses a fixed one-pixel raster-alignment dilation, UDED-selection 5x3 leakage-free CV, and official BSDS500 validation under a conjunctive performance-and-continuity rule.",
+    "runner": "python",
+    "path": "run_stage16l_edpf_chain_context.py",
+    "args": [],
+    "role": "generation_2_exact_chain_support_context_falsification",
+    "feedback_policy": "UDED_selection_repeated_leakage_free_CV_and_BSDS500_validation_joint_development_no_protected_feedback",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage16l_edpf_chain_context/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage16l_edpf_chain_context/summary.json",
+      "results/local_dev/stage16l_edpf_chain_context/variant_ranking.csv",
+      "results/local_dev/stage16l_edpf_chain_context/fold_results.csv",
+      "results/local_dev/stage16l_edpf_chain_context/per_image_metrics.csv",
+      "results/local_dev/stage16l_edpf_chain_context/edpf_chain_calibration.csv",
+      "results/local_dev/stage16l_edpf_chain_context/edpf_exact_uded/export_manifest.json",
+      "results/local_dev/stage16l_edpf_chain_context/edpf_exact_uded/map_hashes.json",
+      "results/local_dev/stage16l_edpf_chain_context/edpf_exact_uded/per_image_runtime.csv",
+      "results/local_dev/stage16l_edpf_chain_context/best_method_preview.png",
+      "results/local_dev/stage16l_edpf_chain_context/official_eval_manifest.json",
+      "results/official_eval/stage16l_edpf_chain_context/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

@@ -2654,3 +2654,45 @@ The single registered next action is
 literature escalation that must choose exactly one mechanistically distinct,
 interpretable non-neural falsification with a preregistered joint UDED/BSDS
 rule and no protected feedback.
+
+### Stage 16k checkpoint closure; Stage 16l exact EDPF chain context registered
+
+The live primary-literature checkpoint selected one chain-first structural
+evidence test. Topal and Akinlar's Edge Drawing constructs contiguous,
+one-pixel-wide chains directly from anchors, and Akinlar and Topal's EDPF runs
+that detector at its fixed extreme settings before rejecting statistically
+meaningless chain segments with the author Helmholtz/NFA test. The immutable
+MIT-licensed author implementation at commit
+`69b8d081bd6d28192d816ec0ed02aff9186d73c1` has already passed exact build,
+synthetic repeatability, and BSDS-validation reproduction checks. Stage-15l
+also found that EDPF's relative advantage increases with incumbent
+fragmentation and edge density. This supplies a development-grounded reason to
+test chain support without using dataset identity or the earlier binary EDPF
+benchmark score as a fusion weight.
+
+The authoritative preregistration is
+`docs/paper/STAGE16L_PREREGISTRATION.md`. The registered next action is
+`stage16l_edpf_chain_context`. It executes the
+unchanged exact grayscale author EDPF on each image, expands its binary chain
+map by exactly one 8-neighbourhood pixel to accommodate raster alignment with
+Scharr NMS, and exposes that support as one positive membership. The
+membership receives a weight only when it passes the existing `0.56`
+training-AUC eligibility rule inside the outer UDED fold. The retained five
+memberships, distorted-Choquet gamma `0.55`, gate strength `2.0`, floor `0.10`,
+median conditioning, grayscale Scharr+NMS localization, and threshold fitting
+remain unchanged.
+
+This experiment is mechanistically distinct from Stage 14t's post-hoc
+upper-level connected-component NFA, Stage 14i's endpoint linking, Stage 14r's
+SE(2) diffusion, Stage 16d's region-boundary stability gate, and Stage 16h's
+connected-threshold score persistence. It is also not a promotion of binary
+EDPF as the detector. Promotion is conjunctive: UDED requires aggregate F1
+delta at least `+0.002`, precision at least `-0.002`, recall at least `-0.003`,
+nonnegative mean fold-F1 delta, at least `9/15` F1 wins, eligibility in at
+least `12/15` folds, nonnegative mean largest-component GT-coverage delta, and
+at least `8/15` coverage wins. The official BSDS500-validation attachment must
+complete with ODS delta at least `+0.002` and nonnegative OIS/AP deltas. Fixed
+positions 1/8/15 produce the mandatory preview. EDPF parameters, the one-pixel
+alignment adapter, eligibility, integration, context, gate, localizer, and
+threshold grid may not be tuned from the result. The compact controller
+remains incumbent pending the outcome.

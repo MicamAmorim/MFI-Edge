@@ -1193,3 +1193,26 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 the failed profile, persistence, fusion, stability, or conditioning families,
 use dataset identity, or use protected feedback.
+
+### Stage 16k closure - exact EDPF chain context registered
+
+The live checkpoint selected one fixed chain-first structural test. Stage 16l
+executes the immutable exact author EDPF implementation and uses its binary
+contiguous-chain/Helmholtz-validated support, after exactly one fixed
+8-neighbourhood raster-alignment dilation, as one outer-training-fold-eligible
+positive membership in the retained distorted-Choquet context. Stage-15
+development diagnostics associated EDPF's relative benefit with incumbent
+fragmentation and edge density, giving an image-internal rationale without a
+dataset router. This mechanism is distinct from the failed component NFA,
+endpoint linker, SE(2) diffusion, region-stability gate, and connected-
+threshold persistence tests. The compact bank, gamma `0.55`, gate strength
+`2.0`, floor `0.10`, median conditioning, grayscale Scharr+NMS localizer, and
+threshold fitting remain unchanged.
+
+The authoritative protocol is `docs/paper/STAGE16L_PREREGISTRATION.md`.
+`stage16l_edpf_chain_context` is registered with conjunctive UDED-selection
+5x3 leakage-free CV and official BSDS500-validation criteria, including a
+largest-component coverage endpoint and fixed positions 1/8/15 preview. Do not
+tune author EDPF parameters, the one-pixel alignment dilation, eligibility,
+integration, context, gate, localizer, or threshold grid from the result. The
+compact controller remains incumbent pending the outcome.

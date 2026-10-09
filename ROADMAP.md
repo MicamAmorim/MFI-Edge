@@ -1288,3 +1288,24 @@ distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not tune the failed profile, fusion, stability, conditioning, or
 persistence families, and it may not use dataset identity or protected
 feedback.
+
+## Stage 16k closed - exact EDPF chain context selected
+
+Stage 16k selected a bounded chain-first structural test grounded in the
+already reproduced author EDPF implementation. EDPF's anchor tracing plus
+chain-level Helmholtz validation is not the connected-component attenuation,
+endpoint linking, stable-region gating, SE(2) diffusion, or threshold
+persistence tested earlier. Stage-15 development diagnostics additionally
+associate EDPF's relative benefit with fragmented and edge-dense images, so
+the hypothesis is image-internal and does not require a dataset router.
+
+The active next action is `stage16l_edpf_chain_context`. Exact pinned author
+EDPF binary support, expanded by one fixed 8-neighbourhood pixel only for
+raster alignment, is appended as one training-eligible positive membership to
+the unchanged compact Choquet context. UDED selection uses 5x3 leakage-free
+CV, with F1/precision/recall, eligibility, fold-win, and largest-component
+coverage conditions; BSDS500 validation uses the required official attachment
+with ODS/OIS/AP conditions. Fixed positions 1/8/15 provide the deterministic
+preview. The author detector, alignment dilation, eligibility, integration,
+context, gate, localizer, and threshold grid are frozen before results. The
+compact controller remains incumbent pending the outcome.
