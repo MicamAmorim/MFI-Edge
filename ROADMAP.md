@@ -1138,3 +1138,19 @@ official attachment. The candidate is exactly `0.5*MFI + 0.5*SED`; no weights
 are searched. The preregistered gate requires improvement over both
 constituents on UDED and over the better constituent on BSDS ODS/OIS/AP. The
 compact controller remains incumbent until every condition passes.
+
+## Stage 16b closed — equal expert mean rejected
+
+The fixed mean improved UDED aggregate F1 over compact MFI by `+0.003764`, but
+failed the registered precision limit (`-0.006614`) and won only `5/15` folds
+against MFI. Although it substantially outperformed exact SED on UDED, it
+failed the other development axis: on official BSDS500 validation it trailed
+exact SED by `-0.049178` ODS, `-0.055314` OIS, and `-0.066815` AP. Beating the
+old MFI incumbent on BSDS was explicitly insufficient. The candidate is not
+promoted and the compact controller remains incumbent.
+
+The active next action is `stage16c_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not tune fusion weights, normalizations, nonlinear means, routers, or
+SED/MFI constituent parameters from Stage 16b outcomes.

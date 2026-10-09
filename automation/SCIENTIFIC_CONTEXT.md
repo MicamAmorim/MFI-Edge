@@ -1022,3 +1022,22 @@ over each constituent on UDED and over the better constituent on BSDS
 ODS/OIS/AP. No weight search, router, dataset identity, Stage-15p texture cue,
 or protected feedback is allowed. The compact Choquet-gated grayscale
 Scharr+NMS controller remains incumbent pending the result.
+
+### Stage 16b closure — fixed SED/MFI mean rejected; Stage 16c registered
+
+The equal arithmetic mean did **not** pass its preregistered conjunctive rule.
+On UDED selection it improved aggregate F1 over compact MFI by `+0.003764`,
+but precision fell by `-0.006614`, mean fold F1 improved only `+0.000781`, and
+the candidate won just `5/15` folds against MFI. It decisively exceeded SED on
+UDED. On official BSDS500 validation the mean improved over MFI but remained
+below the better constituent, exact SED, by `-0.049178/-0.055314/-0.066815`
+ODS/OIS/AP. Therefore it is not promoted, and its weight, normalization,
+nonlinear variants, and routers must not be tuned from this result. The compact
+Choquet-gated grayscale Scharr+NMS controller remains incumbent.
+
+The registered next action is `stage16c_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS-validation rule. Protected feedback,
+dataset-identity routing, and outcome-driven SED/MFI fusion tuning remain
+forbidden.

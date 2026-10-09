@@ -2394,3 +2394,38 @@ both constituents on UDED stability/F1 and the better constituent on all three
 BSDS metrics, including at least `+0.002` ODS. No weight search, learned
 router, dataset identity, Stage-15p texture cue, protected split, or
 architecture promotion occurs at registration.
+
+### Stage 16b fixed SED/MFI expert mean rejected; Stage 16c registered
+
+Stage 16b completed with its deterministic fixed-position preview and official
+BSDS500-validation attachment. On UDED selection, the equal mean reached
+aggregate precision/recall/F1 `0.662510/0.895195/0.761474`, versus compact
+MFI `0.669124/0.873332/0.757710` and exact SED
+`0.631376/0.721516/0.673443`. Relative to compact MFI, aggregate F1 improved
+by `+0.003764` and mean fold F1 by `+0.000781`, but precision changed by
+`-0.006614` and the candidate won only `5/15` folds. It won all 15 folds and
+improved aggregate F1 by `+0.088031` against SED. The UDED conjunction thus
+failed its precision and MFI fold-win conditions.
+
+Under the common official BSDS500-validation path, the fusion obtained
+ODS/OIS/AP `0.629371/0.653496/0.645995`; exact SED obtained
+`0.678549/0.708811/0.712810`. The fusion therefore trailed the better
+constituent by `-0.049178/-0.055314/-0.066815`, failing all three BSDS
+conditions, even though it exceeded the compact MFI incumbent by
+`+0.083945/+0.074019/+0.111705`. The local matcher remains stochastic and
+reference-uncertified, so these are development metrics rather than final
+claim evidence.
+
+The fixed mean is rejected and no architecture is promoted. This result is
+evidence that fixed SED/MFI averaging can recover UDED recall and improve over
+MFI on both datasets, but it does not provide a single combination that
+dominates both heterogeneous constituents. The preregistration closes
+outcome-driven searches over weights, normalizations, nonlinear means, routers,
+and constituent parameters.
+
+The single registered next action is
+`stage16c_generation2_mechanism_checkpoint`, a high-reasoning live-primary-
+literature escalation that must select one mechanistically distinct bounded
+generation-2 falsification with a preregistered conjunctive UDED-selection and
+BSDS500-validation rule. The compact Choquet-gated grayscale Scharr+NMS
+controller remains incumbent.

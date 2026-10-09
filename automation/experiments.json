@@ -1314,6 +1314,18 @@
       "results/official_eval/stage16b_fixed_sed_mfi_fusion/summary.json"
     ]
   },
+  "stage16c_generation2_mechanism_checkpoint": {
+    "description": "High-reasoning live-primary-literature checkpoint after the fixed equal SED/MFI mean failed its joint promotion rule; selects exactly one mechanistically distinct, interpretable, non-neural generation-2 falsification without tuning the failed fusion or changing the incumbent at the checkpoint.",
+    "runner": "python",
+    "path": "automation/stage16c_generation2_mechanism_checkpoint.py",
+    "args": [],
+    "role": "research_planning",
+    "feedback_policy": "primary_literature_and_completed_development_evidence_only_no_failed_fusion_tuning_no_protected_feedback_no_architecture_change_at_checkpoint",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage16c_generation2_mechanism_checkpoint/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",
