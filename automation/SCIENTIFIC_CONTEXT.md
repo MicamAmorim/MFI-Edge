@@ -1302,3 +1302,9 @@ strength `2.0`, floor `0.10`, median conditioning, grayscale Scharr+NMS, and
 threshold fitting are unchanged. Do not tune the rank definition, ties,
 normalization scope, feature subset, weights, aggregation, gate, localizer, or
 thresholds from the result. The compact controller remains incumbent.
+
+The first Stage-16p launch stopped before any result artifact because its
+inconsistent seed caused the fold-bank preselector to omit the frozen
+`gabor4_scale_persistence` feature. A harness-only retry is registered with the
+established generation-2 seed `20261009`; the candidate and joint promotion
+rule are unchanged, and no scientific feedback has yet been produced.

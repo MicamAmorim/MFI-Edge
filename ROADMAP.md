@@ -1380,3 +1380,10 @@ BSDS ODS/OIS/AP conditions, deterministic rank invariants, and the fixed
 positions 1/8/15 `best_method_preview.png`. The rank formula, tie handling,
 scope, retained feature set and weights, gamma, gate, localizer, and threshold
 grid are frozen before results. The compact controller remains incumbent.
+
+The first Stage-16p launch produced no scientific artifact. An inconsistent
+launcher seed (`20261010`) caused the stochastic fold-bank preselector to omit
+one of the five frozen compact features and abort in repeat 2/fold 2. The active
+next action is the harness-only `stage16p_copula_context_retry1`, which uses the
+established Stage-16 generation-2 seed `20261009` and otherwise leaves the
+preregistered candidate and joint UDED/BSDS rule unchanged.

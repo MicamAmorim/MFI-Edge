@@ -1540,6 +1540,26 @@
       "results/official_eval/stage16p_copula_context/summary.json"
     ]
   },
+  "stage16p_copula_context_retry1": {
+    "description": "Harness-only retry of the unchanged Stage-16p empirical-copula context test after the initial launcher used a seed inconsistent with the established generation-2 repeated-CV protocol and the compact-bank preselector omitted one retained feature before any result artifact was produced. Reuses fixed seed 20261009 from Stages 16j/16l/16n; no rank transform, fold fitting, feature, weight, threshold, promotion rule, dataset role, or official-evaluation setting changes.",
+    "runner": "python",
+    "path": "run_stage16p_copula_context.py",
+    "args": ["--seed", "20261009"],
+    "role": "development_harness_retry",
+    "feedback_policy": "joint_uded_selection_and_bsds500_validation_development_no_protected_feedback_no_rank_or_fusion_tuning",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage16p_copula_context/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage16p_copula_context/summary.json",
+      "results/local_dev/stage16p_copula_context/variant_ranking.csv",
+      "results/local_dev/stage16p_copula_context/fold_results.csv",
+      "results/local_dev/stage16p_copula_context/per_image_metrics.csv",
+      "results/local_dev/stage16p_copula_context/rank_diagnostics.csv",
+      "results/local_dev/stage16p_copula_context/best_method_preview.png",
+      "results/local_dev/stage16p_copula_context/official_eval_manifest.json",
+      "results/official_eval/stage16p_copula_context_retry1/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

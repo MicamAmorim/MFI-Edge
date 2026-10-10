@@ -112,7 +112,7 @@ def _save_soft_png(score: np.ndarray, path: Path) -> None:
     Image.fromarray(np.rint(np.clip(x, 0.0, 1.0) * 255.0).astype(np.uint8), mode="L").save(path)
 
 
-def _write_official_manifest(out: Path) -> Path:
+def _write_official_manifest(out: Path, seed: int) -> Path:
     manifest = {
         "schema_version": 1,
         "split": "val",
@@ -124,6 +124,7 @@ def _write_official_manifest(out: Path) -> Path:
                 "args": [
                     "--export-bsds", "--image-dir", "{image_dir}",
                     "--output-dir", "{output_dir}", "--split", "{split}",
+                    "--seed", str(seed),
                 ],
                 "timeout_minutes": 240,
             },
@@ -283,14 +284,20 @@ def run_experiment(args: argparse.Namespace) -> int:
         first_repeat_rank_maps[position],
     ] for position in PREVIEW_POSITIONS]
     preview_path = write_panel_grid(out / "best_method_preview.png", rows)
-    manifest_path = _write_official_manifest(out)
+    manifest_path = _write_official_manifest(out, args.seed)
     summary = {
         "stage": "16p-empirical-copula-context",
         "role": "generation_2_marginal_invariance_falsification",
         "architecture_changed": False,
         "protected_split_used": False,
         "datasets": {
-            "UDED_selection": {"n_images": len(selection), "role": "development repeated leakage-free CV", "repeats": args.repeats, "folds": args.folds},
+            "UDED_selection": {
+                "n_images": len(selection),
+                "role": "development repeated leakage-free CV",
+                "repeats": args.repeats,
+                "folds": args.folds,
+                "seed": args.seed,
+            },
             "BSDS500_validation": {"role": "development official attachment", "status": "pending controller attachment"},
         },
         "mechanism": {

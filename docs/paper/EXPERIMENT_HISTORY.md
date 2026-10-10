@@ -2832,3 +2832,21 @@ positions 1/8/15 preview are mandatory. No rank definition, tie rule,
 normalization scope, feature subset, weight, gamma, gate, localizer, or
 threshold may be tuned from the result. The compact controller remains
 incumbent pending the outcome.
+
+### Stage 16p first launch stopped before scientific output
+
+The first Stage-16p launch stopped during repeated CV before writing metrics,
+the deterministic preview, or the official-evaluation manifest. Its launcher
+used seed `20261010`, unlike the established generation-2 repeated-CV seed
+`20261009` used by Stages 16j, 16l, and 16n. Under that inconsistent seed, the
+stochastic training-fold bank preselector omitted the preregistered retained
+`gabor4_scale_persistence` feature in repeat 2/fold 2, so the compact-controller
+contract correctly raised an error. This provides no candidate-performance or
+official-evaluator feedback.
+
+One harness-only retry is registered as
+`stage16p_copula_context_retry1` with explicit seed `20261009`. The retry
+restores the established folds and fold-fitted compact-controller contract; it
+does not change the empirical-rank transform, retained features, weights,
+Choquet/gate/localizer settings, thresholds, promotion rule, dataset roles, or
+official BSDS500-validation attachment.
