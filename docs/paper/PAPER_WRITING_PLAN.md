@@ -557,6 +557,15 @@ Report both development axes and the registered rank invariants; a failure
 closes this fixed per-image empirical-copula realization to outcome-driven
 tuning.
 
+Stage 16p is now a mixed cross-dataset negative-result paragraph. Report that
+all deterministic rank invariants passed, but UDED aggregate F1 and mean fold
+F1 changed by `-0.009028/-0.007685`, with only `2/15` fold wins. Official BSDS
+ODS/OIS/AP changed by `+0.008482/-0.000650/+0.001349`; therefore even the
+official axis failed its conjunctive condition. The safe claim is that this
+fixed image-internal removal of membership marginals improved BSDS ODS but
+materially harmed UDED precision and recall, so stable transferable value was
+not established. Do not generalize the result to all copula or rank methods.
+
 ---
 
 # 9. Supplementary-material candidates

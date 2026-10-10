@@ -1308,3 +1308,23 @@ inconsistent seed caused the fold-bank preselector to omit the frozen
 `gabor4_scale_persistence` feature. A harness-only retry is registered with the
 established generation-2 seed `20261009`; the candidate and joint promotion
 rule are unchanged, and no scientific feedback has yet been produced.
+
+### Stage 16p closure - empirical-copula context rejected; Stage 16q registered
+
+The seed-corrected fixed empirical-CDF midrank transform failed its conjunctive
+promotion rule on both development axes. On UDED selection, aggregate F1,
+precision, recall, and mean fold F1 changed by
+`-0.00903/-0.00446/-0.01647/-0.00769`, with only `2/15` fold wins. On official
+BSDS500 validation, ODS/AP improved by `+0.00848/+0.00135`, but OIS changed by
+`-0.00065`, failing the required nonnegative condition. Rank-contract checks
+and the fixed preview passed, but cannot override the performance failures.
+The candidate is rejected; do not tune its rank definition, scope, ties,
+weights, aggregation, gate, localizer, or thresholds. The compact
+Choquet-gated grayscale Scharr+NMS controller remains incumbent.
+
+The registered next action is `stage16q_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+empirical marginal normalization or any earlier closed family, use dataset
+identity, relax the cross-dataset rule, or use protected feedback.

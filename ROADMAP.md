@@ -1387,3 +1387,19 @@ one of the five frozen compact features and abort in repeat 2/fold 2. The active
 next action is the harness-only `stage16p_copula_context_retry1`, which uses the
 established Stage-16 generation-2 seed `20261009` and otherwise leaves the
 preregistered candidate and joint UDED/BSDS rule unchanged.
+
+## Stage 16p closed - empirical-copula context rejected
+
+The corrected retry passed its deterministic rank invariants and preview
+contract, but regressed UDED aggregate F1 by `-0.009028`, precision by
+`-0.004462`, recall by `-0.016471`, and mean fold F1 by `-0.007685`, with only
+`2/15` fold wins. Official BSDS500-validation ODS/OIS/AP changed by
+`+0.008482/-0.000650/+0.001349`; the negative OIS delta also failed the
+official conjunctive condition. The fixed rank-normalization realization is
+rejected and closed to tuning. The compact controller remains incumbent.
+
+The active next action is `stage16q_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not tune empirical marginal normalization or earlier closed families,
+fit dataset identity, relax the joint rule, or use protected feedback.

@@ -2850,3 +2850,31 @@ restores the established folds and fold-fitted compact-controller contract; it
 does not change the empirical-rank transform, retained features, weights,
 Choquet/gate/localizer settings, thresholds, promotion rule, dataset roles, or
 official BSDS500-validation attachment.
+
+### Stage 16p empirical-copula context rejected; Stage 16q registered
+
+The seed-corrected retry completed all rank-contract checks, the fixed
+positions 1/8/15 preview, repeated CV, and official attachment. Relative to
+compact MFI on UDED selection, aggregate precision/recall/F1 changed by
+`-0.004462/-0.016471/-0.009028`; mean fold F1 changed by `-0.007685`, and the
+candidate won only `2/15` fold comparisons. It failed every preregistered UDED
+performance and stability condition.
+
+Under the common official BSDS500-validation path, ODS/OIS/AP changed by
+`+0.008482/-0.000650/+0.001349`. The ODS gain and small AP gain do not satisfy
+the conjunctive official axis because OIS was required to be nonnegative. The
+Windows matcher remains stochastic and reference-uncertified, so these remain
+development metrics rather than final-claim evidence.
+
+The fixed image-internal empirical-copula realization is rejected. This result
+is evidence that discarding absolute membership marginals harms UDED transfer
+in the retained nonlinear context; it is not a general rejection of copula or
+rank-based methods. Rank definition, tie handling, normalization scope,
+feature subset, weights, aggregation, gate, localizer, and thresholds are
+closed to result-driven tuning. The compact controller remains incumbent.
+
+The single registered next action is
+`stage16q_generation2_mechanism_checkpoint`, a high-reasoning live-primary-
+literature escalation that must choose exactly one mechanistically distinct,
+interpretable non-neural falsification with a preregistered joint UDED/BSDS
+rule and no protected feedback.
