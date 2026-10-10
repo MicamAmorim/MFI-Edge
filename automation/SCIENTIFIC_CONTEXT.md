@@ -1281,3 +1281,24 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 SUSAN or earlier closed families, use dataset identity, relax the cross-dataset
 rule, or use protected feedback.
+
+### Stage 16o closure - empirical-copula context registered
+
+The live checkpoint selected one fixed marginal-invariance test rather than
+another cue, localizer, or structural gate. Stage 16p maps each of the five
+retained fold-calibrated membership maps independently to deterministic
+image-internal empirical-CDF midranks `(average_rank - 0.5) / N` before the
+unchanged distorted-Choquet integral. The hypothesis is that within-image cue
+ordering may transfer even when absolute membership marginals shift across
+image regimes, directly addressing the repeated BSDS-positive/UDED-weak
+pattern without dataset identity or a fitted target adapter. The transform has
+no bins, window, mixing weight, or searched parameter.
+
+The authoritative protocol is `docs/paper/STAGE16P_PREREGISTRATION.md`.
+`stage16p_copula_context` is registered with conjunctive UDED-selection 5x3
+leakage-free CV and official BSDS500-validation criteria plus fixed positions
+1/8/15 preview and rank-invariant checks. Singleton weights, gamma `0.55`, gate
+strength `2.0`, floor `0.10`, median conditioning, grayscale Scharr+NMS, and
+threshold fitting are unchanged. Do not tune the rank definition, ties,
+normalization scope, feature subset, weights, aggregation, gate, localizer, or
+thresholds from the result. The compact controller remains incumbent.

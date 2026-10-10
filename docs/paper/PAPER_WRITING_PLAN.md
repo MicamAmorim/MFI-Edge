@@ -546,6 +546,17 @@ that the fixed initial USAN response was discriminative and mildly beneficial
 but did not meet the preregistered stable cross-dataset increment. Do not
 describe this as a falsification of complete SUSAN edge detection.
 
+Stage 16p is the next bounded generation-2 experiment. Frame it as a
+marginal-invariance test over the retained five memberships, not as a new edge
+cue and not as a reproduction of Zabih-Woodfill correspondence. Each image and
+membership channel is mapped to deterministic empirical-CDF midranks before
+the unchanged Choquet aggregation. The safe prospective claim is that this
+tests whether stable within-image ordering can transfer better than absolute
+fold-calibrated membership marginals under the recurring UDED/BSDS reversal.
+Report both development axes and the registered rank invariants; a failure
+closes this fixed per-image empirical-copula realization to outcome-driven
+tuning.
+
 ---
 
 # 9. Supplementary-material candidates

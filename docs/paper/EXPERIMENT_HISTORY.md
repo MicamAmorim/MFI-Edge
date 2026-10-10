@@ -2792,3 +2792,43 @@ The single registered next action is
 literature escalation that must choose exactly one mechanistically distinct,
 interpretable non-neural falsification with a preregistered joint UDED/BSDS
 rule and no protected feedback.
+
+### Stage 16o checkpoint closure; Stage 16p empirical-copula context registered
+
+The live checkpoint first rejected local structure-tensor coherence as the
+next mechanism because coherence and cross-scale orientation consistency are
+already represented in the historical feature bank; relabeling them would not
+be a distinct falsification. The checkpoint instead targets the recurring
+calibration pattern itself. Several fixed Stage-16 additions were individually
+eligible and improved BSDS validation but failed to add stable UDED value,
+which is consistent with image/dataset-dependent membership marginals
+distorting a fixed nonlinear aggregation even when spatial cue ordering remains
+useful.
+
+Zabih and Woodfill's ECCV 1994 non-parametric rank transform (DOI
+`10.1007/BFb0028345`) establishes relative ordering as a robust alternative to
+raw photometric values. Empirical-copula work separately motivates mapping
+variables through their marginal CDFs to isolate dependence from marginal
+shift. These sources motivate, but are not claimed to be reproduced by, one
+fixed repository test.
+
+The authoritative preregistration is
+`docs/paper/STAGE16P_PREREGISTRATION.md`. The registered next action is
+`stage16p_copula_context`. Within each image, each of the five retained
+fold-calibrated membership maps is replaced by its deterministic empirical-CDF
+midrank `(average_rank - 0.5) / N` before the unchanged distorted-Choquet
+integral. Ties receive average ranks. Singleton weights, gamma `0.55`, gate
+strength `2.0`, floor `0.10`, median conditioning, grayscale Scharr+NMS, and
+fold-fitted thresholds are unchanged. The transform uses only the current
+unlabelled image; it does not fit an adapter, use dataset identity, or inspect
+another target image.
+
+Promotion is conjunctive. UDED selection requires aggregate F1 delta at least
+`+0.002`, precision at least `-0.002`, recall at least `-0.003`, nonnegative
+mean fold-F1 delta, and at least `9/15` fold wins. The official BSDS500-
+validation attachment must complete with ODS delta at least `+0.002` and
+nonnegative OIS/AP deltas. Deterministic rank-contract checks and the fixed
+positions 1/8/15 preview are mandatory. No rank definition, tie rule,
+normalization scope, feature subset, weight, gamma, gate, localizer, or
+threshold may be tuned from the result. The compact controller remains
+incumbent pending the outcome.

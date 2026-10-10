@@ -1521,6 +1521,25 @@
       "results/automation/stage16o_generation2_mechanism_checkpoint/summary.json"
     ]
   },
+  "stage16p_copula_context": {
+    "description": "Fixed image-internal empirical-CDF midrank normalization of the five retained memberships before unchanged distorted-Choquet aggregation; tests marginal-invariant context under conjunctive UDED-selection repeated CV and official BSDS500-validation criteria.",
+    "runner": "python",
+    "path": "run_stage16p_copula_context.py",
+    "args": [],
+    "role": "development",
+    "feedback_policy": "joint_uded_selection_and_bsds500_validation_development_no_protected_feedback_no_rank_or_fusion_tuning",
+    "official_eval_manifest": "results/local_dev/stage16p_copula_context/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage16p_copula_context/summary.json",
+      "results/local_dev/stage16p_copula_context/variant_ranking.csv",
+      "results/local_dev/stage16p_copula_context/fold_results.csv",
+      "results/local_dev/stage16p_copula_context/per_image_metrics.csv",
+      "results/local_dev/stage16p_copula_context/rank_diagnostics.csv",
+      "results/local_dev/stage16p_copula_context/best_method_preview.png",
+      "results/local_dev/stage16p_copula_context/official_eval_manifest.json",
+      "results/official_eval/stage16p_copula_context/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

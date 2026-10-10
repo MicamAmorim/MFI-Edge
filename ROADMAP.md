@@ -1362,3 +1362,21 @@ live-primary-literature escalation must choose exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not tune SUSAN or any earlier closed family, fit dataset identity, relax
 the joint rule, or use protected feedback.
+
+## Stage 16o closed - empirical-copula context selected
+
+The checkpoint selected a marginal-invariance test rather than another local
+cue, localizer, or structural gate. Stage 16p maps each retained membership
+channel independently to its image-internal empirical-CDF midrank before the
+unchanged distorted-Choquet integral. This preserves spatial ordering and
+cross-cue dependence while removing image-specific marginal scale. It uses no
+labels, dataset identity, fitted target adapter, bins, neighborhood, or mixing
+weight.
+
+The active next action is `stage16p_copula_context`. UDED selection uses 5x3
+leakage-free CV, and official BSDS500 validation remains jointly required.
+Promotion requires the preregistered F1/precision/recall/fold-win conditions,
+BSDS ODS/OIS/AP conditions, deterministic rank invariants, and the fixed
+positions 1/8/15 `best_method_preview.png`. The rank formula, tie handling,
+scope, retained feature set and weights, gamma, gate, localizer, and threshold
+grid are frozen before results. The compact controller remains incumbent.
