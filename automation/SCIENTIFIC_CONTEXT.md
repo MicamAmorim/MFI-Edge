@@ -1261,3 +1261,23 @@ leakage-free CV and official BSDS500-validation criteria plus a fixed positions
 geometric threshold, boundary handling, eligibility, calibration, context,
 gate, localizer, or threshold grid from the result. The compact Choquet-gated
 grayscale Scharr+NMS controller remains incumbent.
+
+### Stage 16n closure - SUSAN context rejected; Stage 16o registered
+
+The fixed initial SUSAN/USAN local-self-similarity membership failed its
+conjunctive promotion rule. On UDED selection, aggregate F1 changed by only
+`+0.000302` versus the required `+0.002`, precision by `-0.000463`, recall by
+`+0.001628`, and mean fold F1 by `+0.000185`; the candidate won only `7/15`
+folds despite eligibility in `15/15`. Official BSDS500-validation ODS/OIS/AP
+improved by `+0.004674/+0.002200/+0.006049`, satisfying that axis, but all
+conditions were required. The candidate is rejected and its fixed mask,
+brightness comparison, calibration, and integration must not be tuned. This
+does not falsify the complete SUSAN detector. The compact Choquet-gated
+grayscale Scharr+NMS controller remains incumbent.
+
+The registered next action is `stage16o_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+SUSAN or earlier closed families, use dataset identity, relax the cross-dataset
+rule, or use protected feedback.

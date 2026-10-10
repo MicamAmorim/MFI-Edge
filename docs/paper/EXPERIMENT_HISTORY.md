@@ -2761,3 +2761,34 @@ ODS delta at least `+0.002` and nonnegative OIS/AP deltas. Fixed positions
 similarity exponent, geometric threshold, boundary handling, calibration,
 context, gate, localizer, and threshold grid are frozen before results. The
 compact controller remains incumbent pending the outcome.
+
+### Stage 16n SUSAN context rejected; Stage 16o registered
+
+Stage 16n completed the fixed positions 1/8/15 preview, finite/bounded checks,
+and official attachment. The SUSAN cue was training-eligible in all `15/15`
+folds. Relative to compact MFI on UDED selection, aggregate
+precision/recall/F1 changed by `-0.000463/+0.001628/+0.000302`; mean fold F1
+changed by `+0.000185`, and the candidate won only `7/15` fold comparisons.
+It therefore failed the preregistered `+0.002` aggregate-F1 margin and `9/15`
+fold-win conditions, while passing the precision, recall, mean-fold, and
+eligibility conditions.
+
+Under the common official BSDS500-validation path, ODS/OIS/AP improved by
+`+0.004674/+0.002200/+0.006049`, satisfying every BSDS condition. Those gains
+cannot override the UDED failures because the rule was explicitly conjunctive.
+The Windows matcher remains stochastic and reference-uncertified, so these are
+development rather than final-claim metrics.
+
+The fixed initial-response membership is rejected and the compact
+Choquet-gated grayscale Scharr+NMS controller remains incumbent. This result
+shows that the fixed centre-referenced USAN deficit is individually
+discriminative and mildly beneficial, including on BSDS validation, but does
+not establish stable cross-dataset incremental value in the retained context.
+It does not falsify the full SUSAN detector. Its parameters and integration
+are closed to result-driven tuning.
+
+The single registered next action is
+`stage16o_generation2_mechanism_checkpoint`, a high-reasoning live-primary-
+literature escalation that must choose exactly one mechanistically distinct,
+interpretable non-neural falsification with a preregistered joint UDED/BSDS
+rule and no protected feedback.

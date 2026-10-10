@@ -538,6 +538,14 @@ detector. Report eligibility and both development axes under the preregistered
 joint rule. A failure closes this fixed mask/threshold/calibration realization
 to outcome-driven tuning but does not falsify SUSAN generally.
 
+Stage 16n is now a mixed cross-dataset negative-result paragraph. Report that
+the cue was eligible in `15/15` folds and changed UDED aggregate F1 and mean
+fold F1 by only `+0.000302/+0.000185`, with `7/15` fold wins, while official
+BSDS ODS/OIS/AP improved by `+0.004674/+0.002200/+0.006049`. The safe claim is
+that the fixed initial USAN response was discriminative and mildly beneficial
+but did not meet the preregistered stable cross-dataset increment. Do not
+describe this as a falsification of complete SUSAN edge detection.
+
 ---
 
 # 9. Supplementary-material candidates

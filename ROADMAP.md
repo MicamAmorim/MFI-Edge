@@ -1346,3 +1346,19 @@ Scharr+NMS localizer, and threshold fitting remain unchanged. UDED-selection
 positions 1/8/15 generate `best_method_preview.png`. No SUSAN parameter,
 calibration, context, gate, localizer, or threshold may be tuned from the
 result. The compact controller remains incumbent pending the outcome.
+
+## Stage 16n closed - fixed SUSAN context rejected
+
+The SUSAN membership was eligible in all `15/15` UDED folds but improved
+aggregate F1 by only `+0.000302` against the registered `+0.002` margin and
+won only `7/15` folds. Precision/recall and mean fold F1 changed by
+`-0.000463/+0.001628/+0.000185`. Official BSDS500-validation ODS/OIS/AP all
+improved (`+0.004674/+0.002200/+0.006049`), but the joint rule was
+conjunctive. The fixed realization is rejected, its integration is closed to
+tuning, and the compact controller remains incumbent.
+
+The active next action is `stage16o_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not tune SUSAN or any earlier closed family, fit dataset identity, relax
+the joint rule, or use protected feedback.
