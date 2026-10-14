@@ -2939,3 +2939,26 @@ third unchanged harness retry is registered through a repository-local Python
 delegator that selects the same `.venv` interpreter. Detector code, data,
 folds, seed, aggregation, artifacts, official attachment, and the conjunctive
 promotion rule remain unchanged.
+
+### Stage 16r Sugeno context rejected; Stage 16s registered
+
+The environment-repaired fixed Sugeno aggregation completed its repeated CV,
+algebraic checks, deterministic preview, and official attachment. Relative to
+compact Choquet MFI on UDED selection, aggregate F1/precision/recall and mean
+fold F1 changed by `+0.000378/+0.000300/+0.000497/+0.000393`; the candidate
+won `8/15` fold comparisons. It therefore missed the preregistered `+0.002`
+aggregate-F1 margin and `9/15` fold-win requirement.
+
+Under the common official BSDS500-validation path, ODS/OIS/AP changed by
+`+0.001498/+0.000473/-0.013481`. The candidate missed the required `+0.002`
+ODS gain and materially reduced AP. Algebraic contracts and the fixed preview
+passed, but all promotion conditions were conjunctive. The candidate is
+rejected; its Sugeno operators, capacity, gamma, weights, memberships, gate,
+localizer, thresholds, and any Choquet/Sugeno mixture are closed to tuning.
+The compact Choquet controller remains incumbent.
+
+The single registered next action is
+`stage16s_generation2_mechanism_checkpoint`, a high-reasoning live-primary-
+literature escalation that must select exactly one mechanistically distinct,
+interpretable non-neural falsification with a preregistered joint UDED/BSDS
+rule and no protected feedback.

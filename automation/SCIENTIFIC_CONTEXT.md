@@ -1368,3 +1368,23 @@ controller's Windows command construction passed literal quotes around the
 batch path. A third harness-only retry is registered through a repository-local
 Python delegator selecting the same `.venv`; the Stage-16r candidate, seed,
 folds, artifacts, official attachment, and joint rule remain unchanged.
+
+### Stage 16r closure - Sugeno qualitative aggregation rejected; Stage 16s registered
+
+The fixed Sugeno max-min context failed its conjunctive promotion rule. On
+UDED selection, aggregate F1/precision/recall and mean fold F1 changed by
+`+0.000378/+0.000300/+0.000497/+0.000393`, with only `8/15` fold wins; it
+missed the required F1 margin and fold-win count. Official BSDS500-validation
+ODS/OIS/AP changed by `+0.001498/+0.000473/-0.013481`, missing the ODS margin
+and AP condition. Algebraic contract checks and the fixed preview passed, but
+cannot override the performance failures. The candidate is rejected; do not
+tune Sugeno, the capacity, weights, memberships, gate, localizer, thresholds,
+or a Choquet/Sugeno mixture. The compact Choquet-gated grayscale Scharr+NMS
+controller remains incumbent.
+
+The registered next action is `stage16s_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+Sugeno or any earlier closed family, use dataset identity, relax the
+cross-dataset rule, or use protected feedback.

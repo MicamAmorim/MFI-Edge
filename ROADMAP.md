@@ -1445,3 +1445,19 @@ The active next action is `stage16r_sugeno_context_environment_retry2`, an
 unchanged harness-only retry through a repository-local Python delegator that
 selects the same `.venv` interpreter. The Sugeno candidate, protocol,
 artifacts, official attachment, and promotion rule remain unchanged.
+
+## Stage 16r closed - Sugeno context rejected
+
+The fixed qualitative aggregation produced only a `+0.000378` UDED aggregate
+F1 change and won `8/15` folds, missing the registered `+0.002` and `9/15`
+requirements. Official BSDS500-validation ODS/OIS/AP changed by
+`+0.001498/+0.000473/-0.013481`, missing the ODS margin and AP condition.
+Although all algebraic checks and the deterministic preview passed, the joint
+rule rejects the candidate. No Sugeno, capacity, or Choquet/Sugeno-mixture
+tuning is allowed, and the compact Choquet controller remains incumbent.
+
+The active next action is `stage16s_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not tune Sugeno or earlier closed families, fit dataset identity, relax
+the cross-dataset rule, or use protected feedback.

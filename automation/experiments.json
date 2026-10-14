@@ -1652,6 +1652,18 @@
       "results/official_eval/stage16r_sugeno_context_environment_retry2/summary.json"
     ]
   },
+  "stage16s_generation2_mechanism_checkpoint": {
+    "description": "High-reasoning live-primary-literature checkpoint after the fixed Sugeno context failed its joint promotion rule; selects exactly one mechanistically distinct, interpretable, non-neural generation-2 falsification without tuning Sugeno, its capacity, or earlier closed families.",
+    "runner": "python",
+    "path": "automation/stage16s_generation2_mechanism_checkpoint.py",
+    "args": [],
+    "role": "research_planning",
+    "feedback_policy": "primary_literature_and_completed_joint_development_evidence_only_no_sugeno_or_capacity_tuning_no_protected_feedback_no_architecture_change_at_checkpoint",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage16s_generation2_mechanism_checkpoint/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

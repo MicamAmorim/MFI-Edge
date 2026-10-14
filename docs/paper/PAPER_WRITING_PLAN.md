@@ -608,3 +608,14 @@ Move the combinatorial search detail out of the main paper:
 8. Write abstract/conclusion last.
 
 This order prevents the paper narrative from promising a result the final benchmarks do not support.
+
+## Stage 16r writing update
+
+Stage 16r is bounded negative evidence. Report that all algebraic checks
+passed and UDED aggregate F1 rose by only `+0.000378`, with `8/15` fold wins,
+missing the registered improvement and stability requirements. Official BSDS
+ODS/OIS/AP changed by `+0.001498/+0.000473/-0.013481`; the AP loss and missed
+ODS margin reject the candidate. The safe claim is that replacing arithmetic
+Choquet compensation with this fixed qualitative max-min bottleneck did not
+establish jointly transferable benefit. Do not generalize to all Sugeno
+integrals or tune a Choquet/Sugeno mixture from this outcome.
