@@ -1429,3 +1429,11 @@ produced. The active next action is
 `stage16r_sugeno_context_dependency_retry`, an unchanged harness-only retry
 using the repository-supported Pillow RGB reader. No scientific parameter or
 decision rule changes.
+
+That retry also stopped before dataset access because the unchanged imported
+MFI/UDED pipeline itself requires the declared `scikit-image` dependency, even
+after the Stage-16r JPEG reader moved to Pillow. The controller had launched
+the script with system Python rather than the existing repository environment.
+The active next action is `stage16r_sugeno_context_environment_retry`, a
+second harness-only retry through `.venv`; the candidate, protocol, artifacts,
+official attachment, and promotion rule remain unchanged.

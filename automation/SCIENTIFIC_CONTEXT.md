@@ -1356,3 +1356,9 @@ because its runner imported unavailable `scikit-image`. A harness-only retry is
 registered with the already-supported Pillow RGB reader; the fixed Sugeno
 candidate, seed, folds, parameters, preview, official attachment, and joint
 promotion rule are unchanged. This failure supplies no scientific feedback.
+
+That retry also stopped before dataset access because unchanged transitive MFI
+pipeline imports require the declared scikit-image dependency. The controller
+had used system Python even though the existing repository `.venv` provides the
+dependency. A second harness-only retry is registered through a local batch
+launcher selecting `.venv`; Stage 16r and its joint rule remain unchanged.

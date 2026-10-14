@@ -2921,3 +2921,12 @@ and provides no Sugeno or detector feedback. A harness-only retry is registered
 after replacing that reader with the already-supported Pillow RGB path. The
 candidate, folds, seed, parameters, preview, exporter, official attachment, and
 conjunctive promotion rule are unchanged.
+
+The Pillow-reader retry also stopped before dataset access or result creation.
+Although the Stage-16r file no longer used scikit-image for JPEG reading, its
+unchanged legacy UDED and incumbent-feature imports require the repository's
+declared scikit-image dependency. The controller had invoked system Python,
+while the existing repository `.venv` contains that dependency. A second
+harness-only retry is registered through an experiment-local batch launcher
+that selects `.venv` without changing detector code, data, parameters,
+artifacts, or the conjunctive decision rule.
