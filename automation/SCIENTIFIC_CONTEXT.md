@@ -1328,3 +1328,25 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 empirical marginal normalization or any earlier closed family, use dataset
 identity, relax the cross-dataset rule, or use protected feedback.
+
+### Stage 16q closure - Sugeno qualitative aggregation registered
+
+The live primary-literature checkpoint selected one fixed aggregation-semantic
+test. Stage 16r replaces only the compact context's Choquet arithmetic
+accumulation with the discrete Sugeno max-min integral over the same five
+fold-calibrated memberships and the same distorted-probability capacity
+`mu(A)=(sum w_A)^0.55`. The hypothesis is that limiting a response jointly by
+membership level and supporting-coalition capacity may transfer more stably
+than arithmetic compensation among moderate cues, without discarding absolute
+membership marginals as Stage 16p did. There is no new cue, dataset adapter,
+mixing coefficient, or parameter search.
+
+The authoritative protocol is `docs/paper/STAGE16R_PREREGISTRATION.md`.
+`stage16r_sugeno_context` is registered with conjunctive UDED-selection 5x3
+leakage-free CV and official BSDS500-validation criteria, algebraic contract
+checks, and a fixed positions 1/8/15 preview. Median conditioning, grayscale
+Scharr+NMS, singleton fitting, gamma `0.55`, gate strength `2.0`, floor `0.10`,
+and threshold fitting otherwise remain unchanged. Do not tune the Sugeno
+operators, capacity, weights, memberships, gate, localizer, thresholds, or a
+Choquet/Sugeno mixture from the result. The compact Choquet controller remains
+incumbent.

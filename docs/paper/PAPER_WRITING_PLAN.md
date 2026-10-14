@@ -566,6 +566,18 @@ fixed image-internal removal of membership marginals improved BSDS ODS but
 materially harmed UDED precision and recall, so stable transferable value was
 not established. Do not generalize the result to all copula or rank methods.
 
+Stage 16r is the next bounded aggregation result. Frame it as a direct
+quantitative-versus-qualitative fuzzy-integral comparison over exactly the
+same five memberships, singleton weights, and gamma-0.55 capacity. The
+prospective mechanism is reduced arithmetic compensation: Sugeno takes the
+maximum of membership/capacity bottlenecks instead of summing Choquet
+increments. Attribute the formal distinction to de Campos and Bolaños and the
+edge-application precedent to Marco-Detchart et al. Label Stage 16r an
+equation-level repository application rather than a complete detector
+reproduction. Report both development axes, algebraic checks, diagnostics,
+and the fixed preview. A failure closes this fixed Sugeno realization and any
+outcome-driven Choquet/Sugeno mixture or capacity tuning.
+
 ---
 
 # 9. Supplementary-material candidates

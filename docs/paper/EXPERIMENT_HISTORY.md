@@ -2878,3 +2878,38 @@ The single registered next action is
 literature escalation that must choose exactly one mechanistically distinct,
 interpretable non-neural falsification with a preregistered joint UDED/BSDS
 rule and no protected feedback.
+
+### Stage 16q checkpoint closure; Stage 16r Sugeno context registered
+
+The live primary-literature checkpoint selected one fixed aggregation-semantic
+test rather than another cue, localizer, conditioning operator, structural
+gate, or marginal transform. De Campos and Bolaños (1992, DOI
+`10.1016/0165-0114(92)90037-5`) distinguish Choquet's quantitative arithmetic
+accumulation from Sugeno's qualitative max-min aggregation over a shared fuzzy
+measure. Marco-Detchart et al. (2023, DOI
+`10.1007/978-3-031-39965-7_28`) compare both families for edge detection and
+report broadly similar structures with differences around texture and external
+boundaries. This supports a bounded test of whether arithmetic compensation
+among moderate memberships contributes to the recurring cross-dataset
+instability.
+
+The authoritative preregistration is
+`docs/paper/STAGE16R_PREREGISTRATION.md`. The registered next action is
+`stage16r_sugeno_context`. It replaces only the incumbent distorted-Choquet
+functional with the discrete Sugeno integral
+`max_i min(x_(i), mu(A_i))`, using the same five fold-calibrated memberships,
+outer-fold singleton weights, and capacity
+`mu(A)=(sum_{j in A} w_j)^0.55`. Median conditioning, grayscale Scharr+NMS,
+gate strength `2.0`, floor `0.10`, and threshold fitting are unchanged. This
+is distinct from Stage 14f's RDF increments and Stage 16p's empirical marginal
+normalization, and it has no mixing or searched parameter.
+
+Promotion remains conjunctive. UDED selection requires aggregate F1 delta at
+least `+0.002`, precision at least `-0.002`, recall at least `-0.003`,
+nonnegative mean fold-F1 delta, and at least `9/15` fold wins. The official
+BSDS500-validation attachment must complete with ODS delta at least `+0.002`
+and nonnegative OIS/AP deltas. Fixed positions 1/8/15 supply the deterministic
+preview, and algebraic contract checks are mandatory. No Sugeno operator,
+capacity, gamma, weight, membership, gate, localizer, threshold, or
+Choquet/Sugeno mixture may be tuned from the result. The compact Choquet
+controller remains incumbent pending the outcome.

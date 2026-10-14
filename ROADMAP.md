@@ -1403,3 +1403,22 @@ live-primary-literature escalation must choose exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not tune empirical marginal normalization or earlier closed families,
 fit dataset identity, relax the joint rule, or use protected feedback.
+
+## Stage 16q closed - fixed Sugeno context aggregation selected
+
+The checkpoint selected a qualitative aggregation test over the unchanged
+five-member compact context. Stage 16r replaces Choquet's arithmetic
+increment accumulation with the discrete Sugeno max-min integral while keeping
+the same outer-fold singleton weights and gamma-0.55 distorted-probability
+capacity. It adds no cue, target adapter, router, mixing coefficient, or
+searched parameter and is distinct from both RDF increment replacement and
+the failed empirical-rank normalization.
+
+The active next action is `stage16r_sugeno_context`. UDED selection uses the
+established 5x3 leakage-free CV seed `20261009`; official BSDS500 validation
+is jointly required. Promotion requires the preregistered F1, precision,
+recall, fold-win, ODS/OIS/AP, algebraic-contract, and deterministic-preview
+conditions. Fixed positions 1/8/15 generate `best_method_preview.png`. The
+max-min functional, capacity, gamma, weights, memberships, gate, localizer,
+threshold grid, and any Choquet/Sugeno mixture are frozen before results. The
+compact Choquet controller remains incumbent.
