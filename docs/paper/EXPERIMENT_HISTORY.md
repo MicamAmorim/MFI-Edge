@@ -2913,3 +2913,11 @@ preview, and algebraic contract checks are mandatory. No Sugeno operator,
 capacity, gamma, weight, membership, gate, localizer, threshold, or
 Choquet/Sugeno mixture may be tuned from the result. The compact Choquet
 controller remains incumbent pending the outcome.
+
+The first Stage-16r launch stopped before dataset access or result creation
+because the controller's Python environment did not contain the runner's
+undeclared `scikit-image` JPEG reader. This is harness/dependency evidence only
+and provides no Sugeno or detector feedback. A harness-only retry is registered
+after replacing that reader with the already-supported Pillow RGB path. The
+candidate, folds, seed, parameters, preview, exporter, official attachment, and
+conjunctive promotion rule are unchanged.

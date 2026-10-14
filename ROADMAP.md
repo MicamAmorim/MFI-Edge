@@ -1422,3 +1422,10 @@ conditions. Fixed positions 1/8/15 generate `best_method_preview.png`. The
 max-min functional, capacity, gamma, weights, memberships, gate, localizer,
 threshold grid, and any Choquet/Sugeno mixture are frozen before results. The
 compact Choquet controller remains incumbent.
+
+The first Stage-16r launch failed at import time because `scikit-image` is not
+installed in the controller runtime. No dataset was accessed and no result was
+produced. The active next action is
+`stage16r_sugeno_context_dependency_retry`, an unchanged harness-only retry
+using the repository-supported Pillow RGB reader. No scientific parameter or
+decision rule changes.

@@ -15,7 +15,6 @@ if str(ROOT) not in sys.path:
 import numpy as np
 import pandas as pd
 from PIL import Image
-from skimage.io import imread
 
 from automation.visual_report import write_panel_grid
 from benchmark_uded import DEFAULT_UDED, load_uded
@@ -151,7 +150,9 @@ def export_bsds(args: argparse.Namespace) -> int:
     diagnostics = []
     for index, path in enumerate(image_paths, start=1):
         print(f"STAGE16R_BSDS_EXPORT {index:03d}/{len(image_paths):03d} {path.stem}", flush=True)
-        prepared, candidate_names = prepare([{"id": path.stem, "img": imread(path)}])
+        with Image.open(path) as image:
+            rgb = np.asarray(image.convert("RGB"))
+        prepared, candidate_names = prepare([{"id": path.stem, "img": rgb}])
         if list(candidate_names) != list(names):
             raise RuntimeError(f"feature-name mismatch while exporting {path.stem}")
         incumbent, candidate, control_context, candidate_context = _score_pairs(prepared, names, compact)

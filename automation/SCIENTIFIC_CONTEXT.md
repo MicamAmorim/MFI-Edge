@@ -1350,3 +1350,9 @@ and threshold fitting otherwise remain unchanged. Do not tune the Sugeno
 operators, capacity, weights, memberships, gate, localizer, thresholds, or a
 Choquet/Sugeno mixture from the result. The compact Choquet controller remains
 incumbent.
+
+The first Stage-16r launch stopped before dataset access or result creation
+because its runner imported unavailable `scikit-image`. A harness-only retry is
+registered with the already-supported Pillow RGB reader; the fixed Sugeno
+candidate, seed, folds, parameters, preview, official attachment, and joint
+promotion rule are unchanged. This failure supplies no scientific feedback.
