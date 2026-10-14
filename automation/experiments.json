@@ -1664,6 +1664,26 @@
       "results/automation/stage16s_generation2_mechanism_checkpoint/summary.json"
     ]
   },
+  "stage16t_scale_space_localizer": {
+    "description": "Fixed gamma-normalized automatic edge-scale selection over sigma 1/2/4, with spatial NMS at the selected scale and the unchanged compact Choquet context; evaluated under conjunctive UDED-selection repeated CV and official BSDS500-validation criteria.",
+    "runner": "python",
+    "path": "automation/stage16t_scale_space_localizer_venv_launcher.py",
+    "args": [],
+    "role": "generation_2_automatic_scale_selection_falsification",
+    "feedback_policy": "joint_uded_selection_and_bsds500_validation_development_no_protected_feedback_no_scale_or_localizer_tuning",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage16t_scale_space_localizer/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage16t_scale_space_localizer/summary.json",
+      "results/local_dev/stage16t_scale_space_localizer/variant_ranking.csv",
+      "results/local_dev/stage16t_scale_space_localizer/fold_results.csv",
+      "results/local_dev/stage16t_scale_space_localizer/per_image_metrics.csv",
+      "results/local_dev/stage16t_scale_space_localizer/scale_diagnostics.csv",
+      "results/local_dev/stage16t_scale_space_localizer/best_method_preview.png",
+      "results/local_dev/stage16t_scale_space_localizer/official_eval_manifest.json",
+      "results/official_eval/stage16t_scale_space_localizer/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

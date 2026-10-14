@@ -1461,3 +1461,22 @@ live-primary-literature escalation must choose exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not tune Sugeno or earlier closed families, fit dataset identity, relax
 the cross-dataset rule, or use protected feedback.
+
+## Stage 16s closed - automatic scale selection selected
+
+The checkpoint selected a local boundary-scale mechanism grounded in
+Lindeberg's gamma-normalized scale-space edge definition. Stage 16t evaluates
+only fixed Gaussian derivative scales `sigma={1,2,4}` and gamma `1/2`; each
+pixel keeps the spatial-NMS response at the scale maximizing normalized
+gradient strength. This is distinct from fixed alternate localizers,
+conditioning, response gating, cue addition, and aggregation changes, and it
+uses neither dataset identity nor fitted routing.
+
+The active next action is `stage16t_scale_space_localizer`. UDED selection
+uses the established 5x3 leakage-free CV seed `20261009`; official BSDS500
+validation is jointly required. Promotion uses the preregistered F1,
+precision, recall, fold-win, ODS/OIS/AP, synthetic scale-contract, and fixed
+positions 1/8/15 preview conditions. Scales, gamma normalization, derivative
+discretization, NMS, response mapping, context, gate, and thresholds are frozen
+before results. The compact Choquet-gated grayscale Scharr+NMS controller
+remains incumbent.

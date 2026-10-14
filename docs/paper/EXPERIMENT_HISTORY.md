@@ -2962,3 +2962,36 @@ The single registered next action is
 literature escalation that must select exactly one mechanistically distinct,
 interpretable non-neural falsification with a preregistered joint UDED/BSDS
 rule and no protected feedback.
+
+### Stage 16s checkpoint closure; Stage 16t automatic scale selection registered
+
+The live primary-literature checkpoint selected one fixed localization-scale
+test rather than another context cue, aggregation operator, conditioning
+filter, structural gate, or detector mixture. Lindeberg (1998, DOI
+`10.1023/A:1008097225773`) defines a scale-space edge by the conjunction of a
+gradient-direction spatial maximum and a maximum of gamma-normalized edge
+strength over scale. With first-order normalization gamma `1/2`, sharp edges
+select fine scales while diffuse or noisy edge structure can select coarser
+scales. This supplies an image-internal response to boundary-width variation
+without dataset identity.
+
+The authoritative preregistration is
+`docs/paper/STAGE16T_PREREGISTRATION.md`. The registered next action is
+`stage16t_scale_space_localizer`. It evaluates fixed variance levels
+`t={1,4,16}` (`sigma={1,2,4}`), selects the largest
+`sigma^0.5 * |grad L|` response at every pixel, and retains the spatially
+non-maximal-suppressed response at that scale. Only the localizer changes; the
+median input, retained five memberships, outer-fold singleton fitting,
+distorted-Choquet gamma `0.55`, gate strength `2.0`, floor `0.10`, and
+threshold fitting remain unchanged.
+
+This is a bounded repository surrogate, not a reproduction of continuous
+scale-space edge curves, closed-curve construction, subscale interpolation,
+or integrated saliency. Promotion remains conjunctive: UDED selection requires
+aggregate F1 at least `+0.002`, precision at least `-0.002`, recall at least
+`-0.003`, nonnegative mean fold-F1 delta, and at least `9/15` fold wins; the
+official BSDS500-validation attachment requires ODS at least `+0.002` and
+nonnegative OIS/AP. Fixed synthetic scale contracts and the positions 1/8/15
+preview are also mandatory. No scale, normalization, NMS, response mapping,
+context, gate, or threshold tuning is allowed from the result. The compact
+Choquet-gated grayscale Scharr+NMS controller remains incumbent.

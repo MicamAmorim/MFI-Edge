@@ -619,3 +619,16 @@ ODS margin reject the candidate. The safe claim is that replacing arithmetic
 Choquet compensation with this fixed qualitative max-min bottleneck did not
 establish jointly transferable benefit. Do not generalize to all Sugeno
 integrals or tune a Choquet/Sugeno mixture from this outcome.
+
+## Stage 16t prospective writing note
+
+Frame Stage 16t as a bounded local scale-selection experiment, not another
+multiscale cue and not an exact reproduction of Lindeberg's full scale-space
+edge method. The equation-level mechanism is the maximum over the fixed
+`sigma={1,2,4}` bank of the gamma-`1/2` normalized Gaussian gradient, subject
+to spatial NMS at the selected scale. State that continuous curve tracing,
+closed-edge construction, subscale interpolation, and integrated saliency are
+omitted. Report the synthetic scale contract, selected-scale distributions,
+both development axes, and the fixed preview. A failure closes this precise
+finite bank and normalization to outcome-driven tuning but does not falsify
+automatic scale selection generally.

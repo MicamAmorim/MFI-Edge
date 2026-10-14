@@ -1388,3 +1388,26 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 Sugeno or any earlier closed family, use dataset identity, relax the
 cross-dataset rule, or use protected feedback.
+
+### Stage 16s closure - gamma-normalized automatic scale selection registered
+
+The live primary-literature checkpoint selected one fixed local edge-scale
+test. Stage 16t computes first-order Gaussian gradients on the unchanged
+median-conditioned grayscale image at `sigma={1,2,4}` (the `t={1,4,16}`
+levels illustrated by Lindeberg), multiplies magnitude by `sigma^0.5`, selects
+the maximum normalized response per pixel, and retains spatial NMS at that
+selected scale. This is a bounded repository surrogate of Lindeberg's
+automatic scale-space edge principle, not a reproduction of continuous edge
+curves, subscale interpolation, or saliency integration. It changes only the
+localizer; the compact five-member Choquet context, fold fitting, gamma
+`0.55`, gate strength `2.0`, floor `0.10`, median conditioning, and thresholds
+remain unchanged.
+
+The authoritative protocol is `docs/paper/STAGE16T_PREREGISTRATION.md`.
+`stage16t_scale_space_localizer` is registered with conjunctive UDED-selection
+5x3 leakage-free CV and official BSDS500-validation criteria, fixed synthetic
+scale contracts, and a positions 1/8/15 preview. Do not tune the scales,
+gamma normalization, derivative discretization, scale endpoint/tie handling,
+NMS, response mapping, conditioning, context, gate, or thresholds from the
+result. The compact Choquet-gated grayscale Scharr+NMS controller remains
+incumbent.
