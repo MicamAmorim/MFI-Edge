@@ -1437,3 +1437,11 @@ the script with system Python rather than the existing repository environment.
 The active next action is `stage16r_sugeno_context_environment_retry`, a
 second harness-only retry through `.venv`; the candidate, protocol, artifacts,
 official attachment, and promotion rule remain unchanged.
+
+The batch-based environment retry stopped before the launcher started because
+the controller's `cmd /s /c` invocation passed literal escaped quotes around
+the batch path. No dataset was accessed and no result artifact was created.
+The active next action is `stage16r_sugeno_context_environment_retry2`, an
+unchanged harness-only retry through a repository-local Python delegator that
+selects the same `.venv` interpreter. The Sugeno candidate, protocol,
+artifacts, official attachment, and promotion rule remain unchanged.

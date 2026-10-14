@@ -1632,6 +1632,26 @@
       "results/official_eval/stage16r_sugeno_context/summary.json"
     ]
   },
+  "stage16r_sugeno_context_environment_retry2": {
+    "description": "Third harness-only retry of the unchanged Stage-16r Sugeno-context falsification through a repository-local Python launcher selecting the existing virtual environment, after cmd.exe treated the batch launcher's surrounding quotes literally and never started it; no dataset, fold, seed, membership, weight, capacity, aggregation, gate, localizer, threshold, preview, exporter, or promotion-rule change.",
+    "runner": "python",
+    "path": "automation/stage16r_sugeno_context_venv_launcher.py",
+    "args": [],
+    "role": "generation_2_qualitative_aggregation_falsification_environment_retry",
+    "feedback_policy": "joint_uded_selection_and_bsds500_validation_development_no_protected_feedback_no_sugeno_or_capacity_tuning",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage16r_sugeno_context/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage16r_sugeno_context/summary.json",
+      "results/local_dev/stage16r_sugeno_context/variant_ranking.csv",
+      "results/local_dev/stage16r_sugeno_context/fold_results.csv",
+      "results/local_dev/stage16r_sugeno_context/per_image_metrics.csv",
+      "results/local_dev/stage16r_sugeno_context/sugeno_diagnostics.csv",
+      "results/local_dev/stage16r_sugeno_context/best_method_preview.png",
+      "results/local_dev/stage16r_sugeno_context/official_eval_manifest.json",
+      "results/official_eval/stage16r_sugeno_context_environment_retry2/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

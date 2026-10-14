@@ -2930,3 +2930,12 @@ while the existing repository `.venv` contains that dependency. A second
 harness-only retry is registered through an experiment-local batch launcher
 that selects `.venv` without changing detector code, data, parameters,
 artifacts, or the conjunctive decision rule.
+
+That batch retry stopped before its launcher or any dataset access because the
+controller's Windows `cmd /s /c` path passed the launcher's surrounding quotes
+literally; Windows consequently treated the quoted path as an unknown command.
+This is harness evidence only and supplies no detector or Sugeno feedback. A
+third unchanged harness retry is registered through a repository-local Python
+delegator that selects the same `.venv` interpreter. Detector code, data,
+folds, seed, aggregation, artifacts, official attachment, and the conjunctive
+promotion rule remain unchanged.

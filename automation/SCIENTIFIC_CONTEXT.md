@@ -1362,3 +1362,9 @@ pipeline imports require the declared scikit-image dependency. The controller
 had used system Python even though the existing repository `.venv` provides the
 dependency. A second harness-only retry is registered through a local batch
 launcher selecting `.venv`; Stage 16r and its joint rule remain unchanged.
+
+The batch retry stopped before its launcher or dataset access because the
+controller's Windows command construction passed literal quotes around the
+batch path. A third harness-only retry is registered through a repository-local
+Python delegator selecting the same `.venv`; the Stage-16r candidate, seed,
+folds, artifacts, official attachment, and joint rule remain unchanged.
