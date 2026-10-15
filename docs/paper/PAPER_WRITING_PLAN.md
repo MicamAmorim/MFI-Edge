@@ -714,3 +714,19 @@ stable and useful on UDED and improved BSDS ranking quality, but did not meet
 the required joint margin. Do not generalize the rejection to structure
 tensors, and do not motivate color, multiscale, diffusion, or integration
 tuning from the result.
+
+## Stage 17b prospective writing note
+
+Frame Stage 17b as a fixed distribution-free local boundary-context test, not
+an image-wide rank normalization and not a complete reproduction of either
+published detector. The literature-derived core is the normalized
+Mann-Whitney ordering contrast between opposed spatial samples; the repository
+fixes a radius-2 support, four partitions, half credit for ties, and maximum
+absolute orientation response before outer-fold membership calibration.
+Explicitly distinguish it from the failed empirical-copula transform,
+parametric step-profile fit, and LBP-histogram half-disc cue. Report monotone-
+transform invariance, cue eligibility, precision/recall, exact score-support
+preservation, runtime, both development axes, and the fixed preview. A failure
+closes this exact local rank realization and must not be generalized to all
+nonparametric edge statistics or used to justify multiscale, variance, color,
+or learned rank variants.

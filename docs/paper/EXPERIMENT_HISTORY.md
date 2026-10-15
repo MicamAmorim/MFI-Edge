@@ -3243,3 +3243,31 @@ escalation that must select exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 16z, revisit earlier closed families, use dataset identity,
 relax the cross-dataset rule, or use protected feedback.
+
+### Stage 17a checkpoint closed - local nonparametric rank context registered
+
+Live primary-literature review selected one fixed distribution-free local
+boundary statistic. Bovik, Huang and Munson's nonparametric edge work (Pattern
+Recognition 1986, DOI `10.1016/0031-3203(86)90011-7`) establishes rank-sum
+testing as a robust alternative to moment-based edge evidence. Smeraldi's
+ranklet construction (ICPR 2002, DOI `10.1109/ICPR.2002.1047924`) supplies a
+normalized, orientation-selective Mann-Whitney interpretation with monotone
+gray-level invariance.
+
+Stage 17b uses one fixed radius-2 neighborhood and four opposed spatial
+partitions. The cue is the maximum absolute tie-corrected normalized
+Mann-Whitney contrast and is appended only as one outer-fold-calibrated,
+training-eligible positive membership. This is a local ordering statistic, not
+Stage 16p's image-wide membership ranks, Stage 16j's parametric step profile,
+or Stage 14l's LBP-histogram contrast. The compact context, Choquet gamma,
+gate, median conditioning, grayscale Scharr+NMS localizer, and threshold
+fitting remain unchanged.
+
+The authoritative protocol is `docs/paper/STAGE17B_PREREGISTRATION.md`.
+`stage17b_ranklet_context` is registered with conjunctive UDED-selection 5x3
+leakage-free CV and official BSDS500-validation criteria, precision/recall
+non-collapse, eligibility, exact positive-support preservation, fixed
+flat/step/monotone-invariance contracts, runtime diagnostics, and a positions
+1/8/15 preview. No radius, scale, orientation, partition, rank-statistic,
+calibration, integration, context, gate, localizer, or threshold parameter may
+be tuned from the outcome. The compact controller remains incumbent.

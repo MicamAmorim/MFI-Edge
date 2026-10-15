@@ -1595,3 +1595,24 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 structure tensors or earlier closed families, use dataset identity, relax the
 cross-dataset rule, or use protected feedback.
+
+### Stage 17a closure - local Mann-Whitney rank context registered
+
+The live primary-literature checkpoint selected one fixed distribution-free
+local context test. Stage 17b compares opposed ten-sample half-neighborhoods
+inside a radius-2 window in four fixed orientations, gives half credit to ties,
+and takes the maximum absolute normalized Mann-Whitney contrast. The cue is
+appended only as one outer-training-fold-eligible positive membership in the
+unchanged distorted-Choquet context. It tests local spatial ordering and
+monotone-photometric invariance, unlike Stage 16p's image-wide membership
+midranks, Stage 16j's parametric step profile, or Stage 14l's LBP-histogram
+contrast.
+
+The authoritative protocol is `docs/paper/STAGE17B_PREREGISTRATION.md`.
+`stage17b_ranklet_context` is registered with conjunctive UDED-selection
+repeated CV and official BSDS500-validation criteria, exact support
+preservation, fixed synthetic contracts, runtime diagnostics, and positions
+1/8/15 preview. Do not tune the radius, orientations, partitions, tie rule,
+rank statistic, scale, eligibility, calibration, integration, context, gate,
+localizer, or thresholds from the result. The compact Choquet-gated grayscale
+Scharr+NMS controller remains incumbent.

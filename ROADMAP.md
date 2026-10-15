@@ -1633,3 +1633,21 @@ live-primary-literature escalation must choose exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit structure-tensor context or earlier closed families, fit
 dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 17a closed - local rank-contrast context selected
+
+The checkpoint selected a fixed local Mann-Whitney ordering cue grounded in
+Bovik, Huang and Munson's nonparametric edge statistics and Smeraldi's
+normalized orientation-selective ranklets. Stage 17b compares opposed
+ten-sample half-neighborhoods in four orientations within a radius-2 support,
+uses half credit for ties, and takes the maximum absolute normalized response.
+The cue enters only as one outer-fold-eligible positive membership; the compact
+Choquet controller and grayscale Scharr+NMS localizer stay unchanged.
+
+The active next action is `stage17b_ranklet_context`. Promotion requires the
+preregistered conjunction of UDED-selection aggregate, precision, recall,
+fold-stability, eligibility, and support-preservation conditions with official
+BSDS500-validation ODS/OIS/AP gains, plus fixed numerical and positions 1/8/15
+preview contracts. No rank geometry, scale, statistic, calibration,
+integration, context, localizer, or threshold parameter may be tuned from the
+result. Compact Choquet-gated Scharr+NMS remains incumbent pending the outcome.
