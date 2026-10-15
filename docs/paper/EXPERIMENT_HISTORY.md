@@ -3137,3 +3137,26 @@ literature escalation that must select exactly one mechanistically distinct,
 interpretable non-neural falsification with a preregistered joint UDED/BSDS
 rule. It may not tune or fuse Stage 16v, revisit earlier closed families, fit
 dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+### Stage 16w checkpoint closed - spectral globalization context registered
+
+The live primary-literature checkpoint selected one fixed graph-global
+context test. Arbeláez et al.'s spectral-Pb mechanism turns an intervening-
+contour affinity graph into image-wide boundary evidence by differentiating
+its lowest normalized-cut eigenvectors (TPAMI 2011, DOI
+`10.1109/TPAMI.2010.161`). Stage 16x applies that mechanism to the unchanged
+Scharr+NMS map on a fixed maximum-side-96 graph, retaining the paper's radius
+`5`, affinity scale `0.1`, and `16` nontrivial eigenvectors. The resulting
+soft cue is only one fold-eligible positive membership in the compact context;
+the localizer and its positive support remain unchanged. This is a bounded
+repository surrogate, not exact or learned gPb.
+
+The authoritative protocol is `docs/paper/STAGE16X_PREREGISTRATION.md`.
+`stage16x_spectral_globalization_context` is registered with conjunctive
+UDED-selection 5x3 leakage-free CV and official BSDS500-validation criteria,
+a recall non-collapse endpoint, exact score-support checks, a fixed synthetic
+graph contract, runtime diagnostics, and positions 1/8/15 preview. Do not tune
+the graph bound, affinities, eigensystem, cue integration, context, gate,
+localizer, or thresholds from the result, and do not use it to reopen learned
+gPb or forest fusion. The compact Choquet-gated grayscale Scharr+NMS
+controller remains incumbent.

@@ -659,3 +659,16 @@ reference but did not establish joint transfer to UDED under the frozen rule.
 Do not present the BSDS result as promotion, generalize the failure to all
 structured forests, or motivate outcome-driven retraining, calibration,
 fusion, or routing. Retain the local evaluator's reference-reproduction caveat.
+
+## Stage 16x prospective writing note
+
+Frame Stage 16x as a bounded spectral-globalization context experiment, not
+an exact gPb reproduction. The paper-derived core is the intervening-contour
+affinity with radius `5` and `rho=0.1`, followed by gradients of `16`
+nontrivial normalized-Laplacian eigenvectors. Explicitly disclose the fixed
+maximum-side-96 graph, ordinary gradient magnitude, monotone compression, and
+fold-fitted membership as repository choices. Report cue eligibility,
+precision and recall separately, score-support invariance, runtime, the
+synthetic step/repeatability contract, both development axes, and the fixed
+preview. A failure closes only this surrogate and integration; it must not be
+described as falsifying spectral clustering or exact gPb.

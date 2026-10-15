@@ -1796,6 +1796,27 @@
       "results/automation/stage16w_generation2_mechanism_checkpoint/summary.json"
     ]
   },
+  "stage16x_spectral_globalization_context": {
+    "description": "Fixed coarse-grid intervening-contour spectral globalization of the unchanged Scharr+NMS map, added as one fold-eligible positive context membership and tested under conjunctive UDED-selection repeated CV and official BSDS500-validation criteria.",
+    "runner": "python",
+    "path": "automation/stage16x_spectral_globalization_context_venv_launcher.py",
+    "args": [],
+    "role": "generation_2_spectral_graph_global_context_falsification",
+    "feedback_policy": "joint_uded_selection_and_bsds500_validation_development_fixed_graph_contract_no_gpb_or_forest_tuning_fusion_or_routing_no_protected_feedback",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage16x_spectral_globalization_context/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage16x_spectral_globalization_context/summary.json",
+      "results/local_dev/stage16x_spectral_globalization_context/variant_ranking.csv",
+      "results/local_dev/stage16x_spectral_globalization_context/fold_results.csv",
+      "results/local_dev/stage16x_spectral_globalization_context/per_image_metrics.csv",
+      "results/local_dev/stage16x_spectral_globalization_context/spectral_calibration.csv",
+      "results/local_dev/stage16x_spectral_globalization_context/spectral_diagnostics.csv",
+      "results/local_dev/stage16x_spectral_globalization_context/best_method_preview.png",
+      "results/local_dev/stage16x_spectral_globalization_context/official_eval_manifest.json",
+      "results/official_eval/stage16x_spectral_globalization_context/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

@@ -1559,3 +1559,22 @@ live-primary-literature escalation must choose exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit the forest or earlier closed families, fit dataset identity,
 relax the cross-dataset rule, or use protected feedback.
+
+## Stage 16w closed - spectral globalization context selected
+
+The checkpoint selected a fixed graph-global evidence cue derived from
+Arbeláez et al.'s spectral-Pb construction. Stage 16x builds intervening-
+contour affinities from the unchanged Scharr+NMS map on a bounded coarse grid,
+uses the paper-fixed radius `5`, `rho=0.1`, and `16` nontrivial normalized-
+Laplacian eigenvectors, and appends their gradient-derived signal as one
+outer-fold-eligible positive membership. It is a repository surrogate rather
+than exact gPb and uses none of gPb's learned local-cue or fusion weights.
+
+The active next action is `stage16x_spectral_globalization_context`. Promotion
+requires preregistered conjunctive gains on UDED selection and official
+BSDS500 validation, nonnegative UDED precision change, recall non-collapse,
+fold stability, cue eligibility, exact score-support preservation, numerical
+contracts, runtime diagnostics, and the fixed positions 1/8/15 preview. No
+graph, solver, integration, context, localizer, threshold, gPb, or forest
+parameter may be tuned from the result. Compact Choquet-gated Scharr+NMS
+remains incumbent pending the outcome.

@@ -1507,3 +1507,25 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune or
 fuse the forest or any earlier closed family, use dataset identity, relax the
 cross-dataset rule, or use protected feedback.
+
+### Stage 16w closure - spectral globalization context registered
+
+The live checkpoint selected one fixed image-wide graph mechanism. Stage 16x
+uses the unchanged Scharr+NMS score as an intervening-contour barrier map,
+constructs a normalized-Laplacian affinity graph at fixed maximum side `96`,
+and retains Arbeláez et al.'s published spectral-Pb radius `5`, affinity scale
+`0.1`, and `16` nontrivial eigenvectors. Their gradient-derived signal is
+appended only as one outer-training-fold-eligible positive membership; compact
+Choquet parameters, gate floor, conditioning, localizer, and threshold fitting
+remain unchanged. The bounded implementation is a repository surrogate, not
+exact or learned gPb.
+
+The authoritative protocol is `docs/paper/STAGE16X_PREREGISTRATION.md`.
+`stage16x_spectral_globalization_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, explicit
+precision/recall non-collapse, score-support invariance, a fixed synthetic
+step/repeatability contract, runtime diagnostics, and positions 1/8/15
+preview. Do not tune the graph, eigensystem, compression, eligibility,
+integration, context, gate, localizer, thresholds, gPb, or forest from the
+result. The compact Choquet-gated grayscale Scharr+NMS controller remains
+incumbent.
