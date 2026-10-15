@@ -3111,3 +3111,29 @@ exact model blob from the already pinned commit, verify SHA-256
 rerun only the unchanged official BSDS500-validation export/evaluator. It may
 not rerun CV, regenerate UDED predictions, change the forest, or tune/fuse it.
 The compact controller remains incumbent.
+
+### Stage 16v exact Structured Edge forest rejected; Stage 16w registered
+
+The attachment-only retry restored and hash-verified the exact pinned author
+model and completed the required official BSDS500-validation evaluation without
+rerunning UDED CV. The forest scored ODS/OIS/AP
+`0.712760/0.724075/0.757440`, improving over compact MFI by
+`+0.167315/+0.144560/+0.223159`; all three registered BSDS margins passed.
+However, the frozen UDED-selection result had already changed aggregate
+F1/precision/recall and mean fold F1 by
+`-0.035385/+0.042968/-0.142871/-0.038240`, with only `2/15` fold wins. Because
+promotion was explicitly conjunctive, Stage 16v is rejected. The result is
+strong evidence that this fixed BSDS-train structured forest is not jointly
+transferable to the UDED development regime, while retaining value as a
+supervised non-neural BSDS reference. It does not justify a forest sweep,
+retraining, calibration, MFI fusion, or routing, and it does not falsify the
+structured-forest family generally. The Stage-15a stochastic/reference-
+uncertified matcher caveat remains. The compact Choquet-gated grayscale
+Scharr+NMS controller remains incumbent.
+
+The single registered next action is
+`stage16w_generation2_mechanism_checkpoint`, a high-reasoning live-primary-
+literature escalation that must select exactly one mechanistically distinct,
+interpretable non-neural falsification with a preregistered joint UDED/BSDS
+rule. It may not tune or fuse Stage 16v, revisit earlier closed families, fit
+dataset identity, relax the cross-dataset rule, or use protected feedback.

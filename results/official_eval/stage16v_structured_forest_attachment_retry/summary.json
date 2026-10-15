@@ -1,0 +1,85 @@
+{
+  "status": "completed",
+  "experiment_id": "stage16v_structured_forest_attachment_retry",
+  "dataset": "BSDS500",
+  "split": "val",
+  "dataset_role": "development_official_metric",
+  "feedback_allowed": true,
+  "metric_policy": "Agent may use these metrics for development decisions.",
+  "evaluator": {
+    "family": "original Berkeley BSDS boundary benchmark",
+    "matlab": "C:\\Program Files\\MATLAB\\R2023a\\bin\\matlab.exe",
+    "nthresh": 99,
+    "max_dist": 0.0075,
+    "thinpb": true,
+    "multi_annotator": true,
+    "bsds500_commit": "a04b7c6c3a9f0ace74bf205c72a43d32e1c72722",
+    "windows_correspondPixels_source_commit": "94260b5d0fc068202598312e01a37604972dcc9e",
+    "reference_reproduction_verified": false
+  },
+  "methods": {
+    "incumbent_compact_positive_choquet": {
+      "ODS": 0.5454450757596084,
+      "ODS_precision": 0.46267730202592144,
+      "ODS_recall": 0.6642767218558819,
+      "ODS_threshold": 0.18,
+      "OIS": 0.5795152121325559,
+      "OIS_precision": 0.4873220032845445,
+      "OIS_recall": 0.7147302805735323,
+      "AP": 0.5342807516375618,
+      "n_images": 100,
+      "nthresh": 99,
+      "max_dist": 0.0075,
+      "thinpb": true,
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+      "matlab_evaluate_returncode": 0,
+      "matlab_evaluate_processes": 1,
+      "matlab_evaluate_stdout_tail": "MFI_BSDS_EVAL 71/100 37073\nMFI_BSDS_EVAL 72/100 376043\nMFI_BSDS_EVAL 73/100 38082\nMFI_BSDS_EVAL 74/100 38092\nMFI_BSDS_EVAL 75/100 385039\nMFI_BSDS_EVAL 76/100 41033\nMFI_BSDS_EVAL 77/100 41069\nMFI_BSDS_EVAL 78/100 42012\nMFI_BSDS_EVAL 79/100 42049\nMFI_BSDS_EVAL 80/100 43074\nMFI_BSDS_EVAL 81/100 45096\nMFI_BSDS_EVAL 82/100 54082\nMFI_BSDS_EVAL 83/100 55073\nMFI_BSDS_EVAL 84/100 58060\nMFI_BSDS_EVAL 85/100 62096\nMFI_BSDS_EVAL 86/100 65033\nMFI_BSDS_EVAL 87/100 66053\nMFI_BSDS_EVAL 88/100 69015\nMFI_BSDS_EVAL 89/100 69020\nMFI_BSDS_EVAL 90/100 69040\nMFI_BSDS_EVAL 91/100 76053\nMFI_BSDS_EVAL 92/100 78004\nMFI_BSDS_EVAL 93/100 8023\nMFI_BSDS_EVAL 94/100 85048\nMFI_BSDS_EVAL 95/100 86000\nMFI_BSDS_EVAL 96/100 86016\nMFI_BSDS_EVAL 97/100 86068\nMFI_BSDS_EVAL 98/100 87046\nMFI_BSDS_EVAL 99/100 89072\nMFI_BSDS_EVAL 100/100 97033",
+      "matlab_collect_stdout_tail": ""
+    },
+    "dollar_zitnick_structured_forest": {
+      "ODS": 0.7127602430351175,
+      "ODS_precision": 0.6832595041911738,
+      "ODS_recall": 0.7449234122386033,
+      "ODS_threshold": 0.11797979797979799,
+      "OIS": 0.72407540106749,
+      "OIS_precision": 0.679805907395074,
+      "OIS_recall": 0.7745122457451225,
+      "AP": 0.757439871336715,
+      "n_images": 100,
+      "nthresh": 99,
+      "max_dist": 0.0075,
+      "thinpb": true,
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+      "matlab_evaluate_returncode": 0,
+      "matlab_evaluate_processes": 1,
+      "matlab_evaluate_stdout_tail": "MFI_BSDS_EVAL 71/100 37073\nMFI_BSDS_EVAL 72/100 376043\nMFI_BSDS_EVAL 73/100 38082\nMFI_BSDS_EVAL 74/100 38092\nMFI_BSDS_EVAL 75/100 385039\nMFI_BSDS_EVAL 76/100 41033\nMFI_BSDS_EVAL 77/100 41069\nMFI_BSDS_EVAL 78/100 42012\nMFI_BSDS_EVAL 79/100 42049\nMFI_BSDS_EVAL 80/100 43074\nMFI_BSDS_EVAL 81/100 45096\nMFI_BSDS_EVAL 82/100 54082\nMFI_BSDS_EVAL 83/100 55073\nMFI_BSDS_EVAL 84/100 58060\nMFI_BSDS_EVAL 85/100 62096\nMFI_BSDS_EVAL 86/100 65033\nMFI_BSDS_EVAL 87/100 66053\nMFI_BSDS_EVAL 88/100 69015\nMFI_BSDS_EVAL 89/100 69020\nMFI_BSDS_EVAL 90/100 69040\nMFI_BSDS_EVAL 91/100 76053\nMFI_BSDS_EVAL 92/100 78004\nMFI_BSDS_EVAL 93/100 8023\nMFI_BSDS_EVAL 94/100 85048\nMFI_BSDS_EVAL 95/100 86000\nMFI_BSDS_EVAL 96/100 86016\nMFI_BSDS_EVAL 97/100 86068\nMFI_BSDS_EVAL 98/100 87046\nMFI_BSDS_EVAL 99/100 89072\nMFI_BSDS_EVAL 100/100 97033",
+      "matlab_collect_stdout_tail": ""
+    }
+  },
+  "comparisons_vs_incumbent": {
+    "dollar_zitnick_structured_forest": {
+      "delta_ODS": 0.1673151672755091,
+      "delta_OIS": 0.14456018893493416,
+      "delta_AP": 0.22315911969915314
+    }
+  },
+  "export": {
+    "incumbent_compact_positive_choquet": {
+      "source": "incumbent_cache",
+      "fingerprint": "e4fa09acaf61ec23"
+    },
+    "dollar_zitnick_structured_forest": {
+      "source": "export_script",
+      "script": "automation/stage16v_structured_forest_venv_launcher.py",
+      "stdout_tail": "STAGE16V_STRUCTURED_FOREST 071/100 37073\nSTAGE16V_STRUCTURED_FOREST 072/100 376043\nSTAGE16V_STRUCTURED_FOREST 073/100 38082\nSTAGE16V_STRUCTURED_FOREST 074/100 38092\nSTAGE16V_STRUCTURED_FOREST 075/100 385039\nSTAGE16V_STRUCTURED_FOREST 076/100 41033\nSTAGE16V_STRUCTURED_FOREST 077/100 41069\nSTAGE16V_STRUCTURED_FOREST 078/100 42012\nSTAGE16V_STRUCTURED_FOREST 079/100 42049\nSTAGE16V_STRUCTURED_FOREST 080/100 43074\nSTAGE16V_STRUCTURED_FOREST 081/100 45096\nSTAGE16V_STRUCTURED_FOREST 082/100 54082\nSTAGE16V_STRUCTURED_FOREST 083/100 55073\nSTAGE16V_STRUCTURED_FOREST 084/100 58060\nSTAGE16V_STRUCTURED_FOREST 085/100 62096\nSTAGE16V_STRUCTURED_FOREST 086/100 65033\nSTAGE16V_STRUCTURED_FOREST 087/100 66053\nSTAGE16V_STRUCTURED_FOREST 088/100 69015\nSTAGE16V_STRUCTURED_FOREST 089/100 69020\nSTAGE16V_STRUCTURED_FOREST 090/100 69040\nSTAGE16V_STRUCTURED_FOREST 091/100 76053\nSTAGE16V_STRUCTURED_FOREST 092/100 78004\nSTAGE16V_STRUCTURED_FOREST 093/100 8023\nSTAGE16V_STRUCTURED_FOREST 094/100 85048\nSTAGE16V_STRUCTURED_FOREST 095/100 86000\nSTAGE16V_STRUCTURED_FOREST 096/100 86016\nSTAGE16V_STRUCTURED_FOREST 097/100 86068\nSTAGE16V_STRUCTURED_FOREST 098/100 87046\nSTAGE16V_STRUCTURED_FOREST 099/100 89072\nSTAGE16V_STRUCTURED_FOREST 100/100 97033"
+    }
+  },
+  "manifest": "results/local_dev/stage16v_structured_forest/official_eval_manifest.json",
+  "final_claim_guard": "Development metrics are decision-capable on train/val, but a final SOTA claim still requires an independently verified reference reproduction and the project's protected multi-benchmark gate.",
+  "manifest_sha256": "b90e96ee98e71b61e69d7b9d2d155aa11f4bb8a4f677c1079ba1fad319e98774"
+}

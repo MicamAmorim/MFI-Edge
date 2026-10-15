@@ -647,3 +647,15 @@ complexity, runtime, both development axes, and the fixed preview. A failure
 closes this exact author model as the generation-2 replacement and forbids
 outcome-driven forest/fusion tuning; it does not generalize to all structured
 prediction forests.
+
+## Stage 16v writing update
+
+Report Stage 16v as a sharp cross-dataset negative result. The exact fixed
+author forest improved official BSDS500-validation ODS/OIS/AP by
+`+0.167315/+0.144560/+0.223159`, yet reduced UDED aggregate F1 by `0.035385`
+and recall by `0.142871`, with only `2/15` fold wins. The safe claim is that
+the BSDS-train structured-mask model is a strong supervised non-neural BSDS
+reference but did not establish joint transfer to UDED under the frozen rule.
+Do not present the BSDS result as promotion, generalize the failure to all
+structured forests, or motivate outcome-driven retraining, calibration,
+fusion, or routing. Retain the local evaluator's reference-reproduction caveat.

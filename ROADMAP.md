@@ -1541,3 +1541,21 @@ official attachment. It preserves all completed UDED maps, metrics, preview,
 and the rejection decision. After attachment closure, proceed to a
 mechanistically distinct live-literature checkpoint; compact Choquet-gated
 Scharr+NMS remains incumbent.
+
+## Stage 16v closed - exact Structured Edge forest rejected
+
+The frozen author forest strongly exceeded compact MFI on official
+BSDS500-validation, with ODS/OIS/AP deltas of
+`+0.167315/+0.144560/+0.223159`. It nevertheless failed the joint development
+rule because UDED aggregate F1, recall, and mean fold F1 changed by
+`-0.035385/-0.142871/-0.038240`, with only `2/15` fold wins. The fixed
+BSDS-trained forest is therefore retained only as a supervised non-neural
+reference, not promoted or integrated. Forest retraining, calibration, fusion,
+and routing are closed to outcome-driven tuning. Compact Choquet-gated
+Scharr+NMS remains incumbent.
+
+The active next action is `stage16w_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit the forest or earlier closed families, fit dataset identity,
+relax the cross-dataset rule, or use protected feedback.

@@ -1485,3 +1485,25 @@ unchanged BSDS500-validation export/evaluator. UDED maps, CV, parameters, and
 the scientific rejection remain frozen. The compact controller remains the
 incumbent; after attachment closure, route to a mechanistically distinct live-
 literature checkpoint.
+
+### Stage 16v closure - exact Structured Edge forest rejected; Stage 16w registered
+
+The attachment-only retry materialized and hash-verified the exact pinned
+`modelBsds` blob, preserved the frozen UDED result, and completed official
+BSDS500-validation scoring. The Structured Edge forest improved ODS/OIS/AP by
+`+0.16732/+0.14456/+0.22316`, but its already frozen UDED-selection result
+changed aggregate F1/precision/recall and mean fold F1 by
+`-0.03539/+0.04297/-0.14287/-0.03824`, with only `2/15` fold wins. The
+conjunctive rule therefore rejects the candidate despite its strong BSDS
+result. This is evidence of severe cross-dataset transfer asymmetry for the
+fixed BSDS-train author model, not a falsification of structured forests in
+general. Do not tune, retrain, calibrate, fuse, or route the forest from this
+result. The compact Choquet-gated grayscale Scharr+NMS controller remains
+incumbent.
+
+The registered next action is `stage16w_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune or
+fuse the forest or any earlier closed family, use dataset identity, relax the
+cross-dataset rule, or use protected feedback.
