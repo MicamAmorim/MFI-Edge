@@ -3187,3 +3187,32 @@ generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 16x, advance exact/learned gPb from this outcome, revisit earlier
 closed families, use dataset identity, relax the cross-dataset rule, or use
 protected feedback.
+
+### Stage 16y checkpoint closed - structure-tensor orientation context registered
+
+Live primary-literature review selected one fixed local orientation-
+organization test. Bigun, Granlund and Wiklund's second-moment formulation
+(TPAMI 1991, DOI `10.1109/34.85668`) and Weickert's scalar structure-tensor
+analysis (Image and Vision Computing 1999, DOI
+`10.1016/S0262-8856(98)00102-4`) distinguish a locally one-dimensional edge
+from flat or multidirectional structure through the tensor eigenvalues. Stage
+16z retains Weickert's illustrated noise/integration scales `0.5/4.0` and uses
+the continuous orientation-evidence quantity `lambda_max-lambda_min`.
+
+The cue is appended only as one fold-calibrated, training-eligible positive
+membership in the existing compact distorted-Choquet context. Median
+conditioning, the five retained cues, gamma `0.55`, gate strength `2.0`, floor
+`0.10`, grayscale Scharr+NMS, and threshold fitting remain unchanged. This is
+not a rerun of Stage 14k: that stage replaced localization with a per-pixel
+CIELAB Di Zenzo color tensor, whereas Stage 16z uses a scalar spatially
+integrated tensor only for context. It also omits coherence-enhancing
+diffusion.
+
+The authoritative protocol is `docs/paper/STAGE16Z_PREREGISTRATION.md`.
+`stage16z_orientation_coherence_context` is registered with conjunctive
+UDED-selection 5x3 leakage-free CV and official BSDS500-validation criteria,
+precision/recall non-collapse, at least 12/15 eligible folds, exact positive-
+support preservation, a fixed step/flat/checkerboard numerical contract,
+runtime diagnostics, and a positions 1/8/15 preview. No tensor, diffusion,
+calibration, integration, context, gate, localizer, or threshold parameter may
+be tuned from the outcome. The compact controller remains incumbent.

@@ -684,3 +684,19 @@ margin. The safe claim is that this coarse intervening-contour spectral cue did
 not establish jointly transferable incremental context value. Do not describe
 the result as a falsification of normalized cuts, spectral Pb, or exact gPb,
 and do not motivate graph or integration tuning from it.
+
+## Stage 16z prospective writing note
+
+Frame Stage 16z as a fixed local orientation-organization context test, not a
+new tensor localizer and not coherence-enhancing diffusion. The paper-derived
+core is the scalar second-moment matrix at noise/integration scales `0.5/4.0`;
+the cue is the continuous eigenvalue difference
+`lambda_max-lambda_min`, which vanishes in flat or isotropic neighborhoods.
+Explicitly contrast this with Stage 14k's per-pixel CIELAB Di Zenzo tensor and
+disclose outer-fold membership calibration and eligibility as repository
+integration choices. Report cue eligibility, precision/recall, exact score-
+support preservation, runtime, the step/flat/checkerboard contract, both
+development axes, and the fixed preview. A failure closes only this scalar
+fixed-scale context realization and must not be generalized to structure-
+tensor analysis, color tensors, multiscale tensors, or coherence-enhancing
+diffusion.

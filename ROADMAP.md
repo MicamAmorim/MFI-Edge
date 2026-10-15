@@ -1595,3 +1595,23 @@ live-primary-literature escalation must choose exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit spectral globalization or earlier closed families, fit
 dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 16y closed - structure-tensor orientation context selected
+
+The checkpoint selected a fixed scalar spatial structure-tensor cue grounded
+in Bigun, Granlund and Wiklund's orientation-estimation formulation and
+Weickert's explicit noise/integration-scale analysis. Stage 16z uses published
+illustrative scales `sigma=0.5` and `rho=4`, and takes
+`lambda_max-lambda_min` as local evidence that one gradient orientation
+dominates. The cue enters only as one outer-fold-eligible positive membership;
+the compact Choquet context and grayscale Scharr+NMS localizer stay unchanged.
+It is not color Di Zenzo localization and does not run tensor-guided diffusion.
+
+The active next action is `stage16z_orientation_coherence_context`. Promotion
+requires the preregistered conjunction of UDED-selection aggregate, precision,
+recall, fold-stability, eligibility, and support-preservation conditions with
+official BSDS500-validation ODS/OIS/AP gains, plus the fixed synthetic and
+positions 1/8/15 preview contracts. No tensor scale, normalization, color or
+multiscale extension, diffusion, membership, integration, context, localizer,
+or threshold parameter may be tuned from the result. Compact Choquet-gated
+Scharr+NMS remains incumbent pending the outcome.

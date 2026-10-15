@@ -1549,3 +1549,26 @@ preview. Do not tune the graph, eigensystem, compression, eligibility,
 integration, context, gate, localizer, thresholds, gPb, or forest from the
 result. The compact Choquet-gated grayscale Scharr+NMS controller remains
 incumbent.
+
+### Stage 16y closure - structure-tensor orientation context registered
+
+The live primary-literature checkpoint selected one fixed local orientation-
+organization test. Stage 16z computes the scalar spatial structure tensor on
+the unchanged median-conditioned grayscale image using Weickert's illustrated
+noise/integration scales `0.5/4.0`. Its eigenvalue difference
+`lambda_max-lambda_min` is zero for flat or locally isotropic neighborhoods
+and positive where one gradient orientation dominates. The cue is appended
+only as one outer-training-fold-eligible positive membership; it does not run
+coherence-enhancing diffusion or replace grayscale Scharr+NMS. This differs
+from Stage 14k's per-pixel CIELAB Di Zenzo color tensor localizer because the
+new test is scalar, spatially integrated, and contextual.
+
+The authoritative protocol is `docs/paper/STAGE16Z_PREREGISTRATION.md`.
+`stage16z_orientation_coherence_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, explicit
+precision/recall non-collapse, exact score-support invariance, a fixed
+step/flat/checkerboard contract, runtime diagnostics, and positions 1/8/15
+preview. Do not tune tensor scales, evidence normalization, color or
+multiscale variants, diffusion, eligibility, integration, context, gate,
+localizer, or thresholds from the result. The compact Choquet-gated grayscale
+Scharr+NMS controller remains incumbent.
