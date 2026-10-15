@@ -743,3 +743,19 @@ registered calibration and showed no matched BSDS benefit. Do not generalize
 the result to all nonparametric edge tests or motivate multiscale, variance,
 color, learned-rank, or relaxed-eligibility variants from it. Retain the local
 evaluator's reference-reproduction caveat.
+
+## Stage 17d prospective writing note
+
+Frame Stage 17d as a fixed information-geometric context test, not a complete
+GMRF edge detector and not a fitted probabilistic classifier. The paper-
+derived core is the isotropic Gaussian conditional model, analytic maximum-
+pseudo-likelihood fit, and local type-I/type-II observed-Fisher ratio. State
+that the ratio is evaluated through its algebraically equivalent squared
+standardized conditional innovation. Disclose the paper's second-order eight-
+neighbour option, repository reflection boundary convention, degenerate-
+constant-image branch, and outer-fold membership calibration/eligibility.
+Report fitted beta and variance diagnostics, affine-intensity invariance, cue
+eligibility, precision/recall, exact score-support preservation, runtime, both
+development axes, and the fixed preview. A failure closes only this fixed
+isotropic local realization and must not motivate multiscale, anisotropic,
+color, mixture, or learned-random-field variants.

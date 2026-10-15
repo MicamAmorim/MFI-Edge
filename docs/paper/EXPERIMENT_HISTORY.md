@@ -3299,3 +3299,24 @@ escalation that must select exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 17b, revisit earlier closed families, use dataset identity,
 relax the cross-dataset rule, or use protected feedback.
+
+### Stage 17c - GMRF Fisher-information checkpoint
+
+The live primary-source review selected Levada's local observed-Fisher
+analysis of isotropic pairwise Gaussian Markov random fields (Entropy 2014,
+DOI `10.3390/e16021002`, arXiv `1108.4973`). The paper's conditional model and
+maximum-pseudo-likelihood equations give a parameter-free, image-internal
+measure of contextual surprise: the local type-I/type-II information ratio is
+the squared conditional innovation normalized by its fitted variance. High
+values represent configurations inconsistent with the image's global spatial
+dependence, which the paper associates with region boundaries.
+
+This mechanism is distinct from Stage 17b's local ordering statistic and from
+the closed tensor, spectral-graph, localizer, conditioning, persistence,
+topology, profile, and self-similarity tests. Stage 17d fixes the paper's
+second-order eight-neighbour system, reflection at the finite raster boundary,
+analytic per-image pseudo-likelihood fit, and no evidence clipping or per-image
+normalization. One outer-fold-eligible positive membership is appended to the
+unchanged five-cue Choquet context. The authoritative preregistration is
+`docs/paper/STAGE17D_PREREGISTRATION.md`; promotion is conjunctive across UDED
+selection and official BSDS500 validation. No result has yet been inspected.

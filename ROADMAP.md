@@ -1668,3 +1668,20 @@ live-primary-literature escalation must choose exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit rank context or earlier closed families, fit dataset
 identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 17c closed - local GMRF Fisher-information context selected
+
+Stage 17c selected a fixed local information-geometric mechanism rather than
+another rank, derivative, graph, conditioning, or structural-repair variant.
+Stage 17d uses Levada's isotropic pairwise Gaussian-MRF pseudo-likelihood model
+with a second-order eight-neighbour system. Per-image analytic parameters are
+estimated without labels, and local Fisher L-information is evaluated as the
+squared standardized conditional innovation. One fold-eligible positive
+membership is appended to the unchanged compact Choquet context; localization
+and all incumbent parameters remain fixed.
+
+The active next action is `stage17d_gmrf_information_context`. Promotion is
+conjunctive across UDED-selection repeated CV and official BSDS500 validation,
+with fixed synthetic, support, runtime, and preview contracts. No GMRF
+neighbourhood, parameter-fit, scale, anisotropy, color, mixture, or learned-
+field variant may be tuned from its result.

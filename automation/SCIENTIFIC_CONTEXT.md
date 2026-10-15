@@ -1639,3 +1639,25 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 rank context or earlier closed families, use dataset identity, relax the
 cross-dataset rule, or use protected feedback.
+
+### Stage 17c closure - local GMRF Fisher-information context registered
+
+The live primary-literature checkpoint selected one fixed information-
+geometric context test. Stage 17d fits the analytic maximum-pseudo-likelihood
+parameters of Levada's isotropic pairwise Gaussian Markov random field on each
+unchanged median-conditioned grayscale image using the paper's second-order
+eight-neighbour system. Its local type-I/type-II observed-Fisher ratio reduces
+to squared standardized conditional innovation, so high response identifies a
+configuration unexpected under the image's global spatial dependence. The cue
+is appended only as one outer-training-fold-eligible positive membership; it
+does not replace Scharr+NMS or fit from labels.
+
+The authoritative protocol is `docs/paper/STAGE17D_PREREGISTRATION.md`.
+`stage17d_gmrf_information_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed synthetic contracts, runtime diagnostics, and
+positions 1/8/15 preview. Do not tune the neighbourhood, GMRF fit, boundary
+handling, evidence transform, eligibility, calibration, integration, context,
+gate, localizer, or thresholds from the result, and do not advance to
+multiscale, anisotropic, color, mixture, or learned random-field variants. The
+compact Choquet-gated grayscale Scharr+NMS controller remains incumbent.
