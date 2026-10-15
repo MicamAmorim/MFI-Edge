@@ -1453,3 +1453,11 @@ fixed positions 1/8/15 preview. Do not tune trees, channels, stride,
 sharpening, multiscale mode, NMS, calibration, fusion, or routing from the
 result. The compact Choquet-gated grayscale Scharr+NMS controller remains
 incumbent pending the outcome.
+
+The first Stage-16v launch stopped before author-detector execution when Git's
+ownership guard rejected the ignored pinned toolbox checkout during provenance
+verification. It produced no candidate map or scientific feedback. A
+harness-only retry is registered with process-local `safe.directory` overrides
+for the immutable, hash-verified author checkouts; detector/model bytes,
+parameters, datasets, folds, artifacts, official attachment, and promotion rule
+are unchanged.

@@ -1718,6 +1718,28 @@
       "results/official_eval/stage16v_structured_forest/summary.json"
     ]
   },
+  "stage16v_structured_forest_retry1": {
+    "description": "Harness-only retry of the exact Stage-16v Structured Edge forest replacement test after adding process-local Git safe.directory overrides for the immutable, hash-verified ignored author checkouts; detector model, source bytes, parameters, datasets, folds, thresholds, preview positions, artifacts, official attachment, and conjunctive promotion rule are unchanged.",
+    "runner": "python",
+    "path": "automation/stage16v_structured_forest_venv_launcher.py",
+    "args": [],
+    "role": "generation_2_exact_structured_patch_forest_replacement_falsification",
+    "feedback_policy": "joint_uded_selection_and_bsds500_validation_development_fixed_author_model_no_protected_feedback_no_forest_or_fusion_tuning",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage16v_structured_forest/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage16v_structured_forest/summary.json",
+      "results/local_dev/stage16v_structured_forest/variant_ranking.csv",
+      "results/local_dev/stage16v_structured_forest/fold_results.csv",
+      "results/local_dev/stage16v_structured_forest/per_image_metrics.csv",
+      "results/local_dev/stage16v_structured_forest/per_image_runtime.csv",
+      "results/local_dev/stage16v_structured_forest/map_hashes.json",
+      "results/local_dev/stage16v_structured_forest/structured_forest_uded/maps/structured_forest_provenance.json",
+      "results/local_dev/stage16v_structured_forest/best_method_preview.png",
+      "results/local_dev/stage16v_structured_forest/official_eval_manifest.json",
+      "results/official_eval/stage16v_structured_forest_retry1/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

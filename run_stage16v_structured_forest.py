@@ -55,16 +55,18 @@ def _sha256(path: Path) -> str:
 
 
 def _git_head(path: Path) -> str:
+    trust = ["-c", f"safe.directory={path.resolve().as_posix()}"]
     completed = subprocess.run(
-        ["git", "-C", str(path), "rev-parse", "HEAD"],
+        ["git", *trust, "-C", str(path), "rev-parse", "HEAD"],
         cwd=str(ROOT), check=True, capture_output=True, text=True,
     )
     return completed.stdout.strip()
 
 
 def _git_clean(path: Path) -> bool:
+    trust = ["-c", f"safe.directory={path.resolve().as_posix()}"]
     completed = subprocess.run(
-        ["git", "-C", str(path), "status", "--porcelain", "--untracked-files=no"],
+        ["git", *trust, "-C", str(path), "status", "--porcelain", "--untracked-files=no"],
         cwd=str(ROOT), check=True, capture_output=True, text=True,
     )
     return not completed.stdout.strip()

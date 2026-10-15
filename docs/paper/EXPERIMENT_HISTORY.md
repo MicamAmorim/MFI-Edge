@@ -3055,3 +3055,18 @@ axes plus provenance, repeatability, runtime, hash, complexity, and fixed
 positions 1/8/15 preview contracts. No forest parameter, retraining variant,
 MFI fusion, score calibration, or router may be tuned from the outcome. The
 compact Choquet-gated grayscale Scharr+NMS controller remains incumbent.
+
+### Stage 16v first launch stopped before detector execution; harness retry registered
+
+The first Stage-16v launch prepared the 15 UDED-selection inputs but stopped
+before Structured Forest inference because Git's ownership guard rejected the
+ignored pinned Piotr Dollár toolbox checkout during provenance verification.
+No candidate map, metric, preview, manifest, or scientific result was produced.
+This is a harness-only failure and supplies no detector feedback.
+
+`stage16v_structured_forest_retry1` is registered with process-local
+`safe.directory` overrides limited to the two immutable, hash-verified author
+checkouts. It does not change global Git configuration, author bytes, the
+shipped model, detector parameters, datasets, folds, threshold fitting,
+preview positions, official evaluator, or the preregistered conjunctive rule.
+The compact controller remains incumbent pending the unchanged retry.
