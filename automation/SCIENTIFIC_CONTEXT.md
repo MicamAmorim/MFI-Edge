@@ -1616,3 +1616,26 @@ preservation, fixed synthetic contracts, runtime diagnostics, and positions
 rank statistic, scale, eligibility, calibration, integration, context, gate,
 localizer, or thresholds from the result. The compact Choquet-gated grayscale
 Scharr+NMS controller remains incumbent.
+
+### Stage 17b closure - local Mann-Whitney rank context rejected; Stage 17c registered
+
+The fixed radius-2 four-orientation rank cue was training-ineligible in all
+`15/15` UDED-selection folds: training edge-versus-texture AUC ranged below
+the preregistered `0.56` threshold, so the candidate exactly reduced to the
+compact control and all UDED aggregate and fold metrics were unchanged. On
+official BSDS500 validation, ODS/OIS/AP changed by
+`-0.000012/-0.000201/+0.000098`. The conjunctive rule therefore rejects the
+candidate. Its numerical, monotone-invariance, support, runtime, and fixed
+preview contracts passed, but cannot override complete UDED ineligibility and
+the failed BSDS margins. Do not tune the radius, partitions, orientations,
+tie rule, rank statistic, eligibility, calibration, integration, context,
+gate, localizer, or thresholds, and do not advance to multiscale, variance,
+color, or learned rank variants from this result. The compact Choquet-gated
+grayscale Scharr+NMS controller remains incumbent.
+
+The registered next action is `stage17c_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+rank context or earlier closed families, use dataset identity, relax the
+cross-dataset rule, or use protected feedback.

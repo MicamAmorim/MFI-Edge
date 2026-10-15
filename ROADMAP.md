@@ -1651,3 +1651,20 @@ BSDS500-validation ODS/OIS/AP gains, plus fixed numerical and positions 1/8/15
 preview contracts. No rank geometry, scale, statistic, calibration,
 integration, context, localizer, or threshold parameter may be tuned from the
 result. Compact Choquet-gated Scharr+NMS remains incumbent pending the outcome.
+
+## Stage 17b closed - local rank-contrast context rejected
+
+The fixed local Mann-Whitney cue was ineligible in every UDED-selection fold,
+so it exactly reduced to the compact control: aggregate precision, recall, F1,
+mean fold F1, and all fold predictions were unchanged. Official BSDS500-
+validation ODS/OIS/AP changed by `-0.000012/-0.000201/+0.000098`, failing the
+registered ODS margin and OIS condition. The candidate is rejected. Its fixed
+rank geometry, eligibility, calibration, and integration may not be tuned,
+and no multiscale, variance, color, or learned rank extension is authorized
+from this outcome. Compact Choquet-gated Scharr+NMS remains incumbent.
+
+The active next action is `stage17c_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit rank context or earlier closed families, fit dataset
+identity, relax the cross-dataset rule, or use protected feedback.

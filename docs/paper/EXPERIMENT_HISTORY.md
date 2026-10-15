@@ -3271,3 +3271,31 @@ flat/step/monotone-invariance contracts, runtime diagnostics, and a positions
 1/8/15 preview. No radius, scale, orientation, partition, rank-statistic,
 calibration, integration, context, gate, localizer, or threshold parameter may
 be tuned from the outcome. The compact controller remains incumbent.
+
+### Stage 17b local Mann-Whitney rank context rejected; Stage 17c registered
+
+The fixed local rank-contrast cue failed its conjunctive promotion rule. Its
+outer-training-fold edge-versus-texture AUC was below the fixed `0.56`
+eligibility threshold in all `15/15` folds, so the candidate exactly reduced
+to the compact control. UDED aggregate F1, precision, recall, mean fold F1,
+and fold wins therefore changed by `0/0/0/0/0`; eligibility was `0/15`.
+
+Official BSDS500-validation ODS/OIS/AP changed by
+`-0.000012/-0.000201/+0.000098`. The numerical, boundedness,
+repeatability, monotone-transform invariance, positive-support, runtime, and
+fixed positions 1/8/15 preview contracts completed, but the UDED eligibility
+and BSDS performance requirements failed. The candidate is rejected. This is
+evidence against the fixed radius-2 four-partition integration, not against
+nonparametric edge statistics generally. No radius, partition, orientation,
+tie, statistic, eligibility, calibration, integration, context, gate,
+localizer, or threshold tuning is allowed, and the preregistration explicitly
+bars multiscale, variance, color, and learned rank variants from this outcome.
+The Stage-15a stochastic, reference-uncertified matcher caveat remains, and
+the compact controller is still incumbent.
+
+The single registered next action is
+`stage17c_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must select exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
+not tune Stage 17b, revisit earlier closed families, use dataset identity,
+relax the cross-dataset rule, or use protected feedback.

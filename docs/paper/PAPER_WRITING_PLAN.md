@@ -730,3 +730,16 @@ preservation, runtime, both development axes, and the fixed preview. A failure
 closes this exact local rank realization and must not be generalized to all
 nonparametric edge statistics or used to justify multiscale, variance, color,
 or learned rank variants.
+
+## Stage 17b writing update
+
+Report Stage 17b as a fixed-cue ineligibility result. The local Mann-Whitney
+cue's training AUC did not reach `0.56` in any of 15 folds, so the candidate
+exactly matched compact MFI on UDED and supplied no candidate-specific UDED
+performance evidence. Official BSDS ODS/OIS/AP changed by only
+`-0.000012/-0.000201/+0.000098`. The safe claim is that this fixed radius-2
+four-orientation rank evidence did not qualify as positive context under the
+registered calibration and showed no matched BSDS benefit. Do not generalize
+the result to all nonparametric edge tests or motivate multiscale, variance,
+color, learned-rank, or relaxed-eligibility variants from it. Retain the local
+evaluator's reference-reproduction caveat.
