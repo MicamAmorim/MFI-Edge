@@ -1432,3 +1432,24 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 scale-space localization or earlier closed families, use dataset identity,
 relax the cross-dataset rule, or use protected feedback.
+
+### Stage 16u closure - exact Structured Edge forest registered
+
+The live primary-literature checkpoint selected the complete Dollár-Zitnick
+Structured Edge forest as one bounded non-neural replacement test. The pinned
+author code and shipped `modelBsds` predict structured local edge masks and are
+mechanistically distinct from Stage 14n's failed shallow scalar pixel forest.
+The author inference path passed a dataset-free R2023a synthetic smoke test.
+The model is explicitly supervised and trained on BSDS500 train; it is not an
+untrained reference. BSDS500 validation and UDED selection remain development
+evaluation axes and do not alter the immutable forest.
+
+The authoritative protocol is `docs/paper/STAGE16V_PREREGISTRATION.md`.
+`stage16v_structured_forest` compares the fixed exact author detector with
+compact MFI under UDED-selection repeated threshold-CV and official BSDS500-
+validation scoring. Promotion requires meaningful conjunctive gains on both
+axes plus provenance, repeatability, runtime, complexity, map hashes, and the
+fixed positions 1/8/15 preview. Do not tune trees, channels, stride,
+sharpening, multiscale mode, NMS, calibration, fusion, or routing from the
+result. The compact Choquet-gated grayscale Scharr+NMS controller remains
+incumbent pending the outcome.

@@ -632,3 +632,18 @@ omitted. Report the synthetic scale contract, selected-scale distributions,
 both development axes, and the fixed preview. A failure closes this precise
 finite bank and normalization to outcome-driven tuning but does not falsify
 automatic scale selection generally.
+
+## Stage 16v prospective writing note
+
+Frame Stage 16v as the first complete learned non-neural replacement in the
+generation-2 sequence, not as another MFI feature and not as a continuation of
+Stage 14n tuning. The candidate is exact pinned Dollár-Zitnick author inference
+with the shipped BSDS500-train `modelBsds`, structured patch masks, author
+sharpening/aggregation, and the NMS setting used by `edgesEval.m`. Classify it
+as supervised and non-neural; do not call it untrained. Keep published test
+numbers separate from our UDED-selection and BSDS-validation development
+results. Report the MSR-LA dependency license, commits, model hash, tree/node
+complexity, runtime, both development axes, and the fixed preview. A failure
+closes this exact author model as the generation-2 replacement and forbids
+outcome-driven forest/fusion tuning; it does not generalize to all structured
+prediction forests.

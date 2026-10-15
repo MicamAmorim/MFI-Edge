@@ -3021,3 +3021,37 @@ The single registered next action is
 literature escalation that must select exactly one mechanistically distinct,
 interpretable non-neural falsification with a preregistered joint UDED/BSDS
 rule and no protected feedback.
+
+### Stage 16u checkpoint closure; Stage 16v Structured Edge forest registered
+
+The live primary-literature checkpoint selected the full Dollár-Zitnick
+Structured Edge forest rather than another scalar cue, response transform,
+conditioning operator, localizer micro-variant, or fuzzy aggregation change.
+The ICCV/TPAMI method predicts structured local edge masks with a random
+decision forest, thereby representing short lines, corners, and junctions at
+the patch-output level. This is mechanistically distinct from Stage 14n's
+shallow scalar pixel forest; the earlier result explicitly did not test the
+published structured-mask system.
+
+The exact author `pdollar/edges` repository is pinned at
+`94260b5d0fc068202598312e01a37604972dcc9e`, its required official MATLAB
+toolbox at `e87332637bbe8e8b92dd487c87567d9628404523`, and the shipped
+`modelBsds.mat` is part of the pinned author tree (SHA-256
+`9b0f2af485516c89549d4050a7d29fe789c315a4632d16cf29a07796b54c1a6b`).
+The fixed synthetic R2023a smoke test passed with finite native-size output.
+Source inspection confirms
+that author training reads only BSDS500 `train`. The candidate is therefore
+classified explicitly as a non-neural supervised detector, not as an
+untrained baseline. The code's MSR-LA Full Rights license is recorded and the
+author trees remain ignored external dependencies.
+
+The authoritative protocol is `docs/paper/STAGE16V_PREREGISTRATION.md`.
+`stage16v_structured_forest` freezes the shipped author model, single-scale
+settings, sharpening, stride, and the NMS enabled by author `edgesEval.m`.
+UDED selection uses repeated threshold-CV without forest fitting; BSDS500
+validation is excluded from training and attached through the unchanged
+official path. Promotion is conjunctive and requires meaningful gains on both
+axes plus provenance, repeatability, runtime, hash, complexity, and fixed
+positions 1/8/15 preview contracts. No forest parameter, retraining variant,
+MFI fusion, score calibration, or router may be tuned from the outcome. The
+compact Choquet-gated grayscale Scharr+NMS controller remains incumbent.

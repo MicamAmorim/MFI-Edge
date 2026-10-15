@@ -1496,3 +1496,22 @@ live-primary-literature escalation must choose exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not tune the failed finite-scale localizer or earlier closed families,
 fit dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 16u closed - exact Structured Edge forest selected
+
+The checkpoint selected the complete Dollár-Zitnick Structured Edge forest as
+the next bounded generation-2 replacement test. Unlike Stage 14n's shallow
+scalar pixel forest, the pinned author model predicts structured local edge
+masks from RGB, gradient, and self-similarity channels and aggregates
+overlapping mask predictions. The official author inference path and shipped
+BSDS-train model have passed a dataset-free R2023a synthetic smoke test.
+
+The active next action is `stage16v_structured_forest`. UDED selection uses the
+established 5x3 folds only to fit per-method operating thresholds; the immutable
+author forest receives no UDED fitting. BSDS500 validation remains development
+data excluded from the forest's BSDS500-train provenance and is scored through
+the unchanged official attachment. Promotion requires preregistered meaningful
+gains on both axes, exact provenance and repeatability, runtime/hash/complexity
+records, and the fixed positions 1/8/15 preview. No tree, channel, sharpening,
+multiscale, NMS, fusion, calibration, or routing choice may be tuned from the
+result. Compact Choquet-gated Scharr+NMS remains incumbent pending the outcome.
