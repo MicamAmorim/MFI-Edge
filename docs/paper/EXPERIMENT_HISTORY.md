@@ -2995,3 +2995,29 @@ nonnegative OIS/AP. Fixed synthetic scale contracts and the positions 1/8/15
 preview are also mandatory. No scale, normalization, NMS, response mapping,
 context, gate, or threshold tuning is allowed from the result. The compact
 Choquet-gated grayscale Scharr+NMS controller remains incumbent.
+
+### Stage 16t automatic scale selection rejected; Stage 16u registered
+
+The fixed scale-selected localizer completed its repeated CV, synthetic scale
+contracts, deterministic preview, and official attachment. Relative to compact
+MFI on UDED selection, aggregate F1/precision/recall and mean fold F1 changed
+by `-0.019452/+0.001642/-0.053267/-0.020488`, and the candidate won only
+`2/15` fold-F1 comparisons. It therefore failed the F1, recall, mean-fold, and
+fold-win requirements despite a small precision increase.
+
+Under the common official BSDS500-validation path, ODS/OIS/AP changed by
+`+0.003808/+0.000911/-0.010464`. The ODS threshold and nonnegative OIS
+condition passed, but AP declined, so this axis also failed the conjunctive
+rule. The fixed positions 1/8/15 preview and all synthetic contracts passed,
+but cannot override the performance failures. The candidate is rejected; its
+scales, gamma normalization, derivative discretization, scale-selection/tie
+rule, NMS, response mapping, conditioning, localizer integration, context,
+gate, and thresholds are closed to tuning. This result does not falsify
+continuous automatic scale-space edge theory. The compact Choquet-gated
+grayscale Scharr+NMS controller remains incumbent.
+
+The single registered next action is
+`stage16u_generation2_mechanism_checkpoint`, a high-reasoning live-primary-
+literature escalation that must select exactly one mechanistically distinct,
+interpretable non-neural falsification with a preregistered joint UDED/BSDS
+rule and no protected feedback.

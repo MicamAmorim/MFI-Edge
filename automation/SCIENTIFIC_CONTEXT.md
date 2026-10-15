@@ -1411,3 +1411,24 @@ gamma normalization, derivative discretization, scale endpoint/tie handling,
 NMS, response mapping, conditioning, context, gate, or thresholds from the
 result. The compact Choquet-gated grayscale Scharr+NMS controller remains
 incumbent.
+
+### Stage 16t closure - automatic scale selection rejected; Stage 16u registered
+
+The fixed gamma-normalized `sigma={1,2,4}` scale-selected localizer failed its
+conjunctive promotion rule. On UDED selection, aggregate F1/precision/recall
+and mean fold F1 changed by `-0.01945/+0.00164/-0.05327/-0.02049`, with only
+`2/15` fold wins. Official BSDS500-validation ODS/OIS/AP changed by
+`+0.00381/+0.00091/-0.01046`: the ODS condition passed, but AP declined. The
+candidate is rejected and its scales, normalization, derivative
+discretization, scale selection, NMS, response mapping, conditioning,
+localizer integration, context, gate, and thresholds must not be tuned from
+the result. This falsifies only the fixed finite-scale repository surrogate,
+not automatic scale-space edge theory. The compact Choquet-gated grayscale
+Scharr+NMS controller remains incumbent.
+
+The registered next action is `stage16u_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+scale-space localization or earlier closed families, use dataset identity,
+relax the cross-dataset rule, or use protected feedback.

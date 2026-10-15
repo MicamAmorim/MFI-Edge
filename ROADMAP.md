@@ -1480,3 +1480,19 @@ positions 1/8/15 preview conditions. Scales, gamma normalization, derivative
 discretization, NMS, response mapping, context, gate, and thresholds are frozen
 before results. The compact Choquet-gated grayscale Scharr+NMS controller
 remains incumbent.
+
+## Stage 16t closed - automatic scale selection rejected
+
+The fixed gamma-normalized three-scale localizer reduced UDED aggregate F1 by
+`0.019452`, recall by `0.053267`, and mean fold F1 by `0.020488`, winning only
+`2/15` folds; only precision increased (`+0.001642`). On official BSDS500
+validation it improved ODS/OIS by `+0.003808/+0.000911` but reduced AP by
+`-0.010464`. The conjunctive rule therefore rejects the candidate on both
+development axes. No scale-space or integration parameter may be tuned, and
+the compact Choquet-gated grayscale Scharr+NMS controller remains incumbent.
+
+The active next action is `stage16u_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not tune the failed finite-scale localizer or earlier closed families,
+fit dataset identity, relax the cross-dataset rule, or use protected feedback.
