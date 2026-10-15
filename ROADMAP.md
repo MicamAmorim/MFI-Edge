@@ -1524,3 +1524,20 @@ saturating `uint8(E*255)` serialization. The active next action is
 `stage16v_structured_forest_retry2`, a harness-only exact-serialization repair
 that records raw overshoot provenance. Detector/model bytes, parameters, data,
 folds, official evaluation, and the joint promotion rule remain frozen.
+
+## Stage 16v UDED rejection - attachment-only retry active
+
+The exact author-serialization run completed on UDED selection but reduced
+aggregate F1 by `0.035385`, recall by `0.142871`, and mean fold F1 by
+`0.038240`, with only `2/15` fold wins; precision increased by `0.042968`.
+The fixed Structured Forest replacement is therefore rejected by the frozen
+UDED gate and is closed to tuning or fusion.
+
+Its required BSDS500-validation attachment stopped before candidate inference
+because the sparse pinned author checkout omitted the tracked model blob. The
+active next action is `stage16v_structured_forest_attachment_retry`, which
+materializes and hash-verifies that exact blob and reruns only the unchanged
+official attachment. It preserves all completed UDED maps, metrics, preview,
+and the rejection decision. After attachment closure, proceed to a
+mechanistically distinct live-literature checkpoint; compact Choquet-gated
+Scharr+NMS remains incumbent.

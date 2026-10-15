@@ -3089,3 +3089,25 @@ nonnegative raw responses, and record the raw maximum and overshoot count in
 provenance. Serialized maps remain bounded 8-bit outputs. No author byte,
 model, detector setting, dataset, fold, threshold, preview, evaluator, or
 promotion condition changes.
+
+### Stage 16v UDED gate failed; official attachment retry registered
+
+The author-serialization retry completed exact Structured Forest inference,
+the full UDED-selection 5x3 threshold-CV, hashes, runtimes, provenance, and the
+fixed positions 1/8/15 preview. Relative to compact MFI, aggregate
+F1/precision/recall and mean fold F1 changed by
+`-0.035385/+0.042968/-0.142871/-0.038240`, and the forest won only `2/15`
+fold comparisons. The fixed replacement therefore fails the preregistered
+UDED F1, recall, mean-fold, and win-count requirements and cannot be promoted
+or tuned, irrespective of its eventual BSDS500-validation result.
+
+The mandatory official attachment failed before candidate validation
+inference because the pinned sparse vendor worktree omitted the tracked
+`models/forest/modelBsds.mat` file after the completed UDED run. This is an
+export dependency-materialization defect, not detector feedback. The single
+next action is `stage16v_structured_forest_attachment_retry`: restore the
+exact model blob from the already pinned commit, verify SHA-256
+`9b0f2af485516c89549d4050a7d29fe789c315a4632d16cf29a07796b54c1a6b`, and
+rerun only the unchanged official BSDS500-validation export/evaluator. It may
+not rerun CV, regenerate UDED predictions, change the forest, or tune/fuse it.
+The compact controller remains incumbent.

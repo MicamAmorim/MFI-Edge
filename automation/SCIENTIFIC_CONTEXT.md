@@ -1471,3 +1471,17 @@ or official manifest were produced. `stage16v_structured_forest_retry2` is
 registered as a harness-only repair using that exact author serialization and
 recording raw overshoot provenance; model, parameters, data, folds, evaluator,
 and conjunctive promotion rule remain unchanged.
+
+The exact-serialization retry completed all UDED-selection artifacts but
+decisively failed the frozen UDED gate: aggregate F1 changed by `-0.03539`,
+recall by `-0.14287`, mean fold F1 by `-0.03824`, and the forest won only
+`2/15` folds; precision improved by `+0.04297`. It therefore cannot be
+promoted or tuned regardless of the pending BSDS attachment. The official
+export stopped before validation inference because the sparse vendor worktree
+no longer contained the tracked `modelBsds.mat` blob used by the completed
+run. One attachment-only retry is registered to materialize that exact blob
+from the pinned commit, verify its preregistered SHA-256, and rerun only the
+unchanged BSDS500-validation export/evaluator. UDED maps, CV, parameters, and
+the scientific rejection remain frozen. The compact controller remains the
+incumbent; after attachment closure, route to a mechanistically distinct live-
+literature checkpoint.
