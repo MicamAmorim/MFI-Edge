@@ -1661,3 +1661,27 @@ handling, evidence transform, eligibility, calibration, integration, context,
 gate, localizer, or thresholds from the result, and do not advance to
 multiscale, anisotropic, color, mixture, or learned random-field variants. The
 compact Choquet-gated grayscale Scharr+NMS controller remains incumbent.
+
+### Stage 17d closure - local GMRF Fisher-information context rejected; Stage 17e registered
+
+The fixed isotropic-pairwise GMRF Fisher-information membership failed its
+conjunctive promotion rule. On UDED selection, aggregate F1/precision/recall
+and mean fold F1 changed by
+`+0.000719/-0.000108/+0.002133/+0.000715`, with `10/15` fold wins and
+eligibility in `15/15` folds. The aggregate F1 margin and nonnegative precision
+condition failed. On official BSDS500 validation, ODS/OIS/AP changed by
+`+0.000312/-0.002259/-0.003687`, failing all three BSDS conditions. The
+synthetic, affine-invariance, repeatability, support, runtime, and fixed-preview
+contracts passed, but cannot override the performance failures. The candidate
+is rejected; do not tune its neighbourhood, estimator, boundary handling,
+evidence transform, calibration, integration, context, gate, localizer, or
+thresholds, and do not advance to multiscale, anisotropic, color, mixture, or
+learned random-field variants from this result. The compact Choquet-gated
+grayscale Scharr+NMS controller remains incumbent.
+
+The registered next action is `stage17e_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+GMRF context or earlier closed families, use dataset identity, relax the
+cross-dataset rule, or use protected feedback.

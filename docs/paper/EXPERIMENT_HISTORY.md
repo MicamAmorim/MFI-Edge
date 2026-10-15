@@ -3320,3 +3320,31 @@ normalization. One outer-fold-eligible positive membership is appended to the
 unchanged five-cue Choquet context. The authoritative preregistration is
 `docs/paper/STAGE17D_PREREGISTRATION.md`; promotion is conjunctive across UDED
 selection and official BSDS500 validation. No result has yet been inspected.
+
+### Stage 17d local GMRF Fisher-information context rejected; Stage 17e registered
+
+The fixed local GMRF cue was eligible in all `15/15` UDED-selection folds and
+produced a small recall gain, but it failed the preregistered joint rule. UDED
+aggregate F1, precision, recall, and mean fold F1 changed by
+`+0.000719/-0.000108/+0.002133/+0.000715`, with `10/15` fold wins. The
+aggregate F1 gain missed `+0.002`, and precision was negative rather than
+nonnegative. Official BSDS500-validation ODS/OIS/AP changed by
+`+0.000312/-0.002259/-0.003687`, failing the ODS margin and both nonnegative
+OIS/AP conditions.
+
+The synthetic step/flat, finite/nonnegative, affine-intensity invariance,
+repeatability, exact positive-support, runtime, and fixed positions 1/8/15
+preview contracts completed. They do not override the failed performance
+conditions. The candidate is rejected. This closes only the fixed isotropic
+eight-neighbour conditional-innovation integration, not GMRF information
+geometry generally; no neighbourhood, estimator, scale, anisotropy, color,
+mixture, learned-field, calibration, or integration variant may be tuned from
+the result. The Stage-15a stochastic, reference-uncertified matcher caveat
+remains, and compact Choquet-gated grayscale Scharr+NMS remains incumbent.
+
+The single registered next action is
+`stage17e_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must select exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
+not tune Stage 17d, revisit earlier closed families, use dataset identity,
+relax the cross-dataset rule, or use protected feedback.

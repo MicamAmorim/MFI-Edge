@@ -759,3 +759,18 @@ eligibility, precision/recall, exact score-support preservation, runtime, both
 development axes, and the fixed preview. A failure closes only this fixed
 isotropic local realization and must not motivate multiscale, anisotropic,
 color, mixture, or learned-random-field variants.
+
+## Stage 17d writing update
+
+Report Stage 17d as a fixed-cue conjunctive negative despite reliable cue
+eligibility. The GMRF membership was eligible in `15/15` folds; UDED aggregate
+F1/precision/recall and mean fold F1 changed by
+`+0.000719/-0.000108/+0.002133/+0.000715`, with `10/15` fold wins. The F1
+margin and precision condition failed. Official BSDS ODS/OIS/AP changed by
+`+0.000312/-0.002259/-0.003687`, failing all three BSDS requirements. The safe
+claim is that the fixed isotropic conditional-innovation cue was individually
+discriminative and slightly recall-positive on UDED but did not provide
+transferable incremental context value. Do not generalize the rejection to
+GMRF information geometry or motivate multiscale, anisotropic, color, mixture,
+learned-field, or integration tuning. Retain the local evaluator's reference-
+reproduction caveat.

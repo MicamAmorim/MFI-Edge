@@ -1685,3 +1685,20 @@ conjunctive across UDED-selection repeated CV and official BSDS500 validation,
 with fixed synthetic, support, runtime, and preview contracts. No GMRF
 neighbourhood, parameter-fit, scale, anisotropy, color, mixture, or learned-
 field variant may be tuned from its result.
+
+## Stage 17d closed - local GMRF Fisher-information context rejected
+
+The fixed GMRF membership was eligible in all 15 UDED folds, but aggregate
+F1/precision/recall and mean fold F1 changed by only
+`+0.000719/-0.000108/+0.002133/+0.000715`, with `10/15` fold wins. It missed
+the registered aggregate-F1 margin and precision condition. Official
+BSDS500-validation ODS/OIS/AP changed by
+`+0.000312/-0.002259/-0.003687`, so that axis also failed. The candidate is
+rejected, and no GMRF contract or integration variant may be tuned from this
+outcome. Compact Choquet-gated Scharr+NMS remains incumbent.
+
+The active next action is `stage17e_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit GMRF context or earlier closed families, fit dataset
+identity, relax the cross-dataset rule, or use protected feedback.
