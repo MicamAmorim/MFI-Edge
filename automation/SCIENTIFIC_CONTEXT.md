@@ -1685,3 +1685,27 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 GMRF context or earlier closed families, use dataset identity, relax the
 cross-dataset rule, or use protected feedback.
+
+### Stage 17e closure - photometric quasi-invariant context registered
+
+The live primary-literature checkpoint selected one fixed physics-based
+color-context test. Stage 17f computes van de Weijer, Gevers, and Geusebroek's
+shadow-shading photometric quasi-invariant on the channelwise median-
+conditioned RGB image: for sigma-1 horizontal and vertical Gaussian
+derivatives, it removes the component parallel to the local RGB direction and
+uses the combined residual energy. The cue is appended only as one outer-
+training-fold-eligible positive membership. It is designed to discount
+achromatic shadow/shading derivatives without the low-intensity instability of
+fully normalized color invariants.
+
+The authoritative protocol is `docs/paper/STAGE17F_PREREGISTRATION.md`.
+`stage17f_photometric_quasi_invariant_context` is registered with conjunctive
+UDED-selection repeated CV and official BSDS500-validation criteria, exact
+score-support preservation, fixed synthetic contracts, runtime diagnostics,
+and positions 1/8/15 preview. It differs from Stage 14k's CIELAB Di Zenzo
+localizer because grayscale Scharr+NMS remains unchanged and the color signal
+is only photometrically decomposed context. Do not tune RGB conditioning,
+derivative scale, projection, energy, invariant variants, eligibility,
+calibration, integration, context, gate, localizer, or thresholds from the
+result. The compact Choquet-gated grayscale Scharr+NMS controller remains
+incumbent.

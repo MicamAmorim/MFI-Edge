@@ -3348,3 +3348,33 @@ escalation that must select exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 17d, revisit earlier closed families, use dataset identity,
 relax the cross-dataset rule, or use protected feedback.
+
+### Stage 17e checkpoint closed - photometric quasi-invariant context registered
+
+Live primary-literature review selected one fixed physics-based color-context
+test. Van de Weijer, Gevers, and Geusebroek's photometric quasi-invariants
+(TPAMI 2005, DOI `10.1109/TPAMI.2005.75`) decompose an RGB spatial derivative
+under the dichromatic reflection model. Stage 17f removes the component of
+each sigma-1 horizontal/vertical RGB derivative parallel to the local RGB
+direction and uses the combined residual energy as positive evidence. The
+projection suppresses the derivative component attributable to achromatic
+shadow/shading changes without the low-intensity division of a full color
+invariant.
+
+The cue is computed after the incumbent `3x3` median conditioning is applied
+independently to RGB channels and is appended only as one outer-training-fold-
+eligible membership. Grayscale Scharr+NMS localization, the five retained
+memberships, gamma `0.55`, gate strength `2.0`, floor `0.10`, and threshold
+fitting remain unchanged. This differs from Stage 14k's CIELAB Di Zenzo tensor
+localizer replacement: it is a photometric projection used only for context,
+with no color-gradient localizer or grayscale/color mixture.
+
+The authoritative protocol is `docs/paper/STAGE17F_PREREGISTRATION.md`.
+`stage17f_photometric_quasi_invariant_context` is registered with conjunctive
+UDED-selection repeated CV and official BSDS500-validation criteria, exact
+score-support preservation, fixed chromatic/achromatic/flat synthetic
+contracts, runtime diagnostics, and positions 1/8/15 preview. Do not tune the
+RGB conditioning, derivative scale, projection, energy, invariant family,
+eligibility, calibration, integration, context, gate, localizer, or thresholds
+from the result. The compact Choquet-gated grayscale Scharr+NMS controller
+remains incumbent.

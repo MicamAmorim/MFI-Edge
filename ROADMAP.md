@@ -1702,3 +1702,21 @@ live-primary-literature escalation must choose exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit GMRF context or earlier closed families, fit dataset
 identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 17e closed - photometric quasi-invariant context selected
+
+Stage 17e selected a fixed physics-based derivative decomposition rather than
+another grayscale texture or spatial-dependence statistic. Stage 17f applies
+van de Weijer, Gevers, and Geusebroek's shadow-shading quasi-invariant
+projection (TPAMI 2005, DOI `10.1109/TPAMI.2005.75`) to sigma-1 derivatives of
+the channelwise median-conditioned RGB image. The L2 energy remaining after
+removing the derivative component parallel to the local RGB vector becomes one
+fold-calibrated, training-eligible positive context membership.
+
+The active next action is
+`stage17f_photometric_quasi_invariant_context`. Promotion is conjunctive across
+UDED-selection repeated CV and official BSDS500 validation. The fixed
+projection does not replace the grayscale Scharr+NMS localizer and is not a
+rerun of Stage 14k's CIELAB Di Zenzo tensor. RGB conditioning, derivative
+scale, projection, energy norm, eligibility, context integration, and all
+incumbent parameters are closed to outcome-driven tuning.

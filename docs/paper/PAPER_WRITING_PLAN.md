@@ -774,3 +774,17 @@ transferable incremental context value. Do not generalize the rejection to
 GMRF information geometry or motivate multiscale, anisotropic, color, mixture,
 learned-field, or integration tuning. Retain the local evaluator's reference-
 reproduction caveat.
+
+## Stage 17f prospective writing note
+
+Frame Stage 17f as a fixed physics-based context test, not as a complete color
+edge detector or exact reproduction. The selected equation removes the RGB
+derivative component attributable to achromatic shadow/shading changes and
+uses only the residual energy as one positive membership. Emphasize that the
+grayscale localizer and retained fuzzy controller remain unchanged, and
+distinguish the test from Stage 14k's CIELAB vector-tensor localizer. Report the
+predeclared equal-RGB-norm chromatic-versus-achromatic synthetic contract, fold eligibility,
+UDED precision/recall/F1 stability, BSDS ODS/OIS/AP, runtime, support
+invariance, and fixed preview. A failure closes only this sigma-1
+shadow-shading quasi-invariant integration; it does not falsify photometric
+invariance theory or authorize specular/hue/color-space variants.
