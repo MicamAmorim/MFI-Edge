@@ -700,3 +700,17 @@ development axes, and the fixed preview. A failure closes only this scalar
 fixed-scale context realization and must not be generalized to structure-
 tensor analysis, color tensors, multiscale tensors, or coherence-enhancing
 diffusion.
+
+## Stage 16z writing update
+
+Report Stage 16z as a narrow conjunctive negative with meaningful UDED
+evidence. The fixed scalar tensor cue passed all UDED conditions: aggregate F1
+improved by `+0.003263`, precision by `+0.002639`, recall by `+0.004184`, and
+mean fold F1 by `+0.002705`, with `14/15` fold wins and `15/15` eligibility.
+Official BSDS ODS/OIS/AP changed by `+0.001414/+0.000628/+0.010279`; ODS
+missed the registered `+0.002` margin, so the candidate was not promoted. The
+safe claim is that this fixed scalar orientation-evidence integration was
+stable and useful on UDED and improved BSDS ranking quality, but did not meet
+the required joint margin. Do not generalize the rejection to structure
+tensors, and do not motivate color, multiscale, diffusion, or integration
+tuning from the result.

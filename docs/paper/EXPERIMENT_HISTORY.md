@@ -3216,3 +3216,30 @@ support preservation, a fixed step/flat/checkerboard numerical contract,
 runtime diagnostics, and a positions 1/8/15 preview. No tensor, diffusion,
 calibration, integration, context, gate, localizer, or threshold parameter may
 be tuned from the outcome. The compact controller remains incumbent.
+
+### Stage 16z structure-tensor orientation context rejected; Stage 17a registered
+
+The fixed scalar structure-tensor cue passed the entire UDED-selection gate.
+Relative to compact MFI, aggregate F1, precision, recall, and mean fold F1
+changed by `+0.003263/+0.002639/+0.004184/+0.002705`; it won `14/15` folds,
+was training-eligible in `15/15`, and preserved positive score support exactly.
+The step/flat/checkerboard synthetic contract, repeatability, finite/bounded
+checks, runtime diagnostics, and fixed positions 1/8/15 preview also completed.
+
+Official BSDS500-validation ODS/OIS/AP changed by
+`+0.001414/+0.000628/+0.010279`. OIS and AP improved, but ODS missed the
+preregistered `+0.002` margin, so the conjunctive rule rejects Stage 16z. The
+result is narrow positive evidence for locally integrated orientation evidence
+on UDED and ranking quality on BSDS, but it does not establish the required
+joint gain. No tensor scale, normalized coherence, color/multiscale variant,
+diffusion, calibration, integration, context, gate, localizer, or threshold may
+be tuned from this outcome. This is not a falsification of structure-tensor
+analysis generally. The Stage-15a stochastic, reference-uncertified matcher
+caveat remains, and the compact controller is still incumbent.
+
+The single registered next action is
+`stage17a_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must select exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
+not tune Stage 16z, revisit earlier closed families, use dataset identity,
+relax the cross-dataset rule, or use protected feedback.

@@ -1572,3 +1572,26 @@ preview. Do not tune tensor scales, evidence normalization, color or
 multiscale variants, diffusion, eligibility, integration, context, gate,
 localizer, or thresholds from the result. The compact Choquet-gated grayscale
 Scharr+NMS controller remains incumbent.
+
+### Stage 16z closure - structure-tensor orientation context rejected; Stage 17a registered
+
+The fixed scalar structure-tensor membership passed every preregistered UDED
+condition. Aggregate F1/precision/recall and mean fold F1 changed by
+`+0.003263/+0.002639/+0.004184/+0.002705`, with `14/15` fold wins,
+eligibility in `15/15` folds, and exact positive-support preservation. The
+synthetic, finite/bounded, repeatability, runtime, and fixed-preview contracts
+also passed. Official BSDS500-validation ODS/OIS/AP changed by
+`+0.001414/+0.000628/+0.010279`; the ODS gain missed the preregistered
+`+0.002` margin. Because the rule was conjunctive, the candidate is rejected.
+Do not tune tensor scales, evidence normalization, color or multiscale tensor
+variants, diffusion, calibration, integration, context, gate, localizer, or
+thresholds from this result. This closes only the fixed scalar realization,
+not structure-tensor analysis generally. The compact Choquet-gated grayscale
+Scharr+NMS controller remains incumbent.
+
+The registered next action is `stage17a_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+structure tensors or earlier closed families, use dataset identity, relax the
+cross-dataset rule, or use protected feedback.
