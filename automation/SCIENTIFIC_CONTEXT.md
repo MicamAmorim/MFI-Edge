@@ -1412,6 +1412,30 @@ NMS, response mapping, conditioning, context, gate, or thresholds from the
 result. The compact Choquet-gated grayscale Scharr+NMS controller remains
 incumbent.
 
+### Stage 17f closure - photometric quasi-invariant context rejected; Stage 17g registered
+
+The fixed sigma-1 shadow-shading photometric quasi-invariant membership failed
+its conjunctive promotion rule despite passing the official BSDS500-validation
+axis. On UDED selection, aggregate F1/precision/recall and mean fold F1 changed
+by `+0.000756/+0.000826/+0.000594/+0.000509`; the cue was eligible in `12/15`
+folds but won only `7/15`, and the aggregate F1 gain missed the required
+`+0.002`. Official BSDS500-validation ODS/OIS/AP changed by
+`+0.003855/+0.002520/+0.008468`. The synthetic, orthogonality, repeatability,
+support, runtime, and fixed-preview contracts passed, but cannot override the
+UDED failures. The candidate is rejected; do not tune RGB conditioning,
+derivative scale, projection, energy, invariant family, calibration,
+integration, context, gate, localizer, or thresholds, and do not advance to
+specular, hue, alternative-color-space, multiscale, color-localizer, or learned
+photometric variants from this result. The compact Choquet-gated grayscale
+Scharr+NMS controller remains incumbent.
+
+The registered next action is `stage17g_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+photometric invariants or earlier closed families, use dataset identity, relax
+the cross-dataset rule, or use protected feedback.
+
 ### Stage 16x closure - spectral globalization context rejected; Stage 16y registered
 
 The fixed coarse-grid spectral-globalization membership failed its conjunctive

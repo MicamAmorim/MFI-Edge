@@ -788,3 +788,16 @@ UDED precision/recall/F1 stability, BSDS ODS/OIS/AP, runtime, support
 invariance, and fixed preview. A failure closes only this sigma-1
 shadow-shading quasi-invariant integration; it does not falsify photometric
 invariance theory or authorize specular/hue/color-space variants.
+
+## Stage 17f writing update
+
+Report Stage 17f as a mixed but conjunctively negative result. The fixed cue
+was eligible in `12/15` folds and changed UDED aggregate F1/precision/recall
+and mean fold F1 by `+0.000756/+0.000826/+0.000594/+0.000509`, but won only
+`7/15` folds and missed the `+0.002` F1 margin. Official BSDS ODS/OIS/AP
+improved by `+0.003855/+0.002520/+0.008468`. The safe claim is that the
+selected photometric residual provided BSDS benefit but did not establish
+stable incremental value across both development datasets. Do not generalize
+the rejection to photometric quasi-invariants or motivate specular, hue,
+alternative-color-space, multiscale, learned, or integration variants. Retain
+the local evaluator's reference-reproduction caveat.

@@ -3378,3 +3378,28 @@ RGB conditioning, derivative scale, projection, energy, invariant family,
 eligibility, calibration, integration, context, gate, localizer, or thresholds
 from the result. The compact Choquet-gated grayscale Scharr+NMS controller
 remains incumbent.
+
+### Stage 17f photometric quasi-invariant context rejected; Stage 17g registered
+
+The fixed sigma-1 shadow-shading photometric quasi-invariant membership passed
+the official BSDS axis but failed the preregistered UDED aggregate-F1 margin
+and fold-win requirements. UDED aggregate F1, precision, recall, and mean fold
+F1 changed by `+0.000756/+0.000826/+0.000594/+0.000509`; the cue was eligible
+in `12/15` folds but won only `7/15`. Official BSDS500-validation ODS/OIS/AP
+changed by `+0.003855/+0.002520/+0.008468`, satisfying that development axis.
+The synthetic chromatic/achromatic/flat, projection-orthogonality,
+repeatability, finite/nonnegative, exact-support, runtime, and fixed positions
+1/8/15 preview contracts also passed. Because every condition was required,
+the candidate is rejected. This closes only the fixed shadow-shading
+quasi-invariant integration; it does not falsify photometric invariance theory.
+No photometric parameter, variant, calibration, integration, context,
+localizer, or threshold may be tuned from the mixed result. The Stage-15a
+stochastic, reference-uncertified matcher caveat remains, and compact
+Choquet-gated grayscale Scharr+NMS remains incumbent.
+
+The single registered next action is
+`stage17g_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must choose exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
+not tune Stage 17f, revisit earlier closed families, use dataset identity,
+relax the cross-dataset rule, or use protected feedback.

@@ -1720,3 +1720,19 @@ projection does not replace the grayscale Scharr+NMS localizer and is not a
 rerun of Stage 14k's CIELAB Di Zenzo tensor. RGB conditioning, derivative
 scale, projection, energy norm, eligibility, context integration, and all
 incumbent parameters are closed to outcome-driven tuning.
+
+## Stage 17f closed - photometric quasi-invariant context rejected
+
+The fixed photometric cue changed UDED aggregate F1/precision/recall and mean
+fold F1 by `+0.000756/+0.000826/+0.000594/+0.000509`, with `7/15` fold wins
+and `12/15` eligible folds. It therefore missed the registered aggregate-F1
+margin and fold-win count. Official BSDS500-validation ODS/OIS/AP improved by
+`+0.003855/+0.002520/+0.008468`, but the joint rule rejects the candidate.
+No photometric-invariant or integration variant may be tuned, and compact
+Choquet-gated Scharr+NMS remains the incumbent.
+
+The active next action is `stage17g_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit photometric quasi-invariants or earlier closed families,
+fit dataset identity, relax the cross-dataset rule, or use protected feedback.
