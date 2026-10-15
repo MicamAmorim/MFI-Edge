@@ -1733,3 +1733,25 @@ derivative scale, projection, energy, invariant variants, eligibility,
 calibration, integration, context, gate, localizer, or thresholds from the
 result. The compact Choquet-gated grayscale Scharr+NMS controller remains
 incumbent.
+
+### Stage 17g closure - local fractal-scaling context registered
+
+The live primary-literature checkpoint selected one fixed stochastic-scaling
+context test. Stage 17h estimates a local first-order fractional-Brownian
+structure-function law on the unchanged median-conditioned grayscale image at
+dyadic lags `1/2/4`, using their minimal centered `9x9` support and four fixed
+axes. Positive evidence is `clip(H,0,1) * clip(R2,0,1) * S1(4)`, so constant
+regions remain zero while reliable high-exponent deterministic variation is
+retained. The cue is appended only as one outer-training-fold-eligible
+membership; the compact bank, gamma, gate, floor, grayscale Scharr+NMS, and
+threshold fitting remain unchanged.
+
+The authoritative protocol is `docs/paper/STAGE17H_PREREGISTRATION.md`.
+`stage17h_local_fractal_context` is registered with conjunctive UDED-selection
+repeated CV and official BSDS500-validation criteria, exact score-support
+preservation, fixed synthetic contracts, runtime diagnostics, and positions
+1/8/15 preview. This is a bounded repository surrogate of Toennies and
+Schnabel's local-fractality principle, not an exact reproduction. Do not tune
+lags, support, directions, the estimator, evidence factors, multifractal or
+wavelet/color variants, calibration, integration, context, gate, localizer, or
+thresholds from the result. The compact controller remains incumbent.

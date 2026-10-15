@@ -801,3 +801,19 @@ stable incremental value across both development datasets. Do not generalize
 the rejection to photometric quasi-invariants or motivate specular, hue,
 alternative-color-space, multiscale, learned, or integration variants. Retain
 the local evaluator's reference-reproduction caveat.
+
+## Stage 17h prospective writing note
+
+Frame Stage 17h as a bounded local stochastic-scaling context test, not an
+exact reproduction or a multifractal detector. The literature-derived core is
+that deterministic edges disturb fractional-Brownian local behavior; the
+repository fixes dyadic lags `1/2/4`, their minimal centered `9x9` support,
+four axes, and evidence `clip(H) * clip(R2) * S1(4)`. Explicitly distinguish
+this from the retained descriptor-scale persistence cue: Stage 17h estimates
+an image-domain structure-function exponent and goodness of fit, while the
+localizer and fuzzy parameters remain unchanged. Report eligibility,
+precision/recall, exact score-support preservation, runtime, the
+flat/step/checker/noise contract, both development axes, and the fixed preview.
+A failure closes only this fixed surrogate and must not motivate alternative
+fractal dimensions, lags, supports, multifractal/wavelet/color variants, or
+integration tuning.

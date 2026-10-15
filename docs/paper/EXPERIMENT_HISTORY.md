@@ -3403,3 +3403,27 @@ escalation that must choose exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 17f, revisit earlier closed families, use dataset identity,
 relax the cross-dataset rule, or use protected feedback.
+
+### Stage 17g checkpoint closed - local fractal-scaling context registered
+
+Live primary-literature review selected one fixed stochastic-scaling test.
+Tönnies and Schnabel (IEEE CBMS 1994, DOI `10.1109/38.55153`) model local
+gray-level change through fractional Brownian behavior and use the deterministic
+component introduced by edges to distinguish boundaries from region interiors
+and noise. Stage 17h is a bounded repository surrogate: on the unchanged
+median-conditioned grayscale image, it estimates a local first-order
+structure-function law at dyadic lags `1/2/4` over the minimal centered `9x9`
+support and forms positive evidence as the clipped Hölder slope times clipped
+log-log `R2` times the largest-lag variation amplitude.
+
+The cue is appended only as one outer-training-fold-eligible membership.
+Grayscale Scharr+NMS localization, the five retained memberships, gamma `0.55`,
+gate strength `2.0`, floor `0.10`, and threshold fitting remain unchanged. The
+authoritative protocol is `docs/paper/STAGE17H_PREREGISTRATION.md`.
+`stage17h_local_fractal_context` is registered with conjunctive UDED-selection
+repeated CV and official BSDS500-validation criteria, exact score-support
+preservation, fixed flat/step/checker/noise synthetic contracts, runtime
+diagnostics, and positions 1/8/15 preview. Do not tune the fractal estimator,
+lags, support, directions, evidence factors, calibration, integration, context,
+gate, localizer, or thresholds from the result. The compact controller remains
+incumbent.
