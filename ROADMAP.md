@@ -1578,3 +1578,20 @@ contracts, runtime diagnostics, and the fixed positions 1/8/15 preview. No
 graph, solver, integration, context, localizer, threshold, gPb, or forest
 parameter may be tuned from the result. Compact Choquet-gated Scharr+NMS
 remains incumbent pending the outcome.
+
+## Stage 16x closed - spectral globalization context rejected
+
+The fixed spectral membership was eligible in all 15 folds and preserved score
+support, but changed UDED aggregate F1, precision, recall, and mean fold F1 by
+`-0.000430/-0.000190/-0.000826/-0.000364`, with only `6/15` fold wins.
+Official BSDS500-validation ODS/OIS/AP changed by
+`+0.001975/+0.001748/+0.011216`; the ODS gain missed the registered `+0.002`
+margin. The conjunctive rule therefore rejects the bounded surrogate on both
+axes. No graph, eigensystem, calibration, or integration parameter may be
+tuned, and exact/learned gPb is not advanced from this result.
+
+The active next action is `stage16y_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit spectral globalization or earlier closed families, fit
+dataset identity, relax the cross-dataset rule, or use protected feedback.

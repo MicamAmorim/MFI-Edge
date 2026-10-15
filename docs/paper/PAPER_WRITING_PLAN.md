@@ -672,3 +672,15 @@ precision and recall separately, score-support invariance, runtime, the
 synthetic step/repeatability contract, both development axes, and the fixed
 preview. A failure closes only this surrogate and integration; it must not be
 described as falsifying spectral clustering or exact gPb.
+
+## Stage 16x writing update
+
+Report Stage 16x as bounded negative evidence. The spectral cue was eligible
+in all folds and passed its numerical and support contracts, but UDED aggregate
+F1 changed by `-0.000430`, precision by `-0.000190`, and mean fold F1 by
+`-0.000364`, with only `6/15` fold wins. Official BSDS ODS/OIS/AP changed by
+`+0.001975/+0.001748/+0.011216`; ODS narrowly missed the fixed `+0.002`
+margin. The safe claim is that this coarse intervening-contour spectral cue did
+not establish jointly transferable incremental context value. Do not describe
+the result as a falsification of normalized cuts, spectral Pb, or exact gPb,
+and do not motivate graph or integration tuning from it.

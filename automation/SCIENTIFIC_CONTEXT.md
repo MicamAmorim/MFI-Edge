@@ -1412,6 +1412,26 @@ NMS, response mapping, conditioning, context, gate, or thresholds from the
 result. The compact Choquet-gated grayscale Scharr+NMS controller remains
 incumbent.
 
+### Stage 16x closure - spectral globalization context rejected; Stage 16y registered
+
+The fixed coarse-grid spectral-globalization membership failed its conjunctive
+promotion rule. On UDED selection, aggregate F1/precision/recall and mean fold
+F1 changed by `-0.000430/-0.000190/-0.000826/-0.000364`, with only `6/15`
+fold wins, despite eligibility in `15/15` folds and exact support preservation.
+On official BSDS500 validation, ODS/OIS/AP changed by
+`+0.001975/+0.001748/+0.011216`; ODS narrowly missed the required `+0.002`
+margin. The candidate is rejected and its graph, eigensystem, calibration and
+integration must not be tuned. This falsifies only the bounded repository
+surrogate, not spectral clustering or exact gPb. The compact Choquet-gated
+grayscale Scharr+NMS controller remains incumbent.
+
+The registered next action is `stage16y_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+spectral globalization or earlier closed families, use dataset identity,
+relax the cross-dataset rule, or use protected feedback.
+
 ### Stage 16t closure - automatic scale selection rejected; Stage 16u registered
 
 The fixed gamma-normalized `sigma={1,2,4}` scale-selected localizer failed its

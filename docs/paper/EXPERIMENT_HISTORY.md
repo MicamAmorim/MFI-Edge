@@ -3160,3 +3160,30 @@ the graph bound, affinities, eigensystem, cue integration, context, gate,
 localizer, or thresholds from the result, and do not use it to reopen learned
 gPb or forest fusion. The compact Choquet-gated grayscale Scharr+NMS
 controller remains incumbent.
+
+### Stage 16x spectral-globalization context rejected; Stage 16y registered
+
+The fixed bounded spectral-Pb surrogate completed all numerical, support,
+runtime, eligibility, and qualitative contracts. Its cue was eligible in
+`15/15` UDED folds and positive score support was preserved exactly. Relative
+to compact MFI, however, UDED aggregate F1/precision/recall and mean fold F1
+changed by `-0.000430/-0.000190/-0.000826/-0.000364`, and the candidate won
+only `6/15` folds. It therefore failed the registered F1, precision, mean-fold,
+and fold-win conditions.
+
+Official BSDS500-validation ODS/OIS/AP changed by
+`+0.001975/+0.001748/+0.011216`. OIS and AP improved, but ODS missed the
+preregistered `+0.002` margin by about `0.000025`; all conditions were
+conjunctive. Stage 16x is rejected. The result closes this fixed coarse graph,
+eigensystem, calibration, and Choquet integration to outcome-driven tuning and
+does not falsify spectral clustering or exact gPb. The Stage-15a stochastic,
+reference-uncertified matcher caveat remains. The compact controller is still
+the incumbent.
+
+The single registered next action is
+`stage16y_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must select exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
+not tune Stage 16x, advance exact/learned gPb from this outcome, revisit earlier
+closed families, use dataset identity, relax the cross-dataset rule, or use
+protected feedback.
