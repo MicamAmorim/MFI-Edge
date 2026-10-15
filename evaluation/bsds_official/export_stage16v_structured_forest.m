@@ -29,6 +29,8 @@ fid = fopen(runtimePath, 'w');
 assert(fid >= 0);
 cleanup = onCleanup(@() fclose(fid));
 fprintf(fid, 'image_id,runtime_seconds,min_score,max_score\n');
+rawMax = -inf;
+rawAboveOne = 0;
 
 for index = 1:numel(files)
     [~, imageId, ~] = fileparts(files(index).name);
@@ -38,8 +40,12 @@ for index = 1:numel(files)
     started = tic;
     score = edgesDetect(image, model);
     elapsed = toc(started);
-    assert(all(isfinite(score(:))) && min(score(:)) >= 0 && max(score(:)) <= 1);
-    imwrite(uint8(round(255 * score)), fullfile(outputDir, [imageId '.png']));
+    % Match the author edgesEval.m serialization exactly. The learned/NMS
+    % response can overshoot one slightly; uint8(E*255) saturates those values.
+    assert(all(isfinite(score(:))) && min(score(:)) >= 0);
+    rawMax = max(rawMax, double(max(score(:))));
+    rawAboveOne = rawAboveOne + nnz(score(:) > 1);
+    imwrite(uint8(255 * score), fullfile(outputDir, [imageId '.png']));
     fprintf(fid, '%s,%.9f,%.9f,%.9f\n', imageId, elapsed, min(score(:)), max(score(:)));
 end
 
@@ -61,7 +67,9 @@ metadata.seed = double(model.opts.seed);
 metadata.active_nodes = double(nnz(model.count));
 metadata.internal_threshold_nodes = double(nnz(model.child));
 metadata.synthetic_repeat_bitwise_equal = true;
-metadata.output = 'author score after author NMS, serialized directly to 8-bit PNG';
+metadata.raw_max_score = rawMax;
+metadata.raw_samples_above_one = double(rawAboveOne);
+metadata.output = 'author score after author NMS, serialized exactly as uint8(E*255); uint8 conversion saturates rare raw overshoots';
 metaFid = fopen(fullfile(outputDir, 'structured_forest_provenance.json'), 'w');
 assert(metaFid >= 0);
 fprintf(metaFid, '%s', jsonencode(metadata, PrettyPrint=true));

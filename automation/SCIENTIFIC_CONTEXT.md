@@ -1461,3 +1461,13 @@ harness-only retry is registered with process-local `safe.directory` overrides
 for the immutable, hash-verified author checkouts; detector/model bytes,
 parameters, datasets, folds, artifacts, official attachment, and promotion rule
 are unchanged.
+
+That retry reached author inference but stopped after five UDED inputs because
+the repository wrapper asserted that raw post-NMS responses could not exceed
+one. A targeted diagnostic found finite nonnegative output with maximum
+`1.04074215889` and 21 above-one samples on the stopping image; pinned author
+`edgesEval.m` instead uses saturating `uint8(E*255)` serialization. No metrics
+or official manifest were produced. `stage16v_structured_forest_retry2` is
+registered as a harness-only repair using that exact author serialization and
+recording raw overshoot provenance; model, parameters, data, folds, evaluator,
+and conjunctive promotion rule remain unchanged.

@@ -1515,3 +1515,12 @@ gains on both axes, exact provenance and repeatability, runtime/hash/complexity
 records, and the fixed positions 1/8/15 preview. No tree, channel, sharpening,
 multiscale, NMS, fusion, calibration, or routing choice may be tuned from the
 result. Compact Choquet-gated Scharr+NMS remains incumbent pending the outcome.
+
+The first provenance-repaired Stage-16v retry reached pinned author inference
+but stopped before metrics on a repository-only raw-range assertion. The
+stopping image had finite nonnegative post-NMS response with maximum
+`1.04074215889` and 21 samples above one, while author `edgesEval.m` uses
+saturating `uint8(E*255)` serialization. The active next action is
+`stage16v_structured_forest_retry2`, a harness-only exact-serialization repair
+that records raw overshoot provenance. Detector/model bytes, parameters, data,
+folds, official evaluation, and the joint promotion rule remain frozen.

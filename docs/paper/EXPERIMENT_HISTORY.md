@@ -3070,3 +3070,22 @@ checkouts. It does not change global Git configuration, author bytes, the
 shipped model, detector parameters, datasets, folds, threshold fitting,
 preview positions, official evaluator, or the preregistered conjunctive rule.
 The compact controller remains incumbent pending the unchanged retry.
+
+### Stage 16v first retry stopped on a wrapper range assertion; exact-serialization retry registered
+
+The first harness retry verified provenance and executed the pinned detector
+through five UDED-selection images, then stopped before metrics because the
+repository wrapper required the raw post-NMS response to be at most one. A
+targeted diagnostic on the stopping image found a finite nonnegative maximum
+of `1.04074215889`, with 21 samples above one. The pinned author's own
+`edgesEval.m` writes `uint8(E*255)`, whose integer conversion saturates these
+rare overshoots. Thus the stop was caused by a stricter wrapper contract, not
+by invalid author inference, and no scientific result or official manifest was
+produced.
+
+`stage16v_structured_forest_retry2` is registered as a harness-only repair:
+use the author's exact `uint8(E*255)` serialization, require finite
+nonnegative raw responses, and record the raw maximum and overshoot count in
+provenance. Serialized maps remain bounded 8-bit outputs. No author byte,
+model, detector setting, dataset, fold, threshold, preview, evaluator, or
+promotion condition changes.
