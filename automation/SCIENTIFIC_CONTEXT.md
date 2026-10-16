@@ -1918,3 +1918,27 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 topological sensitivity or earlier closed families, use dataset identity,
 relax the cross-dataset rule, or use protected feedback.
+
+### Stage 17o closure - local robust-gradient outlier context registered
+
+The live primary-literature checkpoint selected one fixed robust-statistical
+local-significance test. Stage 17p computes Scharr magnitude on the unchanged
+median-conditioned grayscale image and, in a centered reflected `9x9` window,
+uses the local median and `1.4826`-normalized median absolute deviation. If
+`d=max(g-median(g),0)` and `s` is that robust scale, positive evidence is the
+bounded ratio `d/(d+s)`. The mechanism isolates Black and Sapiro's view of
+edges as local gradient outliers without performing their anisotropic
+diffusion, changing the image, or replacing localization.
+
+The authoritative protocol is `docs/paper/STAGE17P_PREREGISTRATION.md`.
+`stage17p_robust_gradient_outlier_context` is registered with conjunctive
+UDED-selection repeated CV and official BSDS500-validation criteria, exact
+score-support preservation, fixed flat/step/checkerboard/noise and positive-
+scale contracts, runtime diagnostics, and positions 1/8/15 preview. The five
+retained memberships, gamma `0.55`, gate strength `2.0`, floor `0.10`, median
+conditioning, grayscale Scharr+NMS, and threshold fitting are unchanged. Do
+not tune the window, gradient, robust estimator, MAD factor, mapping,
+calibration, integration, context, gate, localizer, or thresholds, and do not
+advance to multiscale, oriented, adaptive, color, alternative-M-estimator,
+diffusive, restorative, or learned outlier variants from the result. The
+compact controller remains incumbent.

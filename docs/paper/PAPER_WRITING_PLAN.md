@@ -922,3 +922,20 @@ to complete topological-gradient theory or use it to motivate alternative heat
 times, quadratures, costs/PDEs, color/multiscale/anisotropic variants,
 restoration, or integration tuning. Retain the local evaluator's reference-
 reproduction caveat.
+
+## Stage 17p prospective writing note
+
+Frame Stage 17p as a bounded robust local-significance context test, not an
+exact reproduction of Black and Sapiro's anisotropic smoothing. The
+literature-derived core is the interpretation of edges as local gradient
+outliers and the `1.4826`-normalized median absolute deviation; the repository
+fixes one reflected `9x9` window and maps positive excess to `d/(d+s)` before
+outer-fold membership calibration. Explicitly distinguish this from Stage
+17d's globally fitted GMRF innovation, Stage 17b's opposed rank test, Stage
+17l's annular surround isolation, and any image-conditioning operation.
+Report eligibility, precision/recall, exact score-support preservation,
+positive intensity-scale invariance, runtime, synthetic controls, both
+development axes, and the positions 1/8/15 preview. A failure closes only this
+fixed local robust-outlier integration and must not motivate alternative
+windows, estimators, mappings, adaptive/oriented/multiscale/color variants,
+diffusion, restoration, or integration tuning.

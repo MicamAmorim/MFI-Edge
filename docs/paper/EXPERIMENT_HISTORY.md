@@ -3599,3 +3599,31 @@ escalation that must choose exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 17n, revisit earlier closed families, use dataset identity,
 relax the cross-dataset rule, or use protected feedback.
+
+### Stage 17o checkpoint - local robust-gradient outlier context registered
+
+Live primary-source review selected Black and Sapiro's local robust-gradient
+scale principle (Scale-Space 1999, DOI `10.1007/3-540-48236-9_23`). Their
+method treats a gradient as edge evidence relative to robust local gradient
+variation, allowing weak structure to be significant in smooth regions while
+requiring larger deviations in texture. Stage 17p isolates that representation
+from their anisotropic-diffusion pipeline.
+
+On the unchanged median-conditioned grayscale image, the candidate computes
+Scharr magnitude and, in one fixed reflected `9x9` window, its local median and
+`1.4826`-normalized MAD. Positive gradient excess is mapped to the bounded
+ratio `d/(d+s)` and enters only as one fold-calibrated, training-eligible
+positive membership. The image, retained five-cue bank, distorted-Choquet
+gamma `0.55`, gate strength `2.0`, floor `0.10`, grayscale Scharr+NMS
+localizer, and fold-fitted thresholds remain unchanged. This is a bounded
+repository surrogate, not Black-Sapiro diffusion or a detector reproduction.
+
+The authoritative preregistration is
+`docs/paper/STAGE17P_PREREGISTRATION.md`. Promotion is conjunctive across
+UDED-selection 5x3 leakage-free CV and official BSDS500 validation, with
+finite/bounded, flat/step/texture, positive-scale-invariance, exact support,
+runtime, and fixed positions 1/8/15 preview contracts. No window, gradient,
+robust estimator, mapping, diffusion, calibration, integration, gate,
+localizer, or threshold variant may be tuned from the result. The compact
+Choquet-gated grayscale Scharr+NMS controller remains incumbent pending
+execution.
