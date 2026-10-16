@@ -892,3 +892,19 @@ Do not generalize the rejection to complete surround-suppression theory or use
 it to motivate adaptive, anisotropic, multiscale, color, end-stopped,
 facilitated, learned, or integration-tuned variants. Retain the local
 evaluator's reference-reproduction caveat.
+
+## Stage 17n prospective writing note
+
+Frame Stage 17n as a bounded topological-sensitivity context test, not an
+exact reproduction of the complete Amstutz-Fehrenbach detector. The
+literature-derived core is the `h4` one-point approximation: fixed `T=2`,
+analytic `beta=1-sqrt(1-4/pi^2)`, two heat-kernel gradients, and the extremal
+eigenvalue of their symmetrized bilinear form. The repository uses that
+positive crack-insertion sensitivity only as a fold-calibrated sixth
+membership; Scharr+NMS localization is unchanged. Explicitly distinguish it
+from Stage 16t's scale-selected localizer and Stage 14p's evolved phase field.
+Report eligibility, precision/recall, exact score-support preservation,
+quadratic intensity scaling, runtime, synthetic controls, both development
+axes, and the positions 1/8/15 preview. A failure closes only this fixed `h4`
+integration and must not motivate alternative heat times, quadratures,
+topological costs, PDEs, color/multiscale variants, or integration tuning.

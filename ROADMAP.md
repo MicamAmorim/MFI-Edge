@@ -1835,3 +1835,21 @@ live-primary-literature escalation must choose exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit surround context or earlier closed families, fit dataset
 identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 17m closed - two-scale topological sensitivity selected
+
+Stage 17m selected a fixed variational crack-insertion sensitivity rather than
+another activity, entropy, surround, tensor, graph, structural, conditioning,
+aggregation, fusion, or localizer variant. Stage 17n evaluates the analytic
+Amstutz-Fehrenbach `h4` form at published `T=2`: gradients at two coupled heat
+times define a symmetrized tensor whose positive largest eigenvalue measures
+the benefit of an infinitesimal insulating crack. It enters only as one
+fold-eligible positive context membership. The incumbent localization and
+five-cue Choquet controller remain unchanged.
+
+The active next action is `stage17n_topological_scale_context`. Promotion is
+conjunctive across UDED-selection repeated CV and official BSDS500 validation,
+with fixed synthetic flat/step/noise, quadratic-scaling, support, runtime, and
+positions 1/8/15 preview contracts. No heat time, quadrature, Gaussian
+derivative, topological PDE/cost, calibration, integration, context, gate,
+localizer, or threshold variant may be tuned from the result.

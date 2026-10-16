@@ -3546,3 +3546,33 @@ escalation that must choose exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 17l, revisit earlier closed families, use dataset identity,
 relax the cross-dataset rule, or use protected feedback.
+
+### Stage 17m checkpoint - two-scale topological-sensitivity context registered
+
+Live primary-source review selected Amstutz and Fehrenbach's parabolic
+topological-gradient construction (JMIV 2015, DOI
+`10.1007/s10851-015-0558-z`; HAL `hal-01025706`). The paper interprets an
+edge as a location where inserting an infinitesimal insulating crack improves
+a variational image criterion. Its variance-maximization `h3` indicator
+couples gradients across heat scales, and its analytic one-point quadrature
+fixes `beta=1-sqrt(1-4/pi^2)`. Stage 17n uses the paper's illustrated `T=2`
+and the positive extremal eigenvalue of the resulting two-scale `h4`
+quadratic form.
+
+The candidate is one fold-calibrated, training-eligible positive context
+membership. It does not change median conditioning, the five retained
+memberships, distorted-Choquet gamma `0.55`, gate strength `2.0`, floor
+`0.10`, grayscale Scharr+NMS localization, or threshold fitting. Unlike Stage
+16t, it does not choose among scales or replace the localizer; unlike Stage
+14p, it does not evolve a phase field. The implementation is an equation-level
+repository realization, not the paper's full NMS/hysteresis or finite-element
+pipeline.
+
+The authoritative preregistration is
+`docs/paper/STAGE17N_PREREGISTRATION.md`. Promotion is conjunctive across
+UDED-selection 5x3 leakage-free CV and official BSDS500 validation, with fixed
+synthetic, support, runtime, and positions 1/8/15 preview contracts. No
+protected split is used. No heat time, quadrature, derivative, PDE/cost,
+calibration, integration, gate, localizer, or threshold variant may be tuned
+from the result. The compact Choquet-gated grayscale Scharr+NMS controller
+remains incumbent pending execution.

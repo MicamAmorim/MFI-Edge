@@ -1871,3 +1871,27 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 surround context or earlier closed families, use dataset identity, relax the
 cross-dataset rule, or use protected feedback.
+
+### Stage 17m closure - two-scale topological sensitivity registered
+
+The live primary-literature checkpoint selected one fixed variational
+sensitivity test. Stage 17n implements Amstutz and Fehrenbach's analytic `h4`
+approximation to the parabolic topological gradient: at published heat time
+`T=2`, gradients at the coupled times `beta*T` and `(2-beta)*T`, where
+`beta=1-sqrt(1-4/pi^2)`, form a symmetrized cross-scale tensor. Positive
+evidence is `2*pi*T` times its positive largest eigenvalue, representing the
+benefit of inserting an infinitesimal insulating crack. It enters only as one
+outer-training-fold-eligible positive membership; it neither selects a scale
+nor replaces localization.
+
+The authoritative protocol is `docs/paper/STAGE17N_PREREGISTRATION.md`.
+`stage17n_topological_scale_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed synthetic flat/step/noise/quadratic-scaling
+contracts, runtime diagnostics, and positions 1/8/15 preview. Median
+conditioning, the compact five-member Choquet context, gamma `0.55`, gate
+strength `2.0`, floor `0.10`, grayscale Scharr+NMS, and threshold fitting are
+unchanged. Do not tune the heat time, quadrature, Gaussian derivative,
+topological cost/PDE family, calibration, integration, context, gate,
+localizer, or thresholds from the result. The compact controller remains
+incumbent.
