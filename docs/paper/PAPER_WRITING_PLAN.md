@@ -908,3 +908,17 @@ quadratic intensity scaling, runtime, synthetic controls, both development
 axes, and the positions 1/8/15 preview. A failure closes only this fixed `h4`
 integration and must not motivate alternative heat times, quadratures,
 topological costs, PDEs, color/multiscale variants, or integration tuning.
+
+## Stage 17n writing update
+
+Report Stage 17n as a conjunctive negative with a clear BSDS-positive signal.
+The fixed cue changed UDED aggregate F1/precision/recall and mean fold F1 by
+`-0.000350/-0.000556/+0.000028/-0.000330`, with only `3/15` fold wins despite
+`14/15` eligibility. Official BSDS ODS/OIS/AP changed by
+`+0.006420/+0.004441/+0.014245`. The safe claim is that this fixed equation-
+level `h4` crack-insertion sensitivity did not establish stable cross-dataset
+incremental value in the retained Choquet gate. Do not generalize the rejection
+to complete topological-gradient theory or use it to motivate alternative heat
+times, quadratures, costs/PDEs, color/multiscale/anisotropic variants,
+restoration, or integration tuning. Retain the local evaluator's reference-
+reproduction caveat.

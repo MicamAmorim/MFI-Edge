@@ -3576,3 +3576,26 @@ protected split is used. No heat time, quadrature, derivative, PDE/cost,
 calibration, integration, gate, localizer, or threshold variant may be tuned
 from the result. The compact Choquet-gated grayscale Scharr+NMS controller
 remains incumbent pending execution.
+
+### Stage 17n two-scale topological-sensitivity context rejected; Stage 17o registered
+
+The fixed `h4` topological-sensitivity membership failed the conjunctive rule.
+UDED aggregate F1/precision/recall and mean fold F1 changed by
+`-0.000350/-0.000556/+0.000028/-0.000330`, with only `3/15` fold wins despite
+`14/15` eligibility. Official BSDS500-validation ODS/OIS/AP improved by
+`+0.006420/+0.004441/+0.014245`, satisfying that development axis. The
+synthetic, quadratic-scaling, finite/nonnegative, repeatability, support,
+runtime, and fixed-preview contracts passed, but all promotion conditions were
+required. This closes only the fixed equation-level `h4` integration, not
+topological-gradient edge theory generally; no heat-time, quadrature,
+topological cost/PDE, color, multiscale, anisotropic, restoration, calibration,
+or integration variant may be tuned from the result. The Stage-15a stochastic,
+reference-uncertified matcher caveat remains, and compact Choquet-gated
+grayscale Scharr+NMS remains incumbent.
+
+The single registered next action is
+`stage17o_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must choose exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
+not tune Stage 17n, revisit earlier closed families, use dataset identity,
+relax the cross-dataset rule, or use protected feedback.

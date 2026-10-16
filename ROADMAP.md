@@ -1853,3 +1853,19 @@ with fixed synthetic flat/step/noise, quadratic-scaling, support, runtime, and
 positions 1/8/15 preview contracts. No heat time, quadrature, Gaussian
 derivative, topological PDE/cost, calibration, integration, context, gate,
 localizer, or threshold variant may be tuned from the result.
+
+## Stage 17n closed - two-scale topological sensitivity rejected
+
+The fixed `h4` membership changed UDED aggregate F1/precision/recall and mean
+fold F1 by `-0.000350/-0.000556/+0.000028/-0.000330`, with `3/15` fold wins
+and `14/15` eligibility. It failed the aggregate-F1, precision, mean-fold, and
+fold-win conditions. Official BSDS500-validation ODS/OIS/AP improved by
+`+0.006420/+0.004441/+0.014245`, but the joint rule rejects the candidate.
+No topological-gradient or integration variant may be tuned, and compact
+Choquet-gated Scharr+NMS remains incumbent.
+
+The active next action is `stage17o_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit topological sensitivity or earlier closed families, fit
+dataset identity, relax the cross-dataset rule, or use protected feedback.

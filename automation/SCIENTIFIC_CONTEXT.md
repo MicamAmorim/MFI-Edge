@@ -1895,3 +1895,26 @@ unchanged. Do not tune the heat time, quadrature, Gaussian derivative,
 topological cost/PDE family, calibration, integration, context, gate,
 localizer, or thresholds from the result. The compact controller remains
 incumbent.
+
+### Stage 17n closure - two-scale topological sensitivity rejected; Stage 17o registered
+
+The fixed Amstutz-Fehrenbach `h4` two-scale topological-sensitivity membership
+failed its conjunctive promotion rule despite passing the BSDS500-validation
+axis. On UDED selection, aggregate F1/precision/recall and mean fold F1 changed
+by `-0.000350/-0.000556/+0.000028/-0.000330`; the cue was eligible in `14/15`
+folds but won only `3/15`. Official BSDS500-validation ODS/OIS/AP improved by
+`+0.006420/+0.004441/+0.014245`. The synthetic, quadratic-scaling,
+repeatability, support, runtime, and fixed-preview contracts passed, but cannot
+override the UDED failures. The candidate is rejected; do not tune its heat
+time, quadrature, Gaussian derivatives, topological cost/PDE, calibration,
+integration, context, gate, localizer, or thresholds, and do not advance to
+color, multiscale, anisotropic, iterative-restoration, or learned topological
+variants from this result. The compact Choquet-gated grayscale Scharr+NMS
+controller remains incumbent.
+
+The registered next action is `stage17o_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+topological sensitivity or earlier closed families, use dataset identity,
+relax the cross-dataset rule, or use protected feedback.
