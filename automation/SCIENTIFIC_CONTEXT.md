@@ -1849,3 +1849,25 @@ calibration, integration, context, gate, localizer, or thresholds, and do not
 advance to adaptive, anisotropic, multiscale, color, end-stopped, facilitated,
 or learned surround variants from the result. The compact Choquet-gated
 grayscale Scharr+NMS controller remains incumbent.
+
+### Stage 17l closure - isotropic surround-isolation context rejected; Stage 17m registered
+
+The fixed isotropic surround-isolation membership failed its conjunctive
+promotion rule. On UDED selection, aggregate F1/precision/recall and mean fold
+F1 changed by `-0.000046/-0.000767/+0.001221/+0.000010`; the cue was eligible
+in only `10/15` folds and won only `5/15`. Official BSDS500-validation
+ODS/OIS/AP changed by `+0.001673/+0.001578/+0.007118`; ODS missed the required
+`+0.002` margin. The synthetic, scale-invariance, repeatability, support,
+runtime, and fixed-preview contracts passed, but all promotion conditions were
+required. The candidate is rejected; do not tune its surround geometry,
+energy source, slope mapping, orientation, calibration, integration, context,
+gate, localizer, or thresholds, and do not advance to adaptive, anisotropic,
+multiscale, color, end-stopped, facilitated, or learned surround variants. The
+compact Choquet-gated grayscale Scharr+NMS controller remains incumbent.
+
+The registered next action is `stage17m_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+surround context or earlier closed families, use dataset identity, relax the
+cross-dataset rule, or use protected feedback.

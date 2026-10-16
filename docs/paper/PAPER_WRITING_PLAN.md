@@ -878,3 +878,17 @@ isolated/dense/random-edge contract, both development axes, and the positions
 1/8/15 preview. A failure closes only this fixed isotropic integration and must
 not motivate adaptive, anisotropic, multiscale, color, end-stopped,
 facilitated, or learned surround variants.
+
+## Stage 17l writing update
+
+Report Stage 17l as a conjunctive negative with a small BSDS-positive signal.
+The fixed cue changed UDED aggregate F1/precision/recall and mean fold F1 by
+`-0.000046/-0.000767/+0.001221/+0.000010`, with only `5/15` fold wins and
+`10/15` eligible folds. Official BSDS ODS/OIS/AP changed by
+`+0.001673/+0.001578/+0.007118`; ODS missed the required `+0.002` margin.
+The safe claim is that this fixed isotropic annular-isolation evidence did not
+establish stable cross-dataset incremental value in the retained Choquet gate.
+Do not generalize the rejection to complete surround-suppression theory or use
+it to motivate adaptive, anisotropic, multiscale, color, end-stopped,
+facilitated, learned, or integration-tuned variants. Retain the local
+evaluator's reference-reproduction caveat.

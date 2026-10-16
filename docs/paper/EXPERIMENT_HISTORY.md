@@ -3525,3 +3525,24 @@ energy, slope mapping, orientation dependence, calibration, integration,
 context, gate, localizer, or thresholds, and do not advance to adaptive,
 anisotropic, multiscale, color, end-stopped, facilitated, or learned surround
 variants from the result. The compact controller remains incumbent.
+
+### Stage 17l isotropic surround-isolation context rejected; Stage 17m registered
+
+The fixed surround-isolation membership failed the conjunctive rule. UDED
+aggregate F1/precision/recall and mean fold F1 changed by
+`-0.000046/-0.000767/+0.001221/+0.000010`, with `5/15` fold wins and only
+`10/15` eligible folds. Official BSDS500-validation ODS/OIS/AP changed by
+`+0.001673/+0.001578/+0.007118`; ODS missed the registered `+0.002` margin.
+The numerical, synthetic, scale-invariance, support, runtime, and fixed-preview
+contracts passed, but cannot override these failures. This closes only the
+fixed repository integration, not surround-suppression theory generally; no
+surround or integration variant may be tuned from the result. The Stage-15a
+stochastic, reference-uncertified matcher caveat remains, and compact Choquet-
+gated grayscale Scharr+NMS remains incumbent.
+
+The single registered next action is
+`stage17m_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must choose exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
+not tune Stage 17l, revisit earlier closed families, use dataset identity,
+relax the cross-dataset rule, or use protected feedback.

@@ -1819,3 +1819,19 @@ with fixed isolation-versus-dense-edge, scale-invariance, support, runtime, and
 preview contracts. No surround scale, ratio, support, orientation, adaptive or
 facilitatory variant, calibration, integration, or incumbent parameter may be
 tuned from the result.
+
+## Stage 17l closed - isotropic surround-isolation context rejected
+
+The fixed surround-isolation cue changed UDED aggregate F1/precision/recall
+and mean fold F1 by `-0.000046/-0.000767/+0.001221/+0.000010`, with `5/15`
+fold wins and `10/15` eligibility. It failed the aggregate-F1, precision,
+fold-win, and eligibility conditions. Official BSDS500-validation ODS/OIS/AP
+changed by `+0.001673/+0.001578/+0.007118`; ODS missed its `+0.002` margin.
+The joint rule rejects the candidate. No surround or integration variant may
+be tuned, and compact Choquet-gated Scharr+NMS remains incumbent.
+
+The active next action is `stage17m_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit surround context or earlier closed families, fit dataset
+identity, relax the cross-dataset rule, or use protected feedback.
