@@ -1752,3 +1752,20 @@ conjunctive across UDED-selection repeated CV and official BSDS500 validation,
 with fixed synthetic, support, runtime, and preview contracts. No lag, support,
 direction, fractal estimator, multifractal extension, calibration, integration,
 or incumbent parameter may be tuned from the outcome.
+
+## Stage 17h closed - local fractal-scaling context rejected
+
+The fixed fractal-scaling cue changed UDED aggregate F1/precision/recall and
+mean fold F1 by `+0.000164/+0.000385/-0.000232/+0.000073`, with `11/15` fold
+wins and `15/15` eligibility. It missed the registered `+0.002` aggregate-F1
+margin. Official BSDS500-validation ODS/OIS/AP changed by
+`+0.001978/+0.000972/+0.011064`; ODS narrowly missed its `+0.002` margin. The
+joint rule rejects the candidate. No fractal estimator, geometry, scale,
+calibration, or integration variant may be tuned, and compact Choquet-gated
+Scharr+NMS remains incumbent.
+
+The active next action is `stage17i_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit local fractal scaling or earlier closed families, fit
+dataset identity, relax the cross-dataset rule, or use protected feedback.

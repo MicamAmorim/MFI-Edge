@@ -1755,3 +1755,25 @@ Schnabel's local-fractality principle, not an exact reproduction. Do not tune
 lags, support, directions, the estimator, evidence factors, multifractal or
 wavelet/color variants, calibration, integration, context, gate, localizer, or
 thresholds from the result. The compact controller remains incumbent.
+
+### Stage 17h closure - local fractal-scaling context rejected; Stage 17i registered
+
+The fixed local fractional-Brownian scaling membership failed its conjunctive
+promotion rule. On UDED selection, aggregate F1/precision/recall and mean fold
+F1 changed by `+0.000164/+0.000385/-0.000232/+0.000073`; the cue was eligible
+in `15/15` folds and won `11/15`, but aggregate F1 missed the required
+`+0.002` margin. Official BSDS500-validation ODS/OIS/AP changed by
+`+0.001978/+0.000972/+0.011064`; ODS narrowly missed its required `+0.002`
+margin. The synthetic, repeatability, support, runtime, and fixed-preview
+contracts passed, but all promotion conditions were required. The candidate
+is rejected; do not tune its lags, support, directions, estimator, evidence,
+fractal family, calibration, integration, context, gate, localizer, or
+thresholds. The compact Choquet-gated grayscale Scharr+NMS controller remains
+incumbent.
+
+The registered next action is `stage17i_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+local fractal scaling or earlier closed families, use dataset identity, relax
+the cross-dataset rule, or use protected feedback.

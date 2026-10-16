@@ -1982,6 +1982,18 @@
       "results/official_eval/stage17h_local_fractal_context/summary.json"
     ]
   },
+  "stage17i_generation2_mechanism_checkpoint": {
+    "description": "High-reasoning live-primary-literature checkpoint after the fixed local fractal-scaling cue produced stable but submargin gains on both UDED selection and official BSDS validation; selects exactly one mechanistically distinct, interpretable, non-neural generation-2 falsification without tuning fractal or earlier closed families.",
+    "runner": "python",
+    "path": "automation/stage17i_generation2_mechanism_checkpoint.py",
+    "args": [],
+    "role": "research_planning",
+    "feedback_policy": "primary_literature_and_completed_joint_development_evidence_only_no_fractal_variant_or_integration_tuning_no_protected_feedback_no_architecture_change_at_checkpoint",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage17i_generation2_mechanism_checkpoint/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

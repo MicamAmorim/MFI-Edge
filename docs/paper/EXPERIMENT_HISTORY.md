@@ -3427,3 +3427,26 @@ diagnostics, and positions 1/8/15 preview. Do not tune the fractal estimator,
 lags, support, directions, evidence factors, calibration, integration, context,
 gate, localizer, or thresholds from the result. The compact controller remains
 incumbent.
+
+### Stage 17h local fractal-scaling context rejected; Stage 17i registered
+
+The fixed local fractional-Brownian scaling membership failed its conjunctive
+promotion rule. On UDED selection, aggregate F1/precision/recall and mean fold
+F1 changed by `+0.000164/+0.000385/-0.000232/+0.000073`; the candidate won
+`11/15` folds and the cue was eligible in `15/15`, but aggregate F1 missed the
+required `+0.002` margin. Official BSDS500-validation ODS/OIS/AP changed by
+`+0.001978/+0.000972/+0.011064`; ODS narrowly missed its required `+0.002`
+margin. Exact support preservation and the synthetic, finite/bounded,
+repeatability, runtime, and fixed-preview contracts passed, but cannot override
+the two margin failures. The candidate is rejected. This closes only the fixed
+repository surrogate, not local fractal analysis generally; no fractal or
+integration variant may be tuned from the result. The Stage-15a stochastic,
+reference-uncertified matcher caveat remains, and compact Choquet-gated
+grayscale Scharr+NMS remains incumbent.
+
+The single registered next action is
+`stage17i_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must choose exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
+not tune Stage 17h, revisit earlier closed families, use dataset identity,
+relax the cross-dataset rule, or use protected feedback.

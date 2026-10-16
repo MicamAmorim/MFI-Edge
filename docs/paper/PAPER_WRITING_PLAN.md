@@ -817,3 +817,18 @@ flat/step/checker/noise contract, both development axes, and the fixed preview.
 A failure closes only this fixed surrogate and must not motivate alternative
 fractal dimensions, lags, supports, multifractal/wavelet/color variants, or
 integration tuning.
+
+## Stage 17h writing update
+
+Report Stage 17h as a stable but submargin conjunctive negative. The fixed cue
+was eligible in `15/15` folds and changed UDED aggregate
+F1/precision/recall and mean fold F1 by
+`+0.000164/+0.000385/-0.000232/+0.000073`, with `11/15` fold wins, but missed
+the required `+0.002` aggregate-F1 margin. Official BSDS ODS/OIS/AP changed by
+`+0.001978/+0.000972/+0.011064`; ODS narrowly missed the separate `+0.002`
+margin. The safe claim is that this fixed stochastic-scaling membership was
+individually eligible and improved ranking quality, but did not establish the
+preregistered cross-dataset effect size. Do not generalize the rejection to
+local fractal analysis or motivate alternative estimators, lags, supports,
+multifractal/wavelet/color variants, or integration tuning. Retain the local
+evaluator's reference-reproduction caveat.
