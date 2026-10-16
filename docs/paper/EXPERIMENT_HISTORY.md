@@ -3627,3 +3627,27 @@ robust estimator, mapping, diffusion, calibration, integration, gate,
 localizer, or threshold variant may be tuned from the result. The compact
 Choquet-gated grayscale Scharr+NMS controller remains incumbent pending
 execution.
+
+### Stage 17p local robust-gradient outlier context rejected; Stage 17q registered
+
+The fixed robust local-significance cue was training-ineligible in every UDED
+outer fold: its edge-versus-texture AUC never reached the preregistered `0.56`
+threshold. The candidate therefore reduced exactly to the compact control on
+UDED selection, producing zero deltas in aggregate F1, precision, recall, and
+mean fold F1, with `0/15` candidate wins and `0/15` eligible folds. Official
+BSDS500-validation ODS/OIS/AP changed by
+`+0.000035/-0.000086/+0.000100`; the ODS margin and nonnegative OIS condition
+failed. Synthetic, positive-scale, repeatability, score-support, runtime, and
+fixed positions 1/8/15 preview contracts passed, but all promotion conditions
+were conjunctive. This rejects only the fixed `9x9` median/MAD positive-excess
+integration, not robust statistics or the complete Black-Sapiro method. No
+outlier-statistic or integration variant may be tuned from the result. The
+Stage-15a stochastic, reference-uncertified matcher caveat remains, and compact
+Choquet-gated grayscale Scharr+NMS remains incumbent.
+
+The single registered next action is
+`stage17q_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must choose exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
+not tune Stage 17p, revisit earlier closed families, use dataset identity,
+relax the cross-dataset rule, or use protected feedback.

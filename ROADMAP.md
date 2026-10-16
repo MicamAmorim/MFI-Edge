@@ -1887,3 +1887,18 @@ positive-intensity-scale, exact-support, runtime, and positions 1/8/15 preview
 contracts. No window, gradient operator, robust center/scale, mapping,
 adaptive/diffusive variant, calibration, integration, or incumbent parameter
 may be tuned from the result.
+
+## Stage 17p closed - local robust-gradient outlier context rejected
+
+The fixed cue was ineligible in all `15/15` UDED-selection folds, so candidate
+and compact-control UDED metrics were identical and the candidate recorded no
+fold wins. Official BSDS500-validation ODS/OIS/AP changed by
+`+0.000035/-0.000086/+0.000100`, failing the ODS-margin and OIS conditions.
+The joint rule rejects the candidate. No robust-outlier or integration variant
+may be tuned, and compact Choquet-gated Scharr+NMS remains incumbent.
+
+The active next action is `stage17q_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit robust-outlier context or earlier closed families, fit
+dataset identity, relax the cross-dataset rule, or use protected feedback.

@@ -939,3 +939,18 @@ development axes, and the positions 1/8/15 preview. A failure closes only this
 fixed local robust-outlier integration and must not motivate alternative
 windows, estimators, mappings, adaptive/oriented/multiscale/color variants,
 diffusion, restoration, or integration tuning.
+
+## Stage 17p writing update
+
+Report Stage 17p as a complete UDED-ineligibility negative with negligible,
+mixed BSDS movement. The fixed cue was ineligible in `15/15` UDED folds, so
+candidate and compact-control aggregate and fold metrics were identical.
+Official BSDS ODS/OIS/AP changed by `+0.000035/-0.000086/+0.000100`, missing
+the ODS margin and nonnegative OIS condition. The safe claim is that this fixed
+`9x9` local median/MAD positive-excess statistic did not discriminate UDED
+edge from texture samples sufficiently to enter the retained gate and did not
+establish matched BSDS benefit. Do not generalize the rejection to robust
+statistics or Black-Sapiro anisotropic smoothing, and do not motivate window,
+estimator, mapping, adaptive/oriented/multiscale/color, diffusion, restoration,
+or integration variants. Retain the local evaluator's reference-reproduction
+caveat.

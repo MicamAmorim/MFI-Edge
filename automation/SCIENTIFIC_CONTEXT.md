@@ -1942,3 +1942,26 @@ calibration, integration, context, gate, localizer, or thresholds, and do not
 advance to multiscale, oriented, adaptive, color, alternative-M-estimator,
 diffusive, restorative, or learned outlier variants from the result. The
 compact controller remains incumbent.
+
+### Stage 17p closure - local robust-gradient outlier context rejected; Stage 17q registered
+
+The fixed local median/MAD gradient-outlier membership was training-ineligible
+in all `15/15` UDED-selection folds (training AUC stayed below `0.56`), so the
+candidate exactly reduced to the compact control and all UDED aggregate and
+fold metrics were unchanged. Official BSDS500-validation ODS/OIS/AP changed by
+only `+0.000035/-0.000086/+0.000100`, also failing the ODS-margin and OIS
+conditions. The synthetic, scale-invariance, repeatability, support, runtime,
+and fixed-preview contracts passed, but cannot override complete UDED
+ineligibility and the failed BSDS criteria. The candidate is rejected; do not
+tune its window, gradient, robust estimator, MAD factor, mapping, calibration,
+integration, context, gate, localizer, or thresholds, and do not advance to
+adaptive, oriented, multiscale, color, alternative-estimator, diffusive,
+restorative, or learned outlier variants from this result. The compact
+Choquet-gated grayscale Scharr+NMS controller remains incumbent.
+
+The registered next action is `stage17q_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+robust-outlier context or earlier closed families, use dataset identity, relax
+the cross-dataset rule, or use protected feedback.
