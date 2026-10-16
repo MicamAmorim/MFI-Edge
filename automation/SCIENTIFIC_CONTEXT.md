@@ -1777,3 +1777,28 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 local fractal scaling or earlier closed families, use dataset identity, relax
 the cross-dataset rule, or use protected feedback.
+
+### Stage 17i closure - local brightness-entropy context registered
+
+The live primary-literature checkpoint selected one fixed local information-
+concentration test. Stage 17j computes Shiozaki's brightness distribution in
+each `3x3` window of the unchanged median-conditioned grayscale image,
+`p_i=I_i/sum I`, and uses the normalized Shannon-entropy deficit
+`1-H(p)/log(9)` as one outer-training-fold-eligible positive membership. An
+all-zero window receives zero evidence; reflection is fixed at raster
+boundaries. There are no histogram bins, opposed-half comparison, orientation,
+scale fit, per-image normalization, or target adapter. This is distinct from
+the closed fractal, rank, GMRF, tensor, texture-distribution, structural,
+aggregation, conditioning, and localizer families.
+
+The authoritative protocol is `docs/paper/STAGE17J_PREREGISTRATION.md`.
+`stage17j_brightness_entropy_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed synthetic and multiplicative-scale contracts,
+runtime diagnostics, and positions 1/8/15 preview. Do not tune the window,
+intensity handling, probability definition, entropy family, zero-sum rule,
+boundary handling, calibration, eligibility, integration, context, gate,
+localizer, or thresholds, and do not advance to multiscale, clustered,
+Renyi/Tsallis, color, spatial, histogram-binned, cross-half, or learned entropy
+variants from the result. The compact Choquet-gated grayscale Scharr+NMS
+controller remains incumbent.

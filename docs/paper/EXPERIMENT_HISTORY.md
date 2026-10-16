@@ -3450,3 +3450,26 @@ escalation that must choose exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 17h, revisit earlier closed families, use dataset identity,
 relax the cross-dataset rule, or use protected feedback.
+
+### Stage 17i mechanism checkpoint - local brightness entropy registered
+
+The live primary-literature checkpoint selected one fixed information-
+concentration cue rather than another stochastic-scaling, rank, random-field,
+tensor, graph, structural, aggregation, conditioning, or localizer variant.
+Shiozaki's 1986 entropy operator normalizes brightness inside a `3x3` region
+as `p_i=I_i/sum I` and uses the resulting entropy decrease at severe local
+brightness changes. Stage 17j uses the bounded deficit `1-H(p)/log(9)` on the
+unchanged median-conditioned grayscale image as one outer-training-fold-
+eligible positive membership. It adds no histogram bins, opposed regions,
+orientation, scale selection, or per-image normalization.
+
+The authoritative protocol is `docs/paper/STAGE17J_PREREGISTRATION.md`.
+`stage17j_brightness_entropy_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed synthetic and multiplicative-scale contracts,
+runtime diagnostics, and positions 1/8/15 preview. Do not tune the window,
+probability definition, entropy family, zero-sum rule, boundary handling,
+eligibility, calibration, integration, context, gate, localizer, or thresholds,
+and do not advance to multiscale, clustered, Renyi/Tsallis, color, spatial,
+histogram-binned, or cross-half entropy variants from the result. Compact
+Choquet-gated grayscale Scharr+NMS remains incumbent.

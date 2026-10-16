@@ -1769,3 +1769,18 @@ live-primary-literature escalation must choose exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit local fractal scaling or earlier closed families, fit
 dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 17i closed - local brightness-entropy context selected
+
+Stage 17i selected Shiozaki's fixed local brightness-information mechanism.
+Stage 17j evaluates the normalized entropy deficit of the intensity-derived
+probabilities in a `3x3` window as one fold-eligible positive context cue. The
+test is distinct from the closed local fractal, rank, GMRF, tensor, texture-
+distribution, structural, aggregation, conditioning, and localizer families;
+the compact Choquet controller and grayscale Scharr+NMS remain unchanged.
+
+The active next action is `stage17j_brightness_entropy_context`. Promotion is
+conjunctive across UDED-selection repeated CV and official BSDS500 validation,
+with fixed synthetic, multiplicative-scale, support, runtime, and preview
+contracts. No entropy definition, window, intensity handling, variant,
+calibration, integration, or incumbent parameter may be tuned from the result.

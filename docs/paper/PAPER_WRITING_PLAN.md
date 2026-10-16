@@ -832,3 +832,19 @@ preregistered cross-dataset effect size. Do not generalize the rejection to
 local fractal analysis or motivate alternative estimators, lags, supports,
 multifractal/wavelet/color variants, or integration tuning. Retain the local
 evaluator's reference-reproduction caveat.
+
+## Stage 17j prospective writing note
+
+Frame Stage 17j as a fixed local information-concentration context test, not a
+complete entropy edge detector and not an entropy-family search. The primary
+paper-derived core is Shiozaki's `3x3` brightness probability
+`p_i=I_i/sum I` and its lower Shannon entropy at severe local changes; the
+repository exposes the bounded deficit `1-H/log(9)` as one fold-calibrated
+positive membership. Explicitly distinguish it from cross-half histogram
+contrast, image-wide empirical ranks, GMRF conditional surprise, and local
+fractal scaling. Report cue eligibility, precision/recall, exact score-support
+preservation, multiplicative intensity-scale invariance, runtime, the fixed
+synthetic contract, both development axes, and the positions 1/8/15 preview.
+A failure closes only this fixed brightness-entropy integration and must not
+motivate multiscale, clustered, Renyi/Tsallis, color, spatial, histogram-binned,
+cross-half, or learned entropy variants.
