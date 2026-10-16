@@ -3701,3 +3701,30 @@ escalation that must choose exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 17r, revisit earlier closed families, use dataset identity,
 relax the cross-dataset rule, or use protected feedback.
+
+### Stage 17s checkpoint - Frei-Chen patch-subspace context registered
+
+Live primary-source review selected Frei and Chen's fixed orthogonal patch
+representation (IEEE Transactions on Computers 1977, DOI
+`10.1109/TC.1977.1674733`). Their nine normalized `3x3` masks decompose a
+local image patch into four edge, four line, and one average basis component;
+the cosine of the angle to the edge-subspace projection is a bounded measure
+of edge-like patch geometry.
+
+Stage 17t uses exactly that soft projection occupancy as one fold-calibrated,
+training-eligible positive context membership. It does not threshold the
+response or run the paper's sequential binary detector. Median conditioning,
+the retained five memberships, distorted-Choquet gamma `0.55`, gate strength
+`2.0`, floor `0.10`, grayscale Scharr+NMS, and leakage-free fold fitting are
+unchanged. This tests a complete analytic local patch basis rather than
+nonlocal recurrence, a derivative tensor, a normal-profile template, a
+texture histogram, or a localizer replacement.
+
+The authoritative protocol is `docs/paper/STAGE17T_PREREGISTRATION.md`.
+Promotion is conjunctive across UDED-selection repeated CV and official
+BSDS500 validation, with basis-orthonormality, flat/step/checkerboard/noise,
+positive-scale, repeatability, exact-support, runtime, and fixed positions
+1/8/15 preview contracts. No protected split was used at the checkpoint. The
+compact controller remains incumbent pending the result, and no basis,
+subspace, normalization, scale, color, sequential-detector, calibration, or
+integration variant may be tuned afterward.

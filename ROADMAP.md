@@ -1935,3 +1935,21 @@ live-primary-literature escalation must choose exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit patch recurrence or earlier closed families, fit dataset
 identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 17s closed - Frei-Chen patch-subspace context selected
+
+Stage 17s selected the fixed Frei-Chen orthogonal patch representation rather
+than another recurrence, texture-distribution, tensor, profile, topology,
+structural, conditioning, aggregation, fusion, or localizer variant. Stage
+17t computes the published normalized nine-mask decomposition of each `3x3`
+conditioned grayscale patch and uses the square root of the edge-subspace
+energy fraction as one fold-eligible positive context membership. The paper's
+binary threshold and sequential detector are not run.
+
+The active next action is `stage17t_frei_chen_subspace_context`. Promotion is
+conjunctive across UDED-selection repeated CV and official BSDS500 validation,
+with fixed orthonormal-basis, flat/step/checkerboard/noise, positive-scale,
+exact-support, runtime, and positions 1/8/15 preview contracts. No basis,
+subspace, normalization, support, color/multiscale/sequential variant,
+calibration, integration, or incumbent parameter may be tuned from the
+result.

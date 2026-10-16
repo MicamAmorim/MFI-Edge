@@ -1169,6 +1169,29 @@ preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 patch recurrence or earlier closed families, use dataset identity, relax the
 cross-dataset rule, or use protected feedback.
 
+### Stage 17s closure - Frei-Chen patch-subspace context registered
+
+The live primary-literature checkpoint selected one fixed analytic local-patch
+geometry test. Stage 17t projects every `3x3` patch of the unchanged median-
+conditioned grayscale image onto Frei and Chen's published normalized nine-
+vector orthogonal basis. Positive evidence is the square root of the first
+four edge-subspace energies divided by total basis energy, with zero evidence
+for a zero-energy patch. It enters only as one outer-training-fold-eligible
+positive membership and does not run the paper's thresholded sequential
+detector.
+
+The authoritative protocol is `docs/paper/STAGE17T_PREREGISTRATION.md`.
+`stage17t_frei_chen_subspace_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed orthonormal-basis and synthetic contracts,
+runtime diagnostics, and positions 1/8/15 preview. The compact bank, gamma
+`0.55`, gate strength `2.0`, floor `0.10`, grayscale Scharr+NMS, and threshold
+fitting remain unchanged. Do not tune the basis, subspaces, normalization,
+support, boundary handling, calibration, integration, context, gate,
+localizer, or thresholds, and do not advance to larger, rotated, multiscale,
+color, learned, selected, weighted, line-subspace, or sequential variants.
+The compact controller remains incumbent.
+
 The registered next action is `stage16i_generation2_mechanism_checkpoint`, a
 high-reasoning live-primary-literature escalation that must select exactly one
 mechanistically distinct bounded generation-2 falsification with a

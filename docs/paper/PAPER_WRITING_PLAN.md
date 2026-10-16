@@ -987,3 +987,23 @@ this fixed residual integration and must not motivate alternative patch/search
 geometry, bands, directions, match counts, similarity, multiscale/color or
 learned patches, full decomposition, smoothing, restoration, or integration
 tuning. Retain the local evaluator's reference-reproduction caveat.
+
+## Stage 17t prospective writing note
+
+Frame Stage 17t as an equation-level soft use of Frei and Chen's local
+orthogonal patch basis, not an exact reproduction of their thresholded
+sequential detector. The fixed cue is the cosine of the angle between a
+median-conditioned `3x3` grayscale patch and its projection onto the
+published four-dimensional edge subspace, computed from all nine normalized
+basis responses. It enters only as a fold-calibrated sixth membership; the
+localizer and retained controller remain unchanged. Explicitly distinguish
+the mechanism from Stage 16z's averaged derivative tensor, Stage 16j's
+normal-profile fitting, Stage 14l's half-disc texture distribution, and Stage
+17r's nonlocal recurrence geometry. Report basis orthonormality, eligibility,
+precision/recall, exact score-support preservation, positive intensity-scale
+invariance, runtime, synthetic controls, both development axes, and the fixed
+positions 1/8/15 preview. A failure closes only this fixed soft edge-subspace
+integration and must not motivate basis, subspace, denominator, support,
+orientation, scale, color, learned, sequential-detector, calibration, or
+integration variants. Retain the local evaluator's reference-reproduction
+caveat.
