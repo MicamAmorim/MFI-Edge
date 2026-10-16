@@ -3651,3 +3651,31 @@ escalation that must choose exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 17p, revisit earlier closed families, use dataset identity,
 relax the cross-dataset rule, or use protected feedback.
+
+## Stage 17q - generation-2 mechanism checkpoint
+
+The live primary-source review selected directional nonlocal patch recurrence
+as a mechanistically distinct test. Xu, Xu, and Quan (TIP 2021, DOI
+`10.1109/TIP.2020.3043665`) report that recurrent patches around cartoon
+contours are spatially anisotropic, whereas texture recurrence is more
+isotropic. Their fixed directional matching uses `5x5` patches, a `51x51`
+search region, four width-8 bands, 16 matches per direction, and similarity
+bandwidth `0.3`.
+
+Stage 17r isolates the normalized directional nonlocal residual from their Eq.
+6 as one positive fold-eligible membership. It is a bounded repository cue,
+not a reproduction of the paper's complete wavelet/DCT morphology-component
+decomposition. Median conditioning, the retained five memberships, distorted-
+Choquet gamma `0.55`, gate strength `2.0`, floor `0.10`, grayscale Scharr+NMS,
+and leakage-free fold fitting are unchanged. This mechanism differs from the
+closed SUSAN centre-similarity, local-rank, half-disc histogram, spectral-
+graph, structural-support, conditioning, and localizer families because it
+tests the directional organization of nonlocal recurrent patches.
+
+The authoritative protocol is `docs/paper/STAGE17R_PREREGISTRATION.md`.
+Promotion is conjunctive across UDED-selection repeated CV and official
+BSDS500 validation, with flat/step/checkerboard, repeatability, exact-support,
+runtime, and fixed positions 1/8/15 preview contracts. No protected split was
+used at the checkpoint. The compact controller remains incumbent pending the
+result, and no patch/search, band, match, similarity, decomposition, or
+integration parameter may be tuned afterward.

@@ -954,3 +954,21 @@ statistics or Black-Sapiro anisotropic smoothing, and do not motivate window,
 estimator, mapping, adaptive/oriented/multiscale/color, diffusion, restoration,
 or integration variants. Retain the local evaluator's reference-reproduction
 caveat.
+
+## Stage 17r prospective writing note
+
+Frame Stage 17r as a bounded directional patch-recurrence context test, not an
+exact reproduction of Xu, Xu, and Quan's complete structure-texture
+decomposition. The literature-derived core is the spatial anisotropy of
+recurrent contour patches versus isotropic texture recurrence, the published
+`5x5`/`51x51`/four-band/width-8/16-match/`h=0.3` contract, and the normalized
+directional nonlocal residual in Eq. 6. The repository averages the absolute
+four-direction residual into one fold-calibrated sixth membership; it does not
+run the wavelet/DCT transforms or Bregman solver. Report realized raster-band
+counts, eligibility, precision/recall, exact score-support preservation,
+runtime, synthetic flat/step/checkerboard and repeatability contracts, both
+development axes, and the positions 1/8/15 preview. A failure closes only
+this fixed residual integration and must not motivate alternative patch/search
+geometry, bands, directions, match counts, similarity, multiscale/color or
+learned patches, full decomposition, smoothing, restoration, or integration
+tuning. Retain the local evaluator's reference-reproduction caveat.

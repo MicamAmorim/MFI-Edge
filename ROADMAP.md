@@ -1902,3 +1902,20 @@ live-primary-literature escalation must choose exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit robust-outlier context or earlier closed families, fit
 dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 17q closed - directional patch-recurrence context selected
+
+Stage 17q selected a fixed nonlocal recurrence-geometry mechanism rather than
+another local activity, rank, entropy, random-field, graph, structural,
+conditioning, aggregation, fusion, or localizer variant. Stage 17r uses the
+published Xu-Xu-Quan `5x5` patches, `51x51` search, four width-8 directional
+bands, 16 matches per band, and `h=0.3` similarity. The mean absolute
+directional Eq.-6 residual becomes one fold-eligible positive context
+membership; the full structure-texture decomposition is not run.
+
+The active next action is `stage17r_patch_recurrence_context`. Promotion is
+conjunctive across UDED-selection repeated CV and official BSDS500 validation,
+with fixed flat/step/checkerboard, repeatability, exact-support, runtime, and
+positions 1/8/15 preview contracts. No patch/search geometry, direction,
+band, match count, similarity, residual, full-decomposition, calibration,
+integration, or incumbent parameter may be tuned from the result.

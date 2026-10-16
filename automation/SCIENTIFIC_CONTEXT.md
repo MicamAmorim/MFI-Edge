@@ -1965,3 +1965,26 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 robust-outlier context or earlier closed families, use dataset identity, relax
 the cross-dataset rule, or use protected feedback.
+
+### Stage 17q closure - directional patch-recurrence context registered
+
+The live primary-literature checkpoint selected one fixed nonlocal recurrence-
+geometry test. Stage 17r uses Xu, Xu, and Quan's published `5x5` patches,
+`51x51` search, four width-8 directional bands, 16 matches per band, and
+`h=0.3` similarity. Positive evidence is the mean absolute directional
+nonlocal residual from the paper's Eq. 6: cartoon contours should be poorly
+predicted in several directions, while isotropically recurrent texture should
+remain predictable. It enters only as one outer-training-fold-eligible
+membership and does not run the paper's full morphology-component
+decomposition.
+
+The authoritative protocol is `docs/paper/STAGE17R_PREREGISTRATION.md`.
+`stage17r_patch_recurrence_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed flat/step/checkerboard and repeatability
+contracts, runtime diagnostics, and positions 1/8/15 preview. Do not tune the
+patch/search geometry, bands, directions, match count, similarity, residual,
+calibration, integration, context, gate, localizer, or thresholds, and do not
+advance to multiscale, color, adaptive, approximate, learned-patch, full-
+decomposition, smoothing, or restoration variants from the result. The
+compact Choquet-gated grayscale Scharr+NMS controller remains incumbent.
