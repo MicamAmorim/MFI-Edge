@@ -3498,3 +3498,30 @@ escalation that must choose exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 17j, revisit earlier closed families, use dataset identity,
 relax the cross-dataset rule, or use protected feedback.
+
+### Stage 17k checkpoint closed - isotropic surround-isolation context registered
+
+Live primary-literature review selected one fixed annular feature-density test.
+Grigorescu, Petkov, and Westenberg (Image and Vision Computing 2004, DOI
+`10.1016/j.imavis.2003.12.004`) define isotropic non-CRF suppression from the
+positive part of a difference of Gaussians at `sigma` and `4*sigma`, and a
+parameter-free suppression slope `atan(surround/local_energy)`. Stage 17l uses
+the complementary bounded evidence `1-(2/pi)atan(t/M)` over the unchanged
+median-conditioned pre-NMS Scharr magnitude. `sigma=1` is anchored to the
+incumbent's local `3x3` Scharr footprint; radius `12` is the fixed three-outer-sigma numerical
+support. No suppression factor, hysteresis, orientation term, image adapter,
+or parameter search is introduced.
+
+The cue is appended only as one outer-training-fold-eligible positive
+membership. The retained compact bank, distorted-Choquet gamma `0.55`, gate
+strength `2.0`, floor `0.10`, median conditioning, grayscale Scharr+NMS
+localizer, and threshold fitting remain unchanged. The authoritative protocol
+is `docs/paper/STAGE17L_PREREGISTRATION.md`.
+`stage17l_surround_isolation_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed synthetic isolation/dense-edge contracts, runtime
+diagnostics, and positions 1/8/15 preview. Do not tune the surround geometry,
+energy, slope mapping, orientation dependence, calibration, integration,
+context, gate, localizer, or thresholds, and do not advance to adaptive,
+anisotropic, multiscale, color, end-stopped, facilitated, or learned surround
+variants from the result. The compact controller remains incumbent.

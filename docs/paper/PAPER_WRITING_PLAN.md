@@ -862,3 +862,19 @@ not establish the preregistered cross-dataset effect size. Do not generalize
 the rejection to entropy edge analysis or motivate alternative windows,
 entropy families, spatial/color/multiscale/cross-half variants, or integration
 tuning. Retain the local evaluator's reference-reproduction caveat.
+
+## Stage 17l prospective writing note
+
+Frame Stage 17l as a bounded annular feature-density context test, not an exact
+surround-suppression detector reproduction. The literature-derived core is the
+positive part of the `sigma`/`4*sigma` difference-of-Gaussians surround and the
+suppression slope `atan(t/M)`; the repository fixes `sigma=1`, radius `12`, and
+uses its normalized complement as one fold-calibrated positive membership.
+Explicitly distinguish it from learned negative evidence, opposed texture-
+distribution contrast, connected-threshold persistence, and SED's complete
+multi-stage surround/feedback model. Report eligibility, precision/recall,
+exact score-support preservation, positive-scale invariance, runtime, the
+isolated/dense/random-edge contract, both development axes, and the positions
+1/8/15 preview. A failure closes only this fixed isotropic integration and must
+not motivate adaptive, anisotropic, multiscale, color, end-stopped,
+facilitated, or learned surround variants.

@@ -1825,3 +1825,27 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 brightness entropy or earlier closed families, use dataset identity, relax the
 cross-dataset rule, or use protected feedback.
+
+### Stage 17k closure - isotropic surround-isolation context registered
+
+The live primary-literature checkpoint selected one fixed annular edge-density
+context test. Stage 17l computes Grigorescu, Petkov, and Westenberg's isotropic
+surround term from the unchanged median-conditioned pre-NMS Scharr magnitude:
+the positive part of a Gaussian difference with inner sigma `1`, published
+outer ratio `4`, and fixed radius-12 numerical support. Positive evidence is
+the bounded complement of the parameter-free suppression slope,
+`1-(2/pi)atan(surround/local_energy)`, with zero evidence at zero local energy.
+It is appended only as one outer-training-fold-eligible membership; no
+suppression strength, hysteresis, orientation term, or parameter search is
+introduced.
+
+The authoritative protocol is `docs/paper/STAGE17L_PREREGISTRATION.md`.
+`stage17l_surround_isolation_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed synthetic isolation/density and positive-scale
+contracts, runtime diagnostics, and positions 1/8/15 preview. Do not tune the
+surround scales, ratio, support, energy source, slope mapping, orientation,
+calibration, integration, context, gate, localizer, or thresholds, and do not
+advance to adaptive, anisotropic, multiscale, color, end-stopped, facilitated,
+or learned surround variants from the result. The compact Choquet-gated
+grayscale Scharr+NMS controller remains incumbent.

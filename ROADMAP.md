@@ -1801,3 +1801,21 @@ live-primary-literature escalation must choose exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit brightness entropy or earlier closed families, fit dataset
 identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 17k closed - isotropic surround-isolation context selected
+
+Stage 17k selected a fixed annular edge-density mechanism rather than another
+entropy, fractal, random-field, rank, tensor, graph, structural, conditioning,
+aggregation, fusion, or localizer variant. Stage 17l computes the complement
+of Grigorescu-Petkov-Westenberg's isotropic suppression slope from the unchanged
+pre-NMS Scharr energy and a fixed positive `sigma=1` versus `4*sigma`
+difference-of-Gaussians surround. It enters only as one fold-eligible positive
+context membership; the compact Choquet controller and Scharr+NMS localizer
+remain unchanged.
+
+The active next action is `stage17l_surround_isolation_context`. Promotion is
+conjunctive across UDED-selection repeated CV and official BSDS500 validation,
+with fixed isolation-versus-dense-edge, scale-invariance, support, runtime, and
+preview contracts. No surround scale, ratio, support, orientation, adaptive or
+facilitatory variant, calibration, integration, or incumbent parameter may be
+tuned from the result.
