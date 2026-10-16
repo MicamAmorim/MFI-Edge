@@ -863,6 +863,21 @@ the rejection to entropy edge analysis or motivate alternative windows,
 entropy families, spatial/color/multiscale/cross-half variants, or integration
 tuning. Retain the local evaluator's reference-reproduction caveat.
 
+## Stage 17r writing update
+
+Report Stage 17r as a stable but conjunctively submargin negative. The fixed
+cue changed UDED aggregate F1/precision/recall and mean fold F1 by
+`+0.001396/+0.000554/+0.002800/+0.001231`, with `14/15` fold wins and
+eligibility in `15/15`; only the registered `+0.002` aggregate-F1 margin was
+missed on that axis. Official BSDS ODS/OIS/AP changed by
+`+0.001872/+0.000782/+0.003748`; ODS narrowly missed its separate `+0.002`
+margin. The safe claim is that this fixed directional nonlocal-residual
+integration was individually discriminative and stable but did not establish
+the preregistered magnitude of cross-dataset incremental value. Do not
+generalize the rejection to patch recurrence or the complete Xu-Xu-Quan
+decomposition, and do not motivate recurrence or integration tuning. Retain
+the local evaluator's reference-reproduction caveat.
+
 ## Stage 17l prospective writing note
 
 Frame Stage 17l as a bounded annular feature-density context test, not an exact

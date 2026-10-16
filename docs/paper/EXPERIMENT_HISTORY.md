@@ -3679,3 +3679,25 @@ runtime, and fixed positions 1/8/15 preview contracts. No protected split was
 used at the checkpoint. The compact controller remains incumbent pending the
 result, and no patch/search, band, match, similarity, decomposition, or
 integration parameter may be tuned afterward.
+
+### Stage 17r directional patch-recurrence context rejected; Stage 17s registered
+
+The fixed directional nonlocal-residual membership was eligible in every
+outer fold and won `14/15` fold-F1 comparisons. UDED aggregate
+F1/precision/recall and mean fold F1 changed by
+`+0.001396/+0.000554/+0.002800/+0.001231`, but the aggregate F1 gain missed
+the preregistered `+0.002` margin. Official BSDS500-validation ODS/OIS/AP
+changed by `+0.001872/+0.000782/+0.003748`; ODS independently missed its
+`+0.002` margin. The synthetic, finite/bounded, repeatability, exact-support,
+runtime, and fixed positions 1/8/15 preview contracts passed. Because all
+conditions were conjunctive, the candidate is rejected. This closes only the
+fixed repository residual integration, not patch-recurrence theory or the
+complete Xu-Xu-Quan decomposition. The Stage-15a matcher caveat remains, and
+the compact controller stays incumbent.
+
+The single registered next action is
+`stage17s_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must choose exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
+not tune Stage 17r, revisit earlier closed families, use dataset identity,
+relax the cross-dataset rule, or use protected feedback.

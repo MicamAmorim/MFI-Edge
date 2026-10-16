@@ -1919,3 +1919,19 @@ with fixed flat/step/checkerboard, repeatability, exact-support, runtime, and
 positions 1/8/15 preview contracts. No patch/search geometry, direction,
 band, match count, similarity, residual, full-decomposition, calibration,
 integration, or incumbent parameter may be tuned from the result.
+
+## Stage 17r closed - directional patch-recurrence context rejected
+
+The fixed recurrence cue changed UDED aggregate F1/precision/recall and mean
+fold F1 by `+0.001396/+0.000554/+0.002800/+0.001231`, with `14/15` fold wins
+and `15/15` eligibility. It missed the required `+0.002` aggregate-F1 gain.
+Official BSDS500-validation ODS/OIS/AP changed by
+`+0.001872/+0.000782/+0.003748`; ODS also missed its `+0.002` margin. The
+joint rule rejects the candidate. No recurrence or integration variant may be
+tuned, and compact Choquet-gated Scharr+NMS remains incumbent.
+
+The active next action is `stage17s_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit patch recurrence or earlier closed families, fit dataset
+identity, relax the cross-dataset rule, or use protected feedback.

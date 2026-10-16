@@ -1148,6 +1148,27 @@ ODS/OIS/AP changed by `-0.00078/+0.00220/-0.02069`. The candidate is rejected,
 and the connected-threshold parameters may not be tuned from this result. The
 compact Choquet-gated grayscale Scharr+NMS controller remains incumbent.
 
+### Stage 17r closure - directional patch-recurrence context rejected; Stage 17s registered
+
+The fixed Xu-Xu-Quan directional patch-recurrence membership failed its
+conjunctive promotion rule despite stable positive movement. On UDED
+selection, aggregate F1/precision/recall and mean fold F1 changed by
+`+0.001396/+0.000554/+0.002800/+0.001231`; the cue was eligible in `15/15`
+folds and won `14/15`, but aggregate F1 missed the required `+0.002` gain.
+Official BSDS500-validation ODS/OIS/AP changed by
+`+0.001872/+0.000782/+0.003748`; ODS also missed its required `+0.002`
+margin. All non-performance contracts passed, but every promotion condition
+was required. The candidate is rejected; do not tune or extend this recurrence
+or integration family from the result. The compact controller remains
+incumbent.
+
+The registered next action is `stage17s_generation2_mechanism_checkpoint`, a
+live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+patch recurrence or earlier closed families, use dataset identity, relax the
+cross-dataset rule, or use protected feedback.
+
 The registered next action is `stage16i_generation2_mechanism_checkpoint`, a
 high-reasoning live-primary-literature escalation that must select exactly one
 mechanistically distinct bounded generation-2 falsification with a
