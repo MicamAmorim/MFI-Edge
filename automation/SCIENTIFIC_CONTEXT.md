@@ -1802,3 +1802,26 @@ localizer, or thresholds, and do not advance to multiscale, clustered,
 Renyi/Tsallis, color, spatial, histogram-binned, cross-half, or learned entropy
 variants from the result. The compact Choquet-gated grayscale Scharr+NMS
 controller remains incumbent.
+
+### Stage 17j closure - brightness-entropy context rejected; Stage 17k registered
+
+The fixed `3x3` Shiozaki-style brightness-entropy membership passed every
+registered condition except the UDED aggregate-F1 margin. On UDED selection,
+aggregate F1/precision/recall and mean fold F1 changed by
+`+0.001106/+0.000175/+0.002682/+0.001305`, with `12/15` fold wins and
+eligibility in `15/15`, but aggregate F1 missed the required `+0.002` gain.
+Official BSDS500-validation ODS/OIS/AP improved by
+`+0.007561/+0.003648/+0.012971`. Because the rule was conjunctive, the
+candidate is rejected. Do not tune its window, intensity handling,
+probability or entropy definition, calibration, integration, context, gate,
+localizer, or thresholds, and do not advance to multiscale, clustered,
+Renyi/Tsallis, color, spatial, histogram-binned, cross-half, or learned
+entropy variants. The compact Choquet-gated grayscale Scharr+NMS controller
+remains incumbent.
+
+The registered next action is `stage17k_generation2_mechanism_checkpoint`, a
+high-reasoning live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+brightness entropy or earlier closed families, use dataset identity, relax the
+cross-dataset rule, or use protected feedback.

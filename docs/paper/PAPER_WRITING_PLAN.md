@@ -848,3 +848,17 @@ synthetic contract, both development axes, and the positions 1/8/15 preview.
 A failure closes only this fixed brightness-entropy integration and must not
 motivate multiscale, clustered, Renyi/Tsallis, color, spatial, histogram-binned,
 cross-half, or learned entropy variants.
+
+## Stage 17j writing update
+
+Report Stage 17j as a stable but submargin conjunctive negative. The fixed cue
+was eligible in `15/15` folds and changed UDED aggregate F1/precision/recall
+and mean fold F1 by `+0.001106/+0.000175/+0.002682/+0.001305`, with `12/15`
+fold wins, but missed the required `+0.002` aggregate-F1 margin. Official BSDS
+ODS/OIS/AP improved by `+0.007561/+0.003648/+0.012971`, satisfying that axis.
+The safe claim is that fixed local brightness information concentration was
+individually discriminative and improved both development datasets, but did
+not establish the preregistered cross-dataset effect size. Do not generalize
+the rejection to entropy edge analysis or motivate alternative windows,
+entropy families, spatial/color/multiscale/cross-half variants, or integration
+tuning. Retain the local evaluator's reference-reproduction caveat.

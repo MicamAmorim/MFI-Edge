@@ -1784,3 +1784,20 @@ conjunctive across UDED-selection repeated CV and official BSDS500 validation,
 with fixed synthetic, multiplicative-scale, support, runtime, and preview
 contracts. No entropy definition, window, intensity handling, variant,
 calibration, integration, or incumbent parameter may be tuned from the result.
+
+## Stage 17j closed - local brightness-entropy context rejected
+
+The fixed brightness-entropy cue changed UDED aggregate F1/precision/recall
+and mean fold F1 by `+0.001106/+0.000175/+0.002682/+0.001305`, with `12/15`
+fold wins and `15/15` eligibility. It passed every registered UDED condition
+except the required `+0.002` aggregate-F1 margin. Official BSDS500-validation
+ODS/OIS/AP improved by `+0.007561/+0.003648/+0.012971`, so that development
+axis passed. The conjunctive rule nevertheless rejects the candidate. No
+entropy or integration variant may be tuned, and compact Choquet-gated
+Scharr+NMS remains the incumbent.
+
+The active next action is `stage17k_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit brightness entropy or earlier closed families, fit dataset
+identity, relax the cross-dataset rule, or use protected feedback.
