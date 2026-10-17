@@ -1148,6 +1148,26 @@ ODS/OIS/AP changed by `-0.00078/+0.00220/-0.02069`. The candidate is rejected,
 and the connected-threshold parameters may not be tuned from this result. The
 compact Choquet-gated grayscale Scharr+NMS controller remains incumbent.
 
+### Stage 17t closure - Frei-Chen patch-subspace context rejected; Stage 17u registered
+
+The fixed Frei-Chen edge-subspace membership passed the official BSDS500-
+validation axis but missed the conjunctive UDED aggregate-F1 margin. UDED
+aggregate F1/precision/recall and mean fold F1 changed by
+`+0.000590/+0.000108/+0.001404/+0.000790`; the cue was eligible in `15/15`
+folds and won `10/15`, but aggregate F1 was below the required `+0.002` gain.
+Official BSDS500-validation ODS/OIS/AP improved by
+`+0.005624/+0.002471/+0.013006`. All non-performance contracts passed. The
+candidate is rejected; do not tune or extend this basis, subspace, sequential-
+detector, calibration, or integration family from the result. The compact
+controller remains incumbent.
+
+The registered next action is `stage17u_generation2_mechanism_checkpoint`, a
+live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+Frei-Chen context or earlier closed families, combine rejected cues, use
+dataset identity, relax the cross-dataset rule, or use protected feedback.
+
 ### Stage 17r closure - directional patch-recurrence context rejected; Stage 17s registered
 
 The fixed Xu-Xu-Quan directional patch-recurrence membership failed its

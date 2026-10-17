@@ -1272,6 +1272,23 @@ calibration, context, gate, localizer, and threshold grid are closed to
 post-result tuning. The compact controller remains incumbent pending the
 result.
 
+## Stage 17t closed - Frei-Chen patch-subspace context rejected
+
+The fixed cue changed UDED aggregate F1/precision/recall and mean fold F1 by
+`+0.000590/+0.000108/+0.001404/+0.000790`, with `10/15` fold wins and
+`15/15` eligibility. It missed the required `+0.002` aggregate-F1 gain.
+Official BSDS500-validation ODS/OIS/AP improved by
+`+0.005624/+0.002471/+0.013006`, passing that development axis, but the joint
+rule rejects the candidate. No Frei-Chen variant or integration may be tuned,
+and compact Choquet-gated Scharr+NMS remains incumbent.
+
+The active next action is `stage17u_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit patch-subspace context or earlier closed families, combine
+rejected cues, fit dataset identity, relax the cross-dataset rule, or use
+protected feedback.
+
 ## Stage 16j closed - step-profile context rejected
 
 The fixed cue improved UDED aggregate F1 by `0.001584`, recall by `0.004412`,

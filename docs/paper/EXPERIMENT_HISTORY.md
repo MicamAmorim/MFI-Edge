@@ -3728,3 +3728,25 @@ positive-scale, repeatability, exact-support, runtime, and fixed positions
 compact controller remains incumbent pending the result, and no basis,
 subspace, normalization, scale, color, sequential-detector, calibration, or
 integration variant may be tuned afterward.
+
+### Stage 17t Frei-Chen patch-subspace context rejected; Stage 17u registered
+
+The fixed Frei-Chen edge-subspace membership was eligible in all `15/15`
+outer folds and won `10/15` fold-F1 comparisons. UDED aggregate
+F1/precision/recall and mean fold F1 changed by
+`+0.000590/+0.000108/+0.001404/+0.000790`, but the aggregate F1 gain missed
+the preregistered `+0.002` margin. Official BSDS500-validation ODS/OIS/AP
+improved by `+0.005624/+0.002471/+0.013006`, so that axis passed. The
+orthonormality, synthetic, finite/bounded, repeatability, positive-scale,
+exact-support, runtime, and fixed positions 1/8/15 preview contracts also
+passed. Because every condition was required, the candidate is rejected.
+This closes only the fixed soft edge-subspace integration, not Frei-Chen
+patch analysis or the complete sequential detector. The Stage-15a matcher
+caveat remains, and the compact controller stays incumbent.
+
+The single registered next action is
+`stage17u_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must choose exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
+not tune Stage 17t, combine rejected cues, revisit earlier closed families,
+use dataset identity, relax the cross-dataset rule, or use protected feedback.

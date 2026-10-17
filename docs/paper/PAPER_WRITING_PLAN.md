@@ -970,6 +970,23 @@ estimator, mapping, adaptive/oriented/multiscale/color, diffusion, restoration,
 or integration variants. Retain the local evaluator's reference-reproduction
 caveat.
 
+## Stage 17t writing update
+
+Report Stage 17t as a stable but submargin UDED result paired with a clear
+BSDS-validation improvement. The fixed cue changed UDED aggregate
+F1/precision/recall and mean fold F1 by
+`+0.000590/+0.000108/+0.001404/+0.000790`, was eligible in `15/15` folds,
+and won `10/15`, but missed the registered `+0.002` aggregate-F1 requirement.
+Official BSDS ODS/OIS/AP improved by
+`+0.005624/+0.002471/+0.013006`. The safe claim is that fixed soft Frei-Chen
+edge-subspace occupancy was locally discriminative and benchmark-helpful but
+did not establish the required cross-dataset incremental value in the retained
+Choquet gate. Do not generalize the rejection to Frei-Chen analysis or the
+complete sequential detector, and do not motivate basis, subspace,
+normalization, support, scale, color, learned, sequential, calibration, or
+integration variants. Retain the local evaluator's reference-reproduction
+caveat.
+
 ## Stage 17r prospective writing note
 
 Frame Stage 17r as a bounded directional patch-recurrence context test, not an
