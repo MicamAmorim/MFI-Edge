@@ -2191,3 +2191,20 @@ distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit Stage 18f or earlier closed families, combine rejected
 cues, fit dataset identity, relax the cross-dataset rule, or use protected
 feedback.
+
+## Stage 18g closed - spectral-residual proto-object context selected
+
+Stage 18g selected one fixed image-wide statistical-innovation mechanism from
+Hou and Zhang's spectral-residual saliency model. Stage 18h computes the
+published 64-pixel, `3x3` log-spectrum-residual reconstruction with sigma-8
+saliency smoothing, then exposes the maximum-scaled native-support map only as
+one fold-eligible positive context membership. The compact Choquet controller
+and grayscale Scharr+NMS localizer remain unchanged.
+
+The active next action is `stage18h_spectral_residual_context`. Promotion is
+conjunctive across UDED-selection repeated CV and official BSDS500 validation,
+with fixed synthetic localization/concentration, multiplicative-scale,
+repeatability, exact-support, runtime, and positions 1/8/15 preview contracts.
+No visual scale, spectrum, phase, spectral average, smoothing, normalization,
+saliency variant, calibration, integration, or incumbent parameter may be
+tuned from the result.

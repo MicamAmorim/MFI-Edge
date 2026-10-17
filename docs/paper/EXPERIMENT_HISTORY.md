@@ -4087,3 +4087,32 @@ escalation that must choose exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 18f or earlier closed families, combine rejected cues, use
 dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 18g checkpoint closed; Stage 18h spectral-residual context registered
+
+Live primary-source review selected Hou and Zhang's global spectral-residual
+saliency model (CVPR 2007, DOI `10.1109/CVPR.2007.383267`). The paper removes
+a local average from the image log-amplitude spectrum, retains Fourier phase,
+and reconstructs image-specific statistical innovation. Its fixed experimental
+contract uses a 64-pixel visual scale, a `3x3` log-spectrum average, and
+Gaussian saliency smoothing at sigma `8`. Unlike the recently closed local,
+region, graph, curve, recurrence, and structural mechanisms, the new signal is
+global Fourier-domain surprise relative to the image's own spectral statistics.
+
+Stage 18h uses an equation-level grayscale realization rather than an exact
+author-code reproduction. The unchanged median-conditioned image is resized
+isotropically to maximum side `64`; the squared residual-spectrum
+reconstruction is smoothed, maximum-scaled when nonzero, and bilinearly
+returned to native support. A constant input has an exact-zero cue. The map is
+not used as a boundary detector: it enters only as one outer-training-fold-
+eligible positive context membership while compact Choquet aggregation and
+grayscale Scharr+NMS localization remain unchanged.
+
+The authoritative protocol is `docs/paper/STAGE18H_PREREGISTRATION.md`.
+`stage18h_spectral_residual_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed flat/rare-object/periodic/noise, multiplicative-
+scale and repeatability contracts, runtime diagnostics, and positions 1/8/15
+preview. Do not tune or extend its working scale, spectrum, averaging,
+smoothing, normalization, saliency variant, calibration, eligibility, or
+integration family. The compact controller remains incumbent.

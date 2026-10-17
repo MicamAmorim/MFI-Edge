@@ -1189,3 +1189,21 @@ BSDS500-validation ODS/OIS/AP gains of
 the conjunctive UDED failures. Preserve the immutable-author-code integration,
 fixed raster-adapter, missing-license, and evaluator caveats; do not frame the
 BSDS gains as promotion or permission to tune hierarchical curve search.
+
+## Stage 18h prospective writing note
+
+Frame Stage 18h as one fixed global statistical-innovation context test based
+on Hou and Zhang's spectral-residual equations, not as exact author-code
+reproduction or a standalone edge detector. Record the published 64-pixel
+visual scale, `3x3` local log-spectrum average, retained Fourier phase, squared
+inverse-transform magnitude and sigma-8 smoothing, plus the disclosed
+aspect-preserving resize, amplitude floor, maximum scaling, constant-image
+rule, and native projection. Explain that proto-object saliency only gates the
+unchanged Scharr+NMS localizer. Report eligibility, precision/recall, exact
+score-support preservation, rare-object concentration/localization, periodic/
+noise, multiplicative-scale and repeatability contracts, runtime, both
+development axes, and positions 1/8/15 preview. A failure closes this fixed
+spectral-residual realization without motivating color, multiscale, patchwise,
+alternative-saliency, saliency-gradient, learned, calibration, or integration
+variants. Retain the local evaluator's stochastic/reference-reproduction
+caveat.

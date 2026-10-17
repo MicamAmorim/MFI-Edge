@@ -2326,3 +2326,23 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 Stage 18f or earlier closed families, combine rejected cues, use dataset
 identity, relax the cross-dataset rule, or use protected feedback.
+
+### Stage 18g closure - spectral-residual proto-object context registered
+
+The live primary-literature checkpoint selected one fixed image-wide
+statistical-innovation test. Stage 18h implements Hou and Zhang's
+spectral-residual saliency equations on the unchanged median-conditioned
+grayscale image at the paper's 64-pixel visual scale, with a `3x3` local
+log-spectrum average and sigma-8 smoothing. The maximum-scaled saliency map is
+projected back to native support and enters only as one outer-training-fold-
+eligible positive membership; it does not replace Scharr+NMS or claim exact
+author-code reproduction.
+
+The authoritative protocol is `docs/paper/STAGE18H_PREREGISTRATION.md`.
+`stage18h_spectral_residual_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed rare-object/concentration and multiplicative-
+scale contracts, runtime diagnostics, and positions 1/8/15 preview. The
+compact bank, gamma `0.55`, gate strength `2.0`, floor `0.10`, and localizer
+remain unchanged. Do not tune or extend the spectral-residual or saliency
+family from the result. The compact controller remains incumbent.
