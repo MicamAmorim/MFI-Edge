@@ -1207,3 +1207,20 @@ spectral-residual realization without motivating color, multiscale, patchwise,
 alternative-saliency, saliency-gradient, learned, calibration, or integration
 variants. Retain the local evaluator's stochastic/reference-reproduction
 caveat.
+
+## Stage 18j prospective writing note
+
+Frame Stage 18j as one fixed equation-level isolation of Isola et al.'s
+image-internal PMI affinity principle, not as exact reproduction of their
+complete detector. Record the pinned BSD-licensed author source, 256-level
+grayscale alphabet, four centered pair axes, symmetric image-wide joint table,
+Laplace-one regularization, density conversion, fixed `rho=1.25`, and bounded
+negative-PMI mapping. Explicitly state that KDE, the learned PMI approximation,
+multiscale affinity graph, spectral clustering, OWT, and UCM are excluded.
+Report eligibility, precision/recall, exact score-support preservation,
+flat/step/checkerboard/noise, label-reassignment and repeatability contracts,
+runtime, both development axes, and the positions 1/8/15 preview. A failure
+closes this discrete dependency-deficit realization without motivating color,
+variance features, KDE, multiscale/graph/spectral, conditional PMI,
+calibration, or integration variants. Retain the local evaluator's stochastic/
+reference-reproduction caveat.

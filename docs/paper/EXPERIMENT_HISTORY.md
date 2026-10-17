@@ -4138,3 +4138,35 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 Stage 18h or earlier closed families, combine rejected cues, use dataset
 identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 18i checkpoint closed; Stage 18j PMI dependency context registered
+
+Live primary-source review selected Isola, Zoran, Krishnan, and Adelson's
+image-internal pointwise-mutual-information boundary principle (ECCV 2014,
+DOI `10.1007/978-3-319-10578-9_52`). Their central distinction is statistical
+dependency rather than amplitude contrast: frequently co-occurring texture
+pairs can remain strongly associated, whereas a rarer pair spanning an object
+boundary has low PMI after correction for its marginals. The official
+BSD-licensed source is pinned at commit
+`ee2d76e98340313a8f92e1b65064a9b4ea90ac77`.
+
+Stage 18j deliberately isolates the affinity principle before the author's
+spectral clustering, avoiding a revisit of the closed Stage-16x globalization
+family. The unchanged median-conditioned grayscale raster is serialized to
+256 levels; one symmetric image-internal co-occurrence table is formed from
+four centered pair axes with Laplace-one regularization. Density-corrected
+`PMI_rho` uses the author-code exponent `1.25`, and bounded negative PMI is
+the positive cue. The result enters only as one outer-training-fold-eligible
+membership; compact Choquet aggregation and grayscale Scharr+NMS remain
+unchanged. This is an equation-level repository surrogate, not an exact PMI
+detector reproduction or a half-disc histogram contrast.
+
+The authoritative protocol is `docs/paper/STAGE18J_PREREGISTRATION.md`.
+`stage18j_pmi_dependency_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed flat/step/checkerboard/noise, label-reassignment
+and repeatability contracts, runtime diagnostics, and positions 1/8/15
+preview. Do not tune or extend the intensity alphabet, pair geometry,
+co-occurrence model, pseudocount, PMI, density convention, deficit mapping,
+KDE, graph/spectral, calibration, or integration family. The compact
+controller remains incumbent.

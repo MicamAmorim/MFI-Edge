@@ -2224,3 +2224,21 @@ live-primary-literature escalation must select exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit Stage 18h or earlier closed families, combine rejected cues,
 fit dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 18i closed - image-internal PMI dependency context selected
+
+Stage 18i selected one fixed statistical-dependency mechanism from Isola et
+al.'s PMI boundary model. Stage 18j builds a symmetric 256-level co-occurrence
+model from four centered pair axes on the unchanged median-conditioned
+grayscale image, converts density-corrected `PMI_rho` deficit at fixed
+`rho=1.25` into a bounded cue, and exposes it only as one fold-eligible
+positive context membership. It excludes the author's KDE, learned
+approximation, spectral graph, OWT, and UCM, so the closed globalization and
+detector-fusion families are not reopened.
+
+The active next action is `stage18j_pmi_dependency_context`. Promotion is
+conjunctive across UDED-selection repeated CV and official BSDS500 validation,
+with fixed flat/step/texture/noise, label-reassignment, repeatability, exact-
+support, runtime, and positions 1/8/15 preview contracts. No intensity,
+pairing, probability, PMI, calibration, integration, or incumbent parameter
+may be tuned from the result.

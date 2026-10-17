@@ -2365,3 +2365,27 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 Stage 18h or earlier closed families, combine rejected cues, use dataset
 identity, relax the cross-dataset rule, or use protected feedback.
+
+### Stage 18i closure - image-internal PMI dependency context registered
+
+The live primary-literature checkpoint selected one fixed statistical-
+dependency test based on Isola et al.'s ECCV-2014 PMI boundary principle.
+Stage 18j forms a symmetric image-internal 256-level co-occurrence model from
+four centered pair axes on the unchanged median-conditioned grayscale image,
+uses density-corrected `PMI_rho` at the author-code exponent `1.25`, and maps
+negative PMI to bounded positive context. This tests whether recurrent texture
+pairs remain statistically associated while rarer cross-object pairs do not.
+It stops before the author's KDE, random-forest approximation, multiscale
+affinity graph, spectral clustering, OWT, and UCM, and is therefore a bounded
+repository surrogate rather than an exact author detector or a revisit of
+Stage 16x.
+
+The authoritative protocol is `docs/paper/STAGE18J_PREREGISTRATION.md`.
+`stage18j_pmi_dependency_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed synthetic/statistical contracts, runtime
+diagnostics, and positions 1/8/15 preview. The compact bank, gamma `0.55`,
+gate strength `2.0`, floor `0.10`, grayscale Scharr+NMS, and threshold fitting
+remain unchanged. Do not tune or extend the intensity, pair, co-occurrence,
+PMI, KDE, graph/spectral, calibration, or integration family from the result.
+The compact controller remains incumbent.
