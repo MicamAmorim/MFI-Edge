@@ -2208,3 +2208,19 @@ repeatability, exact-support, runtime, and positions 1/8/15 preview contracts.
 No visual scale, spectrum, phase, spectral average, smoothing, normalization,
 saliency variant, calibration, integration, or incumbent parameter may be
 tuned from the result.
+
+## Stage 18h closed - spectral-residual proto-object context rejected
+
+The fixed spectral-residual cue changed UDED aggregate F1/precision/recall and
+mean fold F1 by `-0.000192/-0.000029/-0.000468/-0.000195`, with only `1/15`
+fold wins and `5/15` eligibility. Official BSDS500-validation ODS/OIS/AP
+changed by `-0.000023/-0.000360/+0.000103`, so the candidate failed both
+development axes. No spectral scale, spectrum, phase, averaging, smoothing,
+normalization, saliency, calibration, eligibility, or integration variant may
+be tuned, and compact Choquet-gated Scharr+NMS remains incumbent.
+
+The active next action is `stage18i_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must select exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit Stage 18h or earlier closed families, combine rejected cues,
+fit dataset identity, relax the cross-dataset rule, or use protected feedback.

@@ -4116,3 +4116,25 @@ scale and repeatability contracts, runtime diagnostics, and positions 1/8/15
 preview. Do not tune or extend its working scale, spectrum, averaging,
 smoothing, normalization, saliency variant, calibration, eligibility, or
 integration family. The compact controller remains incumbent.
+
+### Stage 18h spectral-residual context rejected; Stage 18i registered
+
+The fixed spectral-residual proto-object membership failed its conjunctive
+promotion rule on both development axes. On UDED selection, aggregate
+F1/precision/recall and mean fold F1 changed by
+`-0.000192/-0.000029/-0.000468/-0.000195`, with only `1/15` fold wins and
+`5/15` eligible folds. Official BSDS500-validation ODS/OIS/AP changed by
+`-0.000023/-0.000360/+0.000103`, failing the ODS margin and OIS non-collapse
+condition. Exact support and all synthetic, multiplicative-scale,
+repeatability, runtime, and fixed-preview contracts passed, but cannot
+override the performance failures. The candidate is rejected; do not tune or
+extend its working scale, spectrum, phase handling, spectral averaging,
+smoothing, normalization, raster projection, saliency variants, calibration,
+eligibility, or integration family. The compact controller remains incumbent.
+
+The registered next action is `stage18i_generation2_mechanism_checkpoint`, a
+live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+Stage 18h or earlier closed families, combine rejected cues, use dataset
+identity, relax the cross-dataset rule, or use protected feedback.
