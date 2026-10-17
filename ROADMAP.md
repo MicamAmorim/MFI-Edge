@@ -2077,3 +2077,19 @@ live-primary-literature escalation must choose exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit Stage 17z or earlier closed families, combine rejected cues,
 fit dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 18a closed - FH adaptive-region boundary context selected
+
+Stage 18a selected one fixed Felzenszwalb-Huttenlocher region-partition
+mechanism. Stage 18b runs the equation-level grayscale grid algorithm with the
+paper's sigma `0.8`, `k=300`, and 8-connectivity, disables minimum-size
+postprocessing, and appends only the symmetrically rasterized region boundary
+as a fold-eligible context membership.
+
+The active next action is `stage18b_fh_region_boundary_context`. Promotion is
+conjunctive across UDED-selection repeated CV and official BSDS500 validation,
+with fixed graph, synthetic, repeatability, exact-support, runtime, and
+positions 1/8/15 preview contracts. No graph/region parameter, color or
+feature-space variant, hierarchy, calibration, integration, or incumbent
+parameter may be tuned from the result. Compact Choquet-gated Scharr+NMS
+remains incumbent.

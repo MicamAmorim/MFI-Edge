@@ -1102,3 +1102,20 @@ official BSDS500-validation ODS/OIS/AP changes of
 `+0.001034/-0.000566/+0.006465`; ODS and OIS failed their conditions. Preserve
 the pinned-source and evaluator caveats and do not frame the AP gain as a
 promotion or as permission to tune the adaptive-polynomial family.
+
+## Stage 18b prospective writing note
+
+Frame Stage 18b as an equation-level integration of the
+Felzenszwalb-Huttenlocher adaptive internal-variation boundary predicate, not
+an exact author-code reproduction or a segmentation benchmark. Record the
+fixed grayscale eight-neighbour graph, absolute-difference weights, Gaussian
+sigma `0.8`, `tau(C)=300/|C|`, disabled minimum-size postprocessing, and
+symmetric two-endpoint boundary rasterization. Explain that the cue represents
+region-relative boundary evidence rather than another residual, derivative,
+or globalization of the incumbent response. Report eligibility,
+precision/recall, exact score-support preservation, flat/step/checkerboard/
+noise and repeatability contracts, runtime, both development axes, and the
+positions 1/8/15 preview. A failure must close this fixed realization without
+motivating graph scale, smoothing, connectivity, region processing, color,
+feature-space, hierarchy, calibration, or integration tuning. Retain the
+local evaluator's stochastic/reference-reproduction caveat.

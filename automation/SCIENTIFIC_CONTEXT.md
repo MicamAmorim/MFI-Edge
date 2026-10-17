@@ -2182,3 +2182,26 @@ distinct bounded generation-2 falsification with a preregistered joint
 UDED-selection/BSDS500-validation rule. It may not tune Stage 17z or earlier
 closed families, combine rejected cues, use dataset identity, relax the
 cross-dataset rule, or use protected feedback.
+
+### Stage 18a closure - FH adaptive-region boundary context registered
+
+The live primary-literature checkpoint selected one fixed region-adaptive
+graph mechanism. Stage 18b runs Felzenszwalb and Huttenlocher's grayscale
+eight-neighbour grid segmentation with published natural-image settings
+Gaussian sigma `0.8` and `tau(C)=300/|C|`, with non-core minimum-size
+postprocessing disabled. Both endpoints of each between-component adjacency
+form a binary positive context cue. The mechanism compares external contrast
+to accepted internal region variation and is distinct from the earlier
+spectral response globalization, component-stability gate, scanline
+segmentation, and adaptive-polynomial residual.
+
+The authoritative protocol is `docs/paper/STAGE18B_PREREGISTRATION.md`.
+`stage18b_fh_region_boundary_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed synthetic contracts, runtime diagnostics, and
+positions 1/8/15 preview. It is an equation-level scikit-image realization,
+not exact author-code reproduction. Do not tune or extend graph smoothing,
+scale, connectivity, weights, component processing, boundary rasterization,
+color, feature-space, hierarchy, calibration, integration, context, gate,
+localizer, or thresholds from the result. The compact controller remains
+incumbent.

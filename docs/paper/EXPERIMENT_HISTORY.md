@@ -3904,3 +3904,32 @@ escalation that must choose exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 17z or earlier closed families, combine rejected cues, use
 dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 18a checkpoint closed; Stage 18b FH region-boundary context registered
+
+Live primary-source review selected Felzenszwalb and Huttenlocher's adaptive
+internal-variation segmentation predicate (IJCV 2004, author-hosted paper and
+official code page). Unlike the earlier spectral-Pb surrogate, response
+component stability gate, scanline partitions, or polynomial reconstruction,
+the new mechanism builds image regions by accepting a graph transition only
+when it is small relative to variation already accepted inside both adjacent
+components.
+
+Stage 18b fixes the paper's grayscale natural-image grid setting: Gaussian
+sigma `0.8`, eight-neighbour absolute-difference edges, and
+`tau(C)=300/|C|`. It disables implementation-level minimum-component
+postprocessing and marks both raster endpoints of every between-component
+adjacency. That binary support enters only as one outer-training-fold-
+eligible positive membership; the compact Choquet context and grayscale
+Scharr+NMS localization remain unchanged. The scikit-image 0.26.0 realization
+is equation-level and is not claimed as exact author-code reproduction.
+
+The authoritative protocol is `docs/paper/STAGE18B_PREREGISTRATION.md`.
+`stage18b_fh_region_boundary_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed flat/step/checkerboard/noise contracts, runtime
+diagnostics, and positions 1/8/15 preview. No graph, smoothing, observation
+scale, connectivity, minimum-size, boundary rasterization, color,
+feature-space, hierarchy, calibration, or integration variant may be tuned
+from the result. No protected split was used and the compact controller
+remains incumbent.
