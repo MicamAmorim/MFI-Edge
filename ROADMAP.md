@@ -2114,3 +2114,22 @@ live-primary-literature escalation must select exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit Stage 18b or earlier closed families, combine rejected cues,
 fit dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 18c closed - active micro-drift variance context selected
+
+Stage 18c selected one fixed active-sampling mechanism from Schmittwilken and
+Maertens' published non-oriented edge model. Stage 18d uses the paper's five
+isotropic DoG scales and variance-control fixation constants, with ten Brownian
+micro-drift paths frozen by seed `20261017`. Trial-averaged temporal response
+variance is normalized within scale and bounded by `E/(1+E)` before entering
+as one fold-eligible positive membership. It does not change conditioning or
+localization and is an equation-level adaptation rather than exact author-code
+reproduction.
+
+The active next action is `stage18d_active_drift_variance_context`. Promotion
+is conjunctive across UDED-selection repeated CV and official BSDS500
+validation, with fixed synthetic, positive-affine, repeatability, exact-
+support, runtime, and positions 1/8/15 preview contracts. No drift, DoG,
+temporal, normalization, bounded-mapping, calibration, integration, or
+incumbent parameter may be tuned from the result. Compact Choquet-gated
+Scharr+NMS remains incumbent.

@@ -3964,3 +3964,35 @@ escalation that must choose exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 18b or earlier closed families, combine rejected cues, use
 dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 18c checkpoint closed; Stage 18d active micro-drift variance context registered
+
+Live primary-source review selected Schmittwilken and Maertens' active edge
+model (Journal of Vision 2022, DOI `10.1167/jov.22.8.5`) and its official code
+at pinned commit `cb35f82f8c0064f346f689dbc49a34eb9d694972`. The paper's
+`S-V-N` control makes a static edge temporally informative by sampling it
+along small Brownian fixation shifts, taking multiscale isotropic DoG response
+variance, and normalizing within scale. This supplies a temporal active-
+sampling hypothesis rather than another static patch cue, region partition,
+graph, localizer, conditioning filter, aggregation, or detector fusion.
+
+Stage 18d fixes all published simulation constants: 40 pixels/degree,
+diffusion `20 arcmin^2/s`, 0.2 seconds, 10 Hz variance sampling, ten trials,
+and five octave-spaced DoG center sigmas `0.016` through `0.256` degrees with
+2:1 surround ratio. One preregistered seed (`20261017`) freezes the ten
+otherwise random integer drift paths. The repository adaptation uses reflected
+native-raster shifts, averages trial variance, applies published scale-mean
+normalization, and maps the mean response by `E/(1+E)`. That cue enters only as
+one outer-training-fold-eligible positive membership; the compact context and
+grayscale Scharr+NMS localizer remain unchanged. It is equation-level, not an
+exact author simulation or evaluation reproduction.
+
+The authoritative protocol is `docs/paper/STAGE18D_PREREGISTRATION.md`.
+`stage18d_active_drift_variance_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed flat/step/checkerboard/noise, repeatability and
+positive-affine contracts, runtime diagnostics, and positions 1/8/15 preview.
+No drift, filter, temporal, normalization, calibration, integration, context,
+gate, localizer, or threshold parameter may be tuned or extended from the
+result. No protected split was used and the compact controller remains
+incumbent.

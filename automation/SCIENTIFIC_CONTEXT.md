@@ -2231,3 +2231,26 @@ distinct bounded generation-2 falsification with a preregistered joint
 UDED-selection/BSDS500-validation rule. It may not tune Stage 18b or earlier
 closed families, combine rejected cues, use dataset identity, relax the
 cross-dataset rule, or use protected feedback.
+
+### Stage 18c closure - active micro-drift variance context registered
+
+The live primary-literature checkpoint selected one fixed active-sampling
+test. Stage 18d adapts Schmittwilken and Maertens' multiscale `S-V-N` model:
+the unchanged median-conditioned grayscale image is filtered by the five
+published isotropic DoG scales, shifted along ten fixed Brownian ocular-drift
+paths, integrated by temporal variance, normalized within scale, and bounded
+by `E/(1+E)`. Published constants are retained (40 pixels/degree, diffusion
+`20 arcmin^2/s`, 0.2 seconds, 10 Hz variance sampling, ten trials, center
+sigmas `0.016/0.032/0.064/0.128/0.256` degrees, 2:1 surround); seed
+`20261017` freezes the stochastic paths before results. The signal enters only
+as one outer-training-fold-eligible positive membership and does not replace
+Scharr+NMS. It is an equation-level native-raster adaptation, not exact
+author-pipeline reproduction.
+
+The authoritative protocol is `docs/paper/STAGE18D_PREREGISTRATION.md`.
+`stage18d_active_drift_variance_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed synthetic/positive-affine contracts, runtime
+diagnostics, and positions 1/8/15 preview. Do not tune or extend drift, DoG,
+temporal, normalization, calibration, integration, context, gate, localizer,
+or thresholds from the result. The compact controller remains incumbent.

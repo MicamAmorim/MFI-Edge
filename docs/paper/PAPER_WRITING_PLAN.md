@@ -1130,3 +1130,21 @@ ODS/OIS/AP gains of `+0.002858/+0.002241/+0.009290`, which passed that axis
 but cannot override the conjunctive UDED failures. Preserve the equation-level
 implementation and evaluator caveats; do not frame the BSDS gains as promotion
 or permission to tune the FH/region-partition family.
+
+## Stage 18d prospective writing note
+
+Frame Stage 18d as one fixed active-sampling context test motivated by
+Schmittwilken and Maertens' `S-V-N` variance control, not as exact reproduction
+of their display simulation or correlation evaluation. Record the official
+repository commit and the fixed pixels/degree, diffusion, fixation duration,
+sampling rate, ten-trial seed and paths, five DoG scales, 2:1 surround ratio,
+reflection, scale-mean normalization, and `E/(1+E)` contract. Explain that the
+new information is temporal variation induced by micro-shifts while the
+median-conditioned Scharr+NMS localizer remains unchanged. Report eligibility,
+precision/recall, exact score-support preservation, flat/step/checkerboard/
+noise, positive-affine and repeatability contracts, runtime, both development
+axes, and the positions 1/8/15 preview. A failure closes this fixed active-
+drift realization without motivating stochastic ensembles, subpixel drift,
+temporal filters, event-camera, adaptive, oriented, color, learned,
+calibration, or integration variants. Retain the local evaluator's stochastic/
+reference-reproduction caveat.
