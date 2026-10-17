@@ -3750,3 +3750,30 @@ escalation that must choose exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 17t, combine rejected cues, revisit earlier closed families,
 use dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+### Stage 17u checkpoint closed; Stage 17v morphological blur-minimum context registered
+
+The live primary-literature checkpoint selected one fixed nonlinear
+order-statistic context test. Van Vliet, Young, and Beckers (1989, DOI
+`10.1016/0734-189X(89)90131-X`) write Lee's blur-minimum morphological edge
+strength as `min(gradmax,-gradmin)`. With the fixed smallest `3x3` unit-square
+support, this becomes the smaller distance from the center intensity to the
+local maximum and minimum. It is positive only when the center has both
+brighter and darker support, unlike the previously available local range or a
+one-sided gradient.
+
+Stage 17v appends that raw statistic only as one outer-training-fold-eligible
+positive membership. It does not run nonlinear-Laplacian zero crossings,
+Gaussian smoothing, distance transforms, contour extraction, or thresholding.
+The compact bank, gamma `0.55`, gate strength `2.0`, floor `0.10`, median
+conditioning, grayscale Scharr+NMS, and threshold fitting remain unchanged.
+
+The authoritative protocol is `docs/paper/STAGE17V_PREREGISTRATION.md`.
+`stage17v_morphological_blur_minimum_context` is registered with conjunctive
+UDED-selection repeated CV and official BSDS500-validation criteria, exact
+score-support preservation, fixed ramp/step/checkerboard/impulse and
+photometric contracts, runtime diagnostics, and positions 1/8/15 preview. No
+protected split was inspected. Do not tune or extend the morphology, support,
+shape, smoothing, zero-crossing, calibration, or integration family from the
+result. The compact Choquet-gated grayscale Scharr+NMS controller remains the
+incumbent.

@@ -987,6 +987,26 @@ normalization, support, scale, color, learned, sequential, calibration, or
 integration variants. Retain the local evaluator's reference-reproduction
 caveat.
 
+## Stage 17v prospective writing note
+
+Frame Stage 17v as an equation-level test of two-sided morphological
+transition support, not a reproduction of Van Vliet et al.'s complete
+nonlinear-Laplacian detector. The fixed cue is
+`min(max_3x3(I)-I, I-min_3x3(I))` on the unchanged median-conditioned grayscale
+image with unit square coefficients and reflected finite-raster boundaries.
+It enters only as a fold-calibrated sixth membership; it adds no smoothing,
+zero-crossing segmentation, distance transform, contour extraction, or
+threshold. Explicitly distinguish it from local range, the one-sided robust
+gradient outlier, the ranklet, the parametric step profile, and Frei-Chen's
+linear patch subspace. Report eligibility, precision/recall, exact
+score-support preservation, ramp/step/checkerboard/impulse behavior,
+fixed-small-noise, offset/polarity/positive-scale contracts, runtime, both development axes, and
+the fixed positions 1/8/15 preview. A failure closes only this fixed Eq.-4
+integration and must not motivate alternative supports, shapes, weights,
+scales, color, SNR adaptation, morphology hierarchies, zero-crossing or full
+detector variants, or calibration/integration tuning. Retain the local
+evaluator's reference-reproduction caveat.
+
 ## Stage 17r prospective writing note
 
 Frame Stage 17r as a bounded directional patch-recurrence context test, not an

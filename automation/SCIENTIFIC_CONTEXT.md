@@ -1168,6 +1168,29 @@ preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 Frei-Chen context or earlier closed families, combine rejected cues, use
 dataset identity, relax the cross-dataset rule, or use protected feedback.
 
+### Stage 17u closure - morphological blur-minimum context registered
+
+The live primary-literature checkpoint selected one fixed nonlinear
+order-statistic context test. Stage 17v computes Van Vliet, Young, and Beckers'
+equation-level blur-minimum strength on the unchanged median-conditioned
+grayscale image using the smallest `3x3` unit-square support:
+`min(max_3x3(I)-I, I-min_3x3(I))`. The statistic is positive only when a center
+pixel has both brighter and darker local support, distinguishing a two-sided
+transition from a flat, local extremum, or ideal two-level oscillation. It is
+appended only as one outer-training-fold-eligible positive membership and does
+not run the source detector's smoothing, nonlinear-Laplacian zero crossings,
+distance transforms, contour extraction, or thresholding.
+
+The authoritative protocol is `docs/paper/STAGE17V_PREREGISTRATION.md`.
+`stage17v_morphological_blur_minimum_context` is registered with conjunctive
+UDED-selection repeated CV and official BSDS500-validation criteria, exact
+score-support preservation, fixed synthetic/photometric contracts, runtime
+diagnostics, and positions 1/8/15 preview. The compact bank, gamma `0.55`, gate
+strength `2.0`, floor `0.10`, grayscale Scharr+NMS, and threshold fitting are
+unchanged. Do not tune or extend the support, morphology, smoothing,
+zero-crossing, calibration, integration, context, gate, localizer, or
+thresholds from the result. The compact controller remains incumbent.
+
 ### Stage 17r closure - directional patch-recurrence context rejected; Stage 17s registered
 
 The fixed Xu-Xu-Quan directional patch-recurrence membership failed its

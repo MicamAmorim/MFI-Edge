@@ -1970,3 +1970,20 @@ exact-support, runtime, and positions 1/8/15 preview contracts. No basis,
 subspace, normalization, support, color/multiscale/sequential variant,
 calibration, integration, or incumbent parameter may be tuned from the
 result.
+
+## Stage 17u closed - morphological blur-minimum context selected
+
+Stage 17u selected a fixed two-sided local order-statistic mechanism rather
+than another linear patch representation, distribution cue, tensor, graph,
+profile fit, structural gate, conditioning path, aggregation replacement, or
+localizer replacement. Stage 17v computes Van Vliet et al.'s equation-level
+blur-minimum strength `min(max_3x3(I)-I, I-min_3x3(I))` on the unchanged
+median-conditioned grayscale image and appends it only as a fold-eligible
+positive context membership.
+
+The active next action is `stage17v_morphological_blur_minimum_context`.
+Promotion is conjunctive across UDED-selection repeated CV and official
+BSDS500 validation, with fixed two-sided order-statistic, ramp-versus-extrema,
+photometric, exact-support, runtime, and positions 1/8/15 preview contracts.
+No support, shape, morphology, smoothing, zero-crossing, scale, color,
+calibration, integration, or incumbent parameter may be tuned from the result.
