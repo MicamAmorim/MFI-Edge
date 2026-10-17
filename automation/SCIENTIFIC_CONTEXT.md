@@ -2212,3 +2212,22 @@ aliases absent from the otherwise passing strict FH contract. A harness-only
 retry is registered with direct compatibility diagnostics. The candidate,
 parameters, datasets, folds, artifacts, evaluator, and promotion rule are
 unchanged, and no scientific feedback has yet been produced.
+
+### Stage 18b closure - FH adaptive-region boundary context rejected; Stage 18c registered
+
+The fixed FH region-boundary cue passed the BSDS500-validation axis but failed
+the conjunctive UDED gate. UDED aggregate F1/precision/recall and mean fold F1
+changed by `-0.000307/-0.000632/+0.000277/-0.000248`, with only `6/15` fold
+wins despite `14/15` eligibility. Official BSDS500-validation ODS/OIS/AP
+improved by `+0.002858/+0.002241/+0.009290`. The candidate is rejected; do
+not tune or extend FH smoothing, graph scale/connectivity/weights, component
+processing, boundary rasterization, color, feature-space, hierarchy,
+calibration, eligibility, or integration. The compact controller remains
+incumbent.
+
+The registered next action is `stage18c_generation2_mechanism_checkpoint`, a
+live-primary-literature escalation that must select exactly one mechanistically
+distinct bounded generation-2 falsification with a preregistered joint
+UDED-selection/BSDS500-validation rule. It may not tune Stage 18b or earlier
+closed families, combine rejected cues, use dataset identity, relax the
+cross-dataset rule, or use protected feedback.

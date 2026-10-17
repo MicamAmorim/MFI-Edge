@@ -2099,3 +2099,18 @@ harness expected three legacy synthetic-contract aliases absent from the FH
 contract. No scientific output was produced. The active next action is the
 harness-only `stage18b_fh_region_boundary_context_retry1`, with direct FH
 compatibility diagnostics and no change to the candidate or joint rule.
+
+## Stage 18b closed - FH adaptive-region boundary context rejected
+
+The fixed FH cue changed UDED aggregate F1/precision/recall and mean fold F1
+by `-0.000307/-0.000632/+0.000277/-0.000248`, with `6/15` fold wins and
+`14/15` eligibility. Official BSDS500-validation ODS/OIS/AP improved by
+`+0.002858/+0.002241/+0.009290`, but the conjunctive rule rejects the cue on
+the UDED failures. No FH graph, region-boundary, calibration, or integration
+variant may be tuned, and compact Choquet-gated Scharr+NMS remains incumbent.
+
+The active next action is `stage18c_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must select exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit Stage 18b or earlier closed families, combine rejected cues,
+fit dataset identity, relax the cross-dataset rule, or use protected feedback.

@@ -1119,3 +1119,14 @@ positions 1/8/15 preview. A failure must close this fixed realization without
 motivating graph scale, smoothing, connectivity, region processing, color,
 feature-space, hierarchy, calibration, or integration tuning. Retain the
 local evaluator's stochastic/reference-reproduction caveat.
+
+## Stage 18b result writing note
+
+Report the fixed FH adaptive-region boundary cue as a cross-dataset negative
+result. UDED aggregate F1/precision/recall and mean fold F1 changed by
+`-0.000307/-0.000632/+0.000277/-0.000248`, with `6/15` fold wins and
+`14/15` eligibility. Separately report the official BSDS500-validation
+ODS/OIS/AP gains of `+0.002858/+0.002241/+0.009290`, which passed that axis
+but cannot override the conjunctive UDED failures. Preserve the equation-level
+implementation and evaluator caveats; do not frame the BSDS gains as promotion
+or permission to tune the FH/region-partition family.
