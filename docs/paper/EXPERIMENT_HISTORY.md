@@ -3933,3 +3933,13 @@ scale, connectivity, minimum-size, boundary rasterization, color,
 feature-space, hierarchy, calibration, or integration variant may be tuned
 from the result. No protected split was used and the compact controller
 remains incumbent.
+
+The first Stage-18b launch stopped before dataset access or result creation.
+Its strict FH synthetic contract passed, but the reused Stage-17h experiment
+harness then requested legacy `bounded`, `step_exceeds_checker`, and
+`step_exceeds_noise` keys that the FH contract had not exposed. This is a
+pre-result harness-interface defect and supplies no detector or benchmark
+feedback. `stage18b_fh_region_boundary_context_retry1` is registered with
+direct FH compatibility diagnostics; the candidate, fixed parameters, data,
+folds, preview, official attachment, and conjunctive promotion rule are
+unchanged.

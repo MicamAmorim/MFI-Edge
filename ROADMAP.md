@@ -2093,3 +2093,9 @@ positions 1/8/15 preview contracts. No graph/region parameter, color or
 feature-space variant, hierarchy, calibration, integration, or incumbent
 parameter may be tuned from the result. Compact Choquet-gated Scharr+NMS
 remains incumbent.
+
+The first launch stopped before dataset access because the reused Stage-17h
+harness expected three legacy synthetic-contract aliases absent from the FH
+contract. No scientific output was produced. The active next action is the
+harness-only `stage18b_fh_region_boundary_context_retry1`, with direct FH
+compatibility diagnostics and no change to the candidate or joint rule.

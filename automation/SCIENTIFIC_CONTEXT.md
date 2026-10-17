@@ -2205,3 +2205,10 @@ scale, connectivity, weights, component processing, boundary rasterization,
 color, feature-space, hierarchy, calibration, integration, context, gate,
 localizer, or thresholds from the result. The compact controller remains
 incumbent.
+
+The first Stage-18b launch stopped before dataset access or result creation
+because its reused Stage-17h harness requested three legacy synthetic-contract
+aliases absent from the otherwise passing strict FH contract. A harness-only
+retry is registered with direct compatibility diagnostics. The candidate,
+parameters, datasets, folds, artifacts, evaluator, and promotion rule are
+unchanged, and no scientific feedback has yet been produced.
