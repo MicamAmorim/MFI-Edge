@@ -2305,3 +2305,24 @@ or manifest was produced. A harness-only retry is registered with truthful
 aliases of the existing orthogonal-step positivity and localization checks;
 the candidate, protocol, data, artifacts, official evaluator, and promotion
 rule are unchanged.
+
+### Stage 18f closure - hierarchical triangle-partition context rejected; Stage 18g registered
+
+The fixed author triangle-partition faint-curve membership passed the official
+BSDS500-validation axis but failed the conjunctive UDED gate. UDED aggregate
+F1/precision/recall and mean fold F1 changed by
+`-0.000864/-0.000920/-0.000720/-0.000786`, with `0/15` fold wins and only
+`11/15` eligible folds. Official BSDS500-validation ODS/OIS/AP improved by
+`+0.006363/+0.004455/+0.020200`. Source, synthetic, repeatability, exact-
+support, runtime, and fixed-preview contracts passed, but cannot override the
+UDED failures. The candidate is rejected; do not tune or extend its triangle
+tree, curve family, scores, author parameters, block/raster adapter,
+calibration, eligibility, or integration family. The compact controller
+remains incumbent.
+
+The registered next action is `stage18g_generation2_mechanism_checkpoint`, a
+live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+Stage 18f or earlier closed families, combine rejected cues, use dataset
+identity, relax the cross-dataset rule, or use protected feedback.

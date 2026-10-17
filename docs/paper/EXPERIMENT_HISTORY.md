@@ -4061,3 +4061,29 @@ metric, preview, manifest, or official score was produced. A harness-only
 truthful aliases of the already registered orthogonal-step positivity and
 16-pixel localization checks. The candidate, author bytes and parameters,
 datasets, folds, artifacts, evaluator, and promotion rule are unchanged.
+
+### Stage 18f triangle-partition context rejected; Stage 18g registered
+
+The harness-repaired fixed author triangle-partition cue completed all
+registered artifacts and passed source, synthetic, finite/bounded,
+repeatability, exact-support, runtime, and fixed positions 1/8/15 preview
+contracts. On UDED selection, aggregate F1/precision/recall and mean fold F1
+changed by `-0.000864/-0.000920/-0.000720/-0.000786`; the candidate won
+`0/15` folds and the cue was eligible in only `11/15`. It therefore failed
+the aggregate-F1, precision, mean-fold, fold-win, and eligibility conditions.
+
+Official BSDS500-validation ODS/OIS/AP improved by
+`+0.006363/+0.004455/+0.020200`, passing that development axis. Because the
+promotion rule was conjunctive, the candidate is rejected. This closes only
+the fixed one-block author-response integration, not the published detector,
+and does not authorize tree, curve, score, author-parameter, block, tiling,
+scale, projection, calibration, eligibility, or integration tuning. The
+Windows matcher remains stochastic and reference-uncertified. Compact
+Choquet-gated grayscale Scharr+NMS remains incumbent.
+
+The single registered next action is
+`stage18g_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must choose exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
+not tune Stage 18f or earlier closed families, combine rejected cues, use
+dataset identity, relax the cross-dataset rule, or use protected feedback.

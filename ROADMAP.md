@@ -2174,3 +2174,20 @@ harness-only `stage18f_triangle_partition_context_retry1`, which maps those
 aliases to the already registered orthogonal-step positivity and localization
 checks. Stage 18f's candidate, author bytes and parameters, datasets, folds,
 official attachment, artifacts, and conjunctive rule remain unchanged.
+
+## Stage 18f closed - hierarchical triangle-partition context rejected
+
+The fixed triangle-partition cue changed UDED aggregate F1/precision/recall
+and mean fold F1 by `-0.000864/-0.000920/-0.000720/-0.000786`, with `0/15`
+fold wins and `11/15` eligibility. Official BSDS500-validation ODS/OIS/AP
+improved by `+0.006363/+0.004455/+0.020200`, but the conjunctive rule rejects
+the cue on the UDED failures. No tree, curve, score, author-parameter, block,
+raster-adapter, calibration, eligibility, or integration variant may be
+tuned, and compact Choquet-gated Scharr+NMS remains incumbent.
+
+The active next action is `stage18g_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must select exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit Stage 18f or earlier closed families, combine rejected
+cues, fit dataset identity, relax the cross-dataset rule, or use protected
+feedback.

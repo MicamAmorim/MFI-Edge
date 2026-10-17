@@ -1177,3 +1177,15 @@ preview. A failure closes this fixed tree/curve-response integration and must
 not motivate tiling, multiple blocks/scales, score or noise estimation,
 alternative author modes, detector replacement, calibration, or integration
 tuning. Retain the local evaluator's stochastic/reference-reproduction caveat.
+
+## Stage 18f result writing note
+
+Report the fixed one-block author triangle-partition response as a mixed
+cross-dataset negative result. UDED aggregate F1/precision/recall and mean
+fold F1 changed by `-0.000864/-0.000920/-0.000720/-0.000786`, with `0/15`
+fold wins and only `11/15` eligibility. Separately report the official
+BSDS500-validation ODS/OIS/AP gains of
+`+0.006363/+0.004455/+0.020200`, which passed that axis but cannot override
+the conjunctive UDED failures. Preserve the immutable-author-code integration,
+fixed raster-adapter, missing-license, and evaluator caveats; do not frame the
+BSDS gains as promotion or permission to tune hierarchical curve search.
