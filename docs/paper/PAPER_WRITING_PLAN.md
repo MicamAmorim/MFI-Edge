@@ -1007,6 +1007,15 @@ merges, diagonal/multiscale/color/texton/full-SGBD variants, calibration, or
 integration tuning. Retain the local evaluator's reference-reproduction
 caveat.
 
+Stage 17x ultimately passed every registered condition except the UDED
+aggregate-F1 margin. Report UDED deltas of
+`+0.001916/+0.000546/+0.004221/+0.001692` for aggregate F1, precision,
+recall, and mean fold F1, with `13/15` wins and `15/15` eligibility. Report
+the official BSDS500-validation ODS/OIS/AP gains of
+`+0.004943/+0.002056/+0.011994` separately, retain the matcher caveat, and
+characterize the result as a cross-dataset-consistent but preregistered-
+submargin negative result rather than a promotion.
+
 ## Stage 17v prospective writing note
 
 Frame Stage 17v as an equation-level test of two-sided morphological

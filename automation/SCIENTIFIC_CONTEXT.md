@@ -2118,3 +2118,22 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 morphology or earlier closed families, combine rejected cues, use dataset
 identity, relax the cross-dataset rule, or use protected feedback.
+
+### Stage 17x closure - semi-global scanline change-point context rejected; Stage 17y registered
+
+The fixed row/column BIC-selected scanline change-point membership passed the
+official BSDS500-validation axis and all registered UDED conditions except the
+aggregate-F1 margin. UDED aggregate F1/precision/recall and mean fold F1
+changed by `+0.001916/+0.000546/+0.004221/+0.001692`, with `13/15` fold
+wins and eligibility in `15/15`, but the F1 gain was below the required
+`+0.002`. Official BSDS500-validation ODS/OIS/AP improved by
+`+0.004943/+0.002056/+0.011994`. The candidate is rejected; do not tune or
+extend scanline-DP, change-point, full-SGBD, calibration, or integration
+variants from this result. The compact controller remains incumbent.
+
+The registered next action is `stage17y_generation2_mechanism_checkpoint`, a
+live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+Stage 17x or earlier closed families, combine rejected cues, use dataset
+identity, relax the cross-dataset rule, or use protected feedback.

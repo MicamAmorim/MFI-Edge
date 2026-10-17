@@ -2024,3 +2024,21 @@ distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit morphology or earlier closed families, combine rejected
 cues, fit dataset identity, relax the cross-dataset rule, or use protected
 feedback.
+
+## Stage 17x closed - semi-global scanline change-point context rejected
+
+The fixed cue improved UDED aggregate F1/precision/recall and mean fold F1 by
+`+0.001916/+0.000546/+0.004221/+0.001692`, with `13/15` fold wins and
+`15/15` eligibility, but missed the required `+0.002` aggregate-F1 gain.
+Official BSDS500-validation ODS/OIS/AP improved by
+`+0.004943/+0.002056/+0.011994`, passing that axis. The conjunctive rule
+rejects the candidate. No scanline-DP, change-point, full-SGBD, calibration,
+or integration variant may be tuned, and compact Choquet-gated Scharr+NMS
+remains incumbent.
+
+The active next action is `stage17y_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit Stage 17x or earlier closed families, combine rejected
+cues, fit dataset identity, relax the cross-dataset rule, or use protected
+feedback.

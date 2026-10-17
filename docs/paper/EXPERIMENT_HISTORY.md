@@ -3830,3 +3830,26 @@ repeatability, exact-support, runtime, and fixed positions 1/8/15 preview
 contracts. No protected split was used. No working-grid, direction, segment,
 penalty, noise-scale, rasterization, merge, calibration, integration, or full-
 SGBD variant may be tuned afterward.
+
+### Stage 17x semi-global scanline change-point context rejected; Stage 17y registered
+
+The fixed row/column change-point membership improved UDED-selection aggregate
+F1/precision/recall and mean fold F1 by
+`+0.001916/+0.000546/+0.004221/+0.001692`, with `13/15` fold wins,
+eligibility in `15/15` folds, and exact score-support preservation. The
+aggregate F1 gain nevertheless missed the preregistered `+0.002` margin.
+Official BSDS500-validation ODS/OIS/AP improved by
+`+0.004943/+0.002056/+0.011994`, so that axis passed. The synthetic,
+photometric, repeatability, runtime, and fixed-preview contracts also passed,
+but every promotion condition was required. The candidate is rejected; do not
+tune or extend the working grid, directions, segment model, noise estimator,
+BIC penalty, raster support, merging, calibration, integration, scanline-DP,
+change-point, or full-SGBD family from this result. The compact controller
+remains incumbent.
+
+The single registered next action is
+`stage17y_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must choose exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
+not tune Stage 17x, combine rejected cues, revisit earlier closed families,
+use dataset identity, relax the cross-dataset rule, or use protected feedback.
