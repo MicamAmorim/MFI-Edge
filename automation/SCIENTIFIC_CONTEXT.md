@@ -2254,3 +2254,23 @@ support preservation, fixed synthetic/positive-affine contracts, runtime
 diagnostics, and positions 1/8/15 preview. Do not tune or extend drift, DoG,
 temporal, normalization, calibration, integration, context, gate, localizer,
 or thresholds from the result. The compact controller remains incumbent.
+
+### Stage 18d closure - active micro-drift variance context rejected; Stage 18e registered
+
+The fixed active micro-drift response-variance membership passed the official
+BSDS500-validation axis but failed the conjunctive UDED gate. UDED aggregate
+F1/precision/recall and mean fold F1 changed by
+`-0.000845/-0.000523/-0.001363/-0.000724`, with only `4/15` fold wins despite
+eligibility in `15/15`. Official BSDS500-validation ODS/OIS/AP improved by
+`+0.002372/+0.001440/+0.009916`. Exact support and all synthetic,
+positive-affine, repeatability, runtime, and fixed-preview contracts passed,
+but cannot override the UDED failures. The candidate is rejected; do not tune
+or extend its drift, filtering, temporal statistic, normalization,
+calibration, or integration family. The compact controller remains incumbent.
+
+The registered next action is `stage18e_generation2_mechanism_checkpoint`, a
+live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+Stage 18d or earlier closed families, combine rejected cues, use dataset
+identity, relax the cross-dataset rule, or use protected feedback.

@@ -1148,3 +1148,14 @@ drift realization without motivating stochastic ensembles, subpixel drift,
 temporal filters, event-camera, adaptive, oriented, color, learned,
 calibration, or integration variants. Retain the local evaluator's stochastic/
 reference-reproduction caveat.
+
+## Stage 18d result writing note
+
+Report the fixed active micro-drift variance membership as a cross-dataset
+negative result. UDED aggregate F1/precision/recall and mean fold F1 changed by
+`-0.000845/-0.000523/-0.001363/-0.000724`, with `4/15` fold wins despite
+`15/15` eligibility. Separately report the official BSDS500-validation
+ODS/OIS/AP gains of `+0.002372/+0.001440/+0.009916`, which passed that axis
+but cannot override the conjunctive UDED failures. Preserve the equation-level
+adaptation and evaluator caveats; do not frame the BSDS gains as promotion or
+permission to tune the active-sampling family.

@@ -3996,3 +3996,24 @@ No drift, filter, temporal, normalization, calibration, integration, context,
 gate, localizer, or threshold parameter may be tuned or extended from the
 result. No protected split was used and the compact controller remains
 incumbent.
+
+### Stage 18d active micro-drift variance context rejected; Stage 18e registered
+
+The fixed active micro-drift variance cue failed its conjunctive promotion
+rule. On UDED selection, aggregate F1/precision/recall and mean fold F1 changed
+by `-0.000845/-0.000523/-0.001363/-0.000724`, with only `4/15` fold wins. The
+cue was eligible in `15/15` folds and preserved exact score support. Official
+BSDS500-validation ODS/OIS/AP improved by
+`+0.002372/+0.001440/+0.009916`, passing that axis. The UDED F1, precision,
+mean-fold, and fold-win failures nevertheless reject the candidate. Synthetic,
+positive-affine, repeatability, runtime, and fixed-preview contracts passed.
+Do not tune or extend the active-drift, filter, temporal, normalization,
+calibration, eligibility, or integration family. The compact controller
+remains incumbent.
+
+The single registered next action is
+`stage18e_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must choose exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
+not tune Stage 18d or earlier closed families, combine rejected cues, use
+dataset identity, relax the cross-dataset rule, or use protected feedback.

@@ -2133,3 +2133,20 @@ support, runtime, and positions 1/8/15 preview contracts. No drift, DoG,
 temporal, normalization, bounded-mapping, calibration, integration, or
 incumbent parameter may be tuned from the result. Compact Choquet-gated
 Scharr+NMS remains incumbent.
+
+## Stage 18d closed - active micro-drift variance context rejected
+
+The fixed active-drift cue changed UDED aggregate F1/precision/recall and mean
+fold F1 by `-0.000845/-0.000523/-0.001363/-0.000724`, with `4/15` fold wins
+and `15/15` eligibility. Official BSDS500-validation ODS/OIS/AP improved by
+`+0.002372/+0.001440/+0.009916`, but the conjunctive rule rejects the cue on
+the UDED failures. No active-drift, filtering, temporal, normalization,
+calibration, or integration variant may be tuned, and compact Choquet-gated
+Scharr+NMS remains incumbent.
+
+The active next action is `stage18e_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must select exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit Stage 18d or earlier closed families, combine rejected
+cues, fit dataset identity, relax the cross-dataset rule, or use protected
+feedback.
