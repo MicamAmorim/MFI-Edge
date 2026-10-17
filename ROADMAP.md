@@ -1306,6 +1306,26 @@ It may not tune the failed profile, fusion, stability, conditioning, or
 persistence families, and it may not use dataset identity or protected
 feedback.
 
+## Stage 17w closed - semi-global scanline change-point context selected
+
+Stage 17w selected a fixed mid-level scanline partition mechanism rather than
+another local patch, activity, morphology, tensor, graph, topology,
+conditioning, aggregation, fusion, or localizer variant. Stage 17x performs
+exact dynamic-programming piecewise-constant segmentation of full rows and
+columns on a maximum-side-256 working grid, with a fixed first-difference-
+noise-scaled Schwarz/BIC penalty. Symmetric adjacent-segment contrast at the
+selected change points becomes one fold-eligible positive context membership.
+
+The active next action is `stage17x_semiglobal_changepoint_context`.
+Promotion is conjunctive across UDED-selection repeated CV and official
+BSDS500 validation, with fixed model-selection, flat/step/checkerboard,
+photometric, repeatability, exact-support, runtime, and positions 1/8/15
+preview contracts. This is a repository SGBD surrogate, not an exact
+reproduction. No working-grid, direction, segment model, noise estimator,
+penalty, raster assignment, merge, texton/color, smoothing, marginalization,
+UCM, calibration, integration, or incumbent parameter may be tuned from the
+result.
+
 ## Stage 16k closed - exact EDPF chain context selected
 
 Stage 16k selected a bounded chain-first structural test grounded in the

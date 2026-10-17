@@ -1416,6 +1416,30 @@ preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 empirical marginal normalization or any earlier closed family, use dataset
 identity, relax the cross-dataset rule, or use protected feedback.
 
+### Stage 17w closure - semi-global scanline change-point context registered
+
+The live primary-literature checkpoint selected one fixed mid-level scanline
+segmentation test rather than another local patch/activity cue. Stage 17x
+fits exact piecewise-constant row and column partitions to the unchanged
+median-conditioned grayscale image by dynamic programming with a fixed
+Schwarz/BIC `sigma_hat^2*log(N)` segment penalty. Adjacent-segment contrast is
+written symmetrically to the two samples bordering each selected change point,
+row/column evidence is merged by maximum, and the result enters only as one
+outer-training-fold-eligible positive membership. The working grid has fixed
+maximum side `256`; no textons, color, smoothing, learned penalty, segment-
+count marginalization, or UCM postprocessing is used.
+
+The authoritative protocol is `docs/paper/STAGE17X_PREREGISTRATION.md`.
+`stage17x_semiglobal_changepoint_context` is registered with conjunctive
+UDED-selection repeated CV and official BSDS500-validation criteria, exact
+score-support preservation, fixed flat/step/checkerboard and photometric
+contracts, runtime diagnostics, and positions 1/8/15 preview. This is a
+bounded repository surrogate of Jevnisek and Avidan's SGBD principle, not an
+exact reproduction. Do not tune or extend the working grid, directions,
+segment model, noise estimator, penalty, raster support, merging,
+calibration, or integration family from the result. The compact controller
+remains incumbent.
+
 ### Stage 16q closure - Sugeno qualitative aggregation registered
 
 The live primary-literature checkpoint selected one fixed aggregation-semantic

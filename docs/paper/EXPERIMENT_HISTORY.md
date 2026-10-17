@@ -3801,3 +3801,32 @@ bounded generation-2 falsification with a preregistered joint UDED-selection/
 BSDS500-validation rule. It may not tune morphology or earlier closed
 families, combine rejected cues, use dataset identity, relax the cross-dataset
 rule, or use protected feedback.
+
+## Stage 17w checkpoint closed; Stage 17x semi-global change-point context registered
+
+Live primary-source review selected Jevnisek and Avidan's semi-global
+scanline-segmentation principle (CVIU 2016, DOI
+`10.1016/j.cviu.2016.07.004`) as a mid-level alternative to the exhausted
+local patch/activity sequence. Their method optimally segments one-dimensional
+scanlines and merges boundary evidence across directions. Bellman's dynamic-
+programming construction (DOI `10.1145/366573.366611`) and Schwarz's fixed
+model-dimension penalty (DOI `10.1214/aos/1176344136`) provide the deterministic
+optimization and complexity-control basis.
+
+Stage 17x is explicitly a bounded repository surrogate, not exact SGBD. On a
+fixed maximum-side-256 working grid it fits piecewise-constant rows and columns
+by exact dynamic programming with a first-difference-noise-scaled `log(N)`
+penalty, assigns adjacent-segment contrast symmetrically to each selected
+between-sample change point, and merges directions by maximum. It omits SGBD's
+textons, semi-global smoothing, fitted MDL temperature, segment-count
+marginalization, and optional UCM. The cue enters only as one fold-calibrated,
+training-eligible positive membership; compact Choquet context and grayscale
+Scharr+NMS localization remain unchanged.
+
+The authoritative protocol is `docs/paper/STAGE17X_PREREGISTRATION.md`.
+Promotion is conjunctive across UDED-selection repeated CV and official
+BSDS500 validation, with finite/bounded, flat/step/checkerboard, photometric,
+repeatability, exact-support, runtime, and fixed positions 1/8/15 preview
+contracts. No protected split was used. No working-grid, direction, segment,
+penalty, noise-scale, rasterization, merge, calibration, integration, or full-
+SGBD variant may be tuned afterward.

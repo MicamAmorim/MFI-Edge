@@ -987,6 +987,26 @@ normalization, support, scale, color, learned, sequential, calibration, or
 integration variants. Retain the local evaluator's reference-reproduction
 caveat.
 
+## Stage 17x prospective writing note
+
+Frame Stage 17x as a bounded test of semi-global scanline segmentation support,
+not an exact reproduction of Jevnisek and Avidan's SGBD. The fixed cue uses
+exact dynamic-programming piecewise-constant partitions of complete rows and
+columns on a maximum-side-256 working grid, a first-difference-noise-scaled
+Schwarz/BIC `log(N)` penalty, symmetric contrast assignment to the two samples
+bordering each selected change point, and maximum direction merging. It enters
+only as a fold-calibrated sixth membership; median conditioning, the compact
+Choquet gate, and Scharr+NMS localization remain unchanged. Explicitly record
+that textons, color, semi-global smoothing, fitted MDL weighting, segment-count
+marginalization, and UCM postprocessing are absent. Report eligibility,
+precision/recall, exact score-support preservation, synthetic and photometric
+contracts, runtime, both development axes, and the positions 1/8/15 preview.
+A failure closes this fixed surrogate and must not motivate alternative grids,
+directions, segment models, penalties, noise estimators, raster supports,
+merges, diagonal/multiscale/color/texton/full-SGBD variants, calibration, or
+integration tuning. Retain the local evaluator's reference-reproduction
+caveat.
+
 ## Stage 17v prospective writing note
 
 Frame Stage 17v as an equation-level test of two-sided morphological
