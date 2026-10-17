@@ -2274,3 +2274,26 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 Stage 18d or earlier closed families, combine rejected cues, use dataset
 identity, relax the cross-dataset rule, or use protected feedback.
+
+### Stage 18e closure - hierarchical triangle-partition context registered
+
+The live primary-literature checkpoint selected one fixed image-wide
+faint-curve test. Stage 18f uses the immutable official MATLAB implementation
+of Ofir et al.'s hierarchical triangle-partition search at pinned commit
+`19dc4845b26f81b68f40bc2e3e36bfe1c59d01d2`. The unchanged median-conditioned
+grayscale image is isotropically fitted into one reflected `129x129` block,
+passed to `runIm(block,false,0)` with all author defaults, and projected back
+to native support. Its accumulated statistical contrast/shape response enters
+only as one outer-training-fold-eligible positive membership; compact Choquet
+aggregation and grayscale Scharr+NMS localization are unchanged. This is an
+immutable-author-code integration with a fixed raster adapter, not exact
+native-resolution detector reproduction.
+
+The authoritative protocol is `docs/paper/STAGE18F_PREREGISTRATION.md`.
+`stage18f_triangle_partition_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, source,
+synthetic, repeatability, exact-support, runtime, and positions 1/8/15 preview
+contracts. Do not tune or extend the tree, curve family, scores, author
+parameters, NMS, block geometry, resampling, projection, calibration,
+integration, context, gate, localizer, or thresholds from the result. The
+compact controller remains incumbent.

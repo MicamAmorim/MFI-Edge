@@ -1159,3 +1159,21 @@ ODS/OIS/AP gains of `+0.002372/+0.001440/+0.009916`, which passed that axis
 but cannot override the conjunctive UDED failures. Preserve the equation-level
 adaptation and evaluator caveats; do not frame the BSDS gains as promotion or
 permission to tune the active-sampling family.
+
+## Stage 18f prospective writing note
+
+Frame Stage 18f as an immutable-author-code integration of Ofir et al.'s
+hierarchical triangle-partition faint-curve response, not as exact native-
+resolution reproduction of the published detector. Record the pinned commit
+and tree, missing explicit source license, parameter-index-zero defaults, one
+fixed reflected-letterbox `129x129` whole-image block, disabled shifted pass,
+bilinear native-support projection, and non-finite-to-zero flat-field adapter.
+Explain that the cue accumulates statistical contrast and shape support over a
+combinatorial two-dimensional curve family while the median-conditioned
+Scharr+NMS localizer remains unchanged. Report eligibility, precision/recall,
+exact score-support preservation, source cleanliness, flat/orthogonal-step and
+repeatability contracts, runtime, both development axes, and positions 1/8/15
+preview. A failure closes this fixed tree/curve-response integration and must
+not motivate tiling, multiple blocks/scales, score or noise estimation,
+alternative author modes, detector replacement, calibration, or integration
+tuning. Retain the local evaluator's stochastic/reference-reproduction caveat.

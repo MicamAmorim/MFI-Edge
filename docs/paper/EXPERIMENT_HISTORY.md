@@ -4017,3 +4017,37 @@ escalation that must choose exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 18d or earlier closed families, combine rejected cues, use
 dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 18e checkpoint closed; Stage 18f triangle-partition context registered
+
+Live primary-source review selected Ofir, Galun, Nadler, and Basri's
+hierarchical faint-curve search (CVPR 2016, DOI
+`10.1109/CVPR.2016.30`). The official author MATLAB repository is pinned at
+commit `19dc4845b26f81b68f40bc2e3e36bfe1c59d01d2`, tree
+`fa9866f16e8679e77123a2a807978886a9a83595`; its immutable Windows source/MEX
+surface passed a deterministic R2023a flat/step smoke test. The mechanism
+accumulates statistical contrast and shape evidence over a combinatorial
+family of curves through a triangle-partition tree, rather than altering the
+incumbent's local filters, response graph, region partition, aggregation, or
+localization.
+
+Stage 18f uses one fixed whole-image author block. The unchanged median-
+conditioned grayscale image is isotropically fitted into a reflected
+`129x129` square, passed to `runIm(block,false,0)` with parameter index zero,
+unletterboxed, and bilinearly projected back to native support. The author
+defaults are frozen, including filter width `2`, minimum contrast `8`, minimum
+curve length `5`, NMS threshold `0.5`, maximum turn angle `48`, tree level
+`3`, assumed noise sigma `0.1`, and the shipped statistical/shape weights.
+The response enters only as one outer-training-fold-eligible positive
+membership. This is an immutable-author-code integration with a disclosed
+raster adapter, not exact native-resolution detector reproduction; no explicit
+source license was found, so the ignored checkout is not redistributed.
+
+The authoritative protocol is `docs/paper/STAGE18F_PREREGISTRATION.md`.
+`stage18f_triangle_partition_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, source,
+synthetic, repeatability, exact-support, runtime, and fixed positions 1/8/15
+preview contracts. Do not tune or extend the tree, curve family, statistical
+or shape scores, author parameters, NMS, block geometry, resampling,
+projection, calibration, integration, context, gate, localizer, or thresholds
+from the result. The compact controller remains incumbent.

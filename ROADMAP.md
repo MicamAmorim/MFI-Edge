@@ -2150,3 +2150,19 @@ distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit Stage 18d or earlier closed families, combine rejected
 cues, fit dataset identity, relax the cross-dataset rule, or use protected
 feedback.
+
+## Stage 18e closed - hierarchical triangle-partition context selected
+
+Stage 18e selected one fixed image-wide faint-curve mechanism from Ofir et
+al.'s pinned author implementation. Stage 18f fits the unchanged median-
+conditioned grayscale image into one reflected `129x129` author block, runs
+the parameter-index-zero triangle-partition tree and curve scoring, and
+projects that response back as one fold-eligible positive membership. The
+compact Choquet controller and Scharr+NMS localizer remain unchanged.
+
+The active next action is `stage18f_triangle_partition_context`. Promotion is
+conjunctive across UDED-selection repeated CV and official BSDS500 validation,
+with immutable-source, synthetic localization, repeatability, exact-support,
+runtime, and positions 1/8/15 preview contracts. No tree, curve, score, author
+parameter, block, raster adapter, calibration, integration, or incumbent
+parameter may be tuned from the result.
