@@ -2060,3 +2060,20 @@ photometric, exact-support, runtime, and positions 1/8/15 preview contracts.
 No polynomial, node, quadtree, tolerance, smoothing, residual,
 normalization/combination, threshold, calibration, integration, or incumbent
 parameter may be tuned from the result.
+
+## Stage 17z closed - adaptive polynomial residual context rejected
+
+The fixed PolyEdge residual improved UDED aggregate F1/precision/recall and
+mean fold F1 by `+0.001554/+0.000345/+0.003594/+0.001405`, with `14/15` fold
+wins and `15/15` eligibility, but missed the required `+0.002` aggregate-F1
+margin. Official BSDS500-validation ODS/OIS/AP changed by
+`+0.001034/-0.000566/+0.006465`, failing the ODS margin and OIS condition.
+The conjunctive rule rejects the candidate. No adaptive-polynomial residual or
+integration variant may be tuned, and compact Choquet-gated Scharr+NMS remains
+incumbent.
+
+The active next action is `stage18a_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit Stage 17z or earlier closed families, combine rejected cues,
+fit dataset identity, relax the cross-dataset rule, or use protected feedback.

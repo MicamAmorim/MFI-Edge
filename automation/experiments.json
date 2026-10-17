@@ -2279,6 +2279,18 @@
       "results/official_eval/stage17z_adaptive_polynomial_residual_context/summary.json"
     ]
   },
+  "stage18a_generation2_mechanism_checkpoint": {
+    "description": "High-reasoning live-primary-literature checkpoint after the fixed PolyEdge adaptive-polynomial residual cue missed the UDED aggregate-F1 margin and failed the BSDS ODS/OIS conditions; selects exactly one mechanistically distinct, interpretable, non-neural generation-2 falsification without tuning adaptive polynomial approximation or earlier closed families.",
+    "runner": "python",
+    "path": "automation/stage18a_generation2_mechanism_checkpoint.py",
+    "args": [],
+    "role": "research_planning",
+    "feedback_policy": "primary_literature_and_completed_joint_development_evidence_only_no_adaptive_polynomial_residual_or_integration_tuning_no_protected_feedback_no_architecture_change_at_checkpoint",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage18a_generation2_mechanism_checkpoint/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

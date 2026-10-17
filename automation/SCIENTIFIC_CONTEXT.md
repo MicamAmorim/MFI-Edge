@@ -2161,3 +2161,24 @@ Scharr+NMS, and threshold fitting remain unchanged. Do not tune or extend the
 polynomial, node, subdivision, smoothing, residual, normalization, fusion,
 threshold, calibration, or integration family from the result. The compact
 controller remains incumbent.
+
+### Stage 17z closure - adaptive polynomial residual context rejected; Stage 18a registered
+
+The fixed pinned-author PolyEdge residual failed its conjunctive promotion
+rule. On UDED selection, aggregate F1/precision/recall and mean fold F1 changed
+by `+0.001554/+0.000345/+0.003594/+0.001405`, with `14/15` fold wins and
+eligibility in `15/15`, but aggregate F1 missed the required `+0.002` gain.
+Official BSDS500-validation ODS/OIS/AP changed by
+`+0.001034/-0.000566/+0.006465`, failing the ODS margin and OIS non-collapse
+condition. Source, synthetic, repeatability, support, runtime, and fixed-preview
+contracts passed, but all conditions were required. The candidate is rejected;
+do not tune or extend the polynomial, nodes, subdivision, smoothing, residual,
+normalization, fusion, threshold, coefficient-analysis, calibration, or
+integration family. The compact controller remains incumbent.
+
+The registered next action is `stage18a_generation2_mechanism_checkpoint`, a
+live-primary-literature escalation that must select exactly one mechanistically
+distinct bounded generation-2 falsification with a preregistered joint
+UDED-selection/BSDS500-validation rule. It may not tune Stage 17z or earlier
+closed families, combine rejected cues, use dataset identity, relax the
+cross-dataset rule, or use protected feedback.

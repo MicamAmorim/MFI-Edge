@@ -1091,3 +1091,14 @@ residual integration and must not motivate polynomial-degree/node,
 subdivision, residual-selection/fusion, threshold, color, multiscale,
 coefficient-analysis, calibration, or integration tuning. Retain the local
 evaluator's reference-reproduction caveat.
+
+## Stage 17z result writing note
+
+Report the fixed PolyEdge residual as a stable but preregistered-submargin
+negative result. UDED aggregate F1/precision/recall and mean fold F1 changed by
+`+0.001554/+0.000345/+0.003594/+0.001405`, with `14/15` fold wins and
+`15/15` eligibility, but the F1 gain missed `+0.002`. Separately report the
+official BSDS500-validation ODS/OIS/AP changes of
+`+0.001034/-0.000566/+0.006465`; ODS and OIS failed their conditions. Preserve
+the pinned-source and evaluator caveats and do not frame the AP gain as a
+promotion or as permission to tune the adaptive-polynomial family.

@@ -3882,3 +3882,25 @@ Do not tune or extend the polynomial, node, subdivision, residual,
 normalization, fusion, threshold, calibration, or integration family from the
 result. The compact Choquet-gated grayscale Scharr+NMS controller remains
 incumbent.
+
+### Stage 17z adaptive polynomial residual context rejected; Stage 18a registered
+
+The fixed pinned-author PolyEdge residual failed its conjunctive promotion
+rule. UDED-selection aggregate F1/precision/recall and mean fold F1 changed by
+`+0.001554/+0.000345/+0.003594/+0.001405`; the cue was eligible in `15/15`
+folds and won `14/15`, but aggregate F1 missed the required `+0.002` margin.
+Official BSDS500-validation ODS/OIS/AP changed by
+`+0.001034/-0.000566/+0.006465`, failing both the ODS margin and OIS
+non-collapse condition. The pinned-source, synthetic, affine-photometric,
+repeatability, exact-support, runtime, and fixed-preview contracts passed, but
+could not override the performance failures. The candidate is rejected; do
+not tune or extend its polynomial, node, subdivision, smoothing, residual,
+normalization, combination, threshold, coefficient-analysis, calibration, or
+integration family. The compact controller remains incumbent.
+
+The single registered next action is
+`stage18a_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must choose exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
+not tune Stage 17z or earlier closed families, combine rejected cues, use
+dataset identity, relax the cross-dataset rule, or use protected feedback.
