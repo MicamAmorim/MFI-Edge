@@ -3777,3 +3777,27 @@ protected split was inspected. Do not tune or extend the morphology, support,
 shape, smoothing, zero-crossing, calibration, or integration family from the
 result. The compact Choquet-gated grayscale Scharr+NMS controller remains the
 incumbent.
+
+### Stage 17v morphological blur-minimum context rejected; Stage 17w registered
+
+The fixed `3x3` two-sided morphological blur-minimum membership failed its
+conjunctive promotion rule despite passing the BSDS500-validation axis. On
+UDED selection, aggregate F1/precision/recall and mean fold F1 changed by
+`-0.000167/-0.000396/+0.000244/-0.000150`; the cue was eligible in only
+`9/15` folds and won only `3/15`. Official BSDS500-validation ODS/OIS/AP
+improved by `+0.002346/+0.001524/+0.005760`. The synthetic, photometric,
+repeatability, support, runtime, and fixed-preview contracts passed, but
+cannot override the UDED failures. The candidate is rejected; do not tune or
+extend its support, shape, morphology, smoothing, zero-crossing, calibration,
+integration, context, gate, localizer, or thresholds, and do not advance to
+larger, circular, weighted, multiscale, color, adaptive-SNR, hierarchical,
+contour-extraction, or complete nonlinear-Laplacian variants from this result.
+The compact Choquet-gated grayscale Scharr+NMS controller remains incumbent.
+
+The single registered next action is
+`stage17w_generation2_mechanism_checkpoint`, a high-reasoning live-primary-
+literature escalation that must select exactly one mechanistically distinct
+bounded generation-2 falsification with a preregistered joint UDED-selection/
+BSDS500-validation rule. It may not tune morphology or earlier closed
+families, combine rejected cues, use dataset identity, relax the cross-dataset
+rule, or use protected feedback.

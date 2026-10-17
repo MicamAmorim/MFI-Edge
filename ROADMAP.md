@@ -1987,3 +1987,20 @@ BSDS500 validation, with fixed two-sided order-statistic, ramp-versus-extrema,
 photometric, exact-support, runtime, and positions 1/8/15 preview contracts.
 No support, shape, morphology, smoothing, zero-crossing, scale, color,
 calibration, integration, or incumbent parameter may be tuned from the result.
+
+## Stage 17v closed - morphological blur-minimum context rejected
+
+The fixed cue changed UDED aggregate F1/precision/recall and mean fold F1 by
+`-0.000167/-0.000396/+0.000244/-0.000150`, with only `3/15` fold wins and
+`9/15` eligibility. Official BSDS500-validation ODS/OIS/AP improved by
+`+0.002346/+0.001524/+0.005760`, passing that axis, but the joint rule rejects
+the candidate. No morphology, support, smoothing, zero-crossing, calibration,
+or integration variant may be tuned, and compact Choquet-gated Scharr+NMS
+remains incumbent.
+
+The active next action is `stage17w_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must choose exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit morphology or earlier closed families, combine rejected
+cues, fit dataset identity, relax the cross-dataset rule, or use protected
+feedback.

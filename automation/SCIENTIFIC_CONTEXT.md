@@ -2075,3 +2075,22 @@ calibration, integration, context, gate, localizer, or thresholds, and do not
 advance to multiscale, color, adaptive, approximate, learned-patch, full-
 decomposition, smoothing, or restoration variants from the result. The
 compact Choquet-gated grayscale Scharr+NMS controller remains incumbent.
+
+### Stage 17v closure - morphological blur-minimum context rejected; Stage 17w registered
+
+The fixed `3x3` morphological blur-minimum membership passed the official
+BSDS500-validation axis but failed the conjunctive UDED gate. UDED aggregate
+F1/precision/recall and mean fold F1 changed by
+`-0.000167/-0.000396/+0.000244/-0.000150`; the cue was eligible in only
+`9/15` folds and won `3/15`. Official BSDS500-validation ODS/OIS/AP improved
+by `+0.002346/+0.001524/+0.005760`. All non-performance contracts passed.
+The candidate is rejected; do not tune or extend this morphology, support,
+smoothing, zero-crossing, calibration, or integration family from the result.
+The compact controller remains incumbent.
+
+The registered next action is `stage17w_generation2_mechanism_checkpoint`, a
+live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+morphology or earlier closed families, combine rejected cues, use dataset
+identity, relax the cross-dataset rule, or use protected feedback.
