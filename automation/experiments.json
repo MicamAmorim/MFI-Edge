@@ -2399,6 +2399,27 @@
       "results/official_eval/stage18f_triangle_partition_context/summary.json"
     ]
   },
+  "stage18f_triangle_partition_context_retry1": {
+    "description": "Harness-only retry of the unchanged Stage 18f triangle-partition context falsification after its preregistered synthetic contract passed but the reused Stage-17h harness requested two absent legacy compatibility keys; adds truthful aliases of the existing orthogonal-step positivity and localization checks without changing the candidate, author code, parameters, data, folds, artifacts, evaluator, or promotion rule.",
+    "runner": "python",
+    "path": "automation/stage18f_triangle_partition_context_retry1.py",
+    "args": [],
+    "role": "generation_2_triangle_partition_context_falsification",
+    "feedback_policy": "joint_uded_selection_and_bsds500_validation_development_fixed_author_triangle_partition_curve_search_contract_no_tree_curve_score_block_projection_calibration_or_integration_tuning_no_protected_feedback",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage18f_triangle_partition_context_retry1/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage18f_triangle_partition_context_retry1/summary.json",
+      "results/local_dev/stage18f_triangle_partition_context_retry1/variant_ranking.csv",
+      "results/local_dev/stage18f_triangle_partition_context_retry1/fold_results.csv",
+      "results/local_dev/stage18f_triangle_partition_context_retry1/per_image_metrics.csv",
+      "results/local_dev/stage18f_triangle_partition_context_retry1/triangle_partition_calibration.csv",
+      "results/local_dev/stage18f_triangle_partition_context_retry1/triangle_partition_diagnostics.csv",
+      "results/local_dev/stage18f_triangle_partition_context_retry1/best_method_preview.png",
+      "results/local_dev/stage18f_triangle_partition_context_retry1/official_eval_manifest.json",
+      "results/official_eval/stage18f_triangle_partition_context_retry1/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

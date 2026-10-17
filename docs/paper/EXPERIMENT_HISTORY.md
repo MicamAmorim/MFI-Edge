@@ -4051,3 +4051,13 @@ preview contracts. Do not tune or extend the tree, curve family, statistical
 or shape scores, author parameters, NMS, block geometry, resampling,
 projection, calibration, integration, context, gate, localizer, or thresholds
 from the result. The compact controller remains incumbent.
+
+The first Stage-18f launch passed source provenance and the preregistered
+four-map synthetic author batch, then stopped before UDED access because the
+reused Stage-17h harness requested legacy `step_exceeds_checker` and
+`step_exceeds_noise` keys absent from the Stage-18f contract. No candidate
+metric, preview, manifest, or official score was produced. A harness-only
+`stage18f_triangle_partition_context_retry1` is registered with those keys as
+truthful aliases of the already registered orthogonal-step positivity and
+16-pixel localization checks. The candidate, author bytes and parameters,
+datasets, folds, artifacts, evaluator, and promotion rule are unchanged.

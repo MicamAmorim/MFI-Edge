@@ -2166,3 +2166,11 @@ with immutable-source, synthetic localization, repeatability, exact-support,
 runtime, and positions 1/8/15 preview contracts. No tree, curve, score, author
 parameter, block, raster adapter, calibration, integration, or incumbent
 parameter may be tuned from the result.
+
+The first launch completed the immutable-source and four-map synthetic author
+batch, then stopped before UDED access because the reused Stage-17h harness
+expected two legacy synthetic-contract aliases. The active next action is the
+harness-only `stage18f_triangle_partition_context_retry1`, which maps those
+aliases to the already registered orthogonal-step positivity and localization
+checks. Stage 18f's candidate, author bytes and parameters, datasets, folds,
+official attachment, artifacts, and conjunctive rule remain unchanged.

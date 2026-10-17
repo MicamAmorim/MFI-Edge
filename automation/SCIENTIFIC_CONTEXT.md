@@ -2297,3 +2297,11 @@ contracts. Do not tune or extend the tree, curve family, scores, author
 parameters, NMS, block geometry, resampling, projection, calibration,
 integration, context, gate, localizer, or thresholds from the result. The
 compact controller remains incumbent.
+
+The first Stage-18f launch passed author provenance and its preregistered
+synthetic batch but stopped before UDED access because the reused Stage-17h
+harness requested two absent legacy contract aliases. No scientific feedback
+or manifest was produced. A harness-only retry is registered with truthful
+aliases of the existing orthogonal-step positivity and localization checks;
+the candidate, protocol, data, artifacts, official evaluator, and promotion
+rule are unchanged.

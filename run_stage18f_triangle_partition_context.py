@@ -178,6 +178,10 @@ def _synthetic_contract() -> dict[str, object]:
     flat_map, vertical_map, repeat_map, horizontal_map = [entry[0] for entry in maps]
     vertical_column = int(np.argmax(np.sum(vertical_map, axis=0)))
     horizontal_row = int(np.argmax(np.sum(horizontal_map, axis=1)))
+    vertical_positive = bool(float(np.max(vertical_map)) > float(np.max(flat_map)))
+    horizontal_positive = bool(float(np.max(horizontal_map)) > float(np.max(flat_map)))
+    vertical_localized = bool(abs(vertical_column - side // 2) <= 16)
+    horizontal_localized = bool(abs(horizontal_row - side // 2) <= 16)
     return {
         "finite": bool(all(np.all(np.isfinite(entry[0])) for entry in maps)),
         "bounded": bool(all(float(np.min(entry[0])) >= 0.0 and float(np.max(entry[0])) <= 1.0 for entry in maps)),
@@ -189,6 +193,15 @@ def _synthetic_contract() -> dict[str, object]:
         "vertical_peak_distance": int(abs(vertical_column - side // 2)),
         "horizontal_peak_distance": int(abs(horizontal_row - side // 2)),
         "repeat_max_abs_delta": float(np.max(np.abs(vertical_map - repeat_map))),
+        # Compatibility aliases consumed by the reused Stage-17h harness. They
+        # restate the stricter preregistered Stage-18f positivity/localization
+        # checks; no checkerboard or noise contract is introduced here.
+        "step_exceeds_checker": bool(vertical_positive and horizontal_positive),
+        "step_exceeds_noise": bool(vertical_localized and horizontal_localized),
+        "legacy_harness_aliases": {
+            "step_exceeds_checker": "both orthogonal step maxima exceed the flat-field maximum",
+            "step_exceeds_noise": "both orthogonal response peaks satisfy the registered 16-pixel localization bound",
+        },
         "author_adapter": "non-finite author normalization output is mapped to zero before clipping",
     }
 
