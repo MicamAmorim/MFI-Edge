@@ -3853,3 +3853,32 @@ escalation that must choose exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 17x, combine rejected cues, revisit earlier closed families,
 use dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 17y checkpoint closed; Stage 17z adaptive polynomial residual registered
+
+Live primary-source review selected De Simone, Kenne, and Zullo's 2026
+PolyEdge representation-failure mechanism (DOI
+`10.1007/s11075-026-02497-3`). The official MIT repository is pinned at
+commit `53277503faae02514cc9249bccd2083210c00138`. Its adaptive quadtree and
+bivariate polynomial reconstructions produce residual evidence where a smooth
+local representation fails, a mechanism distinct from Stage 17x's complete-
+scanline piecewise-constant partitions and the earlier fixed local-patch,
+texture, graph, topology, conditioning, aggregation, and localizer tests.
+
+Stage 17z calls the unmodified author pipeline on the unchanged median-
+conditioned grayscale image with the paper's Section-7 settings: degree `6`,
+Chebyshev admissible meshes, continuous sampling, depth `8`, minimum cell size
+`4`, RMSE tolerance `1e-3`, Gaussian sigma `1`, and equal averaging of the
+four author-normalized residuals. It appends only that continuous residual as
+one outer-fold-eligible positive membership and does not run percentile
+thresholding or alter the retained localizer.
+
+The authoritative protocol is `docs/paper/STAGE17Z_PREREGISTRATION.md`.
+`stage17z_adaptive_polynomial_residual_context` is registered with conjunctive
+UDED-selection repeated CV and official BSDS500-validation criteria, pinned-
+source provenance, exact score-support preservation, fixed synthetic and
+photometric contracts, runtime diagnostics, and positions 1/8/15 preview.
+Do not tune or extend the polynomial, node, subdivision, residual,
+normalization, fusion, threshold, calibration, or integration family from the
+result. The compact Choquet-gated grayscale Scharr+NMS controller remains
+incumbent.

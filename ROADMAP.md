@@ -2042,3 +2042,21 @@ distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit Stage 17x or earlier closed families, combine rejected
 cues, fit dataset identity, relax the cross-dataset rule, or use protected
 feedback.
+
+## Stage 17y closed - adaptive polynomial residual context selected
+
+Stage 17y selected the pinned-author PolyEdge approximation-residual mechanism
+rather than another scanline segmentation, fixed patch/activity cue,
+conditioning path, response graph, aggregation rule, fusion, or localizer.
+Stage 17z runs the clean MIT-licensed author source at the paper's fixed
+Section-7 degree-6 Chebyshev-mesh, depth-8, cell-size-4, RMSE-`1e-3`, sigma-1,
+equal-average residual setting and appends only its continuous residual as one
+fold-eligible context membership.
+
+The active next action is `stage17z_adaptive_polynomial_residual_context`.
+Promotion is conjunctive across UDED-selection repeated CV and official
+BSDS500 validation, with pinned-source, synthetic localization, affine-
+photometric, exact-support, runtime, and positions 1/8/15 preview contracts.
+No polynomial, node, quadtree, tolerance, smoothing, residual,
+normalization/combination, threshold, calibration, integration, or incumbent
+parameter may be tuned from the result.

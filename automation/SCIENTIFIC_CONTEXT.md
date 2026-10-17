@@ -2137,3 +2137,27 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 Stage 17x or earlier closed families, combine rejected cues, use dataset
 identity, relax the cross-dataset rule, or use protected feedback.
+
+### Stage 17y closure - adaptive polynomial residual context registered
+
+The live primary-literature checkpoint selected one fixed spatially adaptive
+representation-failure test. Stage 17z uses the unmodified MIT-licensed
+PolyEdge author source at pinned commit
+`53277503faae02514cc9249bccd2083210c00138`. On the unchanged median-
+conditioned grayscale image it runs the paper's Section-7 degree-6 Chebyshev-
+mesh approximation, maximum quadtree depth `8`, minimum cell size `4`, RMSE
+tolerance `1e-3`, sigma-1 smoothed companion reconstruction, and equal average
+of the four author-normalized residuals. The continuous residual enters only
+as one outer-training-fold-eligible positive membership; the author's
+percentile threshold is not run.
+
+The authoritative protocol is `docs/paper/STAGE17Z_PREREGISTRATION.md`.
+`stage17z_adaptive_polynomial_residual_context` is registered with conjunctive
+UDED-selection repeated CV and official BSDS500-validation criteria, pinned-
+source provenance, exact score-support preservation, fixed synthetic/
+photometric contracts, runtime diagnostics, and positions 1/8/15 preview.
+The compact bank, gamma `0.55`, gate strength `2.0`, floor `0.10`, grayscale
+Scharr+NMS, and threshold fitting remain unchanged. Do not tune or extend the
+polynomial, node, subdivision, smoothing, residual, normalization, fusion,
+threshold, calibration, or integration family from the result. The compact
+controller remains incumbent.

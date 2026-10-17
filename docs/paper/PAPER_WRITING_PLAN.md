@@ -1073,3 +1073,21 @@ integration and must not motivate basis, subspace, denominator, support,
 orientation, scale, color, learned, sequential-detector, calibration, or
 integration variants. Retain the local evaluator's reference-reproduction
 caveat.
+
+## Stage 17z prospective writing note
+
+Frame Stage 17z as an exact-code integration of one continuous signal from
+PolyEdge, not a reproduction of its archaeological-image demonstrations or
+percentile-thresholded detector. Record the pinned MIT author commit and the
+published Section-7 degree, Chebyshev-node, quadtree-depth, minimum-cell,
+RMSE-tolerance, Gaussian-sigma, residual-normalization, and equal-average
+contract. Explain that approximation failure supplies spatially adaptive
+representation evidence distinct from the preceding scanline change-point
+and fixed local-patch cues. Report cue eligibility, precision/recall, exact
+score-support preservation, source cleanliness, flat/step/checkerboard/noise,
+affine-photometric and repeatability contracts, runtime, both development
+axes, and the positions 1/8/15 preview. A failure closes the fixed PolyEdge
+residual integration and must not motivate polynomial-degree/node,
+subdivision, residual-selection/fusion, threshold, color, multiscale,
+coefficient-analysis, calibration, or integration tuning. Retain the local
+evaluator's reference-reproduction caveat.
