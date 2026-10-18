@@ -2381,3 +2381,20 @@ fixed positions 1/8/15 `best_method_preview.png` and official-evaluation
 manifest. The compact Choquet-gated grayscale Scharr+NMS controller remains
 incumbent, and no polarity-continuation parameter or extension may be tuned
 from the result.
+
+## Stage 18r closed - contrast-polarity continuation context rejected
+
+The fixed signed-gradient polarity-continuation cue was training-ineligible in
+all `15/15` UDED-selection folds, so the candidate exactly reduced to compact
+MFI and all aggregate and fold metrics were unchanged. Official BSDS500-
+validation ODS/OIS/AP changed by `-0.000044/-0.000018/+0.000101`, failing the
+required ODS margin and OIS non-collapse condition. The conjunctive rule
+rejects the candidate. All synthetic, repeatability, exact-support, runtime,
+and fixed-preview contracts passed, but no polarity-continuation parameter or
+extension may be tuned. Compact Choquet-gated Scharr+NMS remains incumbent.
+
+The active next action is `stage18s_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must select exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit Stage 18r or earlier closed families, combine rejected cues,
+fit dataset identity, relax the cross-dataset rule, or use protected feedback.

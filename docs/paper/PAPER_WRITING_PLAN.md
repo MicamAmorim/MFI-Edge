@@ -1327,3 +1327,11 @@ fold behavior, official BSDS ODS/OIS/AP, support invariance, synthetic polarity
 reversal and photometric contracts, runtime, and the fixed preview regardless
 of outcome. Do not describe the cue as contour completion or a learned
 association field.
+
+Stage 18r ultimately supplied no eligible UDED integration: the cue failed the
+outer-training-fold AUC criterion in all `15/15` folds, and official BSDS500-
+validation ODS/OIS/AP changed only by
+`-0.000044/-0.000018/+0.000101`. Report this as rejection of the fixed local
+signed-gradient realization, not as evidence against contrast polarity in
+natural contour grouping. The passed synthetic and invariance contracts are
+implementation checks, not detector-performance support.

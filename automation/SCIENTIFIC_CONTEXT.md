@@ -2555,3 +2555,22 @@ from signless tensor coherence, the unoriented-polarity SE(2) lift, binary EDPF
 chains, image torque, and Stage 14b anti-texture-map placement. Do not tune or
 extend polarity continuation, association fields, contour completion, or its
 integration from the result. The compact controller remains incumbent.
+
+### Stage 18r closure - contrast-polarity continuation context rejected; Stage 18s registered
+
+The fixed signed-gradient contrast-polarity continuation membership was
+training-ineligible in all `15/15` UDED-selection folds, so the candidate
+exactly reduced to compact MFI and all UDED metrics were unchanged. Official
+BSDS500-validation ODS/OIS/AP changed by
+`-0.000044/-0.000018/+0.000101`, failing the ODS margin and OIS condition.
+All non-performance contracts passed, but cannot override complete UDED
+ineligibility and the failed BSDS conditions. The candidate is rejected; do
+not tune or extend polarity continuation, association fields, contour
+completion, or its integration. The compact controller remains incumbent.
+
+The registered next action is `stage18s_generation2_mechanism_checkpoint`, a
+live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+Stage 18r or earlier closed families, combine rejected cues, use dataset
+identity, relax the cross-dataset rule, or use protected feedback.

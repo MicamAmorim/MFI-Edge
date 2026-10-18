@@ -4362,3 +4362,29 @@ runtime diagnostics, and positions 1/8/15 preview. Do not tune or extend its
 offsets, gradients, sign convention, interpolation, bilateral rule, scale
 fusion, calibration, integration, grouping, completion, graph, context, gate,
 localizer, or thresholds. The compact controller remains incumbent.
+
+### Stage 18r polarity-continuation context rejected; Stage 18s registered
+
+The fixed signed-gradient contrast-polarity continuation membership was
+training-ineligible in all `15/15` UDED-selection folds: its training
+edge-versus-texture AUC remained below the preregistered `0.56` threshold, so
+the candidate exactly reduced to compact MFI and all UDED aggregate and fold
+metrics were unchanged. Official BSDS500-validation ODS/OIS/AP changed by
+`-0.000044/-0.000018/+0.000101`, failing the required ODS gain and OIS
+non-collapse condition. The synthetic polarity, photometric, rotation,
+repeatability, exact-support, runtime, and fixed-preview contracts passed, but
+all promotion conditions were required.
+
+The candidate is rejected; do not tune or extend its tangent offsets,
+gradients, sign convention, interpolation, bilateral support, scale fusion,
+calibration, eligibility, integration, context, gate, localizer, or thresholds,
+and do not advance to association-field, completion, diffusion, graph, color,
+multiscale, or learned-polarity variants from this result. The compact Choquet-
+gated grayscale Scharr+NMS controller remains incumbent.
+
+The single registered next action is
+`stage18s_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must choose exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
+not tune Stage 18r or earlier closed families, combine rejected cues, use
+dataset identity, relax the cross-dataset rule, or use protected feedback.
