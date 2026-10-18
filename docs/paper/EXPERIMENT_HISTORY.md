@@ -4170,3 +4170,23 @@ preview. Do not tune or extend the intensity alphabet, pair geometry,
 co-occurrence model, pseudocount, PMI, density convention, deficit mapping,
 KDE, graph/spectral, calibration, or integration family. The compact
 controller remains incumbent.
+
+### Stage 18j PMI dependency context rejected; Stage 18k registered
+
+The fixed image-internal PMI dependency-deficit cue passed its BSDS500-
+validation criteria but failed the conjunctive UDED aggregate-F1 margin. UDED
+aggregate F1/precision/recall and mean fold F1 changed by
+`+0.000534/+0.002268/-0.002507/+0.000636`; it won `9/15` folds, was eligible
+in `15/15`, and preserved exact score support, but the F1 gain remained below
+the preregistered `+0.002`. Official BSDS500-validation ODS/OIS/AP improved by
+`+0.005537/+0.002090/+0.009347`. Synthetic, statistical-invariance,
+repeatability, runtime, and fixed-preview contracts passed, but all promotion
+conditions were required. The fixed realization is rejected and compact
+Choquet-gated grayscale Scharr+NMS remains incumbent.
+
+The single registered next action is
+`stage18k_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must choose exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
+not tune Stage 18j or earlier closed families, combine rejected cues, use
+dataset identity, relax the cross-dataset rule, or use protected feedback.

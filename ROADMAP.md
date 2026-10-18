@@ -2242,3 +2242,22 @@ with fixed flat/step/texture/noise, label-reassignment, repeatability, exact-
 support, runtime, and positions 1/8/15 preview contracts. No intensity,
 pairing, probability, PMI, calibration, integration, or incumbent parameter
 may be tuned from the result.
+
+## Stage 18j closed - image-internal PMI dependency context rejected
+
+The fixed PMI dependency-deficit cue changed UDED aggregate
+F1/precision/recall and mean fold F1 by
+`+0.000534/+0.002268/-0.002507/+0.000636`, with `9/15` fold wins and
+`15/15` eligibility. It missed only the required `+0.002` aggregate-F1 gain on
+that axis. Official BSDS500-validation ODS/OIS/AP improved by
+`+0.005537/+0.002090/+0.009347`, but the conjunctive rule rejects the cue.
+No intensity, pair, co-occurrence, probability, PMI, calibration, eligibility,
+or integration variant may be tuned, and compact Choquet-gated Scharr+NMS
+remains incumbent.
+
+The active next action is `stage18k_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must select exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit Stage 18j or earlier closed families, combine rejected
+cues, fit dataset identity, relax the cross-dataset rule, or use protected
+feedback.

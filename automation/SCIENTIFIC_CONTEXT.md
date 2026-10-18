@@ -2389,3 +2389,23 @@ gate strength `2.0`, floor `0.10`, grayscale Scharr+NMS, and threshold fitting
 remain unchanged. Do not tune or extend the intensity, pair, co-occurrence,
 PMI, KDE, graph/spectral, calibration, or integration family from the result.
 The compact controller remains incumbent.
+
+### Stage 18j closure - image-internal PMI dependency context rejected; Stage 18k registered
+
+The fixed image-internal PMI dependency-deficit membership passed the official
+BSDS500-validation axis but missed the conjunctive UDED aggregate-F1 margin.
+UDED aggregate F1/precision/recall and mean fold F1 changed by
+`+0.000534/+0.002268/-0.002507/+0.000636`, with `9/15` fold wins and
+eligibility in `15/15`, but aggregate F1 was below the required `+0.002` gain.
+Official BSDS500-validation ODS/OIS/AP improved by
+`+0.005537/+0.002090/+0.009347`. All non-performance contracts passed. The
+candidate is rejected; do not tune or extend the intensity, pair,
+co-occurrence, PMI, KDE, graph/spectral, calibration, or integration family.
+The compact controller remains incumbent.
+
+The registered next action is `stage18k_generation2_mechanism_checkpoint`, a
+live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+Stage 18j or earlier closed families, combine rejected cues, use dataset
+identity, relax the cross-dataset rule, or use protected feedback.
