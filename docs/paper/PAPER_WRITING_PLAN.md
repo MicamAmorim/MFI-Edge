@@ -1273,3 +1273,15 @@ failure closes this fixed facet-break realization without motivating geometry,
 model-order, robust/higher-order surface, adaptive orientation/window,
 alternative-test, segmentation, calibration, or integration variants. Retain
 the local evaluator's stochastic/reference-reproduction caveat.
+
+## Stage 18n outcome note
+
+Report Stage 18n as a negative fixed-mechanism result. The cue was eligible in
+only `2/15` UDED folds and changed aggregate F1/precision/recall and mean fold
+F1 by `-0.000162/-0.000171/-0.000138/-0.000130`, with `1/15` fold wins.
+Official BSDS500-validation ODS/OIS/AP changed by
+`-0.000021/+0.000078/+0.000098`. State that the fixed local sloped-facet
+surrogate did not provide discriminative incremental context under the joint
+rule; do not generalize this to Haralick's full iterative facet detector. Keep
+the deterministic positions 1/8/15 preview documentary and retain the local
+evaluator's stochastic/reference-reproduction caveat.

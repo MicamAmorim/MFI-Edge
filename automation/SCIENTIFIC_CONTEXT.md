@@ -2473,3 +2473,22 @@ floor `0.10`, conditioning, localizer, and threshold fitting remain unchanged.
 Do not tune or extend the facet geometry, axes, surface model, regression,
 structural-break statistic, mapping, calibration, or integration family from
 the result. The compact controller remains incumbent.
+
+### Stage 18n closure - sloped-facet structural-break context rejected; Stage 18o registered
+
+The fixed sloped-facet structural-break membership failed both development
+axes. UDED aggregate F1/precision/recall and mean fold F1 changed by
+`-0.000162/-0.000171/-0.000138/-0.000130`, with only `1/15` fold wins and
+eligibility in `2/15`. Official BSDS500-validation ODS/OIS/AP changed by
+`-0.000021/+0.000078/+0.000098`, failing the ODS margin. All non-performance
+contracts passed, but cannot override these failures. The candidate is
+rejected; do not tune or extend its facet geometry, surface model, regression,
+statistic, mapping, calibration, eligibility, or integration family. The
+compact controller remains incumbent.
+
+The registered next action is `stage18o_generation2_mechanism_checkpoint`, a
+live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+Stage 18n or earlier closed families, combine rejected cues, use dataset
+identity, relax the cross-dataset rule, or use protected feedback.

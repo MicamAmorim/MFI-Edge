@@ -2314,3 +2314,19 @@ with fixed flat/ramp/step/texture/noise, positive-affine, repeatability, exact-
 support, runtime, and positions 1/8/15 preview contracts. No facet geometry,
 axis, plane, regression, F statistic, mapping, calibration, integration, or
 incumbent parameter may be tuned from the result.
+
+## Stage 18n closed - sloped-facet structural-break context rejected
+
+The fixed facet-break cue changed UDED aggregate F1/precision/recall and mean
+fold F1 by `-0.000162/-0.000171/-0.000138/-0.000130`, with only `1/15` fold
+wins and `2/15` eligibility. Official BSDS500-validation ODS/OIS/AP changed by
+`-0.000021/+0.000078/+0.000098`. The conjunctive rule rejects the cue. No
+facet geometry, axis, surface model, regression statistic, mapping,
+calibration, eligibility, or integration variant may be tuned, and compact
+Choquet-gated Scharr+NMS remains incumbent.
+
+The active next action is `stage18o_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must select exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit Stage 18n or earlier closed families, combine rejected cues,
+fit dataset identity, relax the cross-dataset rule, or use protected feedback.

@@ -4264,3 +4264,22 @@ repeatability contracts, runtime diagnostics, and positions 1/8/15 preview.
 Do not tune or extend its neighborhoods, axes, plane model, regression,
 structural-break statistic, mapping, calibration, eligibility, or integration
 family. The compact controller remains incumbent.
+
+### Stage 18n sloped-facet structural-break context rejected; Stage 18o registered
+
+The fixed facet-break cue failed its conjunctive promotion rule on both
+development axes. UDED aggregate F1/precision/recall and mean fold F1 changed
+by `-0.000162/-0.000171/-0.000138/-0.000130`; it won only `1/15` folds and
+was eligible in only `2/15`. Official BSDS500-validation ODS/OIS/AP changed by
+`-0.000021/+0.000078/+0.000098`, so the required ODS gain also failed. The
+synthetic, photometric, repeatability, exact-support, runtime, and fixed-preview
+contracts passed, but all promotion conditions were required. The fixed
+realization is rejected and compact Choquet-gated grayscale Scharr+NMS remains
+incumbent.
+
+The single registered next action is
+`stage18o_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must choose exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
+not tune Stage 18n or earlier closed families, combine rejected cues, use
+dataset identity, relax the cross-dataset rule, or use protected feedback.
