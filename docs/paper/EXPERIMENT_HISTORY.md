@@ -4217,3 +4217,24 @@ repeatability contracts, runtime diagnostics, and positions 1/8/15 preview.
 Do not tune or extend the torque support, patch shape, oriented edge measure,
 coherence, backprojection, learning, attention/segmentation, calibration, or
 integration family. The compact controller remains incumbent.
+
+### Stage 18l image-torque context rejected; Stage 18m registered
+
+The fixed image-torque closure-support cue passed its official BSDS500-
+validation criteria but failed the conjunctive UDED conditions. UDED aggregate
+F1/precision/recall and mean fold F1 changed by
+`+0.000573/-0.000342/+0.002149/+0.000483`, with `9/15` fold wins,
+`15/15` eligibility, and exact score-support preservation. The aggregate-F1
+gain remained below `+0.002`, and precision was negative. Official
+BSDS500-validation ODS/OIS/AP improved by
+`+0.003934/+0.001900/+0.012284`. Synthetic closure, polarity, repeatability,
+runtime, support, and fixed-preview contracts passed, but all promotion
+conditions were required. The fixed realization is rejected and compact
+Choquet-gated grayscale Scharr+NMS remains incumbent.
+
+The single registered next action is
+`stage18m_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must choose exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
+not tune Stage 18l or earlier closed families, combine rejected cues, use
+dataset identity, relax the cross-dataset rule, or use protected feedback.

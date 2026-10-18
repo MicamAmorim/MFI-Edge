@@ -1149,6 +1149,20 @@ temporal filters, event-camera, adaptive, oriented, color, learned,
 calibration, or integration variants. Retain the local evaluator's stochastic/
 reference-reproduction caveat.
 
+## Stage 18l outcome writing note
+
+Report that the fixed closure-participation cue was individually eligible in
+all folds and improved official BSDS500-validation ODS/OIS/AP by
+`+0.003934/+0.001900/+0.012284`, but changed UDED aggregate
+F1/precision/recall and mean fold F1 by
+`+0.000573/-0.000342/+0.002149/+0.000483`. It won `9/15` folds yet failed
+the preregistered aggregate-F1 and precision conditions. Frame this as another
+BSDS-positive/UDED-submargin context result and a rejection of the fixed
+repository torque realization, not image torque generally. Do not imply that
+the positive BSDS axis authorizes torque, attention, segmentation, calibration,
+or integration tuning. Preserve the deterministic positions 1/8/15 preview
+and the stochastic/reference-uncertified evaluator caveat.
+
 ## Stage 18d result writing note
 
 Report the fixed active micro-drift variance membership as a cross-dataset

@@ -2431,3 +2431,24 @@ runtime diagnostics, and positions 1/8/15 preview. The compact bank, gamma
 threshold fitting remain unchanged. Do not tune or extend the torque,
 attention/segmentation, calibration, or integration family from the result.
 The compact controller remains incumbent.
+
+### Stage 18l closure - image-torque closure context rejected; Stage 18m registered
+
+The fixed image-torque closure-support membership passed the official
+BSDS500-validation axis but failed the conjunctive UDED gate. UDED aggregate
+F1/precision/recall and mean fold F1 changed by
+`+0.000573/-0.000342/+0.002149/+0.000483`, with `9/15` fold wins and
+eligibility in `15/15`; aggregate F1 missed the required `+0.002` gain and
+precision was negative. Official BSDS500-validation ODS/OIS/AP improved by
+`+0.003934/+0.001900/+0.012284`. All non-performance contracts passed. The
+candidate is rejected; do not tune or extend torque support, shape, edge
+measure, tangent convention, coherence, backprojection, learning, attention,
+segmentation, calibration, or integration. The compact controller remains
+incumbent.
+
+The registered next action is `stage18m_generation2_mechanism_checkpoint`, a
+live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+Stage 18l or earlier closed families, combine rejected cues, use dataset
+identity, relax the cross-dataset rule, or use protected feedback.

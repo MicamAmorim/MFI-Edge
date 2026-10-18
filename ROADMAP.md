@@ -2279,3 +2279,22 @@ runtime, and positions 1/8/15 preview contracts. No torque support, patch,
 edge measure, tangent, coherence, backprojection, learned, attention,
 segmentation, calibration, integration, or incumbent parameter may be tuned
 from the result.
+
+## Stage 18l closed - image-torque closure context rejected
+
+The fixed image-torque cue changed UDED aggregate F1/precision/recall and mean
+fold F1 by `+0.000573/-0.000342/+0.002149/+0.000483`, with `9/15` fold wins
+and `15/15` eligibility. It failed the required aggregate-F1 margin and
+nonnegative-precision condition. Official BSDS500-validation ODS/OIS/AP
+improved by `+0.003934/+0.001900/+0.012284`, but the conjunctive rule rejects
+the cue. No torque support, shape, edge measure, tangent, coherence,
+backprojection, learning, attention, segmentation, calibration, eligibility,
+or integration variant may be tuned, and compact Choquet-gated Scharr+NMS
+remains incumbent.
+
+The active next action is `stage18m_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must select exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit Stage 18l or earlier closed families, combine rejected
+cues, fit dataset identity, relax the cross-dataset rule, or use protected
+feedback.
