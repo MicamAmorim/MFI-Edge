@@ -1366,3 +1366,20 @@ and fixed positions 1/8/15 preview contracts are implementation evidence, not
 promotion evidence. Do not present the maps as posterior probabilities or use
 the result to motivate alternate isotonic/calibration variants. Retain the
 local evaluator's stochastic/reference-reproduction caveat.
+
+## Stage 18v prospective writing note
+
+Frame Stage 18v as a fixed structure-versus-texture coherence falsification
+using Xu et al.'s windowed variation primitives, not as an exact reproduction
+of their iterative RTV smoother. Record the unchanged conditioned grayscale
+input, forward differences, sigma-3 reflected 15x15 Gaussian window, signed
+inherent variation, absolute total variation, analytic bounded ratio, and zero
+flat rule. Explain that signed oscillations cancel in this statistic, unlike
+signless structure-tensor energy, while Scharr+NMS localization remains
+unchanged. Report eligibility, precision/recall, fold wins, exact score-support
+preservation, synthetic and photometric contracts, runtime, both development
+axes, and the fixed positions 1/8/15 preview. A failure closes this fixed
+relative-variation realization without motivating iterative RTV smoothing,
+alternative TV penalties, scale/support changes, color/multiscale variants,
+calibration changes, or rejected-cue combinations. Retain the local evaluator's
+stochastic/reference-reproduction caveat.

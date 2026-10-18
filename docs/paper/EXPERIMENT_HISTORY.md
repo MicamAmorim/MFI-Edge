@@ -4443,3 +4443,28 @@ mechanistically distinct bounded generation-2 falsification under a
 preregistered joint UDED/BSDS rule. It may not tune Stage 18t or earlier closed
 families, combine rejected cues, use dataset identity, relax the cross-dataset
 rule, or use protected feedback.
+
+### Stage 18u checkpoint closed; Stage 18v relative-variation context registered
+
+Live primary-source review selected Xu et al.'s windowed inherent-versus-total
+variation principle (ACM TOG 2012, DOI `10.1145/2366145.2366158`). Signed
+gradients reinforce through one coherent structural transition but cancel in
+oscillatory texture, unlike signless tensor energy or the closed bilateral
+polarity-continuation test. The public author implementation fixes sigma `3`
+and a 15-sample Gaussian support.
+
+Stage 18v computes horizontal/vertical forward differences on the unchanged
+median-conditioned grayscale image and forms the bounded ratio
+`(|G*dx|+|G*dy|)/(G*|dx|+G*|dy|)`, with zero at zero total variation. The cue
+enters only as one outer-training-fold-eligible positive membership. It does
+not run RTV smoothing or change the compact bank, distorted-Choquet capacity,
+gate, Scharr+NMS localizer, or threshold fitting.
+
+The authoritative preregistration is
+`docs/paper/STAGE18V_PREREGISTRATION.md`. The registered experiment is
+`stage18v_relative_variation_context`, with conjunctive UDED-selection 5x3
+leakage-free CV and official BSDS500-validation criteria, exact score-support
+preservation, fixed synthetic/photometric contracts, runtime diagnostics, and
+the positions 1/8/15 preview. No derivative, window, scale, ratio, smoothing,
+calibration, or integration variant may be tuned from the result. The compact
+Choquet-gated grayscale Scharr+NMS controller remains incumbent.

@@ -2437,3 +2437,22 @@ live-primary-literature escalation must select exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit Stage 18t or earlier closed families, combine rejected cues,
 fit dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 18u closed - relative-variation coherence context registered
+
+Primary literature review selected Xu et al.'s signed-gradient inherent-
+variation principle as one fixed structure-versus-texture test. Stage 18v uses
+the paper/author-code default sigma `3` and 15-sample Gaussian support to form
+a bounded local coherence ratio from signed and absolute directional
+differences. Oscillatory texture cancels in the numerator while a coherent
+transition reinforces. The test runs no RTV optimizer or smoothing and changes
+neither the retained context nor grayscale Scharr+NMS localization.
+
+The active next action is `stage18v_relative_variation_context` under
+`docs/paper/STAGE18V_PREREGISTRATION.md`. Promotion is conjunctive across
+UDED-selection repeated CV and official BSDS500 validation, with exact score-
+support preservation, synthetic and photometric contracts, and the fixed
+positions 1/8/15 preview. The compact Choquet-gated grayscale Scharr+NMS
+controller remains incumbent. A failure closes this fixed relative-variation
+realization without authorizing smoothing, total-variation, scale, ratio,
+calibration, or integration tuning.

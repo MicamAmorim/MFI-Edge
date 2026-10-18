@@ -2616,3 +2616,27 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 Stage 18t or earlier closed families, combine rejected cues, use dataset
 identity, relax the cross-dataset rule, or use protected feedback.
+
+### Stage 18u closure - relative-variation coherence context registered
+
+The live primary-literature checkpoint selected one fixed local structure-
+versus-texture test from Xu et al.'s relative-total-variation framework. Stage
+18v computes horizontal and vertical forward differences on the unchanged
+median-conditioned grayscale image, then divides the sum of magnitudes of
+sigma-3 Gaussian-windowed signed differences by the corresponding sum of
+Gaussian-windowed absolute differences. The fixed 15x15 support follows the
+public author code; zero total variation maps to zero evidence. Coherent
+structural gradients reinforce while oscillatory texture cancels. This direct
+bounded ratio does not run the paper's iterative RTV optimizer or smooth the
+image, and it differs from signless tensor coherence and bilateral polarity
+continuation.
+
+The authoritative protocol is `docs/paper/STAGE18V_PREREGISTRATION.md`.
+`stage18v_relative_variation_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed synthetic and photometric contracts, runtime
+diagnostics, and positions 1/8/15 preview. The compact bank, gamma `0.55`, gate
+strength `2.0`, floor `0.10`, median conditioning, grayscale Scharr+NMS, and
+threshold fitting remain unchanged. Do not tune or extend the derivative,
+window, scale, ratio, RTV/TV smoothing, calibration, or integration family from
+the result. The compact controller remains incumbent.
