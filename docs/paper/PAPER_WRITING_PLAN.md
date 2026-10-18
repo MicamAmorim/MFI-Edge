@@ -1256,3 +1256,20 @@ closes this fixed torque realization without motivating support/shape,
 edge-threshold, color/depth/motion, learned torque, attention, segmentation,
 boundary ownership, calibration, integration, or fusion variants. Retain the
 local evaluator's stochastic/reference-reproduction caveat.
+
+## Stage 18n prospective writing note
+
+Frame Stage 18n as one fixed noise-normalized local surface-change test based
+on Haralick's sloped-facet F-statistic edge model and Chow's nested-regression
+test, not as an exact reproduction of Haralick's iterative facet detector.
+Record the two disjoint `3x3` neighborhoods at offset two, four fixed axes,
+intercept-plus-row/column plane, pooled-versus-separate RSS formula, numerical
+zero-residual rule, `F/(1+F)` bounding, maximum-axis fusion, and reflection.
+Explain that the cue only gates the unchanged Scharr+NMS localizer. Report
+eligibility, precision/recall, exact score-support preservation, flat/affine-
+ramp/step/checkerboard/noise, polarity/positive-affine and repeatability
+contracts, runtime, both development axes, and positions 1/8/15 preview. A
+failure closes this fixed facet-break realization without motivating geometry,
+model-order, robust/higher-order surface, adaptive orientation/window,
+alternative-test, segmentation, calibration, or integration variants. Retain
+the local evaluator's stochastic/reference-reproduction caveat.

@@ -4238,3 +4238,29 @@ escalation that must choose exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 18l or earlier closed families, combine rejected cues, use
 dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 18m checkpoint closed; Stage 18n sloped-facet break context registered
+
+Live primary-source review selected Haralick's local sloped-facet statistical
+edge principle (Computer Graphics and Image Processing 1980, DOI
+`10.1016/0146-664X(80)90004-0`), with the fixed nested-regression statistic
+from Chow (Econometrica 1960, DOI `10.2307/1910133`). Haralick's key
+distinction is not raw gradient activity but whether opposing best-fitting
+local planes differ beyond their within-region residual variation.
+
+Stage 18n fits two disjoint `3x3` planar neighborhoods centered two pixels to
+either side of each candidate under four fixed axes, compares them with one
+pooled plane, maps the resulting F statistic by `F/(1+F)`, and takes the
+maximum axis response. The bounded cue enters only as one outer-training-fold-
+eligible membership. It is a fixed repository surrogate rather than an exact
+reproduction of Haralick's iterative facet procedure; compact Choquet
+aggregation and grayscale Scharr+NMS localization remain unchanged.
+
+The authoritative protocol is `docs/paper/STAGE18N_PREREGISTRATION.md`.
+`stage18n_facet_break_context` is registered with conjunctive UDED-selection
+repeated CV and official BSDS500-validation criteria, exact score-support
+preservation, flat/ramp/step/checkerboard/noise, photometric-invariance and
+repeatability contracts, runtime diagnostics, and positions 1/8/15 preview.
+Do not tune or extend its neighborhoods, axes, plane model, regression,
+structural-break statistic, mapping, calibration, eligibility, or integration
+family. The compact controller remains incumbent.

@@ -2298,3 +2298,19 @@ distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit Stage 18l or earlier closed families, combine rejected
 cues, fit dataset identity, relax the cross-dataset rule, or use protected
 feedback.
+
+## Stage 18m closed - sloped-facet structural-break context selected
+
+Stage 18m selected one fixed local surface-model change mechanism from
+Haralick's sloped-facet edge framework and Chow's regression-equality F test.
+Stage 18n compares two opposing `3x3` planar fits with one pooled planar fit
+over four fixed axes, bounds the maximum F evidence, and exposes it only as
+one fold-eligible positive context membership. It does not segment the image
+or alter compact Choquet aggregation or Scharr+NMS localization.
+
+The active next action is `stage18n_facet_break_context`. Promotion is
+conjunctive across UDED-selection repeated CV and official BSDS500 validation,
+with fixed flat/ramp/step/texture/noise, positive-affine, repeatability, exact-
+support, runtime, and positions 1/8/15 preview contracts. No facet geometry,
+axis, plane, regression, F statistic, mapping, calibration, integration, or
+incumbent parameter may be tuned from the result.

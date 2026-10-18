@@ -2452,3 +2452,24 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 Stage 18l or earlier closed families, combine rejected cues, use dataset
 identity, relax the cross-dataset rule, or use protected feedback.
+
+### Stage 18m closure - sloped-facet structural-break context registered
+
+The live primary-literature checkpoint selected one fixed local surface-model
+change test. Stage 18n follows Haralick's sloped-facet edge principle and
+Chow's regression-equality statistic: under four fixed axes, two disjoint
+`3x3` planar neighborhoods centered two samples to either side of a candidate
+are compared with one pooled plane. The F statistic is bounded by `F/(1+F)`,
+maximized across axes, and appended only as one outer-training-fold-eligible
+positive membership. This tests noise-normalized change between local surfaces
+without segmenting the image or changing Scharr+NMS localization.
+
+The authoritative protocol is `docs/paper/STAGE18N_PREREGISTRATION.md`.
+`stage18n_facet_break_context` is registered with conjunctive UDED-selection
+repeated CV and official BSDS500-validation criteria, exact score-support
+preservation, fixed synthetic/photometric contracts, runtime diagnostics, and
+positions 1/8/15 preview. The compact bank, gamma `0.55`, gate strength `2.0`,
+floor `0.10`, conditioning, localizer, and threshold fitting remain unchanged.
+Do not tune or extend the facet geometry, axes, surface model, regression,
+structural-break statistic, mapping, calibration, or integration family from
+the result. The compact controller remains incumbent.
