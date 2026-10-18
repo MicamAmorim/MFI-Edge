@@ -2533,3 +2533,25 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 Stage 18p or earlier closed families, combine rejected cues, use dataset
 identity, relax the cross-dataset rule, or use protected feedback.
+
+### Stage 18q closure - contrast-polarity continuation context registered
+
+The live primary-literature checkpoint selected one fixed signed-contour
+grouping test based on Geisler and Perry's natural-scene statistics. Stage 18r
+computes signed unit Scharr gradients on the unchanged median-conditioned
+grayscale image, samples symmetrically along each local tangent at fixed pixel
+offsets `1/2/4`, and requires positive polarity/orientation alignment on both
+sides through a geometric mean. The unweighted mean across offsets enters only
+as one outer-training-fold-eligible positive membership. It does not reproduce
+the paper's learned natural-statistics observer, link contours, diffuse a
+score, construct a graph, or replace localization.
+
+The authoritative protocol is `docs/paper/STAGE18R_PREREGISTRATION.md`.
+`stage18r_polarity_continuation_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed synthetic polarity/photometric/rotation contracts,
+runtime diagnostics, and positions 1/8/15 preview. The mechanism is distinct
+from signless tensor coherence, the unoriented-polarity SE(2) lift, binary EDPF
+chains, image torque, and Stage 14b anti-texture-map placement. Do not tune or
+extend polarity continuation, association fields, contour completion, or its
+integration from the result. The compact controller remains incumbent.

@@ -2364,3 +2364,20 @@ live-primary-literature escalation must select exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit Stage 18p or earlier closed families, combine rejected cues,
 fit dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 18q closed - contrast-polarity continuation context registered
+
+Primary-source review selected Geisler and Perry's natural-contour result that
+geometry and contrast polarity jointly support contour grouping. Stage 18r
+adds one fixed positive context membership: signed unit Scharr gradients must
+align with samples on both local-tangent sides at offsets `1`, `2`, and `4`,
+and the three bilateral supports are averaged. It introduces no linking,
+diffusion, graph, learned polarity table, rejected cue, or localizer change.
+
+The active next action is `stage18r_polarity_continuation_context`. Promotion
+is conjunctive across UDED-selection repeated CV and official BSDS500
+validation under `docs/paper/STAGE18R_PREREGISTRATION.md`. The runner emits the
+fixed positions 1/8/15 `best_method_preview.png` and official-evaluation
+manifest. The compact Choquet-gated grayscale Scharr+NMS controller remains
+incumbent, and no polarity-continuation parameter or extension may be tuned
+from the result.

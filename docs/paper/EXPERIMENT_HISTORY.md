@@ -4334,3 +4334,31 @@ mechanistically distinct bounded generation-2 falsification under a
 preregistered joint UDED/BSDS rule. It may not tune Stage 18p or earlier closed
 families, combine rejected cues, use dataset identity, relax the cross-dataset
 rule, or use protected feedback.
+
+## Stage 18q checkpoint closed; Stage 18r polarity-continuation context registered
+
+Live primary-source review selected one fixed contrast-sign grouping test from
+Geisler and Perry's natural-contour statistics (Visual Neuroscience 2009, DOI
+`10.1017/S0952523808080875`). Their measurements and ideal-observer analysis
+show that edge-element geometry and contrast polarity jointly inform contour
+grouping. Stage 18r isolates that mechanism without reproducing their learned
+statistics: signed unit Scharr gradients are sampled symmetrically along the
+local tangent at fixed offsets `1/2/4`, and each offset requires positive
+polarity/orientation alignment on both tangent sides. The three bilateral
+supports are averaged into one bounded positive membership.
+
+This is distinct from signless tensor coherence, the Stage-14r unoriented-
+polarity SE(2) lift, binary EDPF chains, patch torque/closure, and Stage 14b's
+placement of anti-texture evidence. It does not link or diffuse contours, add a
+graph, replace localization, or combine rejected cues. The compact bank,
+Choquet gamma `0.55`, gate strength `2.0`, floor `0.10`, median conditioning,
+grayscale Scharr+NMS, and fold fitting remain unchanged.
+
+The authoritative protocol is `docs/paper/STAGE18R_PREREGISTRATION.md`.
+`stage18r_polarity_continuation_context` is registered with conjunctive UDED-
+selection repeated CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed synthetic polarity/photometric/rotation contracts,
+runtime diagnostics, and positions 1/8/15 preview. Do not tune or extend its
+offsets, gradients, sign convention, interpolation, bilateral rule, scale
+fusion, calibration, integration, grouping, completion, graph, context, gate,
+localizer, or thresholds. The compact controller remains incumbent.

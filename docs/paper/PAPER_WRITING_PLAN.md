@@ -1313,3 +1313,17 @@ weights, quantifiers, adaptive/spatial variants, mixtures, or cue selection.
 Report the passing algebraic/support contracts and fixed positions 1/8/15
 preview as documentary evidence, and retain the local evaluator's stochastic/
 reference-reproduction caveat.
+
+## Stage 18r prospective writing note
+
+Frame Stage 18r as a fixed signed-contrast grouping falsification, not as an
+exact reproduction of Geisler and Perry's natural-statistics ideal observer.
+The method requires bilateral same-polarity unit-gradient alignment at three
+predeclared tangent offsets and appends only one fold-eligible context
+membership. Emphasize the distinction from signless structure-tensor
+coherence, unsigned SE(2) diffusion, binary chains, torque closure, and the
+Stage-14b negative-evidence placement study. Report eligibility, UDED paired
+fold behavior, official BSDS ODS/OIS/AP, support invariance, synthetic polarity
+reversal and photometric contracts, runtime, and the fixed preview regardless
+of outcome. Do not describe the cue as contour completion or a learned
+association field.
