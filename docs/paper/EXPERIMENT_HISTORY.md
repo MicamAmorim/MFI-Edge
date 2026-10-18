@@ -4308,3 +4308,29 @@ score-support contracts, and a fixed positions 1/8/15 preview. Do not tune or
 extend its OWA vector, order statistic, quantifier, trimming, weighting,
 capacity, mixture, calibration, context gate, localizer, or thresholds. The
 compact Choquet-gated grayscale Scharr+NMS controller remains incumbent.
+
+### Stage 18p median OWA context rejected; Stage 18q registered
+
+The fixed median OWA failed its conjunctive promotion rule on both development
+axes. On UDED selection, aggregate F1/precision/recall and mean fold F1 changed
+by `-0.001998/-0.001055/-0.003541/-0.001747`, with only `1/15` fold wins.
+On official BSDS500 validation, ODS/OIS/AP changed by
+`+0.000666/-0.000988/-0.012906`. The ODS change missed the required `+0.002`
+margin and both OIS and AP violated their non-collapse conditions. The
+finite/bounded, repeatability, monotonicity, idempotence, permutation,
+central-order-statistic, exact-support, and fixed-preview contracts passed,
+but all promotion conditions were required.
+
+The candidate is rejected; do not tune or extend its OWA vector, quantifier,
+order statistic, trimming, weighting, capacity, mixture, calibration, gate,
+localizer, or thresholds, and do not advance to adaptive, weighted, learned,
+spatial, image-conditioned, or cue-selected OWA variants. The compact Choquet-
+gated grayscale Scharr+NMS controller remains incumbent. The local Windows
+Berkeley matcher remains stochastic and reference-reproduction-unverified.
+
+The registered next action is `stage18q_generation2_mechanism_checkpoint`, a
+live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification under a
+preregistered joint UDED/BSDS rule. It may not tune Stage 18p or earlier closed
+families, combine rejected cues, use dataset identity, relax the cross-dataset
+rule, or use protected feedback.

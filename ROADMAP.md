@@ -2347,3 +2347,20 @@ with fixed algebraic, exact-support, and positions 1/8/15 preview contracts.
 No OWA order weight, quantifier, trimming, reliability weighting, capacity,
 mixture, calibration, gate, localizer, threshold, or incumbent parameter may
 be tuned from the result.
+
+## Stage 18p closed - median OWA compact-context aggregation rejected
+
+The fixed median OWA changed UDED aggregate F1/precision/recall and mean fold
+F1 by `-0.001998/-0.001055/-0.003541/-0.001747`, with only `1/15` fold wins.
+Official BSDS500-validation ODS/OIS/AP changed by
+`+0.000666/-0.000988/-0.012906`. The conjunctive rule rejects the candidate.
+All algebraic and exact-support contracts and the fixed preview passed, but no
+OWA parameter, quantifier, statistic, trimming, weighting, capacity, mixture,
+calibration, gate, localizer, or threshold may be tuned from this result. The
+compact Choquet-gated Scharr+NMS controller remains incumbent.
+
+The active next action is `stage18q_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must select exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit Stage 18p or earlier closed families, combine rejected cues,
+fit dataset identity, relax the cross-dataset rule, or use protected feedback.

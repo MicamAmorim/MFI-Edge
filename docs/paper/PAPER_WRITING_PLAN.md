@@ -1300,3 +1300,16 @@ preview. A failure closes fixed median OWA without motivating alternative
 quantifiers, weighted/adaptive OWA, trimming, mixtures, cue selection, or
 dataset conditioning. Retain the local evaluator's stochastic/reference-
 reproduction caveat.
+
+## Stage 18p outcome note
+
+Report Stage 18p as a negative fixed-aggregation result. UDED aggregate
+F1/precision/recall and mean fold F1 changed by
+`-0.001998/-0.001055/-0.003541/-0.001747`, with `1/15` fold wins. Official
+BSDS500-validation ODS/OIS/AP changed by
+`+0.000666/-0.000988/-0.012906`. State that the fixed three-of-five median
+semantics reduced performance and that the result does not motivate other OWA
+weights, quantifiers, adaptive/spatial variants, mixtures, or cue selection.
+Report the passing algebraic/support contracts and fixed positions 1/8/15
+preview as documentary evidence, and retain the local evaluator's stochastic/
+reference-reproduction caveat.
