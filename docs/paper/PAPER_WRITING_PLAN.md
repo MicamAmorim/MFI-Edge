@@ -1335,3 +1335,20 @@ validation ODS/OIS/AP changed only by
 signed-gradient realization, not as evidence against contrast polarity in
 natural contour grouping. The passed synthetic and invariance contracts are
 implementation checks, not detector-performance support.
+
+## Stage 18t prospective writing note
+
+Frame Stage 18t as a fixed calibration-semantic test over the five retained
+memberships, not as a new cue, multivariate classifier, or probability claim.
+Record the unchanged initial sigmoid memberships, class-balanced edge/texture
+weights, exact-tie aggregation, weighted squared-loss PAV solution,
+piecewise-constant mapping, nearest-terminal extrapolation, and outer-fold-only
+fit. Contrast the mechanism explicitly with the closed multivariate logistic
+fusion and label-free empirical-CDF normalization. Report precision/recall,
+fold wins, calibrated-membership diagnostics, exact score-support preservation,
+algebraic contracts, both development axes, runtime, and the fixed positions
+1/8/15 preview. A failure closes this fixed isotonic realization without
+motivating alternative class weights, labels, samples, losses, bins,
+smoothing, shrinkage, splines, calibration families, feature selection,
+aggregation, gate, localizer, or threshold tuning. Retain the local evaluator's
+stochastic/reference-reproduction caveat.

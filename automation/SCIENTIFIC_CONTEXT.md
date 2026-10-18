@@ -2574,3 +2574,26 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 Stage 18r or earlier closed families, combine rejected cues, use dataset
 identity, relax the cross-dataset rule, or use protected feedback.
+
+### Stage 18s closure - isotonic membership calibration registered
+
+The live checkpoint responded to the complete UDED ineligibility of the fixed
+polarity-continuation cue and the broader stagnation of isolated descriptor
+additions by adding no cue or localizer. Stage 18t replaces only the hand-shaped
+sigmoid marginal of each retained membership with a deterministic weighted
+isotonic map fitted inside the outer UDED training fold. Edge and texture
+samples receive equal total weight; exact ties are aggregated; weighted
+pool-adjacent violators supplies a piecewise-constant nondecreasing map with
+nearest-terminal extrapolation. The test asks whether cue ordering is useful
+but the incumbent sigmoid shape transfers poorly.
+
+The authoritative protocol is `docs/paper/STAGE18T_PREREGISTRATION.md`.
+`stage18t_isotonic_membership_calibration` is registered with conjunctive
+UDED-selection repeated CV and official BSDS500-validation criteria, exact
+score-support preservation, deterministic algebraic contracts, and positions
+1/8/15 preview. This differs from Stage 14m's multivariate logistic fusion and
+Stage 16p's label-free image-internal rank transform. The five features,
+singleton weights, gamma `0.55`, gate strength `2.0`, floor `0.10`, median
+conditioning, grayscale Scharr+NMS, and threshold fitting remain unchanged. Do
+not tune or extend calibration, feature, aggregation, gate, localizer, or
+threshold choices from the result. The compact controller remains incumbent.

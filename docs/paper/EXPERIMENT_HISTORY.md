@@ -4388,3 +4388,32 @@ escalation that must choose exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 18r or earlier closed families, combine rejected cues, use
 dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 18s checkpoint closed; Stage 18t isotonic membership calibration registered
+
+The checkpoint added neither another descriptor nor another localizer. The
+repeated weakness or complete training ineligibility of isolated positive cues
+instead motivated a direct test of the retained membership semantics. Zadrozny
+and Elkan (KDD 2002, DOI `10.1145/775047.775151`) showed that an ordered score
+can be calibrated by isotonic regression without assuming a sigmoid, while
+Niculescu-Mizil and Caruana (ICML 2005, DOI
+`10.1145/1102351.1102430`) emphasized leakage-separated calibration and the
+different distortions addressed by sigmoid and isotonic maps.
+
+Stage 18t computes the unchanged five sigmoid memberships, then fits one
+class-balanced weighted pool-adjacent-violators map per membership using only
+the current outer UDED training fold's edge-versus-texture samples. Exact score
+ties are aggregated, the fitted map is piecewise constant and nondecreasing,
+and out-of-range values use the nearest terminal block. The calibrated values
+replace only the five membership marginals before unchanged distorted-Choquet
+aggregation. This is not Stage 14m's multivariate logistic fusion and is not
+Stage 16p's label-free within-image rank normalization.
+
+The authoritative preregistration is
+`docs/paper/STAGE18T_PREREGISTRATION.md`. The registered experiment is
+`stage18t_isotonic_membership_calibration`, with UDED-selection 5x3
+leakage-free CV, official BSDS500-validation attachment, exact positive-score
+support preservation, deterministic PAV contracts, and the fixed positions
+1/8/15 preview. Promotion remains conjunctive. No calibration form, class
+weight, label, feature, capacity, aggregation, gate, localizer, or threshold
+may be tuned from the result. The compact controller remains incumbent.

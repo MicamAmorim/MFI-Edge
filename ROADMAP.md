@@ -2398,3 +2398,23 @@ live-primary-literature escalation must select exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit Stage 18r or earlier closed families, combine rejected cues,
 fit dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 18s closed - isotonic membership calibration selected
+
+The checkpoint changes the marginal membership model rather than adding
+another weak cue. Stage 18t fits a separate deterministic weighted isotonic map
+to each of the five retained sigmoid memberships inside every outer UDED
+training fold. Edge and texture samples each carry total weight `0.5`; exact
+ties are aggregated; pool-adjacent violators gives a piecewise-constant
+nondecreasing map with nearest-terminal extrapolation. Raw cues, singleton
+weights, distorted-Choquet gamma, gate, conditioning, Scharr+NMS, and threshold
+fitting are unchanged.
+
+The active next action is `stage18t_isotonic_membership_calibration` under
+`docs/paper/STAGE18T_PREREGISTRATION.md`. Promotion requires the unchanged
+conjunctive UDED-selection and official BSDS500-validation margins plus exact
+positive-score support, calibration contracts, and the fixed positions 1/8/15
+preview. This is a univariate monotone membership-calibration test, not the
+closed multivariate logistic fusion or empirical-copula normalization. A
+failure closes the fixed isotonic realization and may not motivate calibration
+or integration tuning.
