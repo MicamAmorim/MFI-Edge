@@ -1383,3 +1383,31 @@ relative-variation realization without motivating iterative RTV smoothing,
 alternative TV penalties, scale/support changes, color/multiscale variants,
 calibration changes, or rejected-cue combinations. Retain the local evaluator's
 stochastic/reference-reproduction caveat.
+
+## Stage 18v outcome note
+
+Report Stage 18v as a negative fixed relative-variation result. The cue was
+training-ineligible in all `15/15` UDED folds and therefore reduced exactly to
+compact MFI. Official BSDS500-validation ODS/OIS/AP changed by only
+`+0.000016/+0.000554/+0.000107`, missing the ODS margin. The passing
+synthetic, photometric, repeatability, support, runtime, and fixed-preview
+contracts establish implementation behavior only. Do not use the result to
+motivate RTV smoothing, derivative/window/scale/ratio variants, calibration,
+integration, or rejected-cue combinations.
+
+## Stage 18x prospective writing note
+
+Frame Stage 18x as a fixed nonlinear instantaneous-energy falsification, not
+as a reproduction of Boudraa and Diop's contrast-enhancement pipeline. Record
+the unchanged median-conditioned grayscale input, published axial and diagonal
+2-D Teager-Kaiser stencils, positive rectification, fixed geometric consensus,
+analytic division-by-two bound, and reflected `3x3` support. Explain that the
+consensus requires both complementary stencil responses and adds only one
+outer-fold-eligible positive membership while leaving Choquet aggregation and
+Scharr+NMS unchanged. Report eligibility, precision/recall, fold wins, exact
+score-support preservation, flat/step/checkerboard/noise and quadratic-scale
+contracts, runtime, both development axes, and the fixed positions 1/8/15
+preview. Failure closes this realization without motivating alternative TKEO
+stencils, max/mean fusion, higher-order energy, wavelet/multiscale/color
+variants, demodulation, contrast enhancement, calibration, or integration.
+Retain the local evaluator's stochastic/reference-reproduction caveat.

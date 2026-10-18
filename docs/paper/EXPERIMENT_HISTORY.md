@@ -4488,3 +4488,26 @@ next action is `stage18w_generation2_mechanism_checkpoint`, a live-primary-
 literature escalation that must choose exactly one mechanistically distinct
 bounded generation-2 falsification under a preregistered joint UDED/BSDS rule,
 without protected feedback or relaxation of the cross-dataset gate.
+
+## Stage 18w checkpoint closed; Stage 18x Teager-energy context registered
+
+Live primary-source review selected Boudraa and Diop's 2-D Teager-Kaiser
+quadratic energy formulation (ICIP 2008, DOI
+`10.1109/ICIP.2008.4712471`) as one mechanistically distinct local nonlinear-
+activity test. Its axial Type-1A and diagonal Type-1B stencils compare squared
+center intensity with symmetric-neighbor products. Stage 18x rectifies their
+positive responses and uses a fixed geometric consensus divided by the
+analytic bound. Requiring both stencils suppresses one-stencil lattice
+activity without adding smoothing, a learned parameter, or a rejected cue.
+
+The authoritative protocol is `docs/paper/STAGE18X_PREREGISTRATION.md`.
+`stage18x_teager_energy_context` is registered with conjunctive UDED-selection
+5x3 leakage-free CV and official BSDS500-validation criteria, exact score-
+support preservation, fixed synthetic and quadratic-scale contracts, runtime
+diagnostics, and positions 1/8/15 preview. The compact bank, distorted-
+Choquet gamma `0.55`, gate strength `2.0`, floor `0.10`, median conditioning,
+grayscale Scharr+NMS, and threshold fitting remain unchanged. This is an
+equation-level repository adaptation, not the paper's contrast-enhancement
+pipeline. Do not tune or extend TKEO stencils, fusion, higher-order energy,
+demodulation, contrast enhancement, calibration, or integration from the
+result. The compact controller remains incumbent.

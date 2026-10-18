@@ -2660,3 +2660,26 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 Stage 18v or earlier closed families, combine rejected cues, use dataset
 identity, relax the cross-dataset rule, or use protected feedback.
+
+### Stage 18w closure - dual-stencil Teager-energy context registered
+
+The live primary-literature checkpoint selected one fixed nonlinear local-
+activity test from Boudraa and Diop's 2-D Teager-Kaiser energy formulation.
+Stage 18x computes the published axial and diagonal quadratic stencils on the
+unchanged median-conditioned grayscale image, rectifies their positive parts,
+and uses a geometric consensus divided by the analytic input-range bound.
+This requires energy support from both complementary stencils and introduces
+no smoothing, per-image normalization, fitted cue parameter, or rejected-cue
+combination. It is a repository adaptation, not the paper's contrast-
+enhancement pipeline.
+
+The authoritative protocol is `docs/paper/STAGE18X_PREREGISTRATION.md`.
+`stage18x_teager_energy_context` is registered with conjunctive UDED-selection
+repeated CV and official BSDS500-validation criteria, exact score-support
+preservation, fixed synthetic/quadratic-scale contracts, runtime diagnostics,
+and positions 1/8/15 preview. The compact bank, gamma `0.55`, gate strength
+`2.0`, floor `0.10`, median conditioning, grayscale Scharr+NMS, and threshold
+fitting remain unchanged. Do not tune or extend the TKEO stencils,
+rectification, consensus, normalization, higher-order energy, demodulation,
+contrast enhancement, calibration, or integration family from the result.
+The compact controller remains incumbent.

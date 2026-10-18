@@ -2472,3 +2472,23 @@ live-primary-literature escalation must select exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit Stage 18v or earlier closed families, combine rejected cues,
 fit dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 18w closed - dual-stencil Teager-energy context registered
+
+Primary literature review selected one fixed nonlinear instantaneous-energy
+test. Stage 18x applies Boudraa and Diop's axial and diagonal 2-D
+Teager-Kaiser quadratic stencils to the unchanged median-conditioned grayscale
+image. The positive parts are combined by a fixed geometric mean and divided
+by their analytic bound, so evidence must be supported by both complementary
+stencils without a fitted scale or image normalization. This is a disclosed
+repository consensus, not the source contrast-enhancement pipeline.
+
+The active next action is `stage18x_teager_energy_context` under
+`docs/paper/STAGE18X_PREREGISTRATION.md`. Promotion is conjunctive across
+UDED-selection repeated CV and official BSDS500 validation, with exact score-
+support preservation, fixed flat/step/checkerboard/noise and quadratic-scale
+contracts, runtime diagnostics, and the positions 1/8/15 preview. The compact
+Choquet-gated grayscale Scharr+NMS controller remains incumbent. Failure
+closes axial/diagonal TKEO consensus and may not motivate alternative
+stencils, fusion, higher-order energy, demodulation, contrast enhancement,
+calibration, or integration tuning.
