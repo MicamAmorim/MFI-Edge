@@ -2456,3 +2456,19 @@ positions 1/8/15 preview. The compact Choquet-gated grayscale Scharr+NMS
 controller remains incumbent. A failure closes this fixed relative-variation
 realization without authorizing smoothing, total-variation, scale, ratio,
 calibration, or integration tuning.
+
+## Stage 18v closed - relative-variation coherence context rejected
+
+The fixed relative-variation cue was ineligible in all `15/15` UDED folds, so
+the candidate exactly matched compact MFI there. Official BSDS500-validation
+ODS/OIS/AP changed by only `+0.000016/+0.000554/+0.000107`; the ODS gain
+missed the required `+0.002` margin. The conjunctive rule rejects the
+candidate. All non-performance contracts passed, but no relative-variation,
+RTV-smoothing, calibration, or integration variant may be tuned or combined.
+Compact Choquet-gated Scharr+NMS remains incumbent.
+
+The active next action is `stage18w_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must select exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit Stage 18v or earlier closed families, combine rejected cues,
+fit dataset identity, relax the cross-dataset rule, or use protected feedback.

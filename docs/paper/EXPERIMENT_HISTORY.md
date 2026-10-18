@@ -4468,3 +4468,23 @@ preservation, fixed synthetic/photometric contracts, runtime diagnostics, and
 the positions 1/8/15 preview. No derivative, window, scale, ratio, smoothing,
 calibration, or integration variant may be tuned from the result. The compact
 Choquet-gated grayscale Scharr+NMS controller remains incumbent.
+
+### Stage 18v relative-variation context rejected; Stage 18w registered
+
+The fixed signed-gradient coherence ratio was training-ineligible in all
+`15/15` UDED-selection folds (training AUC remained below `0.56`), so the
+candidate exactly reduced to compact MFI and all UDED metrics were unchanged.
+Official BSDS500-validation ODS/OIS/AP changed by
+`+0.000016/+0.000554/+0.000107`; the ODS gain missed the required `+0.002`
+margin. Synthetic, photometric-invariance, repeatability, exact-support,
+runtime, and fixed-preview contracts passed, but every promotion condition was
+required.
+
+The candidate is rejected. No derivative, window, scale/support, boundary,
+ratio, zero rule, calibration, eligibility, integration, RTV smoothing, or
+total-variation variant may be tuned or combined from this result. Compact
+Choquet-gated grayscale Scharr+NMS remains incumbent. The single registered
+next action is `stage18w_generation2_mechanism_checkpoint`, a live-primary-
+literature escalation that must choose exactly one mechanistically distinct
+bounded generation-2 falsification under a preregistered joint UDED/BSDS rule,
+without protected feedback or relaxation of the cross-dataset gate.

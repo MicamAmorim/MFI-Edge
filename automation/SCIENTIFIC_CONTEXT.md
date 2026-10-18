@@ -2640,3 +2640,23 @@ strength `2.0`, floor `0.10`, median conditioning, grayscale Scharr+NMS, and
 threshold fitting remain unchanged. Do not tune or extend the derivative,
 window, scale, ratio, RTV/TV smoothing, calibration, or integration family from
 the result. The compact controller remains incumbent.
+
+### Stage 18v closure - relative-variation coherence context rejected; Stage 18w registered
+
+The fixed signed-gradient inherent-to-total variation membership was training-
+ineligible in all `15/15` UDED-selection folds, so the candidate exactly
+reduced to compact MFI and all UDED aggregate and fold metrics were unchanged.
+Official BSDS500-validation ODS/OIS/AP changed by only
+`+0.000016/+0.000554/+0.000107`, missing the required `+0.002` ODS margin.
+All non-performance contracts passed, but cannot override complete UDED
+ineligibility and the failed BSDS margin. The candidate is rejected; do not
+tune or extend its derivative, window, scale/support, ratio, calibration,
+integration, RTV smoothing, or total-variation family. The compact controller
+remains incumbent.
+
+The registered next action is `stage18w_generation2_mechanism_checkpoint`, a
+live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+Stage 18v or earlier closed families, combine rejected cues, use dataset
+identity, relax the cross-dataset rule, or use protected feedback.
