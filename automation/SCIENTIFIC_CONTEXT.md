@@ -2492,3 +2492,24 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 Stage 18n or earlier closed families, combine rejected cues, use dataset
 identity, relax the cross-dataset rule, or use protected feedback.
+
+### Stage 18o closure - median OWA compact-context aggregation registered
+
+The live primary-literature checkpoint responded to repeated weak or
+ineligible single-cue additions by adding no new descriptor. Stage 18p replaces
+only distorted-Choquet arithmetic accumulation with Yager's parameter-free
+five-input median OWA: after sorting the same retained fold-calibrated
+memberships, context is the central order statistic `x_(3)`. This tests an
+explicit three-of-five evidence semantics without a capacity, learned
+aggregation weight, dataset adapter, or rejected cue combination. It is
+distinct from Stage 16r's capacity-limited Sugeno max-min integral.
+
+The authoritative protocol is `docs/paper/STAGE18P_PREREGISTRATION.md`.
+`stage18p_median_owa_context` is registered with conjunctive UDED-selection
+repeated CV and official BSDS500-validation criteria, algebraic and exact-
+support contracts, and positions 1/8/15 preview. The feature bank, membership
+calibration, gate strength `2.0`, floor `0.10`, median conditioning, grayscale
+Scharr+NMS, and threshold fitting remain unchanged. Do not tune or extend the
+OWA vector, quantifier, order statistic, trimming, weighting, capacity,
+mixture, calibration, gate, localizer, or thresholds from the result. The
+compact Choquet controller remains incumbent.

@@ -4283,3 +4283,28 @@ escalation that must choose exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 18n or earlier closed families, combine rejected cues, use
 dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 18o checkpoint closed; Stage 18p median OWA context registered
+
+Live primary-source review selected Ronald Yager's ordered weighted averaging
+framework (IEEE Transactions on Systems, Man, and Cybernetics 1988, DOI
+`10.1109/21.87068`). The median is the fixed OWA whose sole nonzero ordered
+weight selects the central input. This offers a bounded response to the recent
+pattern of weak or ineligible single-cue additions: it adds no descriptor and
+instead tests whether explicit majority support transfers better than the
+incumbent Choquet context's arithmetic compensation.
+
+Stage 18p sorts the unchanged five retained fold-calibrated memberships and
+sets context to `x_(3)`. It deliberately omits singleton weights and the gamma
+capacity only in the candidate aggregation, while the control remains the
+unchanged distorted-Choquet controller. The fixed median differs from Stage
+16r's capacity-limited Sugeno max-min integral and introduces no weight search,
+quantifier, trim fraction, mixture, dataset identity, or rejected cue.
+
+The authoritative protocol is `docs/paper/STAGE18P_PREREGISTRATION.md`.
+`stage18p_median_owa_context` is registered with conjunctive UDED-selection
+repeated CV and official BSDS500-validation criteria, exact algebraic and
+score-support contracts, and a fixed positions 1/8/15 preview. Do not tune or
+extend its OWA vector, order statistic, quantifier, trimming, weighting,
+capacity, mixture, calibration, context gate, localizer, or thresholds. The
+compact Choquet-gated grayscale Scharr+NMS controller remains incumbent.

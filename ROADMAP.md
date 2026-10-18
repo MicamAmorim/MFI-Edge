@@ -2330,3 +2330,20 @@ live-primary-literature escalation must select exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit Stage 18n or earlier closed families, combine rejected cues,
 fit dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 18o closed - median OWA compact-context aggregation selected
+
+Stage 18o selected an aggregation-semantic test rather than another isolated
+membership. Stage 18p takes the same five fold-calibrated retained memberships,
+sorts them, and uses the central value `x_(3)` as context. This is the fixed
+median member of Yager's OWA family and encodes an explicit three-of-five
+support rule. It introduces no cue, singleton/capacity fit, aggregation search,
+dataset adapter, or rejected-mechanism combination, and is distinct from the
+closed Sugeno max-min realization.
+
+The active next action is `stage18p_median_owa_context`. Promotion is
+conjunctive across UDED-selection repeated CV and official BSDS500 validation,
+with fixed algebraic, exact-support, and positions 1/8/15 preview contracts.
+No OWA order weight, quantifier, trimming, reliability weighting, capacity,
+mixture, calibration, gate, localizer, threshold, or incumbent parameter may
+be tuned from the result.

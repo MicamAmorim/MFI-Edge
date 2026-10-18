@@ -1285,3 +1285,18 @@ surrogate did not provide discriminative incremental context under the joint
 rule; do not generalize this to Haralick's full iterative facet detector. Keep
 the deterministic positions 1/8/15 preview documentary and retain the local
 evaluator's stochastic/reference-reproduction caveat.
+
+## Stage 18p prospective writing note
+
+Frame Stage 18p as a fixed aggregation-semantic falsification based on Yager's
+OWA framework, not as a new descriptor or a published detector reproduction.
+Record that the same five retained fold-calibrated memberships are sorted and
+the central order statistic `x_(3)` is used, equivalently OWA weights
+`[0,0,1,0,0]`. Explain that this encodes three-of-five support, omits singleton
+weights and capacity only in the candidate aggregation, and differs from the
+closed Sugeno max-min test. Report precision/recall, fold wins, exact support,
+algebraic checks, both development axes, and the fixed positions 1/8/15
+preview. A failure closes fixed median OWA without motivating alternative
+quantifiers, weighted/adaptive OWA, trimming, mixtures, cue selection, or
+dataset conditioning. Retain the local evaluator's stochastic/reference-
+reproduction caveat.
