@@ -4417,3 +4417,29 @@ support preservation, deterministic PAV contracts, and the fixed positions
 1/8/15 preview. Promotion remains conjunctive. No calibration form, class
 weight, label, feature, capacity, aggregation, gate, localizer, or threshold
 may be tuned from the result. The compact controller remains incumbent.
+
+### Stage 18t isotonic membership calibration rejected; Stage 18u registered
+
+The fixed per-membership weighted isotonic calibration failed its conjunctive
+promotion rule. On UDED selection, aggregate F1/precision/recall and mean fold
+F1 changed by `+0.000574/+0.000822/+0.000110/+0.000676`, with `11/15` fold
+wins. The precision, recall, mean-fold, and fold-win conditions passed, but the
+aggregate F1 gain missed the required `+0.002` margin. Official BSDS500-
+validation ODS/OIS/AP changed by `+0.001623/+0.000700/+0.003573`; OIS and AP
+were nonnegative, but ODS missed its required `+0.002` margin. All
+non-performance contracts passed, but every condition was required.
+
+The candidate is rejected. Do not tune or extend its class weights, labels,
+samples, PAV loss, ties, extrapolation, smoothing, shrinkage, splines,
+calibration family, feature selection, weights, capacity, aggregation, gate,
+localizer, or thresholds, and do not combine it with rejected cues. The compact
+Choquet-gated grayscale Scharr+NMS controller remains incumbent. The local
+Windows Berkeley matcher remains stochastic and reference-reproduction-
+unverified.
+
+The registered next action is `stage18u_generation2_mechanism_checkpoint`, a
+live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification under a
+preregistered joint UDED/BSDS rule. It may not tune Stage 18t or earlier closed
+families, combine rejected cues, use dataset identity, relax the cross-dataset
+rule, or use protected feedback.

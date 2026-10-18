@@ -2649,6 +2649,18 @@
       "results/official_eval/stage18t_isotonic_membership_calibration/summary.json"
     ]
   },
+  "stage18u_generation2_mechanism_checkpoint": {
+    "description": "High-reasoning live-primary-literature checkpoint after fixed per-membership isotonic calibration missed both the UDED aggregate-F1 and BSDS500-validation ODS promotion margins; selects exactly one mechanistically distinct, interpretable, non-neural generation-2 falsification without tuning calibration or earlier closed families.",
+    "runner": "python",
+    "path": "automation/stage18u_generation2_mechanism_checkpoint.py",
+    "args": [],
+    "role": "research_planning",
+    "feedback_policy": "primary_literature_and_completed_joint_development_evidence_only_no_isotonic_class_weight_label_sample_loss_tie_extrapolation_smoothing_shrinkage_spline_calibration_feature_weight_capacity_aggregation_gate_localizer_or_threshold_tuning_no_protected_feedback_no_architecture_change_at_checkpoint",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage18u_generation2_mechanism_checkpoint/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

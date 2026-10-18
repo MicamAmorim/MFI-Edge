@@ -1352,3 +1352,17 @@ motivating alternative class weights, labels, samples, losses, bins,
 smoothing, shrinkage, splines, calibration families, feature selection,
 aggregation, gate, localizer, or threshold tuning. Retain the local evaluator's
 stochastic/reference-reproduction caveat.
+
+## Stage 18t outcome note
+
+Report Stage 18t as a negative fixed-calibration result. UDED aggregate
+F1/precision/recall and mean fold F1 changed by
+`+0.000574/+0.000822/+0.000110/+0.000676`, with `11/15` fold wins. Official
+BSDS500-validation ODS/OIS/AP changed by
+`+0.001623/+0.000700/+0.003573`. State that both axes moved positively but
+missed their preregistered `+0.002` primary margins, so the conjunctive rule
+rejects the candidate. The passing calibration, repeatability, exact-support,
+and fixed positions 1/8/15 preview contracts are implementation evidence, not
+promotion evidence. Do not present the maps as posterior probabilities or use
+the result to motivate alternate isotonic/calibration variants. Retain the
+local evaluator's stochastic/reference-reproduction caveat.

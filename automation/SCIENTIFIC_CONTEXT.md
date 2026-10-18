@@ -2597,3 +2597,22 @@ singleton weights, gamma `0.55`, gate strength `2.0`, floor `0.10`, median
 conditioning, grayscale Scharr+NMS, and threshold fitting remain unchanged. Do
 not tune or extend calibration, feature, aggregation, gate, localizer, or
 threshold choices from the result. The compact controller remains incumbent.
+
+### Stage 18t closure - isotonic membership calibration rejected; Stage 18u registered
+
+The fixed outer-fold weighted isotonic calibration moved both development axes
+positively but missed both preregistered primary margins. UDED aggregate
+F1/precision/recall and mean fold F1 changed by
+`+0.000574/+0.000822/+0.000110/+0.000676`, with `11/15` fold wins; aggregate
+F1 was below the required `+0.002`. Official BSDS500-validation ODS/OIS/AP
+changed by `+0.001623/+0.000700/+0.003573`; ODS was also below its required
+`+0.002`. All non-performance contracts passed, but every condition was
+required. The candidate is rejected; do not tune or extend calibration or
+combine it with rejected cues. The compact controller remains incumbent.
+
+The registered next action is `stage18u_generation2_mechanism_checkpoint`, a
+live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+Stage 18t or earlier closed families, combine rejected cues, use dataset
+identity, relax the cross-dataset rule, or use protected feedback.

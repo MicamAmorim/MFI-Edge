@@ -2418,3 +2418,22 @@ preview. This is a univariate monotone membership-calibration test, not the
 closed multivariate logistic fusion or empirical-copula normalization. A
 failure closes the fixed isotonic realization and may not motivate calibration
 or integration tuning.
+
+## Stage 18t closed - isotonic membership calibration rejected
+
+The fixed per-membership isotonic maps changed UDED aggregate
+F1/precision/recall and mean fold F1 by
+`+0.000574/+0.000822/+0.000110/+0.000676`, with `11/15` fold wins. Official
+BSDS500-validation ODS/OIS/AP changed by
+`+0.001623/+0.000700/+0.003573`. The candidate passed the non-collapse,
+fold-stability, calibration, support, and preview conditions, but missed both
+required `+0.002` margins: UDED aggregate F1 and BSDS ODS. The conjunctive rule
+therefore rejects it. No calibration, feature, aggregation, gate, localizer,
+or threshold variant may be tuned from this result, and compact Choquet-gated
+Scharr+NMS remains incumbent.
+
+The active next action is `stage18u_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must select exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit Stage 18t or earlier closed families, combine rejected cues,
+fit dataset identity, relax the cross-dataset rule, or use protected feedback.
