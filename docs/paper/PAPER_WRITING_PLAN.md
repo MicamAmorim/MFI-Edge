@@ -1224,3 +1224,21 @@ closes this discrete dependency-deficit realization without motivating color,
 variance features, KDE, multiscale/graph/spectral, conditional PMI,
 calibration, or integration variants. Retain the local evaluator's stochastic/
 reference-reproduction caveat.
+
+## Stage 18l prospective writing note
+
+Frame Stage 18l as one fixed equation-level closure-participation test based on
+Nishigaki et al.'s image-torque operator, not as an exact reproduction of the
+paper's learned boundary-strengthening experiment. Record the continuous
+Scharr edge measure, clockwise tangent convention, published `5x5`, `21x21`,
+and `45x45` square supports, radial-bound coherence, analytic positive
+backprojection, maximum across supports, reflection, and exact-zero rule.
+Explain that this mid-level cue tests coherent closed-contour participation
+while the median-conditioned Scharr+NMS localizer remains unchanged. Report
+eligibility, precision/recall, exact score-support preservation,
+closed-circle/open-step/checkerboard, polarity and repeatability contracts,
+runtime, both development axes, and the positions 1/8/15 preview. A failure
+closes this fixed torque realization without motivating support/shape,
+edge-threshold, color/depth/motion, learned torque, attention, segmentation,
+boundary ownership, calibration, integration, or fusion variants. Retain the
+local evaluator's stochastic/reference-reproduction caveat.

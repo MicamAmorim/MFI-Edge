@@ -2409,3 +2409,25 @@ mechanistically distinct bounded generation-2 falsification with a
 preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 Stage 18j or earlier closed families, combine rejected cues, use dataset
 identity, relax the cross-dataset rule, or use protected feedback.
+
+### Stage 18k closure - image-torque closure context registered
+
+The live primary-literature checkpoint selected one fixed mid-level closure
+test based on Nishigaki, Fermuller, and DeMenthon's CVPR-2012 image-torque
+operator. Stage 18l computes signed continuous Scharr-tangent moments at the
+paper's illustrated `5x5`, `21x21`, and `45x45` square supports, divides patch
+torque by a radial triangle-inequality bound, and analytically backprojects
+coherent support to participating edge samples. The maximum bounded support
+enters only as one outer-training-fold-eligible positive membership. It does
+not use the paper's learned logistic coefficients, create or link contours,
+or replace grayscale Scharr+NMS.
+
+The authoritative protocol is `docs/paper/STAGE18L_PREREGISTRATION.md`.
+`stage18l_image_torque_context` is registered with conjunctive UDED-selection
+repeated CV and official BSDS500-validation criteria, exact score-support
+preservation, fixed synthetic closure, polarity and repeatability contracts,
+runtime diagnostics, and positions 1/8/15 preview. The compact bank, gamma
+`0.55`, gate strength `2.0`, floor `0.10`, conditioning, localizer, and
+threshold fitting remain unchanged. Do not tune or extend the torque,
+attention/segmentation, calibration, or integration family from the result.
+The compact controller remains incumbent.

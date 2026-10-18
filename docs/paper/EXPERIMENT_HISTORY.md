@@ -4190,3 +4190,30 @@ escalation that must choose exactly one mechanistically distinct bounded
 generation-2 falsification under a preregistered joint UDED/BSDS rule. It may
 not tune Stage 18j or earlier closed families, combine rejected cues, use
 dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 18k checkpoint closed; Stage 18l image-torque context registered
+
+Live primary-source review selected Nishigaki, Fermuller, and DeMenthon's
+image-torque operator (CVPR 2012, DOI `10.1109/CVPR.2012.6247714`). Its
+mid-level statistic is the signed moment of oriented edge tangents about a
+patch center: random texture contributions tend to cancel, whereas extended
+closed contours accumulate coherently. This supplies closure participation
+rather than another intensity dependency, local activity, region partition,
+graph, response-connection, or detector-fusion mechanism.
+
+Stage 18l computes continuous Scharr-tangent torque at the paper's illustrated
+`5x5`, `21x21`, and `45x45` square supports. Signed patch torque is divided by
+its radial triangle-inequality bound, coherently backprojected to participating
+edge samples, bounded analytically, and appended only as one outer-training-
+fold-eligible membership. The paper's learned logistic boundary-strengthening
+coefficients are excluded. Compact Choquet aggregation and grayscale
+Scharr+NMS localization remain unchanged.
+
+The authoritative protocol is `docs/paper/STAGE18L_PREREGISTRATION.md`.
+`stage18l_image_torque_context` is registered with conjunctive UDED-selection
+repeated CV and official BSDS500-validation criteria, exact score-support
+preservation, fixed flat/closed-circle/open-step/checkerboard, polarity and
+repeatability contracts, runtime diagnostics, and positions 1/8/15 preview.
+Do not tune or extend the torque support, patch shape, oriented edge measure,
+coherence, backprojection, learning, attention/segmentation, calibration, or
+integration family. The compact controller remains incumbent.

@@ -2261,3 +2261,21 @@ distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit Stage 18j or earlier closed families, combine rejected
 cues, fit dataset identity, relax the cross-dataset rule, or use protected
 feedback.
+
+## Stage 18k closed - image-torque closure context selected
+
+Stage 18k selected one fixed mid-level closure mechanism from Nishigaki,
+Fermuller, and DeMenthon's image-torque operator. Stage 18l evaluates signed
+oriented-gradient moments on the paper's illustrated `5x5`, `21x21`, and
+`45x45` square supports, normalizes them by analytic radial bounds, and
+backprojects coherent closure participation as one fold-eligible positive
+context membership. It excludes the paper's learned logistic strengthening
+and does not alter compact Choquet aggregation or Scharr+NMS localization.
+
+The active next action is `stage18l_image_torque_context`. Promotion is
+conjunctive across UDED-selection repeated CV and official BSDS500 validation,
+with fixed closure-vs-open/texture, polarity, repeatability, exact-support,
+runtime, and positions 1/8/15 preview contracts. No torque support, patch,
+edge measure, tangent, coherence, backprojection, learned, attention,
+segmentation, calibration, integration, or incumbent parameter may be tuned
+from the result.
