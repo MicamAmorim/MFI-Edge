@@ -1457,3 +1457,23 @@ concentration without motivating sparse coding, overcomplete or color/
 multiscale dictionaries, supervised atom selection, neural implementations,
 calibration changes, or rejected-cue combinations. Retain the local
 evaluator's stochastic/reference-reproduction caveat.
+
+## Stage 19 bounded-analysis writing plan
+
+Present Stage 19 as a preregistered response to Generation-2 stagnation, not
+as post-hoc cue shopping. State the finite budget explicitly: three analysis
+experiments, then a fully frozen queue of at most four candidate experiments.
+Separate explanatory GT-guided targets from official detector metrics and make
+clear that the compact controller is unchanged throughout Stage 19.
+
+For Stage 19B, report a twelve-row descriptor atlas across BSDS500 train and
+overlap-clean UDED selection. Include per-domain image-grouped AUC/AP,
+nonparametric dependence, effect direction/magnitude and image-bootstrap
+intervals; human-consensus strata; monotone empirical boundary-probability
+curves; and runtime. Document that all BSDS annotators are preserved, the
+tolerant explanatory target uses the fixed `0.0075`-diagonal geometry, and
+UDED item `03-35028` is excluded by filename lineage because it is BSDS-test
+image `35028`. The qualitative figure uses fixed BSDS-train positions
+1/100/200 and shows input, mean human GT, and all twelve descriptor maps. Do
+not describe Stage 19B as selecting a feature or improving a detector; its
+role is to supply preregistered evidence for Stage 19C.

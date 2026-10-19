@@ -4586,3 +4586,33 @@ a live-primary-literature escalation that must choose exactly one
 mechanistically distinct bounded generation-2 falsification under a
 preregistered joint UDED/BSDS rule without protected feedback or relaxation
 of the cross-dataset gate.
+
+### Stage 19a transition closed; Stage 19b descriptor atlas registered
+
+The user-directed policies `automation/STAGE19_GT_GUIDED_POLICY.md` and
+`docs/paper/STAGE19_GT_GUIDED_PROGRAM.md` supersede the generic open-ended
+mechanism fallback for this bounded phase. The remaining budget is exactly
+three Stage-19 analysis experiments and at most four Stage-20 candidate
+experiments. Stage 19E must freeze the full ordered Stage-20 queue before any
+candidate outcome is inspected; the queue cannot be expanded or replaced
+after failures. Four failed candidates stop the campaign for synthesis.
+
+`stage19b_descriptor_relevance_atlas` is registered as analysis experiment 1
+of 3. It reconstructs the frozen pool of the five incumbent raw cues plus
+structure tensor, brightness entropy, patch recurrence, semi-global
+change-point, Frei-Chen, PMI, and image-torque evidence. It reads only pinned
+BSDS500-train image/GT blobs and preserves individual annotators. UDED
+selection is screened against pinned BSDS tree identifiers before GT-guided
+analysis; `03-35028` is excluded because it names BSDS-test image `35028`.
+Only filenames, not protected BSDS val/test image or GT bytes, are used for
+that screen.
+
+The atlas preregisters deterministic uniform within-image sampling, exact and
+fixed `0.0075`-diagonal tolerant target views, per-image AUC/AP/nonparametric
+dependence/effect statistics, a 1000-replicate image bootstrap, empirical
+monotone probability curves, annotator-consensus strata, and runtime records.
+The qualitative artifact uses sorted BSDS-train positions 1, 100, and 200 with
+panel order input, mean human GT, then the twelve frozen descriptor maps. The
+official manifest is train-only and incumbent-only because Stage 19B creates
+no candidate detector map. No cue selection, detector promotion, BSDS-
+validation read, architecture change, or thirteenth descriptor is permitted.

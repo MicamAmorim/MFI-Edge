@@ -2745,3 +2745,27 @@ fitting remain unchanged. Do not tune or extend the TKEO stencils,
 rectification, consensus, normalization, higher-order energy, demodulation,
 contrast enhancement, calibration, or integration family from the result.
 The compact controller remains incumbent.
+
+### Stage 19a closure - bounded GT-guided program and Stage 19b registered
+
+The user-directed Stage 19--20 policy now supersedes open-ended single-cue
+escalation. Stage 19 contains exactly three analysis experiments: 19B
+univariate atlas, 19C pairwise redundancy/complementarity, and 19D comparison
+of exactly three aggregation families. Stage 19E must freeze an ordered queue
+of at most four Stage-20 candidates before any candidate outcome is inspected.
+No failed candidate may be replaced; four failures end in synthesis without
+automatic literature escalation. A passing candidate stops the queue for
+freeze/confirmation planning.
+
+The registered next action is `stage19b_descriptor_relevance_atlas`. It uses
+the frozen twelve-cue pool on BSDS500 train with every human annotation
+preserved and on UDED selection after excluding known BSDS-origin overlap.
+The filename-lineage audit identifies UDED selection item `03-35028` as the
+protected BSDS-test photo `35028`; it is excluded without reading protected
+image or GT bytes. Stage 19B must not read BSDS validation, select a cue,
+promote a detector, invent a descriptor, or alter compact MFI. It emits
+machine-readable distributions, per-image AUC/AP/dependence/effect metrics,
+1000-replicate image-bootstrap intervals, monotone boundary-probability
+curves, consensus strata, annotator support, runtime, the overlap-clean
+manifest, and a deterministic positions 1/100/200 BSDS-train descriptor
+preview. The official attachment is incumbent-only on BSDS train.

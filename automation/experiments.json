@@ -2760,6 +2760,30 @@
       "results/automation/stage19a_generation2_mechanism_checkpoint/summary.json"
     ]
   },
+  "stage19b_descriptor_relevance_atlas": {
+    "description": "Bounded Stage-19 experiment 1/3: build a development-only relevance atlas for the frozen 12-descriptor pool using all preserved BSDS500-train annotations and overlap-clean UDED selection, with image-grouped uncertainty and no detector promotion or architecture change.",
+    "runner": "python",
+    "path": "automation/stage19b_descriptor_relevance_atlas_venv_launcher.py",
+    "args": [],
+    "role": "bounded_gt_guided_analysis",
+    "feedback_policy": "bsds500_train_and_overlap_clean_uded_selection_only_preserve_individual_annotators_no_bsds_validation_or_protected_blob_read_no_descriptor_invention_selection_promotion_architecture_change_or_random_pixel_split",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage19b_descriptor_relevance_atlas/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage19b_descriptor_relevance_atlas/summary.json",
+      "results/local_dev/stage19b_descriptor_relevance_atlas/overlap_clean_dataset_manifest.json",
+      "results/local_dev/stage19b_descriptor_relevance_atlas/descriptor_image_metrics.csv",
+      "results/local_dev/stage19b_descriptor_relevance_atlas/descriptor_bootstrap_summary.csv",
+      "results/local_dev/stage19b_descriptor_relevance_atlas/descriptor_distribution_stats.csv",
+      "results/local_dev/stage19b_descriptor_relevance_atlas/descriptor_probability_curves.csv",
+      "results/local_dev/stage19b_descriptor_relevance_atlas/bsds_consensus_strata.csv",
+      "results/local_dev/stage19b_descriptor_relevance_atlas/annotator_boundary_support.csv",
+      "results/local_dev/stage19b_descriptor_relevance_atlas/descriptor_runtime.csv",
+      "results/local_dev/stage19b_descriptor_relevance_atlas/best_method_preview.png",
+      "results/local_dev/stage19b_descriptor_relevance_atlas/official_eval_manifest.json",
+      "results/official_eval/stage19b_descriptor_relevance_atlas/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

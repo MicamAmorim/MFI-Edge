@@ -2549,3 +2549,26 @@ distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit learned patch representations or earlier closed families,
 combine rejected cues, fit dataset identity, relax the cross-dataset rule, or
 use protected feedback.
+
+## Stage 19a closed - bounded GT-guided program active
+
+The user-directed Stage 19--20 policy replaces the open-ended one-cue
+escalation loop with a finite descriptor/aggregation study. Stage 19 contains
+exactly three scientific experiments (19B--19D); Stage 19E must then freeze an
+ordered queue of at most four Stage-20 candidates before any Stage-20 result
+is inspected. A failed candidate cannot be replaced, and four failures end in
+synthesis rather than another automatic literature escalation. Compact
+Choquet-gated grayscale Scharr+NMS remains the unchanged incumbent throughout
+Stage 19.
+
+The active next action is `stage19b_descriptor_relevance_atlas`, experiment 1
+of 3. It measures the frozen twelve-cue pool on pinned BSDS500 train with all
+human annotations preserved and on overlap-clean UDED selection. Filename
+lineage screening excludes UDED item `03-35028`, which matches protected
+BSDS-test image id `35028`, without reading protected image bytes. Sampling
+and uncertainty are grouped by image; BSDS validation is not read. Outputs
+include per-image AUC/AP/dependence/effect metrics, distribution and monotone
+probability tables, consensus strata, annotator support, runtime, the overlap
+manifest, and fixed BSDS-train positions 1/100/200
+`best_method_preview.png`. Stage 19B cannot select a cue, promote a detector,
+or alter the architecture.
