@@ -3134,6 +3134,35 @@ generation-2 falsification under a preregistered joint UDED/BSDS rule, without
 combining rejected cues, relaxing the cross-dataset gate, or using protected
 feedback.
 
+## Stage 18y checkpoint closed; Stage 18z fold-fitted ICA context registered
+
+Live primary-source review selected one fixed information-theoretic
+representation test rather than another hand-designed local activity cue. Bell
+and Sejnowski (Vision Research 1997, DOI
+`10.1016/S0042-6989(97)00121-1`) showed that independent-component analysis of
+natural-image patches yields localized oriented edge filters with sparse
+responses. Hyvarinen's robust fixed-point ICA method (DOI
+`10.1109/72.761722`) supplies the classical batch estimator.
+
+Stage 18z fits a deterministic 16-component `7x7` ICA bank from 256 unlabeled
+patches per outer-training image, strictly inside each UDED fold. Positive
+evidence is a parameter-free affine rescaling of the maximum absolute
+component response divided by response L2 energy, with zero evidence on a
+constant patch. The statistic tests single-component dominance and enters only
+as one outer-fold-eligible membership. It is a repository adaptation, not an
+author edge detector or neural inference path.
+
+The authoritative protocol is `docs/paper/STAGE18Z_PREREGISTRATION.md`.
+`stage18z_ica_sparse_context` is registered with conjunctive UDED-selection
+5x3 leakage-free CV and official BSDS500-validation criteria, deterministic
+fit/algebraic contracts, exact score-support preservation, runtime/model-hash
+diagnostics, and the fixed positions 1/8/15 preview. The compact bank,
+distorted-Choquet gamma `0.55`, gate strength `2.0`, floor `0.10`, median
+conditioning, grayscale Scharr+NMS, and threshold fitting remain unchanged.
+Do not tune or extend ICA, sparse coding, learned dictionaries, component
+selection, calibration, or integration from the result. Compact MFI remains
+the incumbent.
+
 ### Stage 16v exact Structured Edge forest rejected; Stage 16w registered
 
 The attachment-only retry restored and hash-verified the exact pinned author

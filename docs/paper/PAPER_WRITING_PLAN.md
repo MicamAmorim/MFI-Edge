@@ -1424,3 +1424,21 @@ quadratic-scale, repeatability, support, runtime, and fixed-preview contracts.
 Do not use the result to motivate other stencils, fusion rules, higher-order
 energy, demodulation, contrast enhancement, calibration, or integration.
 Retain the local evaluator's stochastic/reference-reproduction caveat.
+
+## Stage 18z prospective writing note
+
+Frame Stage 18z as a fixed leakage-free information-theoretic representation
+falsification. Cite Bell and Sejnowski for localized oriented independent
+components of natural images and Hyvarinen for robust fixed-point ICA. State
+explicitly that inference is a linear filter bank plus a closed-form
+concentration statistic, not a neural network or exact author edge detector.
+Record the outer-fold-only unlabeled fit, `7x7` patches, 256 patches per
+training image, 16 components, PCA whitening, symmetric tanh FastICA, fixed
+iteration/tolerance, and maximum-response/L2 concentration mapping. Report
+eligibility, precision/recall, fold wins, exact score-support preservation,
+fit convergence/whitening/orthogonality/model hashes, runtime, both development
+axes, and the fixed positions 1/8/15 preview. Failure closes fixed ICA
+concentration without motivating sparse coding, overcomplete or color/
+multiscale dictionaries, supervised atom selection, neural implementations,
+calibration changes, or rejected-cue combinations. Retain the local
+evaluator's stochastic/reference-reproduction caveat.

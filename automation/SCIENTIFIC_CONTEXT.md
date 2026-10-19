@@ -1254,6 +1254,30 @@ preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
 Stage 18x or earlier closed families, combine rejected cues, use dataset
 identity, relax the cross-dataset rule, or use protected feedback.
 
+### Stage 18y closure - fold-fitted ICA sparse context registered
+
+The live primary-literature checkpoint selected one fixed unsupervised
+information-theoretic representation test. Stage 18z fits a deterministic
+16-component `7x7` FastICA analysis bank from 256 unlabeled patches per image
+strictly inside each outer UDED training fold. Bell and Sejnowski's natural-
+image result motivates localized oriented independent components; Hyvarinen's
+robust fixed-point method supplies the classical batch estimator. Positive
+evidence is bounded dominance of the largest absolute component response over
+the component-response L2 norm, with zero evidence on a constant patch. The
+candidate inference path is linear filtering plus a closed-form statistic,
+not a neural network, supervised embedding, sparse synthesis code, or exact
+author edge detector.
+
+The authoritative protocol is `docs/paper/STAGE18Z_PREREGISTRATION.md`.
+`stage18z_ica_sparse_context` is registered with conjunctive UDED-selection
+repeated CV and official BSDS500-validation criteria, exact score-support
+preservation, deterministic fit/positive-affine contracts, runtime and model-
+hash diagnostics, and positions 1/8/15 preview. The compact bank, gamma
+`0.55`, gate strength `2.0`, floor `0.10`, median conditioning, grayscale
+Scharr+NMS, and threshold fitting remain unchanged. Do not tune or extend ICA,
+sparse coding, learned dictionaries, component selection, calibration, or
+integration from the result. The compact controller remains incumbent.
+
 The registered next action is `stage16i_generation2_mechanism_checkpoint`, a
 high-reasoning live-primary-literature escalation that must select exactly one
 mechanistically distinct bounded generation-2 falsification with a

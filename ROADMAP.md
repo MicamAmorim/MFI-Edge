@@ -2510,3 +2510,24 @@ live-primary-literature escalation must select exactly one mechanistically
 distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
 It may not revisit Stage 18x or earlier closed families, combine rejected cues,
 fit dataset identity, relax the cross-dataset rule, or use protected feedback.
+
+## Stage 18y closed - fold-fitted ICA sparse context registered
+
+Primary literature review selected a fixed unlabeled representation-learning
+test. Stage 18z uses Bell and Sejnowski's natural-image independent-component
+principle with Hyvarinen's robust fixed-point estimator. A deterministic
+16-component `7x7` linear analysis bank is fitted only from unlabeled patches
+inside each outer UDED training fold. Its bounded response-concentration
+statistic measures whether one independent component dominates local activity
+and is appended as one eligible positive membership. No neural inference,
+supervised feature learning, rejected cue, or target adapter is introduced.
+
+The active next action is `stage18z_ica_sparse_context` under
+`docs/paper/STAGE18Z_PREREGISTRATION.md`. Promotion is conjunctive across
+UDED-selection repeated CV and official BSDS500 validation, with deterministic
+fit and positive-affine contracts, exact score-support preservation, model and
+runtime diagnostics, and the fixed positions 1/8/15 preview. Compact
+Choquet-gated grayscale Scharr+NMS remains incumbent. Failure closes this
+fixed ICA concentration realization without authorizing sparse coding,
+overcomplete/color/multiscale dictionaries, component selection, classifiers,
+calibration changes, or integration tuning.
