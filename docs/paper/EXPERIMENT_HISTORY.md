@@ -4562,3 +4562,27 @@ equation-level repository adaptation, not the paper's contrast-enhancement
 pipeline. Do not tune or extend TKEO stencils, fusion, higher-order energy,
 demodulation, contrast enhancement, calibration, or integration from the
 result. The compact controller remains incumbent.
+
+### Stage 18z fold-fitted ICA sparse context rejected; Stage 19a registered
+
+The fixed unlabeled FastICA response-concentration membership was training-
+ineligible in all `15/15` UDED-selection folds: training AUC remained below
+the preregistered `0.56` threshold. The candidate therefore reduced exactly
+to compact MFI, with zero change in aggregate F1, precision, recall, mean fold
+F1, and fold wins. Official BSDS500-validation ODS/OIS/AP changed by
+`-0.000056/+0.000027/+0.000074`, failing the required `+0.002` ODS margin.
+The deterministic fit, convergence, whitening, orthogonality, synthetic,
+positive-affine, exact-support, runtime, model-hash, and fixed-preview
+contracts passed, but cannot override the performance failures.
+
+The candidate is rejected. Do not tune or extend ICA patch sampling,
+whitening, component count, solver, nonlinearity, response concentration,
+calibration, eligibility, or integration, and do not advance to sparse coding,
+overcomplete dictionaries, independent subspaces, color/multiscale ICA,
+supervised atom selection, classifiers, or neural implementations from this
+result. Compact Choquet-gated grayscale Scharr+NMS remains incumbent. The
+single registered next action is `stage19a_generation2_mechanism_checkpoint`,
+a live-primary-literature escalation that must choose exactly one
+mechanistically distinct bounded generation-2 falsification under a
+preregistered joint UDED/BSDS rule without protected feedback or relaxation
+of the cross-dataset gate.

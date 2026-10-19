@@ -1286,6 +1286,21 @@ rule; do not generalize this to Haralick's full iterative facet detector. Keep
 the deterministic positions 1/8/15 preview documentary and retain the local
 evaluator's stochastic/reference-reproduction caveat.
 
+## Stage 18z outcome note
+
+Report Stage 18z as a negative fixed unsupervised-representation result. The
+fold-fitted ICA concentration cue was ineligible in all `15/15` UDED folds,
+so candidate and incumbent UDED metrics were identical. Official BSDS500-
+validation ODS/OIS/AP changed by
+`-0.000056/+0.000027/+0.000074`, failing the ODS margin. The passing fit-
+convergence, whitening, orthogonality, repeatability, positive-affine,
+exact-support, runtime, model-hash, and fixed-preview contracts establish
+implementation behavior only. Do not use the result to motivate alternate
+ICA banks, sparse or overcomplete dictionaries, independent subspaces,
+color/multiscale representations, supervised atom selection, classifiers,
+neural implementations, calibration changes, or rejected-cue combinations.
+Retain the local evaluator's stochastic/reference-reproduction caveat.
+
 ## Stage 18p prospective writing note
 
 Frame Stage 18p as a fixed aggregation-semantic falsification based on Yager's

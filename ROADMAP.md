@@ -2531,3 +2531,21 @@ Choquet-gated grayscale Scharr+NMS remains incumbent. Failure closes this
 fixed ICA concentration realization without authorizing sparse coding,
 overcomplete/color/multiscale dictionaries, component selection, classifiers,
 calibration changes, or integration tuning.
+
+## Stage 18z closed - fold-fitted ICA sparse context rejected
+
+The fixed unlabeled ICA response-concentration cue was ineligible in all
+`15/15` UDED folds, so the candidate exactly matched compact MFI there.
+Official BSDS500-validation ODS/OIS/AP changed by
+`-0.000056/+0.000027/+0.000074`, failing the required ODS margin. All
+non-performance contracts passed, but the conjunctive rule rejects the
+candidate. No ICA, sparse/dictionary representation, calibration, eligibility,
+or integration variant may be tuned or combined. Compact Choquet-gated
+Scharr+NMS remains incumbent.
+
+The active next action is `stage19a_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must select exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit learned patch representations or earlier closed families,
+combine rejected cues, fit dataset identity, relax the cross-dataset rule, or
+use protected feedback.

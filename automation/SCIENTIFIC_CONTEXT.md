@@ -1235,6 +1235,25 @@ localizer, or thresholds, and do not advance to larger, rotated, multiscale,
 color, learned, selected, weighted, line-subspace, or sequential variants.
 The compact controller remains incumbent.
 
+### Stage 18z closure - fold-fitted ICA sparse context rejected; Stage 19a registered
+
+The fixed fold-fitted unlabeled FastICA response-concentration membership was
+training-ineligible in all `15/15` UDED-selection folds, so the candidate
+exactly reduced to compact MFI and all UDED metrics were unchanged. Official
+BSDS500-validation ODS/OIS/AP changed by
+`-0.000056/+0.000027/+0.000074`, failing the required ODS margin. All
+non-performance contracts passed, but cannot override complete UDED
+ineligibility and the failed BSDS condition. The candidate is rejected; do not
+tune or extend ICA, sparse/dictionary representations, calibration, or
+integration from this result. The compact controller remains incumbent.
+
+The registered next action is `stage19a_generation2_mechanism_checkpoint`, a
+live-primary-literature escalation that must select exactly one mechanistically
+distinct bounded generation-2 falsification with a preregistered joint UDED-
+selection/BSDS500-validation rule. It may not tune Stage 18z or earlier closed
+families, combine rejected cues, use dataset identity, relax the cross-dataset
+rule, or use protected feedback.
+
 ### Stage 18x closure - dual-stencil Teager-energy context rejected; Stage 18y registered
 
 The fixed axial/diagonal Teager-Kaiser positive-consensus membership failed
