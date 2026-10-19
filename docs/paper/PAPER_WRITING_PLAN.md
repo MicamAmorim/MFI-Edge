@@ -1411,3 +1411,16 @@ preview. Failure closes this realization without motivating alternative TKEO
 stencils, max/mean fusion, higher-order energy, wavelet/multiscale/color
 variants, demodulation, contrast enhancement, calibration, or integration.
 Retain the local evaluator's stochastic/reference-reproduction caveat.
+
+## Stage 18x outcome note
+
+Report Stage 18x as a negative fixed nonlinear-energy result. UDED aggregate
+F1/precision/recall and mean fold F1 changed by
+`+0.000813/+0.000071/+0.002072/+0.000708`, with only `3/15` fold wins and
+eligibility in `3/15`. Official BSDS500-validation ODS/OIS/AP changed by
+`+0.000002/+0.000867/+0.000088`. State that the cue missed the UDED aggregate-
+F1, fold-win, eligibility, and BSDS ODS conditions despite passing synthetic,
+quadratic-scale, repeatability, support, runtime, and fixed-preview contracts.
+Do not use the result to motivate other stencils, fusion rules, higher-order
+energy, demodulation, contrast enhancement, calibration, or integration.
+Retain the local evaluator's stochastic/reference-reproduction caveat.

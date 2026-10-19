@@ -1235,6 +1235,25 @@ localizer, or thresholds, and do not advance to larger, rotated, multiscale,
 color, learned, selected, weighted, line-subspace, or sequential variants.
 The compact controller remains incumbent.
 
+### Stage 18x closure - dual-stencil Teager-energy context rejected; Stage 18y registered
+
+The fixed axial/diagonal Teager-Kaiser positive-consensus membership failed
+its conjunctive promotion rule. UDED aggregate F1/precision/recall and mean
+fold F1 changed by `+0.000813/+0.000071/+0.002072/+0.000708`, with only
+`3/15` fold wins and eligibility in `3/15` folds. Official BSDS500-validation
+ODS/OIS/AP changed by `+0.000002/+0.000867/+0.000088`, missing the required
+ODS margin. All non-performance contracts passed. The candidate is rejected;
+do not tune or extend nonlinear-energy stencils, fusion, higher-order energy,
+demodulation, contrast enhancement, calibration, or integration. The compact
+controller remains incumbent.
+
+The registered next action is `stage18y_generation2_mechanism_checkpoint`, a
+live-primary-literature escalation that must select exactly one
+mechanistically distinct bounded generation-2 falsification with a
+preregistered joint UDED-selection/BSDS500-validation rule. It may not tune
+Stage 18x or earlier closed families, combine rejected cues, use dataset
+identity, relax the cross-dataset rule, or use protected feedback.
+
 The registered next action is `stage16i_generation2_mechanism_checkpoint`, a
 high-reasoning live-primary-literature escalation that must select exactly one
 mechanistically distinct bounded generation-2 falsification with a

@@ -2492,3 +2492,21 @@ Choquet-gated grayscale Scharr+NMS controller remains incumbent. Failure
 closes axial/diagonal TKEO consensus and may not motivate alternative
 stencils, fusion, higher-order energy, demodulation, contrast enhancement,
 calibration, or integration tuning.
+
+## Stage 18x closed - dual-stencil Teager-energy context rejected
+
+The fixed nonlinear-energy membership changed UDED aggregate
+F1/precision/recall and mean fold F1 by
+`+0.000813/+0.000071/+0.002072/+0.000708`, with `3/15` fold wins and only
+`3/15` eligible folds. Official BSDS500-validation ODS/OIS/AP changed by
+`+0.000002/+0.000867/+0.000088`. The candidate missed the UDED aggregate-F1,
+fold-win, eligibility, and BSDS ODS requirements, so the conjunctive rule
+rejects it. All non-performance contracts passed. No TKEO, energy-operator,
+demodulation, contrast-enhancement, calibration, or integration variant may be
+tuned or combined. Compact Choquet-gated Scharr+NMS remains incumbent.
+
+The active next action is `stage18y_generation2_mechanism_checkpoint`. This
+live-primary-literature escalation must select exactly one mechanistically
+distinct bounded generation-2 test with a preregistered joint UDED/BSDS rule.
+It may not revisit Stage 18x or earlier closed families, combine rejected cues,
+fit dataset identity, relax the cross-dataset rule, or use protected feedback.

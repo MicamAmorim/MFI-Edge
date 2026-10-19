@@ -3112,6 +3112,28 @@ rerun only the unchanged official BSDS500-validation export/evaluator. It may
 not rerun CV, regenerate UDED predictions, change the forest, or tune/fuse it.
 The compact controller remains incumbent.
 
+### Stage 18x dual-stencil Teager-energy context rejected; Stage 18y registered
+
+The fixed positive geometric consensus of axial and diagonal 2-D Teager-
+Kaiser energy failed its conjunctive promotion rule. On UDED selection,
+aggregate F1/precision/recall and mean fold F1 changed by
+`+0.000813/+0.000071/+0.002072/+0.000708`, with only `3/15` fold wins and
+eligibility in `3/15` folds. Official BSDS500-validation ODS/OIS/AP changed by
+`+0.000002/+0.000867/+0.000088`, missing the required ODS margin. Exact
+support and all synthetic, quadratic-scale, repeatability, runtime, and fixed-
+preview contracts passed, but cannot override the performance failures.
+
+The candidate is rejected; do not tune or extend its stencils, boundary
+handling, rectification, consensus, normalization, calibration, eligibility,
+integration, energy-operator, demodulation, contrast-enhancement, or higher-
+order family. The compact Choquet-gated grayscale Scharr+NMS controller
+remains incumbent. The registered next action is
+`stage18y_generation2_mechanism_checkpoint`, a live-primary-literature
+escalation that must choose exactly one mechanistically distinct bounded
+generation-2 falsification under a preregistered joint UDED/BSDS rule, without
+combining rejected cues, relaxing the cross-dataset gate, or using protected
+feedback.
+
 ### Stage 16v exact Structured Edge forest rejected; Stage 16w registered
 
 The attachment-only retry restored and hash-verified the exact pinned author
