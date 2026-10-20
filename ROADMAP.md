@@ -2642,3 +2642,17 @@ The active next action is `stage20a_full_shortlist_2additive_choquet`. It uses
 unchanged official BSDS500-validation attachment. A pass stops the queue for
 freeze/confirmation planning; a failure advances only to the already frozen
 20B entry. Compact MFI remains incumbent meanwhile.
+
+## Stage 20a rejected - frozen Stage 20b candidate active
+
+Stage 20A passed its UDED and implementation gates, improving aggregate F1 by
+`+0.007589` with `13/15` fold wins and `15/15` converged fits. Its official
+BSDS500-validation ODS/OIS also improved by `+0.007402/+0.003711`, but AP
+declined by `-0.043929`. The conjunctive frozen rule therefore rejects it.
+Compact MFI remains incumbent.
+
+The active next action is the unchanged queue entry
+`stage20b_interaction_core_2additive_choquet`. It tests the preregistered
+four-cue interaction core under the identical fitting, overlap firewall,
+preview, and joint UDED/BSDS rules. Candidate 20A cannot be tuned, and the
+queue cannot be reordered, replaced, expanded, or replenished.

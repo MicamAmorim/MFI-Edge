@@ -2854,3 +2854,21 @@ cannot alter later entries; there is no fifth candidate. A pass stops for
 freeze/confirmation planning, while four failures end in synthesis without
 literature escalation. The registered next action is
 `stage20a_full_shortlist_2additive_choquet`; compact MFI remains incumbent.
+
+### Stage 20a closure - full-shortlist 2-additive Choquet rejected; Stage 20b active
+
+The frozen six-cue monotone 2-additive Choquet candidate passed every UDED
+selection and fit/support condition: aggregate F1/precision/recall and mean
+fold F1 changed by `+0.007589/+0.013213/-0.002227/+0.006121`, with `13/15`
+fold wins, `15/15` converged capacity fits, and exact support preservation.
+Official BSDS500-validation ODS/OIS improved by `+0.007402/+0.003711`, but AP
+fell by `-0.043929`. Because the frozen promotion rule requires an ODS gain
+of at least `+0.002` and nonnegative OIS and AP changes jointly, Stage 20A is
+rejected. Compact MFI
+remains incumbent; do not modify the queue, descriptors, fitting, calibration,
+or parameters from this outcome.
+
+The registered next action is the already-frozen candidate 2/4,
+`stage20b_interaction_core_2additive_choquet`, using the four-cue interaction
+core. Later entries remain unchanged, and no replacement or fifth candidate
+is permitted.

@@ -1506,3 +1506,16 @@ validation outcome. Each Stage-20 result must report both development axes,
 fit and support contracts, capacity Shapley/interaction diagnostics, runtime,
 and the fixed positions 1/7/14 preview. If a candidate passes, stop the queue;
 if all four fail, end with synthesis and do not imply an unreported fifth test.
+
+## Stage 20a outcome note
+
+Report Stage 20A as a conjunctive rejection with cross-metric tension, not as
+a near-promotion. The full-shortlist 2-additive model passed all UDED and
+fit/support requirements (`+0.007589` aggregate F1, `+0.013213` precision,
+`-0.002227` recall, `+0.006121` mean fold F1, `13/15` wins, `15/15`
+converged fits). On official BSDS500 validation it improved ODS/OIS by
+`+0.007402/+0.003711` but reduced AP by `-0.043929`; the registered
+nonnegative-AP condition therefore rejects it. Preserve the evaluator caveat,
+the fixed preview, and the fact that Stage 20B was frozen before this result.
+Do not imply that the AP loss licenses weight, calibration, descriptor, or
+capacity tuning.

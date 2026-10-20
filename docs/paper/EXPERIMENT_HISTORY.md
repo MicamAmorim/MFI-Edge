@@ -4715,3 +4715,24 @@ UDED repeated CV, completed official BSDS validation, fit/support contracts,
 and the deterministic positions 1/7/14 preview. No outcome may change the
 remaining queue. `stage20a_full_shortlist_2additive_choquet` is the sole next
 action; compact distorted-Choquet MFI remains incumbent.
+
+### Stage 20a closure - full shortlist rejected; Stage 20b registered
+
+Stage 20A completed under the frozen queue contract. The full six-cue
+2-additive Choquet candidate passed the complete overlap-clean UDED gate:
+aggregate F1 changed by `+0.007589`, precision by `+0.013213`, recall by
+`-0.002227`, and mean fold F1 by `+0.006121`, with `13/15` fold wins. All 15
+capacity fits converged and the candidate preserved incumbent score support.
+
+The official BSDS500-validation attachment improved ODS from `0.545428` to
+`0.552830` (`+0.007402`) and OIS from `0.579569` to `0.583281`
+(`+0.003711`), but AP fell from `0.534292` to `0.490363` (`-0.043929`). The
+preregistered rule required nonnegative AP as part of a conjunction, so the
+candidate is rejected despite its strong UDED and ODS/OIS results. The fixed
+positions 1/7/14 preview and all runtime, capacity, per-fold, and per-image
+artifacts are complete. The Windows matcher remains stochastic and reference-
+reproduction-unverified, as previously documented.
+
+No Stage-20 entry or parameter changes from this result. Compact MFI remains
+incumbent, and `stage20b_interaction_core_2additive_choquet`, the already-
+frozen four-cue interaction-core candidate, is the sole next action.
