@@ -2842,6 +2842,90 @@
       "results/automation/stage19e_stage20_queue_freeze/summary.json"
     ]
   },
+  "stage20a_full_shortlist_2additive_choquet": {
+    "description": "Frozen Stage-20 candidate 1/4: replace only compact context aggregation with a fold-fitted monotone 2-additive Choquet model over the complete six-descriptor Stage-19C shortlist.",
+    "runner": "python",
+    "path": "automation/stage20_candidate_venv_launcher.py",
+    "args": ["--candidate-id", "stage20a_full_shortlist_2additive_choquet"],
+    "role": "bounded_stage20_candidate",
+    "feedback_policy": "frozen_queue_candidate_1_of_4_overlap_clean_uded_repeated_cv_and_official_bsds500_validation_no_queue_reorder_replacement_expansion_or_parameter_change_no_protected_feedback",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage20a_full_shortlist_2additive_choquet/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage20a_full_shortlist_2additive_choquet/summary.json",
+      "results/local_dev/stage20a_full_shortlist_2additive_choquet/variant_ranking.csv",
+      "results/local_dev/stage20a_full_shortlist_2additive_choquet/fold_results.csv",
+      "results/local_dev/stage20a_full_shortlist_2additive_choquet/per_image_metrics.csv",
+      "results/local_dev/stage20a_full_shortlist_2additive_choquet/capacity_parameters.csv",
+      "results/local_dev/stage20a_full_shortlist_2additive_choquet/runtime.csv",
+      "results/local_dev/stage20a_full_shortlist_2additive_choquet/best_method_preview.png",
+      "results/local_dev/stage20a_full_shortlist_2additive_choquet/official_eval_manifest.json",
+      "results/official_eval/stage20a_full_shortlist_2additive_choquet/summary.json"
+    ]
+  },
+  "stage20b_interaction_core_2additive_choquet": {
+    "description": "Frozen Stage-20 candidate 2/4: monotone 2-additive Choquet context over the four-cue cross-domain interaction core fixed by Stage 19C.",
+    "runner": "python",
+    "path": "automation/stage20_candidate_venv_launcher.py",
+    "args": ["--candidate-id", "stage20b_interaction_core_2additive_choquet"],
+    "role": "bounded_stage20_candidate",
+    "feedback_policy": "frozen_queue_candidate_2_of_4_execute_only_if_candidate_1_fails_no_queue_reorder_replacement_expansion_or_parameter_change_no_protected_feedback",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage20b_interaction_core_2additive_choquet/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage20b_interaction_core_2additive_choquet/summary.json",
+      "results/local_dev/stage20b_interaction_core_2additive_choquet/variant_ranking.csv",
+      "results/local_dev/stage20b_interaction_core_2additive_choquet/fold_results.csv",
+      "results/local_dev/stage20b_interaction_core_2additive_choquet/per_image_metrics.csv",
+      "results/local_dev/stage20b_interaction_core_2additive_choquet/capacity_parameters.csv",
+      "results/local_dev/stage20b_interaction_core_2additive_choquet/runtime.csv",
+      "results/local_dev/stage20b_interaction_core_2additive_choquet/best_method_preview.png",
+      "results/local_dev/stage20b_interaction_core_2additive_choquet/official_eval_manifest.json",
+      "results/official_eval/stage20b_interaction_core_2additive_choquet/summary.json"
+    ]
+  },
+  "stage20c_dominant_pair_2additive_choquet": {
+    "description": "Frozen Stage-20 candidate 3/4: minimal monotone 2-additive Choquet context over Gabor-13 and semi-global change-point evidence, the dominant stable Stage-19D interaction pair.",
+    "runner": "python",
+    "path": "automation/stage20_candidate_venv_launcher.py",
+    "args": ["--candidate-id", "stage20c_dominant_pair_2additive_choquet"],
+    "role": "bounded_stage20_candidate",
+    "feedback_policy": "frozen_queue_candidate_3_of_4_execute_only_if_candidates_1_and_2_fail_no_queue_reorder_replacement_expansion_or_parameter_change_no_protected_feedback",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage20c_dominant_pair_2additive_choquet/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage20c_dominant_pair_2additive_choquet/summary.json",
+      "results/local_dev/stage20c_dominant_pair_2additive_choquet/variant_ranking.csv",
+      "results/local_dev/stage20c_dominant_pair_2additive_choquet/fold_results.csv",
+      "results/local_dev/stage20c_dominant_pair_2additive_choquet/per_image_metrics.csv",
+      "results/local_dev/stage20c_dominant_pair_2additive_choquet/capacity_parameters.csv",
+      "results/local_dev/stage20c_dominant_pair_2additive_choquet/runtime.csv",
+      "results/local_dev/stage20c_dominant_pair_2additive_choquet/best_method_preview.png",
+      "results/local_dev/stage20c_dominant_pair_2additive_choquet/official_eval_manifest.json",
+      "results/official_eval/stage20c_dominant_pair_2additive_choquet/summary.json"
+    ]
+  },
+  "stage20d_incumbent_bank_2additive_choquet": {
+    "description": "Frozen Stage-20 candidate 4/4: aggregation-only monotone 2-additive Choquet replacement over the retained compact five-descriptor bank.",
+    "runner": "python",
+    "path": "automation/stage20_candidate_venv_launcher.py",
+    "args": ["--candidate-id", "stage20d_incumbent_bank_2additive_choquet"],
+    "role": "bounded_stage20_candidate",
+    "feedback_policy": "frozen_queue_candidate_4_of_4_execute_only_if_candidates_1_through_3_fail_then_synthesize_and_stop_without_literature_escalation_no_queue_replacement_expansion_or_parameter_change_no_protected_feedback",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage20d_incumbent_bank_2additive_choquet/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage20d_incumbent_bank_2additive_choquet/summary.json",
+      "results/local_dev/stage20d_incumbent_bank_2additive_choquet/variant_ranking.csv",
+      "results/local_dev/stage20d_incumbent_bank_2additive_choquet/fold_results.csv",
+      "results/local_dev/stage20d_incumbent_bank_2additive_choquet/per_image_metrics.csv",
+      "results/local_dev/stage20d_incumbent_bank_2additive_choquet/capacity_parameters.csv",
+      "results/local_dev/stage20d_incumbent_bank_2additive_choquet/runtime.csv",
+      "results/local_dev/stage20d_incumbent_bank_2additive_choquet/best_method_preview.png",
+      "results/local_dev/stage20d_incumbent_bank_2additive_choquet/official_eval_manifest.json",
+      "results/official_eval/stage20d_incumbent_bank_2additive_choquet/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

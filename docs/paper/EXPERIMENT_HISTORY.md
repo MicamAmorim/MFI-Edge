@@ -4693,3 +4693,25 @@ preregister every candidate before Stage 20A executes. No later failure may
 replace a queued candidate, no fifth candidate may be added, and exhausting
 the queue without promotion ends in synthesis rather than open-ended
 literature escalation. Compact MFI remains unchanged.
+
+### Stage 19e closure - complete Stage-20 queue frozen; Stage 20a registered
+
+Stage 19E completed without reading BSDS500 validation or any protected
+image/GT blob. The complete four-entry queue is frozen in
+`automation/stage20_frozen_queue.json` and fully specified by
+`docs/paper/STAGE20_QUEUE_PREREGISTRATION.md`. Every entry uses the Stage-19D
+winning monotone 2-additive Choquet family. In order, the descriptor sets are:
+the complete six-cue Stage-19C shortlist; the four-cue shared-interaction core;
+the dominant `gabor4_s13`/semi-global-change-point pair; and the retained
+compact five-member bank as an aggregation-only fallback. The transfer-
+collapsed additive/logistic family is excluded.
+
+All candidates share one immutable fitting and evaluation contract. Membership
+maps and the constrained capacity are fitted inside each outer overlap-clean
+UDED fold; the known `03-35028`/BSDS-test-35028 lineage item is not read. The
+official BSDS500-validation exporter fits once on all 14 overlap-clean UDED
+selection images and reads no BSDS GT. Promotion remains conjunctive across
+UDED repeated CV, completed official BSDS validation, fit/support contracts,
+and the deterministic positions 1/7/14 preview. No outcome may change the
+remaining queue. `stage20a_full_shortlist_2additive_choquet` is the sole next
+action; compact distorted-Choquet MFI remains incumbent.

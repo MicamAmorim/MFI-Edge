@@ -1493,3 +1493,16 @@ parameter stability, Shapley importance, and pair interaction indices. Make
 clear that Stage 19D only supplies the Stage-19E synthesis and cannot promote
 or alter MFI; the complete Stage-20 queue is frozen afterward and before any
 BSDS-validation candidate result.
+
+For Stage 19E, report the full queue as a preregistered finite campaign, not as
+four adaptive follow-ups. The frozen order is full six-cue shortlist,
+four-cue interaction core, dominant Gabor-13/change-point pair, then the
+incumbent five-cue bank with only aggregation changed. Explain that all use the
+same monotone 2-additive Choquet fitting rule and that the additive/logistic
+family was excluded by its Stage-19D transfer-collapse classification. State
+that known UDED item `03-35028` is excluded throughout Stage 20 by protected
+BSDS-test lineage and that the complete queue preceded every candidate BSDS-
+validation outcome. Each Stage-20 result must report both development axes,
+fit and support contracts, capacity Shapley/interaction diagnostics, runtime,
+and the fixed positions 1/7/14 preview. If a candidate passes, stop the queue;
+if all four fail, end with synthesis and do not imply an unreported fifth test.

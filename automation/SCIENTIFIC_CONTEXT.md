@@ -2832,3 +2832,25 @@ executes or any candidate BSDS500-validation result is read. The queue cannot
 be expanded or replenished after outcomes; exhausting it without a pass ends
 in synthesis without automatic literature escalation. Compact MFI remains the
 incumbent.
+
+### Stage 19e closure - four-candidate Stage-20 queue frozen
+
+Stage 19E froze the complete Stage-20 queue before any candidate execution or
+BSDS500-validation candidate read. All four entries use the Stage-19D winning
+monotone 2-additive Choquet family: (20A) the full six-cue Stage-19C shortlist;
+(20B) the four-cue shared-interaction core `gabor4_s13`, semi-global change
+point, `hessian_s13`, and `gabor4_s5`; (20C) the dominant Gabor-13/change-point
+pair; and (20D) the retained compact five-cue bank as an aggregation-only
+fallback. The complete immutable contract is
+`docs/paper/STAGE20_QUEUE_PREREGISTRATION.md` and the machine-readable order is
+`automation/stage20_frozen_queue.json`.
+
+Every candidate uses outer-fold-only membership/capacity fitting on 14-image
+overlap-clean UDED selection, excluding known protected-lineage item
+`03-35028` without reading its bytes, plus the unchanged official BSDS500-
+validation attachment fitted from all 14 clean UDED images. A candidate must
+pass the fixed conjunctive UDED, BSDS, fit/support, and preview rules. Outcomes
+cannot alter later entries; there is no fifth candidate. A pass stops for
+freeze/confirmation planning, while four failures end in synthesis without
+literature escalation. The registered next action is
+`stage20a_full_shortlist_2additive_choquet`; compact MFI remains incumbent.

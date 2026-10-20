@@ -2625,3 +2625,20 @@ or any candidate BSDS500-validation result is read. The queue cannot be
 expanded or replenished after outcomes. A pass freezes the promoted generation
 for confirmation planning; exhausting the queue without a pass ends in a
 synthesis stop, not another literature escalation.
+
+## Stage 19e complete - frozen Stage-20 queue active
+
+The complete queue is now frozen before any Stage-20 execution or candidate
+BSDS500-validation read. The order is: (20A) full six-cue shortlist with
+monotone 2-additive Choquet; (20B) four-cue shared-interaction core; (20C)
+dominant Gabor-13/semi-global-change-point pair; and (20D) retained compact
+five-cue bank with only the aggregation family changed. All four protocols,
+promotion thresholds, exporters, previews, and stop rules are fixed in
+`docs/paper/STAGE20_QUEUE_PREREGISTRATION.md` and
+`automation/stage20_frozen_queue.json`.
+
+The active next action is `stage20a_full_shortlist_2additive_choquet`. It uses
+5x3 image-blocked CV on the 14-image overlap-clean UDED selection set and the
+unchanged official BSDS500-validation attachment. A pass stops the queue for
+freeze/confirmation planning; a failure advances only to the already frozen
+20B entry. Compact MFI remains incumbent meanwhile.

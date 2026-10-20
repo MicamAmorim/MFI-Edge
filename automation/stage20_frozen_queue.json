@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "frozen_at_stage": "stage19e_stage20_queue_freeze",
+  "seed": 20261009,
+  "queue_is_complete": true,
+  "maximum_candidates": 4,
+  "no_replacement_or_expansion": true,
+  "stop_on_first_pass": true,
+  "stop_after_all_fail": true,
+  "candidates": [
+    {
+      "order": 1,
+      "experiment_id": "stage20a_full_shortlist_2additive_choquet",
+      "label": "full_shortlist_2additive",
+      "descriptors": [
+        "structure_tensor_coherence",
+        "gabor4_s13",
+        "semiglobal_changepoint",
+        "hessian_s13",
+        "brightness_entropy",
+        "gabor4_s5"
+      ],
+      "rationale": "Direct detector-level translation of the fixed Stage-19C shortlist and the Stage-19D winning family."
+    },
+    {
+      "order": 2,
+      "experiment_id": "stage20b_interaction_core_2additive_choquet",
+      "label": "interaction_core_2additive",
+      "descriptors": [
+        "gabor4_s13",
+        "semiglobal_changepoint",
+        "hessian_s13",
+        "gabor4_s5"
+      ],
+      "rationale": "Preregistered pruning to the four-cue cross-domain interaction core identified by Stage 19C."
+    },
+    {
+      "order": 3,
+      "experiment_id": "stage20c_dominant_pair_2additive_choquet",
+      "label": "dominant_pair_2additive",
+      "descriptors": [
+        "gabor4_s13",
+        "semiglobal_changepoint"
+      ],
+      "rationale": "Minimal pair retaining the dominant stable negative interaction in the Stage-19D fitted capacities."
+    },
+    {
+      "order": 4,
+      "experiment_id": "stage20d_incumbent_bank_2additive_choquet",
+      "label": "incumbent_bank_2additive",
+      "descriptors": [
+        "gabor4_s5",
+        "hessian_s7",
+        "gabor4_s13",
+        "hessian_s13",
+        "gabor4_scale_persistence"
+      ],
+      "rationale": "Aggregation-only fallback that applies the identified family to the already retained compact descriptor bank."
+    }
+  ]
+}
