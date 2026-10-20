@@ -2672,3 +2672,20 @@ The active next action is the unchanged queue entry
 overlap firewall, preview, and joint UDED/BSDS rules. Candidates 20A and 20B
 cannot be tuned, Stage 20D remains frozen, and the queue cannot be reordered,
 replaced, expanded, or replenished.
+
+## Stage 20c rejected - frozen Stage 20d candidate active
+
+Stage 20C passed its complete UDED and implementation gates: aggregate F1,
+precision, recall, and mean fold F1 changed by
+`+0.008839/+0.011107/+0.004564/+0.006457`, with `12/15` fold wins and
+`15/15` converged fits. Official BSDS500-validation ODS/OIS improved by
+`+0.014305/+0.008814`, but AP declined by `-0.026222`. The required
+nonnegative-AP condition therefore rejects it. Compact MFI remains incumbent.
+
+The active next action is the unchanged fourth and final queue entry,
+`stage20d_incumbent_bank_2additive_choquet`. It isolates the aggregation
+change over the retained compact five-cue bank under the identical fitting,
+overlap firewall, preview, and joint UDED/BSDS rules. Candidates 20A--20C
+cannot be tuned and no replacement or fifth candidate is permitted. Failure
+of Stage 20D ends the bounded program in synthesis without automatic
+literature escalation.

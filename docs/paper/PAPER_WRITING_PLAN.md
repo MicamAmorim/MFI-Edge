@@ -1531,3 +1531,17 @@ validation improved ODS/OIS by `+0.007330/+0.004178` but reduced AP by
 `-0.043939`; the nonnegative-AP requirement rejects it. Preserve the
 reference-unverified evaluator caveat, fixed preview, unchanged incumbent,
 and the fact that Stage 20C was frozen before both Stage-20 outcomes.
+
+## Stage 20c outcome note
+
+Report Stage 20C as a third conjunctive rejection despite the strongest UDED
+and ODS/OIS movement in the frozen queue so far. The dominant-pair candidate
+passed UDED and all implementation contracts (`+0.008839` aggregate F1,
+`+0.011107` precision, `+0.004564` recall, `+0.006457` mean fold F1,
+`12/15` wins, and `15/15` converged fits). Official BSDS500 validation
+improved ODS/OIS by `+0.014305/+0.008814` but reduced AP by `-0.026222`; the
+nonnegative-AP requirement rejects it. Preserve the reference-unverified
+evaluator caveat, fixed preview, unchanged incumbent, and the fact that Stage
+20D was frozen before all three outcomes. Do not interpret the smaller AP loss
+as permission to tune calibration, descriptors, capacity constraints, or the
+queue.

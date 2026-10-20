@@ -2890,3 +2890,22 @@ The registered next action is the unchanged frozen candidate 3/4,
 `stage20c_dominant_pair_2additive_choquet`, using only `gabor4_s13` and
 `semiglobal_changepoint`. Stage 20D remains unchanged, and no replacement or
 fifth candidate is permitted.
+
+### Stage 20c closure - dominant-pair 2-additive Choquet rejected; Stage 20d active
+
+The frozen two-cue monotone 2-additive Choquet candidate passed every UDED
+selection and fit/support condition. Relative to compact MFI, aggregate
+F1/precision/recall and mean fold F1 changed by
+`+0.008839/+0.011107/+0.004564/+0.006457`, with `12/15` fold wins,
+`15/15` converged capacity fits, and exact support preservation. Official
+BSDS500-validation ODS/OIS improved by `+0.014305/+0.008814`, but AP fell by
+`-0.026222`. The frozen conjunctive rule requires nonnegative AP, so Stage 20C
+is rejected. The compact distorted-Choquet controller remains incumbent; do
+not tune the descriptors, fitting, calibration, capacity, or parameters from
+this result.
+
+The registered next action is the unchanged final queue entry,
+`stage20d_incumbent_bank_2additive_choquet`, applying the frozen 2-additive
+family to the retained compact five-cue bank. There is no replacement or fifth
+candidate. If Stage 20D fails, the bounded program ends in synthesis without
+automatic literature escalation.

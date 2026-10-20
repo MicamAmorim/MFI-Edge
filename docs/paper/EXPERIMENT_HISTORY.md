@@ -4760,3 +4760,27 @@ that outcome to alter calibration, capacity fitting, descriptors, or queue
 order. Compact MFI remains incumbent. The sole next action is the already-
 frozen candidate 3/4, `stage20c_dominant_pair_2additive_choquet`; Stage 20D
 remains unchanged and no replacement or fifth candidate is permitted.
+
+### Stage 20c closure - dominant pair rejected; Stage 20d registered
+
+Stage 20C completed under the immutable queue contract. The two-cue
+`gabor4_s13`/semi-global-change-point 2-additive Choquet candidate passed the
+full overlap-clean UDED gate: aggregate F1 changed by `+0.008839`, precision
+by `+0.011107`, recall by `+0.004564`, and mean fold F1 by `+0.006457`, with
+`12/15` fold wins. All 15 capacity fits converged, predictions were finite and
+bounded, and score support exactly matched the incumbent. The fixed positions
+1/7/14 preview and registered capacity, runtime, fold, and per-image artifacts
+are complete.
+
+The official BSDS500-validation attachment improved ODS from `0.545407` to
+`0.559712` (`+0.014305`) and OIS from `0.579200` to `0.588014`
+(`+0.008814`), but AP fell from `0.534293` to `0.508071` (`-0.026222`).
+Because nonnegative AP is mandatory in the preregistered conjunction, the
+candidate is rejected. The Windows matcher remains stochastic and reference-
+reproduction-unverified, as already documented.
+
+Compact MFI remains incumbent, and no Stage-20 parameter or queue entry may
+change from this result. The sole next action is the already-frozen final
+candidate, `stage20d_incumbent_bank_2additive_choquet`. If it fails, the
+bounded four-candidate program ends in synthesis without automatic literature
+escalation, replacement, or a fifth candidate.
