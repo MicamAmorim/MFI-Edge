@@ -1477,3 +1477,19 @@ image `35028`. The qualitative figure uses fixed BSDS-train positions
 1/100/200 and shows input, mean human GT, and all twelve descriptor maps. Do
 not describe Stage 19B as selecting a feature or improving a detector; its
 role is to supply preregistered evidence for Stage 19C.
+
+For Stage 19C, report the machine-derived six-cue shortlist in its frozen
+order: structure-tensor coherence, `gabor4_s13`, semi-global change-point,
+`hessian_s13`, brightness entropy, and `gabor4_s5`. Explain that Frei-Chen was
+pruned only by the preregistered bilateral redundancy/complementarity rule.
+Do not present the shortlist as a detector improvement. The incumbent-only
+BSDS-train ODS/OIS/AP `0.535462/0.574704/0.514451` is evaluator provenance,
+not a candidate result.
+
+For Stage 19D, present exactly three analysis families: incumbent distorted
+Choquet, nonnegative additive/logistic, and monotone 2-additive Choquet. Report
+image-grouped within-domain and cross-domain probabilistic/ranking evidence,
+parameter stability, Shapley importance, and pair interaction indices. Make
+clear that Stage 19D only supplies the Stage-19E synthesis and cannot promote
+or alter MFI; the complete Stage-20 queue is frozen afterward and before any
+BSDS-validation candidate result.

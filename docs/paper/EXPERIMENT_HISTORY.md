@@ -4644,3 +4644,27 @@ same-direction, chance-floor, bilateral-correlation, and bilateral-conditional-
 gain rules produce a shortlist capped at six for Stage 19D. BSDS validation,
 protected blobs, higher-order searches, detector promotion, and MFI changes
 remain forbidden.
+
+### Stage 19c pairwise complementarity complete; Stage 19d registered
+
+Stage 19C completed its pairwise-only analysis on the preregistered 200
+BSDS500-train images and 14 overlap-clean UDED-selection images. The frozen
+shared-relevance/redundancy rule retained, in order, structure-tensor
+coherence, `gabor4_s13`, semi-global change-point evidence, `hessian_s13`,
+brightness entropy, and `gabor4_s5`. Frei-Chen edge-subspace evidence was the
+only rule-pruned descriptor, because it was bilaterally redundant with the
+higher-ranked brightness-entropy cue without the required bilateral additive
+gain. These results freeze an analysis shortlist only and do not change the
+detector.
+
+The incumbent-only official BSDS-train attachment recorded ODS/OIS/AP
+`0.535462/0.574704/0.514451`. It supplies development provenance but no
+candidate comparison and retains the stochastic/reference-reproduction caveat.
+
+`stage19d_aggregation_identification` is registered under
+`docs/paper/STAGE19D_PREREGISTRATION.md` as experiment 3 of 3. Using the frozen
+six-cue shortlist, it compares exactly the fixed incumbent distorted-Choquet
+context, monotone nonnegative additive/logistic aggregation, and a constrained
+monotone 2-additive Choquet model. BSDS validation, protected blobs, family
+expansion, descriptor replacement, detector promotion and architecture change
+remain forbidden.

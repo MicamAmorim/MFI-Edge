@@ -2590,3 +2590,20 @@ interaction gain, and cross-domain stability using deterministic image-grouped
 validation. Its fixed rules produce at most six descriptors for Stage 19D.
 It cannot read BSDS validation, search higher-order interactions, promote a
 detector, or alter compact MFI.
+
+## Stage 19c complete - Stage 19d aggregation identification active
+
+Stage 19C froze the rule-derived shortlist to structure-tensor coherence,
+`gabor4_s13`, semi-global change-point evidence, `hessian_s13`, brightness
+entropy, and `gabor4_s5`. The analysis used only BSDS500 train and the same
+overlap-clean UDED-selection manifest; it did not alter compact MFI. Its
+incumbent-only BSDS-train attachment recorded ODS/OIS/AP
+`0.535462/0.574704/0.514451` and no candidate comparison.
+
+The active next action is `stage19d_aggregation_identification`, the third and
+final Stage-19 scientific experiment. It compares exactly the preregistered
+distorted-Choquet control, monotone nonnegative additive/logistic family, and
+monotone 2-additive Choquet family using image-grouped within-domain and
+cross-domain development fits. BSDS validation remains unread. Stage 19D
+cannot promote a detector; its output feeds Stage 19E, which must freeze the
+entire ordered Stage-20 queue before any candidate executes.

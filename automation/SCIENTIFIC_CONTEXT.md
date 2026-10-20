@@ -2791,3 +2791,23 @@ interaction gain under deterministic image-grouped validation. The
 preregistered cross-domain rules freeze a shortlist of at most six descriptors
 for Stage 19D. No BSDS validation read, higher-order search, detector
 promotion, or architecture change is permitted.
+
+### Stage 19c closure - six-descriptor shortlist frozen; Stage 19d registered
+
+Stage 19C completed on 200 BSDS500-train images and the identical 14-image
+overlap-clean UDED-selection manifest, without reading BSDS validation or a
+protected image/GT blob. Its preregistered rules froze this Stage-19D order:
+`structure_tensor_coherence`, `gabor4_s13`, `semiglobal_changepoint`,
+`hessian_s13`, `brightness_entropy`, and `gabor4_s5`. Frei-Chen was pruned as
+redundant with brightness entropy under the fixed rule. The incumbent-only
+BSDS-train attachment obtained ODS/OIS/AP
+`0.535462/0.574704/0.514451`; it contains no candidate comparison and retains
+the reference-unverified evaluator caveat.
+
+The registered next action is `stage19d_aggregation_identification`, experiment
+3 of 3. It compares exactly the fixed distorted-Choquet control, monotone
+nonnegative additive/logistic aggregation, and monotone 2-additive Choquet
+aggregation under image-grouped within-domain and cross-domain fitting. It
+cannot read BSDS validation, add a family or descriptor, promote a detector,
+or alter compact MFI. Stage 19E must then freeze the complete ordered queue of
+at most four Stage-20 candidates before Stage 20A runs.

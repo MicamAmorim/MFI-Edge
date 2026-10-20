@@ -2807,6 +2807,29 @@
       "results/official_eval/stage19c_pairwise_complementarity/summary.json"
     ]
   },
+  "stage19d_aggregation_identification": {
+    "description": "Bounded Stage-19 experiment 3/3: compare exactly the fixed distorted-Choquet control, monotone nonnegative additive/logistic aggregation, and monotone 2-additive Choquet aggregation on the frozen Stage-19C six-descriptor shortlist using image-grouped within-domain and cross-domain development evaluation.",
+    "runner": "python",
+    "path": "automation/stage19d_aggregation_identification_venv_launcher.py",
+    "args": [],
+    "role": "bounded_gt_guided_analysis",
+    "feedback_policy": "bsds500_train_and_overlap_clean_uded_selection_only_frozen_stage19c_shortlist_exactly_three_preregistered_aggregation_families_image_grouped_training_and_transfer_no_bsds_validation_or_protected_blob_read_no_detector_promotion_architecture_change_family_expansion_or_hyperparameter_search",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage19d_aggregation_identification/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage19d_aggregation_identification/summary.json",
+      "results/local_dev/stage19d_aggregation_identification/aggregation_fold_metrics.csv",
+      "results/local_dev/stage19d_aggregation_identification/family_summary.csv",
+      "results/local_dev/stage19d_aggregation_identification/cross_domain_transfer.csv",
+      "results/local_dev/stage19d_aggregation_identification/parameter_stability.csv",
+      "results/local_dev/stage19d_aggregation_identification/choquet_shapley.csv",
+      "results/local_dev/stage19d_aggregation_identification/choquet_interactions.csv",
+      "results/local_dev/stage19d_aggregation_identification/stage19e_identification.json",
+      "results/local_dev/stage19d_aggregation_identification/best_method_preview.png",
+      "results/local_dev/stage19d_aggregation_identification/official_eval_manifest.json",
+      "results/official_eval/stage19d_aggregation_identification/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",
