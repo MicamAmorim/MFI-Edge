@@ -2572,3 +2572,21 @@ probability tables, consensus strata, annotator support, runtime, the overlap
 manifest, and fixed BSDS-train positions 1/100/200
 `best_method_preview.png`. Stage 19B cannot select a cue, promote a detector,
 or alter the architecture.
+
+## Stage 19b complete - Stage 19c pairwise analysis active
+
+Stage 19B completed its full frozen atlas on 200 BSDS500-train images and 14
+overlap-clean UDED-selection images. Every frozen descriptor showed positive
+mean tolerant-boundary association in both domains; structure-tensor
+coherence ranked first univariately in each (mean tolerant-union AUC about
+0.7743 and 0.9107). These are explanatory results only and do not select a
+cue. The incumbent-only BSDS-train official attachment recorded ODS/OIS/AP
+0.53548/0.57479/0.51445 under the still reference-unverified evaluator.
+
+The active next action is `stage19c_pairwise_complementarity`, experiment 2 of
+3. It is preregistered in `docs/paper/STAGE19C_PREREGISTRATION.md` and measures
+pairwise rank redundancy, conditional log-loss gain, signed bilinear
+interaction gain, and cross-domain stability using deterministic image-grouped
+validation. Its fixed rules produce at most six descriptors for Stage 19D.
+It cannot read BSDS validation, search higher-order interactions, promote a
+detector, or alter compact MFI.

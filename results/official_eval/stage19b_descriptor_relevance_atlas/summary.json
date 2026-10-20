@@ -1,0 +1,54 @@
+{
+  "status": "completed",
+  "experiment_id": "stage19b_descriptor_relevance_atlas",
+  "dataset": "BSDS500",
+  "split": "train",
+  "dataset_role": "development_official_metric",
+  "feedback_allowed": true,
+  "metric_policy": "Agent may use these metrics for development decisions.",
+  "evaluator": {
+    "family": "original Berkeley BSDS boundary benchmark",
+    "matlab": "C:\\Program Files\\MATLAB\\R2023a\\bin\\matlab.exe",
+    "nthresh": 99,
+    "max_dist": 0.0075,
+    "thinpb": true,
+    "multi_annotator": true,
+    "bsds500_commit": "a04b7c6c3a9f0ace74bf205c72a43d32e1c72722",
+    "windows_correspondPixels_source_commit": "94260b5d0fc068202598312e01a37604972dcc9e",
+    "reference_reproduction_verified": false
+  },
+  "methods": {
+    "incumbent_compact_positive_choquet": {
+      "ODS": 0.5354805228824067,
+      "ODS_precision": 0.44838281878875097,
+      "ODS_recall": 0.6645728165665477,
+      "ODS_threshold": 0.17464646464646466,
+      "OIS": 0.5747943540573293,
+      "OIS_precision": 0.47463497010184025,
+      "OIS_recall": 0.7285321424026971,
+      "AP": 0.5144498928230326,
+      "n_images": 200,
+      "nthresh": 99,
+      "max_dist": 0.0075,
+      "thinpb": true,
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+      "matlab_evaluate_returncode": 0,
+      "matlab_evaluate_processes": 1,
+      "matlab_evaluate_stdout_tail": "MFI_BSDS_EVAL 171/200 46076\nMFI_BSDS_EVAL 172/200 48055\nMFI_BSDS_EVAL 173/200 54005\nMFI_BSDS_EVAL 174/200 55067\nMFI_BSDS_EVAL 175/200 55075\nMFI_BSDS_EVAL 176/200 56028\nMFI_BSDS_EVAL 177/200 59078\nMFI_BSDS_EVAL 178/200 60079\nMFI_BSDS_EVAL 179/200 61060\nMFI_BSDS_EVAL 180/200 61086\nMFI_BSDS_EVAL 181/200 65010\nMFI_BSDS_EVAL 182/200 65019\nMFI_BSDS_EVAL 183/200 65074\nMFI_BSDS_EVAL 184/200 65132\nMFI_BSDS_EVAL 185/200 66039\nMFI_BSDS_EVAL 186/200 66075\nMFI_BSDS_EVAL 187/200 67079\nMFI_BSDS_EVAL 188/200 68077\nMFI_BSDS_EVAL 189/200 71046\nMFI_BSDS_EVAL 190/200 76002\nMFI_BSDS_EVAL 191/200 78019\nMFI_BSDS_EVAL 192/200 80099\nMFI_BSDS_EVAL 193/200 8049\nMFI_BSDS_EVAL 194/200 8143\nMFI_BSDS_EVAL 195/200 87065\nMFI_BSDS_EVAL 196/200 90076\nMFI_BSDS_EVAL 197/200 92059\nMFI_BSDS_EVAL 198/200 94079\nMFI_BSDS_EVAL 199/200 95006\nMFI_BSDS_EVAL 200/200 97017",
+      "matlab_collect_stdout_tail": ""
+    }
+  },
+  "comparisons_vs_incumbent": {},
+  "export": {
+    "incumbent_compact_positive_choquet": {
+      "source": "incumbent_exporter",
+      "fingerprint": "54217e49d7ee0c83",
+      "stdout_tail": "INCUMBENT_BSDS_EXPORT 186/200 66075\nSTAGE12B_PREP 01/1 66075\nINCUMBENT_BSDS_EXPORT 187/200 67079\nSTAGE12B_PREP 01/1 67079\nINCUMBENT_BSDS_EXPORT 188/200 68077\nSTAGE12B_PREP 01/1 68077\nINCUMBENT_BSDS_EXPORT 189/200 71046\nSTAGE12B_PREP 01/1 71046\nINCUMBENT_BSDS_EXPORT 190/200 76002\nSTAGE12B_PREP 01/1 76002\nINCUMBENT_BSDS_EXPORT 191/200 78019\nSTAGE12B_PREP 01/1 78019\nINCUMBENT_BSDS_EXPORT 192/200 80099\nSTAGE12B_PREP 01/1 80099\nINCUMBENT_BSDS_EXPORT 193/200 8049\nSTAGE12B_PREP 01/1 8049\nINCUMBENT_BSDS_EXPORT 194/200 8143\nSTAGE12B_PREP 01/1 8143\nINCUMBENT_BSDS_EXPORT 195/200 87065\nSTAGE12B_PREP 01/1 87065\nINCUMBENT_BSDS_EXPORT 196/200 90076\nSTAGE12B_PREP 01/1 90076\nINCUMBENT_BSDS_EXPORT 197/200 92059\nSTAGE12B_PREP 01/1 92059\nINCUMBENT_BSDS_EXPORT 198/200 94079\nSTAGE12B_PREP 01/1 94079\nINCUMBENT_BSDS_EXPORT 199/200 95006\nSTAGE12B_PREP 01/1 95006\nINCUMBENT_BSDS_EXPORT 200/200 97017\nSTAGE12B_PREP 01/1 97017"
+    }
+  },
+  "manifest": "results/local_dev/stage19b_descriptor_relevance_atlas/official_eval_manifest.json",
+  "final_claim_guard": "Development metrics are decision-capable on train/val, but a final SOTA claim still requires an independently verified reference reproduction and the project's protected multi-benchmark gate.",
+  "manifest_sha256": "ffcdcf313e8caa445cfbadbf75a3d1cb16c1b9330f0bc889e7bedc80e7caf68b"
+}

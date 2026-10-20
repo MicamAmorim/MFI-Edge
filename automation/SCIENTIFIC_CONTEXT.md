@@ -2769,3 +2769,25 @@ machine-readable distributions, per-image AUC/AP/dependence/effect metrics,
 curves, consensus strata, annotator support, runtime, the overlap-clean
 manifest, and a deterministic positions 1/100/200 BSDS-train descriptor
 preview. The official attachment is incumbent-only on BSDS train.
+
+### Stage 19b closure - descriptor atlas complete; Stage 19c registered
+
+The frozen twelve-cue atlas completed on all 200 BSDS500-train images and 14
+overlap-clean UDED-selection images without reading BSDS validation or any
+protected image/GT blob. All twelve cues had positive mean tolerant-boundary
+association in both development domains. Structure-tensor coherence was the
+strongest univariate cue by mean tolerant-union AUC in both domains (about
+`0.7743` BSDS train and `0.9107` UDED clean), but Stage 19B is explanatory and
+does not select a cue or alter the incumbent. The incumbent-only official
+BSDS-train attachment obtained ODS/OIS/AP
+`0.53548/0.57479/0.51445`; it is documentary development provenance, not a
+candidate comparison, and the evaluator remains reference-unverified.
+
+The registered next action is `stage19c_pairwise_complementarity`, experiment
+2 of 3. It uses only the frozen pool, BSDS train, and the identical
+overlap-clean UDED manifest to measure per-image rank redundancy, conditional
+log-loss gain relative to incumbent cues, and signed bilinear pairwise
+interaction gain under deterministic image-grouped validation. The
+preregistered cross-domain rules freeze a shortlist of at most six descriptors
+for Stage 19D. No BSDS validation read, higher-order search, detector
+promotion, or architecture change is permitted.

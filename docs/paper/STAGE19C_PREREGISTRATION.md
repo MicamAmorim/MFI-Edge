@@ -1,0 +1,11 @@
+# Stage 19C preregistration — pairwise redundancy and complementarity
+
+Stage 19C is experiment 2 of the three-experiment, user-directed Stage-19 analysis budget. It cannot promote a detector or alter the compact incumbent. It uses only pinned BSDS500 train and the Stage-19B overlap-clean UDED-selection manifest; BSDS500 validation and all protected splits are forbidden.
+
+The frozen twelve descriptors and Stage-19B deterministic 4096-pixel-per-image sample contract are unchanged. Redundancy is the per-image Spearman correlation, summarized by the median in each domain. Conditional information uses five-fold image-hash-grouped, class-balanced L2 logistic models on a deterministic first 512 Stage-19B samples per image. Candidate additions are compared with the five incumbent cues; an incumbent cue uses the other four as its reference. Pairwise synergy compares a standardized two-main-effect logistic model with the same model plus one signed bilinear product. Ridge strength is fixed at `1e-3`; no higher-order interaction is searched.
+
+Shared relevance uses the Stage-19B tolerant-union image-mean AUC/effect: direction must agree and AUC must be at least chance in both domains. Shared stability is the smaller absolute rank-biserial effect minus half the absolute domain-effect discrepancy; opposite directions receive a negative score. When absolute median Spearman correlation is at least `0.90` in both domains, the lower-ranked descriptor is pruned unless the additive pair improves image-grouped log loss over the better single descriptor in both domains. Surviving descriptors are ordered by shared stability and capped at six. This shortlist is frozen for Stage 19D.
+
+Interaction stability is the weaker-domain interaction log-loss gain minus the absolute gain discrepancy; a cross-domain interaction-sign disagreement receives an additional penalty equal to the larger absolute mean interaction coefficient.
+
+Required outputs are pairwise correlations, conditional gains, pairwise additive/interaction gains and coefficients, descriptor and interaction shared-stability metrics, `stage19d_shortlist.json`, an incumbent-only BSDS-train official manifest, and deterministic `best_method_preview.png` containing BSDS/UDED correlation matrices and the shortlist stability chart. The visualization cannot override the numerical rules.

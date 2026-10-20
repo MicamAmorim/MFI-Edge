@@ -4616,3 +4616,31 @@ panel order input, mean human GT, then the twelve frozen descriptor maps. The
 official manifest is train-only and incumbent-only because Stage 19B creates
 no candidate detector map. No cue selection, detector promotion, BSDS-
 validation read, architecture change, or thirteenth descriptor is permitted.
+
+### Stage 19b descriptor atlas complete; Stage 19c registered
+
+Stage 19B completed on the preregistered 200 pinned BSDS500-train images and
+14 overlap-clean UDED-selection images. The overlap manifest again excluded
+`03-35028` by filename lineage without reading protected BSDS image or GT
+bytes. All twelve frozen cues had positive mean tolerant-union rank-biserial
+association in both domains. Structure-tensor coherence had the highest mean
+tolerant-union ROC-AUC in both BSDS train (`0.774285`, 95% image-bootstrap CI
+`0.760020--0.788168`) and overlap-clean UDED (`0.910701`, CI
+`0.887902--0.932764`). This univariate ranking is descriptive only: the
+registered Stage-19B rule forbids cue selection, promotion, or architecture
+change.
+
+The incumbent-only official BSDS-train attachment completed with ODS/OIS/AP
+`0.535481/0.574794/0.514450`. There was no candidate comparison; the score is
+development provenance and retains the Stage-15a stochastic/reference-
+unverified evaluator caveat.
+
+`stage19c_pairwise_complementarity` is registered as analysis experiment 2 of
+3 under `docs/paper/STAGE19C_PREREGISTRATION.md`. It preserves the twelve-cue
+pool, Stage-19B sampling/overlap firewall, and image grouping. It measures
+per-image Spearman redundancy, conditional information against incumbent
+cues, and additive-versus-bilinear pairwise logistic gains. The fixed
+same-direction, chance-floor, bilateral-correlation, and bilateral-conditional-
+gain rules produce a shortlist capped at six for Stage 19D. BSDS validation,
+protected blobs, higher-order searches, detector promotion, and MFI changes
+remain forbidden.
