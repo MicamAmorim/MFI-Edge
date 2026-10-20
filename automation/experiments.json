@@ -2830,6 +2830,18 @@
       "results/official_eval/stage19d_aggregation_identification/summary.json"
     ]
   },
+  "stage19e_stage20_queue_freeze": {
+    "description": "Planning-only Stage-19E synthesis checkpoint that uses the completed Stage-19B-D development evidence to freeze and fully preregister the complete ordered queue of at most four Stage-20 candidates before any candidate outcome is inspected.",
+    "runner": "python",
+    "path": "automation/stage19e_stage20_queue_freeze.py",
+    "args": [],
+    "role": "research_planning",
+    "feedback_policy": "completed_stage19b_c_d_development_evidence_only_freeze_complete_stage20_queue_before_stage20a_no_bsds500_validation_read_no_protected_feedback_no_queue_replacement_expansion_or_fifth_candidate",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage19e_stage20_queue_freeze/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

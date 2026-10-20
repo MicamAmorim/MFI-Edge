@@ -2607,3 +2607,21 @@ monotone 2-additive Choquet family using image-grouped within-domain and
 cross-domain development fits. BSDS validation remains unread. Stage 19D
 cannot promote a detector; its output feeds Stage 19E, which must freeze the
 entire ordered Stage-20 queue before any candidate executes.
+
+## Stage 19d complete - Stage 19e queue freeze active
+
+The monotone 2-additive Choquet family won the frozen Stage-19D identification
+rule with weaker-domain class-balanced log loss `0.540647`, weaker-domain AUC
+`0.822024`, and no transfer collapse. The additive/logistic alternative met
+the preregistered transfer-collapse definition. This is analysis evidence, not
+detector promotion; compact Choquet-gated grayscale Scharr+NMS remains the
+incumbent. The incumbent-only BSDS500-train attachment recorded ODS/OIS/AP
+`0.535458/0.574768/0.514449` and contains no candidate comparison.
+
+The active next action is `stage19e_stage20_queue_freeze`. This planning-only
+checkpoint must synthesize Stages 19B-D and commit the complete ordered queue
+of at most four fully preregistered Stage-20 candidates before Stage 20A runs
+or any candidate BSDS500-validation result is read. The queue cannot be
+expanded or replenished after outcomes. A pass freezes the promoted generation
+for confirmation planning; exhausting the queue without a pass ends in a
+synthesis stop, not another literature escalation.

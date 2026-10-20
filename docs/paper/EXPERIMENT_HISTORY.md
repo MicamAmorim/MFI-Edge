@@ -4668,3 +4668,28 @@ context, monotone nonnegative additive/logistic aggregation, and a constrained
 monotone 2-additive Choquet model. BSDS validation, protected blobs, family
 expansion, descriptor replacement, detector promotion and architecture change
 remain forbidden.
+
+### Stage 19d aggregation identification complete; Stage 19e registered
+
+Stage 19D completed on 200 BSDS500-train images and the identical 14-image
+overlap-clean UDED-selection manifest, with image-grouped fitting and no
+BSDS500-validation or protected-blob read. The monotone 2-additive Choquet
+family was the preregistered winner: its weaker-domain mean class-balanced log
+loss was `0.540647`, weaker-domain ROC-AUC was `0.822024`, and it did not meet
+the transfer-collapse definition. The fixed distorted-Choquet control ranked
+second among non-collapsed families. The additive/logistic family had strong
+within-domain ranking but was classified as transfer-collapsed by the frozen
+rule. These are family-identification results only; no detector was promoted.
+
+The incumbent-only official BSDS500-train attachment recorded ODS/OIS/AP
+`0.535458/0.574768/0.514449`. It provides development provenance, not a
+candidate comparison, and retains the stochastic/reference-reproduction
+caveat.
+
+`stage19e_stage20_queue_freeze` is registered as the required planning-only
+synthesis checkpoint. It must use only the completed Stage-19B-D artifacts to
+freeze the full ordered Stage-20 queue, capped at four candidates, and fully
+preregister every candidate before Stage 20A executes. No later failure may
+replace a queued candidate, no fifth candidate may be added, and exhausting
+the queue without promotion ends in synthesis rather than open-ended
+literature escalation. Compact MFI remains unchanged.

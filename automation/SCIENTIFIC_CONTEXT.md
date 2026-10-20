@@ -2811,3 +2811,24 @@ aggregation under image-grouped within-domain and cross-domain fitting. It
 cannot read BSDS validation, add a family or descriptor, promote a detector,
 or alter compact MFI. Stage 19E must then freeze the complete ordered queue of
 at most four Stage-20 candidates before Stage 20A runs.
+
+### Stage 19d closure - 2-additive Choquet identified; Stage 19e registered
+
+Stage 19D completed the third and final GT-guided analysis experiment without
+reading BSDS500 validation or protected blobs. The monotone 2-additive Choquet
+family ranked first under the preregistered identification rule: weaker-domain
+mean class-balanced log loss `0.540647`, weaker-domain AUC `0.822024`, and no
+cross-domain transfer collapse. The nonnegative additive/logistic family was
+classified as transfer-collapsed; the fixed distorted-Choquet control ranked
+second among non-collapsed families. This identifies an aggregation family for
+synthesis only and does not promote or alter the detector. The incumbent-only
+BSDS500-train attachment recorded ODS/OIS/AP
+`0.535458/0.574768/0.514449` and contains no candidate comparison.
+
+The registered next action is `stage19e_stage20_queue_freeze`, the mandatory
+planning-only synthesis checkpoint. It must freeze and fully preregister the
+complete ordered queue of at most four Stage-20 candidates before Stage 20A
+executes or any candidate BSDS500-validation result is read. The queue cannot
+be expanded or replenished after outcomes; exhausting it without a pass ends
+in synthesis without automatic literature escalation. Compact MFI remains the
+incumbent.
