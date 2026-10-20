@@ -2872,3 +2872,21 @@ The registered next action is the already-frozen candidate 2/4,
 `stage20b_interaction_core_2additive_choquet`, using the four-cue interaction
 core. Later entries remain unchanged, and no replacement or fifth candidate
 is permitted.
+
+### Stage 20b closure - interaction-core 2-additive Choquet rejected; Stage 20c active
+
+The frozen four-cue monotone 2-additive Choquet candidate passed every UDED
+selection and fit/support condition. Relative to compact MFI, aggregate
+F1/precision/recall and mean fold F1 changed by
+`+0.007539/+0.013211/-0.002354/+0.006079`, with `13/15` fold wins,
+`15/15` converged capacity fits, and exact support preservation. Official
+BSDS500-validation ODS/OIS improved by `+0.007330/+0.004178`, but AP fell by
+`-0.043939`. The frozen conjunctive rule requires nonnegative AP, so Stage 20B
+is rejected. The compact distorted-Choquet controller remains incumbent; do
+not tune the descriptors, fitting, calibration, capacity, or parameters from
+this result.
+
+The registered next action is the unchanged frozen candidate 3/4,
+`stage20c_dominant_pair_2additive_choquet`, using only `gabor4_s13` and
+`semiglobal_changepoint`. Stage 20D remains unchanged, and no replacement or
+fifth candidate is permitted.

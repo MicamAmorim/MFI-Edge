@@ -4736,3 +4736,27 @@ reproduction-unverified, as previously documented.
 No Stage-20 entry or parameter changes from this result. Compact MFI remains
 incumbent, and `stage20b_interaction_core_2additive_choquet`, the already-
 frozen four-cue interaction-core candidate, is the sole next action.
+
+### Stage 20b closure - interaction core rejected; Stage 20c registered
+
+Stage 20B completed under the immutable queue contract. The four-cue
+2-additive Choquet candidate passed the full overlap-clean UDED gate:
+aggregate F1 changed by `+0.007539`, precision by `+0.013211`, recall by
+`-0.002354`, and mean fold F1 by `+0.006079`, with `13/15` fold wins. All
+15 capacity fits converged, predictions were finite and bounded, and score
+support exactly matched the incumbent. The fixed positions 1/7/14 preview and
+the registered capacity, runtime, fold, and per-image artifacts are complete.
+
+The official BSDS500-validation attachment improved ODS from `0.545448` to
+`0.552777` (`+0.007330`) and OIS from `0.579486` to `0.583664`
+(`+0.004178`), but AP fell from `0.534298` to `0.490359` (`-0.043939`).
+Because nonnegative AP is mandatory in the preregistered conjunction, the
+candidate is rejected. The Windows matcher remains stochastic and reference-
+reproduction-unverified, as already documented.
+
+This second consecutive Stage-20 candidate shows the same strong UDED and
+ODS/OIS movement with a large AP loss, but the frozen campaign forbids using
+that outcome to alter calibration, capacity fitting, descriptors, or queue
+order. Compact MFI remains incumbent. The sole next action is the already-
+frozen candidate 3/4, `stage20c_dominant_pair_2additive_choquet`; Stage 20D
+remains unchanged and no replacement or fifth candidate is permitted.

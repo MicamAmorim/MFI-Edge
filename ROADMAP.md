@@ -2656,3 +2656,19 @@ The active next action is the unchanged queue entry
 four-cue interaction core under the identical fitting, overlap firewall,
 preview, and joint UDED/BSDS rules. Candidate 20A cannot be tuned, and the
 queue cannot be reordered, replaced, expanded, or replenished.
+
+## Stage 20b rejected - frozen Stage 20c candidate active
+
+Stage 20B passed its complete UDED and implementation gates: aggregate F1,
+precision, recall, and mean fold F1 changed by
+`+0.007539/+0.013211/-0.002354/+0.006079`, with `13/15` fold wins and
+`15/15` converged fits. Official BSDS500-validation ODS/OIS improved by
+`+0.007330/+0.004178`, but AP declined by `-0.043939`. The required
+nonnegative-AP condition therefore rejects it. Compact MFI remains incumbent.
+
+The active next action is the unchanged queue entry
+`stage20c_dominant_pair_2additive_choquet`. It tests only the preregistered
+`gabor4_s13`/semi-global-change-point pair under the identical fitting,
+overlap firewall, preview, and joint UDED/BSDS rules. Candidates 20A and 20B
+cannot be tuned, Stage 20D remains frozen, and the queue cannot be reordered,
+replaced, expanded, or replenished.

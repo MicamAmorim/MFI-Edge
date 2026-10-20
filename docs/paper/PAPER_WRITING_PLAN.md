@@ -1519,3 +1519,15 @@ nonnegative-AP condition therefore rejects it. Preserve the evaluator caveat,
 the fixed preview, and the fact that Stage 20B was frozen before this result.
 Do not imply that the AP loss licenses weight, calibration, descriptor, or
 capacity tuning.
+
+## Stage 20b outcome note
+
+Report Stage 20B as a second conjunctive rejection with the same cross-metric
+pattern, not as evidence for post-hoc calibration. The four-cue interaction-
+core candidate passed UDED and all implementation contracts (`+0.007539`
+aggregate F1, `+0.013211` precision, `-0.002354` recall, `+0.006079` mean
+fold F1, `13/15` wins, and `15/15` converged fits). Official BSDS500
+validation improved ODS/OIS by `+0.007330/+0.004178` but reduced AP by
+`-0.043939`; the nonnegative-AP requirement rejects it. Preserve the
+reference-unverified evaluator caveat, fixed preview, unchanged incumbent,
+and the fact that Stage 20C was frozen before both Stage-20 outcomes.
