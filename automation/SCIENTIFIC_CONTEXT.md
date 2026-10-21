@@ -2954,3 +2954,13 @@ v1.00 backup. Stage 21A may execute only a byte-identical runtime rename of
 that backup, with exact hashes and an explicit best-public-source-fidelity
 caveat. Only a complete Stage-21A pass may authorize Stage 21B's frozen-map
 three-protocol retrospective benchmark.
+
+The first Stage-21A launch stopped before producing a protocol result because
+the local MATLAB micro-case harness assigned its first populated record into a
+fieldless `struct([])`, which MATLAB rejected as a dissimilar-structure
+assignment. This is a harness-only defect: no BSDS split or detector was read
+or scored, and no matcher conclusion was obtained. One attachment-only retry
+is registered with the record array initialized directly from the unchanged
+first `runCase` result. All sources, hashes, micro-cases, tolerances, fidelity
+caveats, and Stage-21A stop conditions remain unchanged; Stage 21B remains
+deferred until the retry passes.

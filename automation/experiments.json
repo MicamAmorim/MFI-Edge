@@ -2940,6 +2940,20 @@
       "results/automation/stage21a_protocol_certification/estrada_jepson_microcases.json"
     ]
   },
+  "stage21a_protocol_certification_retry1": {
+    "description": "Harness-only retry of Stage 21A after initializing the MATLAB micro-case record array from its first homogeneous runCase result instead of assigning into fieldless struct([]); protocol sources, hashes, cases, tolerance, data prohibition, and certification rules are unchanged.",
+    "runner": "python",
+    "path": "automation/stage21a_protocol_certification.py",
+    "args": [],
+    "role": "protocol_certification",
+    "feedback_policy": "attachment_only_harness_repair_same_source_fixture_and_synthetic_microcases_no_bsds_split_read_no_detector_scoring_no_architecture_change_preserve_reference_unverified_status_no_protocol_conflation_or_promotion",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage21a_protocol_certification/summary.json",
+      "results/automation/stage21a_protocol_certification/protocol_certification.json",
+      "results/automation/stage21a_protocol_certification/estrada_jepson_microcases.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

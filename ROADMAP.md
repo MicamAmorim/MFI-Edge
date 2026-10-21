@@ -2725,3 +2725,10 @@ missing helper for nontrivial displacements, the preregistration permits only
 the byte-identical complete v1.00 backup shipped in the same immutable commit,
 renamed at runtime for MATLAB loading and explicitly labeled best-public-source
 fidelity. Stage 21B may run only after all Stage-21A stop conditions pass.
+
+The first Stage-21A launch stopped before any protocol result because the
+MATLAB micro-case harness attempted to assign a populated record into
+fieldless `struct([])`. A harness-only retry is active with direct
+initialization from the unchanged first micro-case result. It does not alter
+sources, hashes, cases, tolerances, or protocol rules, and Stage 21B remains
+blocked on a complete Stage-21A pass.

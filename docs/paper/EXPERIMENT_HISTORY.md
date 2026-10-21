@@ -4849,3 +4849,12 @@ offset, competition, crossing, tolerance-boundary, and multi-annotator
 micro-cases. This is best-public-source fidelity, not a claim of identity with
 an unpublished paper-private copy. No dataset or detector is run. Only a pass
 of the complete Stage-21A stop rule may advance to Stage 21B.
+
+The first Stage-21A execution failed before creating a result artifact. The
+MATLAB micro-case harness initialized `cases` as fieldless `struct([])` and
+then attempted to assign the first populated `runCase` record into it, causing
+MATLAB's dissimilar-structure assignment error. No BSDS split or detector was
+read or scored, and the failure supplies no evaluator evidence. A harness-only
+retry is registered after initializing `cases` directly from that unchanged
+first record; sources, hashes, cases, tolerances, protocol interpretations,
+and stop rules are unchanged. Stage 21B remains deferred.

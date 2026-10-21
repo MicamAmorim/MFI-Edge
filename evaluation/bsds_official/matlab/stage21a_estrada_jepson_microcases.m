@@ -14,12 +14,10 @@ n = 64;
 diagLength = sqrt(2 * n * n);
 tolerancePixels = params.maxDist * diagLength;
 
-cases = struct([]);
-
 solution = false(n);
 solution(32, 32) = true;
 candidate = solution;
-cases(end + 1) = runCase('exact_match', solution, candidate, params, true, 1, 1); %#ok<AGROW>
+cases = runCase('exact_match', solution, candidate, params, true, 1, 1);
 
 candidate = false(n);
 candidate(32, 33) = true;
