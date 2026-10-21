@@ -100,3 +100,12 @@ The module records `reference_reproduction_verified=false` until a known
 reference output has been reproduced locally. Validation metrics are useful for
 development immediately, but final SOTA claims remain blocked until that
 reference check and the project's multi-benchmark gate are both satisfied.
+
+## Stage 21 protocol variants
+
+`config_berkeley_0p025.json` is the registered tolerance-sensitivity variant.
+It is byte-for-byte equivalent in settings to `config.json` except that
+`max_dist` is `0.025` instead of `0.0075`. Results from this loose-tolerance
+track are diagnostic only and cannot promote a detector. The separate
+Estrada--Jepson 0.025 fuzzy-literature track is not implemented by this
+Berkeley configuration and must never be labeled as Berkeley-equivalent.

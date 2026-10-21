@@ -1567,3 +1567,16 @@ any entry as nearly promoted, average results across incompatible endpoints,
 or imply an unreported fifth candidate or post-hoc calibration study. Compact
 distorted-Choquet MFI remains the retained controller, and this bounded program
 ends without meeting the generalized SOTA objective.
+
+## Stage 21 protocol-certification and diagnosis note
+
+Present Stage 21 as a bounded protocol and causal-diagnosis program, not a
+continuation of the Stage-20 candidate queue. Keep three endpoints visibly
+separate: primary Berkeley matching at `maxDist=0.0075`, Berkeley tolerance
+sensitivity at `0.025`, and the Estrada--Jepson fuzzy-literature comparison at
+`0.025`. Loose-tolerance results cannot promote a model and metrics from the
+two matchers must not be interchanged. Until a public reference output is
+reproduced, retain `reference_reproduction_verified=false` on local Berkeley
+scores and explain the pinned matcher's unrecorded random-sampling state.
+Stage 21A is infrastructure-only; Stage 21B is the first scientific result and
+must use the frozen incumbent and Stage-20A--20D artifacts without refitting.

@@ -2705,3 +2705,23 @@ three official metrics. Per the frozen Stage-19E contract, there is no fifth
 candidate, replacement, adaptive repair, or automatic literature escalation.
 The current roadmap terminates at synthesis; the broader non-neural SOTA goal
 remains unmet and no further experiment is registered by this program.
+
+## Stage 21 active - protocol certification before frozen-map diagnosis
+
+The user-directed Stage-21 program starts a new finite certification and
+diagnostic sequence without modifying the completed Stage-20 queue. The
+primary endpoint remains Berkeley all-annotation ODS/OIS/AP with
+`nthresh=99`, `maxDist=0.0075`, and thinning. Berkeley `0.025` is a sensitivity
+variant only; Estrada--Jepson `0.025` is a separate fuzzy-literature endpoint.
+Neither loose-tolerance track can promote a detector.
+
+The active next action is `stage21a_protocol_certification`. It reads no BSDS
+split and scores no detector. It hash-audits the pinned Berkeley implementation,
+preserves the exact Stage-15a RNG-provenance blocker and
+`reference_reproduction_verified=false`, verifies that the Berkeley `0.025`
+configuration changes only `max_dist`, and micro-case-tests the pinned public
+KITT Estrada--Jepson surface. Because KITT's public v1.01 matcher calls a
+missing helper for nontrivial displacements, the preregistration permits only
+the byte-identical complete v1.00 backup shipped in the same immutable commit,
+renamed at runtime for MATLAB loading and explicitly labeled best-public-source
+fidelity. Stage 21B may run only after all Stage-21A stop conditions pass.

@@ -2926,6 +2926,20 @@
       "results/official_eval/stage20d_incumbent_bank_2additive_choquet/summary.json"
     ]
   },
+  "stage21a_protocol_certification": {
+    "description": "Stage-21A infrastructure certification: audit the pinned Berkeley standard path and unresolved reference-RNG blocker, verify a maxDist-only Berkeley 0.025 sensitivity config, and micro-case-test the hash-pinned public KITT Estrada-Jepson 0.025 evaluator surface without reading a dataset or scoring a detector.",
+    "runner": "python",
+    "path": "automation/stage21a_protocol_certification.py",
+    "args": [],
+    "role": "protocol_certification",
+    "feedback_policy": "source_fixture_and_synthetic_microcases_only_no_bsds_split_read_no_detector_scoring_no_architecture_change_preserve_reference_unverified_status_no_protocol_conflation_or_promotion",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage21a_protocol_certification/summary.json",
+      "results/automation/stage21a_protocol_certification/protocol_certification.json",
+      "results/automation/stage21a_protocol_certification/estrada_jepson_microcases.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

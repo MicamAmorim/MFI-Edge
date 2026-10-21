@@ -4815,3 +4815,37 @@ capacity, descriptor, or threshold changes. Compact distorted-Choquet MFI
 remains incumbent. In accordance with Stage 19E, there is no Stage 20E,
 replacement candidate, or automatic literature escalation; the bounded
 program ends in synthesis without reaching the long-horizon SOTA goal.
+
+### Stage 21 activation and Stage 21A protocol certification registered
+
+The user-directed Stage-21 bounded program supersedes the Stage-20 synthesis
+stop without reopening its queue. Stages 21A--21G are protocol-certification
+and frozen-output diagnostics; only Stage 21H may preregister at most one new
+causally justified mechanism after those diagnostics. Compact distorted-
+Choquet MFI remains the incumbent.
+
+Live primary-source review separated three evaluation endpoints. The primary
+Berkeley path remains all-annotation one-to-one `correspondPixels` with 99
+thresholds, `maxDist=0.0075`, and thinning. Berkeley `maxDist=0.025` is only a
+parameter-matched sensitivity track. Estrada--Jepson `0.025` is a distinct
+directional matcher used by the target fuzzy literature and must not be called
+Berkeley matching or used for promotion.
+
+Stage 21A is preregistered in
+`docs/paper/STAGE21A_PROTOCOL_CERTIFICATION_PREREGISTRATION.md`. It audits the
+pinned Berkeley sources and reuses, without rerunning, Stage-15a's fixture and
+causal RNG evidence. Reference reproduction remains false because the official
+matcher requests a clock seed, consumes randomized sampling, and the shipped
+fixture omits RNG provenance; the fixed-seed binary remains forbidden for
+dataset scoring. A committed Berkeley `0.025` config must differ from standard
+only in `max_dist`.
+
+For the fuzzy track, the target paper points to KITT. The public pinned KITT
+v1.01 matcher calls an absent helper beyond its one-pixel bootstrap, while the
+same immutable tree ships the complete v1.00 implementation as a backup.
+Stage 21A therefore hash-verifies the tree and executes a byte-identical,
+filename-compatible runtime copy of that complete backup on fixed exact,
+offset, competition, crossing, tolerance-boundary, and multi-annotator
+micro-cases. This is best-public-source fidelity, not a claim of identity with
+an unpublished paper-private copy. No dataset or detector is run. Only a pass
+of the complete Stage-21A stop rule may advance to Stage 21B.

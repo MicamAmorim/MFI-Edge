@@ -2929,3 +2929,28 @@ Stage-19E finite-budget contract, the queue is exhausted with no replacement,
 fifth candidate, parameter tuning, or automatic literature escalation. This is
 a bounded-program synthesis stop, not attainment of the long-horizon SOTA
 goal and not a human blocker.
+
+### Stage 21 activation - protocol certification registered
+
+The user-directed Stage-21 program supersedes the Stage-20 synthesis stop with
+a finite certification/diagnostic sequence. Stages 21A--21G cannot fit or
+promote a detector; after they finish, Stage 21H may preregister at most one
+diagnostically caused mechanism. Compact distorted-Choquet MFI remains the
+incumbent and Stage-20A--D maps/models remain frozen.
+
+The registered next action is `stage21a_protocol_certification`. It scores no
+detector and reads no BSDS split. It must audit the pinned standard Berkeley
+path (`nthresh=99`, `maxDist=0.0075`, thinning, all annotations, one-to-one
+matching), preserve `reference_reproduction_verified=false` with the exact
+Stage-15a clock-seeded-RNG / missing-reference-seed blocker, verify a Berkeley
+`0.025` max-distance-only sensitivity config, and micro-case-test the distinct
+Estrada--Jepson `0.025` fuzzy-literature protocol. Berkeley `0.025` and
+Estrada--Jepson `0.025` may never promote a model or be conflated.
+
+The target fuzzy paper cites public KITT. At pinned commit
+`d70bb66ef9ab6f5cea8ead528fe5ac15ac096baf`, its advertised v1.01 matcher calls
+an absent helper beyond the one-pixel bootstrap; the same tree ships a complete
+v1.00 backup. Stage 21A may execute only a byte-identical runtime rename of
+that backup, with exact hashes and an explicit best-public-source-fidelity
+caveat. Only a complete Stage-21A pass may authorize Stage 21B's frozen-map
+three-protocol retrospective benchmark.
