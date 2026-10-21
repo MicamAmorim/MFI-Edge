@@ -20,7 +20,7 @@
   "analysis_retry_backoff_seconds": 20,
   "analysis_retry_backoff_max_seconds": 300,
   "autonomous_research_fallback": "autonomous_literature_escalation",
-  "research_agenda_file": "docs/paper/STAGE15_RESEARCH_PROGRAM.md",
+  "research_agenda_file": "docs/paper/STAGE21_RESEARCH_PROGRAM.md",
   "require_visual_preview": true,
   "visual_preview_filename": "best_method_preview.png",
   "official_evaluation": {
