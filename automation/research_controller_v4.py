@@ -223,6 +223,13 @@ def _analyze_pending_v4(
     if bool(decision.get("continue")) and next_id:
         return False, decision
 
+    # Respect an explicit scientific stop.  The autonomous fallback is for a
+    # missing continuation plan, not for overriding a preregistered bounded-
+    # program stop such as the exhausted Stage-20 queue.
+    if decision.get("continue") is False:
+        print("\nCodex explicitly ended the research loop.")
+        return True, decision
+
     fallback = str(
         config.get(
             "autonomous_research_fallback",
