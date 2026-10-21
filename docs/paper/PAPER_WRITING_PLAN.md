@@ -1580,3 +1580,11 @@ reproduced, retain `reference_reproduction_verified=false` on local Berkeley
 scores and explain the pinned matcher's unrecorded random-sampling state.
 Stage 21A is infrastructure-only; Stage 21B is the first scientific result and
 must use the frozen incumbent and Stage-20A--20D artifacts without refitting.
+
+Stage 21A ultimately passed its stop rule while preserving the unresolved
+Berkeley reference-RNG caveat. In the Stage-21 methods narrative, describe the
+KITT Estrada--Jepson path as micro-case-verified best-public-source fidelity,
+not an exact private-code reproduction. Stage 21B is preregistered to hash and
+rescore the identical five frozen map sets, with `0.5` fixed-threshold and
+99-point best-threshold fuzzy results explicitly separated from Berkeley
+ODS/OIS/AP and from each other.

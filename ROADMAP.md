@@ -2732,3 +2732,20 @@ fieldless `struct([])`. A harness-only retry is active with direct
 initialization from the unchanged first micro-case result. It does not alter
 sources, hashes, cases, tolerances, or protocol rules, and Stage 21B remains
 blocked on a complete Stage-21A pass.
+
+## Stage 21A complete - frozen-map three-protocol benchmark active
+
+Stage 21A now satisfies its complete stop rule. Berkeley standard settings and
+source behavior are audited, while `reference_reproduction_verified=false`
+remains mandatory because the shipped fixture's clock-seeded matcher RNG state
+is unavailable. Berkeley `0.025` is a max-distance-only sensitivity mode. The
+separate KITT Estrada--Jepson `0.025` surface passed the registered synthetic
+micro-cases at best-public-source fidelity.
+
+The active next action is
+`stage21b_three_protocol_retrospective_benchmark`. It uses the exact frozen
+incumbent and Stage-20A--D validation PNG bytes, emits distinct primary,
+tolerance-sensitivity, and fuzzy-literature tables plus complete PR curves and
+a fixed positions 1/50/100 preview, and performs no fitting or regeneration.
+Completion advances only to Stage 21C diagnosis; neither `0.025` track can
+promote a model.

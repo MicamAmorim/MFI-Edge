@@ -4858,3 +4858,28 @@ read or scored, and the failure supplies no evaluator evidence. A harness-only
 retry is registered after initializing `cases` directly from that unchanged
 first record; sources, hashes, cases, tolerances, protocol interpretations,
 and stop rules are unchanged. Stage 21B remains deferred.
+
+### Stage 21A closure and Stage 21B registration
+
+The harness-only retry completed the full Stage-21A stop rule without reading
+a BSDS split or scoring a detector. The standard Berkeley source audit
+confirmed `nthresh=99`, `maxDist=0.0075`, thinning, all-annotation
+accumulation, and one-to-one matching. Reference reproduction remains
+unverified for the exact causal reason established in Stage 15A: the pinned
+matcher clock-seeds random k-of-n sampling, the shipped fixture records no RNG
+state, and the unmodified Windows path misses the registered `1e-4` bound. A
+fixed-seed diagnostic is repeatable but neither reproduces the shipped tables
+nor is permitted for dataset scoring.
+
+The Berkeley `0.025` configuration differs only in `max_dist`. The distinct
+Estrada--Jepson `0.025` track passed every registered micro-case using the
+byte-identical complete KITT v1.00 backup at pinned commit
+`d70bb66ef9ab6f5cea8ead528fe5ac15ac096baf`. Its status is explicitly
+best-public-source fidelity, not equivalence to an unpublished private copy.
+
+The registered next action is
+`stage21b_three_protocol_retrospective_benchmark`, governed by
+`docs/paper/STAGE21B_PREREGISTRATION.md`. It hashes and rescores only the
+frozen incumbent and Stage-20A--D validation maps under three separately
+reported tracks. Neither loose-tolerance track may promote a model or be
+conflated with the other; Stage 21B fits no detector and cannot alter MFI.

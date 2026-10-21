@@ -2964,3 +2964,22 @@ is registered with the record array initialized directly from the unchanged
 first `runCase` result. All sources, hashes, micro-cases, tolerances, fidelity
 caveats, and Stage-21A stop conditions remain unchanged; Stage 21B remains
 deferred until the retry passes.
+
+### Stage 21A closure - Stage 21B retrospective registered
+
+The harness-only retry completed the registered protocol audit without reading
+a BSDS split or scoring a detector. Berkeley standard source contracts passed,
+but reference reproduction remains unverified because the clock-seeded pinned
+matcher has no recorded shipped-fixture RNG state and misses the `1e-4` bound.
+The Berkeley `0.025` configuration changes only `max_dist`. The distinct
+KITT-based Estrada--Jepson `0.025` evaluator passed all registered micro-cases
+using the byte-identical complete v1.00 backup, with a best-public-source-
+fidelity caveat.
+
+The registered next action is
+`stage21b_three_protocol_retrospective_benchmark`. It hashes and rescores only
+the frozen incumbent and Stage-20A--D BSDS-validation maps under Berkeley
+`0.0075`, Berkeley `0.025`, and Estrada--Jepson `0.025`, with separate tables,
+full PR artifacts, and a fixed positions 1/50/100 preview. It fits or promotes
+no detector. Loose-tolerance results cannot rescue or promote a model, and the
+two `0.025` protocols must not be conflated.
