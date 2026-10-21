@@ -4784,3 +4784,34 @@ change from this result. The sole next action is the already-frozen final
 candidate, `stage20d_incumbent_bank_2additive_choquet`. If it fails, the
 bounded four-candidate program ends in synthesis without automatic literature
 escalation, replacement, or a fifth candidate.
+
+### Stage 20d closure - incumbent-bank 2-additive candidate rejected; bounded program complete
+
+Stage 20D completed under the immutable queue contract. The retained five-cue
+bank with fold-fitted monotone 2-additive Choquet aggregation passed the full
+overlap-clean UDED gate: aggregate F1 changed by `+0.008531`, precision by
+`+0.014096`, recall by `-0.001226`, and mean fold F1 by `+0.007238`, with
+`15/15` fold wins. All 15 capacity fits converged, predictions were finite and
+bounded, and score support exactly matched the incumbent. The fixed positions
+1/7/14 preview and registered capacity, runtime, fold, and per-image artifacts
+are complete.
+
+The official BSDS500-validation attachment changed ODS from `0.545424` to
+`0.543849` (`-0.001575`), OIS from `0.579470` to `0.575774`
+(`-0.003695`), and AP from `0.534298` to `0.530463` (`-0.003835`). It
+therefore failed the registered ODS, OIS, and AP requirements and is rejected.
+The Windows matcher remains stochastic and reference-reproduction-unverified,
+as already documented.
+
+The complete four-entry queue is exhausted without promotion. All four
+2-additive candidates improved overlap-clean UDED aggregate F1 by more than the
+registered margin. The three pruned Stage-19 cue sets improved official
+BSDS500-validation ODS/OIS but lost AP; the aggregation-only compact-bank
+fallback regressed ODS/OIS/AP. This supports a narrow conclusion: the
+Stage-19D-identified 2-additive family fitted under this frozen contract is
+useful for the UDED operating-point objective but does not satisfy joint
+cross-domain ranking transfer. It does not justify post-hoc calibration,
+capacity, descriptor, or threshold changes. Compact distorted-Choquet MFI
+remains incumbent. In accordance with Stage 19E, there is no Stage 20E,
+replacement candidate, or automatic literature escalation; the bounded
+program ends in synthesis without reaching the long-horizon SOTA goal.

@@ -2689,3 +2689,19 @@ overlap firewall, preview, and joint UDED/BSDS rules. Candidates 20A--20C
 cannot be tuned and no replacement or fifth candidate is permitted. Failure
 of Stage 20D ends the bounded program in synthesis without automatic
 literature escalation.
+
+## Stage 20d rejected - bounded Stage 19--20 program complete
+
+Stage 20D passed every overlap-clean UDED and implementation condition:
+aggregate F1/precision/recall and mean fold F1 changed by
+`+0.008531/+0.014096/-0.001226/+0.007238`, with `15/15` fold wins and
+`15/15` converged fits. Official BSDS500-validation ODS/OIS/AP changed by
+`-0.001575/-0.003695/-0.003835`, so the conjunctive rule rejects the final
+candidate. Compact distorted-Choquet MFI remains incumbent.
+
+The four-entry queue is exhausted. No candidate earned cross-domain promotion:
+20A--20C traded improved BSDS ODS/OIS for lower AP, while 20D regressed all
+three official metrics. Per the frozen Stage-19E contract, there is no fifth
+candidate, replacement, adaptive repair, or automatic literature escalation.
+The current roadmap terminates at synthesis; the broader non-neural SOTA goal
+remains unmet and no further experiment is registered by this program.

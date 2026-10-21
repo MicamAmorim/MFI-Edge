@@ -2909,3 +2909,23 @@ The registered next action is the unchanged final queue entry,
 family to the retained compact five-cue bank. There is no replacement or fifth
 candidate. If Stage 20D fails, the bounded program ends in synthesis without
 automatic literature escalation.
+
+### Stage 20d closure - frozen Stage-20 queue exhausted without promotion
+
+The final frozen candidate passed every UDED-selection and implementation
+condition. Relative to compact MFI, aggregate F1/precision/recall and mean fold
+F1 changed by `+0.008531/+0.014096/-0.001226/+0.007238`, with `15/15`
+fold wins, `15/15` converged capacity fits, and exact support preservation.
+Official BSDS500-validation ODS/OIS/AP instead changed by
+`-0.001575/-0.003695/-0.003835`. The conjunctive rule therefore rejects
+Stage 20D, and compact distorted-Choquet MFI remains the incumbent.
+
+All four preregistered Stage-20 candidates are now rejected. The campaign
+showed that fold-fitted monotone 2-additive Choquet aggregation consistently
+improved overlap-clean UDED selection, but did not provide the required joint
+BSDS ranking transfer: Stages 20A--20C improved ODS/OIS while reducing AP, and
+the aggregation-only Stage 20D reduced all three official metrics. Per the
+Stage-19E finite-budget contract, the queue is exhausted with no replacement,
+fifth candidate, parameter tuning, or automatic literature escalation. This is
+a bounded-program synthesis stop, not attainment of the long-horizon SOTA
+goal and not a human blocker.

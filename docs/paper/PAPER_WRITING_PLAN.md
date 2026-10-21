@@ -1545,3 +1545,25 @@ evaluator caveat, fixed preview, unchanged incumbent, and the fact that Stage
 20D was frozen before all three outcomes. Do not interpret the smaller AP loss
 as permission to tune calibration, descriptors, capacity constraints, or the
 queue.
+
+## Stage 20d outcome and bounded-program synthesis note
+
+Report Stage 20D as the final conjunctive rejection. The aggregation-only
+compact-bank candidate passed UDED and all implementation contracts
+(`+0.008531` aggregate F1, `+0.014096` precision, `-0.001226` recall,
+`+0.007238` mean fold F1, `15/15` wins, and `15/15` converged fits), but
+official BSDS500-validation ODS/OIS/AP changed by
+`-0.001575/-0.003695/-0.003835`. Preserve the fixed positions 1/7/14
+preview and the reference-unverified evaluator caveat.
+
+Synthesize Stages 20A--20D as one preregistered finite campaign. All four
+candidates cleared the UDED aggregate-F1 margin; none cleared the joint BSDS
+rule. The three Stage-19-pruned cue sets improved ODS/OIS while reducing AP,
+whereas the compact-bank aggregation fallback reduced all three metrics. The
+safe claim is that the selected monotone 2-additive family improved the
+overlap-clean UDED operating-point objective but failed cross-domain ranking
+transfer under the frozen fitting and serialization contract. Do not portray
+any entry as nearly promoted, average results across incompatible endpoints,
+or imply an unreported fifth candidate or post-hoc calibration study. Compact
+distorted-Choquet MFI remains the retained controller, and this bounded program
+ends without meeting the generalized SOTA objective.
