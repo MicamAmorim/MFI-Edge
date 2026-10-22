@@ -104,6 +104,42 @@ def collect_pr(track_dir: Path, track: str) -> list[dict]:
     return rows
 
 
+def evaluate_berkeley_resumable(mod, matlab: Path, *, benchmark_dir: Path, image_dir: Path,
+                                 gt_dir: Path, pred_dir: Path, out_dir: Path, cfg: dict) -> dict:
+    """Resume immutable per-image matches instead of deleting them after a timeout."""
+    summary_path = out_dir / "official_summary.json"
+    if summary_path.exists():
+        return load_json(summary_path)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    expected_ids = sorted(path.stem for path in image_dir.glob("*.jpg"))
+    nthresh = int(cfg.get("nthresh", 99))
+    max_dist = float(cfg.get("max_dist", 0.0075))
+    thinpb = 1 if bool(cfg.get("thinpb", True)) else 0
+    quote = mod._matlab_quote
+    expr_base = (
+        f"addpath('{quote(mod.MATLAB_WRAPPER_DIR)}');evaluate_bsds_official("
+        f"'{quote(benchmark_dir)}','{quote(image_dir)}','{quote(gt_dir)}',"
+        f"'{quote(pred_dir)}','{quote(out_dir)}',{nthresh},{max_dist:.12g},{thinpb}"
+    )
+    missing = [iid for iid in expected_ids if not (out_dir / f"{iid}_ev1.txt").exists()
+               or (out_dir / f"{iid}_ev1.txt").stat().st_size == 0]
+    while missing:
+        before = len(missing)
+        run = mod._run([str(matlab), "-batch", expr_base + ",'evaluate');"],
+                       timeout=4 * 60 * 60, check=False)
+        missing = [iid for iid in expected_ids if not (out_dir / f"{iid}_ev1.txt").exists()
+                   or (out_dir / f"{iid}_ev1.txt").stat().st_size == 0]
+        if len(missing) >= before:
+            raise RuntimeError(
+                f"resumable Berkeley matching made no progress; missing={missing[:10]} "
+                f"returncode={run.returncode}\n{run.stdout}\n{run.stderr}"
+            )
+    mod._run([str(matlab), "-batch", expr_base + ",'collect');"], timeout=4 * 60 * 60)
+    if not summary_path.exists():
+        raise RuntimeError(f"Berkeley collection did not create {summary_path}")
+    return load_json(summary_path)
+
+
 def write_manifest() -> None:
     methods = []
     for name, _ in METHODS[1:]:
@@ -140,21 +176,29 @@ def main() -> int:
         results = {}
         base = OUT / track
         for name, pred_dir in METHODS:
-            results[name] = mod._evaluate_one(matlab, benchmark_dir=benchmark_dir, image_dir=image_dir, gt_dir=gt_dir, pred_dir=pred_dir, out_dir=base / name, cfg=cfg)
+            results[name] = evaluate_berkeley_resumable(
+                mod, matlab, benchmark_dir=benchmark_dir, image_dir=image_dir,
+                gt_dir=gt_dir, pred_dir=pred_dir, out_dir=base / name, cfg=cfg,
+            )
         track_results[track] = results
         write_csv(OUT / ("stage21b_berkeley_standard.csv" if track == "berkeley_standard" else "stage21b_berkeley_0p025_sensitivity.csv"), flatten_berkeley(track, results))
         write_csv(OUT / f"{track}_pr_curve.csv", collect_pr(base, track))
 
     runtime_dir = ROOT / "results/automation/stage21a_protocol_certification/kitt_runtime"
     kitt_dir = OFFICIAL / "vendor/KITT/boundaryImageComparison"
-    ej_spec = OUT / "estrada_jepson_spec.json"
-    save_json(ej_spec, {"methods": [{"name": name, "pred_dir": str(path.resolve()).replace("\\", "/")} for name, path in METHODS]})
-    ej_json = OUT / "estrada_jepson_grid.json"
     quote = lambda p: str(Path(p).resolve()).replace("\\", "/").replace("'", "''")
-    expression = f"addpath('{quote(OFFICIAL / 'matlab')}');stage21b_estrada_jepson_eval('{quote(ej_spec)}','{quote(runtime_dir)}','{quote(kitt_dir)}','{quote(gt_dir)}','{quote(ej_json)}');"
-    run = subprocess.run([str(matlab), "-batch", expression], cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=24*60*60)
-    if run.returncode != 0: raise RuntimeError(f"Estrada-Jepson evaluation failed: {run.stdout}\n{run.stderr}")
-    ej_rows = load_json(ej_json)
+    ej_dir = OUT / "estrada_jepson"
+    ej_dir.mkdir(parents=True, exist_ok=True)
+    ej_rows = []
+    for name, path in METHODS:
+        ej_spec = ej_dir / f"{name}_spec.json"
+        ej_json = ej_dir / f"{name}_grid.json"
+        if not ej_json.exists():
+            save_json(ej_spec, {"methods": [{"name": name, "pred_dir": str(path.resolve()).replace("\\", "/")} ]})
+            expression = f"addpath('{quote(OFFICIAL / 'matlab')}');stage21b_estrada_jepson_eval('{quote(ej_spec)}','{quote(runtime_dir)}','{quote(kitt_dir)}','{quote(gt_dir)}','{quote(ej_json)}');"
+            run = subprocess.run([str(matlab), "-batch", expression], cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=24*60*60)
+            if run.returncode != 0: raise RuntimeError(f"Estrada-Jepson evaluation failed for {name}: {run.stdout}\n{run.stderr}")
+        ej_rows.extend(load_json(ej_json))
     write_csv(OUT / "estrada_jepson_pr_curve.csv", ej_rows)
     fuzzy = []
     for name, _ in METHODS:

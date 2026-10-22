@@ -2983,3 +2983,12 @@ the frozen incumbent and Stage-20A--D BSDS-validation maps under Berkeley
 full PR artifacts, and a fixed positions 1/50/100 preview. It fits or promotes
 no detector. Loose-tolerance results cannot rescue or promote a model, and the
 two `0.025` protocols must not be conflated.
+
+The first Stage-21B launch hit the six-hour controller timeout after completing
+the five-method Berkeley-standard track and preserving part of the Berkeley
+`0.025` work. The required loose-Berkeley and Estrada--Jepson tables and final
+summary are absent, so the partial metrics have no standalone scientific
+interpretation. `stage21b_three_protocol_retrospective_retry1` is registered
+as an attachment-only resumable continuation: it reuses nonempty frozen-map
+match artifacts, checkpoints Estrada--Jepson per method, changes no protocol
+or map, and leaves Stage 21C deferred until full completion.

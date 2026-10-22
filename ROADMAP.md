@@ -2749,3 +2749,10 @@ tolerance-sensitivity, and fuzzy-literature tables plus complete PR curves and
 a fixed positions 1/50/100 preview, and performs no fitting or regeneration.
 Completion advances only to Stage 21C diagnosis; neither `0.025` track can
 promote a model.
+
+The first Stage-21B launch timed out after the Berkeley-standard track and a
+partial Berkeley-`0.025` track. No complete three-protocol result exists yet.
+The active action is `stage21b_three_protocol_retrospective_retry1`, a
+resumable attachment-only continuation that preserves completed match files
+and checkpoints the remaining fuzzy-protocol work per method. Stage 21C stays
+blocked until the registered Stage-21B tables and summary are complete.

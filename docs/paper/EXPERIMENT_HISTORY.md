@@ -4883,3 +4883,21 @@ The registered next action is
 frozen incumbent and Stage-20A--D validation maps under three separately
 reported tracks. Neither loose-tolerance track may promote a model or be
 conflated with the other; Stage 21B fits no detector and cannot alter MFI.
+
+### Stage 21B first launch timed out; resumable continuation registered
+
+The first Stage-21B launch exhausted the six-hour controller limit after
+completing all five Berkeley-standard methods and preserving the Berkeley
+`0.025` incumbent plus all 100 per-image match tables for Stage 20A. It did
+not produce the Berkeley `0.025` aggregate table, the Estrada--Jepson track,
+cross-protocol deltas, or a final summary, so no Stage-21B scientific
+interpretation is made from the partial output. The separate default official
+attachment also timed out and supplies no additional conclusion.
+
+`stage21b_three_protocol_retrospective_retry1` is an attachment-only
+continuation. The harness now reuses completed aggregate files, collects
+complete per-image match sets without rematching them, resumes only missing
+Berkeley matches, and checkpoints Estrada--Jepson results per frozen method.
+Frozen PNG bytes, matcher sources, thresholds, tolerances, ground truth,
+protocol definitions, preview positions, and non-promotional interpretation
+are unchanged. Stage 21C remains deferred until Stage 21B fully completes.
