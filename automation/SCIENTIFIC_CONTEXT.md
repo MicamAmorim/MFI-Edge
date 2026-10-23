@@ -2992,3 +2992,12 @@ interpretation. `stage21b_three_protocol_retrospective_retry1` is registered
 as an attachment-only resumable continuation: it reuses nonempty frozen-map
 match artifacts, checkpoints Estrada--Jepson per method, changes no protocol
 or map, and leaves Stage 21C deferred until full completion.
+
+That continuation also timed out, but all 100 nonempty Berkeley-`0.025`
+per-image match tables for Stage 20B are now preserved. No complete loose-track
+table, Estrada--Jepson table, cross-protocol table, or final summary exists, so
+there is still no Stage-21B scientific interpretation. The registered next
+action is `stage21b_three_protocol_retrospective_retry2`, an unchanged
+attachment-only continuation that collects complete existing tables without
+rematching and resumes only missing frozen-method work. Stage 21C remains
+deferred.

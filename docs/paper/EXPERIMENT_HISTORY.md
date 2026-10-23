@@ -4901,3 +4901,17 @@ Berkeley matches, and checkpoints Estrada--Jepson results per frozen method.
 Frozen PNG bytes, matcher sources, thresholds, tolerances, ground truth,
 protocol definitions, preview positions, and non-promotional interpretation
 are unchanged. Stage 21C remains deferred until Stage 21B fully completes.
+
+### Stage 21B retry 1 timed out after completing Stage-20B match tables
+
+The first resumable continuation again reached the controller limit, but it
+made durable progress: all 100 nonempty Berkeley-`0.025` per-image match tables
+for Stage 20B now exist. Its aggregate summary and the remaining loose-
+Berkeley/Estrada--Jepson outputs are still absent, so there is still no complete
+Stage-21B scientific result and the partial metrics are not interpreted.
+
+`stage21b_three_protocol_retrospective_retry2` is registered as the same
+attachment-only continuation. It will collect the complete Stage-20B tables
+without rematching them and resume only missing later work. Frozen map bytes,
+protocols, matcher code, thresholds, tolerances, fidelity caveats, preview, and
+non-promotional rules remain unchanged. Stage 21C remains deferred.

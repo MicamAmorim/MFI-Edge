@@ -2752,7 +2752,9 @@ promote a model.
 
 The first Stage-21B launch timed out after the Berkeley-standard track and a
 partial Berkeley-`0.025` track. No complete three-protocol result exists yet.
-The active action is `stage21b_three_protocol_retrospective_retry1`, a
-resumable attachment-only continuation that preserves completed match files
-and checkpoints the remaining fuzzy-protocol work per method. Stage 21C stays
+Retry 1 also timed out, but preserved all 100 Berkeley-`0.025` per-image match
+tables for Stage 20B; its aggregate and later tracks remain incomplete. The
+active action is `stage21b_three_protocol_retrospective_retry2`, the unchanged
+resumable attachment-only continuation. It collects complete existing tables
+without rematching and resumes only missing frozen-method work. Stage 21C stays
 blocked until the registered Stage-21B tables and summary are complete.
