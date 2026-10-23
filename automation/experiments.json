@@ -3029,6 +3029,31 @@
       "results/official_eval/stage21b_three_protocol_retrospective_retry2/summary.json"
     ]
   },
+  "stage21b_three_protocol_retrospective_retry3": {
+    "description": "Third attachment-only resumable continuation of Stage 21B after retry 2 timed out but preserved all 100 Berkeley-0.025 per-image match tables for Stage 20C; collect those complete tables, resume only Stage 20D and later missing frozen-method work, and create the unchanged registered outputs without refitting or regenerating maps.",
+    "runner": "python",
+    "path": "automation/stage21b_venv_launcher.py",
+    "args": [],
+    "role": "frozen_map_protocol_diagnostic",
+    "feedback_policy": "attachment_only_timeout_recovery_reuse_exact_frozen_maps_and_nonempty_match_outputs_no_detector_fit_map_regeneration_protocol_change_promotion_or_protocol_conflation_preserve_reference_unverified_status",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage21b_three_protocol_retrospective_benchmark/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage21b_three_protocol_retrospective_benchmark/summary.json",
+      "results/local_dev/stage21b_three_protocol_retrospective_benchmark/summary.md",
+      "results/local_dev/stage21b_three_protocol_retrospective_benchmark/stage21b_berkeley_standard.csv",
+      "results/local_dev/stage21b_three_protocol_retrospective_benchmark/stage21b_berkeley_0p025_sensitivity.csv",
+      "results/local_dev/stage21b_three_protocol_retrospective_benchmark/stage21b_estrada_jepson_0p025_fuzzy_comparison.csv",
+      "results/local_dev/stage21b_three_protocol_retrospective_benchmark/stage21b_cross_protocol_deltas.csv",
+      "results/local_dev/stage21b_three_protocol_retrospective_benchmark/berkeley_standard_pr_curve.csv",
+      "results/local_dev/stage21b_three_protocol_retrospective_benchmark/berkeley_maxdist_0p025_sensitivity_pr_curve.csv",
+      "results/local_dev/stage21b_three_protocol_retrospective_benchmark/estrada_jepson_pr_curve.csv",
+      "results/local_dev/stage21b_three_protocol_retrospective_benchmark/frozen_map_hashes.json",
+      "results/local_dev/stage21b_three_protocol_retrospective_benchmark/best_method_preview.png",
+      "results/local_dev/stage21b_three_protocol_retrospective_benchmark/official_eval_manifest.json",
+      "results/official_eval/stage21b_three_protocol_retrospective_retry3/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

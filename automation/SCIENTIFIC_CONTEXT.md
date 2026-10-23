@@ -3001,3 +3001,12 @@ action is `stage21b_three_protocol_retrospective_retry2`, an unchanged
 attachment-only continuation that collects complete existing tables without
 rematching and resumes only missing frozen-method work. Stage 21C remains
 deferred.
+
+Retry 2 also timed out, but all 100 nonempty Berkeley-`0.025` per-image match
+tables for Stage 20C are now preserved. The aggregate loose-Berkeley table,
+Stage 20D loose matching, Estrada--Jepson tables, cross-protocol table, and
+final summary remain absent, so the partial results still have no standalone
+scientific interpretation. The registered next action is
+`stage21b_three_protocol_retrospective_retry3`, the same attachment-only
+continuation: collect Stage 20C without rematching and resume only missing
+later frozen-method work. Stage 21C remains deferred.
