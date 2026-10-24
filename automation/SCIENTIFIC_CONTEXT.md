@@ -3010,3 +3010,13 @@ scientific interpretation. The registered next action is
 `stage21b_three_protocol_retrospective_retry3`, the same attachment-only
 continuation: collect Stage 20C without rematching and resume only missing
 later frozen-method work. Stage 21C remains deferred.
+
+Retry 3 also timed out, but all 100 nonempty Berkeley-`0.025` per-image match
+tables for Stage 20D are now preserved. The loose-Berkeley aggregate table,
+all Estrada--Jepson tables, cross-protocol table, and final summary remain
+absent, so the partial results still have no standalone scientific
+interpretation. The registered next action is
+`stage21b_three_protocol_retrospective_retry4`, the unchanged attachment-only
+continuation: collect the complete loose-Berkeley track without rematching and
+resume only the missing Estrada--Jepson frozen-method work. Stage 21C remains
+deferred.

@@ -4929,3 +4929,18 @@ attachment-only continuation. It collects complete Stage-20C tables without
 rematching and resumes only missing later frozen-method work. Frozen maps,
 protocol definitions, matcher code, thresholds, tolerances, fidelity caveats,
 preview, and non-promotional rules remain unchanged. Stage 21C stays deferred.
+
+### Stage 21B retry 3 timed out after completing Stage-20D match tables
+
+The third resumable continuation again reached its execution limit, but all
+100 nonempty Berkeley-`0.025` per-image match tables for Stage 20D are now
+preserved. The complete loose-Berkeley aggregate table, Estrada--Jepson track,
+cross-protocol deltas, and final summary are still absent. No partial metric is
+therefore interpreted as a Stage-21B result.
+
+`stage21b_three_protocol_retrospective_retry4` is registered as the unchanged
+attachment-only continuation. It collects the now-complete loose-Berkeley
+track without rematching and resumes only missing Estrada--Jepson frozen-method
+work. Frozen maps, protocols, matcher code, thresholds, tolerances, fidelity
+caveats, preview, and non-promotional rules remain unchanged. Stage 21C stays
+deferred.

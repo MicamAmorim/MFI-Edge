@@ -2755,9 +2755,10 @@ partial Berkeley-`0.025` track. No complete three-protocol result exists yet.
 Retry 1 also timed out, but preserved all 100 Berkeley-`0.025` per-image match
 tables for Stage 20B; its aggregate and later tracks remain incomplete. The
 second continuation likewise timed out after preserving all 100 Berkeley-
-`0.025` per-image match tables for Stage 20C. The active action is
-`stage21b_three_protocol_retrospective_retry3`, the unchanged resumable
-attachment-only continuation. It collects complete existing tables without
-rematching and resumes only missing Stage-20D and later frozen-method work.
-Stage 21C stays blocked until the registered Stage-21B tables and summary are
-complete.
+`0.025` per-image match tables for Stage 20C. Retry 3 then timed out after
+preserving all 100 corresponding Stage-20D tables. The active action is
+`stage21b_three_protocol_retrospective_retry4`, the unchanged resumable
+attachment-only continuation. It collects the complete loose-Berkeley track
+without rematching and resumes only missing Estrada--Jepson frozen-method
+work. Stage 21C stays blocked until the registered Stage-21B tables and summary
+are complete.
