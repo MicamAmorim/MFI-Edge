@@ -4944,3 +4944,19 @@ track without rematching and resumes only missing Estrada--Jepson frozen-method
 work. Frozen maps, protocols, matcher code, thresholds, tolerances, fidelity
 caveats, preview, and non-promotional rules remain unchanged. Stage 21C stays
 deferred.
+
+### Stage 21B retry 4 timed out after two Estrada--Jepson methods
+
+The fourth continuation completed and preserved the full five-method
+Berkeley-`0.025` table and complete 99-threshold Estrada--Jepson grids for the
+incumbent and Stage 20A. It timed out while processing Stage 20B, before the
+remaining three grids or any final Stage-21B summary existed. The partial
+protocol result is still not interpreted scientifically.
+
+`stage21b_three_protocol_retrospective_retry5` is registered as an unchanged
+attachment-only continuation. A harness-only repair now atomically checkpoints
+each completed Estrada--Jepson threshold so controller timeouts cannot discard
+hours of identical frozen-map matching. Existing complete grids are reused;
+maps, matcher, thresholds, tolerance, annotation handling, aggregation,
+fidelity caveats, and non-promotional rules are unchanged. Stage 21C remains
+deferred until all registered Stage-21B outputs exist.

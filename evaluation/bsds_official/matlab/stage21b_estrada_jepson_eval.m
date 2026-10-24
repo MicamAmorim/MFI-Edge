@@ -6,6 +6,10 @@ spec = jsondecode(fileread(specFile));
 thresholds = (1:99) ./ 100;
 rows = struct([]);
 params.maxDist = 0.025;
+partialFile = [outFile '.partial.json'];
+if isfile(partialFile)
+    rows = jsondecode(fileread(partialFile));
+end
 
 for m = 1:numel(spec.methods)
     method = spec.methods(m);
@@ -13,6 +17,10 @@ for m = 1:numel(spec.methods)
     [~, order] = sort({files.name}); files = files(order);
     for ti = 1:numel(thresholds)
         t = thresholds(ti);
+        if ~isempty(rows) && any(strcmp({rows.method}, method.name) & ...
+                abs([rows.threshold] - t) < 1e-12)
+            continue;
+        end
         mp = 0; pp = 0; mr = 0; rr = 0;
         for i = 1:numel(files)
             [~, iid, ~] = fileparts(files(i).name);
@@ -38,9 +46,15 @@ for m = 1:numel(spec.methods)
             'matched_prediction', mp, 'prediction_total', pp, ...
             'matched_recall', mr, 'recall_total', rr);
         if isempty(rows), rows = row; else, rows(end+1) = row; end %#ok<AGROW>
+        checkpointFile = [partialFile '.tmp'];
+        checkpoint = fopen(checkpointFile, 'w');
+        if checkpoint == -1, error('MFIEdge:WriteFailed', 'Cannot write %s', checkpointFile); end
+        fprintf(checkpoint, '%s', jsonencode(rows)); fclose(checkpoint);
+        movefile(checkpointFile, partialFile, 'f');
     end
 end
 fid = fopen(outFile, 'w');
 if fid == -1, error('MFIEdge:WriteFailed', 'Cannot write %s', outFile); end
 fprintf(fid, '%s', jsonencode(rows)); fclose(fid);
+if isfile(partialFile), delete(partialFile); end
 end

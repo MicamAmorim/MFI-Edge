@@ -2762,3 +2762,11 @@ attachment-only continuation. It collects the complete loose-Berkeley track
 without rematching and resumes only missing Estrada--Jepson frozen-method
 work. Stage 21C stays blocked until the registered Stage-21B tables and summary
 are complete.
+
+Retry 4 completed the full loose-Berkeley table and complete 99-threshold
+Estrada--Jepson grids for the incumbent and Stage 20A, then timed out during
+Stage 20B. The active action is
+`stage21b_three_protocol_retrospective_retry5`, an unchanged attachment-only
+continuation with atomic per-threshold harness checkpoints. It reuses every
+complete output and resumes only missing Estrada--Jepson work; Stage 21C stays
+blocked until the complete three-protocol tables and summary exist.

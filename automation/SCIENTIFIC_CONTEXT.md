@@ -3020,3 +3020,13 @@ interpretation. The registered next action is
 continuation: collect the complete loose-Berkeley track without rematching and
 resume only the missing Estrada--Jepson frozen-method work. Stage 21C remains
 deferred.
+
+Retry 4 also timed out, but the full five-method Berkeley-`0.025` table and
+complete 99-threshold Estrada--Jepson grids for the incumbent and Stage 20A
+are now preserved. The remaining three fuzzy-protocol grids, cross-protocol
+table, and final summary are absent, so there is still no complete Stage-21B
+interpretation. The registered next action is
+`stage21b_three_protocol_retrospective_retry5`, an unchanged attachment-only
+continuation with atomic per-threshold harness checkpoints. It reuses complete
+outputs and resumes only missing Estrada--Jepson work. Stage 21C remains
+deferred.
