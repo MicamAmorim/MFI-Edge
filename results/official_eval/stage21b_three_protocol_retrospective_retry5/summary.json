@@ -1,0 +1,9 @@
+{
+  "status": "evaluator_timeout",
+  "experiment_id": "stage21b_three_protocol_retrospective_retry5",
+  "role": "frozen_map_protocol_diagnostic",
+  "manifest": "results/local_dev/stage21b_three_protocol_retrospective_benchmark/official_eval_manifest.json",
+  "manifest_sha256": "c46aa970c2a3f045f32cc02832e8ecfcdbef409fd1606064755a3b8ee015b35e",
+  "message": "Command '['C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\.venv\\\\Scripts\\\\python.exe', 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\evaluation\\\\bsds_official\\\\run_official_bsds.py', '--manifest', 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\results\\\\local_dev\\\\stage21b_three_protocol_retrospective_benchmark\\\\official_eval_manifest.json', '--experiment-id', 'stage21b_three_protocol_retrospective_retry5', '--out', 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\results\\\\official_eval\\\\stage21b_three_protocol_retrospective_retry5', '--config', 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\evaluation\\\\bsds_official\\\\config.json']' timed out after 21600.0 seconds",
+  "failure_policy": "report_and_continue"
+}

@@ -2770,3 +2770,11 @@ Stage 20B. The active action is
 continuation with atomic per-threshold harness checkpoints. It reuses every
 complete output and resumes only missing Estrada--Jepson work; Stage 21C stays
 blocked until the complete three-protocol tables and summary exist.
+
+Retry 5 preserved complete 99-threshold Estrada--Jepson grids for Stage 20B
+and Stage 20C before timing out. The active action is
+`stage21b_three_protocol_retrospective_retry6`, the unchanged attachment-only
+continuation that reuses every completed track and resumes only the final
+Stage-20D fuzzy grid from atomic threshold checkpoints. Stage 21C remains
+blocked until the complete fuzzy table, cross-protocol table, and summary are
+written.

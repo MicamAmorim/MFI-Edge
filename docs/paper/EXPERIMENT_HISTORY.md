@@ -4960,3 +4960,19 @@ hours of identical frozen-map matching. Existing complete grids are reused;
 maps, matcher, thresholds, tolerance, annotation handling, aggregation,
 fidelity caveats, and non-promotional rules are unchanged. Stage 21C remains
 deferred until all registered Stage-21B outputs exist.
+
+### Stage 21B retry 5 timed out after completing Stage-20B and Stage-20C fuzzy grids
+
+The fifth continuation reached the controller limit, but its atomic threshold
+checkpoints preserved complete 99-threshold Estrada--Jepson grids for Stage 20B
+and Stage 20C. Together with the earlier incumbent and Stage-20A grids, only
+the frozen Stage-20D fuzzy grid remains. The fuzzy-comparison table,
+cross-protocol table, and final summary are still absent, so the partial
+protocol outputs receive no standalone scientific interpretation.
+
+`stage21b_three_protocol_retrospective_retry6` is registered as the unchanged
+attachment-only continuation. It reuses all completed Berkeley and
+Estrada--Jepson outputs and resumes only Stage 20D, retaining threshold-level
+checkpoints. Frozen maps, matcher code, thresholds, tolerance, annotation
+handling, aggregation, fidelity caveats, and non-promotional rules are
+unchanged. Stage 21C remains deferred until Stage 21B completes.

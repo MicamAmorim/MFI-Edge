@@ -3030,3 +3030,11 @@ interpretation. The registered next action is
 continuation with atomic per-threshold harness checkpoints. It reuses complete
 outputs and resumes only missing Estrada--Jepson work. Stage 21C remains
 deferred.
+
+Retry 5 also timed out, but complete 99-threshold Estrada--Jepson grids for
+Stage 20B and Stage 20C are now preserved. Only the frozen Stage-20D fuzzy grid
+and final aggregation artifacts remain; no partial metric is interpreted in
+isolation. The registered next action is
+`stage21b_three_protocol_retrospective_retry6`, the unchanged attachment-only
+continuation that resumes only Stage 20D from atomic threshold checkpoints.
+Stage 21C remains deferred until the full Stage-21B result exists.
