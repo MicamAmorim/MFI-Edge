@@ -1588,3 +1588,16 @@ not an exact private-code reproduction. Stage 21B is preregistered to hash and
 rescore the identical five frozen map sets, with `0.5` fixed-threshold and
 99-point best-threshold fuzzy results explicitly separated from Berkeley
 ODS/OIS/AP and from each other.
+
+Stage 21B is now complete. Its main table should show that Stage 20C has the
+best standard-Berkeley ODS/OIS among the frozen candidates but lower AP than
+the incumbent, while the `0.025` Berkeley sensitivity track increases all
+three metrics without erasing the candidate's AP deficit. Put the separate
+Estrada--Jepson best-threshold-F table beside, not inside, the Berkeley table;
+Stage 20C's higher fuzzy F is protocol-comparison evidence only. Retain the
+best-public-KITT and reference-unverified caveats in the table caption.
+
+Stage 21C supplies the planned PR anatomy figure/table: curve crossings,
+precision at fixed recalls, AP area by recall band, threshold-dependent edge
+density, and per-image deltas. Label its per-image precision-envelope area as a
+diagnostic quantity rather than official aggregate AP.

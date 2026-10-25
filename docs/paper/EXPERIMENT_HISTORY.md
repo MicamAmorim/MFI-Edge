@@ -4976,3 +4976,32 @@ Estrada--Jepson outputs and resumes only Stage 20D, retaining threshold-level
 checkpoints. Frozen maps, matcher code, thresholds, tolerance, annotation
 handling, aggregation, fidelity caveats, and non-promotional rules are
 unchanged. Stage 21C remains deferred until Stage 21B completes.
+
+### Stage 21B three-protocol retrospective complete; Stage 21C registered
+
+The sixth continuation completed the final Stage-20D Estrada--Jepson grid and
+wrote every registered Stage-21B table, full PR artifact, map-hash record,
+summary, and fixed positions 1/50/100 preview. The outer official-evaluation
+wrapper timed out only after the runner emitted its success marker; the
+experiment's own summary is complete, so no further attachment retry is
+scientifically required.
+
+Under standard Berkeley `maxDist=0.0075`, Stage 20C was the strongest frozen
+candidate by ODS/OIS (`0.559695/0.587638`) but remained below the incumbent in
+AP (`0.508080` versus `0.534292`). Increasing Berkeley tolerance to `0.025`
+raised every method substantially; Stage 20C reached ODS/OIS/AP
+`0.695163/0.738162/0.661288`, while the incumbent reached
+`0.681956/0.729451/0.700661`. The tolerance gain therefore does not remove the
+candidate's AP deficit. Under the separate best-public-KITT
+Estrada--Jepson-`0.025` track, Stage 20C had the highest best-threshold F
+(`0.688486`) versus incumbent `0.674182`. These fuzzy-protocol numbers are
+non-promotional and not numerically interchangeable with Berkeley metrics.
+Berkeley reference reproduction remains unverified because the shipped
+fixture's clock-seeded RNG state is unavailable.
+
+The registered next action is `stage21c_pr_ap_anatomy`. It consumes only the
+frozen Stage-21B Berkeley-standard counts and exact map bytes to quantify PR
+crossings, precision at fixed recall, AP area by recall band, predicted-edge
+density by threshold, and per-image operating-point/AP changes. It fits no
+detector, reruns no matcher, reads no protected split, and cannot promote a
+model.

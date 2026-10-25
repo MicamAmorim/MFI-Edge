@@ -3038,3 +3038,21 @@ isolation. The registered next action is
 `stage21b_three_protocol_retrospective_retry6`, the unchanged attachment-only
 continuation that resumes only Stage 20D from atomic threshold checkpoints.
 Stage 21C remains deferred until the full Stage-21B result exists.
+
+### Stage 21B closure - Stage 21C PR/AP anatomy registered
+
+The final continuation completed every registered Stage-21B artifact before
+the outer official wrapper timed out. Under standard Berkeley `0.0075`, Stage
+20C had the best frozen-candidate ODS/OIS (`0.559695/0.587638`) but lower AP
+than compact MFI (`0.508080` versus `0.534292`). Berkeley `0.025` increased
+scores substantially but preserved the AP deficit (Stage 20C `0.661288` versus
+incumbent `0.700661`). In the separate best-public-KITT Estrada--Jepson
+`0.025` track, Stage 20C had the highest best-threshold F (`0.688486` versus
+incumbent `0.674182`). Neither loose track is promotional or interchangeable
+with standard Berkeley. Reference reproduction remains unverified.
+
+The registered next action is `stage21c_pr_ap_anatomy`. It reuses only frozen
+standard-Berkeley counts and exact maps to quantify PR crossings, fixed-recall
+precision, recall-band AP area, threshold-dependent edge density, and
+per-image operating-point/AP changes. It fits no detector, reruns no matcher,
+reads no protected split, and cannot alter the incumbent.

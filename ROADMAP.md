@@ -2778,3 +2778,19 @@ continuation that reuses every completed track and resumes only the final
 Stage-20D fuzzy grid from atomic threshold checkpoints. Stage 21C remains
 blocked until the complete fuzzy table, cross-protocol table, and summary are
 written.
+
+## Stage 21B complete - PR/AP anatomy active
+
+Stage 21B is complete despite the outer wrapper timing out after the internal
+success marker. All required five-method Berkeley-standard, Berkeley-`0.025`,
+and Estrada--Jepson-`0.025` tables and PR grids exist. Stage 20C is the strongest
+standard-Berkeley ODS/OIS candidate but retains an AP deficit to the incumbent;
+the looser Berkeley tolerance raises scores without eliminating that ranking
+deficit. The fuzzy track ranks Stage 20C highest by best-threshold F, but is a
+separate non-promotional endpoint. Reference reproduction remains unverified.
+
+The active next action is `stage21c_pr_ap_anatomy`. It reuses frozen standard-
+Berkeley per-threshold/per-image counts and frozen PNGs to locate PR crossings,
+decompose AP by recall band, measure precision at fixed recalls and edge density
+over threshold, and report per-image changes. No detector, matcher, protocol,
+or architecture is changed.

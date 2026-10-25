@@ -3129,6 +3129,29 @@
       "results/official_eval/stage21b_three_protocol_retrospective_retry6/summary.json"
     ]
   },
+  "stage21c_pr_ap_anatomy": {
+    "description": "Frozen-map diagnosis of standard-Berkeley PR/AP degradation for the incumbent and Stage-20A--D: curve crossings, precision at fixed recall, AP area by recall band, threshold-dependent edge density, and per-image AP/operating-point changes, with emphasis on incumbent versus Stage 20C and no refit or matcher rerun.",
+    "runner": "python",
+    "path": "automation/stage21c_pr_ap_anatomy.py",
+    "args": [],
+    "role": "frozen_map_ranking_diagnostic",
+    "feedback_policy": "development_diagnostic_only_reuse_stage21b_standard_berkeley_counts_and_exact_frozen_maps_no_detector_or_matcher_rerun_refit_promotion_protocol_change_or_protected_split_read_preserve_reference_unverified_status",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage21c_pr_ap_anatomy/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage21c_pr_ap_anatomy/summary.json",
+      "results/local_dev/stage21c_pr_ap_anatomy/summary.md",
+      "results/local_dev/stage21c_pr_ap_anatomy/precision_at_fixed_recall.csv",
+      "results/local_dev/stage21c_pr_ap_anatomy/ap_by_recall_band.csv",
+      "results/local_dev/stage21c_pr_ap_anatomy/pr_curve_crossings.csv",
+      "results/local_dev/stage21c_pr_ap_anatomy/predicted_edge_density_by_threshold.csv",
+      "results/local_dev/stage21c_pr_ap_anatomy/per_image_pr_ap.csv",
+      "results/local_dev/stage21c_pr_ap_anatomy/per_image_deltas_vs_incumbent.csv",
+      "results/local_dev/stage21c_pr_ap_anatomy/best_method_preview.png",
+      "results/local_dev/stage21c_pr_ap_anatomy/official_eval_manifest.json",
+      "results/official_eval/stage21c_pr_ap_anatomy/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",
