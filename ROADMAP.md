@@ -2794,3 +2794,9 @@ Berkeley per-threshold/per-image counts and frozen PNGs to locate PR crossings,
 decompose AP by recall band, measure precision at fixed recalls and edge density
 over threshold, and report per-image changes. No detector, matcher, protocol,
 or architecture is changed.
+
+The first Stage-21C launch stopped before artifact creation on NumPy's removed
+legacy `trapz` alias. The active action is now
+`stage21c_pr_ap_anatomy_retry1`, a harness-only retry using `trapezoid` for the
+same numerical integration. No scientific feedback exists yet, and Stage 21D
+remains deferred.

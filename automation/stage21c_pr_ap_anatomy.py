@@ -67,7 +67,7 @@ def band_area(recall: np.ndarray, precision: np.ndarray, lo: float, hi: float) -
         return 0.0
     inside = r[(r > left) & (r < right)]
     grid = np.concatenate(([left], inside, [right]))
-    return float(np.trapz(np.interp(grid, r, p), grid))
+    return float(np.trapezoid(np.interp(grid, r, p), grid))
 
 
 def crossing_rows(curves: dict[str, tuple[np.ndarray, np.ndarray]]) -> list[dict]:
@@ -88,7 +88,7 @@ def crossing_rows(curves: dict[str, tuple[np.ndarray, np.ndarray]]) -> list[dict
             "common_recall_max": float(hi),
             "crossing_count": len(crossings),
             "crossing_recalls": ";".join(f"{value:.6f}" for value in crossings),
-            "delta_precision_area": float(np.trapz(delta, grid)),
+            "delta_precision_area": float(np.trapezoid(delta, grid)),
         })
     return rows
 

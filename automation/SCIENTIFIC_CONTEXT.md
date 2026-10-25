@@ -3056,3 +3056,10 @@ standard-Berkeley counts and exact maps to quantify PR crossings, fixed-recall
 precision, recall-band AP area, threshold-dependent edge density, and
 per-image operating-point/AP changes. It fits no detector, reruns no matcher,
 reads no protected split, and cannot alter the incumbent.
+
+The first Stage-21C launch stopped before artifact creation because the local
+NumPy removed the legacy `trapz` alias. No scientific feedback was produced.
+`stage21c_pr_ap_anatomy_retry1` is registered as a harness-only retry using
+`trapezoid` for the identical numerical integration; all frozen inputs,
+diagnostic endpoints, protocol restrictions, and the reference-unverified
+status remain unchanged. Stage 21D remains deferred.

@@ -5005,3 +5005,14 @@ crossings, precision at fixed recall, AP area by recall band, predicted-edge
 density by threshold, and per-image operating-point/AP changes. It fits no
 detector, reruns no matcher, reads no protected split, and cannot promote a
 model.
+
+### Stage 21C first launch stopped on NumPy API compatibility
+
+The first Stage-21C launch stopped before writing any result artifact because
+the installed NumPy no longer exposes the legacy `trapz` alias used for the
+registered trapezoidal PR integrations. No detector, map, matcher, benchmark,
+or protected split was run or read, so this supplies no scientific feedback.
+`stage21c_pr_ap_anatomy_retry1` is registered as a harness-only retry using
+NumPy's current `trapezoid` spelling for the identical calculation. Inputs,
+diagnostic endpoints, maps, protocol, preview, and reference-unverified status
+remain unchanged; Stage 21D stays deferred until Stage 21C completes.
