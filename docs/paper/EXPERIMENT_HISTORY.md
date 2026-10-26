@@ -5016,3 +5016,34 @@ or protected split was run or read, so this supplies no scientific feedback.
 NumPy's current `trapezoid` spelling for the identical calculation. Inputs,
 diagnostic endpoints, maps, protocol, preview, and reference-unverified status
 remain unchanged; Stage 21D stays deferred until Stage 21C completes.
+
+### Stage 21C PR/AP anatomy complete; Stage 21D registered
+
+The dependency-compatible retry completed every frozen-map diagnostic and the
+fixed positions 1/50/100 preview without fitting a detector or rerunning a
+matcher. Stage 20C's precision envelope exceeded the incumbent at recall
+`0.25/0.50/0.75/0.90` by about
+`+0.01277/+0.01695/+0.02271/+0.02230`. Its common-range envelope-area contrast
+was also positive (`+0.00643`), but its lowest-recall `[0,0.25]` contribution
+was lower by about `-0.00688`, and official raw-curve AP remained lower by
+about `-0.02620`. Thus the operating-point gain is not simply a uniformly
+worse envelope: the AP loss is especially sensitive to the earliest ranking
+region and to raw threshold-curve ordering that an optimistic monotone envelope
+can hide. Diagnostic per-image envelope area improved on 85/100 images for
+Stage 20C, reinforcing that this quantity is not interchangeable with official
+aggregate AP.
+
+The required official attachment independently rescored the incumbent and
+Stage 20C under the same standard configuration and reproduced the qualitative
+contrast: Stage 20C changed ODS/OIS/AP by
+`+0.01431/+0.00849/-0.02620`. Its small numeric drift from the earlier frozen
+table is consistent with the already documented clock-seeded Windows matcher;
+`reference_reproduction_verified=false` remains mandatory.
+
+The registered next action is `stage21d_ranking_localization_diagnosis`. It
+uses only exact frozen PNGs, the already reported ODS thresholds, and BSDS500
+validation annotations to measure descriptive pixel ranking, bidirectional
+GT/prediction distances, support at the two fixed tolerances, and a clearly
+labeled near-GT multiplicity surrogate. It does not rerun the matcher, refit a
+model, read a protected split, or promote a candidate. The authoritative
+contract is `docs/paper/STAGE21D_PREREGISTRATION.md`.

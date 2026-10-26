@@ -2800,3 +2800,20 @@ legacy `trapz` alias. The active action is now
 `stage21c_pr_ap_anatomy_retry1`, a harness-only retry using `trapezoid` for the
 same numerical integration. No scientific feedback exists yet, and Stage 21D
 remains deferred.
+
+## Stage 21C complete - ranking/localization diagnosis active
+
+Stage 21C completed from frozen maps and counts. Stage 20C is better than the
+incumbent on the monotone precision envelope at every registered fixed recall
+and over the common recall range overall, but loses area in the earliest
+`[0,0.25]` recall band and retains a substantial official raw-curve AP deficit.
+This makes ranking-curve behavior, rather than a simple all-recall precision
+collapse, the immediate question. The incumbent remains unchanged and Berkeley
+reference reproduction remains unverified.
+
+The active next action is `stage21d_ranking_localization_diagnosis`. It compares
+all five frozen methods using descriptive score distributions and pixel ranks,
+bidirectional spatial-distance distributions, fixed-tolerance support, and a
+near-GT multiplicity surrogate under the immutable contract in
+`docs/paper/STAGE21D_PREREGISTRATION.md`. It fits and promotes nothing and uses
+no protected split. Completion advances only to Stage 21E.

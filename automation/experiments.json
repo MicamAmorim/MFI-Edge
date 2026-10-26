@@ -3175,6 +3175,28 @@
       "results/official_eval/stage21c_pr_ap_anatomy_retry1/summary.json"
     ]
   },
+  "stage21d_ranking_localization_diagnosis": {
+    "description": "Frozen-map diagnosis separating score-ranking from spatial-localization explanations for incumbent and Stage-20A--D using descriptive tolerance labels, bidirectional distance distributions, two fixed tolerance supports, and a near-GT multiplicity surrogate; no fit, map regeneration, matcher rerun, promotion, or protected split read.",
+    "runner": "python",
+    "path": "automation/stage21d_ranking_localization_diagnosis.py",
+    "args": [],
+    "role": "frozen_map_ranking_localization_diagnostic",
+    "feedback_policy": "development_diagnostic_only_exact_frozen_maps_and_frozen_standard_ods_thresholds_union_distance_surrogates_not_official_metrics_no_detector_fit_map_regeneration_matcher_rerun_promotion_protocol_change_or_protected_split_read_preserve_reference_unverified_status",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage21d_ranking_localization_diagnosis/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage21d_ranking_localization_diagnosis/summary.json",
+      "results/local_dev/stage21d_ranking_localization_diagnosis/summary.md",
+      "results/local_dev/stage21d_ranking_localization_diagnosis/score_rank_diagnostics.csv",
+      "results/local_dev/stage21d_ranking_localization_diagnosis/distance_distributions.csv",
+      "results/local_dev/stage21d_ranking_localization_diagnosis/tolerance_support.csv",
+      "results/local_dev/stage21d_ranking_localization_diagnosis/duplicate_parallel_surrogate.csv",
+      "results/local_dev/stage21d_ranking_localization_diagnosis/per_image_diagnosis.csv",
+      "results/local_dev/stage21d_ranking_localization_diagnosis/best_method_preview.png",
+      "results/local_dev/stage21d_ranking_localization_diagnosis/official_eval_manifest.json",
+      "results/official_eval/stage21d_ranking_localization_diagnosis/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

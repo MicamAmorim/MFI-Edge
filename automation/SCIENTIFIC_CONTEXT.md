@@ -3063,3 +3063,29 @@ NumPy removed the legacy `trapz` alias. No scientific feedback was produced.
 `trapezoid` for the identical numerical integration; all frozen inputs,
 diagnostic endpoints, protocol restrictions, and the reference-unverified
 status remain unchanged. Stage 21D remains deferred.
+
+### Stage 21C closure - Stage 21D ranking/localization diagnosis registered
+
+The harness-compatible retry completed Stage 21C without fitting a detector or
+rerunning a matcher. Stage 20C exceeded the incumbent's monotone precision
+envelope at recall `0.25/0.50/0.75/0.90` and had `+0.00643` common-range
+envelope area, yet lost about `0.00688` area in the earliest `[0,0.25]` band
+and retained an official raw-curve AP deficit of about `-0.02620`. Its
+diagnostic per-image envelope area improved on 85/100 images. Therefore the AP
+tension is not a uniform all-recall precision loss; early ranking and raw
+threshold-curve behavior require explicit separation from spatial localization.
+The compact distorted-Choquet controller remains incumbent, and Berkeley
+reference reproduction remains unverified.
+
+The required official attachment preserved the same decision-capable pattern:
+Stage 20C changed ODS/OIS/AP by `+0.01431/+0.00849/-0.02620` relative to the
+incumbent. Small absolute-score drift versus Stage 21B remains attributable to
+the documented clock-seeded Windows matcher and does not certify reference
+reproduction.
+
+The registered next action is `stage21d_ranking_localization_diagnosis`. It
+uses exact frozen maps and frozen standard-ODS thresholds to report descriptive
+pixel ranking, bidirectional GT/prediction distance distributions, support at
+`0.0075` and `0.025`, and a labeled near-GT multiplicity surrogate. These are
+not official Berkeley metrics, fit or promote nothing, and read no protected
+split. Completion advances only to Stage 21E.

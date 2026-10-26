@@ -1601,3 +1601,11 @@ Stage 21C supplies the planned PR anatomy figure/table: curve crossings,
 precision at fixed recalls, AP area by recall band, threshold-dependent edge
 density, and per-image deltas. Label its per-image precision-envelope area as a
 diagnostic quantity rather than official aggregate AP.
+
+Stage 21C shows why both raw and enveloped PR summaries are needed: Stage 20C
+has higher envelope precision at every registered fixed recall and positive
+common-range envelope area, yet loses the earliest recall-band area and official
+raw-curve AP. Do not describe the AP regression as uniform across recall, and
+do not substitute per-image/envelope area for Berkeley AP. Stage 21D will supply
+the ranking-versus-localization table using explicitly non-official
+union-distance and near-GT multiplicity diagnostics.
