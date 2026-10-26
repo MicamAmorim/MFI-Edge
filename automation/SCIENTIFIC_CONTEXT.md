@@ -3089,3 +3089,24 @@ pixel ranking, bidirectional GT/prediction distance distributions, support at
 `0.0075` and `0.025`, and a labeled near-GT multiplicity surrogate. These are
 not official Berkeley metrics, fit or promote nothing, and read no protected
 split. Completion advances only to Stage 21E.
+
+### Stage 21D closure - Stage 21E spatial-tolerance response registered
+
+Stage 20C modestly improved descriptive tolerant-pixel AUC/AP over compact MFI
+(`0.51607/0.34281` versus `0.51193/0.33933`), shortened mean GT-to-prediction
+and prediction-to-GT distances (`4.47/13.28` versus `4.94/13.75` pixels), and
+increased standard-tolerance GT/prediction support (`0.77315/0.57012` versus
+`0.75357/0.56589`). It also increased the near-GT multiplicity surrogate
+(`6.74` versus `6.62`), supporting a mixed diagnosis: better ranking/local
+coverage coexists with more duplicated or broadened response. These are
+union-distance surrogates, not official Berkeley metrics, and cannot rescue
+the official AP loss. The attachment retained Stage 20C's
+`+0.01427/+0.00872/-0.02622` ODS/OIS/AP contrast. Compact MFI remains the
+incumbent and reference reproduction remains unverified.
+
+The registered next action is `stage21e_spatial_tolerance_response_curve`.
+It evaluates the five frozen map sets under Berkeley matching at
+`0.00375/0.0075/0.015/0.025`, reusing Stage-21B results at the two already
+completed distances and resumably matching only the missing tracks. Only
+`0.0075` is primary; all other distances are non-promotional sensitivity
+diagnostics and are not Estrada--Jepson. Completion advances only to Stage 21F.

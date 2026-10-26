@@ -2817,3 +2817,20 @@ bidirectional spatial-distance distributions, fixed-tolerance support, and a
 near-GT multiplicity surrogate under the immutable contract in
 `docs/paper/STAGE21D_PREREGISTRATION.md`. It fits and promotes nothing and uses
 no protected split. Completion advances only to Stage 21E.
+
+## Stage 21D complete - spatial-tolerance response active
+
+Stage 21D shows a mixed ranking/localization picture. Relative to compact MFI,
+Stage 20C has modestly higher diagnostic tolerant-pixel AUC/AP, shorter
+bidirectional distances, and greater GT/prediction support at the standard
+tolerance, but also greater near-GT multiplicity. This is consistent with
+improved local coverage plus some duplicated or broadened response, not a
+pure ranking-only or localization-only explanation. The descriptive measures
+are not official Berkeley metrics and do not change the incumbent.
+
+The active next action is `stage21e_spatial_tolerance_response_curve`. It uses
+the five exact frozen map sets and the pinned Berkeley path at
+`0.00375/0.0075/0.015/0.025`, reusing the two already complete Stage-21B
+tracks and resumably matching only the missing distances. Only `0.0075` is
+primary; all other rows are non-promotional sensitivity evidence. Completion
+advances only to Stage 21F.

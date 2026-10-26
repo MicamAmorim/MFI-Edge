@@ -3197,6 +3197,26 @@
       "results/official_eval/stage21d_ranking_localization_diagnosis/summary.json"
     ]
   },
+  "stage21e_spatial_tolerance_response_curve": {
+    "description": "Frozen-map Berkeley spatial-tolerance response curves for the incumbent and Stage-20A--D at maxDist 0.00375/0.0075/0.015/0.025, reusing complete Stage-21B primary and loose tracks and resumably matching only the two missing distances; diagnostic only, no fit, map regeneration, promotion, Estrada--Jepson conflation, or protected split read.",
+    "runner": "python",
+    "path": "automation/stage21e_spatial_tolerance_response_curve.py",
+    "args": [],
+    "role": "frozen_map_spatial_tolerance_diagnostic",
+    "feedback_policy": "development_diagnostic_only_exact_frozen_maps_berkeley_tolerance_response_primary_0p0075_only_no_detector_fit_map_regeneration_promotion_estrada_jepson_conflation_or_protected_split_read_preserve_reference_unverified_status",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage21e_spatial_tolerance_response_curve/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage21e_spatial_tolerance_response_curve/summary.json",
+      "results/local_dev/stage21e_spatial_tolerance_response_curve/summary.md",
+      "results/local_dev/stage21e_spatial_tolerance_response_curve/spatial_tolerance_metrics.csv",
+      "results/local_dev/stage21e_spatial_tolerance_response_curve/spatial_tolerance_deltas.csv",
+      "results/local_dev/stage21e_spatial_tolerance_response_curve/spatial_tolerance_pr_curves_new_tracks.csv",
+      "results/local_dev/stage21e_spatial_tolerance_response_curve/best_method_preview.png",
+      "results/local_dev/stage21e_spatial_tolerance_response_curve/official_eval_manifest.json",
+      "results/official_eval/stage21e_spatial_tolerance_response_curve/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

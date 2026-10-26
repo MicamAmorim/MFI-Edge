@@ -5047,3 +5047,31 @@ GT/prediction distances, support at the two fixed tolerances, and a clearly
 labeled near-GT multiplicity surrogate. It does not rerun the matcher, refit a
 model, read a protected split, or promote a candidate. The authoritative
 contract is `docs/paper/STAGE21D_PREREGISTRATION.md`.
+
+### Stage 21D ranking/localization diagnosis complete; Stage 21E registered
+
+The frozen-map diagnosis found that Stage 20C improved both score association
+and spatial support relative to compact MFI under its descriptive union-distance
+contract. Pixel-tolerance AUC/AP increased from about `0.51193/0.33933` to
+`0.51607/0.34281`; mean GT-to-prediction distance decreased from `4.94` to
+`4.47` pixels and prediction-to-GT distance from `13.75` to `13.28` pixels.
+At the frozen standard-ODS thresholds, mean GT support within `0.0075` rose
+from `0.75357` to `0.77315`, and prediction support from `0.56589` to
+`0.57012`. Stage 20C also had a higher near-GT multiplicity surrogate
+(`6.74` versus `6.62` predictions per GT pixel; `0.735` versus `0.715` of GT
+pixels with at least two nearby predictions), so the diagnosis supports a
+mixed interpretation: modestly better ranking/local coverage coexists with
+more duplicate/broadened local response. These quantities are not Berkeley
+one-to-one metrics and do not rescue Stage 20C's official AP loss.
+
+The required official attachment preserved the frozen contrast:
+Stage 20C changed ODS/OIS/AP by `+0.01427/+0.00872/-0.02622`. Compact MFI
+remains the incumbent, and Berkeley reference reproduction remains unverified.
+
+The registered next action is `stage21e_spatial_tolerance_response_curve`.
+It evaluates all five exact frozen map sets with Berkeley matching at
+`0.00375/0.0075/0.015/0.025`, reusing the complete Stage-21B `0.0075` and
+`0.025` tables and resumably matching only the two missing distances. The
+curves are diagnostic and non-promotional; `0.0075` remains the sole primary
+endpoint and no row is an Estrada--Jepson result. The authoritative contract
+is `docs/paper/STAGE21E_PREREGISTRATION.md`.
