@@ -2834,3 +2834,19 @@ the five exact frozen map sets and the pinned Berkeley path at
 tracks and resumably matching only the missing distances. Only `0.0075` is
 primary; all other rows are non-promotional sensitivity evidence. Completion
 advances only to Stage 21F.
+
+## Stage 21E complete - context/localizer/NMS decomposition active
+
+The four-distance Berkeley sensitivity curves are complete. Stage 20C keeps
+an ODS advantage over compact MFI at every distance, but its AP deficit also
+persists and becomes larger under looser matching. Tolerance relaxation does
+not rescue the candidate and does not support a simple fixed-offset account.
+Only `0.0075` remains primary; other rows are non-promotional and Berkeley
+reference reproduction remains unverified.
+
+The active next action is
+`stage21f_context_localizer_nms_decomposition`. It requires byte-identical
+reconstruction of the frozen final maps and attributes descriptive ranking and
+spatial-support changes across context, shared pre-NMS Scharr, pre-NMS
+context-local coupling, and final post-NMS output. It changes no detector and
+completion advances only to Stage 21G.

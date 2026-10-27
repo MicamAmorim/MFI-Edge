@@ -3217,6 +3217,26 @@
       "results/official_eval/stage21e_spatial_tolerance_response_curve/summary.json"
     ]
   },
+  "stage21f_context_localizer_nms_decomposition": {
+    "description": "Frozen-pipeline attribution for compact MFI and Stage 20C across context, shared pre-NMS Scharr evidence, context-local combination before NMS, and byte-verified final post-NMS output; descriptive tolerant-union ranking and density-matched localization only, with no detector fit, map change, promotion, or protected split read.",
+    "runner": "python",
+    "path": "automation/stage21f_context_localizer_nms_decomposition.py",
+    "args": [],
+    "role": "frozen_pipeline_context_localizer_nms_diagnostic",
+    "feedback_policy": "development_diagnostic_only_deterministically_reconstruct_registered_frozen_fit_without_new_fit_or_selection_and_require_exact_final_png_bytes_intermediate_auc_ap_and_union_distance_not_official_metrics_no_parameter_change_promotion_or_protected_split_read_preserve_reference_unverified_status",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage21f_context_localizer_nms_decomposition/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage21f_context_localizer_nms_decomposition/summary.json",
+      "results/local_dev/stage21f_context_localizer_nms_decomposition/summary.md",
+      "results/local_dev/stage21f_context_localizer_nms_decomposition/stage_rank_discrimination.csv",
+      "results/local_dev/stage21f_context_localizer_nms_decomposition/per_image_stage_rank_discrimination.csv",
+      "results/local_dev/stage21f_context_localizer_nms_decomposition/per_image_density_matched_localization.csv",
+      "results/local_dev/stage21f_context_localizer_nms_decomposition/best_method_preview.png",
+      "results/local_dev/stage21f_context_localizer_nms_decomposition/official_eval_manifest.json",
+      "results/official_eval/stage21f_context_localizer_nms_decomposition/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

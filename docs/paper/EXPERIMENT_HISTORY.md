@@ -5075,3 +5075,23 @@ It evaluates all five exact frozen map sets with Berkeley matching at
 curves are diagnostic and non-promotional; `0.0075` remains the sole primary
 endpoint and no row is an Estrada--Jepson result. The authoritative contract
 is `docs/paper/STAGE21E_PREREGISTRATION.md`.
+
+### Stage 21E spatial-tolerance response complete; Stage 21F registered
+
+All five frozen methods were evaluated at Berkeley distance fractions
+`0.00375/0.0075/0.015/0.025`, reusing the two complete Stage-21B tracks.
+Stage 20C exceeded compact MFI in ODS at every distance by approximately
+`+0.01104/+0.01427/+0.01436/+0.01321`, but its AP deficit also persisted and
+grew from about `-0.01882` to `-0.03937`. Relaxing correspondence tolerance
+therefore does not rescue the candidate or support a simple constant-offset
+explanation. Only `0.0075` remains primary; other rows are non-promotional
+Berkeley sensitivity results, not Estrada--Jepson scores. Reference
+reproduction remains unverified.
+
+The registered next action is
+`stage21f_context_localizer_nms_decomposition`, under
+`docs/paper/STAGE21F_PREREGISTRATION.md`. It reconstructs the frozen incumbent
+and Stage-20C computations and requires exact final PNG agreement while
+reporting descriptive rank and spatial diagnostics for context, pre-NMS local
+evidence, pre-NMS coupling, and the final post-NMS score. It fits or promotes
+nothing and advances only to Stage 21G.

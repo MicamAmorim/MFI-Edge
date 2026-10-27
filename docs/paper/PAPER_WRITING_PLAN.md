@@ -1609,3 +1609,13 @@ raw-curve AP. Do not describe the AP regression as uniform across recall, and
 do not substitute per-image/envelope area for Berkeley AP. Stage 21D will supply
 the ranking-versus-localization table using explicitly non-official
 union-distance and near-GT multiplicity diagnostics.
+
+Stage 21E adds the full tolerance-response figure. Report that Stage 20C's ODS
+advantage persists from `0.00375` through `0.025`, but its AP deficit also
+persists and becomes larger at looser tolerances. This is evidence against a
+simple fixed-displacement account, not evidence that tolerance is a tunable
+detector parameter. Keep `0.0075` visually primary and label the other curves
+as non-promotional sensitivity results. Stage 21F should place context,
+pre-NMS Scharr, pre-NMS context-local coupling, and final post-NMS diagnostic
+rows side by side, while reserving official Berkeley terminology for the
+unchanged final outputs only.

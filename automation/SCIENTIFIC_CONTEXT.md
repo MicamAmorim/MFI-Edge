@@ -3110,3 +3110,23 @@ It evaluates the five frozen map sets under Berkeley matching at
 completed distances and resumably matching only the missing tracks. Only
 `0.0075` is primary; all other distances are non-promotional sensitivity
 diagnostics and are not Estrada--Jepson. Completion advances only to Stage 21F.
+
+### Stage 21E closure - Stage 21F pipeline decomposition registered
+
+The complete frozen-map tolerance curves rise smoothly for every method.
+Stage 20C remains above compact MFI in ODS at all four distances (about
+`+0.01104/+0.01427/+0.01436/+0.01321` from tightest to loosest), while its AP
+remains lower at every distance (about
+`-0.01882/-0.02621/-0.03121/-0.03937`). Looser matching therefore does not
+erase the AP deficit or support a simple fixed-offset explanation. These rows
+are non-promotional, not Estrada--Jepson, and reference reproduction remains
+unverified.
+
+The registered next action is
+`stage21f_context_localizer_nms_decomposition`. It reconstructs the registered
+frozen incumbent and Stage-20C pipeline, requires byte-identical final maps,
+and measures descriptive tolerant-union ranking and density-matched spatial
+support at context, shared pre-NMS Scharr, pre-NMS context-local combination,
+and final post-NMS stages. Intermediate measures are not official Berkeley
+scores. No fit, parameter change, promotion, or protected split read is
+authorized; completion advances only to Stage 21G.
