@@ -1628,3 +1628,22 @@ non-official attribution measures, not an explanation that rescues the
 candidate. Stage 21G should report consensus-rank correlation, higher-versus-
 lower consensus pairwise accuracy, consensus strata, and deterministic weak-
 over-strong examples before the single Stage-21H design decision.
+
+## Stage 21H outcome and finite-program synthesis note
+
+Report the consensus-pairwise 2-additive Choquet candidate as a conjunctive
+rejection, not as an AP-only near miss. On overlap-clean UDED it improved
+aggregate F1/precision and won `12/15` folds, but recall changed by
+`-0.009200`, beyond the registered `-0.003` floor. On standard Berkeley
+validation it improved ODS/OIS by `+0.014168/+0.008702` but reduced AP by
+`-0.033638`. Preserve both independent failure reasons, the fixed preview,
+the unchanged compact-MFI incumbent, and the reference-unverified matcher
+caveat.
+
+The Stage-21 synthesis should state that consensus-aware pairwise capacity
+fitting did not repair raw ranking transfer under the frozen two-cue pipeline:
+operating-point gains again coexisted with a material AP loss, while UDED
+recall also collapsed beyond tolerance. Do not imply a second Stage-21H
+candidate, post-hoc loss balancing, pair reweighting, calibration repair, or
+automatic literature continuation. The finite program ends without promotion
+and without satisfying the generalized SOTA objective.

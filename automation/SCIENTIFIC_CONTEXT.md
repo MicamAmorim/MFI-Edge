@@ -3189,3 +3189,22 @@ the frozen five compact-control features are calibrated inside each training
 fold without rerunning eligibility/correlation selection for the incumbent.
 Stage-21H folds, ranking seed, candidate objective, data, parameters,
 promotion rule, preview, and official attachment remain unchanged.
+
+### Stage 21H closure - consensus-pairwise Choquet rejected; finite program complete
+
+The single Stage-21H candidate failed its conjunctive promotion rule on both
+development axes. On overlap-clean UDED selection, aggregate F1/precision/
+recall and mean fold F1 changed by
+`+0.004628/+0.012625/-0.009200/+0.004584`, with `12/15` fold wins,
+`15/15` converged fits, and exact support preservation. The recall change
+violated the preregistered `-0.003` floor. Official BSDS500-validation
+ODS/OIS/AP changed by `+0.014168/+0.008702/-0.033638`; the AP regression
+independently failed the required nonnegative condition. The consensus-aware
+pairwise capacity objective is therefore rejected and must not be tuned or
+combined from this result.
+
+Per the Stage-21 finite-program contract, there is no second Stage-21H
+candidate, replacement, or automatic literature escalation. Compact
+distorted-Choquet MFI remains the incumbent. Stage 21 closes in synthesis
+without reaching the generalized SOTA goal; Berkeley reference reproduction
+also remains unverified.

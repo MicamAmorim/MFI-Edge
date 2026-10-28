@@ -3318,7 +3318,7 @@
       "results/local_dev/stage21h_consensus_pairwise_choquet/runtime.csv",
       "results/local_dev/stage21h_consensus_pairwise_choquet/best_method_preview.png",
       "results/local_dev/stage21h_consensus_pairwise_choquet/official_eval_manifest.json",
-      "results/official_eval/stage21h_consensus_pairwise_choquet/summary.json"
+      "results/official_eval/stage21h_consensus_pairwise_choquet_retry2/summary.json"
     ]
   },
   "autonomous_literature_escalation": {

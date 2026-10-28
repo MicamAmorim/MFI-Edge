@@ -5167,3 +5167,26 @@ already-frozen five compact-control features inside each outer training fold,
 bypassing eligibility/correlation selection only for that fixed incumbent
 control. It preserves the Stage-21H folds, ranking seed, candidate objective,
 data, parameters, promotion rule, preview, and official attachment.
+
+### Stage 21H complete - consensus-pairwise capacity fitting rejected
+
+The second harness-only retry completed the one authorized Stage-21H
+candidate. Relative to compact MFI on the 14-image overlap-clean UDED
+selection set, the consensus-pairwise two-cue 2-additive Choquet candidate
+changed aggregate F1, precision, recall, and mean fold F1 by
+`+0.004628`, `+0.012625`, `-0.009200`, and `+0.004584`. It won `12/15`
+folds, all `15/15` constrained fits converged, and score support was preserved,
+but recall crossed the preregistered `-0.003` non-collapse boundary.
+
+The required standard-Berkeley BSDS500-validation attachment changed
+ODS/OIS/AP by `+0.014168/+0.008702/-0.033638`. Thus the candidate also
+failed the independently required nonnegative AP condition despite its clear
+ODS/OIS gains. Both axes were conjunctive, so the candidate is rejected and
+compact distorted-Choquet MFI remains the incumbent. The fixed positions
+1/7/14 preview is complete. The local Windows matcher remains stochastic and
+reference reproduction remains unverified, so these development scores do not
+support a final SOTA claim.
+
+This closes the finite Stage-21 program. Its contract permits no second
+Stage-21H candidate, replacement, tuning, or automatic literature escalation.
+The generalized non-neural SOTA objective remains unmet.

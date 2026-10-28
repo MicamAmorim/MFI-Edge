@@ -2902,3 +2902,17 @@ written. The active next action is the harness-only
 `stage21h_consensus_pairwise_choquet_retry2`, which fold-calibrates exactly the
 frozen compact five features while bypassing selection only for the incumbent
 control. All candidate and promotion contracts remain unchanged.
+
+## Stage 21 complete - single Stage 21H candidate rejected
+
+The repaired Stage-21H run completed, but the candidate failed both sides of
+the frozen conjunctive rule. UDED aggregate F1 improved by `+0.004628` and
+precision by `+0.012625`, with `12/15` fold wins, yet recall fell by
+`-0.009200` versus the allowed `-0.003` floor. Standard-Berkeley validation
+improved ODS/OIS by `+0.014168/+0.008702`, while AP fell by `-0.033638`.
+
+Compact distorted-Choquet MFI therefore remains the incumbent. Stage 21 is
+closed in synthesis: there is no second candidate, replacement, tuning pass,
+or automatic escalation under the finite program. The long-horizon generalized
+SOTA goal is still open, and Berkeley reference reproduction remains
+unverified, but no next experiment is registered by this program.
