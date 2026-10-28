@@ -3208,3 +3208,8 @@ candidate, replacement, or automatic literature escalation. Compact
 distorted-Choquet MFI remains the incumbent. Stage 21 closes in synthesis
 without reaching the generalized SOTA goal; Berkeley reference reproduction
 also remains unverified.
+
+## Stage 22 activation - finite causal resolution and thesis-legacy program
+
+The user explicitly starts the bounded Stage-22 program defined in `docs/paper/STAGE22_RESEARCH_PROGRAM.md`. It supersedes the Stage-21 synthesis stop. The hard scientific budget is five stages (22A-22E), with no sixth experiment, replacement candidate, post-hoc tuning loop, or automatic literature escalation after closure. Stage 22A is the registered next action. Compact distorted-Choquet MFI remains incumbent. Thesis-legacy, Berkeley-0.025, and Estrada-Jepson-0.025 tracks are descriptive/non-promotional and separate from standard Berkeley 0.0075.
+

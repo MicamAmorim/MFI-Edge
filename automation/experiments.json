@@ -3,7 +3,16 @@
     "description": "Frozen Stage-12d transfer to BSDS500 test. One-shot external validation; no tuning from this result.",
     "runner": "python",
     "path": "run_stage13_bsds_transfer.py",
-    "args": ["--split", "test", "--max-side", "256", "--thresholds", "61", "--bootstrap", "5000"],
+    "args": [
+      "--split",
+      "test",
+      "--max-side",
+      "256",
+      "--thresholds",
+      "61",
+      "--bootstrap",
+      "5000"
+    ],
     "role": "external_test",
     "feedback_policy": "document_only_no_tuning",
     "one_shot": true,
@@ -36,7 +45,9 @@
     "role": "dataset_preflight",
     "feedback_policy": "validate_dataset_layout_only_no_test_tuning",
     "one_shot": true,
-    "result_files": ["results/automation/stage13c_biped_preflight/summary.json"]
+    "result_files": [
+      "results/automation/stage13c_biped_preflight/summary.json"
+    ]
   },
   "stage13d_biped_transfer": {
     "description": "One-shot frozen Stage-12d replication on the author-designated BIPEDv2 test split at native resolution; fixed-threshold diagnostics only.",
@@ -68,7 +79,16 @@
     "description": "Leakage-free repeated-CV mechanism ablation on UDED selection only: test whether spatially aligned anti-texture evidence adds value beyond positive-only, image-mean negative, and no-negative ratio controls.",
     "runner": "python",
     "path": "run_stage14b_polarity_ablation.py",
-    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256"],
+    "args": [
+      "--repeats",
+      "5",
+      "--folds",
+      "3",
+      "--thresholds",
+      "41",
+      "--max-side",
+      "256"
+    ],
     "role": "development_test",
     "feedback_policy": "development_only_mechanism_ablation_no_external_feedback",
     "one_shot": true,
@@ -83,7 +103,16 @@
     "description": "Leakage-free repeated-CV pruning test on UDED selection only: compare the fold-trained full positive signature bank against a compact subset of universally stable positive features, with identical positive-only aggregation and fold-fitted thresholds.",
     "runner": "python",
     "path": "run_stage14c_positive_bank_pruning.py",
-    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256"],
+    "args": [
+      "--repeats",
+      "5",
+      "--folds",
+      "3",
+      "--thresholds",
+      "41",
+      "--max-side",
+      "256"
+    ],
     "role": "development_test",
     "feedback_policy": "development_only_feature_pruning_no_external_feedback",
     "one_shot": true,
@@ -98,7 +127,19 @@
     "description": "Leakage-free repeated-CV ablation on UDED selection only: compare the validated five-feature compact positive bank with the same bank minus scale persistence, keeping aggregation, localization, gating, and fold-fitted thresholds fixed.",
     "runner": "python",
     "path": "run_stage14c_positive_bank_pruning.py",
-    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256", "--compact-no-persistence", "--out", "results/local_dev/stage14d_persistence_feature_ablation"],
+    "args": [
+      "--repeats",
+      "5",
+      "--folds",
+      "3",
+      "--thresholds",
+      "41",
+      "--max-side",
+      "256",
+      "--compact-no-persistence",
+      "--out",
+      "results/local_dev/stage14d_persistence_feature_ablation"
+    ],
     "role": "development_test",
     "feedback_policy": "development_only_single_feature_ablation_no_external_feedback",
     "one_shot": true,
@@ -125,7 +166,10 @@
     "description": "Paired synthetic validation falsification of d-CC with FBPC and absolute RDF against the frozen five-feature positive distorted-Choquet control; clean-only calibration thresholds are fixed across corruption strata.",
     "runner": "python",
     "path": "run_stage14f_rdf_robustness.py",
-    "args": ["--thresholds", "41"],
+    "args": [
+      "--thresholds",
+      "41"
+    ],
     "role": "development_test",
     "feedback_policy": "synthetic_validation_development_only_rdf_robustness_no_external_feedback",
     "one_shot": true,
@@ -152,7 +196,10 @@
     "description": "Paired synthetic development falsification of replacing the median prefilter with fixed gravitational smoothing, holding the compact positive controller and Scharr+NMS architecture fixed.",
     "runner": "python",
     "path": "run_stage14h_gravity_smoothing.py",
-    "args": ["--thresholds", "41"],
+    "args": [
+      "--thresholds",
+      "41"
+    ],
     "role": "development_test",
     "feedback_policy": "synthetic_validation_development_only_gravitational_smoothing_no_external_feedback",
     "one_shot": true,
@@ -168,7 +215,16 @@
     "description": "Leakage-free repeated-CV natural-image falsification of fixed MFI-guided geodesic endpoint linking after the compact positive controller; linker parameters are transferred unchanged from Stage-4 synthetic development.",
     "runner": "python",
     "path": "run_stage14i_topology_repair.py",
-    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "21", "--max-side", "256"],
+    "args": [
+      "--repeats",
+      "5",
+      "--folds",
+      "3",
+      "--thresholds",
+      "21",
+      "--max-side",
+      "256"
+    ],
     "role": "development_test",
     "feedback_policy": "UDED_selection_only_leakage_free_topology_falsification_no_external_feedback",
     "one_shot": true,
@@ -184,7 +240,16 @@
     "description": "Leakage-free repeated-CV natural-image falsification of one fixed-default phase-congruency maximum-moment feature appended to the retained compact positive context bank.",
     "runner": "python",
     "path": "run_stage14j_phase_congruency.py",
-    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256"],
+    "args": [
+      "--repeats",
+      "5",
+      "--folds",
+      "3",
+      "--thresholds",
+      "41",
+      "--max-side",
+      "256"
+    ],
     "role": "development_test",
     "feedback_policy": "UDED_selection_only_leakage_free_phase_context_falsification_no_external_feedback",
     "one_shot": true,
@@ -201,7 +266,16 @@
     "description": "Leakage-free repeated-CV natural-image falsification of replacing the grayscale Scharr+NMS localizer with a fixed CIELAB Di Zenzo tensor Scharr+NMS localizer under the retained compact positive context gate.",
     "runner": "python",
     "path": "run_stage14k_color_tensor_localizer.py",
-    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256"],
+    "args": [
+      "--repeats",
+      "5",
+      "--folds",
+      "3",
+      "--thresholds",
+      "41",
+      "--max-side",
+      "256"
+    ],
     "role": "development_test",
     "feedback_policy": "UDED_selection_only_leakage_free_color_localizer_falsification_no_external_feedback",
     "one_shot": true,
@@ -217,7 +291,16 @@
     "description": "Leakage-free repeated-CV natural-image falsification of one fixed oriented half-disc LBP texture-distribution feature appended to the retained compact positive context bank.",
     "runner": "python",
     "path": "run_stage14l_texture_distribution_context.py",
-    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256"],
+    "args": [
+      "--repeats",
+      "5",
+      "--folds",
+      "3",
+      "--thresholds",
+      "41",
+      "--max-side",
+      "256"
+    ],
     "role": "development_test",
     "feedback_policy": "UDED_selection_only_leakage_free_texture_distribution_context_falsification_no_external_feedback",
     "one_shot": true,
@@ -234,7 +317,20 @@
     "description": "Leakage-free repeated-CV falsification of a class-balanced linear logistic probability-of-boundary fusion over the retained compact memberships and Scharr+NMS support.",
     "runner": "python",
     "path": "run_stage14m_logistic_cue_fusion.py",
-    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256", "--l2", "1.0", "--max-samples-per-class", "2500"],
+    "args": [
+      "--repeats",
+      "5",
+      "--folds",
+      "3",
+      "--thresholds",
+      "41",
+      "--max-side",
+      "256",
+      "--l2",
+      "1.0",
+      "--max-samples-per-class",
+      "2500"
+    ],
     "role": "development_test",
     "feedback_policy": "UDED_selection_only_leakage_free_linear_cue_fusion_no_external_feedback",
     "one_shot": true,
@@ -252,7 +348,26 @@
     "description": "Leakage-free repeated-CV falsification of a bounded shallow randomized forest that predicts a dense boundary score from raw Scharr and the retained compact signature before fixed gradient-direction NMS.",
     "runner": "python",
     "path": "run_stage14n_shallow_edge_forest.py",
-    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256", "--trees", "48", "--max-depth", "8", "--min-leaf", "40", "--thresholds-per-feature", "4", "--max-samples-per-class", "1500"],
+    "args": [
+      "--repeats",
+      "5",
+      "--folds",
+      "3",
+      "--thresholds",
+      "41",
+      "--max-side",
+      "256",
+      "--trees",
+      "48",
+      "--max-depth",
+      "8",
+      "--min-leaf",
+      "40",
+      "--thresholds-per-feature",
+      "4",
+      "--max-samples-per-class",
+      "1500"
+    ],
     "role": "development_test",
     "feedback_policy": "UDED_selection_only_leakage_free_shallow_edge_forest_no_external_feedback",
     "one_shot": true,
@@ -271,7 +386,16 @@
     "description": "Leakage-free repeated-CV falsification of interval-valued compact memberships with a cue-disagreement reliability field, convex Choquet-to-additive capacity interpolation, and interval-width attenuation; includes default-on official BSDS500-validation evaluation.",
     "runner": "python",
     "path": "run_stage14o_interval_capacity_uncertainty.py",
-    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256"],
+    "args": [
+      "--repeats",
+      "5",
+      "--folds",
+      "3",
+      "--thresholds",
+      "41",
+      "--max-side",
+      "256"
+    ],
     "role": "development_test",
     "feedback_policy": "UDED_selection_repeated_CV_plus_official_BSDS500_val_development_only_no_protected_feedback",
     "one_shot": true,
@@ -381,7 +505,16 @@
     "description": "Leakage-free repeated-CV falsification of one fixed MFI-coupled Ambrosio-Tortorelli phase field as a variational localization replacement for gated grayscale Scharr+NMS; includes default-on official BSDS500-validation evaluation.",
     "runner": "python",
     "path": "run_stage14p_ambrosio_tortorelli.py",
-    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256"],
+    "args": [
+      "--repeats",
+      "5",
+      "--folds",
+      "3",
+      "--thresholds",
+      "41",
+      "--max-side",
+      "256"
+    ],
     "role": "development_test",
     "feedback_policy": "UDED_selection_repeated_CV_plus_official_BSDS500_val_development_only_no_protected_feedback",
     "one_shot": true,
@@ -401,7 +534,16 @@
     "description": "Leakage-free repeated-CV falsification of one fixed small anisotropic directional atom bank as a singularity localizer replacing Scharr under the unchanged compact Choquet context gate; includes default-on official BSDS500-validation evaluation.",
     "runner": "python",
     "path": "run_stage14q_shearlet_localizer.py",
-    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256"],
+    "args": [
+      "--repeats",
+      "5",
+      "--folds",
+      "3",
+      "--thresholds",
+      "41",
+      "--max-side",
+      "256"
+    ],
     "role": "development_test",
     "feedback_policy": "UDED_selection_repeated_CV_plus_official_BSDS500_val_development_only_no_protected_feedback",
     "one_shot": true,
@@ -436,7 +578,16 @@
     "description": "Leakage-free repeated-CV falsification of one fixed confidence-stopped SE(2) tangent/angular diffusion applied to the retained compact Choquet-gated Scharr score; includes continuity diagnostics and default-on official BSDS500-validation evaluation.",
     "runner": "python",
     "path": "run_stage14r_se2_contour_enhancement.py",
-    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256"],
+    "args": [
+      "--repeats",
+      "5",
+      "--folds",
+      "3",
+      "--thresholds",
+      "41",
+      "--max-side",
+      "256"
+    ],
     "role": "development_test",
     "feedback_policy": "UDED_selection_repeated_CV_plus_official_BSDS500_val_development_only_no_protected_feedback",
     "one_shot": true,
@@ -457,7 +608,16 @@
     "description": "Leakage-free repeated-CV falsification of one fixed half-order isotropic Riesz-gradient localizer under the retained compact Choquet context gate; includes default-on official BSDS500-validation evaluation.",
     "runner": "python",
     "path": "run_stage14s_fractional_riesz_localizer.py",
-    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256"],
+    "args": [
+      "--repeats",
+      "5",
+      "--folds",
+      "3",
+      "--thresholds",
+      "41",
+      "--max-side",
+      "256"
+    ],
     "role": "development_test",
     "feedback_policy": "UDED_selection_repeated_CV_plus_official_BSDS500_val_development_only_no_protected_feedback",
     "one_shot": true,
@@ -477,7 +637,16 @@
     "description": "Leakage-free repeated-CV falsification of one fixed a-contrario connected-support meaningfulness gate over the unchanged compact Choquet-gated Scharr score; includes default-on official BSDS500-validation evaluation.",
     "runner": "python",
     "path": "run_stage14t_acontrario_meaningfulness.py",
-    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256"],
+    "args": [
+      "--repeats",
+      "5",
+      "--folds",
+      "3",
+      "--thresholds",
+      "41",
+      "--max-side",
+      "256"
+    ],
     "role": "development_test",
     "feedback_policy": "UDED_selection_repeated_CV_plus_official_BSDS500_val_development_only_no_protected_feedback",
     "one_shot": true,
@@ -512,7 +681,16 @@
     "description": "Leakage-free repeated-CV falsification of one fixed three-source Yager-rule evidence fusion with explicit edge, non-edge, conflict, and ignorance masses under the retained Scharr gate; includes default-on official BSDS500-validation evaluation.",
     "runner": "python",
     "path": "run_stage14u_yager_evidential_ignorance.py",
-    "args": ["--repeats", "5", "--folds", "3", "--thresholds", "41", "--max-side", "256"],
+    "args": [
+      "--repeats",
+      "5",
+      "--folds",
+      "3",
+      "--thresholds",
+      "41",
+      "--max-side",
+      "256"
+    ],
     "role": "development_test",
     "feedback_policy": "UDED_selection_repeated_CV_plus_official_BSDS500_val_development_only_no_protected_feedback",
     "one_shot": true,
@@ -648,7 +826,10 @@
     "description": "Attachment-only retry of the fixture source-build diagnostic after adding a repository-local MSVC compatibility include layer for the pinned Unix-era sources; vendored matcher sources remain byte-unchanged and no validation scoring, tolerance change, evaluator-logic change, or architecture work is performed.",
     "runner": "python",
     "path": "automation/stage15a_source_matcher_rebuild.py",
-    "args": ["--out", "results/automation/stage15a_source_matcher_rebuild_retry"],
+    "args": [
+      "--out",
+      "results/automation/stage15a_source_matcher_rebuild_retry"
+    ],
     "role": "evaluator_diagnostic",
     "feedback_policy": "fixture_source_build_only_no_dataset_feedback_no_architecture_change",
     "one_shot": true,
@@ -661,7 +842,10 @@
     "description": "Second attachment-only retry of the fixture source-build diagnostic after normalizing Windows path separators in the repository-local matcher-resolution assertion; the successfully rebuilt matcher, vendored source bytes, fixture, tolerance, evaluator logic, validation policy, and architecture remain unchanged.",
     "runner": "python",
     "path": "automation/stage15a_source_matcher_rebuild.py",
-    "args": ["--out", "results/automation/stage15a_source_matcher_rebuild_retry2"],
+    "args": [
+      "--out",
+      "results/automation/stage15a_source_matcher_rebuild_retry2"
+    ],
     "role": "evaluator_diagnostic",
     "feedback_policy": "fixture_source_build_only_no_dataset_feedback_no_architecture_change",
     "one_shot": true,
@@ -674,7 +858,10 @@
     "description": "Third attachment-only retry of the fixture source-build diagnostic after applying the already-audited repository-local MATLAB R2023a syntax compatibility mirror to the fixture harness; vendored evaluator and matcher sources, rebuilt matching logic, fixture, tolerance, validation policy, and architecture remain unchanged.",
     "runner": "python",
     "path": "automation/stage15a_source_matcher_rebuild.py",
-    "args": ["--out", "results/automation/stage15a_source_matcher_rebuild_retry3"],
+    "args": [
+      "--out",
+      "results/automation/stage15a_source_matcher_rebuild_retry3"
+    ],
     "role": "evaluator_diagnostic",
     "feedback_policy": "fixture_source_build_only_no_dataset_feedback_no_architecture_change",
     "one_shot": true,
@@ -803,7 +990,11 @@
     "description": "Attachment-only dependency/build retry for the exact grayscale EDPF source after the workstation lacked OpenCV C++ development files; bootstraps pinned OpenCV 3.4.20 from immutable upstream source, then repeats the unchanged dataset-free build and deterministic binary-output smoke test.",
     "runner": "python",
     "path": "automation/stage15d_edpf_build_preflight.py",
-    "args": ["--bootstrap-opencv", "--out", "results/automation/stage15d_edpf_build_preflight_retry1"],
+    "args": [
+      "--bootstrap-opencv",
+      "--out",
+      "results/automation/stage15d_edpf_build_preflight_retry1"
+    ],
     "role": "reproduction_dependency_preflight",
     "feedback_policy": "attachment_only_pinned_dependency_repair_no_dataset_feedback_no_architecture_change",
     "one_shot": true,
@@ -821,7 +1012,11 @@
     "description": "Attachment-only retry after correcting the OpenCV 3.4.20 annotated-tag provenance check: verifies immutable tag object 404ca455 and its peeled release commit 1eb1d4c, then repeats the unchanged dataset-free dependency build and exact EDPF binary-output smoke test.",
     "runner": "python",
     "path": "automation/stage15d_edpf_build_preflight.py",
-    "args": ["--bootstrap-opencv", "--out", "results/automation/stage15d_edpf_build_preflight_retry2"],
+    "args": [
+      "--bootstrap-opencv",
+      "--out",
+      "results/automation/stage15d_edpf_build_preflight_retry2"
+    ],
     "role": "reproduction_dependency_preflight",
     "feedback_policy": "attachment_only_annotated_tag_provenance_repair_no_dataset_feedback_no_architecture_change",
     "one_shot": true,
@@ -839,7 +1034,11 @@
     "description": "Attachment-only retry after the pinned OpenCV build succeeded but its obsolete top-level Windows-pack dispatcher could not classify MSVC 19.42; selects the exact installed static-package config and repeats the unchanged dataset-free EDPF compile/smoke test.",
     "runner": "python",
     "path": "automation/stage15d_edpf_build_preflight.py",
-    "args": ["--bootstrap-opencv", "--out", "results/automation/stage15d_edpf_build_preflight_retry3"],
+    "args": [
+      "--bootstrap-opencv",
+      "--out",
+      "results/automation/stage15d_edpf_build_preflight_retry3"
+    ],
     "role": "reproduction_dependency_preflight",
     "feedback_policy": "attachment_only_cmake_config_selection_repair_no_dataset_feedback_no_architecture_change",
     "one_shot": true,
@@ -857,7 +1056,11 @@
     "description": "Attachment-only retry after OpenCV 3.4's generated static package referenced unbuilt unused codec targets; directly imports the exact installed core/imgproc/zlib artifacts and repeats the unchanged dataset-free EDPF compile/smoke test.",
     "runner": "python",
     "path": "automation/stage15d_edpf_build_preflight.py",
-    "args": ["--bootstrap-opencv", "--out", "results/automation/stage15d_edpf_build_preflight_retry4"],
+    "args": [
+      "--bootstrap-opencv",
+      "--out",
+      "results/automation/stage15d_edpf_build_preflight_retry4"
+    ],
     "role": "reproduction_dependency_preflight",
     "feedback_policy": "attachment_only_exact_built_artifact_import_repair_no_dataset_feedback_no_architecture_change",
     "one_shot": true,
@@ -875,7 +1078,11 @@
     "description": "Attachment-only retry after the grayscale-only harness unnecessarily compiled EDColor.cpp, whose unused diagnostic imwrite call requires the excluded imgcodecs module; limits compilation to the exact ED.cpp/EDPF.cpp source surface needed by the selected grayscale constructor and repeats the unchanged synthetic smoke test.",
     "runner": "python",
     "path": "automation/stage15d_edpf_build_preflight.py",
-    "args": ["--bootstrap-opencv", "--out", "results/automation/stage15d_edpf_build_preflight_retry5"],
+    "args": [
+      "--bootstrap-opencv",
+      "--out",
+      "results/automation/stage15d_edpf_build_preflight_retry5"
+    ],
     "role": "reproduction_dependency_preflight",
     "feedback_policy": "attachment_only_grayscale_source_surface_repair_no_dataset_feedback_no_architecture_change",
     "one_shot": true,
@@ -893,7 +1100,11 @@
     "description": "Attachment-only retry after the exact grayscale source reached linking but exposed a static-runtime mismatch and ED.cpp's same-object dependency on EDColor symbols; builds pinned OpenCV core/imgproc/imgcodecs, matches its /MT runtime, compiles unmodified ED.cpp/EDColor.cpp/EDPF.cpp, and repeats the unchanged synthetic smoke test.",
     "runner": "python",
     "path": "automation/stage15d_edpf_build_preflight.py",
-    "args": ["--bootstrap-opencv", "--out", "results/automation/stage15d_edpf_build_preflight_retry6"],
+    "args": [
+      "--bootstrap-opencv",
+      "--out",
+      "results/automation/stage15d_edpf_build_preflight_retry6"
+    ],
     "role": "reproduction_dependency_preflight",
     "feedback_policy": "attachment_only_runtime_and_complete_author_link_surface_repair_no_dataset_feedback_no_architecture_change",
     "one_shot": true,
@@ -911,7 +1122,11 @@
     "description": "Attachment-only retry after OpenCV 3.4's generated static export table rejected absent unused libprotobuf/quirc archives before author compilation; directly imports the exact installed core/imgproc/imgcodecs and codec artifacts, preserves the matched /MT runtime and unmodified ED.cpp/EDColor.cpp/EDPF.cpp sources, and repeats the unchanged synthetic smoke test.",
     "runner": "python",
     "path": "automation/stage15d_edpf_build_preflight.py",
-    "args": ["--bootstrap-opencv", "--out", "results/automation/stage15d_edpf_build_preflight_retry7"],
+    "args": [
+      "--bootstrap-opencv",
+      "--out",
+      "results/automation/stage15d_edpf_build_preflight_retry7"
+    ],
     "role": "reproduction_dependency_preflight",
     "feedback_policy": "attachment_only_exact_required_artifact_import_repair_no_dataset_feedback_no_architecture_change",
     "one_shot": true,
@@ -1001,7 +1216,11 @@
     "description": "Attachment-only build retry after the unchanged 2004 Compass gateway compiled under MATLAB's default 64-bit array-dimension ABI but its legacy int dimension vector was interpreted as an enormous allocation; rebuilds the same hash-verified author bytes with MATLAB's compatible array-dimensions mode and repeats the unchanged dataset-free synthetic smoke test.",
     "runner": "python",
     "path": "automation/stage15f_compass_build_preflight.py",
-    "args": ["--out", "results/automation/stage15f_compass_build_preflight_retry1", "--compatible-array-dims"],
+    "args": [
+      "--out",
+      "results/automation/stage15f_compass_build_preflight_retry1",
+      "--compatible-array-dims"
+    ],
     "role": "reproduction_dependency_preflight",
     "feedback_policy": "attachment_only_legacy_mex_array_abi_repair_no_dataset_feedback_no_parameter_tuning_no_architecture_change",
     "one_shot": true,
@@ -1544,7 +1763,10 @@
     "description": "Harness-only retry of the unchanged Stage-16p empirical-copula context test after the initial launcher used a seed inconsistent with the established generation-2 repeated-CV protocol and the compact-bank preselector omitted one retained feature before any result artifact was produced. Reuses fixed seed 20261009 from Stages 16j/16l/16n; no rank transform, fold fitting, feature, weight, threshold, promotion rule, dataset role, or official-evaluation setting changes.",
     "runner": "python",
     "path": "run_stage16p_copula_context.py",
-    "args": ["--seed", "20261009"],
+    "args": [
+      "--seed",
+      "20261009"
+    ],
     "role": "development_harness_retry",
     "feedback_policy": "joint_uded_selection_and_bsds500_validation_development_no_protected_feedback_no_rank_or_fusion_tuning",
     "one_shot": true,
@@ -1697,7 +1919,7 @@
     ]
   },
   "stage16v_structured_forest": {
-    "description": "Exact pinned Dollár-Zitnick Structured Edge forest with shipped BSDS-train author model, tested as a complete non-neural generation-2 replacement under UDED-selection repeated threshold-CV and official BSDS500-validation scoring with a conjunctive promotion rule.",
+    "description": "Exact pinned Doll\u00e1r-Zitnick Structured Edge forest with shipped BSDS-train author model, tested as a complete non-neural generation-2 replacement under UDED-selection repeated threshold-CV and official BSDS500-validation scoring with a conjunctive promotion rule.",
     "runner": "python",
     "path": "automation/stage16v_structured_forest_venv_launcher.py",
     "args": [],
@@ -2846,7 +3068,10 @@
     "description": "Frozen Stage-20 candidate 1/4: replace only compact context aggregation with a fold-fitted monotone 2-additive Choquet model over the complete six-descriptor Stage-19C shortlist.",
     "runner": "python",
     "path": "automation/stage20_candidate_venv_launcher.py",
-    "args": ["--candidate-id", "stage20a_full_shortlist_2additive_choquet"],
+    "args": [
+      "--candidate-id",
+      "stage20a_full_shortlist_2additive_choquet"
+    ],
     "role": "bounded_stage20_candidate",
     "feedback_policy": "frozen_queue_candidate_1_of_4_overlap_clean_uded_repeated_cv_and_official_bsds500_validation_no_queue_reorder_replacement_expansion_or_parameter_change_no_protected_feedback",
     "one_shot": true,
@@ -2867,7 +3092,10 @@
     "description": "Frozen Stage-20 candidate 2/4: monotone 2-additive Choquet context over the four-cue cross-domain interaction core fixed by Stage 19C.",
     "runner": "python",
     "path": "automation/stage20_candidate_venv_launcher.py",
-    "args": ["--candidate-id", "stage20b_interaction_core_2additive_choquet"],
+    "args": [
+      "--candidate-id",
+      "stage20b_interaction_core_2additive_choquet"
+    ],
     "role": "bounded_stage20_candidate",
     "feedback_policy": "frozen_queue_candidate_2_of_4_execute_only_if_candidate_1_fails_no_queue_reorder_replacement_expansion_or_parameter_change_no_protected_feedback",
     "one_shot": true,
@@ -2888,7 +3116,10 @@
     "description": "Frozen Stage-20 candidate 3/4: minimal monotone 2-additive Choquet context over Gabor-13 and semi-global change-point evidence, the dominant stable Stage-19D interaction pair.",
     "runner": "python",
     "path": "automation/stage20_candidate_venv_launcher.py",
-    "args": ["--candidate-id", "stage20c_dominant_pair_2additive_choquet"],
+    "args": [
+      "--candidate-id",
+      "stage20c_dominant_pair_2additive_choquet"
+    ],
     "role": "bounded_stage20_candidate",
     "feedback_policy": "frozen_queue_candidate_3_of_4_execute_only_if_candidates_1_and_2_fail_no_queue_reorder_replacement_expansion_or_parameter_change_no_protected_feedback",
     "one_shot": true,
@@ -2909,7 +3140,10 @@
     "description": "Frozen Stage-20 candidate 4/4: aggregation-only monotone 2-additive Choquet replacement over the retained compact five-descriptor bank.",
     "runner": "python",
     "path": "automation/stage20_candidate_venv_launcher.py",
-    "args": ["--candidate-id", "stage20d_incumbent_bank_2additive_choquet"],
+    "args": [
+      "--candidate-id",
+      "stage20d_incumbent_bank_2additive_choquet"
+    ],
     "role": "bounded_stage20_candidate",
     "feedback_policy": "frozen_queue_candidate_4_of_4_execute_only_if_candidates_1_through_3_fail_then_synthesize_and_stop_without_literature_escalation_no_queue_replacement_expansion_or_parameter_change_no_protected_feedback",
     "one_shot": true,
@@ -3331,6 +3565,19 @@
     "one_shot": false,
     "result_files": [
       "results/automation/autonomous_literature_escalation/summary.json"
+    ]
+  },
+  "stage22a_thesis_legacy_protocol_certification": {
+    "description": "Stage 22A exact thesis-legacy protocol certification: verify Drive-derived source hashes and synthetic MATLAB getBoundaries + ejBCM-F microcases without reading any dataset or scoring a detector.",
+    "runner": "python",
+    "path": "automation/stage22a_thesis_legacy_protocol_certification.py",
+    "args": [],
+    "role": "stage22_thesis_legacy_protocol_certification",
+    "feedback_policy": "source_hash_and_synthetic_microcases_only_no_dataset_read_no_detector_scoring_no_promotion_finite_stage22_program",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage22a_thesis_legacy_protocol_certification/summary.json",
+      "results/automation/stage22a_thesis_legacy_protocol_certification/matlab_microcases.json"
     ]
   }
 }
