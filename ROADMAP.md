@@ -2867,3 +2867,20 @@ fixed multi-annotator consensus signal, including rank correlation, pairwise
 ordering, strata, and deterministic failure cases. It fits or promotes nothing
 and completes the diagnostic sequence before the at-most-one Stage-21H
 mechanism decision.
+
+## Stage 21G complete - single Stage 21H candidate active
+
+Every frozen method only weakly orders boundary pixels by human consensus;
+Stage 20C's pairwise accuracy is `0.52307` versus the incumbent's `0.52275`.
+This completes the diagnostic chain: Stage 20C improves ODS and local support,
+but its early/raw AP deficit coincides with essentially unchanged human-
+importance ordering.
+
+The active and only remaining Stage-21 experiment is
+`stage21h_consensus_pairwise_choquet`. It preserves Stage 20C's two cues and
+inference pipeline while fitting the monotone capacity with equal-domain
+pairwise ordering from outer-training UDED and BSDS500-train annotator
+consensus. The full immutable contract is
+`docs/paper/STAGE21H_PREREGISTRATION.md`. A pass stops for freeze/confirmation
+planning; a failure ends Stage 21 in synthesis without a second candidate or
+automatic escalation.

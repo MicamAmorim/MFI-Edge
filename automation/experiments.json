@@ -3258,6 +3258,27 @@
       "results/official_eval/stage21g_human_consensus_ranking_analysis/summary.json"
     ]
   },
+  "stage21h_consensus_pairwise_choquet": {
+    "description": "The single Stage-21H candidate: keep the fixed Stage-20C Gabor-13/change-point monotone 2-additive Choquet pipeline and replace only capacity squared-error fitting with equal-domain deterministic pairwise logistic ordering of outer-training UDED boundary over background and BSDS500-train higher over lower annotator consensus.",
+    "runner": "python",
+    "path": "automation/stage21h_consensus_pairwise_venv_launcher.py",
+    "args": [],
+    "role": "single_stage21h_consensus_rank_candidate",
+    "feedback_policy": "single_causally_justified_stage21h_candidate_overlap_clean_uded_repeated_cv_plus_bsds500_train_consensus_fit_and_standard_bsds500_validation_attachment_no_protected_split_read_no_loose_protocol_promotion_no_second_candidate_or_parameter_tuning",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage21h_consensus_pairwise_choquet/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage21h_consensus_pairwise_choquet/summary.json",
+      "results/local_dev/stage21h_consensus_pairwise_choquet/variant_ranking.csv",
+      "results/local_dev/stage21h_consensus_pairwise_choquet/fold_results.csv",
+      "results/local_dev/stage21h_consensus_pairwise_choquet/per_image_metrics.csv",
+      "results/local_dev/stage21h_consensus_pairwise_choquet/capacity_parameters.csv",
+      "results/local_dev/stage21h_consensus_pairwise_choquet/runtime.csv",
+      "results/local_dev/stage21h_consensus_pairwise_choquet/best_method_preview.png",
+      "results/local_dev/stage21h_consensus_pairwise_choquet/official_eval_manifest.json",
+      "results/official_eval/stage21h_consensus_pairwise_choquet/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

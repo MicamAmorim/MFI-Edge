@@ -5120,3 +5120,23 @@ signal to report rank correlations, higher-versus-lower consensus pairwise
 accuracy, consensus strata, and weak-over-strong failure cases. It fits and
 promotes nothing and completion advances only to the single-mechanism Stage-
 21H synthesis.
+
+### Stage 21G human-consensus ranking complete; Stage 21H registered
+
+All five frozen methods showed weak ordering by human annotation consensus.
+Compact MFI obtained pooled Spearman `0.07877`, Kendall tau-b `0.06363`, and
+higher-versus-lower consensus pairwise accuracy `0.52275`; Stage 20C changed
+these only to `0.07994/0.06462/0.52307`. The 2-additive variants therefore did
+not materially solve consensus ordering even where Stage 20C improved ODS and
+descriptive local support. The required official attachment preserved the
+known Stage-20C contrast, `+0.01426/+0.00897/-0.02621` ODS/OIS/AP, with
+reference reproduction still unverified.
+
+The finite program authorizes exactly one causally justified candidate:
+`stage21h_consensus_pairwise_choquet`, preregistered in
+`docs/paper/STAGE21H_PREREGISTRATION.md`. It keeps Stage 20C's two cues and the
+entire inference pipeline fixed, replacing only capacity fitting with an
+equal-domain pairwise logistic ranking objective over leakage-free UDED
+boundary/background pairs and BSDS500-train annotator-consensus pairs. It must
+pass the existing conjunctive UDED and standard-Berkeley validation margins,
+including nonnegative AP. Failure ends Stage 21 without replacement.

@@ -3148,3 +3148,26 @@ final frozen diagnostic. It compares all five exact map sets against a fixed
 multi-annotator consensus signal using rank correlations, pairwise ordering,
 strata, and weak-over-strong failure cases. It fits or promotes nothing and
 completion advances only to the at-most-one Stage-21H mechanism synthesis.
+
+### Stage 21G closure - single consensus-ranked Stage 21H candidate registered
+
+Human-consensus ordering was weak for every frozen method. On annotation-union
+pixels, compact MFI's pooled Spearman/Kendall/pairwise accuracy were about
+`0.07877/0.06363/0.52275`; Stage 20C reached only
+`0.07994/0.06462/0.52307`. Thus Stage 20C's ODS/local-support gains did not
+materially improve ordering by human agreement, consistent with the early/raw
+ranking diagnosis from Stages 21C--21F. These are descriptive consensus
+metrics, not official Berkeley endpoints. The official attachment retained
+Stage 20C's `+0.01426/+0.00897/-0.02621` ODS/OIS/AP pattern, and reference
+reproduction remains unverified.
+
+The one candidate allowed by Stage 21 is
+`stage21h_consensus_pairwise_choquet`. It retains the fixed Stage-20C
+Gabor-13/change-point 2-additive Choquet pipeline and changes only capacity
+fitting to equal-domain pairwise logistic ordering: outer-training UDED
+boundary over background plus BSDS500-train higher over lower 1.5-pixel
+annotator consensus. The authoritative contract is
+`docs/paper/STAGE21H_PREREGISTRATION.md`. Promotion remains conjunctive across
+overlap-clean UDED repeated CV and standard-Berkeley BSDS500 validation,
+including nonnegative AP. No loose protocol can promote it. Failure ends the
+finite Stage-21 program without a second candidate or automatic escalation.
