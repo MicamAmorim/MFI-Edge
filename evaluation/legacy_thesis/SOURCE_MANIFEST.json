@@ -1,27 +1,56 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "source": "User Google Drive thesis-code folder and its functions.zip / boundaryImageComparison package",
   "drive_folder_id": "1LpKQgn5x3qG7BAXqZaMjdbigoHjARsuB",
   "legacy_pipeline": "continuous aggregated map -> getBoundaries(map, inf) -> binary boundary map -> ComparisonResiduals('ejBCM-F', ..., 0.025) -> ejmBasedConfusionMatrix -> estradaJepsonMatching v1.00",
-  "notes": [
-    "getBoundaries.m and ComparisonResiduals.m are the user's thesis-era files from the supplied Drive folder.",
-    "ejmBasedConfusionMatrix.m is the v1.00 file bundled in functions.zip and is preserved byte-for-byte.",
-    "estradaJepsonMatching.bckp.m is the complete v1.00 backup from the thesis/KITT boundaryImageComparison package; Stage 22A copies it byte-for-byte to a run-local estradaJepsonMatching.m alias because MATLAB requires the filename to match the function name.",
-    "Third-party license headers are preserved verbatim; vendored third-party files must not be edited."
+  "hash_policy": "Repository text sources are verified after CRLF/LF normalization. Original Drive byte hashes are retained separately for provenance because Git contents APIs may normalize line endings.",
+  "core_files": [
+    {
+      "path": "getBoundaries.m",
+      "drive_sha256": "2f407ef5c9365dbb7e6dcde553b5caa7f0ea8653170a0c704689a50d8e0e405e",
+      "normalized_lf_sha256": "fff9cc47d3aef5394541c889d87c5644fdd874317504e604045e493a4e461755"
+    },
+    {
+      "path": "ComparisonResiduals.m",
+      "drive_sha256": "98120fd882115539ba9c163067cf6bf111a83434823a7ce361a332ea7a71e8c0",
+      "normalized_lf_sha256": "d6638eaecad7a9c640502c6dbdfc7fc80c9a6d652ac46ca0443cbb13f228f008"
+    },
+    {
+      "path": "histmedcar.m",
+      "drive_sha256": "a411ff80c45b28b7489eb46ff7b17c497079464a2e5544f917fddd030fd6be21",
+      "normalized_lf_sha256": "ba5c9fd56df1874db9e00978466742c3e43bb1d77df901b62673185678d916ea"
+    },
+    {
+      "path": "external/ejmBasedConfusionMatrix.m",
+      "drive_sha256": "63c06674e0a18604d8567eb46b2081b867a06d6b98d7fab37aad27bf4b251607",
+      "normalized_lf_sha256": "0834217c6027f0d2922e4af6f44f0ecef542417b7d106b7020dd6565e6852403"
+    }
   ],
-  "files": [
-    {"path":"getBoundaries.m","sha256":"2f407ef5c9365dbb7e6dcde553b5caa7f0ea8653170a0c704689a50d8e0e405e"},
-    {"path":"ComparisonResiduals.m","sha256":"98120fd882115539ba9c163067cf6bf111a83434823a7ce361a332ea7a71e8c0"},
-    {"path":"histmedcar.m","sha256":"a411ff80c45b28b7489eb46ff7b17c497079464a2e5544f917fddd030fd6be21"},
-    {"path":"external/cleanLineSegments.m","sha256":"672f9eaed9e7312edf34ee2ec533cc47b40ead8e7382a4367a39fa039c11c42e"},
-    {"path":"external/derivative5.m","sha256":"b60de2a98210706dc4bc207733560e45a56da3505b11f51fee0a6052cde0ccac"},
-    {"path":"external/doubleRosinUnimodalThr.m","sha256":"5678ab4d49d4dda1b29d0334e09ab7a21a34f5fff5ea319fbd336d179d9c5383"},
-    {"path":"external/ejmBasedConfusionMatrix.m","sha256":"63c06674e0a18604d8567eb46b2081b867a06d6b98d7fab37aad27bf4b251607"},
-    {"path":"external/estradaJepsonMatching.bckp.m","sha256":"409008932d70f31d60c8c83111cb32a09bddd7cc4e6dcae7cf101a3bc162b506"},
-    {"path":"external/featureorient.m","sha256":"913b75ee7c5151327d9432ee274226283e7955b33061b25f69fd174f793b9cb7"},
-    {"path":"external/gaussfilt.m","sha256":"14651f6018ad2709d435e360eba88007ec90c09b8254535c69dfb37498910b9a"},
-    {"path":"external/hysthresh.m","sha256":"9b61fec6caf5a549deca252d19c0d6505e0b19db1767e08975e162f1e68726f6"},
-    {"path":"external/nonmaxsup.m","sha256":"a0559047b791f47d4f85120294dff1f51ab8455543b5fc43a01798ab7589cea0"},
-    {"path":"external/rosinUnimodalThr.m","sha256":"eca3445bb38d3a4a46adc77be5fcef0da96ef15894f9c66e06ac15282ab7679a"}
-  ]
+  "runtime_dependencies": {
+    "getBoundaries_helpers": [
+      "featureorient.m",
+      "nonmaxsup.m",
+      "doubleRosinUnimodalThr.m",
+      "rosinUnimodalThr.m",
+      "cleanLineSegments.m",
+      "derivative5.m",
+      "gaussfilt.m",
+      "hysthresh.m"
+    ],
+    "ej_matcher": "estradaJepsonMatching v1.00 backup",
+    "preferred_matcher_source": "results/automation/stage21a_protocol_certification/kitt_runtime/estradaJepsonMatching.m",
+    "drive_backup_sha256": "409008932d70f31d60c8c83111cb32a09bddd7cc4e6dcae7cf101a3bc162b506",
+    "note": "Stage 22A is a certification stage. If historical getBoundaries helper sources are not yet materialized in evaluation/legacy_thesis/external, one harness-only source-materialization retry is allowed; it must preserve the mathematical operations and record provenance before any detector is scored."
+  },
+  "reporting_contract": {
+    "distance": 0.025,
+    "per_human_gt": true,
+    "primary_legacy_summary": "largest ejBCM-F F per image across human annotations, then dataset mean/median",
+    "additional_transparent_summaries": [
+      "all per-GT F distribution",
+      "per-image mean across GTs",
+      "quartiles and bootstrap confidence intervals"
+    ],
+    "promotional": false
+  }
 }
