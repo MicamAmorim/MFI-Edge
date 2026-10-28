@@ -5228,3 +5228,23 @@ byte-verified public sources only through an ignored immutable runtime checkout
 and reruns the unchanged synthetic certification. It changes no thesis source
 or mathematical operation, consumes no additional scientific-stage slot, and
 keeps Stage 22B deferred.
+
+### Stage 22A closure - thesis legacy protocol certified; Stage 22B registered
+
+The final harness-only compatibility diagnosis verified every recorded thesis,
+Drive, and pinned public-KITT source hash. The exact and shifted ejBCM-F
+microcases passed, and the unchanged `getBoundaries(map, inf)` ridge smoke case
+produced a nonempty 60-pixel binary map. No dataset or detector was read or
+scored. This satisfies the Stage-22A authorization gate without consuming an
+additional scientific-stage slot.
+
+The registered next action is
+`stage22b_thesis_legacy_retrospective_benchmark`, scientific stage 2/5. It
+uses only the frozen compact-MFI and Stage-20C BSDS500-validation maps, applies
+the certified thesis transform, preserves every per-human-GT ejBCM-F value,
+and reports the historical per-image-best summary plus transparent all-GT
+variants. The optional rejected Stage-21H diagnostic comparator is included
+because its exact retry-2 cache contains all 100 frozen maps. The aggregate
+KITT Stage-21B score remains in a separate table for the incumbent and Stage
+20C methods previously covered by that certified track. No legacy metric may
+promote or tune a detector.

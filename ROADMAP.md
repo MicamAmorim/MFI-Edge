@@ -2937,3 +2937,12 @@ action is the program-authorized harness-only compatibility diagnosis
 `stage22a_thesis_legacy_protocol_certification_retry2`; Stage 22B remains
 deferred until the unchanged synthetic `getBoundaries` smoke case passes.
 
+Stage 22A is now certified. All thesis/Drive/public-KITT hashes passed, both
+ejBCM-F microcases passed, and the unchanged `getBoundaries(map, inf)` smoke
+case produced a nonempty binary boundary map. The active next action is
+`stage22b_thesis_legacy_retrospective_benchmark` (scientific stage 2/5), using
+only frozen compact-MFI and Stage-20C validation maps plus the optional exact
+frozen Stage-21H rejected diagnostic comparator. It is comparison-only; the
+thesis, aggregate-KITT, loose-Berkeley, and standard-Berkeley protocols remain
+separate and non-interchangeable.
+

@@ -3605,5 +3605,27 @@
       "results/automation/stage22a_thesis_legacy_protocol_certification/summary.json",
       "results/automation/stage22a_thesis_legacy_protocol_certification/matlab_microcases.json"
     ]
+  },
+  "stage22b_thesis_legacy_retrospective_benchmark": {
+    "description": "Stage 22B frozen-map longitudinal bridge: apply the certified thesis getBoundaries(map,inf) transform and per-human-GT ejBCM-F at distance 0.025 to the unchanged compact-MFI and Stage-20C BSDS500-validation maps plus the optional complete frozen Stage-21H rejected diagnostic comparator, report the historical per-image best match plus transparent all-GT summaries, and keep the already-certified aggregate KITT score in a separate table. Comparison-only; no fit, regeneration, tuning, or promotion.",
+    "runner": "python",
+    "path": "automation/stage22b_thesis_legacy_retrospective_benchmark.py",
+    "args": [],
+    "role": "stage22_thesis_legacy_retrospective_benchmark",
+    "feedback_policy": "frozen_maps_only_thesis_legacy_comparison_no_fit_no_regeneration_no_tuning_no_promotion_stage22_scientific_stage_2_of_5",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage22b_thesis_legacy_retrospective_benchmark/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage22b_thesis_legacy_retrospective_benchmark/summary.json",
+      "results/local_dev/stage22b_thesis_legacy_retrospective_benchmark/legacy_summary.csv",
+      "results/local_dev/stage22b_thesis_legacy_retrospective_benchmark/per_image_per_gt_metrics.csv",
+      "results/local_dev/stage22b_thesis_legacy_retrospective_benchmark/per_image_best_and_mean.csv",
+      "results/local_dev/stage22b_thesis_legacy_retrospective_benchmark/best_gt_distribution.csv",
+      "results/local_dev/stage22b_thesis_legacy_retrospective_benchmark/separate_stage21b_kitt_reference.csv",
+      "results/local_dev/stage22b_thesis_legacy_retrospective_benchmark/frozen_map_hashes.json",
+      "results/local_dev/stage22b_thesis_legacy_retrospective_benchmark/best_method_preview.png",
+      "results/local_dev/stage22b_thesis_legacy_retrospective_benchmark/official_eval_manifest.json",
+      "results/official_eval/stage22b_thesis_legacy_retrospective_benchmark/summary.json"
+    ]
   }
 }

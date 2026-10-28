@@ -3232,3 +3232,21 @@ hash-verified at KITT commit `d70bb66ef9ab6f5cea8ead528fe5ac15ac096baf`.
 harness-only compatibility diagnosis; it changes no thesis operation, reads no
 dataset, consumes no scientific-stage slot, and leaves Stage 22B deferred.
 
+### Stage 22A closure - Stage 22B registered
+
+The final compatibility diagnosis verified every thesis/Drive/public-KITT
+source hash, passed the exact and shifted ejBCM-F microcases, and executed the
+unchanged `getBoundaries(map, inf)` ridge smoke case with a nonempty 60-pixel
+binary output. No dataset or detector was read or scored, so the retries did
+not consume another scientific slot. Stage 22A is certified.
+
+The registered next action is
+`stage22b_thesis_legacy_retrospective_benchmark` (scientific stage 2/5). It
+applies the certified historical path only to frozen compact-MFI and Stage-20C
+BSDS500-validation maps, preserves every per-GT value, and reports legacy
+best-match and transparent all-GT summaries. The optional rejected Stage-21H
+comparator is included because its exact retry-2 cache contains all 100 frozen
+maps. The already-certified aggregate KITT score is reported separately for
+the incumbent and Stage 20C methods covered by Stage 21B; no legacy or loose
+metric can promote or tune a model.
+
