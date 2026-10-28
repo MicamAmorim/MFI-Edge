@@ -3579,5 +3579,18 @@
       "results/automation/stage22a_thesis_legacy_protocol_certification/summary.json",
       "results/automation/stage22a_thesis_legacy_protocol_certification/matlab_microcases.json"
     ]
+  },
+  "stage22a_thesis_legacy_protocol_certification_retry1": {
+    "description": "Harness-only retry of Stage 22A after the first launch exposed incorrect LF-normalized manifest hashes and eight historically sourced getBoundaries helpers that had been listed in provenance but were not materialized. Verify the corrected repository-byte hashes, exact Drive file IDs and preserved Drive hashes, then rerun the unchanged ejBCM-F and getBoundaries synthetic microcases without reading any dataset or scoring any detector.",
+    "runner": "python",
+    "path": "automation/stage22a_thesis_legacy_protocol_certification.py",
+    "args": [],
+    "role": "stage22_thesis_legacy_protocol_certification",
+    "feedback_policy": "harness_only_source_materialization_and_hash_provenance_retry_no_dataset_read_no_detector_scoring_no_promotion_no_additional_scientific_stage",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage22a_thesis_legacy_protocol_certification/summary.json",
+      "results/automation/stage22a_thesis_legacy_protocol_certification/matlab_microcases.json"
+    ]
   }
 }

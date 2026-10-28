@@ -21,6 +21,8 @@ automation/STOP
 
 # Local-only worktrees / downloaded external material
 external/
+!evaluation/legacy_thesis/external/
+!evaluation/legacy_thesis/external/*.m
 webui/
 evaluation/bsds_official/vendor/
 /vendor/

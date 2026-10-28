@@ -5190,3 +5190,22 @@ support a final SOTA claim.
 This closes the finite Stage-21 program. Its contract permits no second
 Stage-21H candidate, replacement, tuning, or automatic literature escalation.
 The generalized non-neural SOTA objective remains unmet.
+
+### Stage 22A first launch - thesis-source materialization failure
+
+The first Stage-22A certification launch read no dataset and scored no
+detector. Its exact and one-pixel-shift ejBCM-F synthetic cases passed, but
+the historical `getBoundaries` smoke test could not run because eight helper
+sources named by the earlier provenance manifest had never been materialized
+in the repository. The launch also exposed incorrect LF-normalized expected
+hashes for the four already-vendored sources. These are provenance/harness
+defects and supply no protocol or detector feedback.
+
+The original helper files were retrieved from the user-provided thesis Drive
+folder using their previously recorded Drive hashes, and the manifest now
+records their Drive file IDs plus repository LF-normalized hashes. The
+registered next action is the harness-only
+`stage22a_thesis_legacy_protocol_certification_retry1`. It reruns the
+unchanged source checks and synthetic MATLAB microcases, consumes no new
+scientific-stage slot, and leaves Stage 22B deferred until certification
+passes.

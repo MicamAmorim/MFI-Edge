@@ -3213,3 +3213,13 @@ also remains unverified.
 
 The user explicitly starts the bounded Stage-22 program defined in `docs/paper/STAGE22_RESEARCH_PROGRAM.md`. It supersedes the Stage-21 synthesis stop. The hard scientific budget is five stages (22A-22E), with no sixth experiment, replacement candidate, post-hoc tuning loop, or automatic literature escalation after closure. Stage 22A is the registered next action. Compact distorted-Choquet MFI remains incumbent. Thesis-legacy, Berkeley-0.025, and Estrada-Jepson-0.025 tracks are descriptive/non-promotional and separate from standard Berkeley 0.0075.
 
+The first Stage-22A launch passed its exact/shifted ejBCM-F synthetic cases
+but could not execute `getBoundaries` because eight historically recorded
+helper sources were not materialized; it also exposed incorrect LF-normalized
+manifest hashes for four already-vendored files. No dataset or detector was
+read. The helpers have been recovered from the user-provided thesis Drive
+folder with Drive IDs/original hashes and repository-normalized hashes
+recorded. `stage22a_thesis_legacy_protocol_certification_retry1` is the active
+harness-only retry and does not consume another Stage-22 scientific slot.
+Stage 22B remains deferred until it passes.
+

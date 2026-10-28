@@ -65,7 +65,7 @@ def main() -> int:
 
     hashes = []
     hash_ok = True
-    for rec in manifest["core_files"]:
+    for rec in manifest["core_files"] + manifest.get("helper_files", []):
         p = VENDOR / rec["path"]
         actual = normalized_text_sha256(p)
         expected = rec["normalized_lf_sha256"]

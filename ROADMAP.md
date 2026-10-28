@@ -2921,3 +2921,10 @@ unverified, but no next experiment is registered by this program.
 
 The user explicitly starts the bounded Stage-22 program defined in `docs/paper/STAGE22_RESEARCH_PROGRAM.md`. It supersedes the Stage-21 synthesis stop. The hard scientific budget is five stages (22A-22E), with no sixth experiment, replacement candidate, post-hoc tuning loop, or automatic literature escalation after closure. Stage 22A is the registered next action. Compact distorted-Choquet MFI remains incumbent. Thesis-legacy, Berkeley-0.025, and Estrada-Jepson-0.025 tracks are descriptive/non-promotional and separate from standard Berkeley 0.0075.
 
+The first Stage-22A launch passed the synthetic ejBCM-F cases but exposed a
+source-materialization defect before `getBoundaries` could run: eight recorded
+historical helpers were absent, and four LF-normalized manifest hashes were
+incorrect. No dataset or detector was read. The active next action is the
+harness-only `stage22a_thesis_legacy_protocol_certification_retry1`, using the
+Drive-materialized, hash-pinned helper surface. Stage 22B remains deferred.
+
