@@ -21,6 +21,10 @@ import run_stage19b_descriptor_relevance_atlas as atlas
 import run_stage19d_aggregation_identification as identification
 import run_stage20_frozen_queue_candidate as stage20
 from benchmark_uded import DEFAULT_UDED
+from run_stage12b_fuzzy_signature import _select_bank
+from run_stage14c_positive_bank_pruning import COMPACT_FEATURES
+from src.edge_signature import SignatureSamples
+from src.edge_signature_relational import extract_relational_samples
 from src.consensus_rank_capacity import learn_pairwise_2additive
 
 
@@ -31,16 +35,37 @@ BSDS_MAX_SIDE = 256
 SEED = 20261028
 CONTROL_BANK_SEED = stage20.SEED
 _BSDS_TRAIN: list[dict] = []
-_STAGE20_LEARN_BANKS = stage20.learn_banks
 
 
 def _learn_control_banks(train_items, base_names, seed, max_positive, max_negative, max_abs_corr):
-    """Keep the frozen compact control on its established bank-sampling stream."""
+    """Fold-calibrate the frozen compact control without reselecting its cues."""
     control_seed = CONTROL_BANK_SEED + (int(seed) - SEED)
-    return _STAGE20_LEARN_BANKS(
-        train_items, base_names, control_seed,
-        max_positive, max_negative, max_abs_corr,
-    )
+    samples = extract_relational_samples(train_items, base_names, 2500, seed=control_seed)
+    index = {name: column for column, name in enumerate(samples.feature_names)}
+    compact = []
+    for name in COMPACT_FEATURES:
+        if name not in index:
+            raise RuntimeError(f"frozen compact feature unavailable: {name}")
+        column = index[name]
+        one_feature = SignatureSamples(
+            X=samples.X[:, column : column + 1],
+            groups=samples.groups,
+            feature_names=[name],
+            counts_per_image=samples.counts_per_image,
+        )
+        row = _select_bank(
+            one_feature, +1.0, 1, max_abs_corr=1.0, min_auc=0.0,
+        )
+        if len(row) != 1:
+            raise RuntimeError(f"frozen compact feature lost positive orientation: {name}")
+        row[0]["weight"] = max(float(row[0]["texture_auc"]) - 0.5, 0.0) * (
+            1.0 + float(row[0]["mutual_information"])
+        )
+        compact.extend(row)
+    total = sum(float(row["weight"]) for row in compact) or 1.0
+    for row in compact:
+        row["weight"] = float(row["weight"]) / total
+    return compact, []
 
 
 def _resize_train(image: np.ndarray, boundaries: list[np.ndarray]) -> tuple[np.ndarray, list[np.ndarray]]:

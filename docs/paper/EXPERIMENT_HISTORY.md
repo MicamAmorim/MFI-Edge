@@ -5154,3 +5154,16 @@ Stage-21H seed unchanged for folds, memberships, and ranking pairs, while the
 fixed compact control uses its established bank-sampling base seed
 `20261009` with the same per-fold offsets. Candidate objective, data,
 parameters, promotion rule, preview, and official attachment are unchanged.
+
+### Stage 21H retry 1 - fixed-control preselection failure persisted
+
+Retry 1 again stopped in the fourth UDED split before producing a result
+artifact. The restored legacy sampling stream was applied as intended, but
+Stage 21H's preregistered fold partition changes the training images and hence
+the correlation-based selector still omitted frozen
+`gabor4_scale_persistence`. This is a control-harness defect, not candidate
+feedback. `stage21h_consensus_pairwise_choquet_retry2` calibrates exactly the
+already-frozen five compact-control features inside each outer training fold,
+bypassing eligibility/correlation selection only for that fixed incumbent
+control. It preserves the Stage-21H folds, ranking seed, candidate objective,
+data, parameters, promotion rule, preview, and official attachment.

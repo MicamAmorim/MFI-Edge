@@ -3180,3 +3180,12 @@ Stage-21H fold/membership/ranking seed remains unchanged, while only the fixed
 compact control returns to its established bank-sampling base seed `20261009`
 with identical fold offsets. This supplies no scientific feedback and does
 not consume or modify the single Stage-21H candidate.
+
+That retry again stopped in split 4 before any result artifact. Restoring the
+sampling seed did not make correlation-based admission invariant to the new
+preregistered fold partition, so the selector again omitted frozen
+`gabor4_scale_persistence`. A second harness-only retry is registered: exactly
+the frozen five compact-control features are calibrated inside each training
+fold without rerunning eligibility/correlation selection for the incumbent.
+Stage-21H folds, ranking seed, candidate objective, data, parameters,
+promotion rule, preview, and official attachment remain unchanged.

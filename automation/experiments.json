@@ -3300,6 +3300,27 @@
       "results/official_eval/stage21h_consensus_pairwise_choquet/summary.json"
     ]
   },
+  "stage21h_consensus_pairwise_choquet_retry2": {
+    "description": "Second harness-only retry of the single unchanged Stage-21H candidate after retry 1 confirmed that restoring the legacy sampling seed was insufficient because Stage-21H's preregistered fold partition changes correlation-based preselector admission. Calibrate exactly the frozen five compact-control features inside each outer training fold with the established sampling stream, bypassing descriptor eligibility/correlation selection only for the incumbent control; candidate descriptors, memberships, pairwise objective, folds, ranking seed, capacity fit, datasets, promotion rule, preview and official evaluation remain unchanged.",
+    "runner": "python",
+    "path": "automation/stage21h_consensus_pairwise_venv_launcher.py",
+    "args": [],
+    "role": "single_stage21h_consensus_rank_candidate_attachment_retry",
+    "feedback_policy": "harness_only_fixed_compact_control_calibration_before_any_scientific_result_single_stage21h_candidate_unchanged",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage21h_consensus_pairwise_choquet/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage21h_consensus_pairwise_choquet/summary.json",
+      "results/local_dev/stage21h_consensus_pairwise_choquet/variant_ranking.csv",
+      "results/local_dev/stage21h_consensus_pairwise_choquet/fold_results.csv",
+      "results/local_dev/stage21h_consensus_pairwise_choquet/per_image_metrics.csv",
+      "results/local_dev/stage21h_consensus_pairwise_choquet/capacity_parameters.csv",
+      "results/local_dev/stage21h_consensus_pairwise_choquet/runtime.csv",
+      "results/local_dev/stage21h_consensus_pairwise_choquet/best_method_preview.png",
+      "results/local_dev/stage21h_consensus_pairwise_choquet/official_eval_manifest.json",
+      "results/official_eval/stage21h_consensus_pairwise_choquet/summary.json"
+    ]
+  },
   "autonomous_literature_escalation": {
     "description": "Repeatable high-reasoning live-web research checkpoint used automatically whenever the current development iteration has no hard blocker, the generalized SOTA goal is not reached, and no immediate next experiment is registered.",
     "runner": "python",

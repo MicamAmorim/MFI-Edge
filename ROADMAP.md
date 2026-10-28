@@ -2894,3 +2894,11 @@ the preregistered folds and candidate ranking fit, while restoring only the
 fixed compact control's established bank-sampling base seed `20261009` with
 identical fold offsets. The candidate and finite Stage-21 stop rule are
 unchanged.
+
+Retry 1 showed that seed restoration alone was insufficient: Stage 21H's
+fixed fold partition changes correlation-based feature admission, and the
+legacy selector again omitted `gabor4_scale_persistence` before any result was
+written. The active next action is the harness-only
+`stage21h_consensus_pairwise_choquet_retry2`, which fold-calibrates exactly the
+frozen compact five features while bypassing selection only for the incumbent
+control. All candidate and promotion contracts remain unchanged.
