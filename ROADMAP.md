@@ -2884,3 +2884,13 @@ consensus. The full immutable contract is
 `docs/paper/STAGE21H_PREREGISTRATION.md`. A pass stops for freeze/confirmation
 planning; a failure ends Stage 21 in synthesis without a second candidate or
 automatic escalation.
+
+The first Stage-21H launch produced no scientific artifact: the reused
+Stage-20 harness coupled Stage 21H's ranking seed to the legacy compact-control
+preselector and thereby omitted frozen `gabor4_scale_persistence` in split 4.
+The active next action is the harness-only
+`stage21h_consensus_pairwise_choquet_retry1`. It preserves seed `20261028` for
+the preregistered folds and candidate ranking fit, while restoring only the
+fixed compact control's established bank-sampling base seed `20261009` with
+identical fold offsets. The candidate and finite Stage-21 stop rule are
+unchanged.

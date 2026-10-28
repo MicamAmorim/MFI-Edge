@@ -5140,3 +5140,17 @@ equal-domain pairwise logistic ranking objective over leakage-free UDED
 boundary/background pairs and BSDS500-train annotator-consensus pairs. It must
 pass the existing conjunctive UDED and standard-Berkeley validation margins,
 including nonnegative AP. Failure ends Stage 21 without replacement.
+
+### Stage 21H first launch - harness-only seed coupling failure
+
+The first launch completed fixed BSDS500-train preparation and reached the
+fourth UDED split, then stopped before producing any result artifact. The
+reused Stage-20 harness had propagated Stage 21H's preregistered ranking seed
+`20261028` into the legacy compact-control bank preselector; under that
+unintended stream the preselector omitted frozen
+`gabor4_scale_persistence`. This is not candidate feedback and does not alter
+the single-candidate budget. A harness-only retry is registered with the
+Stage-21H seed unchanged for folds, memberships, and ranking pairs, while the
+fixed compact control uses its established bank-sampling base seed
+`20261009` with the same per-fold offsets. Candidate objective, data,
+parameters, promotion rule, preview, and official attachment are unchanged.

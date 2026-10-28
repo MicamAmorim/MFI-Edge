@@ -3171,3 +3171,12 @@ annotator consensus. The authoritative contract is
 overlap-clean UDED repeated CV and standard-Berkeley BSDS500 validation,
 including nonnegative AP. No loose protocol can promote it. Failure ends the
 finite Stage-21 program without a second candidate or automatic escalation.
+
+The first Stage-21H launch stopped before any result artifact when the reused
+Stage-20 harness fed the preregistered ranking seed `20261028` into the legacy
+compact-control bank preselector, which omitted frozen
+`gabor4_scale_persistence` in split 4. A harness-only retry is registered: the
+Stage-21H fold/membership/ranking seed remains unchanged, while only the fixed
+compact control returns to its established bank-sampling base seed `20261009`
+with identical fold offsets. This supplies no scientific feedback and does
+not consume or modify the single Stage-21H candidate.

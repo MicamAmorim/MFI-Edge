@@ -29,7 +29,18 @@ DESCRIPTORS = ("gabor4_s13", "semiglobal_changepoint")
 PAIR_COUNT_PER_IMAGE = 512
 BSDS_MAX_SIDE = 256
 SEED = 20261028
+CONTROL_BANK_SEED = stage20.SEED
 _BSDS_TRAIN: list[dict] = []
+_STAGE20_LEARN_BANKS = stage20.learn_banks
+
+
+def _learn_control_banks(train_items, base_names, seed, max_positive, max_negative, max_abs_corr):
+    """Keep the frozen compact control on its established bank-sampling stream."""
+    control_seed = CONTROL_BANK_SEED + (int(seed) - SEED)
+    return _STAGE20_LEARN_BANKS(
+        train_items, base_names, control_seed,
+        max_positive, max_negative, max_abs_corr,
+    )
 
 
 def _resize_train(image: np.ndarray, boundaries: list[np.ndarray]) -> tuple[np.ndarray, list[np.ndarray]]:
@@ -189,6 +200,7 @@ def main() -> int:
     _BSDS_TRAIN = _load_bsds_train()
     stage20._fit_candidate = _fit_candidate
     stage20._official_manifest = _official_manifest
+    stage20.learn_banks = _learn_control_banks
     spec = {"experiment_id": EXPERIMENT_ID, "label": "consensus_pairwise_2additive_choquet", "descriptors": list(DESCRIPTORS), "order": 1}
     if args.export_bsds:
         if not args.image_dir or not args.output_dir:
