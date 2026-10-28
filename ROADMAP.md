@@ -2850,3 +2850,20 @@ reconstruction of the frozen final maps and attributes descriptive ranking and
 spatial-support changes across context, shared pre-NMS Scharr, pre-NMS
 context-local coupling, and final post-NMS output. It changes no detector and
 completion advances only to Stage 21G.
+
+## Stage 21F complete - human-consensus ranking analysis active
+
+The frozen pipeline reconstruction matched every final incumbent and Stage-20C
+PNG byte. Stage 20C begins with a clear contextual ranking advantage, retains a
+smaller advantage after coupling to shared Scharr evidence, and ends with a
+small post-NMS tolerant-union ranking and support advantage. NMS compresses
+both methods' descriptive discrimination substantially. The official AP loss
+therefore is not a simple absence of useful context or spatial support; raw
+threshold behavior and ordering by human boundary importance remain live.
+
+The active next action is `stage21g_human_consensus_ranking_analysis`. It uses
+the five exact frozen validation map sets to measure score ordering across a
+fixed multi-annotator consensus signal, including rank correlation, pairwise
+ordering, strata, and deterministic failure cases. It fits or promotes nothing
+and completes the diagnostic sequence before the at-most-one Stage-21H
+mechanism decision.

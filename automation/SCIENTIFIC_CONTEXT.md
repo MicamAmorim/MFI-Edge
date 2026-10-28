@@ -3130,3 +3130,21 @@ support at context, shared pre-NMS Scharr, pre-NMS context-local combination,
 and final post-NMS stages. Intermediate measures are not official Berkeley
 scores. No fit, parameter change, promotion, or protected split read is
 authorized; completion advances only to Stage 21G.
+
+### Stage 21F closure - Stage 21G consensus ranking registered
+
+All 100 incumbent and 100 Stage-20C final maps reconstructed byte-identically.
+Stage 20C improved descriptive context AUC/AP (`0.72895/0.50745` versus
+`0.68663/0.47882`) and retained smaller advantages after shared-Scharr coupling
+and final NMS. NMS sharply reduced both methods' tolerant-union discrimination,
+but Stage 20C still had slightly better final AUC/AP and spatial support. The
+official AP deficit therefore is not a wholesale context or localization
+failure; contextual advantage is compressed through coupling/NMS and early/raw
+ranking remains unresolved. These intermediate metrics are non-official, the
+incumbent is unchanged, and Berkeley reference reproduction remains unverified.
+
+The registered next action is `stage21g_human_consensus_ranking_analysis`, the
+final frozen diagnostic. It compares all five exact map sets against a fixed
+multi-annotator consensus signal using rank correlations, pairwise ordering,
+strata, and weak-over-strong failure cases. It fits or promotes nothing and
+completion advances only to the at-most-one Stage-21H mechanism synthesis.

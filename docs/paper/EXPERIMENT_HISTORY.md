@@ -5095,3 +5095,28 @@ and Stage-20C computations and requires exact final PNG agreement while
 reporting descriptive rank and spatial diagnostics for context, pre-NMS local
 evidence, pre-NMS coupling, and the final post-NMS score. It fits or promotes
 nothing and advances only to Stage 21G.
+
+### Stage 21F context/localizer/NMS decomposition complete; Stage 21G registered
+
+The frozen reconstruction matched all 100 incumbent and all 100 Stage-20C PNG
+maps byte for byte. Stage 20C context had higher descriptive tolerant-union
+AUC/AP than incumbent context (`0.72895/0.50745` versus `0.68663/0.47882`).
+After multiplication by shared pre-NMS Scharr evidence it retained a smaller
+advantage (`0.67432/0.45757` versus `0.65491/0.44567`) and improved
+density-matched GT coverage (`0.60716` versus `0.56111`). Final NMS reduced
+both methods' diagnostic AUC/AP sharply, while Stage 20C retained a small
+advantage (`0.51607/0.34281` versus `0.51193/0.33933`) and better GT support.
+Thus the AP loss is not explained by wholesale contextual ranking or spatial-
+support failure; coupling and NMS compress the context advantage, leaving raw-
+curve and consensus ordering as the remaining diagnosis. These union metrics
+are not official Berkeley scores. The official attachment retained Stage
+20C's `+0.01424/+0.00813/-0.02622` ODS/OIS/AP contrast, with reference
+reproduction still unverified.
+
+The registered next action is `stage21g_human_consensus_ranking_analysis`, the
+final Stage-21 diagnostic under `docs/paper/STAGE21G_PREREGISTRATION.md`. It
+uses the five exact frozen map sets and a fixed multi-annotator consensus
+signal to report rank correlations, higher-versus-lower consensus pairwise
+accuracy, consensus strata, and weak-over-strong failure cases. It fits and
+promotes nothing and completion advances only to the single-mechanism Stage-
+21H synthesis.

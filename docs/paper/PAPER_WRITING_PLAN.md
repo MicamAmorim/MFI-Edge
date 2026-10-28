@@ -1619,3 +1619,12 @@ as non-promotional sensitivity results. Stage 21F should place context,
 pre-NMS Scharr, pre-NMS context-local coupling, and final post-NMS diagnostic
 rows side by side, while reserving official Berkeley terminology for the
 unchanged final outputs only.
+
+Stage 21F supplies the pipeline-attribution table. Report that Stage 20C's
+context has a clear tolerant-union ranking advantage, that shared-Scharr
+coupling narrows but preserves it, and that NMS sharply compresses both methods'
+descriptive AUC/AP while preserving a small Stage-20C advantage. These are
+non-official attribution measures, not an explanation that rescues the
+candidate. Stage 21G should report consensus-rank correlation, higher-versus-
+lower consensus pairwise accuracy, consensus strata, and deterministic weak-
+over-strong examples before the single Stage-21H design decision.
