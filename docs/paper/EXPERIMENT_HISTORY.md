@@ -5209,3 +5209,22 @@ registered next action is the harness-only
 unchanged source checks and synthetic MATLAB microcases, consumes no new
 scientific-stage slot, and leaves Stage 22B deferred until certification
 passes.
+
+### Stage 22A retry 1 - transitive KITT dependency exposed
+
+Retry 1 verified every recorded thesis/Drive source hash and passed the exact
+and shifted ejBCM-F microcases without reading a dataset or scoring a detector.
+The `getBoundaries` smoke test then reached the recovered thresholding code and
+stopped because `rosinUnimodalThr.m` explicitly calls `gaussianSmooth`, an
+unrecorded transitive KITT dependency. The pinned public KITT tree at commit
+`d70bb66ef9ab6f5cea8ead528fe5ac15ac096baf` supplies that function and its
+`createGaussianFilter` dependency under GPL; their normalized source hashes
+are now fixed in the provenance manifest.
+
+The registered next action is the single Stage-22A compatibility diagnosis
+allowed by the program,
+`stage22a_thesis_legacy_protocol_certification_retry2`. It exposes those two
+byte-verified public sources only through an ignored immutable runtime checkout
+and reruns the unchanged synthetic certification. It changes no thesis source
+or mathematical operation, consumes no additional scientific-stage slot, and
+keeps Stage 22B deferred.

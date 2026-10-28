@@ -2928,3 +2928,12 @@ incorrect. No dataset or detector was read. The active next action is the
 harness-only `stage22a_thesis_legacy_protocol_certification_retry1`, using the
 Drive-materialized, hash-pinned helper surface. Stage 22B remains deferred.
 
+Retry 1 verified the complete recorded thesis/Drive surface and again passed
+the ejBCM-F microcases, but exposed one transitive dependency declared inside
+`rosinUnimodalThr.m`: public-KITT `gaussianSmooth` and its
+`createGaussianFilter` dependency. Their exact sources are now pinned to KITT
+commit `d70bb66ef9ab6f5cea8ead528fe5ac15ac096baf` with hashes. The active next
+action is the program-authorized harness-only compatibility diagnosis
+`stage22a_thesis_legacy_protocol_certification_retry2`; Stage 22B remains
+deferred until the unchanged synthetic `getBoundaries` smoke case passes.
+

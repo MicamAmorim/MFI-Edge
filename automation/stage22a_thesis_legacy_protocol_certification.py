@@ -13,6 +13,7 @@ OUT = ROOT / "results" / "automation" / "stage22a_thesis_legacy_protocol_certifi
 RUNTIME = OUT / "matlab_runtime"
 MANIFEST = VENDOR / "SOURCE_MANIFEST.json"
 STAGE21A_RUNTIME = ROOT / "results" / "automation" / "stage21a_protocol_certification" / "kitt_runtime"
+KITT_CHECKOUT = ROOT / "vendor" / "kitt_stage22a"
 
 
 def normalized_text_sha256(path: Path) -> str | None:
@@ -79,6 +80,24 @@ def main() -> int:
         })
         hash_ok = hash_ok and ok
 
+    kitt = manifest["runtime_dependencies"].get("public_kitt_checkout", {})
+    kitt_dir = KITT_CHECKOUT / "generalImageProcessing"
+    kitt_hashes_ok = bool(kitt.get("files"))
+    for rec in kitt.get("files", []):
+        p = KITT_CHECKOUT / rec["path"]
+        actual = normalized_text_sha256(p)
+        expected = rec["normalized_lf_sha256"]
+        ok = actual == expected
+        hashes.append({
+            "path": f"public-kitt/{rec['path']}",
+            "source_commit": kitt.get("commit"),
+            "expected_normalized_lf_sha256": expected,
+            "actual_normalized_lf_sha256": actual,
+            "ok": ok,
+        })
+        kitt_hashes_ok = kitt_hashes_ok and ok
+    hash_ok = hash_ok and kitt_hashes_ok
+
     matcher = resolve_matcher()
     runtime_matcher = RUNTIME / "estradaJepsonMatching.m"
     if matcher is not None:
@@ -90,10 +109,11 @@ def main() -> int:
 
     if matlab is not None and matcher is not None:
         script = RUNTIME / "stage22a_microcases.m"
-        script.write_text(r'''function stage22a_microcases(vendorDir,runtimeDir,outJson,runGetBoundaries)
+        script.write_text(r'''function stage22a_microcases(vendorDir,runtimeDir,kittDir,outJson,runGetBoundaries)
 addpath(vendorDir);
 addpath(fullfile(vendorDir,'external'));
 addpath(runtimeDir);
+addpath(kittDir);
 
 sol = false(64,64); sol(32,10:54)=true;
 candExact = sol;
@@ -129,7 +149,7 @@ end
         run_get = "true" if not missing_helpers else "false"
         expr = (
             f"addpath('{RUNTIME.as_posix()}');"
-            f"stage22a_microcases('{VENDOR.as_posix()}','{RUNTIME.as_posix()}','{result_json.as_posix()}',{run_get});"
+            f"stage22a_microcases('{VENDOR.as_posix()}','{RUNTIME.as_posix()}','{kitt_dir.as_posix()}','{result_json.as_posix()}',{run_get});"
         )
         matlab_result = run([str(matlab), "-batch", expr])
         if result_json.exists():
@@ -147,6 +167,11 @@ end
         "source_hashes_ok": hash_ok,
         "matlab_found": str(matlab) if matlab else None,
         "matcher_source": str(matcher) if matcher else None,
+        "public_kitt_runtime": {
+            "checkout": str(KITT_CHECKOUT),
+            "commit": kitt.get("commit"),
+            "hashes_ok": kitt_hashes_ok,
+        },
         "missing_getBoundaries_helpers": missing_helpers,
         "ejBCM_microcases_pass": ej_pass,
         "getBoundaries_smoke_pass": get_pass,

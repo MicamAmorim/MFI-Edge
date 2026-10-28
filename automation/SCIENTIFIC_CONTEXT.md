@@ -3223,3 +3223,12 @@ recorded. `stage22a_thesis_legacy_protocol_certification_retry1` is the active
 harness-only retry and does not consume another Stage-22 scientific slot.
 Stage 22B remains deferred until it passes.
 
+Retry 1 verified all recorded thesis/Drive hashes and passed the ejBCM-F
+microcases, but the `getBoundaries` smoke case exposed the explicitly declared
+transitive KITT dependency `gaussianSmooth` (and its
+`createGaussianFilter` dependency). The public sources are now pinned and
+hash-verified at KITT commit `d70bb66ef9ab6f5cea8ead528fe5ac15ac096baf`.
+`stage22a_thesis_legacy_protocol_certification_retry2` is the single allowed
+harness-only compatibility diagnosis; it changes no thesis operation, reads no
+dataset, consumes no scientific-stage slot, and leaves Stage 22B deferred.
+

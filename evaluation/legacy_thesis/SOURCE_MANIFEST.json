@@ -90,6 +90,22 @@
     "ej_matcher": "estradaJepsonMatching v1.00 backup",
     "preferred_matcher_source": "results/automation/stage21a_protocol_certification/kitt_runtime/estradaJepsonMatching.m",
     "drive_backup_sha256": "409008932d70f31d60c8c83111cb32a09bddd7cc4e6dcae7cf101a3bc162b506",
+    "public_kitt_checkout": {
+      "repository": "https://github.com/giaracvi/KITT",
+      "commit": "d70bb66ef9ab6f5cea8ead528fe5ac15ac096baf",
+      "license": "GNU GPL as stated by the repository and individual source files",
+      "files": [
+        {
+          "path": "generalImageProcessing/gaussianSmooth.m",
+          "normalized_lf_sha256": "4c573e5158d7f692a376379389cc175b20e0e38c46fec42cd0bccbc1177087bb"
+        },
+        {
+          "path": "generalImageProcessing/createGaussianFilter.m",
+          "normalized_lf_sha256": "b422a30b06764e578c33749aee41f38fb59109a28374364d273eab2db87f19dd"
+        }
+      ],
+      "note": "rosinUnimodalThr.m explicitly declares gaussianSmooth, which in the pinned public KITT tree depends on createGaussianFilter. Stage 22A retry 2 uses these byte-verified public sources from an ignored immutable checkout as a run-time compatibility dependency; no thesis source or mathematical operation is changed."
+    },
     "note": "Stage 22A is a certification stage. If historical getBoundaries helper sources are not yet materialized in evaluation/legacy_thesis/external, one harness-only source-materialization retry is allowed; it must preserve the mathematical operations and record provenance before any detector is scored."
   },
   "reporting_contract": {
