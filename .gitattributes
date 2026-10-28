@@ -1,0 +1,4 @@
+# Preserve thesis-era vendored MATLAB sources byte-for-byte.
+# These files intentionally retain their original whitespace; do not let
+# `git diff --check` reject historical trailing spaces or blank-at-EOF.
+evaluation/legacy_thesis/** whitespace=-trailing-space,-blank-at-eof
