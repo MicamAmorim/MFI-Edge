@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "source": "User Google Drive thesis-code folder and its functions.zip / boundaryImageComparison package",
+  "drive_folder_id": "1LpKQgn5x3qG7BAXqZaMjdbigoHjARsuB",
+  "legacy_pipeline": "continuous aggregated map -> getBoundaries(map, inf) -> binary boundary map -> ComparisonResiduals('ejBCM-F', ..., 0.025) -> ejmBasedConfusionMatrix -> estradaJepsonMatching v1.00",
+  "notes": [
+    "getBoundaries.m and ComparisonResiduals.m are the user's thesis-era files from the supplied Drive folder.",
+    "ejmBasedConfusionMatrix.m is the v1.00 file bundled in functions.zip and is preserved byte-for-byte.",
+    "estradaJepsonMatching.bckp.m is the complete v1.00 backup from the thesis/KITT boundaryImageComparison package; Stage 22A copies it byte-for-byte to a run-local estradaJepsonMatching.m alias because MATLAB requires the filename to match the function name.",
+    "Third-party license headers are preserved verbatim; vendored third-party files must not be edited."
+  ],
+  "files": [
+    {"path":"getBoundaries.m","sha256":"2f407ef5c9365dbb7e6dcde553b5caa7f0ea8653170a0c704689a50d8e0e405e"},
+    {"path":"ComparisonResiduals.m","sha256":"98120fd882115539ba9c163067cf6bf111a83434823a7ce361a332ea7a71e8c0"},
+    {"path":"histmedcar.m","sha256":"a411ff80c45b28b7489eb46ff7b17c497079464a2e5544f917fddd030fd6be21"},
+    {"path":"external/cleanLineSegments.m","sha256":"672f9eaed9e7312edf34ee2ec533cc47b40ead8e7382a4367a39fa039c11c42e"},
+    {"path":"external/derivative5.m","sha256":"b60de2a98210706dc4bc207733560e45a56da3505b11f51fee0a6052cde0ccac"},
+    {"path":"external/doubleRosinUnimodalThr.m","sha256":"5678ab4d49d4dda1b29d0334e09ab7a21a34f5fff5ea319fbd336d179d9c5383"},
+    {"path":"external/ejmBasedConfusionMatrix.m","sha256":"63c06674e0a18604d8567eb46b2081b867a06d6b98d7fab37aad27bf4b251607"},
+    {"path":"external/estradaJepsonMatching.bckp.m","sha256":"409008932d70f31d60c8c83111cb32a09bddd7cc4e6dcae7cf101a3bc162b506"},
+    {"path":"external/featureorient.m","sha256":"913b75ee7c5151327d9432ee274226283e7955b33061b25f69fd174f793b9cb7"},
+    {"path":"external/gaussfilt.m","sha256":"14651f6018ad2709d435e360eba88007ec90c09b8254535c69dfb37498910b9a"},
+    {"path":"external/hysthresh.m","sha256":"9b61fec6caf5a549deca252d19c0d6505e0b19db1767e08975e162f1e68726f6"},
+    {"path":"external/nonmaxsup.m","sha256":"a0559047b791f47d4f85120294dff1f51ab8455543b5fc43a01798ab7589cea0"},
+    {"path":"external/rosinUnimodalThr.m","sha256":"eca3445bb38d3a4a46adc77be5fcef0da96ef15894f9c66e06ac15282ab7679a"}
+  ]
+}
