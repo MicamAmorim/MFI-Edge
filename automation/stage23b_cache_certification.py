@@ -9,6 +9,11 @@ from pathlib import Path
 import hashlib
 import json
 import shutil
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 import numpy as np
 
@@ -21,7 +26,6 @@ from src.stage23_cache import (
     load_cached,
 )
 
-ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "results" / "automation" / "stage23b_cache_certification"
 CACHE = ROOT / "cache" / "local_dev" / "stage23" / "_certification"
 
