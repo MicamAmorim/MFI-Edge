@@ -3673,5 +3673,27 @@
       "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/official_eval_manifest.json",
       "results/official_eval/stage22c_inter_image_score_calibration_diagnosis_retry1/summary.json"
     ]
+  },
+  "stage22d_local_competition_nms_rank_swap_diagnosis": {
+    "description": "Stage 22D frozen-pipeline local competition/NMS diagnosis: byte-reconstruct compact MFI and Stage 20C, quantify within-image rank transitions, high-consensus swaps, suppression and near-GT multiplicity, attribute pooled early false positives between score-scale mismatch and local competition, and compute the preregistered independent competition-dominance score. Diagnostic only; no detector fit, matcher rerun, NMS sweep, selection, promotion, or protected split read.",
+    "runner": "python",
+    "path": "automation/stage22d_local_competition_nms_rank_swap_diagnosis.py",
+    "args": [],
+    "role": "stage22_local_competition_nms_rank_swap_diagnosis",
+    "feedback_policy": "byte_verified_frozen_pipeline_and_bsds_validation_annotations_only_local_rank_competition_diagnostic_no_detector_fit_regeneration_matcher_rerun_nms_sweep_selection_promotion_or_protected_split_read_stage22_scientific_stage_4_of_5",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage22d_local_competition_nms_rank_swap_diagnosis/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage22d_local_competition_nms_rank_swap_diagnosis/summary.json",
+      "results/local_dev/stage22d_local_competition_nms_rank_swap_diagnosis/summary.md",
+      "results/local_dev/stage22d_local_competition_nms_rank_swap_diagnosis/per_image_rank_transitions.csv",
+      "results/local_dev/stage22d_local_competition_nms_rank_swap_diagnosis/per_image_local_rank_swaps.csv",
+      "results/local_dev/stage22d_local_competition_nms_rank_swap_diagnosis/per_image_suppression_multiplicity.csv",
+      "results/local_dev/stage22d_local_competition_nms_rank_swap_diagnosis/early_error_attribution.csv",
+      "results/local_dev/stage22d_local_competition_nms_rank_swap_diagnosis/competition_dominance.csv",
+      "results/local_dev/stage22d_local_competition_nms_rank_swap_diagnosis/best_method_preview.png",
+      "results/local_dev/stage22d_local_competition_nms_rank_swap_diagnosis/official_eval_manifest.json",
+      "results/official_eval/stage22d_local_competition_nms_rank_swap_diagnosis/summary.json"
+    ]
   }
 }

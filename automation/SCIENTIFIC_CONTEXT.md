@@ -3278,3 +3278,26 @@ retry is registered with the two-argument preview API; inputs, formulas,
 dominance thresholds, maps, protocol restrictions, and Stage-22 budget are
 unchanged. Stage 22D remains deferred until complete Stage-22C artifacts exist.
 
+### Stage 22C closure - Stage 22D registered
+
+The harness-repaired frozen-map calibration diagnosis completed. Stage 20C's
+best-threshold IQR was `0.16`; its GT-derived diagnostic isotonic oracle showed
+about `+0.11617` pooled tolerant-union AP headroom, while the mean-within-image
+versus pooled AUC discrepancy was only `0.00107`. Under the frozen rule the
+three normalized components were `0.80/1.00/0.02137`, giving calibration-
+dominance score `0.60712` with two components above `0.50`; calibration is
+therefore declared dominant for the later mechanical branch decision. The
+unlabeled normalization simulations and GT oracle remain diagnostic only and
+select no transform. The documentary standard-Berkeley attachment retained
+Stage 20C's ODS/OIS/AP contrast of `+0.01427/+0.00824/-0.02623`; compact MFI
+remains incumbent and reference reproduction remains unverified.
+
+The registered next action is
+`stage22d_local_competition_nms_rank_swap_diagnosis` (scientific stage 4/5).
+It byte-reconstructs the frozen Stage-21F pipelines and independently measures
+high-consensus rank demotion, local early-error attribution, and near-GT
+multiplicity under the fixed `docs/paper/STAGE22D_PREREGISTRATION.md` score.
+It fits or promotes nothing and cannot sweep NMS. Only after Stage 22D may the
+mechanical Stage-22E branch be selected, or the program close without a
+candidate.
+

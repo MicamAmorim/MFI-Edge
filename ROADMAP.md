@@ -2969,3 +2969,13 @@ now `stage22c_inter_image_score_calibration_diagnosis_retry1`, a harness-only
 two-argument preview-call repair with the scientific contract and five-stage
 budget unchanged. Stage 22D remains deferred.
 
+Stage 22C is now complete. Its frozen calibration-dominance score is `0.60712`
+with two of three components above the required floor, so calibration is one
+eligible causal branch; the very small cross-image AUC-discrepancy component
+keeps the diagnosis mixed. No normalization was selected and compact MFI is
+unchanged. The active next action is
+`stage22d_local_competition_nms_rank_swap_diagnosis`, the independently
+preregistered scientific stage 4/5. After it completes, the frozen scores
+mechanically select the sole possible Stage-22E branch or end the program
+without a candidate.
+

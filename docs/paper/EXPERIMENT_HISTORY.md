@@ -5278,3 +5278,21 @@ supplied an unsupported third positional argument to `write_panel_grid`. No
 complete Stage-22C result is interpreted. The registered harness-only retry
 changes only that call to the established two-argument API and does not consume
 another scientific-stage slot; Stage 22D remains deferred.
+
+### Stage 22C closure — calibration dominance passes; Stage 22D registered
+
+The preview-API retry completed the frozen-map diagnosis. Stage 20C's
+per-image best-threshold IQR was `0.16`. The GT-derived isotonic upper bound
+showed `+0.11617` diagnostic pooled tolerant-union AP recoverability, whereas
+mean within-image versus pooled AUC differed by only `0.00107`. The frozen
+components were therefore `0.80`, `1.00`, and `0.02137`, for a calibration-
+dominance score of `0.60712`; two components exceeded `0.50`, so the registered
+calibration-dominance rule passes. This is causal-diagnostic evidence, not a
+selection of any simulated normalization or a promotion. The official
+attachment preserved Stage 20C's `+0.01427/+0.00824/-0.02623` ODS/OIS/AP
+pattern, and compact MFI remains incumbent.
+
+Stage 22D is now preregistered as the independent frozen-pipeline local-
+competition/NMS diagnosis. Its score was fixed before output inspection and
+Stage 22E remains unavailable until both dominance scores can be compared
+mechanically.
