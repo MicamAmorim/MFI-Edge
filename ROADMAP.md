@@ -2962,3 +2962,10 @@ families are simulations only and cannot be selected from validation outcomes.
 Completion advances only to the separately preregistered Stage 22D local-
 competition diagnosis.
 
+The first launch stopped after writing partial diagnostic CSVs because the
+preview harness passed an unsupported third positional argument to the shared
+panel writer. Those partial tables are not interpreted. The active action is
+now `stage22c_inter_image_score_calibration_diagnosis_retry1`, a harness-only
+two-argument preview-call repair with the scientific contract and five-stage
+budget unchanged. Stage 22D remains deferred.
+

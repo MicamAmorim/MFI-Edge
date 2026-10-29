@@ -3270,3 +3270,11 @@ and fixed unlabeled normalization simulations. Its calibration-dominance score
 and thresholds are frozen before inspection. It fits, selects, and promotes
 nothing; completion advances only to Stage 22D.
 
+The first Stage-22C launch computed the registered diagnostic CSVs but stopped
+before summary, preview, or manifest creation because its preview call passed
+an unsupported third positional argument to the established panel writer. The
+partial tables have no standalone scientific interpretation. A harness-only
+retry is registered with the two-argument preview API; inputs, formulas,
+dominance thresholds, maps, protocol restrictions, and Stage-22 budget are
+unchanged. Stage 22D remains deferred until complete Stage-22C artifacts exist.
+

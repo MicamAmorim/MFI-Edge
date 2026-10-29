@@ -277,8 +277,7 @@ def main() -> int:
                  "calibration_dominant": bool(score >= CALIBRATION_THRESHOLDS["dominance_score"] and count >= CALIBRATION_THRESHOLDS["minimum_components"])}
     write_csv(OUT / "calibration_dominance.csv", [dominance])
 
-    write_panel_grid(OUT / "best_method_preview.png", preview_rows,
-                     ["input", "annotation union", "incumbent frozen score", "Stage 20C frozen score"])
+    write_panel_grid(OUT / "best_method_preview.png", preview_rows)
     manifest = {"schema_version": 1, "split": "val", "include_incumbent": True,
                 "methods": [{"name": candidate, "export": {"script": "automation/stage22b_frozen_export.py",
                 "args": ["--method", candidate, "--image-dir", "{image_dir}", "--output-dir", "{output_dir}", "--split", "{split}"]}}],

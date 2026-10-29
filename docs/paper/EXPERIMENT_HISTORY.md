@@ -5271,3 +5271,10 @@ Scientific stage 3/5 is now registered as
 in `docs/paper/STAGE22C_PREREGISTRATION.md`. It freezes the calibration-
 dominance statistic before analysis, uses exact frozen maps and existing
 standard-Berkeley counts, and cannot fit, select, or promote a detector.
+
+The first Stage-22C launch computed its diagnostic tables but failed before
+emitting the required summary, preview, and manifest because the harness
+supplied an unsupported third positional argument to `write_panel_grid`. No
+complete Stage-22C result is interpreted. The registered harness-only retry
+changes only that call to the established two-argument API and does not consume
+another scientific-stage slot; Stage 22D remains deferred.

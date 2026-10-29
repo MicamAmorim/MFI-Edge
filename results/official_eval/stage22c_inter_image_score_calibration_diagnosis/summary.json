@@ -1,0 +1,7 @@
+{
+  "status": "manifest_missing",
+  "experiment_id": "stage22c_inter_image_score_calibration_diagnosis",
+  "role": "stage22_inter_image_score_calibration_diagnosis",
+  "message": "No official_eval_manifest.json was emitted by this experiment. The normal experiment remains valid; future image-based development experiments must emit the manifest so official BSDS development metrics can be attached before Codex decides.",
+  "manifest_sha256": null
+}

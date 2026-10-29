@@ -3650,5 +3650,28 @@
       "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/official_eval_manifest.json",
       "results/official_eval/stage22c_inter_image_score_calibration_diagnosis/summary.json"
     ]
+  },
+  "stage22c_inter_image_score_calibration_diagnosis_retry1": {
+    "description": "Harness-only retry of the unchanged Stage 22C frozen-map calibration diagnosis after all diagnostic CSVs were computed but preview generation passed an unsupported third positional argument to write_panel_grid. Use the established two-argument preview API; inputs, maps, frozen count tables, diagnostic formulas, dominance thresholds, oracle restrictions, normalization simulations, preview positions, manifest, and continuation rule remain unchanged. Partial CSVs from the failed launch have no standalone scientific interpretation and this retry consumes no additional Stage-22 scientific slot.",
+    "runner": "python",
+    "path": "automation/stage22c_inter_image_score_calibration_diagnosis.py",
+    "args": [],
+    "role": "stage22_inter_image_score_calibration_diagnosis",
+    "feedback_policy": "harness_only_preview_api_repair_frozen_maps_and_standard_berkeley_count_tables_only_no_detector_fit_regeneration_matcher_rerun_selection_promotion_or_protected_split_read_no_additional_stage22_scientific_slot",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/summary.json",
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/summary.md",
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/per_image_score_threshold_metrics.csv",
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/threshold_associations.csv",
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/rank_decomposition.csv",
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/oracle_rescaling.csv",
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/unlabeled_normalization_simulations.csv",
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/calibration_dominance.csv",
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/best_method_preview.png",
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/official_eval_manifest.json",
+      "results/official_eval/stage22c_inter_image_score_calibration_diagnosis_retry1/summary.json"
+    ]
   }
 }
