@@ -34,9 +34,14 @@ aggregation behaviors. The exact census and bounds are in
 `docs/paper/STAGE23_PROTOCOL_MATRIX.md`. Complete detectors remain later
 reproduction/intervention targets rather than hidden descriptor inputs.
 
-The immediate next task is `stage23b_cache_certification`. It is synthetic-only
-and must certify exact-key reuse, artifact/manifest hashes, atomic writes,
-parameter and preprocessing key separation, fail-closed corruption, and GT-
-isolated extraction before any benchmark descriptor is computed. A failure
-permits only a cache/harness repair; Stage 23C remains deferred until all checks
-pass.
+Stage 23B passed every conjunctive cache certification check. Exact-key reuse
+avoided extractor calls, scientific changes made distinct keys, manifests and
+artifact hashes agreed, corruption failed closed, GT-declared inference was
+rejected before computation, and atomic writes left no temporary file.
+
+The active next task is `stage23c_cached_uded_descriptor_baselines`. It reads
+only the 14-image overlap-clean UDED selection set, excluding known BSDS-test
+lineage item `03-35028` before byte access. It extracts the frozen 13-map pool
+once, validates all 182 identities, and reports non-selective individual-map
+5x3 threshold-CV baselines plus a fixed positions 1/7/14 preview. Stage 23C
+cannot prune a descriptor or alter MFI; Stage 23D must consume every cached map.

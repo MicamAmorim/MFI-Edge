@@ -23,6 +23,26 @@
       "results/automation/stage23b_cache_certification/summary.json"
     ]
   },
+  "stage23c_cached_uded_descriptor_baselines": {
+    "description": "Stage 23C overlap-clean UDED one-time extraction of the frozen 13-map evidence pool through the certified cache, followed by non-selective individual-map 5x3 threshold-CV baselines under docs/paper/STAGE23C_PREREGISTRATION.md.",
+    "runner": "python",
+    "path": "automation/stage23c_cached_uded_descriptor_baselines_launcher.py",
+    "args": [],
+    "role": "development_experiment",
+    "feedback_policy": "overlap_clean_uded_selection_descriptor_landscape_no_descriptor_selection_or_promotion",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage23c_cached_uded_descriptor_baselines/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage23c_cached_uded_descriptor_baselines/summary.json",
+      "results/local_dev/stage23c_cached_uded_descriptor_baselines/overlap_clean_dataset_manifest.json",
+      "results/local_dev/stage23c_cached_uded_descriptor_baselines/descriptor_cache_provenance.csv",
+      "results/local_dev/stage23c_cached_uded_descriptor_baselines/individual_descriptor_baselines.csv",
+      "results/local_dev/stage23c_cached_uded_descriptor_baselines/individual_descriptor_fold_metrics.csv",
+      "results/local_dev/stage23c_cached_uded_descriptor_baselines/individual_descriptor_per_image_metrics.csv",
+      "results/local_dev/stage23c_cached_uded_descriptor_baselines/best_method_preview.png",
+      "results/local_dev/stage23c_cached_uded_descriptor_baselines/official_eval_manifest.json"
+    ]
+  },
   "stage23_literature_escalation": {
     "description": "Repeatable Stage-23 literature/mechanism checkpoint for resolving descriptor, aggregator, protocol, implementation, or gap-guided design uncertainty without benchmark scoring.",
     "runner": "python",

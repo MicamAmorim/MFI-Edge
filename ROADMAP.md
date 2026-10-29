@@ -3043,3 +3043,17 @@ and must pass every check in
 can read UDED or extract any descriptor. A failure permits only an explicit
 cache/harness repair; it cannot change the frozen scientific shortlist.
 
+## Stage 23B complete - cached UDED evidence atlas active
+
+The synthetic cache certification passed all registered conditions: exact-key
+reuse without extraction, byte/hash and manifest identity, distinct scientific
+keys, derived-transform reuse, fail-closed corruption, GT isolation, and
+atomic-write cleanup. Benchmark descriptor extraction is now authorized.
+
+The active next action is `stage23c_cached_uded_descriptor_baselines`. It will
+exclude the known protected-lineage UDED item before reading bytes, extract all
+13 frozen maps once for the remaining 14 selection images, validate their 182
+cache identities, and report non-selective individual-map repeated-CV
+baselines. No descriptor may be pruned from these results; Stage 23D must use
+all cached maps for prospective complementarity analysis.
+

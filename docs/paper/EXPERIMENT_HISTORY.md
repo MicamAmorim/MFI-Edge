@@ -5391,3 +5391,21 @@ conjunctive certification of content keys, exact reuse, artifact and manifest
 hashes, atomic writes, parameter/preprocessing key separation, fail-closed
 corruption, and GT-isolated inference extraction. No benchmark descriptor may
 be extracted until Stage 23B passes.
+
+### Stage 23B closure - cache certified; Stage 23C registered
+
+The synthetic-only cache certification passed every conjunctive condition.
+Exact requests reused artifacts without extractor calls; parameter and
+preprocessing changes made new keys; transform reuse, sidecars, hashes and
+atomic JSONL manifests agreed; deliberate corruption failed closed with zero
+repair calls; GT-declared inference was rejected before computation; and no
+temporary file remained. No benchmark or GT was read.
+
+The registered next action is
+`stage23c_cached_uded_descriptor_baselines` under
+`docs/paper/STAGE23C_PREREGISTRATION.md`. It extracts all 13 frozen evidence
+maps once on the 14-image overlap-clean UDED selection set, validates all 182
+cache identities, and reports individual-map 5x3 threshold-CV baselines and a
+fixed positions 1/7/14 atlas. It cannot prune or promote a descriptor; Stage
+23D must analyze complementarity over every cached map. Compact MFI remains
+incumbent.

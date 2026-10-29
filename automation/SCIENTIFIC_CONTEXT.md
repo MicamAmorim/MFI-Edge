@@ -3371,3 +3371,15 @@ manifest provenance, distinct scientific keys, fail-closed corruption, and GT-
 isolated inference extraction. Stage 23C cannot extract a benchmark map until
 all certification checks pass.
 
+### Stage 23B closure - cache certified; Stage 23C registered
+
+Every synthetic cache condition passed: exact reuse avoided extraction,
+scientific changes produced new keys, manifests and hashes agreed, corruption
+failed closed, GT-declared evidence never ran, and atomic writes left no
+temporary files. The active next action is
+`stage23c_cached_uded_descriptor_baselines`: extract the frozen 13-map pool
+once on 14 overlap-clean UDED selection images (excluding `03-35028` before
+byte access), validate all 182 cache identities, and report non-selective
+individual 5x3 threshold-CV baselines with a fixed preview. Stage 23C cannot
+prune cues or change the incumbent; Stage 23D must consume every cached map.
+
