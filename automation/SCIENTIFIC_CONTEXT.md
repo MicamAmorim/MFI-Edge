@@ -3301,3 +3301,27 @@ It fits or promotes nothing and cannot sweep NMS. Only after Stage 22D may the
 mechanical Stage-22E branch be selected, or the program close without a
 candidate.
 
+### Stage 22D closure - Branch-C Stage 22E candidate registered
+
+The frozen-pipeline diagnosis byte-matched all 200 final maps and rejected
+local competition as the dominant cause. Its demotion/local-error/multiplicity
+components were `0.02180/0/0`, for competition-dominance score `0.00727` with
+zero qualifying components. Stage 20C near-GT multiplicity was slightly below
+the incumbent (`5.36689` versus `5.40864`). The documentary standard-Berkeley
+attachment retained the familiar `+0.01430/+0.00777/-0.02622` ODS/OIS/AP
+contrast. Compact MFI remains incumbent and reference reproduction remains
+unverified.
+
+Stage 22C calibration dominance passed (`0.60712`, two qualifying components),
+so the frozen mechanical rule selects the single Branch-C candidate
+`stage22e_positive_support_quantile_calibration` (scientific stage 5/5). The
+candidate retains the exact Stage-20C detector and maps positive final-score
+midranks to a 255-point median reference quantile curve fitted strictly inside
+each outer UDED training fold; zeros, support, ties, and within-image ordering
+are preserved. The authoritative contract is
+`docs/paper/STAGE22E_PREREGISTRATION.md`. Its choice does not use the Stage-22C
+normalization-simulation outcomes. Promotion is conjunctive across overlap-
+clean UDED and standard Berkeley validation. Whatever the result, Stage 22
+must then return `continue=false`; no second candidate, tuning pass, sixth
+stage, or automatic escalation is permitted.
+

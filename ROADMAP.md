@@ -2979,3 +2979,23 @@ preregistered scientific stage 4/5. After it completes, the frozen scores
 mechanically select the sole possible Stage-22E branch or end the program
 without a candidate.
 
+## Stage 22D complete - single calibration candidate active
+
+Stage 22D byte-reconstructed all frozen final maps and found no material local-
+competition explanation for Stage 20C's early-ranking deficit. Its three
+dominance components were `0.02180/0/0`, giving score `0.00727` with zero
+qualifying components. Stage 20C also had slightly lower, not higher, near-GT
+multiplicity than compact MFI. Local competition is therefore non-dominant;
+no NMS candidate is authorized.
+
+Because Stage 22C independently passed calibration dominance (`0.60712`, two
+qualifying components), the mechanical rule registers the sole and final
+Stage-22 candidate: `stage22e_positive_support_quantile_calibration`. It keeps
+the frozen Stage-20C detector and changes only final score scale through an
+outer-training-only positive-support empirical-midrank mapping to a 255-point
+median quantile reference. The authoritative protocol is
+`docs/paper/STAGE22E_PREREGISTRATION.md`. Stage 22E must satisfy the unchanged
+joint UDED/standard-Berkeley rule and exact support/order contracts. Pass or
+fail, Stage 22 closes immediately afterward with no sixth stage, replacement,
+tuning loop, or automatic escalation.
+

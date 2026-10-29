@@ -3695,5 +3695,27 @@
       "results/local_dev/stage22d_local_competition_nms_rank_swap_diagnosis/official_eval_manifest.json",
       "results/official_eval/stage22d_local_competition_nms_rank_swap_diagnosis/summary.json"
     ]
+  },
+  "stage22e_positive_support_quantile_calibration": {
+    "description": "Stage 22E single mechanically selected Branch-C candidate: retain the frozen Stage-20C dominant-pair 2-additive Choquet detector and standardize only its final positive scores by mapping per-image average empirical midranks to a 255-point median reference quantile curve fitted strictly from each outer UDED training fold. Zeros, support and within-image ordering are preserved. This is scientific stage 5/5; standard Berkeley validation is conjunctive and Stage 22 stops after the result with no second candidate or tuning pass.",
+    "runner": "python",
+    "path": "automation/stage22e_score_calibration_venv_launcher.py",
+    "args": [],
+    "role": "stage22_single_causal_calibration_candidate",
+    "feedback_policy": "single_stage22e_branch_c_candidate_outer_fold_only_unlabeled_monotone_score_standardization_overlap_clean_uded_cv_and_bsds_validation_joint_rule_no_protected_split_no_second_candidate_stage22_scientific_stage_5_of_5",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage22e_positive_support_quantile_calibration/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage22e_positive_support_quantile_calibration/summary.json",
+      "results/local_dev/stage22e_positive_support_quantile_calibration/variant_ranking.csv",
+      "results/local_dev/stage22e_positive_support_quantile_calibration/fold_results.csv",
+      "results/local_dev/stage22e_positive_support_quantile_calibration/per_image_metrics.csv",
+      "results/local_dev/stage22e_positive_support_quantile_calibration/capacity_parameters.csv",
+      "results/local_dev/stage22e_positive_support_quantile_calibration/score_standardization_reference.csv",
+      "results/local_dev/stage22e_positive_support_quantile_calibration/runtime.csv",
+      "results/local_dev/stage22e_positive_support_quantile_calibration/best_method_preview.png",
+      "results/local_dev/stage22e_positive_support_quantile_calibration/official_eval_manifest.json",
+      "results/official_eval/stage22e_positive_support_quantile_calibration/summary.json"
+    ]
   }
 }

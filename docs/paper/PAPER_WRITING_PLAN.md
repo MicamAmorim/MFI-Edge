@@ -1663,3 +1663,18 @@ Stage 22C is a causal calibration diagnostic with its dominance score frozen
 before inspection. Its GT-derived per-image monotone mapping is an upper bound
 only, and its unlabeled normalization families are non-selective simulations.
 Neither may be reported as a candidate detector.
+
+Stage 22D should be reported as a negative causal diagnosis: the competition-
+dominance components were `0.02180/0/0` (score `0.00727`), no registered early
+false positive was assigned to local competition, and Stage 20C did not show
+excess near-GT multiplicity. Do not infer that NMS is universally harmless;
+the conclusion is limited to the fixed Stage-22D attribution contract.
+
+The mechanical branch therefore authorizes exactly one Stage-22E calibration
+candidate. Describe its positive-support empirical-midrank to outer-training
+median-quantile-reference mapping as a final-score calibration only: the
+Stage-20C descriptors, capacity, context gate, Scharr localizer, and NMS remain
+unchanged, and within-image ordering/support are invariant. Report its final
+joint UDED and standard-Berkeley outcome regardless of sign, followed by the
+required causal table and explicit finite-program stop. Legacy and loose-
+tolerance scores remain descriptive and cannot rescue Stage 22E.

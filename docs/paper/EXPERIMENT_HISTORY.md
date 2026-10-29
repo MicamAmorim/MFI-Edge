@@ -5296,3 +5296,30 @@ Stage 22D is now preregistered as the independent frozen-pipeline local-
 competition/NMS diagnosis. Its score was fixed before output inspection and
 Stage 22E remains unavailable until both dominance scores can be compared
 mechanically.
+
+### Stage 22D closure — local competition rejected as dominant; Stage 22E registered
+
+The byte-verified frozen-pipeline diagnosis reconstructed all 100 compact-MFI
+and all 100 Stage-20C final maps exactly. Stage 20C's high-consensus demotion
+rate was `0.62524` versus `0.62306` for compact MFI, yielding a demotion
+component of only `0.02180`. No early false positive was attributed to the
+fixed local-competition condition, and Stage 20C's near-GT multiplicity was
+slightly lower (`5.36689` versus `5.40864`), so the other two components were
+zero. The frozen competition-dominance score is therefore `0.00727`, with
+zero components above `0.50`; local competition is not dominant. The official
+attachment retained Stage 20C's ODS/OIS/AP contrast of
+`+0.01430/+0.00777/-0.02622`. These diagnostics do not promote either method,
+and compact MFI remains incumbent.
+
+The mechanical Stage-22 rule compares that result with Stage 22C's passing
+calibration score (`0.60712`, two qualifying components) and selects Branch C.
+The single final candidate is
+`stage22e_positive_support_quantile_calibration`, preregistered in
+`docs/paper/STAGE22E_PREREGISTRATION.md`. It leaves the frozen Stage-20C
+detector unchanged and maps each image's positive-score empirical midranks to
+a 255-point median reference quantile curve fitted strictly within the outer
+UDED training fold; zeros, support, ties, and within-image ordering are
+preserved. The family and constants were frozen without using Stage-22C's
+normalization-simulation outcomes. Stage 22 ends after this candidate's
+conjunctive UDED/standard-Berkeley decision, with no second candidate or
+tuning pass.
