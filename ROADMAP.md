@@ -3086,3 +3086,17 @@ negative cells, and freezes at most three primary cells plus matched equal-mean
 controls for Stage 23F. Candidate BSDS validation begins only after the
 Stage-23F protocol is frozen.
 
+## Stage 23E complete - matched validation frontier active
+
+The 120-cell cached landscape completed without re-extracting any descriptor.
+Its fixed frontier selected minimum conjunction on persistence plus tensor
+coherence, nonnegative logistic additive fusion on persistence plus half-disc
+contrast, and median OWA on the FH/half-disc/tensor triple. Each primary is
+paired with the equal mean on identical inputs; compact MFI is unchanged.
+
+The active action is `stage23f_literature_validation_frontier`. It performs
+one native-resolution cached extraction of the four required evidence maps on
+BSDS500 validation, freezes the six score-map sets, and compares them under the
+standard Berkeley development protocol. It identifies transfer relationships
+only and cannot promote a raw landscape cell or alter the incumbent.
+

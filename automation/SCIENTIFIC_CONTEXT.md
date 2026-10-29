@@ -3419,3 +3419,21 @@ counting them as independent wins. The fixed rule in
 cells plus their matched equal-mean controls to Stage 23F. Stage 23E cannot
 promote a detector or inspect candidate BSDS-validation results.
 
+### Stage 23E closure - six-cell validation frontier frozen; Stage 23F registered
+
+The bounded cached landscape completed all 120 nominal cells with all 182
+Stage-23C maps loaded exactly, zero descriptor computation, and no protected-
+lineage byte read. Its frozen rule selected minimum conjunction for Gabor
+persistence plus structure-tensor coherence, nonnegative logistic additive
+fusion for Gabor persistence plus half-disc contrast, and median OWA for FH
+boundaries plus half-disc contrast plus tensor coherence. Each advances only
+with its matched equal-mean control. Compact MFI remains incumbent.
+
+The registered next action is `stage23f_literature_validation_frontier`. It
+fits only from all 14 overlap-clean UDED-selection images, extracts and caches
+the four required native BSDS500-validation evidence maps once, freezes all
+six aggregated map sets, and scores them under standard Berkeley validation.
+The fixed primary-versus-matched-mean rule identifies transfer relationships
+only. No backfill, tuning, detector promotion, or protected-test feedback is
+authorized; Berkeley reference reproduction remains unverified.
+

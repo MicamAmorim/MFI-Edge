@@ -5448,3 +5448,24 @@ Sugeno, gamma-0.55 distorted Choquet, and monotone 2-additive Choquet on the
 frozen sets with common outer-fold memberships. Its fixed rule may forward at
 most three primary cells and their equal-mean controls to Stage 23F. It cannot
 promote a detector or read a candidate BSDS validation result.
+
+### Stage 23E closure - descriptor-aggregator validation frontier frozen
+
+Stage 23E completed the bounded 15-set by eight-family landscape using exactly
+182 Stage-23C cache hits and zero descriptor computations. All 120 nominal
+cells, 1,800 fold rows, fitted-parameter records, negative cells, aliases, and
+the fixed positions 1/7/14 preview are complete. The preregistered rule froze
+minimum conjunction for `gabor4_scale_persistence` plus
+`structure_tensor_coherence`; nonnegative logistic additive fusion for
+`gabor4_scale_persistence` plus `halfdisc_distribution_contrast`; and median
+OWA for `fh_region_boundary`, `halfdisc_distribution_contrast`, and
+`structure_tensor_coherence`. Each advances with its matched equal-mean
+control. The incumbent-only official attachment supplied no candidate result.
+
+The registered next action is `stage23f_literature_validation_frontier` under
+`docs/paper/STAGE23F_PREREGISTRATION.md`. It fits only on the 14 overlap-clean
+UDED images, caches the four required native BSDS500-validation evidence maps
+and all six aggregated map sets, and attaches standard Berkeley scoring. Its
+fixed transfer rule compares each primary only with its matched mean; Stage 23F
+cannot promote a detector or backfill the frontier. Compact MFI remains
+incumbent and reference reproduction remains unverified.

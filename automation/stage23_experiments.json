@@ -88,6 +88,25 @@
       "results/local_dev/stage23e_cached_descriptor_aggregator_landscape/official_eval_manifest.json"
     ]
   },
+  "stage23f_literature_validation_frontier": {
+    "description": "Stage 23F literature-comparable validation of exactly the three Stage-23E primary descriptor-aggregator cells and their matched equal-mean controls on BSDS500 validation, with one-time native descriptor caching and frozen aggregated maps under docs/paper/STAGE23F_PREREGISTRATION.md.",
+    "runner": "python",
+    "path": "automation/stage23f_literature_validation_frontier_launcher.py",
+    "args": [],
+    "role": "development_experiment",
+    "feedback_policy": "bsds500_validation_matched_frontier_relationship_identification_no_detector_promotion",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage23f_literature_validation_frontier/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage23f_literature_validation_frontier/summary.json",
+      "results/local_dev/stage23f_literature_validation_frontier/frontier_fit_parameters.json",
+      "results/local_dev/stage23f_literature_validation_frontier/descriptor_cache_provenance.csv",
+      "results/local_dev/stage23f_literature_validation_frontier/aggregated_cache_provenance.csv",
+      "results/local_dev/stage23f_literature_validation_frontier/frozen_map_hashes.csv",
+      "results/local_dev/stage23f_literature_validation_frontier/best_method_preview.png",
+      "results/local_dev/stage23f_literature_validation_frontier/official_eval_manifest.json"
+    ]
+  },
   "stage23_literature_escalation": {
     "description": "Repeatable Stage-23 literature/mechanism checkpoint for resolving descriptor, aggregator, protocol, implementation, or gap-guided design uncertainty without benchmark scoring.",
     "runner": "python",

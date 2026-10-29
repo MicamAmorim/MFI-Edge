@@ -1737,3 +1737,11 @@ one-input and two-input algebraic aliases. Its shared-capacity Sugeno versus
 fixed frontier rule forwards no more than three primary cells plus matched
 equal-mean controls. Candidate BSDS validation belongs to Stage 23F, not the
 Stage-23E screen.
+
+Stage 23E now supplies that complete 120-cell landscape and freezes three
+primary aggregation relationships with matched equal-mean controls. The Stage
+23F table must preserve those pairings and report primary-minus-control
+ODS/OIS/AP under the same standard Berkeley validation protocol. Describe a
+passing result as transfer of an aggregation relationship, not as detector
+promotion; retain the reference-unverified matcher caveat and all negative
+relationships.

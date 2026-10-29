@@ -60,3 +60,17 @@ not counted as independent wins. The fixed rule in
 `docs/paper/STAGE23E_PREREGISTRATION.md` may forward at most three primary
 cells plus their equal-mean controls to Stage 23F. Stage 23E cannot read a BSDS
 candidate result, promote a detector, or alter compact MFI.
+
+Stage 23E completed all 120 nominal cells with 182 exact cache hits and zero
+computations. Its frozen rule selected three primary relationships: minimum
+conjunction for persistence plus structure-tensor coherence, nonnegative
+logistic additive fusion for persistence plus half-disc contrast, and median
+OWA for FH boundaries plus half-disc contrast plus tensor coherence. Each
+advances only with its matched equal-mean control; compact MFI is unchanged.
+
+The active next task is `stage23f_literature_validation_frontier`. It fits the
+frozen interfaces on all 14 overlap-clean UDED images, extracts only four
+needed BSDS500-validation descriptor maps once per native image through the
+certified cache, freezes all six score-map sets, and attaches standard Berkeley
+validation scoring. It identifies transferable aggregation relationships but
+cannot promote a detector. Reference reproduction remains unverified.
