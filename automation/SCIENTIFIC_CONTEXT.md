@@ -3250,3 +3250,23 @@ maps. The already-certified aggregate KITT score is reported separately for
 the incumbent and Stage 20C methods covered by Stage 21B; no legacy or loose
 metric can promote or tune a model.
 
+### Stage 22B closure - Stage 22C registered
+
+The certified thesis-legacy retrospective completed on 100 frozen BSDS500-
+validation maps and 546 image/annotation pairs per method. Mean per-image best
+legacy F0.5 was `0.571790` for compact MFI, `0.602663` for Stage 20C, and
+`0.602248` for the labeled rejected Stage 21H comparator. Stage 20C also
+improved all-GT mean F0.5 from `0.497851` to `0.525383`. These historical-
+protocol results are descriptive and cannot promote or tune a detector. The
+separate standard-Berkeley attachment preserved Stage 20C's ODS/OIS/AP pattern
+of `+0.014309/+0.008472/-0.026222`. Compact MFI remains incumbent.
+
+The registered next action is
+`stage22c_inter_image_score_calibration_diagnosis` (scientific stage 3/5),
+under `docs/paper/STAGE22C_PREREGISTRATION.md`. It uses frozen maps and existing
+standard-Berkeley per-image count tables to quantify threshold dispersion,
+pooled-versus-within-image ranking, a GT-derived monotone oracle upper bound,
+and fixed unlabeled normalization simulations. Its calibration-dominance score
+and thresholds are frozen before inspection. It fits, selects, and promotes
+nothing; completion advances only to Stage 22D.
+

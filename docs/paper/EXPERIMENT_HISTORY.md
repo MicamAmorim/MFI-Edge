@@ -5248,3 +5248,26 @@ because its exact retry-2 cache contains all 100 frozen maps. The aggregate
 KITT Stage-21B score remains in a separate table for the incumbent and Stage
 20C methods previously covered by that certified track. No legacy metric may
 promote or tune a detector.
+
+### Stage 22B complete - thesis-legacy comparison recorded; Stage 22C registered
+
+The certified historical path completed on the frozen compact-MFI, Stage-20C,
+and rejected Stage-21H validation maps. Across 100 images and 546 per-GT rows
+per method, mean per-image best legacy F0.5 was `0.571790` for compact MFI,
+`0.602663` for Stage 20C, and `0.602248` for Stage 21H. Stage 20C changed the
+all-per-GT mean from `0.497851` to `0.525383`. Bootstrap intervals, per-GT
+rows, best-annotation distributions, frozen-map hashes, and the fixed positions
+1/50/100 preview are complete.
+
+This does not reverse the modern-protocol rejection. Thesis best-match,
+aggregate KITT, loose Berkeley, and standard Berkeley are distinct endpoints;
+none of the legacy/loose tracks is promotional. The documentary standard-
+Berkeley attachment again changed Stage-20C ODS/OIS/AP by
+`+0.014309/+0.008472/-0.026222`, and reference reproduction remains
+unverified. Compact distorted-Choquet MFI remains incumbent.
+
+Scientific stage 3/5 is now registered as
+`stage22c_inter_image_score_calibration_diagnosis`, with its immutable contract
+in `docs/paper/STAGE22C_PREREGISTRATION.md`. It freezes the calibration-
+dominance statistic before analysis, uses exact frozen maps and existing
+standard-Berkeley counts, and cannot fit, select, or promote a detector.

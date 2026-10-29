@@ -3627,5 +3627,28 @@
       "results/local_dev/stage22b_thesis_legacy_retrospective_benchmark/official_eval_manifest.json",
       "results/official_eval/stage22b_thesis_legacy_retrospective_benchmark/summary.json"
     ]
+  },
+  "stage22c_inter_image_score_calibration_diagnosis": {
+    "description": "Stage 22C frozen-map calibration diagnosis: quantify per-image score/threshold dispersion, pooled-versus-within-image ranking, a GT-derived monotone oracle upper bound, and fixed unlabeled normalization simulations for compact MFI and Stage 20C, then compute the preregistered calibration-dominance score. Diagnostic only; no detector fit, matcher rerun, selection, promotion, or protected split read.",
+    "runner": "python",
+    "path": "automation/stage22c_inter_image_score_calibration_diagnosis.py",
+    "args": [],
+    "role": "stage22_inter_image_score_calibration_diagnosis",
+    "feedback_policy": "frozen_maps_and_standard_berkeley_count_tables_only_gt_oracle_upper_bound_and_unlabeled_normalizations_diagnostic_no_detector_fit_regeneration_matcher_rerun_selection_promotion_or_protected_split_read_stage22_scientific_stage_3_of_5",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/summary.json",
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/summary.md",
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/per_image_score_threshold_metrics.csv",
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/threshold_associations.csv",
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/rank_decomposition.csv",
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/oracle_rescaling.csv",
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/unlabeled_normalization_simulations.csv",
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/calibration_dominance.csv",
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/best_method_preview.png",
+      "results/local_dev/stage22c_inter_image_score_calibration_diagnosis/official_eval_manifest.json",
+      "results/official_eval/stage22c_inter_image_score_calibration_diagnosis/summary.json"
+    ]
   }
 }

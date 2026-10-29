@@ -1647,3 +1647,19 @@ recall also collapsed beyond tolerance. Do not imply a second Stage-21H
 candidate, post-hoc loss balancing, pair reweighting, calibration repair, or
 automatic literature continuation. The finite program ends without promotion
 and without satisfying the generalized SOTA objective.
+
+## Stage 22 thesis-legacy and causal-resolution note
+
+Keep the Stage-22B legacy table separate from every Berkeley and aggregate-
+KITT table. The exact historical best-per-annotation procedure gives mean
+best-match F0.5 `0.571790` for compact MFI and `0.602663` for Stage 20C, while
+the transparent all-GT means are `0.497851` and `0.525383`. Present this as a
+longitudinal protocol bridge, not a detector promotion or a repair of the
+standard-Berkeley AP deficit. Retain the reference-unverified caveat and show
+the per-GT distribution beside the best-match summary to expose annotation
+selection.
+
+Stage 22C is a causal calibration diagnostic with its dominance score frozen
+before inspection. Its GT-derived per-image monotone mapping is an upper bound
+only, and its unlabeled normalization families are non-selective simulations.
+Neither may be reported as a candidate detector.

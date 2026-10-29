@@ -2946,3 +2946,19 @@ frozen Stage-21H rejected diagnostic comparator. It is comparison-only; the
 thesis, aggregate-KITT, loose-Berkeley, and standard-Berkeley protocols remain
 separate and non-interchangeable.
 
+## Stage 22B complete - inter-image calibration diagnosis active
+
+The thesis-legacy bridge is complete. Stage 20C improved mean per-image best
+legacy F0.5 from `0.571790` to `0.602663` and all-GT mean F0.5 from `0.497851`
+to `0.525383`, but these historical metrics are non-promotional. The standard-
+Berkeley attachment retained Stage 20C's ODS/OIS gains and AP loss
+(`+0.014309/+0.008472/-0.026222`), so compact MFI remains incumbent.
+
+The active next action is `stage22c_inter_image_score_calibration_diagnosis`,
+scientific stage 3/5. Its preregistered calibration-dominance score combines
+per-image best-threshold dispersion, recoverable GT-oracle diagnostic AP, and
+pooled-versus-within-image AUC discrepancy. Fixed unlabeled normalization
+families are simulations only and cannot be selected from validation outcomes.
+Completion advances only to the separately preregistered Stage 22D local-
+competition diagnosis.
+
