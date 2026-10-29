@@ -3071,3 +3071,18 @@ GT-conditioned complementarity profiles, and applies the frozen bounded rule
 to define the Stage-23E input sets. Stage 23E cannot begin until this map and
 its deterministic pair/triple shortlist are complete.
 
+## Stage 23D complete - cached aggregation landscape active
+
+Stage 23D passed with all 182 descriptor maps loaded from the certified cache,
+zero extraction calls, all 78 pairwise profiles, and no protected-lineage byte
+read. The frozen Stage-23E design contains eight cross-family pairs, four
+triples, the incumbent anchor, and two single controls. The complementarity
+analysis is explanatory and did not change compact MFI.
+
+The active action is `stage23e_cached_descriptor_aggregator_landscape`. It
+compares the eight preregistered aggregation behaviors under identical cached
+inputs and shared outer-fold memberships, preserves algebraic aliases and
+negative cells, and freezes at most three primary cells plus matched equal-mean
+controls for Stage 23F. Candidate BSDS validation begins only after the
+Stage-23F protocol is frozen.
+

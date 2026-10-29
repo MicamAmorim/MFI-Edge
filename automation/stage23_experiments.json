@@ -65,6 +65,29 @@
       "results/local_dev/stage23d_cached_complementarity_map/official_eval_manifest.json"
     ]
   },
+  "stage23e_cached_descriptor_aggregator_landscape": {
+    "description": "Stage 23E bounded descriptor-by-aggregator UDED landscape over only the Stage-23D frozen sets and exact Stage-23C cached maps, comparing eight frozen aggregation behaviors under docs/paper/STAGE23E_PREREGISTRATION.md and freezing at most six matched Stage-23F validation cells.",
+    "runner": "python",
+    "path": "automation/stage23e_cached_descriptor_aggregator_landscape_launcher.py",
+    "args": [],
+    "role": "development_experiment",
+    "feedback_policy": "overlap_clean_uded_cached_factorial_screen_frontier_selection_no_detector_promotion",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage23e_cached_descriptor_aggregator_landscape/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage23e_cached_descriptor_aggregator_landscape/summary.json",
+      "results/local_dev/stage23e_cached_descriptor_aggregator_landscape/descriptor_cache_provenance.csv",
+      "results/local_dev/stage23e_cached_descriptor_aggregator_landscape/landscape_cells.csv",
+      "results/local_dev/stage23e_cached_descriptor_aggregator_landscape/fold_metrics.csv",
+      "results/local_dev/stage23e_cached_descriptor_aggregator_landscape/per_image_metrics.csv",
+      "results/local_dev/stage23e_cached_descriptor_aggregator_landscape/fit_parameters.csv",
+      "results/local_dev/stage23e_cached_descriptor_aggregator_landscape/evidence_aggregator_profiles.csv",
+      "results/local_dev/stage23e_cached_descriptor_aggregator_landscape/stage23f_frontier.json",
+      "results/local_dev/stage23e_cached_descriptor_aggregator_landscape/runtime.csv",
+      "results/local_dev/stage23e_cached_descriptor_aggregator_landscape/best_method_preview.png",
+      "results/local_dev/stage23e_cached_descriptor_aggregator_landscape/official_eval_manifest.json"
+    ]
+  },
   "stage23_literature_escalation": {
     "description": "Repeatable Stage-23 literature/mechanism checkpoint for resolving descriptor, aggregator, protocol, implementation, or gap-guided design uncertainty without benchmark scoring.",
     "runner": "python",

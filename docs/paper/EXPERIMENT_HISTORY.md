@@ -5428,3 +5428,23 @@ all thirteen exact cached maps and, under the prospective rule in
 may freeze at most eight cross-family pairs, four triples, the unchanged
 incumbent anchor, and two necessary single controls for Stage 23E. No descriptor
 extractor, aggregator fit, detector promotion, or protected split is permitted.
+
+### Stage 23D closure - bounded input sets frozen; Stage 23E registered
+
+The cached complementarity map completed with all 182 exact Stage-23C maps
+loaded and no extraction, repair, or protected-lineage byte access. All 78
+unordered pairs were reported. The prospective rule froze eight cross-family
+pairs, four triples, the five-cue incumbent anchor, and the two single controls
+`semiglobal_changepoint` and `halfdisc_distribution_contrast`. These selections
+define a bounded factorial screen and do not alter compact MFI. The official
+BSDS500-validation attachment scored only the unchanged incumbent and contains
+no candidate comparison.
+
+The registered next action is
+`stage23e_cached_descriptor_aggregator_landscape`. Under
+`docs/paper/STAGE23E_PREREGISTRATION.md`, it compares exactly equal mean,
+nonnegative logistic additive, maximum, minimum, median OWA, shared-capacity
+Sugeno, gamma-0.55 distorted Choquet, and monotone 2-additive Choquet on the
+frozen sets with common outer-fold memberships. Its fixed rule may forward at
+most three primary cells and their equal-mean controls to Stage 23F. It cannot
+promote a detector or read a candidate BSDS validation result.

@@ -1726,3 +1726,14 @@ the supplement so later exclusions and algebraic duplicate cells are visible.
 The cache certification is infrastructure evidence and belongs in a
 reproducibility appendix. Preserve negative factorial cells: the scientific
 claim is about relationships, not only the best scalar F1.
+
+Stage 23D now supplies the first empirical landscape figure: all 78 pairwise
+relationships over 182 exact cache hits, with the prospective rule forwarding
+eight cross-family pairs, four triples, the incumbent anchor, and two single
+controls. Report these as bounded design inputs, not promoted descriptors.
+Stage 23E must show all 120 nominal set-family cells and visibly label
+one-input and two-input algebraic aliases. Its shared-capacity Sugeno versus
+2-additive Choquet comparison isolates max-min from arithmetic semantics; its
+fixed frontier rule forwards no more than three primary cells plus matched
+equal-mean controls. Candidate BSDS validation belongs to Stage 23F, not the
+Stage-23E screen.

@@ -45,10 +45,18 @@ were computed once, persisted, and then exactly reloaded with valid manifests;
 all 13 non-selective repeated-CV baselines and the positions 1/7/14 preview
 completed. The individual scores are descriptive and did not prune the pool.
 
-The active next task is `stage23d_cached_complementarity_map`. It must load all
-182 exact maps without invoking an extractor, quantify all 78 pairwise
-redundancy/unique-TP/unique-FP/conditional-correctness relationships, and apply
-the prospectively frozen rule in `docs/paper/STAGE23D_PREREGISTRATION.md` to
-forward at most eight cross-family pairs, four triples, the incumbent anchor,
-and two single controls. It cannot fit an aggregator, promote a detector, or
-alter compact MFI.
+Stage 23D completed with 182 exact cache hits, zero computations, all 78 pair
+rows, and no protected-lineage byte read. Its prospective rule froze eight
+cross-family pairs, four triples, the incumbent five-cue anchor, and the single
+controls `semiglobal_changepoint` and `halfdisc_distribution_contrast`.
+Compact MFI remains unchanged; the incumbent-only BSDS attachment supplied no
+candidate-selection evidence.
+
+The active next task is
+`stage23e_cached_descriptor_aggregator_landscape`. It compares exactly the
+eight frozen aggregation behaviors over only those Stage-23D sets, using shared
+outer-fold memberships and exact cached maps. Algebraic aliases are labeled,
+not counted as independent wins. The fixed rule in
+`docs/paper/STAGE23E_PREREGISTRATION.md` may forward at most three primary
+cells plus their equal-mean controls to Stage 23F. Stage 23E cannot read a BSDS
+candidate result, promote a detector, or alter compact MFI.

@@ -3401,3 +3401,21 @@ most eight cross-family pairs, four triples, the incumbent anchor, and two
 single controls for Stage 23E. It cannot fit an aggregator, promote a detector,
 read a protected split, or change the incumbent.
 
+### Stage 23D closure - bounded aggregation inputs frozen; Stage 23E registered
+
+Stage 23D loaded all 182 exact cached maps with zero computations, reported all
+78 pair relationships, and read no protected-lineage bytes. Its prospective
+rule froze eight cross-family pairs, four triples, the compact five-cue anchor,
+and single controls `semiglobal_changepoint` and
+`halfdisc_distribution_contrast`. The incumbent-only BSDS attachment supplied
+no candidate comparison and compact MFI remains unchanged.
+
+The registered next action is
+`stage23e_cached_descriptor_aggregator_landscape`. It compares exactly the
+eight frozen aggregation behaviors on only those sets with common outer-fold
+memberships and exact cache reuse. Algebraic aliases are recorded without
+counting them as independent wins. The fixed rule in
+`docs/paper/STAGE23E_PREREGISTRATION.md` may forward at most three primary
+cells plus their matched equal-mean controls to Stage 23F. Stage 23E cannot
+promote a detector or inspect candidate BSDS-validation results.
+
