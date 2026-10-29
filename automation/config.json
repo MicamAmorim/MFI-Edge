@@ -1,6 +1,7 @@
 {
-  "branch": "mfi-edge-stage15",
-  "start_experiment": "stage22a_thesis_legacy_protocol_certification",
+  "branch": "mfi-edge-stage23",
+  "experiments_file": "automation/stage23_experiments.json",
+  "start_experiment": "stage23a_descriptor_aggregator_landscape_planning",
   "default_model": "gpt-5.6-sol",
   "max_iterations": 1000000,
   "max_codex_calls": 1000000,
@@ -19,8 +20,8 @@
   "research_fallback_to_normal_codex": true,
   "analysis_retry_backoff_seconds": 20,
   "analysis_retry_backoff_max_seconds": 300,
-  "autonomous_research_fallback": "autonomous_literature_escalation",
-  "research_agenda_file": "docs/paper/STAGE22_RESEARCH_PROGRAM.md",
+  "autonomous_research_fallback": "stage23_literature_escalation",
+  "research_agenda_file": "docs/paper/STAGE23_EVIDENCE_AGGREGATION_CAMPAIGN.md",
   "require_visual_preview": true,
   "visual_preview_filename": "best_method_preview.png",
   "official_evaluation": {
