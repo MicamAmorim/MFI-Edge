@@ -3,8 +3,9 @@ from __future__ import annotations
 """MFI-Edge research autopilot v5 for Stage 23.
 
 v5 keeps the mature v4 orchestration/evaluation behavior while isolating the
-new campaign in its own experiment registry and injecting Stage-23-specific
-cache/protocol rules after the generic policy/context blocks.
+new campaign in its own experiment registry and appending Stage-23-specific
+cache/protocol rules after the generic policy/context blocks so the active
+campaign override has final precedence.
 """
 
 from pathlib import Path
@@ -39,18 +40,17 @@ def _read(path: Path) -> str:
 
 def _build_prompt_v5(exp_id: str, spec: dict, exit_code: int, log_path: Path, result_summary: dict) -> str:
     base = _V4_BUILD_PROMPT(exp_id, spec, exit_code, log_path, result_summary)
-    return (
-        "# Stage 23 mandatory override\n\n"
+    override = (
+        "# Stage 23 mandatory final override\n\n"
         "The following policy and context are authoritative for the active Stage-23 branch. "
-        "They supersede conflicting historical references in the generic policy, especially "
+        "They supersede conflicting historical references in the generic policy above, especially "
         "the active experiment-registry filename and campaign ordering.\n\n"
         "## automation/STAGE23_POLICY.md\n\n"
         + _read(STAGE23_POLICY)
         + "\n\n## automation/STAGE23_CONTEXT.md\n\n"
         + _read(STAGE23_CONTEXT)
-        + "\n\n"
-        + base
     )
+    return base + "\n\n" + override + "\n"
 
 
 core._build_prompt = _build_prompt_v5
