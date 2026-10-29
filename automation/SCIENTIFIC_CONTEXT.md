@@ -3325,3 +3325,23 @@ clean UDED and standard Berkeley validation. Whatever the result, Stage 22
 must then return `continue=false`; no second candidate, tuning pass, sixth
 stage, or automatic escalation is permitted.
 
+### Stage 22E closure - positive-support quantile calibration rejected; Stage 22 complete
+
+The single mechanically selected Branch-C candidate failed both sides of its
+conjunctive promotion rule. On overlap-clean UDED selection, aggregate
+F1/precision/recall and mean fold F1 changed by
+`-0.117803/-0.116321/-0.113429/-0.112746`, with `0/15` fold wins. All `15/15`
+capacity fits converged and exact support, within-image ordering, and
+repeatability contracts passed, so this is not a harness failure. On standard
+Berkeley BSDS500 validation, ODS/OIS improved by
+`+0.014451/+0.008171`, but AP fell by `-0.040971`. The fixed unlabeled
+positive-support quantile-reference standardization is therefore rejected and
+must not be tuned or replaced from this result.
+
+Stage 22 is complete at scientific stage 5/5. Compact distorted-Choquet MFI
+remains the incumbent; the generalized non-neural SOTA goal is unmet and
+Berkeley reference reproduction remains unverified. Per the finite-program
+contract, no sixth stage, second candidate, tuning pass, replacement, or
+automatic literature escalation is registered. The controller must stop with
+`continue=false` for human synthesis and planning.
+

@@ -1678,3 +1678,22 @@ unchanged, and within-image ordering/support are invariant. Report its final
 joint UDED and standard-Berkeley outcome regardless of sign, followed by the
 required causal table and explicit finite-program stop. Legacy and loose-
 tolerance scores remain descriptive and cannot rescue Stage 22E.
+
+## Stage 22 final outcome and causal synthesis
+
+Report Stage 22E as a decisive conjunctive rejection, not an ODS/OIS near
+miss. The fixed calibration preserved support and within-image ordering and
+all capacity fits converged, but overlap-clean UDED aggregate F1 fell by
+`-0.117803` with `0/15` fold wins. Standard-Berkeley ODS/OIS rose by
+`+0.014451/+0.008171`, while AP fell by `-0.040971`. The correct claim is that
+the diagnosed calibration association did not yield a transferable repair
+under the preregistered positive-support quantile-reference mechanism.
+
+The Stage-22 synthesis table should preserve the distinctions recorded in the
+experiment history: fixed offset and fixed local competition were rejected as
+dominant causes; Stage-20C context itself was not globally weak; human-
+consensus ordering remained weak; thesis-legacy compatibility was established
+only as a separate historical bridge; and the specific Stage-22E calibration
+was falsified. Keep compact MFI as the incumbent, retain the reference-
+unverified Berkeley caveat, and state explicitly that the bounded program ends
+without a sixth experiment or automatic escalation.

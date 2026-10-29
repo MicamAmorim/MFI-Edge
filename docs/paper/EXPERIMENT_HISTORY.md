@@ -5323,3 +5323,41 @@ preserved. The family and constants were frozen without using Stage-22C's
 normalization-simulation outcomes. Stage 22 ends after this candidate's
 conjunctive UDED/standard-Berkeley decision, with no second candidate or
 tuning pass.
+
+### Stage 22E complete - quantile calibration rejected; bounded program closed
+
+The sole Stage-22E candidate completed all registered artifacts and
+implementation checks. Relative to compact MFI on the 14-image overlap-clean
+UDED selection set, its aggregate F1, precision, recall, and mean fold F1
+changed by `-0.117803`, `-0.116321`, `-0.113429`, and `-0.112746`. It won
+`0/15` folds. All `15/15` capacity fits converged, with zero support,
+within-image-ordering, or repeatability violations. The failure is therefore
+scientific rather than a broken transform or fit.
+
+The required standard-Berkeley BSDS500-validation attachment changed
+ODS/OIS/AP by `+0.014451/+0.008171/-0.040971`. The positive operating-point
+movement does not rescue the material AP regression, and the UDED gate had
+already failed decisively. The fixed positive-support empirical-midrank to
+outer-training median-quantile-reference calibration is rejected. Compact
+distorted-Choquet MFI remains the incumbent; reference reproduction remains
+unverified and the generalized SOTA goal remains unmet.
+
+The fixed preview uses overlap-clean UDED positions 1, 7, and 14 with columns
+input, ground truth, compact-MFI out-of-fold prediction, calibrated Stage-20C
+out-of-fold prediction, and calibrated continuous score. It is documentary
+only.
+
+| hypothesis | evidence for | evidence against | falsified? | implication |
+|---|---|---|---|---|
+| Fixed spatial offset explains the AP deficit | Stage 20C improved tolerant localization and ODS | Its AP deficit persisted and widened across Berkeley distances `0.00375` to `0.025` | Yes, as the dominant explanation | Do not repair the ranking problem by loosening tolerance or applying a fixed displacement |
+| Weak context is the primary failure | Contextual aggregation is compressed by later pipeline stages | Stage 21F found substantially better Stage-20C context AUC/AP and byte-matched final reconstruction | Yes, as a wholesale explanation | The issue lies in transfer/ranking behavior, not absence of useful context |
+| NMS/local competition dominates | NMS compresses both methods' diagnostic discrimination | Stage 22D score was `0.00727`; no qualifying component and no excess multiplicity | Yes, under the fixed attribution contract | No NMS branch or parameter sweep is justified |
+| Inter-image calibration dominates | Stage 22C score was `0.60712`, with threshold dispersion and large GT-oracle headroom | Cross-image versus within-image AUC discrepancy was only `0.00107`; Stage 22E then collapsed UDED and lost BSDS AP | Mixed; the fixed quantile remedy is falsified | Calibration remains a diagnostic association, not an established repair mechanism |
+| Human-consensus ordering is adequate | Stage 20C was marginally above compact MFI | All methods had weak correlations and near-chance pairwise accuracy; Stage 21H did not repair AP | Yes | Consensus weakness remains descriptive and cannot motivate another candidate in this program |
+| Thesis-legacy protocol is compatible | Stage 22A passed hashes and microcases; Stage 22B scored all frozen maps and GTs | Best-public-source and historical-protocol caveats remain | No, compatibility was established with caveats | Use legacy results only as a separate longitudinal bridge, never for promotion |
+| Positive-support quantile calibration repairs global ranking | It preserved support/order and improved BSDS ODS/OIS | UDED F1 `-0.117803`, `0/15` wins, and BSDS AP `-0.040971` | Yes | Reject the fixed mechanism; no tuning, replacement, or sixth Stage-22 experiment |
+
+Stage 22 closes at scientific stage 5/5. Its contract permits no second
+candidate, replacement, post-hoc tuning, sixth experiment, or automatic
+literature escalation. The next action is human synthesis and planning, not a
+registered autonomous experiment.

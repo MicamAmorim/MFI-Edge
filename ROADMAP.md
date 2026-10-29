@@ -2999,3 +2999,18 @@ joint UDED/standard-Berkeley rule and exact support/order contracts. Pass or
 fail, Stage 22 closes immediately afterward with no sixth stage, replacement,
 tuning loop, or automatic escalation.
 
+## Stage 22 complete - final calibration candidate rejected
+
+Stage 22E passed every implementation contract but failed both development
+axes. On overlap-clean UDED selection, aggregate F1/precision/recall and mean
+fold F1 changed by `-0.117803/-0.116321/-0.113429/-0.112746`, with `0/15`
+fold wins. Standard-Berkeley validation changed ODS/OIS/AP by
+`+0.014451/+0.008171/-0.040971`. The AP regression and decisive UDED collapse
+reject the fixed positive-support quantile-reference standardization.
+
+Compact distorted-Choquet MFI remains incumbent. The five-stage budget is
+exhausted, the generalized SOTA goal is unmet, and Berkeley reference
+reproduction remains unverified. No next experiment, replacement calibration,
+parameter tuning, sixth stage, or automatic literature escalation is
+registered. The roadmap stops here for human synthesis and planning.
+
