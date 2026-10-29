@@ -43,6 +43,28 @@
       "results/local_dev/stage23c_cached_uded_descriptor_baselines/official_eval_manifest.json"
     ]
   },
+  "stage23d_cached_complementarity_map": {
+    "description": "Stage 23D GT-conditioned redundancy/complementarity analysis over all 13 exact Stage-23C cached maps on the identical 14-image overlap-clean UDED manifest, freezing at most eight cross-family pairs, four triples, the incumbent anchor, and two single controls for Stage 23E under docs/paper/STAGE23D_PREREGISTRATION.md.",
+    "runner": "python",
+    "path": "automation/stage23d_cached_complementarity_map_launcher.py",
+    "args": [],
+    "role": "development_analysis",
+    "feedback_policy": "overlap_clean_uded_gt_conditioned_complementarity_selection_no_detector_promotion",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage23d_cached_complementarity_map/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage23d_cached_complementarity_map/summary.json",
+      "results/local_dev/stage23d_cached_complementarity_map/descriptor_cache_provenance.csv",
+      "results/local_dev/stage23d_cached_complementarity_map/pairwise_complementarity.csv",
+      "results/local_dev/stage23d_cached_complementarity_map/pairwise_per_image.csv",
+      "results/local_dev/stage23d_cached_complementarity_map/operating_regime_complementarity.csv",
+      "results/local_dev/stage23d_cached_complementarity_map/redundancy_clusters.json",
+      "results/local_dev/stage23d_cached_complementarity_map/triple_complementarity.csv",
+      "results/local_dev/stage23d_cached_complementarity_map/stage23e_input_sets.json",
+      "results/local_dev/stage23d_cached_complementarity_map/best_method_preview.png",
+      "results/local_dev/stage23d_cached_complementarity_map/official_eval_manifest.json"
+    ]
+  },
   "stage23_literature_escalation": {
     "description": "Repeatable Stage-23 literature/mechanism checkpoint for resolving descriptor, aggregator, protocol, implementation, or gap-guided design uncertainty without benchmark scoring.",
     "runner": "python",

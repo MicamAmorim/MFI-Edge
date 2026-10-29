@@ -5409,3 +5409,22 @@ cache identities, and reports individual-map 5x3 threshold-CV baselines and a
 fixed positions 1/7/14 atlas. It cannot prune or promote a descriptor; Stage
 23D must analyze complementarity over every cached map. Compact MFI remains
 incumbent.
+
+### Stage 23C closure - cached descriptor atlas complete; Stage 23D registered
+
+Stage 23C completed on all 14 overlap-clean UDED-selection images after
+excluding known protected BSDS-test lineage item `03-35028` before byte access.
+The frozen 13-map pool produced 182 cache misses on its one authorized
+extraction pass, followed by 182 exact reload/manifest validations. All maps
+were finite and shape-correct; every individual-map 5x3 threshold-CV baseline,
+per-image row, score-distribution summary, and the fixed positions 1/7/14
+preview completed. These individual results are non-selective and do not alter
+the compact-MFI incumbent. The incumbent-only BSDS500-validation attachment
+contains no descriptor comparison and retains the reference-unverified caveat.
+
+The registered next action is `stage23d_cached_complementarity_map`. It consumes
+all thirteen exact cached maps and, under the prospective rule in
+`docs/paper/STAGE23D_PREREGISTRATION.md`, measures all 78 pair relationships and
+may freeze at most eight cross-family pairs, four triples, the unchanged
+incumbent anchor, and two necessary single controls for Stage 23E. No descriptor
+extractor, aggregator fit, detector promotion, or protected split is permitted.

@@ -3383,3 +3383,21 @@ byte access), validate all 182 cache identities, and report non-selective
 individual 5x3 threshold-CV baselines with a fixed preview. Stage 23C cannot
 prune cues or change the incumbent; Stage 23D must consume every cached map.
 
+### Stage 23C closure - cached UDED evidence atlas complete; Stage 23D registered
+
+The frozen 13-map pool completed its single authorized extraction on all 14
+overlap-clean UDED-selection images. The known protected-lineage item was
+excluded before byte access. All 182 artifacts were persisted and then exactly
+reloaded with valid hashes/manifests; every non-selective individual-map 5x3
+threshold-CV baseline and the fixed positions 1/7/14 preview completed. These
+individual results do not prune the pool or alter compact MFI, and the official
+BSDS attachment is incumbent-only.
+
+The registered next action is `stage23d_cached_complementarity_map`. It loads
+all 182 exact cache maps without extraction, reports all 78 pairwise
+redundancy/unique-TP/unique-FP/conditional-correctness relationships, and uses
+the prospective rule in `docs/paper/STAGE23D_PREREGISTRATION.md` to freeze at
+most eight cross-family pairs, four triples, the incumbent anchor, and two
+single controls for Stage 23E. It cannot fit an aggregator, promote a detector,
+read a protected split, or change the incumbent.
+

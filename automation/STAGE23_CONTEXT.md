@@ -39,9 +39,16 @@ avoided extractor calls, scientific changes made distinct keys, manifests and
 artifact hashes agreed, corruption failed closed, GT-declared inference was
 rejected before computation, and atomic writes left no temporary file.
 
-The active next task is `stage23c_cached_uded_descriptor_baselines`. It reads
-only the 14-image overlap-clean UDED selection set, excluding known BSDS-test
-lineage item `03-35028` before byte access. It extracts the frozen 13-map pool
-once, validates all 182 identities, and reports non-selective individual-map
-5x3 threshold-CV baselines plus a fixed positions 1/7/14 preview. Stage 23C
-cannot prune a descriptor or alter MFI; Stage 23D must consume every cached map.
+Stage 23C completed on the 14-image overlap-clean UDED selection set without
+reading the excluded protected-lineage item. All 182 frozen descriptor maps
+were computed once, persisted, and then exactly reloaded with valid manifests;
+all 13 non-selective repeated-CV baselines and the positions 1/7/14 preview
+completed. The individual scores are descriptive and did not prune the pool.
+
+The active next task is `stage23d_cached_complementarity_map`. It must load all
+182 exact maps without invoking an extractor, quantify all 78 pairwise
+redundancy/unique-TP/unique-FP/conditional-correctness relationships, and apply
+the prospectively frozen rule in `docs/paper/STAGE23D_PREREGISTRATION.md` to
+forward at most eight cross-family pairs, four triples, the incumbent anchor,
+and two single controls. It cannot fit an aggregator, promote a detector, or
+alter compact MFI.

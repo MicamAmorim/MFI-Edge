@@ -3057,3 +3057,17 @@ cache identities, and report non-selective individual-map repeated-CV
 baselines. No descriptor may be pruned from these results; Stage 23D must use
 all cached maps for prospective complementarity analysis.
 
+## Stage 23C complete - complementarity mapping active
+
+The one-time UDED extraction completed for all 13 frozen maps on 14
+overlap-clean images. All 182 artifacts were subsequently reloaded and
+manifest-validated exactly, with no cache repair and no protected-lineage byte
+read. Individual descriptor baselines are descriptive only and compact MFI is
+unchanged.
+
+The active action is `stage23d_cached_complementarity_map`. It loads rather
+than recomputes the complete cache, reports all 78 pairwise redundancy and
+GT-conditioned complementarity profiles, and applies the frozen bounded rule
+to define the Stage-23E input sets. Stage 23E cannot begin until this map and
+its deterministic pair/triple shortlist are complete.
+
