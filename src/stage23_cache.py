@@ -33,6 +33,19 @@ class CacheCorruptionError(CacheError):
     pass
 
 
+def _json_canonical(value: Any) -> Any:
+    """Normalize tuples/numpy-ish scalar values into stable JSON-compatible data."""
+    return json.loads(
+        json.dumps(
+            value,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=False,
+            default=str,
+        )
+    )
+
+
 @dataclass(frozen=True)
 class CacheIdentity:
     dataset: str
@@ -51,7 +64,7 @@ class CacheIdentity:
     def canonical_payload(self) -> dict[str, Any]:
         payload = asdict(self)
         payload["schema_version"] = SCHEMA_VERSION
-        return payload
+        return _json_canonical(payload)
 
     def cache_key(self) -> str:
         raw = json.dumps(
@@ -59,13 +72,14 @@ class CacheIdentity:
             sort_keys=True,
             separators=(",", ":"),
             ensure_ascii=False,
-            default=str,
         ).encode("utf-8")
         return hashlib.sha256(raw).hexdigest()
 
 
 def _safe_component(value: str) -> str:
-    value = str(value).strip().replace("\\", "_").replace("/", "_")
+    value = str(value).strip()
+    for ch in '\\/:*?"<>|':
+        value = value.replace(ch, "_")
     if not value or value in {".", ".."}:
         raise ValueError(f"unsafe/empty cache path component: {value!r}")
     return value
@@ -158,6 +172,52 @@ def _release_lock(fd: int, lock_path: Path) -> None:
             pass
 
 
+def _metadata(identity: CacheIdentity, arr: np.ndarray, artifact_hash: str) -> dict[str, Any]:
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "cache_key": identity.cache_key(),
+        "identity": identity.canonical_payload(),
+        "shape": list(arr.shape),
+        "dtype": str(arr.dtype),
+        "artifact_sha256": artifact_hash,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+    }
+
+
+def _write_under_lock(identity: CacheIdentity, arr: np.ndarray, root: Path | None = None) -> np.ndarray:
+    data_path, meta_path, _lock_path = artifact_paths(identity, root)
+    tmp_data = data_path.with_name(data_path.name + f".tmp-{os.getpid()}")
+    tmp_meta = meta_path.with_name(meta_path.name + f".tmp-{os.getpid()}")
+    try:
+        with tmp_data.open("wb") as handle:
+            np.save(handle, arr, allow_pickle=False)
+            handle.flush()
+            os.fsync(handle.fileno())
+        artifact_hash = sha256_file(tmp_data)
+        tmp_meta.write_text(
+            json.dumps(
+                _metadata(identity, arr, artifact_hash),
+                indent=2,
+                ensure_ascii=False,
+                sort_keys=True,
+            ),
+            encoding="utf-8",
+        )
+        os.replace(tmp_data, data_path)
+        os.replace(tmp_meta, meta_path)
+    finally:
+        for p in (tmp_data, tmp_meta):
+            try:
+                p.unlink()
+            except FileNotFoundError:
+                pass
+
+    verified = load_cached(identity, root)
+    if verified is None:
+        raise CacheError(f"cache write vanished unexpectedly: {data_path}")
+    return verified
+
+
 def save_cached(identity: CacheIdentity, array: np.ndarray, root: Path | None = None) -> np.ndarray:
     if identity.gt_used:
         raise CacheError(
@@ -168,7 +228,7 @@ def save_cached(identity: CacheIdentity, array: np.ndarray, root: Path | None = 
     if arr.dtype == object:
         raise CacheError("object arrays are not permitted in Stage-23 cache")
 
-    data_path, meta_path, lock_path = artifact_paths(identity, root)
+    data_path, _meta_path, lock_path = artifact_paths(identity, root)
     data_path.parent.mkdir(parents=True, exist_ok=True)
 
     fd = _acquire_lock(lock_path)
@@ -176,42 +236,7 @@ def save_cached(identity: CacheIdentity, array: np.ndarray, root: Path | None = 
         existing = load_cached(identity, root)
         if existing is not None:
             return existing
-
-        tmp_data = data_path.with_name(data_path.name + f".tmp-{os.getpid()}")
-        tmp_meta = meta_path.with_name(meta_path.name + f".tmp-{os.getpid()}")
-        try:
-            with tmp_data.open("wb") as handle:
-                np.save(handle, arr, allow_pickle=False)
-                handle.flush()
-                os.fsync(handle.fileno())
-
-            artifact_hash = sha256_file(tmp_data)
-            metadata = {
-                "schema_version": SCHEMA_VERSION,
-                "cache_key": identity.cache_key(),
-                "identity": identity.canonical_payload(),
-                "shape": list(arr.shape),
-                "dtype": str(arr.dtype),
-                "artifact_sha256": artifact_hash,
-                "created_at": datetime.now(timezone.utc).isoformat(),
-            }
-            tmp_meta.write_text(
-                json.dumps(metadata, indent=2, ensure_ascii=False, sort_keys=True),
-                encoding="utf-8",
-            )
-            os.replace(tmp_data, data_path)
-            os.replace(tmp_meta, meta_path)
-        finally:
-            for p in (tmp_data, tmp_meta):
-                try:
-                    p.unlink()
-                except FileNotFoundError:
-                    pass
-
-        loaded = load_cached(identity, root)
-        if loaded is None:
-            raise CacheError(f"cache write vanished unexpectedly: {data_path}")
-        return loaded
+        return _write_under_lock(identity, arr, root)
     finally:
         _release_lock(fd, lock_path)
 
@@ -244,41 +269,6 @@ def get_or_compute(
         arr = np.asarray(compute())
         if arr.dtype == object:
             raise CacheError("object arrays are not permitted in Stage-23 cache")
-
-        tmp_data = data_path.with_name(data_path.name + f".tmp-{os.getpid()}")
-        meta_path = artifact_paths(identity, root)[1]
-        tmp_meta = meta_path.with_name(meta_path.name + f".tmp-{os.getpid()}")
-        try:
-            with tmp_data.open("wb") as handle:
-                np.save(handle, arr, allow_pickle=False)
-                handle.flush()
-                os.fsync(handle.fileno())
-            artifact_hash = sha256_file(tmp_data)
-            metadata = {
-                "schema_version": SCHEMA_VERSION,
-                "cache_key": identity.cache_key(),
-                "identity": identity.canonical_payload(),
-                "shape": list(arr.shape),
-                "dtype": str(arr.dtype),
-                "artifact_sha256": artifact_hash,
-                "created_at": datetime.now(timezone.utc).isoformat(),
-            }
-            tmp_meta.write_text(
-                json.dumps(metadata, indent=2, ensure_ascii=False, sort_keys=True),
-                encoding="utf-8",
-            )
-            os.replace(tmp_data, data_path)
-            os.replace(tmp_meta, meta_path)
-        finally:
-            for p in (tmp_data, tmp_meta):
-                try:
-                    p.unlink()
-                except FileNotFoundError:
-                    pass
-
-        verified = load_cached(identity, root)
-        if verified is None:
-            raise CacheError(f"cache write vanished unexpectedly: {data_path}")
-        return verified, False
+        return _write_under_lock(identity, arr, root), False
     finally:
         _release_lock(fd, lock_path)
