@@ -8,15 +8,14 @@ set PYTHONIOENCODING=utf-8
 if not defined MFI_CODEX_MODEL set MFI_CODEX_MODEL=gpt-5.6-sol
 
 echo ============================================================
-echo MFI-Edge Research Autopilot v4
-echo Continuous autonomous non-neural SOTA research
+echo MFI-Edge Research Autopilot v5 - Stage 23
+echo Evidence x Aggregation Landscape and Gap-Guided Improvement
 echo Model: %MFI_CODEX_MODEL%
 echo Normal decisions: medium reasoning
 echo Research checkpoints: high reasoning + resilient web fallback
-echo Persistent scientific context and mechanism agenda are injected.
-echo Official BSDS-val MATLAB evaluation is enabled by default.
-echo Soft scientific stops automatically escalate to literature research.
-echo Completed experiments are resumed safely if Codex analysis fails.
+echo Stage-23 cache-first policy is mandatory.
+echo Descriptor maps are extract-once / reuse-everywhere artifacts.
+echo Official BSDS-val MATLAB evaluation remains available for image candidates.
 echo Create automation\STOP at any time to stop before the next step.
 echo ============================================================
 echo.
@@ -35,7 +34,7 @@ where codex >nul 2>nul || (
   exit /b 1
 )
 
-python automation\research_controller_v4.py %*
+python automation\research_controller_v5.py %*
 set RC=%ERRORLEVEL%
 if not "%RC%"=="0" (
   echo.
