@@ -3014,3 +3014,32 @@ reproduction remains unverified. No next experiment, replacement calibration,
 parameter tuning, sixth stage, or automatic literature escalation is
 registered. The roadmap stops here for human synthesis and planning.
 
+## Stage 23 activation - evidence x aggregation landscape
+
+The user has superseded the Stage-22 finite stop with the Stage-23 campaign in
+`docs/paper/STAGE23_EVIDENCE_AGGREGATION_CAMPAIGN.md`. Compact distorted-
+Choquet MFI remains the incumbent, but Stage 23 does not begin by tuning it.
+The sequence is literature census, cache certification, one-time descriptor
+extraction, complementarity mapping, a bounded descriptor x aggregator screen,
+matched validation, prospective strong-detector intervention, and only then a
+frozen multi-dataset evaluation. Exact reusable evidence must be computed once
+per provenance key and loaded thereafter from `cache/local_dev/stage23/`.
+
+## Stage 23A complete - Stage 23B cache certification active
+
+The primary-source census is complete without dataset access. The first
+landscape freezes 13 maps across local gradient, vector color, oriented
+frequency, curvature, scale persistence, orientation organization, phase,
+distribution, statistical-dependence, changepoint, and region evidence. The
+aggregator screen freezes eight distinct behaviors with simple additive,
+conjunctive, disjunctive, rank, lattice, compact nonadditive, and pair-
+interaction controls. Stage 23D, not Stage 23A, will prune to at most eight
+pairs and four triples using GT-conditioned complementarity; no powerset is
+authorized.
+
+The active next action is `stage23b_cache_certification`. It is synthetic-only
+and must pass every check in
+`docs/paper/STAGE23B_CACHE_CERTIFICATION_PREREGISTRATION.md` before Stage 23C
+can read UDED or extract any descriptor. A failure permits only an explicit
+cache/harness repair; it cannot change the frozen scientific shortlist.
+

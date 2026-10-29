@@ -23,6 +23,14 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CACHE_ROOT = ROOT / "cache" / "local_dev" / "stage23"
 SCHEMA_VERSION = 1
+ALLOWED_REPRESENTATIONS = {
+    "raw_evidence",
+    "normalized_evidence",
+    "derived_transform",
+    "aggregated_score",
+    "synthetic_certification",
+}
+_MANIFEST_CACHE: dict[Path, tuple[tuple[int, int], dict[tuple[str, str, str], dict[str, Any]]]] = {}
 
 
 class CacheError(RuntimeError):
@@ -59,9 +67,15 @@ class CacheIdentity:
     implementation_version: str
     code_version: str
     source_sha256: str | None = None
+    representation: str = "raw_evidence"
     gt_used: bool = False
 
     def canonical_payload(self) -> dict[str, Any]:
+        if self.representation not in ALLOWED_REPRESENTATIONS:
+            raise CacheError(
+                f"invalid Stage-23 representation {self.representation!r}; "
+                f"expected one of {sorted(ALLOWED_REPRESENTATIONS)}"
+            )
         payload = asdict(self)
         payload["schema_version"] = SCHEMA_VERSION
         return _json_canonical(payload)
@@ -108,6 +122,142 @@ def artifact_paths(identity: CacheIdentity, root: Path | None = None) -> tuple[P
     return folder / f"{stem}.npy", folder / f"{stem}.json", folder / f"{stem}.lock"
 
 
+def manifest_path(identity: CacheIdentity, root: Path | None = None) -> Path:
+    base = Path(root or DEFAULT_CACHE_ROOT)
+    kind = _safe_component(identity.artifact_type).rstrip("s") or "artifact"
+    return base / "manifests" / f"{kind}_manifest.jsonl"
+
+
+def _manifest_key(identity: CacheIdentity) -> tuple[str, str, str]:
+    return identity.artifact_type, identity.cache_key(), identity.image_id
+
+
+def _read_manifest(path: Path) -> dict[tuple[str, str, str], dict[str, Any]]:
+    if not path.exists():
+        return {}
+    stat = path.stat()
+    signature = (stat.st_mtime_ns, stat.st_size)
+    cached = _MANIFEST_CACHE.get(path)
+    if cached is not None and cached[0] == signature:
+        return cached[1]
+
+    records: dict[tuple[str, str, str], dict[str, Any]] = {}
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            for line_no, line in enumerate(handle, start=1):
+                if not line.strip():
+                    continue
+                record = json.loads(line)
+                key = (
+                    str(record["artifact_type"]),
+                    str(record["cache_key"]),
+                    str(record["image_id"]),
+                )
+                if key in records and records[key] != record:
+                    raise CacheCorruptionError(
+                        f"conflicting duplicate cache manifest record at {path}:{line_no}"
+                    )
+                records[key] = record
+    except CacheCorruptionError:
+        raise
+    except Exception as exc:
+        raise CacheCorruptionError(f"invalid cache manifest {path}: {exc}") from exc
+
+    _MANIFEST_CACHE[path] = (signature, records)
+    return records
+
+
+def _manifest_record(
+    identity: CacheIdentity,
+    data_path: Path,
+    meta_path: Path,
+    metadata: dict[str, Any],
+    root: Path | None,
+) -> dict[str, Any]:
+    base = Path(root or DEFAULT_CACHE_ROOT)
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "artifact_type": identity.artifact_type,
+        "artifact_id": identity.artifact_id,
+        "image_id": identity.image_id,
+        "cache_key": identity.cache_key(),
+        "representation": identity.representation,
+        "dataset": identity.dataset,
+        "split": identity.split,
+        "data_path": data_path.relative_to(base).as_posix(),
+        "metadata_path": meta_path.relative_to(base).as_posix(),
+        "artifact_sha256": metadata["artifact_sha256"],
+        "source_sha256": identity.source_sha256,
+        "shape": metadata["shape"],
+        "dtype": metadata["dtype"],
+        "gt_used": identity.gt_used,
+        "created_at": metadata["created_at"],
+    }
+
+
+def _register_manifest(
+    identity: CacheIdentity,
+    data_path: Path,
+    meta_path: Path,
+    metadata: dict[str, Any],
+    root: Path | None,
+) -> None:
+    path = manifest_path(identity, root)
+    lock_path = path.with_suffix(path.suffix + ".lock")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd = _acquire_lock(lock_path)
+    try:
+        records = _read_manifest(path)
+        key = _manifest_key(identity)
+        record = _manifest_record(identity, data_path, meta_path, metadata, root)
+        existing = records.get(key)
+        if existing is not None:
+            if existing != record:
+                raise CacheCorruptionError(
+                    f"manifest identity already exists with different provenance: {key}"
+                )
+            return
+
+        tmp = path.with_name(path.name + f".tmp-{os.getpid()}")
+        try:
+            with tmp.open("w", encoding="utf-8", newline="\n") as handle:
+                if path.exists():
+                    with path.open("r", encoding="utf-8") as old:
+                        for line in old:
+                            handle.write(line.rstrip("\r\n") + "\n")
+                handle.write(json.dumps(record, sort_keys=True, ensure_ascii=False) + "\n")
+                handle.flush()
+                os.fsync(handle.fileno())
+            os.replace(tmp, path)
+            _MANIFEST_CACHE.pop(path, None)
+        finally:
+            try:
+                tmp.unlink()
+            except FileNotFoundError:
+                pass
+    finally:
+        _release_lock(fd, lock_path)
+
+
+def validate_manifest_record(identity: CacheIdentity, root: Path | None = None) -> dict[str, Any]:
+    data_path, meta_path, _ = artifact_paths(identity, root)
+    path = manifest_path(identity, root)
+    records = _read_manifest(path)
+    record = records.get(_manifest_key(identity))
+    if record is None:
+        raise CacheCorruptionError(
+            f"cache artifact is absent from required manifest {path}: "
+            f"{identity.artifact_id}/{identity.image_id}"
+        )
+    metadata = _load_metadata(meta_path)
+    expected = _manifest_record(identity, data_path, meta_path, metadata, root)
+    if record != expected:
+        raise CacheCorruptionError(
+            f"cache manifest provenance mismatch for {identity.artifact_id}/{identity.image_id}"
+        )
+    return record
+
+
 def _load_metadata(meta_path: Path) -> dict[str, Any]:
     try:
         return json.loads(meta_path.read_text(encoding="utf-8"))
@@ -147,6 +297,7 @@ def load_cached(identity: CacheIdentity, root: Path | None = None) -> np.ndarray
         raise CacheCorruptionError(f"cache shape mismatch for {data_path}")
     if str(arr.dtype) != str(meta.get("dtype")):
         raise CacheCorruptionError(f"cache dtype mismatch for {data_path}")
+    validate_manifest_record(identity, root)
     return arr
 
 
@@ -194,17 +345,14 @@ def _write_under_lock(identity: CacheIdentity, arr: np.ndarray, root: Path | Non
             handle.flush()
             os.fsync(handle.fileno())
         artifact_hash = sha256_file(tmp_data)
+        metadata = _metadata(identity, arr, artifact_hash)
         tmp_meta.write_text(
-            json.dumps(
-                _metadata(identity, arr, artifact_hash),
-                indent=2,
-                ensure_ascii=False,
-                sort_keys=True,
-            ),
+            json.dumps(metadata, indent=2, ensure_ascii=False, sort_keys=True),
             encoding="utf-8",
         )
         os.replace(tmp_data, data_path)
         os.replace(tmp_meta, meta_path)
+        _register_manifest(identity, data_path, meta_path, metadata, root)
     finally:
         for p in (tmp_data, tmp_meta):
             try:

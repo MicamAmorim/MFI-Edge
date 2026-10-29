@@ -12,7 +12,7 @@
     ]
   },
   "stage23b_cache_certification": {
-    "description": "Stage 23B synthetic-only certification of the content-addressed extract-once/reuse-everywhere cache: exact-key reuse without recompute, distinct scientific keys, fail-closed corruption detection, and GT leakage guard.",
+    "description": "Stage 23B synthetic-only certification of the content-addressed extract-once/reuse-everywhere cache under docs/paper/STAGE23B_CACHE_CERTIFICATION_PREREGISTRATION.md: exact-key reuse without recompute, byte/hash identity, atomic JSONL provenance manifests, parameter/preprocessing key separation, fail-closed corruption, and GT-isolated inference extraction.",
     "runner": "python",
     "path": "automation/stage23b_cache_certification.py",
     "args": [],

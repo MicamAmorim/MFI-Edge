@@ -1697,3 +1697,32 @@ only as a separate historical bridge; and the specific Stage-22E calibration
 was falsified. Keep compact MFI as the incumbent, retain the reference-
 unverified Berkeley caveat, and state explicitly that the bounded program ends
 without a sixth experiment or automatic escalation.
+
+## Stage 23 landscape-paper plan
+
+Stage 23 supports a new primary manuscript unit: an empirical map from evidence
+structure and complementarity to useful aggregation behavior. Do not narrate it
+as a continuation of single-cue hill climbing. The methods section should lead
+with content-addressed extraction, provenance, exact cache reuse, dataset-role
+separation, and the bounded complementarity-first design.
+
+Planned core artifacts are:
+
+1. a descriptor-family taxonomy and exact cached-map provenance table;
+2. a redundancy/complementarity graph with unique TP/FP and reciprocal
+   conditional-correctness annotations;
+3. the bounded descriptor-set x aggregator landscape showing precision,
+   recall, F1, ranking/AP, calibration, localization, stability and runtime;
+4. matched development/validation protocol tables that separate author test
+   headlines from local evaluations;
+5. prospective strong-detector interventions chosen from the already observed
+   landscape rather than from the target detector outcome;
+6. a final frozen multi-dataset table, only if at least one improved method is
+   selected before external/final access.
+
+The Stage-23A census is a preregistration/provenance contribution, not an
+empirical result. Its 13-map and eight-aggregator shortlists must be printed in
+the supplement so later exclusions and algebraic duplicate cells are visible.
+The cache certification is infrastructure evidence and belongs in a
+reproducibility appendix. Preserve negative factorial cells: the scientific
+claim is about relationships, not only the best scalar F1.

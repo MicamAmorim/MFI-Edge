@@ -26,4 +26,17 @@ User-directed operational requirements:
 5. The campaign should be portable to a remote CPU worker (Oracle Cloud is the planned first option) for descriptor extraction and factorial screening; MATLAB-specific official Berkeley evaluation may remain a separate local attachment.
 6. Choquet remains an important hypothesis because of prior results, but the campaign must compare it against representative alternative aggregation families under identical evidence inputs.
 
-The immediate next task is Stage 23A: primary-source census of descriptors, aggregators, strong non-neural detector architectures, validation protocols, author code, and licensing. No large image experiment should run before that census and the Stage-23 cache contract are preregistered/certified.
+Stage 23A is complete. Primary-source and official-code review froze a first
+pool of 13 evidence maps spanning eleven information families and eight
+aggregation behaviors. The exact census and bounds are in
+`docs/paper/STAGE23_DESCRIPTOR_CENSUS.md`,
+`docs/paper/STAGE23_AGGREGATOR_CENSUS.md`, and
+`docs/paper/STAGE23_PROTOCOL_MATRIX.md`. Complete detectors remain later
+reproduction/intervention targets rather than hidden descriptor inputs.
+
+The immediate next task is `stage23b_cache_certification`. It is synthetic-only
+and must certify exact-key reuse, artifact/manifest hashes, atomic writes,
+parameter and preprocessing key separation, fail-closed corruption, and GT-
+isolated extraction before any benchmark descriptor is computed. A failure
+permits only a cache/harness repair; Stage 23C remains deferred until all checks
+pass.

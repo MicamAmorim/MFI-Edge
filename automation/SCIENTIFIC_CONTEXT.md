@@ -3345,3 +3345,29 @@ contract, no sixth stage, second candidate, tuning pass, replacement, or
 automatic literature escalation is registered. The controller must stop with
 `continue=false` for human synthesis and planning.
 
+### Stage 23A closure - landscape census complete; cache certification active
+
+The user-directed Stage-23 campaign supersedes the Stage-22 stop and changes
+the unit of study to descriptor/evidence family x aggregation family x
+error/benefit profile. Stage 23A read no dataset and scored no detector. Live
+primary-source/official-code review froze 13 first-landscape evidence maps: the
+five incumbent Gabor/Hessian/persistence anchors plus Scharr magnitude,
+CIELAB Di Zenzo vector gradient, structure-tensor coherence, phase congruency,
+half-disc distribution contrast, PMI dependency deficit, semi-global
+changepoint support, and FH region boundaries. Stage 23D may forward at most
+eight cross-family pairs, four triples, the incumbent anchor, and two necessary
+single controls; no powerset is allowed.
+
+Stage 23E is bounded to equal mean, nonnegative logistic additive, max, min,
+median OWA, Sugeno, fixed-gamma distorted Choquet, and monotone 2-additive
+Choquet under identical cached inputs. Complete SED/SCO/Compass/EDPF/gPb/PMI-
+spectral/Structured-Forest detectors remain later reproduction and gap-guided
+targets, not raw descriptor inputs. Protected/test headlines remain
+documentary.
+
+The active next action is `stage23b_cache_certification`, a synthetic-only
+conjunctive test of content-addressed exact reuse, atomic artifact and JSONL
+manifest provenance, distinct scientific keys, fail-closed corruption, and GT-
+isolated inference extraction. Stage 23C cannot extract a benchmark map until
+all certification checks pass.
+

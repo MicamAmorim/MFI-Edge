@@ -5361,3 +5361,33 @@ Stage 22 closes at scientific stage 5/5. Its contract permits no second
 candidate, replacement, post-hoc tuning, sixth experiment, or automatic
 literature escalation. The next action is human synthesis and planning, not a
 registered autonomous experiment.
+
+### Stage 23A complete - evidence x aggregation landscape frozen; cache certification registered
+
+The user-directed Stage-23 campaign changes the unit of study from serial
+incumbent modification to a reproducible evidence-family by aggregation-family
+landscape. Stage 23A accessed no dataset and scored no detector. Live primary-
+source and official-code review produced the descriptor census, aggregation
+census, detector/protocol matrix, and populated Stage-23 literature ledger.
+
+The first UDED landscape is bounded to 13 raw evidence maps: the five retained
+Gabor/Hessian/persistence anchors plus Scharr magnitude, CIELAB Di Zenzo vector
+gradient, structure-tensor coherence, phase congruency, half-disc distribution
+contrast, image-internal PMI deficit, semi-global changepoint support, and FH
+region boundaries. Stage 23D may forward no more than eight cross-family pairs,
+four triples, the incumbent five-map anchor, and two necessary single controls.
+The Stage-23E aggregation shortlist is exactly eight families: equal mean,
+nonnegative logistic additive, max, min, median OWA, Sugeno, fixed-gamma
+distorted Choquet, and monotone 2-additive Choquet. Algebraic duplicate cells
+must be labeled rather than counted as independent wins.
+
+Complete detectors such as SED, SCO, Compass, EDPF, gPb, PMI spectral
+boundaries, and Structured Forest remain later fidelity/gap-guided targets;
+their outputs do not enter the raw descriptor pool. Literature test metrics are
+documentary and protected splits remain outside model selection.
+
+The registered next action is `stage23b_cache_certification`, a synthetic-only
+conjunctive certification of content keys, exact reuse, artifact and manifest
+hashes, atomic writes, parameter/preprocessing key separation, fail-closed
+corruption, and GT-isolated inference extraction. No benchmark descriptor may
+be extracted until Stage 23B passes.
