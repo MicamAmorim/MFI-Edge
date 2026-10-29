@@ -1,85 +1,63 @@
-# MFI-Edge local research autopilot — Stage 15
+# MFI-Edge local research autopilot — Stage 23
 
-This loop replaces the manual cycle:
+Stage 23 starts after the bounded Stage 22 program closed. The active campaign is defined in:
 
-`run .bat -> send results -> receive next code -> git pull -> run next .bat`.
+- `docs/paper/STAGE23_EVIDENCE_AGGREGATION_CAMPAIGN.md`
+- `automation/STAGE23_POLICY.md`
+- `automation/STAGE23_CONTEXT.md`
+- `automation/research_goal.json`
+- `docs/paper/STAGE23_LITERATURE_LEDGER.md`
 
-The PC remains the compute worker. Codex is invoked **only after an experiment finishes or fails**, returns one structured decision, edits the workspace if needed, and exits. It is not kept alive while benchmarks run.
+The active controller is `automation/research_controller_v5.py` and the active experiment registry is `automation/stage23_experiments.json`.
 
-## Research generations
+## Campaign idea
 
-The exploration-first agent through Stage 14u is frozen at:
+The campaign maps:
 
-- branch: `archive/research-agent-v14u-2026-10-07`
-- commit: `fd5d060db1bec40e6697141c55e61b616f4d7b28`
+`descriptor/evidence family × aggregation family × error/benefit profile`
 
-The active reproduction/diagnostic generation is:
+before using that map to improve strong non-neural edge detectors by diagnosed gaps. Choquet remains an important hypothesis but is no longer assumed to be the best aggregator.
 
-- branch: `mfi-edge-stage15`
-- agenda: `docs/paper/STAGE15_RESEARCH_PROGRAM.md`
-- transition review: `docs/paper/NONTRAINED_EDGE_METHODS_REVIEW_1986_2026.md`
-- decision-source ledger: `docs/paper/STAGE15_LITERATURE_LEDGER.md`
-- previous-generation snapshot: `docs/paper/AGENT_GENERATION_V14_SNAPSHOT.md`
+## Cache-first rule
 
-Stage 15 deliberately pauses open-ended architecture invention through Stage 15o. The agent must first audit protocol, reproduce strong non-trained methods, and analyze error complementarity. Architecture-changing MFI experiments are conditional from Stage 15p onward.
+Descriptor maps and every reusable deterministic intermediate are persistent scientific artifacts.
 
-## First Stage-15 launch
+Canonical cache root:
+
+`cache/local_dev/stage23/`
+
+For an exact provenance identity, compute once and reuse thereafter. Ordinary later stages must not silently re-extract a descriptor or regenerate a reusable transform. Scientific changes create new cache keys. Corrupt or provenance-mismatched artifacts fail closed.
+
+`src/stage23_cache.py` implements the content-addressed array cache. Stage 23B certifies exact-key reuse, distinct scientific keys, corruption detection, and the GT-leakage guard before large extraction is allowed.
+
+The cache is ignored by Git, so normal pulls do not delete it. On a remote worker such as Oracle Cloud, keep the repository/cache on persistent storage.
+
+## Launch
 
 Requirements:
 
-- Git repository switched to `mfi-edge-stage15`;
-- Python environment used by MFI-Edge;
-- Codex CLI installed and logged in (`codex --version` should work).
+- Git;
+- the repository Python environment;
+- Codex CLI installed and logged in (`codex --version`);
+- branch `mfi-edge-stage23`.
 
-From the repository root:
+From the repository root in PowerShell:
 
 ```powershell
 git fetch origin
-git switch mfi-edge-stage15
+git switch mfi-edge-stage23
 git pull --ff-only
 Remove-Item automation\STOP -ErrorAction SilentlyContinue
 .\run_research_autopilot.bat --reset-state
 ```
 
-`--reset-state` is intentional for the generation transition. The scientific history is preserved in Git/docs; the old runtime cursor should not decide the first Stage-15 experiment.
+`--reset-state` is intentional when moving from the completed Stage-22 controller state to the new Stage-23 registry.
 
-The Stage-15 configuration starts at the registered `autonomous_literature_escalation` checkpoint. Because the Stage-15 program is injected as the active research agenda on every decision, the first high-reasoning/live-web analysis must begin with Stage 15a protocol/reproduction planning rather than inventing a Stage-14v-style mechanism.
-
-## Cost behavior
-
-No model call is made while a long benchmark is running. One `codex exec` call occurs only after a result is ready. Normal experiment decisions use the configured medium reasoning; literature/research checkpoints use high reasoning with live-web fallback. The default model is configured in `automation/config.json`.
-
-Optional model override:
-
-```powershell
-$env:MFI_CODEX_MODEL = "<model available in your Codex CLI>"
-.\run_research_autopilot.bat
-```
-
-## Safety / scientific integrity
-
-The controller:
-
-- executes only experiment IDs registered in `automation/experiments.json`;
-- accepts only repository-local Python scripts or `.bat` launchers;
-- reloads the allow-list after every Codex edit;
-- refuses automatic commits if Codex changes protected scientific files;
-- runs `git diff --check` and Python syntax checks on edited `.py` files;
-- commits/pushes Codex edits itself; Codex is instructed never to commit/push;
-- persists state and logs under ignored `automation/runtime/`;
-- refuses to rerun completed experiments marked `one_shot`;
-- enforces the dataset feedback policy carried by each experiment;
-- injects the Stage-15 agenda, scientific context, SOTA ledger and official-evaluation policy into decisions.
-
-### Stage-15 bibliography rule
-
-Literature is scientific input, not disposable prompt context. When a paper/code/protocol materially causes a decision, the agent must preserve it in `docs/paper/STAGE15_LITERATURE_LEDGER.md` in the same change that preregisters the experiment, and synchronize `docs/paper/BIBLIOGRAPHY_MATRIX.md` when the source belongs in the future manuscript. DOI/official URL, protocol role, implementation fidelity and training status must be recorded.
-
-A literature-driven Stage-15 experiment with no corresponding ledger entry is incompletely preregistered.
+The first action is Stage 23A, a high-reasoning/live-web research checkpoint. It performs no benchmark scoring. It builds the descriptor census, aggregator census, protocol matrix, and literature ledger, then proceeds to the cache certification before any large image extraction.
 
 ## Stop / resume
 
-Stop before the next action by creating:
+Stop before the next action:
 
 ```powershell
 New-Item automation\STOP -ItemType File
@@ -88,58 +66,26 @@ New-Item automation\STOP -ItemType File
 Resume:
 
 ```powershell
-Remove-Item automation\STOP
+Remove-Item automation\STOP -ErrorAction SilentlyContinue
 .\run_research_autopilot.bat
 ```
 
-State is preserved in `automation/runtime/state.json`.
-
-Start over deliberately:
-
-```powershell
-.\run_research_autopilot.bat --reset-state
-```
-
-Run only one experiment + one Codex analysis:
+Run one experiment plus one Codex analysis:
 
 ```powershell
 .\run_research_autopilot.bat --once
 ```
 
-Run the experiment without calling Codex:
-
-```powershell
-.\run_research_autopilot.bat --no-codex
-```
-
-Preview the first command without running it:
+Preview the first command without executing it:
 
 ```powershell
 .\run_research_autopilot.bat --dry-run --reset-state
 ```
 
-Keep commits local:
+## Dataset / reporting discipline
 
-```powershell
-.\run_research_autopilot.bat --no-push
-```
+UDED selection is the fast screening bed under the existing leakage policy. Publication-oriented candidates must also be tested on author-designated validation/development splits and matched evaluators used by relevant literature whenever available. BSDS500 validation remains the main development-aligned Berkeley track.
 
-## How a new iteration is created
+Protected/final test outcomes may be reported only after freezing and may not drive descriptor choice, aggregator choice, thresholds, parameters, architecture, routing, or experiment priority.
 
-After a run, Codex receives a compact event summary plus the paths of generated files, the persistent scientific context, the current Stage-15 research agenda, official-evaluation policy and SOTA target ledger. It may read local files, update code/docs, and register exactly one next experiment in `automation/experiments.json`. Its final message must conform to `automation/decision.schema.json`.
-
-For Stage 15, a literature-driven preregistration must also update the Stage-15 literature ledger. Stages 15a–15o are reproduction/diagnostic work and must not opportunistically redesign MFI-Edge.
-
-If the next experiment is registered and `continue=true`, the Python controller runs it automatically. Otherwise the v4 controller routes soft stops back through the autonomous literature checkpoint unless there is a real hard blocker or the final goal is reached.
-
-## Files
-
-- `research_controller_v4.py` — active orchestration layer.
-- `config.json` — active branch, budgets, research agenda, protected files and push behavior.
-- `experiments.json` — allow-listed experiment registry and dataset-feedback policy.
-- `CODEX_POLICY.md` — global scientific and operational rules supplied to every Codex call.
-- `SCIENTIFIC_CONTEXT.md` — compact persistent cross-iteration scientific memory.
-- `docs/paper/STAGE15_RESEARCH_PROGRAM.md` — active Stage-15 campaign and preregistered ordering constraints.
-- `docs/paper/STAGE15_LITERATURE_LEDGER.md` — paper/code/protocol-to-decision provenance.
-- `decision.schema.json` — structured response contract.
-- `runtime/` — ignored local logs/state/prompts/answers.
+After the best improved method is selected and frozen, it is run unchanged across multiple diverse datasets/protocols, including at least one genuinely untouched external/final evaluation when feasible.
