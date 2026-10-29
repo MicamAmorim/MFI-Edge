@@ -11,6 +11,18 @@
       "results/automation/stage23a_descriptor_aggregator_landscape_planning/summary.json"
     ]
   },
+  "stage23b_cache_certification": {
+    "description": "Stage 23B synthetic-only certification of the content-addressed extract-once/reuse-everywhere cache: exact-key reuse without recompute, distinct scientific keys, fail-closed corruption detection, and GT leakage guard.",
+    "runner": "python",
+    "path": "automation/stage23b_cache_certification.py",
+    "args": [],
+    "role": "dataset_preflight",
+    "feedback_policy": "synthetic_cache_contract_only_no_dataset_or_gt_access",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage23b_cache_certification/summary.json"
+    ]
+  },
   "stage23_literature_escalation": {
     "description": "Repeatable Stage-23 literature/mechanism checkpoint for resolving descriptor, aggregator, protocol, implementation, or gap-guided design uncertainty without benchmark scoring.",
     "runner": "python",
