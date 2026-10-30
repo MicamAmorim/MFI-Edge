@@ -5549,3 +5549,29 @@ must select exactly one reproducible strong non-neural detector target,
 characterize its existing evidence, and register one bounded gap-guided next
 action using the completed Stage-23 map prospectively. Failed Stage-23F
 relationships cannot be presented as validated or tuned.
+
+### Stage 23G checkpoint - exact SED and opposed-distribution gap selected
+
+Live primary-source and official-code review retained exact full SED as the
+single target. It is the strongest exact strictly untrained detector already
+reproduced under the common BSDS500-validation path and already has frozen maps
+on both BSDS validation and UDED selection. Its published and pinned-author
+architecture contains color opponency, oriented Gaussian derivatives,
+multiscale V1 surround, V2 texture suppression, feedback, and NMS, but it has
+no explicit opposed-region distribution comparison.
+
+The one missing-family hypothesis is therefore the cached half-disc
+distribution contrast. Stage 23D showed that this weak individual map had low
+rank redundancy and stable unique GT support across multiple families; this is
+not a reinterpretation of Stage 23F, where its nonnegative-logistic pairing
+improved ODS/OIS but lost AP and failed the joint rule. No nontrivial
+aggregation relationship transferred. The only possible downstream
+aggregation is prospectively fixed to the matched equal-mean control, and only
+if a target-specific cross-domain gap diagnosis passes.
+
+`stage23g1_sed_halfdisc_gap_diagnosis` is registered under
+`docs/paper/STAGE23G1_PREREGISTRATION.md`. It performs no detector or descriptor
+computation, validates all frozen SED/hash and Stage-23 cache provenance, and
+measures cue-only GT rescue, conditional correctness, image stability, and
+rank nonredundancy on overlap-clean UDED selection and BSDS500 validation. It
+cannot promote a detector or alter compact MFI.

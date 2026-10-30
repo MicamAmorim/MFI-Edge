@@ -114,9 +114,22 @@ FH/half-disc/tensor triple changed ODS/OIS/AP by
 `-0.01403/-0.03972/-0.10468`. No cell is promoted or backfilled; compact MFI
 remains incumbent and Berkeley reference reproduction remains unverified.
 
-The active task is `stage23g_gap_guided_detector_checkpoint`, a planning-only
-high-reasoning/live-primary-literature synthesis. It must select exactly one
-strong non-neural detector target and one bounded prospective next action from
-the completed landscape. It may not describe a failed Stage-23F relationship
-as validated, use protected feedback, recompute exact cache artifacts, or
-alter the incumbent.
+Stage 23G selected exact author-code SED as the strong non-neural target. It is
+the strongest exact strictly untrained matched-validation reference already
+materialized on both development domains. Its primary architecture already
+contains color opponency, oriented Gaussian derivatives, V1 multiscale
+surround, V2 texture suppression, shape feedback, and author NMS, but no
+explicit opposed-region distribution comparison. The single missing-family
+hypothesis is therefore the cached half-disc distribution-contrast evidence,
+which Stage 23D found weak individually but low-redundancy and uniquely
+supportive across families. This is a gap hypothesis, not a claim that the
+failed Stage-23F half-disc relationship transferred.
+
+The active task is `stage23g1_sed_halfdisc_gap_diagnosis`. It runs no detector
+or descriptor extractor: it hash-validates exact frozen SED maps and loads the
+114 exact Stage-23 half-disc cache artifacts on overlap-clean UDED selection
+and BSDS500 validation. A frozen cross-domain rule tests unique GT rescue,
+conditional correctness, image stability, and rank nonredundancy. Only a full
+pass may later authorize a separately preregistered equal-mean control using
+the already frozen Stage-23F membership transform. Failure closes this route
+without target/cue substitution. Compact MFI remains incumbent.

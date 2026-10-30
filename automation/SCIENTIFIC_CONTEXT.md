@@ -3500,3 +3500,26 @@ exactly one strong non-neural detector target and one bounded prospective next
 action from the completed landscape. It may not tune failed Stage-23F cells,
 use protected feedback, or silently recompute exact Stage-23 cache artifacts.
 
+### Stage 23G checkpoint closure - exact SED gap diagnosis registered
+
+The live primary-source/official-code checkpoint selected Akbarinia and
+Parraga's exact full SED as the single strong-detector target. SED is the
+strongest exact strictly untrained Stage-15 reference under the common local
+BSDS500-validation path and already has frozen maps on BSDS validation and
+UDED selection. Its author architecture contains color opponency, oriented
+Gaussian derivatives, multiscale V1 surround, V2 texture suppression, shape
+feedback, and NMS, but no explicit opposed-region distribution comparison.
+The single missing-family hypothesis is the frozen half-disc distribution cue,
+which was weak alone but low-redundancy and uniquely supportive in Stage 23D.
+No failed Stage-23F relationship is reclassified as validated.
+
+The registered next action is `stage23g1_sed_halfdisc_gap_diagnosis`. It
+hash-validates and reuses exact SED maps plus all 114 existing UDED/BSDS
+half-disc cache artifacts, with zero detector or descriptor computation. The
+preregistered cross-domain rule requires at least 2% mean cue-only GT support,
+conditional correctness at least 0.50, unique support on at least 60% of
+images, and mean rank correlation at most 0.80 in each domain. Only a full pass
+may authorize a later separately preregistered equal-arithmetic-mean control;
+failure closes the SED/half-disc route without substitution. Compact MFI
+remains incumbent and Berkeley reference reproduction remains unverified.
+

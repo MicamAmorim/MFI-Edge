@@ -3150,3 +3150,22 @@ non-neural detector target and one bounded prospective gap-guided next action.
 It cannot score a dataset, tune the failed frontier, use protected feedback,
 or recompute valid Stage-23 cache artifacts.
 
+## Stage 23G target selected - SED half-disc gap diagnosis active
+
+The live checkpoint selected exact full SED as the one strong non-neural
+target. Its exact fixed-author baseline and maps already exist on UDED
+selection and BSDS500 validation. The author model covers color opponency,
+oriented derivatives, multiscale surround, V2 texture suppression, feedback,
+and NMS, but not an explicit opposed-region distribution comparison. The
+single missing-family hypothesis is the cached half-disc distribution cue,
+chosen from Stage-23D low-redundancy/unique-support evidence rather than from a
+protected result or a successful Stage-23F interaction.
+
+The active action is `stage23g1_sed_halfdisc_gap_diagnosis`. It validates and
+loads only frozen SED maps and exact cached half-disc maps on the two allowed
+development domains, with zero detector/descriptor computation. A conjunctive
+cross-domain gap rule is frozen in `docs/paper/STAGE23G1_PREREGISTRATION.md`.
+Only a pass can lead to a separate equal-mean-control intervention; a failure
+closes this route without replacing the cue or target. Compact MFI remains the
+incumbent.
+

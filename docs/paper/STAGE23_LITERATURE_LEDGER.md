@@ -73,3 +73,26 @@ families in `STAGE23_DESCRIPTOR_CENSUS.md` and
 `stage23b_cache_certification` passes. No source above authorizes protected
 split access, a descriptor powerset, or a detector intervention before the
 complementarity and matched-validation stages.
+
+## Stage-23G live target checkpoint
+
+Primary-source and official-code review was refreshed on 2026-10-30 for
+Akbarinia and Parraga's SED paper (DOI `10.1007/s11263-017-1035-5`, accepted
+manuscript `https://ddd.uab.cat/record/275061`) and the official repository
+`https://github.com/ArashAkbarinia/BoundaryDetection` at the already pinned
+commit `11514b80162e5cd93fd244515189649656105a14`. The paper confirms fixed
+parameters across BSDS, MBDD, and CID; twelve-orientation Gaussian derivatives;
+V1 full/far/iso/orthogonal surround; V2 texture/noise suppression; feedback;
+and author-reported component ablations. The public repository still describes
+itself as the source/material release for the BMVC and IJCV articles, and no
+explicit license was found; local source remains ignored and unredistributed.
+
+SED is selected as the single Stage-23G target because it is the strongest
+exact strictly untrained detector already materialized on both allowed
+development domains. Its evidence inventory lacks an explicit opposed-region
+distribution comparison. Stage 23D's low-redundancy/unique-support evidence
+therefore motivates one half-disc gap diagnosis. This does not claim that the
+failed Stage-23F half-disc/logistic relationship transferred. Because no
+nontrivial Stage-23F aggregation passed jointly, only the equal-mean matched
+control is frozen as a possible later intervention, conditional on the
+cross-domain gap diagnosis passing.

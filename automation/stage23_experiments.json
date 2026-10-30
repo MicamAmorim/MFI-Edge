@@ -175,6 +175,24 @@
       "results/automation/stage23g_gap_guided_detector_checkpoint/summary.json"
     ]
   },
+  "stage23g1_sed_halfdisc_gap_diagnosis": {
+    "description": "Stage 23G1 frozen-map diagnosis of exact author SED against the cached opposed half-disc distribution-contrast family on overlap-clean UDED selection and BSDS500 validation under docs/paper/STAGE23G1_PREREGISTRATION.md; validates all frozen hashes/cache identities, runs no detector or extractor, and creates no candidate map.",
+    "runner": "python",
+    "path": "automation/stage23g1_sed_halfdisc_gap_diagnosis_launcher.py",
+    "args": [],
+    "role": "development_analysis",
+    "feedback_policy": "frozen_sed_and_exact_cached_halfdisc_cross_domain_gap_diagnosis_no_detector_or_descriptor_compute_no_candidate_or_promotion",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage23g1_sed_halfdisc_gap_diagnosis/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage23g1_sed_halfdisc_gap_diagnosis/summary.json",
+      "results/local_dev/stage23g1_sed_halfdisc_gap_diagnosis/per_image_gap_metrics.csv",
+      "results/local_dev/stage23g1_sed_halfdisc_gap_diagnosis/frozen_input_provenance.csv",
+      "results/local_dev/stage23g1_sed_halfdisc_gap_diagnosis/threshold_provenance.csv",
+      "results/local_dev/stage23g1_sed_halfdisc_gap_diagnosis/best_method_preview.png",
+      "results/local_dev/stage23g1_sed_halfdisc_gap_diagnosis/official_eval_manifest.json"
+    ]
+  },
   "stage23_literature_escalation": {
     "description": "Repeatable Stage-23 literature/mechanism checkpoint for resolving descriptor, aggregator, protocol, implementation, or gap-guided design uncertainty without benchmark scoring.",
     "runner": "python",
