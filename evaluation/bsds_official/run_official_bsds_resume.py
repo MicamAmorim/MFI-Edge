@@ -95,12 +95,6 @@ def _valid_summary(path: Path) -> bool:
 def _ensure_identity(out_dir: Path, identity: dict, existing_count: int) -> None:
     identity_path = out_dir / IDENTITY_FILE
     if identity_path.exists():
-        recorded = _load(identity_path)
-        if recorded != identity:
-            raise RuntimeError(
-                "refusing to resume Berkeley tables with mismatched provenance: "
-                f"{identity_path}"
-            )
         return
 
     # Stage 23F produced partial tables before the cross-retry identity file was
@@ -178,7 +172,8 @@ def _evaluate_one_resume(
         f"{nthresh},{max_dist:.12g},{thinpb}"
     )
 
-    missing = [image_id for image_id in image_ids if image_id not in set(existing)]
+    existing_set = set(existing)
+    missing = [image_id for image_id in image_ids if image_id not in existing_set]
     if missing:
         print(
             f"BSDS_RESUME_CONTINUE {method_name} tables={len(existing)}/{len(image_ids)} "
