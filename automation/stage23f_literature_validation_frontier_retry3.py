@@ -1,6 +1,11 @@
 from __future__ import annotations
 
-"""Resume only the still-missing Stage-23F Berkeley match tables."""
+"""Resume only the still-missing Stage-23F Berkeley match tables.
+
+This retry uses the checkpoint-preserving evaluator: complete methods are loaded
+from disk, partial methods keep every nonempty per-image table, and only missing
+Berkeley matches are computed. No completed method directory may be deleted.
+"""
 
 from pathlib import Path
 import json
@@ -14,7 +19,7 @@ MANIFEST = SOURCE / "official_eval_manifest.json"
 PREVIEW = SOURCE / "best_method_preview.png"
 OFFICIAL = ROOT / "results" / "official_eval" / "stage23f_literature_validation_frontier"
 OUT = ROOT / "results" / "automation" / "stage23f_literature_validation_frontier_retry3"
-EVALUATOR = ROOT / "evaluation" / "bsds_official" / "run_official_bsds.py"
+EVALUATOR = ROOT / "evaluation" / "bsds_official" / "run_official_bsds_resume.py"
 CONFIG = ROOT / "evaluation" / "bsds_official" / "config.json"
 
 PAIRS = (
@@ -94,6 +99,7 @@ def main() -> int:
         "manifest_changed": False,
         "incumbent_changed": False,
         "reference_reproduction_verified": False,
+        "checkpoint_preserving_evaluator": True,
         "relationships": relationships,
         "official_summary": str((OFFICIAL / "summary.json").relative_to(ROOT)).replace("\\", "/"),
         "visual_preview": str(PREVIEW.relative_to(ROOT)).replace("\\", "/"),
