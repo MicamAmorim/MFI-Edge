@@ -163,6 +163,18 @@
       "results/official_eval/stage23f_literature_validation_frontier/summary.json"
     ]
   },
+  "stage23g_gap_guided_detector_checkpoint": {
+    "description": "Planning-only Stage-23G checkpoint after no Stage-23F aggregation relationship transferred conjunctively; use high-reasoning live primary literature plus the completed cached landscape to select exactly one strong non-neural detector target and one bounded prospective gap-guided next action without dataset scoring.",
+    "runner": "python",
+    "path": "automation/stage23g_gap_guided_detector_checkpoint.py",
+    "args": [],
+    "role": "research_planning",
+    "feedback_policy": "no_dataset_access_no_scoring_primary_source_target_and_gap_intervention_planning_only",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage23g_gap_guided_detector_checkpoint/summary.json"
+    ]
+  },
   "stage23_literature_escalation": {
     "description": "Repeatable Stage-23 literature/mechanism checkpoint for resolving descriptor, aggregator, protocol, implementation, or gap-guided design uncertainty without benchmark scoring.",
     "runner": "python",

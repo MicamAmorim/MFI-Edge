@@ -3482,3 +3482,21 @@ as the unchanged attachment-only continuation. It must reuse every frozen map
 and complete/nonempty table and compute only missing standard-Berkeley matches.
 Stage 23G remains deferred.
 
+### Stage 23F closure - no aggregation relationship transferred conjunctively
+
+The repaired checkpoint-preserving continuation completed all six frozen
+standard-Berkeley cells without descriptor extraction, refitting, or map
+regeneration. Against matched equal means, minimum conjunction improved
+ODS/OIS by `+0.05909/+0.03196` but reduced AP by `-0.04275`; nonnegative
+logistic addition improved ODS/OIS by `+0.02954/+0.00925` but reduced AP by
+`-0.00793`; median OWA changed ODS/OIS/AP by
+`-0.01403/-0.03972/-0.10468`. Therefore none met the frozen joint-transfer
+rule. No frontier cell is promoted or backfilled, compact distorted-Choquet
+MFI remains incumbent, and Berkeley reference reproduction remains unverified.
+
+The registered next action is `stage23g_gap_guided_detector_checkpoint`, a
+planning-only high-reasoning/live-primary-literature synthesis that must choose
+exactly one strong non-neural detector target and one bounded prospective next
+action from the completed landscape. It may not tune failed Stage-23F cells,
+use protected feedback, or silently recompute exact Stage-23 cache artifacts.
+

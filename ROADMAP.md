@@ -3136,3 +3136,17 @@ reuses all frozen maps and complete/nonempty tables and resumes only missing
 standard-Berkeley matching. Stage 23G remains deferred until all six frontier
 cells and the frozen relationship table are complete.
 
+## Stage 23F complete - gap-guided detector checkpoint active
+
+All six frontier cells now have complete standard-Berkeley validation tables.
+No primary passed the frozen joint-transfer rule: minimum conjunction and
+nonnegative logistic addition improved matched-control ODS/OIS but reduced AP,
+while median OWA was worse than its matched mean on ODS, OIS, and AP. No cell
+is promoted or backfilled, and compact MFI remains incumbent.
+
+The active action is `stage23g_gap_guided_detector_checkpoint`. This is a
+planning-only high-reasoning/live-literature checkpoint that selects one strong
+non-neural detector target and one bounded prospective gap-guided next action.
+It cannot score a dataset, tune the failed frontier, use protected feedback,
+or recompute valid Stage-23 cache artifacts.
+

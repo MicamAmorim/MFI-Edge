@@ -104,9 +104,19 @@ runner could not resolve its sibling `run_official_bsds` module. This is a
 harness-only import defect and supplies no scientific feedback. The runner now
 adds its own directory to the module search path explicitly.
 
-The active task is `stage23f_literature_validation_frontier_retry4`, an exact
-attachment-only continuation through the repaired checkpoint-preserving
-evaluator. It reuses all frozen maps and complete/nonempty tables and may run
-only missing standard-Berkeley matching. The transfer rule is applied only
-after all six cells finish. Stage 23G remains deferred; compact MFI is unchanged
-and reference reproduction remains unverified.
+Stage 23F is complete. None of the three UDED-selected aggregation advantages
+transferred conjunctively against its matched equal mean. Minimum conjunction
+on persistence plus tensor coherence improved ODS/OIS by
+`+0.05909/+0.03196` but reduced AP by `-0.04275`. Nonnegative logistic
+addition on persistence plus half-disc contrast improved ODS/OIS by
+`+0.02954/+0.00925` but reduced AP by `-0.00793`. Median OWA on the
+FH/half-disc/tensor triple changed ODS/OIS/AP by
+`-0.01403/-0.03972/-0.10468`. No cell is promoted or backfilled; compact MFI
+remains incumbent and Berkeley reference reproduction remains unverified.
+
+The active task is `stage23g_gap_guided_detector_checkpoint`, a planning-only
+high-reasoning/live-primary-literature synthesis. It must select exactly one
+strong non-neural detector target and one bounded prospective next action from
+the completed landscape. It may not describe a failed Stage-23F relationship
+as validated, use protected feedback, recompute exact cache artifacts, or
+alter the incumbent.

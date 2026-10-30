@@ -1,9 +1,215 @@
 {
-  "status": "evaluator_timeout",
+  "status": "completed",
   "experiment_id": "stage23f_literature_validation_frontier",
-  "role": "development_experiment",
+  "dataset": "BSDS500",
+  "split": "val",
+  "dataset_role": "development_official_metric",
+  "feedback_allowed": true,
+  "metric_policy": "Agent may use these metrics for development decisions.",
+  "evaluator": {
+    "family": "original Berkeley BSDS boundary benchmark",
+    "matlab": "C:\\Program Files\\MATLAB\\R2023a\\bin\\matlab.exe",
+    "nthresh": 99,
+    "max_dist": 0.0075,
+    "thinpb": true,
+    "multi_annotator": true,
+    "bsds500_commit": "a04b7c6c3a9f0ace74bf205c72a43d32e1c72722",
+    "windows_correspondPixels_source_commit": "94260b5d0fc068202598312e01a37604972dcc9e",
+    "reference_reproduction_verified": false,
+    "resume_across_process_restarts": true
+  },
+  "methods": {
+    "incumbent_compact_positive_choquet": {
+      "ODS": 0.5454310761593647,
+      "ODS_precision": 0.4626531946758917,
+      "ODS_recall": 0.6642848879543243,
+      "ODS_threshold": 0.18,
+      "OIS": 0.5790494966213441,
+      "OIS_precision": 0.48778505508021314,
+      "OIS_recall": 0.71232536458227,
+      "AP": 0.5342936243814436,
+      "n_images": 100,
+      "nthresh": 99,
+      "max_dist": 0.0075,
+      "thinpb": true,
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged"
+    },
+    "stage23f_pair_03_minimum_conjunction": {
+      "ODS": 0.5297403531589512,
+      "ODS_precision": 0.473797784254944,
+      "ODS_recall": 0.6006621344820312,
+      "ODS_threshold": 0.5,
+      "OIS": 0.5305454251179473,
+      "OIS_precision": 0.458567981925033,
+      "OIS_recall": 0.6293251400145629,
+      "AP": 0.2999387274761294,
+      "n_images": 100,
+      "nthresh": 99,
+      "max_dist": 0.0075,
+      "thinpb": true,
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+      "resume_existing_tables_before": 31,
+      "resume_matching_processes": 1,
+      "resume_mode": true
+    },
+    "stage23f_pair_03_equal_arithmetic_mean": {
+      "ODS": 0.470647804117583,
+      "ODS_precision": 0.3953328913299804,
+      "ODS_recall": 0.5814128257649479,
+      "ODS_threshold": 0.6133333333333333,
+      "OIS": 0.4985808583864652,
+      "OIS_precision": 0.41259870442406965,
+      "OIS_recall": 0.6298327991343936,
+      "AP": 0.34268700759015736,
+      "n_images": 100,
+      "nthresh": 99,
+      "max_dist": 0.0075,
+      "thinpb": true,
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged"
+    },
+    "stage23f_pair_04_nonnegative_logistic_additive": {
+      "ODS": 0.477895386746119,
+      "ODS_precision": 0.3966565013720533,
+      "ODS_recall": 0.6009820077067898,
+      "ODS_threshold": 0.7264646464646465,
+      "OIS": 0.5151194446974379,
+      "OIS_precision": 0.43176226009581103,
+      "OIS_recall": 0.6383636499738005,
+      "AP": 0.34843679874384115,
+      "n_images": 100,
+      "nthresh": 99,
+      "max_dist": 0.0075,
+      "thinpb": true,
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged"
+    },
+    "stage23f_pair_04_equal_arithmetic_mean": {
+      "ODS": 0.44835144724399534,
+      "ODS_precision": 0.337931283570076,
+      "ODS_recall": 0.6659541745775746,
+      "ODS_threshold": 0.57,
+      "OIS": 0.5058690791054931,
+      "OIS_precision": 0.39971825144270995,
+      "OIS_recall": 0.6887859053140886,
+      "AP": 0.3563664350029063,
+      "n_images": 100,
+      "nthresh": 99,
+      "max_dist": 0.0075,
+      "thinpb": true,
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged"
+    },
+    "stage23f_triple_04_median_owa": {
+      "ODS": 0.5537073005023707,
+      "ODS_precision": 0.5415076446721736,
+      "ODS_recall": 0.566469319287644,
+      "ODS_threshold": 0.51,
+      "OIS": 0.5617250318172321,
+      "OIS_precision": 0.5317804153731565,
+      "OIS_recall": 0.5952432476573505,
+      "AP": 0.39561729396645734,
+      "n_images": 100,
+      "nthresh": 99,
+      "max_dist": 0.0075,
+      "thinpb": true,
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged"
+    },
+    "stage23f_triple_04_equal_arithmetic_mean": {
+      "ODS": 0.5677350825212351,
+      "ODS_precision": 0.4546047459528209,
+      "ODS_recall": 0.7558254904762877,
+      "ODS_threshold": 0.62,
+      "OIS": 0.6014498723547123,
+      "OIS_precision": 0.5116033568382883,
+      "OIS_recall": 0.7295762475416642,
+      "AP": 0.5003011292364541,
+      "n_images": 100,
+      "nthresh": 99,
+      "max_dist": 0.0075,
+      "thinpb": true,
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+      "resume_existing_tables_before": 0,
+      "resume_matching_processes": 1,
+      "resume_mode": true
+    }
+  },
+  "resume_status": {
+    "incumbent_compact_positive_choquet": "reused_complete",
+    "stage23f_pair_03_minimum_conjunction": "resumed",
+    "stage23f_pair_03_equal_arithmetic_mean": "reused_complete",
+    "stage23f_pair_04_nonnegative_logistic_additive": "reused_complete",
+    "stage23f_pair_04_equal_arithmetic_mean": "reused_complete",
+    "stage23f_triple_04_median_owa": "reused_complete",
+    "stage23f_triple_04_equal_arithmetic_mean": "computed"
+  },
+  "comparisons_vs_incumbent": {
+    "stage23f_pair_03_minimum_conjunction": {
+      "delta_ODS": -0.01569072300041352,
+      "delta_OIS": -0.04850407150339675,
+      "delta_AP": -0.2343548969053142
+    },
+    "stage23f_pair_03_equal_arithmetic_mean": {
+      "delta_ODS": -0.0747832720417817,
+      "delta_OIS": -0.08046863823487888,
+      "delta_AP": -0.1916066167912862
+    },
+    "stage23f_pair_04_nonnegative_logistic_additive": {
+      "delta_ODS": -0.06753568941324573,
+      "delta_OIS": -0.06393005192390622,
+      "delta_AP": -0.18585682563760242
+    },
+    "stage23f_pair_04_equal_arithmetic_mean": {
+      "delta_ODS": -0.09707962891536936,
+      "delta_OIS": -0.07318041751585103,
+      "delta_AP": -0.17792718937853724
+    },
+    "stage23f_triple_04_median_owa": {
+      "delta_ODS": 0.008276224343006011,
+      "delta_OIS": -0.017324464804111983,
+      "delta_AP": -0.13867633041498623
+    },
+    "stage23f_triple_04_equal_arithmetic_mean": {
+      "delta_ODS": 0.022304006361870354,
+      "delta_OIS": 0.022400375733368172,
+      "delta_AP": -0.033992495144989476
+    }
+  },
+  "export": {
+    "incumbent_compact_positive_choquet": {
+      "source": "incumbent_cache",
+      "fingerprint": "e4fa09acaf61ec23"
+    },
+    "stage23f_pair_03_minimum_conjunction": {
+      "source": "prediction_dir"
+    },
+    "stage23f_pair_03_equal_arithmetic_mean": {
+      "source": "prediction_dir"
+    },
+    "stage23f_pair_04_nonnegative_logistic_additive": {
+      "source": "prediction_dir"
+    },
+    "stage23f_pair_04_equal_arithmetic_mean": {
+      "source": "prediction_dir"
+    },
+    "stage23f_triple_04_median_owa": {
+      "source": "prediction_dir"
+    },
+    "stage23f_triple_04_equal_arithmetic_mean": {
+      "source": "prediction_dir"
+    }
+  },
   "manifest": "results/local_dev/stage23f_literature_validation_frontier/official_eval_manifest.json",
-  "manifest_sha256": "2451f264c934a61af3c442817e4bf09bd8d46a9ca1b3a7cd0645482993899f7b",
-  "message": "Command '['C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\.venv\\\\Scripts\\\\python.exe', 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\evaluation\\\\bsds_official\\\\run_official_bsds.py', '--manifest', 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\results\\\\local_dev\\\\stage23f_literature_validation_frontier\\\\official_eval_manifest.json', '--experiment-id', 'stage23f_literature_validation_frontier', '--out', 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\results\\\\official_eval\\\\stage23f_literature_validation_frontier', '--config', 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\evaluation\\\\bsds_official\\\\config.json']' timed out after 21600.0 seconds",
-  "failure_policy": "report_and_continue"
+  "final_claim_guard": "Development metrics are decision-capable on train/val, but a final SOTA claim still requires an independently verified reference reproduction and the project's protected multi-benchmark gate."
 }

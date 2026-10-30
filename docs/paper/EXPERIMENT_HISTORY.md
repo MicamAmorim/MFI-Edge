@@ -5526,3 +5526,26 @@ attachment-only continuation: all six frozen map sets and every complete or
 nonempty match table are preserved, only missing standard-Berkeley matching may
 run, and the primary-versus-mean transfer rule remains frozen until completion.
 Stage 23G remains deferred and compact MFI remains incumbent.
+
+### Stage 23F closure - no jointly transferable primary; Stage 23G checkpoint registered
+
+The checkpoint-preserving fourth continuation completed the full frozen
+standard-Berkeley frontier without descriptor extraction, refitting, aggregate
+map regeneration, or loss of valid per-image tables. Minimum conjunction on
+Gabor persistence plus structure-tensor coherence exceeded its matched equal
+mean by `+0.05909/+0.03196` ODS/OIS but lost `-0.04275` AP. Nonnegative
+logistic addition on Gabor persistence plus half-disc contrast changed the
+same metrics by `+0.02954/+0.00925/-0.00793`. Median OWA on the
+FH/half-disc/tensor triple changed them by
+`-0.01403/-0.03972/-0.10468`. Because the frozen rule required ODS at least
+`+0.002` and nonnegative OIS and AP jointly, none of the three UDED-selected
+aggregation advantages transferred. No cell is promoted or backfilled and
+compact MFI remains incumbent. The local Berkeley evaluator remains
+reference-unverified.
+
+The registered next action is `stage23g_gap_guided_detector_checkpoint`. It
+scores no dataset. High-reasoning live primary-source and official-code review
+must select exactly one reproducible strong non-neural detector target,
+characterize its existing evidence, and register one bounded gap-guided next
+action using the completed Stage-23 map prospectively. Failed Stage-23F
+relationships cannot be presented as validated or tuned.

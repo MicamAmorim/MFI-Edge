@@ -1745,3 +1745,13 @@ ODS/OIS/AP under the same standard Berkeley validation protocol. Describe a
 passing result as transfer of an aggregation relationship, not as detector
 promotion; retain the reference-unverified matcher caveat and all negative
 relationships.
+
+Stage 23F found no conjunctively transferable primary. The table should make
+the metric-profile split explicit: minimum conjunction and nonnegative
+logistic addition both improved ODS/OIS over their matched means but reduced
+AP, while median OWA was worse on all three endpoints. This is a useful
+negative landscape result, not a failed attempt to promote a detector. Do not
+collapse ODS/OIS and AP into one ranking, backfill another cell, or imply that
+the UDED-selected aggregation properties validated on Berkeley. Stage 23G
+must be narrated as a prospective strong-detector intervention chosen only
+after this complete transfer table and a new primary-source checkpoint.
