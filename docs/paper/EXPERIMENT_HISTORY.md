@@ -5649,3 +5649,20 @@ retry with a hashed result-local `classregtree/eval` adapter backed by
 `fitrtree/predict`. It preserves the author regression-tree arguments,
 randomness, source bytes, parameters, paper path, synthetic input, PCA shim,
 cache destination, and scientific pass rule.
+
+Retry 3 cleared the removed PCA and regression-tree APIs and the missing cache
+directory, then executed the unchanged `MS_algorithm_from_paper` path through
+all three affinity scales. The final synthetic smoke failed in author
+`mx_approx_refine`: the fixed 100-eigenvector multigrid configuration requests
+the default 200-column left basis, but the preregistered `36x36` raster yields
+only 162 elements at the initial coarse level. This is a frozen-input versus
+frozen-algorithm dimensional incompatibility, not a further missing dependency.
+
+Changing the smoke size, spectral dimension, or author source is explicitly
+forbidden by `STAGE23G2_PREREGISTRATION.md`, so Stage 23G2 closes as
+runtime/fidelity unresolved. No detector map, dataset, annotation, benchmark,
+or Stage-23 cache artifact was read or produced. The exact PMI development
+reproduction is not authorized. The next registered action is the existing
+repeatable planning-only `stage23_literature_escalation`; it must preserve the
+Stage-23F/G1/G2 negative evidence and may choose at most one distinct
+prospective action without dataset scoring.

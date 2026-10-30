@@ -126,3 +126,21 @@ author call's regression method, variables-per-split, minimum-leaf, and
 no-pruning arguments and records the adapter hash. Author bytes, randomness,
 parameters, paper path, synthetic input, PCA shim, cache destination, and pass
 rule remain unchanged.
+
+## Closure
+
+Retry 3 passed the legacy PCA, cache-directory, and regression-tree
+compatibility blockers and executed the unchanged exact paper path through all
+three PMI-affinity scales. It then stopped inside the author multigrid spectral
+globalizer: the fixed 100-eigenvector setting requests the default 200-column
+left approximation basis, while the preregistered `36x36` input supplies only
+162 elements at the initial coarse subproblem. The resulting basis has only
+162 columns, so `mx_approx_refine` cannot select columns `1:200`.
+
+This is an intrinsic incompatibility between the frozen tiny synthetic input
+and the frozen author paper-path dimensionality, not another missing runtime
+dependency. Repair would require changing the registered input size, the fixed
+eigenvector/basis setting, or author algorithm source. The preregistered rule
+forbids all three. Stage 23G2 therefore closes as runtime/fidelity unresolved:
+no detector output, dataset, annotation, benchmark, or Stage-23 cache map was
+read or produced, and no exact development reproduction is authorized.

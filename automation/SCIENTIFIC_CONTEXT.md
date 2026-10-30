@@ -3581,3 +3581,13 @@ harness-only retry is registered with a result-local `classregtree/eval`
 adapter to supported `fitrtree/predict`, preserving the unchanged author tree
 arguments and all prior provenance, input, parameter, and path contracts.
 
+Retry 3 cleared the legacy API blockers and executed all three exact-paper-path
+PMI affinity scales, but the frozen `36x36` smoke is dimensionally incompatible
+with the fixed 100-eigenvector multigrid solver: its initial coarse problem has
+162 elements and cannot supply the default 200-column approximation basis.
+Because the preregistration forbids changing the input, spectral setting, or
+author source, Stage 23G2 closes runtime/fidelity unresolved. No dataset,
+benchmark, detector output, or cache map was read. Route next to the repeatable
+planning-only `stage23_literature_escalation`; do not repair or substitute the
+closed PMI route.
+

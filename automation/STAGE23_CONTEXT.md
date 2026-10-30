@@ -195,3 +195,18 @@ harness-only retry with a result-local `classregtree/eval` adapter mapping the
 unchanged author arguments to supported `fitrtree/predict`. Author bytes,
 parameters, randomness, paper path, input, PCA shim, and cache destination
 remain frozen.
+
+Retry 3 passed every legacy compatibility blocker and ran the exact paper path
+through all three PMI-affinity scales, but the spectral multigrid stage exposed
+an intrinsic preregistration conflict. The fixed 100-eigenvector path requests
+a 200-column approximation basis, while the frozen `36x36` smoke supplies only
+162 elements at the initial coarse subproblem. Changing the input, spectral
+dimension, or author source is forbidden by the Stage-23G2 contract. The PMI
+target therefore closes runtime/fidelity unresolved without dataset access or
+detector output. No development reproduction or intervention is authorized.
+
+The active next task returns to the repeatable planning-only
+`stage23_literature_escalation`. It must preserve the Stage-23F/G1/G2 negative
+evidence, score no dataset, avoid repairing or substituting the closed PMI
+route, and choose at most one distinct prospectively justified action or close
+the campaign path. Compact MFI remains incumbent.

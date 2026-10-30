@@ -3226,3 +3226,17 @@ dataset-free retry with a result-local `classregtree/eval` compatibility
 adapter to `fitrtree/predict`. Tree arguments, source bytes, parameters,
 randomness, path, input, PCA shim, and cache destination remain unchanged.
 
+Retry 3 passed the compatibility surface and reached exact-paper-path spectral
+globalization. The fixed `36x36` smoke, however, creates only 162 initial
+coarse elements while the fixed 100-eigenvector solver requests its default
+200-column approximation basis. Repair would require changing a frozen input,
+spectral parameter, or author source, so Stage 23G2 closes runtime/fidelity
+unresolved under its preregistered rule. No dataset or detector output was
+read, and no exact PMI reproduction or intervention is authorized.
+
+The active action returns to the repeatable planning-only
+`stage23_literature_escalation`. It must retain all Stage-23F/G1/G2 negative
+evidence, avoid reopening the closed SED/half-disc and PMI routes, score no
+dataset, and choose at most one distinct prospective action or close the
+campaign path. Compact MFI remains incumbent.
+
