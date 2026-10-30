@@ -148,3 +148,21 @@ The active next task is the already registered repeatable
 Stage-23F/G1 negative evidence, score no dataset, avoid reopening or tuning the
 SED/half-disc route, and choose at most one prospectively justified distinct
 Stage-23 action or close the campaign path if none exists.
+
+The literature escalation is complete. Primary-source and official-code audit
+selected Isola et al.'s complete PMI-affinity plus spectral-clustering detector
+as the next distinct strong-detector target. The official repository is pinned
+at commit `ee2d76e98340313a8f92e1b65064a9b4ea90ac77` under its shipped
+three-clause BSD-style license. Its color/local-variance KDE affinities,
+three-scale graph, fixed `rho=1.25`, and spectral globalization are materially
+different from the bounded grayscale PMI-deficit map tested in Stage 18j and
+cached in Stage 23. The method is classified as unsupervised-data-estimated
+with fixed author parameters tuned on BSDS500 train.
+
+The active next task is `stage23g2_pmi_exact_runtime_preflight` under
+`docs/paper/STAGE23G2_PREREGISTRATION.md`. It is dataset-free and may only
+verify immutable source provenance, source contracts, dependency/build
+compatibility, and the fixed `MS_algorithm_from_paper` synthetic smoke. It may
+not read a benchmark or cache map, score a detector, alter compact MFI, or
+design an intervention. Only a complete pass may register a separate exact
+development reproduction before any gap diagnosis.

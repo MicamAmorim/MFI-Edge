@@ -3542,3 +3542,20 @@ choose at most one prospectively justified distinct Stage-23 action or close
 the campaign path if none exists. Compact distorted-Choquet MFI remains
 incumbent and Berkeley reference reproduction remains unverified.
 
+### Post-Stage-23G1 escalation - exact PMI detector preflight registered
+
+The live primary-source and official-code checkpoint selected Isola et al.'s
+complete Crisp Boundaries detector as the next distinct strong non-neural
+target. Its pinned author path estimates image-internal color/variance KDE
+affinities and applies multiscale spectral globalization; it is not the bounded
+grayscale PMI-deficit map tested in Stage 18j and cached in Stage 23. The
+official BSD-style source is pinned at commit
+`ee2d76e98340313a8f92e1b65064a9b4ea90ac77`, and the fixed path is
+`MS_algorithm_from_paper`.
+
+The registered next action is `stage23g2_pmi_exact_runtime_preflight`, a
+dataset-free immutable-source/build/synthetic smoke test. It cannot read a
+benchmark or cached map, score a detector, select a gap cue, alter compact MFI,
+or reopen SED/half-disc. Only a complete pass may register a separate exact
+development reproduction before any prospective gap diagnosis.
+

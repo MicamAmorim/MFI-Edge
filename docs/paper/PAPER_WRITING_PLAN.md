@@ -1765,3 +1765,13 @@ corrective support: low correlation and frequent unique GT proximity did not
 establish a safe missing evidence family. No fused candidate was created, the
 incumbent-only official attachment is not a comparison, and the prohibited
 equal-mean follow-up must not appear as an unrun positive result.
+
+The next Stage-23G route starts with reproduction fidelity, not an immediate
+fusion. Present the complete Isola et al. PMI detector as a distinct
+unsupervised-data-estimated architecture whose per-image KDE affinities and
+spectral globalization were absent from the bounded Stage-18j/Stage-23 PMI
+descriptor. Stage 23G2 is only an immutable-source/build/synthetic preflight of
+the pinned `MS_algorithm_from_paper` path. Do not report it as a detector
+result or imply that a missing cue, aggregator, or improvement has already
+been selected. A later dataset reproduction and then a prospective gap
+diagnosis are required before any intervention claim.

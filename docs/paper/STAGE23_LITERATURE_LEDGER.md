@@ -96,3 +96,31 @@ failed Stage-23F half-disc/logistic relationship transferred. Because no
 nontrivial Stage-23F aggregation passed jointly, only the equal-mean matched
 control is frozen as a possible later intervention, conditional on the
 cross-domain gap diagnosis passing.
+
+## Post-Stage-23G1 live escalation — complete PMI detector preflight
+
+The 2026-10-30 refresh retained the primary ECCV paper and official project
+page for Isola, Zoran, Krishnan, and Adelson's *Crisp Boundary Detection Using
+Pointwise Mutual Information* (DOI `10.1007/978-3-319-10578-9_52`,
+`https://web.mit.edu/phillipi/crisp_boundaries/`). The project explicitly
+describes an unsupervised detector that estimates image-internal feature-pair
+dependency and globalizes it with spectral clustering. The official repository
+`https://github.com/phillipi/crisp-boundaries` is pinned at current immutable
+commit `ee2d76e98340313a8f92e1b65064a9b4ea90ac77`; it contains a three-clause
+BSD-style `License.txt`, the end-to-end `findBoundaries` entry point, color and
+local-variance features, fixed `rho=1.25`, KDE affinity estimation, and the
+explicit non-approximated `MS_algorithm_from_paper` setting. The paper states
+that parameters were tuned on BSDS500 train, so the method is classified as
+`unsupervised-data-estimated` with author-tuned fixed parameters rather than
+strictly untrained.
+
+This complete method is not Stage 18j's bounded grayscale discrete PMI-deficit
+membership: the author detector includes per-image KDE estimation, multiscale
+affinity construction, and spectral globalization. It is selected as a
+mechanistically distinct strong-detector target after the SED/half-disc route
+closed, not as a replacement cue inside SED and not because a failed Stage-23F
+cell was reinterpreted. The registered next action is the dataset-free
+`stage23g2_pmi_exact_runtime_preflight` under
+`docs/paper/STAGE23G2_PREREGISTRATION.md`. No dataset reproduction or missing-
+family intervention is authorized until immutable source, build compatibility,
+and the exact paper-path synthetic smoke all pass.

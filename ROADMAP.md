@@ -3184,3 +3184,20 @@ one distinct prospectively justified Stage-23 action, or close the campaign
 path if none exists. It may not score a dataset, reopen or tune SED/half-disc,
 reinterpret the failed Stage-23F relationships, or recompute valid cache maps.
 
+## Stage 23 literature escalation complete - exact PMI preflight active
+
+The live checkpoint selected Isola et al.'s complete Crisp Boundaries method
+as a mechanistically distinct strong non-neural target. Its pinned official
+code estimates image-internal color/variance PMI affinities and globalizes them
+spectrally; it is not the bounded grayscale PMI cue already present in the
+Stage-23 landscape. The shipped BSD-style source is pinned at commit
+`ee2d76e98340313a8f92e1b65064a9b4ea90ac77`, and the fixed prospective path is
+the author's non-approximated `MS_algorithm_from_paper` setting.
+
+The active action is `stage23g2_pmi_exact_runtime_preflight`. It performs only
+immutable-source, build, and fixed synthetic runtime checks. No dataset,
+annotation, cached descriptor map, or detector score may be read. A pass may
+advance only to a separately registered exact development reproduction; it
+does not yet authorize a gap cue, aggregation rule, or intervention. Compact
+MFI remains incumbent and Berkeley reference reproduction remains unverified.
+

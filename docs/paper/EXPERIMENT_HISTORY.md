@@ -5596,3 +5596,24 @@ remains unverified. The registered next action is the planning-only
 `stage23_literature_escalation`; it must preserve this negative result, score no
 dataset, and select at most one prospectively justified next Stage-23 action or
 close the campaign path if none exists.
+
+### Stage 23 literature escalation — complete PMI detector preflight registered
+
+The live primary-source and official-code checkpoint preserves the Stage-23F
+and Stage-23G1 negative results and selects a distinct strong-detector target:
+Isola et al.'s complete PMI-affinity plus spectral-clustering boundary
+detector. The official code is pinned at commit
+`ee2d76e98340313a8f92e1b65064a9b4ea90ac77` under its shipped three-clause
+BSD-style license. The author source exposes an explicit
+`MS_algorithm_from_paper` path with color/local-variance features, per-image
+KDE dependency estimation, three scales, fixed `rho=1.25`, and spectral
+globalization. This is materially different from the bounded Stage-18j/
+Stage-23 grayscale PMI-deficit evidence map.
+
+The registered next action is `stage23g2_pmi_exact_runtime_preflight` under
+`docs/paper/STAGE23G2_PREREGISTRATION.md`. It is dataset-free and verifies
+immutable source, source contracts, MEX/runtime compatibility, and one fixed
+synthetic execution of the exact paper path. It cannot read a benchmark, score
+a detector, run an intervention, reopen SED/half-disc, or alter compact MFI.
+Only a pass may lead to a separately registered exact development reproduction
+before any missing-family diagnosis.
