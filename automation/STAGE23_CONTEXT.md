@@ -175,3 +175,13 @@ R2023a no longer provides legacy `princomp`, called by unchanged author
 with a result-local centered-SVD compatibility implementation of the legacy
 PCA score contract. Author bytes, parameters, paper path, and synthetic input
 remain frozen.
+
+Retry 1 accepted the PCA compatibility shim and advanced into unchanged
+`getLocalPairs`, then stopped because the sparse result-local build surface
+lacked its expected `../caches/ii_jj_caches` destination. The subsequent heap-
+corruption exit followed MATLAB's explicit missing-directory exception; no
+detector output or dataset access occurred. The active task is
+`stage23g2_pmi_exact_runtime_preflight_retry2`, an identical harness-only retry
+that creates only that expected result-local cache directory. Author source,
+commit, parameters, paper path, synthetic input, and compatibility shim remain
+unchanged.

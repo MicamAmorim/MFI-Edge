@@ -5626,3 +5626,14 @@ stopped at author `pcaIm.m` because MATLAB R2023a no longer supplies legacy
 retry with a result-local centered economy-SVD implementation of the removed
 PCA score interface. Author bytes, paper path, parameters, synthetic input,
 and the scientific pass rule remain unchanged.
+
+Retry 1 accepted the compatibility function and advanced into unchanged
+`getLocalPairs`, but the synthetic smoke then failed because the sparse
+result-local build surface omitted the empty `../caches/ii_jj_caches`
+directory expected by the author code. MATLAB's later heap-corruption exit
+followed the explicit save error. No output map, dataset, annotation, Stage-23
+cache artifact, or detector benchmark was read or produced. The registered
+next action is `stage23g2_pmi_exact_runtime_preflight_retry2`, an identical
+harness-only retry that materializes only that expected result-local directory.
+Author source, commit, paper path, parameters, synthetic input, PCA shim, and
+the scientific pass rule remain unchanged.

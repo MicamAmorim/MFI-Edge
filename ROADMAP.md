@@ -3208,3 +3208,12 @@ before synthetic output because R2023a removed the author code's legacy
 harness retry using a result-local centered-SVD compatibility function. No
 author source, scientific path, parameter, input, or dataset role changes.
 
+Retry 1 reached the unchanged author's deterministic local-pair cache write,
+then stopped because the sparse result-local build surface lacked the expected
+`../caches/ii_jj_caches` directory. No detector output or dataset access
+occurred. The active action is
+`stage23g2_pmi_exact_runtime_preflight_retry2`, which creates only that
+result-local destination and repeats the identical synthetic preflight. The
+author tree, paper path, parameters, input, and centered-SVD compatibility shim
+remain frozen.
+

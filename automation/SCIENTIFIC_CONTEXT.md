@@ -3566,3 +3566,10 @@ harness-only retry is registered with a result-local centered-SVD compatibility
 implementation of that PCA score contract; author bytes, paper path,
 parameters, and synthetic input are unchanged.
 
+That retry accepted the PCA shim and reached unchanged `getLocalPairs`, but the
+sparse result-local build surface lacked the empty `../caches/ii_jj_caches`
+destination expected by the author code. No detector output or dataset access
+occurred. A second harness-only retry is registered to create only that
+result-local directory before repeating the identical smoke; author bytes,
+paper path, parameters, input, and compatibility shim remain unchanged.
+

@@ -106,3 +106,12 @@ only a result-local centered economy-SVD implementation of the historical
 `princomp` score contract ahead of the immutable author tree. The commit,
 author bytes, paper path, parameters, synthetic input, and pass rule are
 unchanged.
+
+Retry 1 accepted that compatibility entry point and advanced into unchanged
+`getLocalPairs`, but stopped because the sparse result-local build surface did
+not contain the empty `../caches/ii_jj_caches` directory where the author code
+persists its deterministic image-size index cache. MATLAB's later heap-error
+exit followed this explicit missing-directory exception and supplies no
+detector output. Retry 2 materializes only that expected result-local directory
+before repeating the identical smoke test. It does not edit an author byte,
+change a parameter or input, or read a dataset.
