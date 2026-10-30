@@ -86,10 +86,22 @@ complete, while `stage23f_triple_04_median_owa` still has only one nonempty
 per-image table and its matched equal-mean control has not started. No complete
 six-cell table or transfer interpretation exists.
 
-The active next task is
-`stage23f_literature_validation_frontier_retry3`, the unchanged attachment-only
-continuation against the original evaluator directory. It reuses every frozen
-map and complete/nonempty table, resumes only missing standard-Berkeley
-matching, and applies the frozen transfer rule only after all six cells finish.
-Stage 23G remains deferred; compact MFI is unchanged and reference reproduction
-remains unverified.
+A cross-retry infrastructure bug was identified before allowing retry 3 to
+continue unchecked: the legacy Python evaluator deleted each method output
+directory on entry, so retries restarted already-completed methods even though
+the MATLAB wrapper itself could resume nonempty per-image tables within one
+process lifetime. The corrected runner
+`evaluation/bsds_official/run_official_bsds_resume.py` now preserves completed
+method directories, fingerprints frozen predictions plus evaluator provenance,
+skips complete methods, resumes partial methods from their existing nonempty
+`*_ev1.txt` tables, regenerates only cheap aggregate summaries when needed, and
+fails closed on provenance mismatch. The Stage-23 policy now makes this
+checkpoint-preserving behavior mandatory for all long-running deterministic
+jobs.
+
+The active task remains `stage23f_literature_validation_frontier_retry3`, but
+its runner now routes through the checkpoint-preserving evaluator. After the
+updated branch is pulled locally and the interrupted old retry is restarted,
+only missing standard-Berkeley matching may execute. The frozen transfer rule
+is applied only after all six cells finish. Stage 23G remains deferred; compact
+MFI is unchanged and reference reproduction remains unverified.
