@@ -3100,3 +3100,16 @@ BSDS500 validation, freezes the six score-map sets, and compares them under the
 standard Berkeley development protocol. It identifies transfer relationships
 only and cannot promote a raw landscape cell or alter the incumbent.
 
+## Stage 23F inference complete - official attachment continuation active
+
+All six frozen validation map sets, their cache provenance, hashes, and the
+positions 1/50/100 preview are complete. The standard-Berkeley evaluator timed
+out after preserving four complete method tables and part of a fifth, so no
+primary-versus-mean transfer relationship is interpreted yet.
+
+The active action is
+`stage23f_literature_validation_frontier_retry1`. It resumes only missing
+per-image matching in the original evaluator directory and reuses every frozen
+prediction and completed nonempty table. Stage 23G remains deferred until the
+six-cell official table is complete; compact MFI remains incumbent.
+

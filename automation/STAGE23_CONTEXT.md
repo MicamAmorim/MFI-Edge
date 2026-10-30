@@ -68,9 +68,18 @@ logistic additive fusion for persistence plus half-disc contrast, and median
 OWA for FH boundaries plus half-disc contrast plus tensor coherence. Each
 advances only with its matched equal-mean control; compact MFI is unchanged.
 
-The active next task is `stage23f_literature_validation_frontier`. It fits the
-frozen interfaces on all 14 overlap-clean UDED images, extracts only four
-needed BSDS500-validation descriptor maps once per native image through the
-certified cache, freezes all six score-map sets, and attaches standard Berkeley
-validation scoring. It identifies transferable aggregation relationships but
-cannot promote a detector. Reference reproduction remains unverified.
+Stage 23F completed its scientific inference surface: all four required
+descriptor families were extracted once for 100 BSDS500-validation images, all
+400 descriptor and 600 aggregate requests were cached, the six frozen map sets
+and fixed positions 1/50/100 preview are complete, and validation GT was not
+used by inference. The required official evaluator timed out after preserving
+complete nonempty match tables for the incumbent and three frontier cells plus
+part of the next cell. No partial metric is interpreted.
+
+The active next task is
+`stage23f_literature_validation_frontier_retry1`, an attachment-only resumable
+continuation against the original evaluator directory. It reuses every frozen
+map and nonempty completed table, resumes only missing standard-Berkeley
+matching, and then applies the unchanged primary-versus-matched-mean transfer
+rule. Stage 23G remains deferred; compact MFI is unchanged and reference
+reproduction remains unverified.

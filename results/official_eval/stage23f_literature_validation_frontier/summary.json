@@ -1,0 +1,9 @@
+{
+  "status": "evaluator_timeout",
+  "experiment_id": "stage23f_literature_validation_frontier",
+  "role": "development_experiment",
+  "manifest": "results/local_dev/stage23f_literature_validation_frontier/official_eval_manifest.json",
+  "manifest_sha256": "2451f264c934a61af3c442817e4bf09bd8d46a9ca1b3a7cd0645482993899f7b",
+  "message": "Command '['C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\.venv\\\\Scripts\\\\python.exe', 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\evaluation\\\\bsds_official\\\\run_official_bsds.py', '--manifest', 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\results\\\\local_dev\\\\stage23f_literature_validation_frontier\\\\official_eval_manifest.json', '--experiment-id', 'stage23f_literature_validation_frontier', '--out', 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\results\\\\official_eval\\\\stage23f_literature_validation_frontier', '--config', 'C:\\\\Users\\\\Windows 11\\\\Documents\\\\MFI-Edge\\\\evaluation\\\\bsds_official\\\\config.json']' timed out after 21600.0 seconds",
+  "failure_policy": "report_and_continue"
+}

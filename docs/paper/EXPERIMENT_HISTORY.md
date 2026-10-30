@@ -5469,3 +5469,28 @@ and all six aggregated map sets, and attaches standard Berkeley scoring. Its
 fixed transfer rule compares each primary only with its matched mean; Stage 23F
 cannot promote a detector or backfill the frontier. Compact MFI remains
 incumbent and reference reproduction remains unverified.
+
+### Stage 23F inference complete; official attachment continuation registered
+
+Stage 23F completed all non-evaluator requirements on 100 native-resolution
+BSDS500-validation images. It made exactly 400 one-time descriptor-cache
+computations and 600 aggregate-cache computations, froze all six score-map
+sets, retained hashes/provenance, and emitted the fixed positions 1/50/100
+preview. Inference did not read validation ground truth and compact MFI remains
+unchanged.
+
+The required standard-Berkeley attachment reached its six-hour controller
+limit after preserving complete nonempty per-image match tables for the
+incumbent, both `pair_03` cells, and the `pair_04` logistic cell, plus 19
+nonempty tables for the paired equal-mean control. The triple cells had not
+started. Partial metrics have no standalone interpretation, so the frozen
+transfer rule has not been applied.
+
+The registered next action is
+`stage23f_literature_validation_frontier_retry1`. This attachment-only
+continuation targets the original evaluator directory, whose audited resume
+path skips nonempty per-image tables. It may finish only missing matches and
+aggregate the unchanged six frozen methods; it cannot extract a descriptor,
+refit an aggregator, regenerate a map, backfill a frontier cell, promote a
+detector, or advance to Stage 23G before completion. Berkeley reference
+reproduction remains unverified.

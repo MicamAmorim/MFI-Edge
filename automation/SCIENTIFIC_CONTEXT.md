@@ -3437,3 +3437,22 @@ The fixed primary-versus-matched-mean rule identifies transfer relationships
 only. No backfill, tuning, detector promotion, or protected-test feedback is
 authorized; Berkeley reference reproduction remains unverified.
 
+### Stage 23F inference complete - official attachment retry active
+
+Stage 23F completed all 100 BSDS500-validation images, with 400 one-time
+descriptor-cache computations, 600 aggregate-cache computations, six complete
+frozen score-map sets, hashes/provenance, and the fixed positions 1/50/100
+preview. Validation GT was not used by inference. The required standard-
+Berkeley evaluator reached its six-hour limit after preserving four complete
+method tables and 19 nonempty per-image tables for the next method; the final
+two methods had not started. Partial metrics are not interpreted and the
+transfer rule remains pending.
+
+The registered next action is
+`stage23f_literature_validation_frontier_retry1`, an attachment-only resumable
+continuation in the original evaluator directory. It reuses every frozen map
+and completed nonempty table, resumes only missing matching, and applies the
+unchanged primary-versus-matched-mean rule after all six cells are complete.
+Stage 23G remains deferred; compact MFI is unchanged and Berkeley reference
+reproduction remains unverified.
+
