@@ -133,3 +133,18 @@ conditional correctness, image stability, and rank nonredundancy. Only a full
 pass may later authorize a separately preregistered equal-mean control using
 the already frozen Stage-23F membership transform. Failure closes this route
 without target/cue substitution. Compact MFI remains incumbent.
+
+Stage 23G1 is complete. It used zero detector runs, zero descriptor
+computations, and 114 exact cache hits. All four gap conditions passed on
+overlap-clean UDED, but BSDS500-validation mean conditional correctness was
+`0.38056`, below the frozen `0.50` requirement; the other three BSDS
+conditions passed. The conjunctive rule therefore rejects the missing-family
+hypothesis. No SED/half-disc equal-mean intervention is authorized, and the
+route closes without cue or target substitution. Compact MFI remains incumbent
+and Berkeley reference reproduction remains unverified.
+
+The active next task is the already registered repeatable
+`stage23_literature_escalation`. It is planning-only and must preserve the
+Stage-23F/G1 negative evidence, score no dataset, avoid reopening or tuning the
+SED/half-disc route, and choose at most one prospectively justified distinct
+Stage-23 action or close the campaign path if none exists.

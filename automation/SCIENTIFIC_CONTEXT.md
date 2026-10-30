@@ -3523,3 +3523,22 @@ may authorize a later separately preregistered equal-arithmetic-mean control;
 failure closes the SED/half-disc route without substitution. Compact MFI
 remains incumbent and Berkeley reference reproduction remains unverified.
 
+### Stage 23G1 closure - SED/half-disc gap diagnosis failed
+
+The frozen-map diagnosis completed with zero detector runs, zero descriptor
+computations, 114 exact cache hits, and no protected-lineage byte read. All
+four gap conditions passed on overlap-clean UDED. On BSDS500 validation, mean
+cue-only GT fraction was `0.17233`, unique support occurred on every image,
+and mean SED/cue Spearman was `-0.01521`, but mean
+`P(cue correct | SED wrong)` was only `0.38056` versus the preregistered
+`0.50` minimum. The conjunctive cross-domain rule failed. The SED/half-disc
+route closes without its conditional equal-mean intervention, cue or target
+substitution, or incumbent change.
+
+The registered next action is the repeatable planning-only
+`stage23_literature_escalation`. It scores no dataset and must preserve the
+Stage-23F/G1 negative evidence, avoid reopening or tuning SED/half-disc, and
+choose at most one prospectively justified distinct Stage-23 action or close
+the campaign path if none exists. Compact distorted-Choquet MFI remains
+incumbent and Berkeley reference reproduction remains unverified.
+

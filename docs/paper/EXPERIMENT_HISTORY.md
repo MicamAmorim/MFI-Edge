@@ -5575,3 +5575,24 @@ computation, validates all frozen SED/hash and Stage-23 cache provenance, and
 measures cue-only GT rescue, conditional correctness, image stability, and
 rank nonredundancy on overlap-clean UDED selection and BSDS500 validation. It
 cannot promote a detector or alter compact MFI.
+
+### Stage 23G1 closure - SED/half-disc gap unsupported cross-domain
+
+The frozen-map diagnosis completed with zero detector runs, zero descriptor
+computations, 114 exact cache hits, and no protected-lineage byte read. The
+half-disc cue passed all four preregistered conditions on overlap-clean UDED:
+mean cue-only GT fraction `0.25667`, conditional correctness `0.60109`, unique
+GT support on `92.86%` of images, and mean SED/cue Spearman `0.04418`. On
+BSDS500 validation it retained cue-only GT fraction `0.17233`, unique support
+on every image, and mean Spearman `-0.01521`, but mean
+`P(cue correct | SED wrong)` was only `0.38056`, below the frozen `0.50`
+requirement. The conjunctive cross-domain gap rule therefore failed.
+
+The SED/half-disc route closes without the conditional equal-mean intervention,
+cue or target substitution, detector promotion, or incumbent change. The
+incumbent-only official attachment contains no candidate comparison. Compact
+distorted-Choquet MFI remains incumbent and Berkeley reference reproduction
+remains unverified. The registered next action is the planning-only
+`stage23_literature_escalation`; it must preserve this negative result, score no
+dataset, and select at most one prospectively justified next Stage-23 action or
+close the campaign path if none exists.

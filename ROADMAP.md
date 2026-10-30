@@ -3169,3 +3169,18 @@ Only a pass can lead to a separate equal-mean-control intervention; a failure
 closes this route without replacing the cue or target. Compact MFI remains the
 incumbent.
 
+## Stage 23G1 complete - SED half-disc route closed
+
+The frozen diagnosis used all 114 exact cached half-disc maps and frozen SED
+maps without detector or descriptor computation. UDED passed the complete gap
+rule, but BSDS500 validation conditional correctness was `0.38056`, below the
+preregistered `0.50` minimum. The other BSDS conditions passed, but the rule
+was conjunctive. No equal-mean intervention is authorized, and the route closes
+without cue or target substitution. Compact MFI remains incumbent.
+
+The active action is `stage23_literature_escalation`, the existing repeatable
+planning-only checkpoint. It may use live primary literature to choose at most
+one distinct prospectively justified Stage-23 action, or close the campaign
+path if none exists. It may not score a dataset, reopen or tune SED/half-disc,
+reinterpret the failed Stage-23F relationships, or recompute valid cache maps.
+
