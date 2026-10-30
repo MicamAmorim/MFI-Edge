@@ -3124,3 +3124,15 @@ resumes only missing tables in the same evaluator directory, reuses all frozen
 maps and completed work, and cannot change or interpret the frontier until all
 six cells finish. Stage 23G remains deferred.
 
+## Stage 23F retry 3 import failure - retry 4 active
+
+Retry 3 stopped before evaluator work because the checkpoint-preserving runner
+could not resolve its sibling base evaluator module. The import path is repaired
+without changing predictions, tables, matcher settings, or the frozen transfer
+rule.
+
+The active action is `stage23f_literature_validation_frontier_retry4`. It
+reuses all frozen maps and complete/nonempty tables and resumes only missing
+standard-Berkeley matching. Stage 23G remains deferred until all six frontier
+cells and the frozen relationship table are complete.
+

@@ -3474,3 +3474,11 @@ registered next action is
 continuation reusing all frozen maps and nonempty tables. Stage 23G remains
 deferred.
 
+Retry 3 stopped before evaluator work because the checkpoint-preserving Python
+runner could not import its sibling base evaluator module. No matcher or
+scientific computation ran. The runner now resolves its own directory
+explicitly, and `stage23f_literature_validation_frontier_retry4` is registered
+as the unchanged attachment-only continuation. It must reuse every frozen map
+and complete/nonempty table and compute only missing standard-Berkeley matches.
+Stage 23G remains deferred.
+

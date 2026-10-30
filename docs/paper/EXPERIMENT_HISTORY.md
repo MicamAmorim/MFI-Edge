@@ -5511,3 +5511,18 @@ nonempty match tables are reused, only missing matches may run, and the frozen
 primary-versus-mean rule is applied only after completion. Stage 23G remains
 deferred, compact MFI remains incumbent, and Berkeley reference reproduction
 remains unverified.
+
+### Stage 23F retry 3 harness failure - fourth attachment continuation registered
+
+Retry 3 stopped before evaluator work because the checkpoint-preserving runner
+could not resolve its sibling `run_official_bsds` module. No matcher, dataset
+score, descriptor extraction, fit, or map generation ran, so the failure has no
+scientific interpretation. The runner now adds its own directory to the module
+search path explicitly.
+
+The registered next action is
+`stage23f_literature_validation_frontier_retry4`. It is the unchanged
+attachment-only continuation: all six frozen map sets and every complete or
+nonempty match table are preserved, only missing standard-Berkeley matching may
+run, and the primary-versus-mean transfer rule remains frozen until completion.
+Stage 23G remains deferred and compact MFI remains incumbent.
