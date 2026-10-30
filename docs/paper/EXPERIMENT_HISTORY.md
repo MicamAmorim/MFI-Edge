@@ -5494,3 +5494,20 @@ aggregate the unchanged six frozen methods; it cannot extract a descriptor,
 refit an aggregator, regenerate a map, backfill a frontier cell, promote a
 detector, or advance to Stage 23G before completion. Berkeley reference
 reproduction remains unverified.
+
+### Stage 23F retry 1 timeout - second attachment continuation registered
+
+The first resumable continuation also reached the six-hour controller limit.
+It completed the fifth method, `stage23f_pair_04_equal_arithmetic_mean`, and
+preserved the first nonempty per-image match table for
+`stage23f_triple_04_median_owa`. The matched triple control has not started.
+Without all six frontier cells there is no transfer classification, and no
+partial metric is interpreted.
+
+The registered next action is
+`stage23f_literature_validation_frontier_retry2`. It is the same attachment-only
+resume in the original evaluator directory: all frozen maps and all complete or
+nonempty match tables are reused, only missing matches may run, and the frozen
+primary-versus-mean rule is applied only after completion. Stage 23G remains
+deferred, compact MFI remains incumbent, and Berkeley reference reproduction
+remains unverified.

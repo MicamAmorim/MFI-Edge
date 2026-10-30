@@ -3113,3 +3113,14 @@ per-image matching in the original evaluator directory and reuses every frozen
 prediction and completed nonempty table. Stage 23G remains deferred until the
 six-cell official table is complete; compact MFI remains incumbent.
 
+## Stage 23F retry 1 timed out - retry 2 active
+
+Retry 1 completed the fifth frontier method and preserved one nonempty table
+for the sixth before the controller limit. The complete official table and
+transfer decision remain unavailable.
+
+The active action is `stage23f_literature_validation_frontier_retry2`. It
+resumes only missing tables in the same evaluator directory, reuses all frozen
+maps and completed work, and cannot change or interpret the frontier until all
+six cells finish. Stage 23G remains deferred.
+

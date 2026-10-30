@@ -76,10 +76,15 @@ used by inference. The required official evaluator timed out after preserving
 complete nonempty match tables for the incumbent and three frontier cells plus
 part of the next cell. No partial metric is interpreted.
 
+Retry 1 reached the six-hour limit after completing the fifth method,
+`stage23f_pair_04_equal_arithmetic_mean`, and preserving the first nonempty
+per-image table for `stage23f_triple_04_median_owa`. No complete six-cell table
+or transfer interpretation exists.
+
 The active next task is
-`stage23f_literature_validation_frontier_retry1`, an attachment-only resumable
+`stage23f_literature_validation_frontier_retry2`, the unchanged attachment-only
 continuation against the original evaluator directory. It reuses every frozen
-map and nonempty completed table, resumes only missing standard-Berkeley
-matching, and then applies the unchanged primary-versus-matched-mean transfer
-rule. Stage 23G remains deferred; compact MFI is unchanged and reference
-reproduction remains unverified.
+map and complete/nonempty table, resumes only missing standard-Berkeley
+matching, and applies the frozen transfer rule only after all six cells finish.
+Stage 23G remains deferred; compact MFI is unchanged and reference reproduction
+remains unverified.

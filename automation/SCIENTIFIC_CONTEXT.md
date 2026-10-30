@@ -3456,3 +3456,12 @@ unchanged primary-versus-matched-mean rule after all six cells are complete.
 Stage 23G remains deferred; compact MFI is unchanged and Berkeley reference
 reproduction remains unverified.
 
+Retry 1 also reached the six-hour limit. It completed the fifth method,
+`stage23f_pair_04_equal_arithmetic_mean`, and preserved one nonempty per-image
+table for `stage23f_triple_04_median_owa`; the matched triple control remains
+unstarted. No complete six-cell table or transfer interpretation exists. The
+registered next action is
+`stage23f_literature_validation_frontier_retry2`, the same attachment-only
+continuation reusing all frozen maps and nonempty tables. Stage 23G remains
+deferred.
+
