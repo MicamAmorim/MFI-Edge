@@ -43,6 +43,23 @@ If a deterministic derived normalization/transform is reused more than once, cac
 
 Do not commit large cache artifacts to Git. Commit code, manifests/specification schemas, small provenance summaries, and scientific results only.
 
+## Checkpoint/resume rule — mandatory
+
+Long-running deterministic work must be restartable from the last valid persisted unit. A retry is a continuation, not a fresh experiment.
+
+For evaluators, descriptor jobs, aggregate-map generation, dataset-wide diagnostics, and any other multi-item process that may exceed a controller/runtime limit:
+
+1. persist each completed atomic unit as soon as it is valid;
+2. before processing an item, test whether an exact provenance-matched valid artifact already exists;
+3. if it exists, reuse it and skip computation;
+4. if a job is interrupted, the next retry must resume only missing/invalid units;
+5. never delete or overwrite valid completed work merely because a new process/retry has started;
+6. derived summaries may be regenerated from preserved atomic outputs, but the expensive atomic outputs themselves must remain immutable;
+7. attach an identity/provenance record to resumable output directories and fail closed on identity mismatch;
+8. logs must distinguish `skip complete`, `resume partial`, and `compute new` so repeated work is auditable.
+
+A runner that claims to be resumable but clears its output directory or recomputes already valid units violates Stage-23 policy.
+
 ## Literature / descriptor / aggregator census
 
 Stage 23A is a real research-planning stage. Use high reasoning plus live web research. Prefer primary papers, official author repositories, and official benchmark documentation.
