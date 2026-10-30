@@ -3559,3 +3559,10 @@ benchmark or cached map, score a detector, select a gap cue, alter compact MFI,
 or reopen SED/half-disc. Only a complete pass may register a separate exact
 development reproduction before any prospective gap diagnosis.
 
+The first preflight compiled every required MEX dependency but stopped on the
+fixed synthetic input because current MATLAB lacks the legacy `princomp`
+entry point called by unchanged author code. No dataset or benchmark ran. A
+harness-only retry is registered with a result-local centered-SVD compatibility
+implementation of that PCA score contract; author bytes, paper path,
+parameters, and synthetic input are unchanged.
+

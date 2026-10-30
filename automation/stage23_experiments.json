@@ -208,6 +208,22 @@
       "results/automation/stage23g2_pmi_exact_runtime_preflight/run_pmi_exact_smoke.m"
     ]
   },
+  "stage23g2_pmi_exact_runtime_preflight_retry1": {
+    "description": "Harness-only retry of the identical dataset-free Stage-23G2 exact PMI preflight using a result-local centered-SVD compatibility implementation of MATLAB's removed legacy princomp entry point; author source, commit, paper path, parameters, and synthetic input are unchanged.",
+    "runner": "python",
+    "path": "automation/stage23g2_pmi_exact_runtime_preflight_retry1.py",
+    "args": [],
+    "role": "dataset_preflight",
+    "feedback_policy": "synthetic_only_legacy_matlab_dependency_repair_no_dataset_gt_detector_scoring_or_intervention",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage23g2_pmi_exact_runtime_preflight_retry1/summary.json",
+      "results/automation/stage23g2_pmi_exact_runtime_preflight_retry1/source_manifest.json",
+      "results/automation/stage23g2_pmi_exact_runtime_preflight_retry1/runtime_preflight.log",
+      "results/automation/stage23g2_pmi_exact_runtime_preflight_retry1/run_pmi_exact_smoke.m",
+      "results/automation/stage23g2_pmi_exact_runtime_preflight_retry1/matlab_compatibility/princomp.m"
+    ]
+  },
   "stage23_literature_escalation": {
     "description": "Repeatable Stage-23 literature/mechanism checkpoint for resolving descriptor, aggregator, protocol, implementation, or gap-guided design uncertainty without benchmark scoring.",
     "runner": "python",

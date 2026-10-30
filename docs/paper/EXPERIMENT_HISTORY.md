@@ -5617,3 +5617,12 @@ synthetic execution of the exact paper path. It cannot read a benchmark, score
 a detector, run an intervention, reopen SED/half-disc, or alter compact MFI.
 Only a pass may lead to a separately registered exact development reproduction
 before any missing-family diagnosis.
+
+The first preflight verified the pinned source and registered contracts and
+successfully compiled the required MEX files, but the fixed synthetic smoke
+stopped at author `pcaIm.m` because MATLAB R2023a no longer supplies legacy
+`princomp`. No dataset, annotation, cache map, or detector benchmark was read.
+`stage23g2_pmi_exact_runtime_preflight_retry1` is registered as a harness-only
+retry with a result-local centered economy-SVD implementation of the removed
+PCA score interface. Author bytes, paper path, parameters, synthetic input,
+and the scientific pass rule remain unchanged.

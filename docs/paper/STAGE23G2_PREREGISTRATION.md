@@ -95,3 +95,14 @@ or incumbent change.
 `best_method_preview.png` and an official-evaluation manifest are not required
 for this action because it is a dataset-free build and synthetic smoke test.
 Both become mandatory for any later image-dataset reproduction.
+
+## Registered harness-only retry
+
+The first launch verified provenance and source contracts and compiled every
+required MEX dependency, but stopped on the fixed synthetic image because
+MATLAB R2023a no longer provides the legacy `princomp` entry point called by
+the unchanged author `pcaIm.m`. No dataset or benchmark was read. Retry 1 adds
+only a result-local centered economy-SVD implementation of the historical
+`princomp` score contract ahead of the immutable author tree. The commit,
+author bytes, paper path, parameters, synthetic input, and pass rule are
+unchanged.

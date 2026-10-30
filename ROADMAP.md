@@ -3201,3 +3201,10 @@ advance only to a separately registered exact development reproduction; it
 does not yet authorize a gap cue, aggregation rule, or intervention. Compact
 MFI remains incumbent and Berkeley reference reproduction remains unverified.
 
+The first launch completed source verification and MEX compilation but stopped
+before synthetic output because R2023a removed the author code's legacy
+`princomp` dependency. The active action is
+`stage23g2_pmi_exact_runtime_preflight_retry1`, an identical dataset-free
+harness retry using a result-local centered-SVD compatibility function. No
+author source, scientific path, parameter, input, or dataset role changes.
+

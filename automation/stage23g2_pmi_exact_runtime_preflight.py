@@ -16,6 +16,7 @@ import traceback
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "results" / "automation" / "stage23g2_pmi_exact_runtime_preflight"
+EXPERIMENT_ID = "stage23g2_pmi_exact_runtime_preflight"
 AUTHOR_ROOT = ROOT / "external" / "crisp-boundaries"
 AUTHOR_REPOSITORY = "https://github.com/phillipi/crisp-boundaries.git"
 AUTHOR_COMMIT = "ee2d76e98340313a8f92e1b65064a9b4ea90ac77"
@@ -196,15 +197,43 @@ def _prepare_build_surface(source_manifest: dict[str, object]) -> dict[str, obje
 
 def _write_matlab_harness() -> Path:
     OUT.mkdir(parents=True, exist_ok=True)
+    compatibility_root = OUT / "matlab_compatibility"
+    compatibility_root.mkdir(parents=True, exist_ok=True)
+    # MATLAB removed the legacy Statistics Toolbox `princomp` entry point used
+    # by the 2014 author code. This run-local shim preserves its centered PCA
+    # score contract without changing any author byte.
+    (compatibility_root / "princomp.m").write_text(
+        """function [coeff, score, latent] = princomp(X)
+X = double(X);
+Xc = bsxfun(@minus, X, mean(X, 1));
+[~, S, V] = svd(Xc, 'econ');
+coeff = V;
+for j = 1:size(coeff, 2)
+    [~, pivot] = max(abs(coeff(:,j)));
+    if coeff(pivot,j) < 0
+        coeff(:,j) = -coeff(:,j);
+    end
+end
+score = Xc * coeff;
+if nargout > 2
+    denom = max(size(X, 1) - 1, 1);
+    latent = (diag(S).^2) / denom;
+end
+end
+""",
+        encoding="utf-8",
+    )
     harness = OUT / "run_pmi_exact_smoke.m"
     code = _matlab_quote(BUILD_CODE_ROOT)
     out = _matlab_quote(OUT)
+    compatibility = _matlab_quote(compatibility_root)
     harness.write_text(
         f"""try
 code_root = '{code}';
 out_root = '{out}';
 cd(code_root);
 addpath(genpath(code_root));
+addpath('{compatibility}', '-begin');
 [xx, yy] = meshgrid(linspace(0, 1, 36), linspace(0, 1, 36));
 I = zeros(36, 36, 3, 'uint8');
 I(:,:,1) = uint8(255 * (0.15 + 0.70 * (xx >= 0.5)));
@@ -326,7 +355,7 @@ def main() -> int:
     log_path.write_text("\n".join(log), encoding="utf-8")
     summary = {
         "status": "completed" if preflight_passed else "failed",
-        "experiment_id": "stage23g2_pmi_exact_runtime_preflight",
+        "experiment_id": EXPERIMENT_ID,
         "role": "reproduction_dependency_preflight",
         "created_at": datetime.now(timezone.utc).isoformat(),
         "dataset_access": "none",
@@ -345,6 +374,16 @@ def main() -> int:
         "source_contract": source_contract,
         "build_surface": build_surface,
         "synthetic_smoke": smoke,
+        "runtime_compatibility": {
+            "legacy_function": "princomp",
+            "implementation": "run-local centered economy-SVD score shim",
+            "author_source_modified": False,
+            "sha256": (
+                _sha256(OUT / "matlab_compatibility" / "princomp.m")
+                if (OUT / "matlab_compatibility" / "princomp.m").is_file()
+                else None
+            ),
+        },
         "preflight_passed": preflight_passed,
         "errors": errors,
         "decision_rule": (

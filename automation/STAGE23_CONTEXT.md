@@ -166,3 +166,12 @@ compatibility, and the fixed `MS_algorithm_from_paper` synthetic smoke. It may
 not read a benchmark or cache map, score a detector, alter compact MFI, or
 design an intervention. Only a complete pass may register a separate exact
 development reproduction before any gap diagnosis.
+
+The first launch verified the immutable source and every registered contract
+and compiled the required MEX surface, but the synthetic smoke stopped because
+R2023a no longer provides legacy `princomp`, called by unchanged author
+`pcaIm.m`. No dataset or benchmark ran. The active task is now
+`stage23g2_pmi_exact_runtime_preflight_retry1`, an identical harness-only retry
+with a result-local centered-SVD compatibility implementation of the legacy
+PCA score contract. Author bytes, parameters, paper path, and synthetic input
+remain frozen.
