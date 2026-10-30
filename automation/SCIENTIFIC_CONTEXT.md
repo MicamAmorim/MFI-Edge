@@ -3573,3 +3573,11 @@ occurred. A second harness-only retry is registered to create only that
 result-local directory before repeating the identical smoke; author bytes,
 paper path, parameters, input, and compatibility shim remain unchanged.
 
+The second retry passed both earlier compatibility blockers and stopped at the
+removed R2023a `classregtree` API in the unchanged author compile-test path.
+The registered exact paper path disables the approximate-PMI predictor that
+uses this tree. No detector output or dataset access occurred. A third
+harness-only retry is registered with a result-local `classregtree/eval`
+adapter to supported `fitrtree/predict`, preserving the unchanged author tree
+arguments and all prior provenance, input, parameter, and path contracts.
+

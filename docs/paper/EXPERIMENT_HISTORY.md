@@ -5637,3 +5637,15 @@ next action is `stage23g2_pmi_exact_runtime_preflight_retry2`, an identical
 harness-only retry that materializes only that expected result-local directory.
 Author source, commit, paper path, parameters, synthetic input, PCA shim, and
 the scientific pass rule remain unchanged.
+
+Retry 2 passed the earlier PCA and cache-directory failures and reached the
+unchanged author's `fastRFreg_train`, where MATLAB R2023a no longer exposes
+legacy `classregtree`. The failure occurred in the compile-test approximate-
+PMI branch; the registered `MS_algorithm_from_paper` path disables that
+predictor. No detector output, dataset, annotation, or benchmark was read.
+The registered next action is
+`stage23g2_pmi_exact_runtime_preflight_retry3`, an identical harness-only
+retry with a hashed result-local `classregtree/eval` adapter backed by
+`fitrtree/predict`. It preserves the author regression-tree arguments,
+randomness, source bytes, parameters, paper path, synthetic input, PCA shim,
+cache destination, and scientific pass rule.

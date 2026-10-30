@@ -3217,3 +3217,12 @@ result-local destination and repeats the identical synthetic preflight. The
 author tree, paper path, parameters, input, and centered-SVD compatibility shim
 remain frozen.
 
+Retry 2 advanced to the unchanged author's legacy random-forest wrapper and
+stopped because R2023a removed `classregtree`. The exact paper path itself has
+PMI approximation disabled; this dependency is exercised by the required
+compile-test path. No detector output or dataset access occurred. The active
+action is `stage23g2_pmi_exact_runtime_preflight_retry3`, an identical
+dataset-free retry with a result-local `classregtree/eval` compatibility
+adapter to `fitrtree/predict`. Tree arguments, source bytes, parameters,
+randomness, path, input, PCA shim, and cache destination remain unchanged.
+

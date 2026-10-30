@@ -185,3 +185,13 @@ detector output or dataset access occurred. The active task is
 that creates only that expected result-local cache directory. Author source,
 commit, parameters, paper path, synthetic input, and compatibility shim remain
 unchanged.
+
+Retry 2 advanced past both prior blockers and stopped at the removed MATLAB
+`classregtree` entry point in unchanged `fastRFreg_train`. This legacy tree is
+used by the compile-test approximate-PMI branch, while the frozen exact paper
+path disables PMI approximation. No output or dataset access occurred. The
+active task is `stage23g2_pmi_exact_runtime_preflight_retry3`, an identical
+harness-only retry with a result-local `classregtree/eval` adapter mapping the
+unchanged author arguments to supported `fitrtree/predict`. Author bytes,
+parameters, randomness, paper path, input, PCA shim, and cache destination
+remain frozen.

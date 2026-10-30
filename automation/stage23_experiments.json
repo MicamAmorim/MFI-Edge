@@ -240,6 +240,23 @@
       "results/automation/stage23g2_pmi_exact_runtime_preflight_retry2/matlab_compatibility/princomp.m"
     ]
   },
+  "stage23g2_pmi_exact_runtime_preflight_retry3": {
+    "description": "Third harness-only retry of the identical dataset-free Stage-23G2 exact PMI preflight. It adds a result-local classregtree/eval compatibility adapter backed by MATLAB's supported fitrtree/predict API after Retry 2 reached the removed legacy tree entry point; author source, tree parameters, commit, paper path, synthetic input, PCA shim, and expected cache directory remain unchanged.",
+    "runner": "python",
+    "path": "automation/stage23g2_pmi_exact_runtime_preflight_retry3.py",
+    "args": [],
+    "role": "dataset_preflight",
+    "feedback_policy": "synthetic_only_legacy_matlab_tree_api_harness_repair_no_dataset_gt_detector_scoring_or_intervention",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage23g2_pmi_exact_runtime_preflight_retry3/summary.json",
+      "results/automation/stage23g2_pmi_exact_runtime_preflight_retry3/source_manifest.json",
+      "results/automation/stage23g2_pmi_exact_runtime_preflight_retry3/runtime_preflight.log",
+      "results/automation/stage23g2_pmi_exact_runtime_preflight_retry3/run_pmi_exact_smoke.m",
+      "results/automation/stage23g2_pmi_exact_runtime_preflight_retry3/matlab_compatibility/princomp.m",
+      "results/automation/stage23g2_pmi_exact_runtime_preflight_retry3/matlab_compatibility/classregtree.m"
+    ]
+  },
   "stage23_literature_escalation": {
     "description": "Repeatable Stage-23 literature/mechanism checkpoint for resolving descriptor, aggregator, protocol, implementation, or gap-guided design uncertainty without benchmark scoring.",
     "runner": "python",

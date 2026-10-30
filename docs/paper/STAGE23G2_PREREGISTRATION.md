@@ -115,3 +115,14 @@ exit followed this explicit missing-directory exception and supplies no
 detector output. Retry 2 materializes only that expected result-local directory
 before repeating the identical smoke test. It does not edit an author byte,
 change a parameter or input, or read a dataset.
+
+Retry 2 passed the PCA and cache-directory blockers and reached unchanged
+`fastRFreg_train`, where R2023a lacks the legacy `classregtree` API. This call
+belongs to the registered `compile_test` compatibility path; the frozen
+`MS_algorithm_from_paper` path sets `approximate_PMI=false` and does not use
+the learned predictor. Retry 3 adds only a result-local `classregtree/eval`
+adapter backed by MATLAB's supported `fitrtree/predict` API. It preserves the
+author call's regression method, variables-per-split, minimum-leaf, and
+no-pruning arguments and records the adapter hash. Author bytes, randomness,
+parameters, paper path, synthetic input, PCA shim, cache destination, and pass
+rule remain unchanged.
