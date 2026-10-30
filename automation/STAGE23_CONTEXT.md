@@ -81,8 +81,13 @@ Retry 1 reached the six-hour limit after completing the fifth method,
 per-image table for `stage23f_triple_04_median_owa`. No complete six-cell table
 or transfer interpretation exists.
 
+Retry 2 also reached the six-hour limit. The first five frontier methods remain
+complete, while `stage23f_triple_04_median_owa` still has only one nonempty
+per-image table and its matched equal-mean control has not started. No complete
+six-cell table or transfer interpretation exists.
+
 The active next task is
-`stage23f_literature_validation_frontier_retry2`, the unchanged attachment-only
+`stage23f_literature_validation_frontier_retry3`, the unchanged attachment-only
 continuation against the original evaluator directory. It reuses every frozen
 map and complete/nonempty table, resumes only missing standard-Berkeley
 matching, and applies the frozen transfer rule only after all six cells finish.

@@ -135,6 +135,20 @@
       "results/official_eval/stage23f_literature_validation_frontier/summary.json"
     ]
   },
+  "stage23f_literature_validation_frontier_retry3": {
+    "description": "Third attachment-only resumable continuation of Stage-23F standard-Berkeley validation after retry 2 preserved only one nonempty table for the sixth method; reuse every frozen map and complete/nonempty table, resume only missing matching in the original evaluator directory, and apply the unchanged transfer rule without descriptor extraction, refitting, map regeneration, backfill, or promotion.",
+    "runner": "python",
+    "path": "automation/stage23f_literature_validation_frontier_retry3.py",
+    "args": [],
+    "role": "evaluator_diagnostic",
+    "feedback_policy": "attachment_only_resume_exact_frozen_stage23f_maps_and_nonempty_standard_berkeley_tables_no_descriptor_compute_fit_map_change_backfill_or_promotion",
+    "one_shot": true,
+    "result_files": [
+      "results/automation/stage23f_literature_validation_frontier_retry3/summary.json",
+      "results/local_dev/stage23f_literature_validation_frontier/best_method_preview.png",
+      "results/official_eval/stage23f_literature_validation_frontier/summary.json"
+    ]
+  },
   "stage23_literature_escalation": {
     "description": "Repeatable Stage-23 literature/mechanism checkpoint for resolving descriptor, aggregator, protocol, implementation, or gap-guided design uncertainty without benchmark scoring.",
     "runner": "python",

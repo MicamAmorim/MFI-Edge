@@ -3465,3 +3465,12 @@ registered next action is
 continuation reusing all frozen maps and nonempty tables. Stage 23G remains
 deferred.
 
+Retry 2 also reached the six-hour limit without completing the sixth method.
+The first five methods remain complete; `stage23f_triple_04_median_owa` still
+has one nonempty per-image table and its matched equal-mean control remains
+unstarted. No complete frontier table or transfer interpretation exists. The
+registered next action is
+`stage23f_literature_validation_frontier_retry3`, the unchanged attachment-only
+continuation reusing all frozen maps and nonempty tables. Stage 23G remains
+deferred.
+
