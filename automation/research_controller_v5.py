@@ -24,6 +24,7 @@ ROOT = core.ROOT
 AUTO = core.AUTO
 STAGE23_POLICY = AUTO / "STAGE23_POLICY.md"
 STAGE23_CONTEXT = AUTO / "STAGE23_CONTEXT.md"
+STAGE23_PROMOTION_AMENDMENT = ROOT / "docs" / "paper" / "STAGE23_PROMOTION_FRAMEWORK_2026-10-31.md"
 
 # Stage 23 has a clean registry so the new agent cannot accidentally continue
 # a historical Stage-15/22 experiment by id.
@@ -42,13 +43,16 @@ def _build_prompt_v5(exp_id: str, spec: dict, exit_code: int, log_path: Path, re
     base = _V4_BUILD_PROMPT(exp_id, spec, exit_code, log_path, result_summary)
     override = (
         "# Stage 23 mandatory final override\n\n"
-        "The following policy and context are authoritative for the active Stage-23 branch. "
-        "They supersede conflicting historical references in the generic policy above, especially "
-        "the active experiment-registry filename and campaign ordering.\n\n"
+        "The following policy, context, and prospective promotion amendment are authoritative "
+        "for the active Stage-23 branch. They supersede conflicting historical references in the "
+        "generic policy above. The promotion amendment is prospective only: it must not alter or "
+        "re-score already completed Stage-23 experiments or an already frozen preregistration.\n\n"
         "## automation/STAGE23_POLICY.md\n\n"
         + _read(STAGE23_POLICY)
         + "\n\n## automation/STAGE23_CONTEXT.md\n\n"
         + _read(STAGE23_CONTEXT)
+        + "\n\n## docs/paper/STAGE23_PROMOTION_FRAMEWORK_2026-10-31.md\n\n"
+        + _read(STAGE23_PROMOTION_AMENDMENT)
     )
     return base + "\n\n" + override + "\n"
 
