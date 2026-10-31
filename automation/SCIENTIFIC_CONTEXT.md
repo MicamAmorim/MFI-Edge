@@ -3612,3 +3612,22 @@ official attachment reuses the 100 frozen Stage-15E SCO maps without detector
 execution. Only a pass may authorize a separately preregistered target-gap
 diagnosis. Compact distorted-Choquet MFI remains incumbent.
 
+### Stage 23G3 closure - SCO/persistence gap diagnosis registered
+
+Exact-author SCO was materialized on all fourteen overlap-clean UDED working
+rasters with valid atomic hashes, protected-lineage exclusion before byte
+access, and fourteen second-traversal cache hits with zero detector calls. The
+official attachment reused the frozen Stage-15E SCO maps and obtained
+ODS/OIS/AP `0.656579/0.682329/0.694926`; this is documentary baseline
+provenance under the reference-unverified matcher and is not a promotion.
+
+The registered next action is `stage23g4_sco_persistence_gap_diagnosis`.
+SCO's fixed-scale double-opponent plus spatial-sparseness architecture lacks an
+explicit cross-scale persistence test, so the single prospective hypothesis is
+the cached `gabor4_scale_persistence` family. The experiment reuses frozen SCO
+and 114 exact Stage-23 cache maps, fits only diagnostic UDED thresholds, and
+applies the same four-condition cross-domain gap rule used for Stage 23G1. It
+runs no detector or descriptor and creates no candidate. Only a full pass may
+authorize a separately preregistered equal-mean control; failure closes the
+route without substitution. Compact MFI remains incumbent.
+

@@ -5688,3 +5688,23 @@ gap cue, aggregation, intervention, or promotion is produced. The required
 official attachment reuses the already frozen Stage-15E SCO bytes rather than
 rerunning the detector. Only a complete pass may authorize a separately
 preregistered target-gap diagnosis.
+
+### Stage 23G3 materialization complete; Stage 23G4 registered
+
+The exact author SCO call completed on all fourteen overlap-clean UDED working
+rasters. Every output and provenance hash passed, `03-35028` was excluded
+before byte access, and a second traversal produced fourteen valid cache hits
+with zero detector calls. The standard-Berkeley attachment reused the frozen
+Stage-15E maps and recorded ODS/OIS/AP
+`0.656579/0.682329/0.694926`; it is baseline provenance only and the matcher
+remains reference-unverified.
+
+The registered next action is `stage23g4_sco_persistence_gap_diagnosis`.
+Exact SCO has opponent-color/luminance evidence and local spatial-sparseness
+suppression at fixed scale but no explicit cross-scale persistence. The single
+prospective missing-family hypothesis is therefore cached
+`gabor4_scale_persistence`. The diagnosis runs no detector or extractor,
+validates 114 exact cache inputs plus all SCO hashes, and applies a fixed
+four-condition gap rule separately on overlap-clean UDED and BSDS validation.
+It creates no candidate; only a pass can authorize a later separately
+preregistered equal-mean control. Compact MFI remains incumbent.

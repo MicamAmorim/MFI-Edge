@@ -228,3 +228,20 @@ and chooses no gap cue, aggregator, intervention, or detector. The mandatory
 official attachment reuses the frozen Stage-15E SCO maps byte-for-byte. Only a
 pass may lead to a separately preregistered target-gap diagnosis. Compact MFI
 remains incumbent.
+
+Stage 23G3 passed. All fourteen exact-author SCO maps were materialized on the
+overlap-clean UDED working raster, the protected-lineage item was excluded
+before byte access, all hashes/contracts passed, and the second traversal used
+fourteen cache hits with zero detector calls. The standard-Berkeley attachment
+reused the 100 Stage-15E SCO maps and retained ODS/OIS/AP
+`0.656579/0.682329/0.694926`; it is documentary baseline provenance under the
+reference-unverified matcher and selects no intervention.
+
+The active next task is `stage23g4_sco_persistence_gap_diagnosis` under
+`docs/paper/STAGE23G4_PREREGISTRATION.md`. SCO uses fixed-scale opponent
+evidence plus local spatial-sparseness suppression but lacks explicit
+cross-scale persistence, so the single prospective gap cue is the already
+cached `gabor4_scale_persistence` map. The diagnosis reuses 114 exact cue maps
+and all frozen SCO maps with zero detector or descriptor computation. Only a
+cross-domain pass may authorize a separate equal-mean control; failure closes
+SCO/persistence without substitution. Compact MFI remains incumbent.

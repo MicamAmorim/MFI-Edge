@@ -3256,3 +3256,18 @@ Its standard-Berkeley attachment reuses the 100 frozen Stage-15E SCO maps
 without detector execution. A pass advances only to a separate prospective
 gap-diagnosis decision; compact MFI remains incumbent.
 
+## Stage 23G3 complete - SCO/persistence diagnosis active
+
+The overlap-clean SCO surface is complete and hash-certified on all fourteen
+working rasters; the protected-lineage item was excluded before byte access,
+and the repeat traversal invoked no detector. The frozen Stage-15E BSDS maps
+were reused unchanged for documentary standard-Berkeley provenance.
+
+The active action is `stage23g4_sco_persistence_gap_diagnosis`. It tests one
+prospective missing-family hypothesis: exact SCO's fixed-scale opponent and
+spatial-sparseness architecture lacks explicit cross-scale persistence. The
+runner may only load frozen SCO maps and exact cached Gabor-persistence maps,
+apply the preregistered cross-domain descriptive rule, and emit the fixed
+preview. It cannot create or promote a detector. A failure closes this route;
+a pass authorizes only a separately preregistered equal-mean control.
+

@@ -149,3 +149,13 @@ The registered action is `stage23g3_sco_overlap_clean_materialization` under
 Stage-23 overlap-clean UDED working raster with per-image hash checkpoints and
 reuse the frozen Stage-15E SCO bytes for the official attachment. No GT score,
 descriptor extraction, aggregation, intervention, or promotion is authorized.
+
+Stage 23G3 completed that missing SCO surface without changing the detector or
+reading the excluded protected-lineage item. SCO has fixed Gaussian scale
+`1.1` and local spatial-sparseness suppression but no explicit cross-scale
+persistence test. The next prospective diagnosis therefore selects only the
+already cached `gabor4_scale_persistence` family. This is distinct from SCO's
+color/opponency and texture-density mechanisms and does not reopen Stage-23F's
+failed persistence/tensor minimum aggregation. With no nontrivial transferred
+aggregation relation, only an equal-mean control may later be preregistered,
+and only if the frozen cross-domain gap rule passes.
