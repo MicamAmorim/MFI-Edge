@@ -5753,3 +5753,26 @@ The registered next action is the existing repeatable planning-only
 `stage23_literature_escalation`, which may choose at most one distinct
 prospective Stage-23 action or close the campaign path without scoring a
 dataset or reopening a closed route.
+
+### Post-Stage-23G5 literature escalation - exact Compass materialization registered
+
+Live primary-source and official-code review selected Ruzon and Tomasi's exact
+Compass operator as the next distinct Stage-23 strong-detector target. The
+author method compares adaptive CIE-Lab color signatures in opposed regions by
+Earth Mover's Distance and maximizes over dividing orientations. The official
+project explicitly names integration across scale as unresolved, while Stage
+15F already established exact source provenance, fixed published sigma-4
+parameters, and 100 frozen native-resolution BSDS500-validation maps. Compass
+is therefore a distinct strictly untrained target rather than a variant of the
+closed SED, PMI, or SCO routes.
+
+The single registered next action is
+`stage23g6_compass_overlap_clean_materialization` under
+`docs/paper/STAGE23G6_PREREGISTRATION.md`. It runs the unchanged author call
+once per fourteen overlap-clean UDED working rasters, preserves the author's
+clock-seeded clustering, checkpoints every map and identity atomically, and
+reuses the frozen Stage-15F BSDS maps for documentary official attachment. It
+does not score UDED GT or select a missing cue, aggregator, fusion, or
+intervention. A pass permits only a separately preregistered cross-domain gap
+diagnosis. The failed Stage-23G5 SCO/persistence equal mean remains binding
+negative evidence and is not reused or reinterpreted.

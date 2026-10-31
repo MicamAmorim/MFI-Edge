@@ -3670,3 +3670,27 @@ negative evidence, score no dataset, avoid reopening or tuning closed routes,
 and choose at most one distinct prospective Stage-23 action or close the
 campaign path.
 
+### Post-Stage-23G5 escalation - exact Compass materialization registered
+
+The live primary-source and official-code checkpoint selected Ruzon and
+Tomasi's exact Compass operator as the next distinct strong non-neural target.
+It is the strongest remaining exact strictly untrained Stage-15 reference after
+the closed SED, PMI, and SCO routes. Its adaptive CIE-Lab color signatures,
+opposed-region Earth Mover's Distance, and maximum over dividing orientations
+are mechanistically distinct; the official author page also identifies
+multiscale integration as unresolved. Stage 15F already pinned the complete
+author surface and froze native-resolution BSDS500-validation maps at local
+ODS/OIS/AP `0.630841/0.656565/0.518359` under the reference-unverified path.
+
+The registered next action is
+`stage23g6_compass_overlap_clean_materialization`. It applies the unchanged
+published sigma-4 author call to the fourteen overlap-clean UDED Stage-23
+working rasters, excluding `03-35028` before byte access, and persists one
+clock-seeded author draw per image with resumable hashes, runtimes, provenance,
+and a fixed positions 1/7/14 preview. It scores no GT and chooses no gap cue,
+aggregation, intervention, or promotion. Its official attachment hash-reuses
+the frozen Stage-15F Compass maps without detector execution. Only a pass may
+authorize a separately preregistered cross-domain gap diagnosis. Stage-23G5's
+failed SCO/persistence equal mean remains negative evidence and is not
+reinterpreted. Compact distorted-Choquet MFI remains incumbent.
+

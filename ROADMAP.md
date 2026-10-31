@@ -3304,3 +3304,19 @@ evidence, reopen no closed route, score no dataset, and choose at most one
 distinct prospective action or close the campaign path. Compact MFI remains
 incumbent.
 
+## Stage 23 post-G5 escalation - exact Compass materialization active
+
+The live checkpoint selected exact author Compass as the next distinct strong
+strictly non-neural target. Its adaptive opposed color distributions and EMD
+orientation search differ from the closed SED, complete-PMI, and SCO routes;
+the author project explicitly identifies multiscale integration as unresolved.
+Stage 15F already supplies pinned source provenance and frozen BSDS-validation
+maps, but not an overlap-clean UDED Stage-23 surface.
+
+The active action is `stage23g6_compass_overlap_clean_materialization`. It
+creates one checkpointed exact-author Compass map for each of the fourteen
+overlap-clean UDED working rasters and reuses the frozen Stage-15F validation
+maps for the standard-Berkeley attachment. It scores no UDED GT and selects no
+cue, aggregator, or intervention. A complete pass advances only to a separate
+prospective gap-diagnosis decision; compact MFI remains incumbent.
+

@@ -267,3 +267,22 @@ The active next task is the existing repeatable planning-only
 `stage23_literature_escalation`. It scores no dataset, must preserve all closed
 Stage-23 routes and negative evidence, and may select at most one distinct
 prospective action or close the campaign path. Compact MFI remains incumbent.
+
+The planning-only escalation selected Ruzon and Tomasi's exact author Compass
+operator as the next distinct strong-detector target. Compass is the strongest
+remaining exact strictly untrained Stage-15 reference after the closed SED,
+PMI, and SCO routes. It compares adaptive opposed color distributions by Earth
+Mover's Distance while rotating the dividing orientation; the official author
+page explicitly identifies multiscale integration as unresolved. Stage 15F
+already pinned the complete source and froze all 100 native BSDS500-validation
+maps, but no overlap-clean UDED Stage-23 target surface exists.
+
+The active next task is `stage23g6_compass_overlap_clean_materialization`
+under `docs/paper/STAGE23G6_PREREGISTRATION.md`. It applies the unchanged
+published sigma-4 author call once to each of the fourteen overlap-clean UDED
+working rasters, preserves the author's clock-seeded clustering, persists
+per-image maps/hashes/runtimes, and emits the positions 1/7/14 preview. It
+scores no UDED GT and selects no gap cue, aggregator, or intervention. The
+official attachment byte-reuses the frozen Stage-15F Compass maps. Only a pass
+may authorize a separately preregistered cross-domain gap diagnosis; the failed
+SCO/persistence equal mean is not reinterpreted or reused as an intervention.

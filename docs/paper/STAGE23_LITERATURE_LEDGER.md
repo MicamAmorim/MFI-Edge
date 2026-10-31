@@ -159,3 +159,27 @@ color/opponency and texture-density mechanisms and does not reopen Stage-23F's
 failed persistence/tensor minimum aggregation. With no nontrivial transferred
 aggregation relation, only an equal-mean control may later be preregistered,
 and only if the frozen cross-domain gap rule passes.
+
+## Post-Stage-23G5 live escalation - exact Compass cross-domain surface
+
+The 2026-10-31 refresh revisited Ruzon and Tomasi's primary Compass sources
+(CVPR 1999, DOI `10.1109/CVPR.1999.784624`; TPAMI 2001, DOI
+`10.1109/34.969118`) and the official author project/code page
+`https://ai.stanford.edu/~ruzon/compass/`. The sources confirm that Compass
+represents opposed regions by adaptive color signatures, compares them with
+Earth Mover's Distance, and rotates the dividing orientation to obtain maximum
+boundary strength. The project explicitly identifies integration of evidence
+across scales as an unresolved direction. This is materially different from
+SED's feedback/surround hierarchy and SCO's double-opponent plus local
+spatial-sparseness suppression.
+
+Stage 15F already pinned the complete author archive at SHA-256
+`43e2ab843af620f5b6405843be0c5478b6953039c36b1e32b2a3ac725ddce7ea`,
+recorded its missing explicit source license, and froze exact sigma-4
+native-resolution BSDS500-validation maps. Their local reference-unverified
+ODS/OIS/AP were `0.630841/0.656565/0.518359`. The registered next action is
+`stage23g6_compass_overlap_clean_materialization`, which creates only the
+missing exact Compass surface on the fixed overlap-clean UDED working raster.
+It preserves the author's clock-seeded clustering and selects no missing cue
+or aggregation rule. Stage-23G5's failed SCO/persistence equal mean remains
+binding evidence against naive reuse of that intervention.

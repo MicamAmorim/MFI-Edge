@@ -1804,3 +1804,14 @@ ranking transfer, not as evidence that cross-scale persistence lacks unique
 information. The result instead separates a valid missing-evidence diagnosis
 from an unsuccessful score-level integration rule. No ranking-remediation
 branch was authorized because ODS/OIS also failed.
+
+The next route begins with exact Compass baseline materialization, not an
+intervention. Present Compass as a distinct fixed untrained distribution
+detector: adaptive opposed CIE-Lab signatures, Earth Mover's Distance, and a
+maximum over dividing orientations. Stage 15F already supplies frozen native
+BSDS-validation maps; Stage 23G6 creates the missing overlap-clean UDED surface
+with one preserved clock-seeded author draw per image. Do not claim that the
+author's stated open multiscale question preselects persistence, and do not
+reuse the failed SCO/persistence equal mean. Any Compass gap cue and
+aggregation require a later cross-domain diagnosis and separate
+preregistration.
