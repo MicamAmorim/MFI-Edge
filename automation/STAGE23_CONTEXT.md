@@ -286,3 +286,20 @@ scores no UDED GT and selects no gap cue, aggregator, or intervention. The
 official attachment byte-reuses the frozen Stage-15F Compass maps. Only a pass
 may authorize a separately preregistered cross-domain gap diagnosis; the failed
 SCO/persistence equal mean is not reinterpreted or reused as an intervention.
+
+Stage 23G6 passed. All fourteen exact-author Compass maps were materialized on
+the overlap-clean UDED working raster, all source/map/hash contracts passed,
+the protected-lineage item was excluded before byte access, and the second
+traversal used fourteen cache hits with zero detector calls. The documentary
+standard-Berkeley attachment reused the frozen Stage-15F maps and recorded
+ODS/OIS/AP `0.630829/0.656589/0.518409`; compact MFI remains incumbent.
+
+The active next task is `stage23g7_compass_persistence_gap_diagnosis` under
+`docs/paper/STAGE23G7_PREREGISTRATION.md`. Compass is fixed at one sigma-4
+scale and its author project explicitly leaves cross-scale integration
+unresolved, so the sole prospective missing-family hypothesis is cached
+`gabor4_scale_persistence`. The experiment validates and reuses 114 frozen
+cue maps plus exact Compass maps, runs no detector or descriptor, creates no
+candidate, and applies the frozen four-condition rule separately in both
+development domains. It preselects no fusion; Stage-23G5 remains binding
+negative evidence against equal-mean reuse.

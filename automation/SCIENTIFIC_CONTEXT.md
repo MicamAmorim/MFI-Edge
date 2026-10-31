@@ -3694,3 +3694,21 @@ authorize a separately preregistered cross-domain gap diagnosis. Stage-23G5's
 failed SCO/persistence equal mean remains negative evidence and is not
 reinterpreted. Compact distorted-Choquet MFI remains incumbent.
 
+### Stage 23G6 closure - Compass/persistence gap diagnosis registered
+
+Exact-author Compass was materialized on all fourteen overlap-clean UDED
+working rasters with valid hashes and fourteen second-traversal cache hits;
+the protected-lineage item was excluded before byte access. The documentary
+official attachment byte-reused the frozen Stage-15F maps and recorded
+ODS/OIS/AP `0.630829/0.656589/0.518409` under the reference-unverified matcher.
+
+The registered next action is
+`stage23g7_compass_persistence_gap_diagnosis`. Compass's fixed sigma-4
+opposed-distribution architecture lacks the cross-scale integration explicitly
+left unresolved by the author project, so the single prospective missing cue
+is cached `gabor4_scale_persistence`. The frozen-map diagnosis runs no
+detector or extractor, creates no candidate or fusion, and requires the same
+four gap conditions to pass separately on overlap-clean UDED and BSDS500
+validation. Stage-23G5 remains binding negative evidence against naive
+equal-mean reuse. Compact MFI remains incumbent.
+

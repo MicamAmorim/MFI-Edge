@@ -3320,3 +3320,18 @@ maps for the standard-Berkeley attachment. It scores no UDED GT and selects no
 cue, aggregator, or intervention. A complete pass advances only to a separate
 prospective gap-diagnosis decision; compact MFI remains incumbent.
 
+## Stage 23G6 complete - Compass/persistence diagnosis active
+
+The exact-author Compass surface is complete and hash-certified on all
+fourteen overlap-clean UDED working rasters. The protected-lineage item was
+excluded before byte access, the second traversal invoked no detector, and the
+frozen Stage-15F BSDS maps were reused for documentary baseline provenance.
+
+The active action is `stage23g7_compass_persistence_gap_diagnosis`. It tests
+one prospective missing-family hypothesis: single-scale Compass lacks the
+cross-scale integration explicitly left unresolved by the author project, so
+the already cached Gabor scale-persistence map is compared against Compass in
+both development domains. It creates no candidate and chooses no fusion. A
+failure closes this route; a pass permits only a separate prospective
+intervention decision that must account for the failed SCO/persistence mean.
+

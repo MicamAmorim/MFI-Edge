@@ -5776,3 +5776,23 @@ does not score UDED GT or select a missing cue, aggregator, fusion, or
 intervention. A pass permits only a separately preregistered cross-domain gap
 diagnosis. The failed Stage-23G5 SCO/persistence equal mean remains binding
 negative evidence and is not reused or reinterpreted.
+
+### Stage 23G6 materialization complete; Stage 23G7 registered
+
+Exact-author Compass completed on all fourteen overlap-clean UDED working
+rasters. Every output/hash contract passed, the protected-lineage item was
+excluded before byte access, and a second traversal produced fourteen cache
+hits with zero detector calls. The standard-Berkeley attachment byte-reused
+the frozen Stage-15F maps and recorded ODS/OIS/AP
+`0.630829/0.656589/0.518409`; this is documentary baseline provenance under
+the reference-unverified matcher and selects no intervention.
+
+The registered next action is
+`stage23g7_compass_persistence_gap_diagnosis`. Compass's fixed sigma-4
+opposed-distribution detector has no cross-scale integration, which its author
+project explicitly leaves unresolved. The single prospective missing-family
+hypothesis is cached `gabor4_scale_persistence`. The diagnosis runs no
+detector or extractor, validates 114 exact cache inputs plus all Compass
+hashes, and applies the fixed four-condition gap rule separately on
+overlap-clean UDED and BSDS validation. It creates no candidate and preselects
+no fusion. Stage-23G5 remains binding evidence against naive equal-mean reuse.

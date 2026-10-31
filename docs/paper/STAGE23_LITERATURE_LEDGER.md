@@ -183,3 +183,12 @@ missing exact Compass surface on the fixed overlap-clean UDED working raster.
 It preserves the author's clock-seeded clustering and selects no missing cue
 or aggregation rule. Stage-23G5's failed SCO/persistence equal mean remains
 binding evidence against naive reuse of that intervention.
+
+Stage 23G6 completed that missing target surface with all hashes and reuse
+contracts satisfied. Because Compass remains a single-scale sigma-4 detector
+and the author project explicitly identifies cross-scale integration as an
+open direction, Stage 23G7 prospectively selects only the already cached
+`gabor4_scale_persistence` family for frozen-map gap diagnosis. This does not
+reuse Stage-23G5's failed equal-mean intervention: no aggregation is selected,
+and any later intervention requires a separate preregistration informed by
+the existing negative transfer evidence.
