@@ -124,3 +124,28 @@ cell was reinterpreted. The registered next action is the dataset-free
 `docs/paper/STAGE23G2_PREREGISTRATION.md`. No dataset reproduction or missing-
 family intervention is authorized until immutable source, build compatibility,
 and the exact paper-path synthetic smoke all pass.
+
+## Post-Stage-23G2 live escalation — exact SCO cross-domain surface
+
+The 2026-10-30 refresh revisited Yang et al.'s primary SCO paper (DOI
+`10.1109/TIP.2015.2425538`) and the official institutional project/source page
+`https://www.neuro.uestc.edu.cn/vccl/projcvpr2013.html`. The paper confirms
+that SCO is an oriented double-opponent color/luminance detector followed by a
+modified local spatial-sparseness constraint intended to suppress dense texture
+responses. Its fixed author path, archive/source hashes, research-only source
+notice, and native-resolution BSDS500-validation reproduction were already
+established in Stage 15E. Exact SCO obtained local official ODS/OIS/AP
+`0.656582/0.682564/0.694939`, while its matched CO precursor obtained
+`0.635925/0.665489/0.651767`; those are development/reproduction results under
+the reference-unverified local matcher, not literature-test claims.
+
+SCO is selected as the next distinct strong-detector target after the closed
+SED/half-disc and complete-PMI routes. It is deterministic, strictly
+non-neural, exact-author-code available, and mechanistically different from
+SED's feedback/surround hierarchy and PMI's affinity graph. The checkpoint
+does not choose a missing cue or reinterpret any failed Stage-23F relationship.
+The registered action is `stage23g3_sco_overlap_clean_materialization` under
+`docs/paper/STAGE23G3_PREREGISTRATION.md`: materialize exact SCO at the fixed
+Stage-23 overlap-clean UDED working raster with per-image hash checkpoints and
+reuse the frozen Stage-15E SCO bytes for the official attachment. No GT score,
+descriptor extraction, aggregation, intervention, or promotion is authorized.

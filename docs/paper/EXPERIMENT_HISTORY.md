@@ -5666,3 +5666,25 @@ reproduction is not authorized. The next registered action is the existing
 repeatable planning-only `stage23_literature_escalation`; it must preserve the
 Stage-23F/G1/G2 negative evidence and may choose at most one distinct
 prospective action without dataset scoring.
+
+### Post-Stage-23G2 escalation — exact SCO target surface registered
+
+The live primary-source checkpoint selected Yang et al.'s exact author SCO as
+the next distinct strong-detector target. SCO is the strongest remaining exact,
+deterministic, strictly non-neural reference after the closed SED and complete-
+PMI routes. Its oriented double-opponent chromatic/achromatic evidence plus
+modified local spatial-sparseness texture suppression is mechanistically
+different from both closed targets. Stage 15E already established immutable
+source provenance and a native-resolution BSDS500-validation baseline of
+ODS/OIS/AP `0.656582/0.682564/0.694939` under the common reference-unverified
+local path.
+
+The registered next action is
+`stage23g3_sco_overlap_clean_materialization`. It runs the unchanged author
+call `SCOBoundary(input,1.1,8,-0.7,5)` only on the 14 overlap-clean UDED
+working rasters, excluding `03-35028` before byte access. Per-image maps are
+checkpointed and hash-validated; GT is preview-only and no score, descriptor,
+gap cue, aggregation, intervention, or promotion is produced. The required
+official attachment reuses the already frozen Stage-15E SCO bytes rather than
+rerunning the detector. Only a complete pass may authorize a separately
+preregistered target-gap diagnosis.

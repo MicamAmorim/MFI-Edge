@@ -3591,3 +3591,24 @@ benchmark, detector output, or cache map was read. Route next to the repeatable
 planning-only `stage23_literature_escalation`; do not repair or substitute the
 closed PMI route.
 
+### Post-Stage-23G2 escalation - exact SCO materialization registered
+
+The live checkpoint selected Yang et al.'s exact author SCO as the next
+distinct strong-detector target. It is the strongest remaining exact,
+deterministic, strictly non-neural reference after the closed SED and PMI
+routes. Its oriented double-opponent chromatic/achromatic evidence and modified
+spatial-sparseness texture suppression are mechanistically distinct. Stage 15E
+already pinned the complete author surface and reproduced native-resolution
+BSDS500 validation at ODS/OIS/AP `0.656582/0.682564/0.694939` under the common
+reference-unverified evaluator.
+
+The registered next action is
+`stage23g3_sco_overlap_clean_materialization`. It applies the unchanged call
+`SCOBoundary(input,1.1,8,-0.7,5)` to the 14 overlap-clean UDED Stage-23 working
+rasters, excluding `03-35028` before byte access, and persists resumable maps,
+hashes, runtimes, provenance, and a fixed positions 1/7/14 preview. It scores
+no GT and chooses no missing cue, aggregation, intervention, or promotion. Its
+official attachment reuses the 100 frozen Stage-15E SCO maps without detector
+execution. Only a pass may authorize a separately preregistered target-gap
+diagnosis. Compact distorted-Choquet MFI remains incumbent.
+

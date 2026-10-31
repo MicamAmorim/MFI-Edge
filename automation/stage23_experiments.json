@@ -257,6 +257,26 @@
       "results/automation/stage23g2_pmi_exact_runtime_preflight_retry3/matlab_compatibility/classregtree.m"
     ]
   },
+  "stage23g3_sco_overlap_clean_materialization": {
+    "description": "Stage 23G3 exact-author SCO target-baseline materialization on the 14-image overlap-clean UDED Stage-23 working raster under docs/paper/STAGE23G3_PREREGISTRATION.md; fixed author parameters, per-image resumable hash provenance, no GT scoring or intervention, and hash-only reuse of the frozen Stage-15E SCO maps for the standard-Berkeley attachment.",
+    "runner": "python",
+    "path": "automation/stage23g3_sco_overlap_clean_materialization.py",
+    "args": [],
+    "role": "development_reproduction",
+    "feedback_policy": "exact_author_sco_overlap_clean_uded_map_materialization_no_gt_scoring_descriptor_compute_gap_cue_aggregation_intervention_promotion_or_protected_feedback",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage23g3_sco_overlap_clean_materialization/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage23g3_sco_overlap_clean_materialization/summary.json",
+      "results/local_dev/stage23g3_sco_overlap_clean_materialization/overlap_clean_dataset_manifest.json",
+      "results/local_dev/stage23g3_sco_overlap_clean_materialization/map_provenance.jsonl",
+      "results/local_dev/stage23g3_sco_overlap_clean_materialization/map_hashes.json",
+      "results/local_dev/stage23g3_sco_overlap_clean_materialization/per_image_runtime.csv",
+      "results/local_dev/stage23g3_sco_overlap_clean_materialization/best_method_preview.png",
+      "results/local_dev/stage23g3_sco_overlap_clean_materialization/official_eval_manifest.json",
+      "results/official_eval/stage23g3_sco_overlap_clean_materialization/summary.json"
+    ]
+  },
   "stage23_literature_escalation": {
     "description": "Repeatable Stage-23 literature/mechanism checkpoint for resolving descriptor, aggregator, protocol, implementation, or gap-guided design uncertainty without benchmark scoring.",
     "runner": "python",

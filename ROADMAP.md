@@ -3240,3 +3240,19 @@ evidence, avoid reopening the closed SED/half-disc and PMI routes, score no
 dataset, and choose at most one distinct prospective action or close the
 campaign path. Compact MFI remains incumbent.
 
+## Stage 23 post-G2 escalation — exact SCO materialization active
+
+The live checkpoint selected exact author SCO as the next distinct strong
+non-neural target. Its double-opponent color/luminance channels and modified
+spatial-sparseness suppression differ from the closed SED/half-disc and PMI
+routes, while Stage 15E already supplies immutable source provenance and a
+complete native-resolution BSDS500-validation baseline.
+
+The active action is `stage23g3_sco_overlap_clean_materialization`. It creates
+the missing exact SCO surface on the 14-image overlap-clean UDED Stage-23
+working raster with atomic per-image hashes and deterministic positions
+1/7/14 preview. It scores no GT and selects no cue, aggregator, or intervention.
+Its standard-Berkeley attachment reuses the 100 frozen Stage-15E SCO maps
+without detector execution. A pass advances only to a separate prospective
+gap-diagnosis decision; compact MFI remains incumbent.
+

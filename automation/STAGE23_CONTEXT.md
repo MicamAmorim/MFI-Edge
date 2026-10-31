@@ -210,3 +210,21 @@ The active next task returns to the repeatable planning-only
 evidence, score no dataset, avoid repairing or substituting the closed PMI
 route, and choose at most one distinct prospectively justified action or close
 the campaign path. Compact MFI remains incumbent.
+
+The planning-only escalation selected Yang et al.'s exact author SCO as the
+next distinct strong-detector target. SCO is deterministic and strictly
+non-neural; its oriented double-opponent color/luminance evidence plus modified
+spatial-sparseness texture suppression differs from the closed SED/half-disc
+and complete-PMI routes. Stage 15E already pinned the author archive and source
+hashes and reproduced native-resolution BSDS500 validation at ODS/OIS/AP
+`0.656582/0.682564/0.694939` under the common reference-unverified path.
+
+The active next task is `stage23g3_sco_overlap_clean_materialization` under
+`docs/paper/STAGE23G3_PREREGISTRATION.md`. It applies the unchanged fixed call
+`SCOBoundary(input,1.1,8,-0.7,5)` to only the 14 overlap-clean UDED Stage-23
+working rasters, excluding `03-35028` before byte access. It persists atomic
+per-image hashes, runtimes and the positions 1/7/14 preview, but scores no GT
+and chooses no gap cue, aggregator, intervention, or detector. The mandatory
+official attachment reuses the frozen Stage-15E SCO maps byte-for-byte. Only a
+pass may lead to a separately preregistered target-gap diagnosis. Compact MFI
+remains incumbent.

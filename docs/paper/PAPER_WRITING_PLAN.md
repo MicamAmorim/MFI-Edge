@@ -1775,3 +1775,13 @@ the pinned `MS_algorithm_from_paper` path. Do not report it as a detector
 result or imply that a missing cue, aggregator, or improvement has already
 been selected. A later dataset reproduction and then a prospective gap
 diagnosis are required before any intervention claim.
+
+Stage 23G2 closed without a detector output because its frozen small synthetic
+raster could not satisfy the unchanged author's fixed spectral basis size.
+Report this as a preregistration-bound runtime/fidelity unresolved route, not a
+negative detector benchmark and not permission to alter the input or spectral
+dimension. The next route uses exact author SCO, whose native BSDS-validation
+baseline already exists. Stage 23G3 only materializes that unchanged detector
+on the fixed overlap-clean UDED working raster with checkpointed hashes; it
+scores no GT and selects no missing evidence or aggregation. Any later SCO
+intervention requires a separate cross-domain gap diagnosis and preregistration.
