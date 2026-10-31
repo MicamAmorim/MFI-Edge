@@ -3651,3 +3651,22 @@ Berkeley operational ODS/OIS, and AP ranking transfer. No weight, cue,
 aggregator, target, or SCO parameter tuning is allowed. Compact MFI remains
 incumbent.
 
+### Stage 23G5 closure - SCO/persistence equal mean rejected
+
+The fixed equal-mean intervention failed its preregistered UDED gate and both
+standard-Berkeley transfer axes relative to exact SCO. On overlap-clean UDED,
+aggregate F1 and recall improved by `+0.02539/+0.11664`, mean fold F1 improved
+by `+0.03580`, and the candidate won `15/15` folds, but precision fell by
+`-0.03837`, violating the frozen `-0.003` floor. On BSDS500 validation,
+candidate-minus-SCO ODS/OIS/AP changed by
+`-0.04089/-0.05549/-0.11745`. This is no operational or ranking transfer.
+The SCO/persistence route closes without a ranking-remediation experiment,
+weight search, cue/aggregator substitution, or detector retuning. Compact MFI
+remains incumbent and Berkeley reference reproduction remains unverified.
+
+The registered next action is the existing repeatable planning-only
+`stage23_literature_escalation`. It must preserve the Stage-23F/G1/G2/G5
+negative evidence, score no dataset, avoid reopening or tuning closed routes,
+and choose at most one distinct prospective Stage-23 action or close the
+campaign path.
+

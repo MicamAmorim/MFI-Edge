@@ -5728,3 +5728,28 @@ all-overlap-clean-UDED transform. Standard-Berkeley ODS/OIS operational
 transfer and AP ranking transfer are reported separately under the prospective
 Stage-23 amendment. No alternative cue, aggregator, weight, target, or SCO
 parameter is permitted.
+
+### Stage 23G5 equal-mean intervention rejected
+
+The run satisfied its provenance and implementation contracts with zero
+detector runs, zero descriptor computations, 114 exact cue-cache hits, no
+protected-lineage byte read, 100 frozen BSDS candidate maps, and the fixed
+preview. On overlap-clean UDED, candidate-minus-SCO aggregate precision,
+recall, and F1 changed by `-0.038366/+0.116645/+0.025388`; mean fold F1 changed
+by `+0.035798`, with `15/15` wins. The large precision loss violated the
+preregistered `-0.003` floor, so the UDED gate failed despite the strong F1 and
+recall movement.
+
+Under standard Berkeley BSDS500 validation, the equal mean obtained
+ODS/OIS/AP `0.615703/0.627146/0.577491`, versus exact SCO's
+`0.656589/0.682634/0.694940`. Candidate-minus-SCO deltas were therefore
+`-0.040886/-0.055488/-0.117449`. Both operational and ranking transfer failed.
+The SCO/persistence route closes without a ranking/calibration diagnosis,
+weight search, cue or aggregator substitution, or SCO retuning. The compact
+distorted-Choquet MFI remains incumbent and the Berkeley matcher remains
+reference-unverified.
+
+The registered next action is the existing repeatable planning-only
+`stage23_literature_escalation`, which may choose at most one distinct
+prospective Stage-23 action or close the campaign path without scoring a
+dataset or reopening a closed route.

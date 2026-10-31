@@ -253,3 +253,17 @@ membership/threshold state on UDED, freezes the all-14-UDED transform for BSDS,
 and reports UDED transfer, Berkeley operational ODS/OIS transfer, and AP
 ranking transfer separately. No weight, cue, aggregator, target, or SCO
 parameter search is allowed.
+
+Stage 23G5 is complete and rejected. On overlap-clean UDED the equal mean
+improved aggregate F1 by `+0.025388`, recall by `+0.116645`, mean fold F1 by
+`+0.035798`, and won `15/15` folds, but precision fell by `-0.038366`, far
+below the preregistered `-0.003` floor. Against exact SCO on standard Berkeley
+BSDS500 validation, ODS/OIS/AP changed by
+`-0.040886/-0.055488/-0.117449`. The intervention therefore has neither
+operational nor ranking transfer, and the SCO/persistence route closes without
+the ranking diagnosis reserved only for operational-pass/AP-fail outcomes.
+
+The active next task is the existing repeatable planning-only
+`stage23_literature_escalation`. It scores no dataset, must preserve all closed
+Stage-23 routes and negative evidence, and may select at most one distinct
+prospective action or close the campaign path. Compact MFI remains incumbent.

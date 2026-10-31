@@ -3288,3 +3288,19 @@ separate gates. A complete pass may enter the development frontier; an
 operational-only result may authorize at most one bounded ranking diagnosis;
 failure closes the route without substitution.
 
+## Stage 23G5 complete - SCO/persistence route closed
+
+The fixed equal mean improved overlap-clean UDED aggregate F1 and recall by
+`+0.02539/+0.11664`, improved mean fold F1 by `+0.03580`, and won all fifteen
+folds, but precision fell by `-0.03837`, failing the preregistered precision
+floor. On standard Berkeley validation it was also worse than exact SCO by
+`-0.04089/-0.05549/-0.11745` ODS/OIS/AP. It therefore achieved neither
+operational nor ranking transfer. No bounded ranking diagnosis is authorized,
+because that branch was reserved for operational-pass/AP-fail outcomes.
+
+The active action returns to the repeatable planning-only
+`stage23_literature_escalation`. It must retain the Stage-23F/G1/G2/G5 negative
+evidence, reopen no closed route, score no dataset, and choose at most one
+distinct prospective action or close the campaign path. Compact MFI remains
+incumbent.
+

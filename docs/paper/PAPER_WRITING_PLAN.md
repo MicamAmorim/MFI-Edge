@@ -1795,3 +1795,12 @@ an equal mean after the frozen persistence membership transform. Its eventual
 table must separate UDED transfer, Berkeley operational ODS/OIS transfer, and
 AP ranking transfer; do not collapse an operational-only result into either a
 complete promotion or an undifferentiated failure.
+
+Stage 23G5 showed that diagnostic complementarity did not imply a useful fixed
+equal-mean intervention. The candidate improved UDED F1 and recall but failed
+the frozen precision floor, then regressed against exact SCO on all three
+standard-Berkeley endpoints. Report this specifically as no operational or
+ranking transfer, not as evidence that cross-scale persistence lacks unique
+information. The result instead separates a valid missing-evidence diagnosis
+from an unsuccessful score-level integration rule. No ranking-remediation
+branch was authorized because ODS/OIS also failed.
