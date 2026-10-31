@@ -5708,3 +5708,23 @@ validates 114 exact cache inputs plus all SCO hashes, and applies a fixed
 four-condition gap rule separately on overlap-clean UDED and BSDS validation.
 It creates no candidate; only a pass can authorize a later separately
 preregistered equal-mean control. Compact MFI remains incumbent.
+
+### Stage 23G4 gap diagnosis complete; Stage 23G5 registered
+
+The SCO/persistence diagnosis completed with zero detector calls, zero
+descriptor computations, 114 exact cache hits, and no protected-lineage byte
+read. All four gap conditions passed independently on overlap-clean UDED and
+BSDS500 validation. Mean cue-only GT fractions were `0.216635` and `0.259588`;
+mean `P(cue correct | SCO wrong)` values were `0.547179` and `0.603805`;
+unique cue-supported GT occurred on every image; and mean Spearman correlations
+were `0.170222` and `0.119772`. This supports complementarity transfer only.
+The incumbent-only official attachment adds no candidate evidence.
+
+The registered next action is `stage23g5_sco_persistence_equal_mean`. It is
+the sole intervention authorized prospectively by Stage 23G4: exact SCO and
+the frozen persistence membership are averaged at fixed equal weight. UDED
+uses fold-local membership and threshold fitting; BSDS uses the frozen
+all-overlap-clean-UDED transform. Standard-Berkeley ODS/OIS operational
+transfer and AP ranking transfer are reported separately under the prospective
+Stage-23 amendment. No alternative cue, aggregator, weight, target, or SCO
+parameter is permitted.

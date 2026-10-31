@@ -295,6 +295,28 @@
       "results/local_dev/stage23g4_sco_persistence_gap_diagnosis/official_eval_manifest.json"
     ]
   },
+  "stage23g5_sco_persistence_equal_mean": {
+    "description": "Stage 23G5 single authorized equal-arithmetic-mean intervention combining exact author SCO with the frozen Stage-23 persistence membership under docs/paper/STAGE23G5_PREREGISTRATION.md; zero detector/descriptor recomputation, overlap-clean UDED repeated CV, and matched standard-Berkeley SCO comparison with operational and ranking transfer reported separately.",
+    "runner": "python",
+    "path": "automation/stage23g5_sco_persistence_equal_mean_launcher.py",
+    "args": [],
+    "role": "development_intervention",
+    "feedback_policy": "single_preregistered_sco_persistence_equal_mean_joint_uded_and_standard_bsds_validation_no_weight_cue_aggregator_target_parameter_or_protected_feedback_tuning",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage23g5_sco_persistence_equal_mean/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage23g5_sco_persistence_equal_mean/summary.json",
+      "results/local_dev/stage23g5_sco_persistence_equal_mean/fold_results.csv",
+      "results/local_dev/stage23g5_sco_persistence_equal_mean/per_image_metrics.csv",
+      "results/local_dev/stage23g5_sco_persistence_equal_mean/transform_provenance.csv",
+      "results/local_dev/stage23g5_sco_persistence_equal_mean/frozen_input_provenance.csv",
+      "results/local_dev/stage23g5_sco_persistence_equal_mean/frozen_map_hashes.csv",
+      "results/local_dev/stage23g5_sco_persistence_equal_mean/map_provenance.jsonl",
+      "results/local_dev/stage23g5_sco_persistence_equal_mean/best_method_preview.png",
+      "results/local_dev/stage23g5_sco_persistence_equal_mean/official_eval_manifest.json",
+      "results/official_eval/stage23g5_sco_persistence_equal_mean/summary.json"
+    ]
+  },
   "stage23_literature_escalation": {
     "description": "Repeatable Stage-23 literature/mechanism checkpoint for resolving descriptor, aggregator, protocol, implementation, or gap-guided design uncertainty without benchmark scoring.",
     "runner": "python",

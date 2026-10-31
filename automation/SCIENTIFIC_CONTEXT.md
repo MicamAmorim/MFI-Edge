@@ -3631,3 +3631,23 @@ runs no detector or descriptor and creates no candidate. Only a full pass may
 authorize a separately preregistered equal-mean control; failure closes the
 route without substitution. Compact MFI remains incumbent.
 
+### Stage 23G4 closure - SCO/persistence equal-mean intervention registered
+
+The frozen-map diagnosis passed every preregistered gap condition in both
+development domains. On overlap-clean UDED and BSDS500 validation,
+respectively, persistence cue-only GT support averaged `0.21664/0.25959`,
+`P(cue correct | SCO wrong)` averaged `0.54718/0.60380`, unique support was
+present on every image, and SCO/cue Spearman correlation averaged
+`0.17022/0.11977`. The run used zero detector calls, zero descriptor
+computations, and 114 exact cache hits. This is complementarity transfer, not
+a detector promotion.
+
+The registered next action is `stage23g5_sco_persistence_equal_mean`, the only
+intervention authorized by Stage 23G4. It averages exact SCO with the frozen
+Stage-23 persistence membership at fixed weight `0.5/0.5`, using fold-local
+membership fitting for overlap-clean UDED and the frozen all-14-UDED Stage-23F
+transform for BSDS validation. The prospective decision separates UDED,
+Berkeley operational ODS/OIS, and AP ranking transfer. No weight, cue,
+aggregator, target, or SCO parameter tuning is allowed. Compact MFI remains
+incumbent.
+

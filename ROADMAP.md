@@ -3271,3 +3271,20 @@ apply the preregistered cross-domain descriptive rule, and emit the fixed
 preview. It cannot create or promote a detector. A failure closes this route;
 a pass authorizes only a separately preregistered equal-mean control.
 
+## Stage 23G4 complete - SCO/persistence equal-mean intervention active
+
+The frozen diagnosis passed on both development domains. Persistence supplied
+mean cue-only GT fractions of `0.21664` on overlap-clean UDED and `0.25959` on
+BSDS validation; conditional correctness on SCO errors was `0.54718` and
+`0.60380`; unique support occurred on every image; and rank correlations were
+low. The result establishes a supported missing evidence family but creates no
+candidate and does not change compact MFI.
+
+The active action is `stage23g5_sco_persistence_equal_mean`. It executes only
+the prospectively authorized equal mean of exact SCO and the frozen persistence
+membership, with no detector or descriptor recomputation. UDED transfer,
+standard-Berkeley operational ODS/OIS transfer, and AP ranking transfer are
+separate gates. A complete pass may enter the development frontier; an
+operational-only result may authorize at most one bounded ranking diagnosis;
+failure closes the route without substitution.
+

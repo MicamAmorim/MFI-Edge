@@ -1785,3 +1785,13 @@ baseline already exists. Stage 23G3 only materializes that unchanged detector
 on the fixed overlap-clean UDED working raster with checkpointed hashes; it
 scores no GT and selects no missing evidence or aggregation. Any later SCO
 intervention requires a separate cross-domain gap diagnosis and preregistration.
+
+Stage 23G4 supplied that cross-domain diagnosis for SCO. Report it as
+complementarity transfer: cached Gabor scale persistence had low rank
+redundancy, nontrivial cue-only GT support, and conditional correctness above
+the frozen minimum on both overlap-clean UDED and BSDS validation. It did not
+create or promote a candidate. Stage 23G5 is the sole prospective intervention,
+an equal mean after the frozen persistence membership transform. Its eventual
+table must separate UDED transfer, Berkeley operational ODS/OIS transfer, and
+AP ranking transfer; do not collapse an operational-only result into either a
+complete promotion or an undifferentiated failure.

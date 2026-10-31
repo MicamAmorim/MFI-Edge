@@ -237,11 +237,19 @@ reused the 100 Stage-15E SCO maps and retained ODS/OIS/AP
 `0.656579/0.682329/0.694926`; it is documentary baseline provenance under the
 reference-unverified matcher and selects no intervention.
 
-The active next task is `stage23g4_sco_persistence_gap_diagnosis` under
-`docs/paper/STAGE23G4_PREREGISTRATION.md`. SCO uses fixed-scale opponent
-evidence plus local spatial-sparseness suppression but lacks explicit
-cross-scale persistence, so the single prospective gap cue is the already
-cached `gabor4_scale_persistence` map. The diagnosis reuses 114 exact cue maps
-and all frozen SCO maps with zero detector or descriptor computation. Only a
-cross-domain pass may authorize a separate equal-mean control; failure closes
-SCO/persistence without substitution. Compact MFI remains incumbent.
+Stage 23G4 passed all four frozen gap conditions separately on overlap-clean
+UDED selection and BSDS500 validation with zero detector or descriptor
+computation and 114 exact cache hits. Mean cue-only GT fractions were
+`0.21664/0.25959`, conditional correctness given SCO error was
+`0.54718/0.60380`, unique GT support occurred on every image, and mean rank
+correlations were `0.17022/0.11977`. This establishes complementarity transfer
+only; no candidate was created and compact MFI remains incumbent.
+
+The active next task is `stage23g5_sco_persistence_equal_mean` under
+`docs/paper/STAGE23G5_PREREGISTRATION.md`. It is the only intervention
+authorized by G4: an equal arithmetic mean of exact SCO and the frozen
+Stage-23 persistence membership. It reuses all maps, fits only fold-local
+membership/threshold state on UDED, freezes the all-14-UDED transform for BSDS,
+and reports UDED transfer, Berkeley operational ODS/OIS transfer, and AP
+ranking transfer separately. No weight, cue, aggregator, target, or SCO
+parameter search is allowed.
