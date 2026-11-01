@@ -354,3 +354,13 @@ chooses no gap cue, aggregation, intervention, or promotion. Its official
 attachment byte-reuses the frozen Stage-15i QFrD maps. Only a complete pass may
 authorize a separately preregistered cross-domain gap diagnosis; compact MFI
 remains incumbent.
+
+The first launch stopped before dataset access or artifact creation because
+the sandbox denied PyTorch's attempt to load the installed MSVC runtime from
+System32. A direct diagnostic verified that the unchanged pinned CPU torch
+runtime imports when Windows DLL resolution includes the already installed
+Visual Studio x64 runtime directory. The active task is now
+`stage23g9_qfrd_overlap_clean_materialization_retry1`, an identical harness-
+only retry with that runtime path added. Author bytes, torch version, detector
+parameters, raster adapter, serialization, inputs, outputs, preview, and the
+official frozen-map attachment are unchanged.

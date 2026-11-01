@@ -5864,3 +5864,17 @@ reuse checks, and positions 1/7/14 preview. It excludes protected-lineage item
 aggregator, or intervention. The official attachment byte-reuses the 100
 frozen Stage-15i maps. A pass can lead only to a separate prospective
 cross-domain gap diagnosis; compact MFI remains incumbent.
+
+### Stage 23G9 runtime-path failure - harness-only retry registered
+
+The first exact-QFrD materialization launch stopped while importing PyTorch,
+before dataset access or result creation. The sandbox denied dynamic loading
+of the MSVC runtime from System32. A targeted diagnostic loaded the unchanged
+pinned CPU torch runtime successfully after adding the already installed
+Visual Studio x64 runtime directory to Windows DLL resolution. This is
+environment evidence only and provides no detector or benchmark feedback.
+
+`stage23g9_qfrd_overlap_clean_materialization_retry1` is registered as an
+identical harness-only retry using that runtime path. QFrD author bytes,
+PyTorch version, fixed parameters, raster adapter, serialization, data,
+resumable artifacts, preview, and frozen-map official attachment are unchanged.

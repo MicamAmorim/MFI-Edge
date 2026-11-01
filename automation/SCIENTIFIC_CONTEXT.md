@@ -3769,3 +3769,10 @@ may authorize a separately preregistered cross-domain gap diagnosis. Compact
 distorted-Choquet MFI remains incumbent and Berkeley reference reproduction
 remains unverified.
 
+The first Stage-23G9 launch stopped before dataset access or artifact creation
+because the sandbox denied PyTorch's System32 MSVC runtime loads. The unchanged
+pinned CPU runtime imports when the installed Visual Studio x64 runtime
+directory is added to DLL resolution. A harness-only identical retry is
+registered with that path repair; no QFrD source, parameter, raster, output,
+preview, or official-attachment contract changes.
+

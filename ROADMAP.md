@@ -3256,6 +3256,16 @@ Its standard-Berkeley attachment reuses the 100 frozen Stage-15E SCO maps
 without detector execution. A pass advances only to a separate prospective
 gap-diagnosis decision; compact MFI remains incumbent.
 
+## Stage 23G9 runtime-path failure - retry active
+
+The first QFrD materialization stopped before dataset access because the
+sandbox could not load the installed System32 MSVC runtime required by
+PyTorch. The unchanged pinned torch runtime passed a direct import after the
+installed Visual Studio x64 runtime directory was added to DLL resolution.
+The active action is the harness-only identical retry
+`stage23g9_qfrd_overlap_clean_materialization_retry1`; no scientific input,
+detector setting, artifact, preview, or evaluator contract changes.
+
 ## Stage 23G3 complete - SCO/persistence diagnosis active
 
 The overlap-clean SCO surface is complete and hash-certified on all fourteen
