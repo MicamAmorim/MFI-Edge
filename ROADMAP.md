@@ -3392,3 +3392,19 @@ standard-Berkeley attachment byte-reuses the frozen Stage-15i maps without
 detector execution. A complete pass advances only to a separate prospective
 gap-diagnosis decision; compact MFI remains incumbent.
 
+## Stage 23G9 complete - QFrD/FH frozen-map diagnosis active
+
+The MSVC-runtime-path retry completed the exact QFrD overlap-clean surface:
+fourteen valid maps, protected-lineage exclusion before byte access, complete
+hash/runtime provenance, a fixed positions 1/7/14 preview, and fourteen
+second-traversal cache hits with zero detector calls. The frozen Stage-15I
+validation maps were reused without detector execution and retained local
+ODS/OIS/AP `0.587264/0.618599/0.583649` under the reference-unverified path.
+
+The active action is `stage23g10_qfrd_fh_gap_diagnosis`. It tests only whether
+cached FH region-boundary evidence fills a cross-domain gap in QFrD, whose
+fixed fractional RGB pipeline has no region-adaptive segmentation stage. It
+uses frozen maps and 114 exact cache hits, runs no detector or descriptor,
+creates no intervention, and preselects no aggregation. A failure closes the
+route; a pass permits only a separately preregistered intervention decision.
+

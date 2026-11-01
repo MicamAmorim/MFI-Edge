@@ -5878,3 +5878,22 @@ environment evidence only and provides no detector or benchmark feedback.
 identical harness-only retry using that runtime path. QFrD author bytes,
 PyTorch version, fixed parameters, raster adapter, serialization, data,
 resumable artifacts, preview, and frozen-map official attachment are unchanged.
+
+### Stage 23G9 closure - exact QFrD surface complete; Stage 23G10 registered
+
+The runtime-path retry completed all fourteen exact-author QFrD overlap-clean
+UDED maps. The protected-lineage item was excluded before byte access, hashes
+and provenance passed, and a second traversal produced fourteen exact cache
+hits with zero detector calls. The documentary standard-Berkeley attachment
+byte-reused the Stage-15I maps and recorded ODS/OIS/AP
+`0.587264/0.618599/0.583649`; this does not promote QFrD and the matcher remains
+reference-unverified.
+
+The registered next action is `stage23g10_qfrd_fh_gap_diagnosis`. QFrD already
+contains joint RGB fractional-spectral evidence, Gaussian conditioning, NMS,
+and hysteresis, but not region-adaptive segmentation. The sole prospective
+missing-family hypothesis is therefore cached FH region-boundary support. The
+diagnosis reuses 114 exact cache artifacts and frozen QFrD maps, runs no
+detector or extractor, creates no candidate, and applies the established four
+gap conditions separately on overlap-clean UDED and BSDS500 validation. No
+fusion is preselected and closed Stage-23 routes remain closed.

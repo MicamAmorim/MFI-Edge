@@ -364,3 +364,20 @@ Visual Studio x64 runtime directory. The active task is now
 only retry with that runtime path added. Author bytes, torch version, detector
 parameters, raster adapter, serialization, inputs, outputs, preview, and the
 official frozen-map attachment are unchanged.
+
+The runtime-path retry passed. All fourteen exact-author QFrD maps were
+materialized on the overlap-clean UDED working raster, the protected-lineage
+item was excluded before byte access, all provenance/hash contracts passed,
+and the second traversal used fourteen cache hits with zero detector calls.
+The documentary official attachment byte-reused the frozen Stage-15I maps and
+recorded ODS/OIS/AP `0.587264/0.618599/0.583649`; compact MFI remains
+incumbent and Berkeley reference reproduction remains unverified.
+
+The active next task is `stage23g10_qfrd_fh_gap_diagnosis` under
+`docs/paper/STAGE23G10_PREREGISTRATION.md`. QFrD already contains joint RGB
+fractional-spectral evidence, Gaussian conditioning, NMS, and hysteresis but
+no region-adaptive segmentation evidence, so the sole missing-family
+hypothesis is cached FH region boundaries. The experiment reuses 114 frozen
+cue maps plus exact QFrD maps, runs no detector or extractor, creates no
+candidate, and applies the fixed four-condition rule separately on both
+development domains. No fusion is preselected.

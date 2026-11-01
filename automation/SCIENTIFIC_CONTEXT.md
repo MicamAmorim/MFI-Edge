@@ -3776,3 +3776,20 @@ directory is added to DLL resolution. A harness-only identical retry is
 registered with that path repair; no QFrD source, parameter, raster, output,
 preview, or official-attachment contract changes.
 
+### Stage 23G9 closure - QFrD/FH gap diagnosis registered
+
+The runtime-path retry materialized all fourteen exact-author QFrD maps on the
+overlap-clean UDED working rasters with valid hashes, protected-lineage
+exclusion before byte access, and fourteen second-traversal cache hits with
+zero detector calls. The documentary official attachment reused the frozen
+Stage-15I maps and recorded ODS/OIS/AP
+`0.587264/0.618599/0.583649` under the reference-unverified matcher.
+
+The registered next action is `stage23g10_qfrd_fh_gap_diagnosis`. QFrD has no
+region-adaptive segmentation evidence, so the single prospective missing cue
+is cached FH region-boundary support. The diagnosis runs no detector or
+descriptor, creates no candidate, and requires the established four gap
+conditions to pass separately on overlap-clean UDED and BSDS500 validation.
+Persistence and the closed SED/SCO/Compass routes are not reopened. Compact
+MFI remains incumbent.
+

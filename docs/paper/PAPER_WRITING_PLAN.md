@@ -1833,3 +1833,12 @@ multiplication-order caveat, and keep its frozen local BSDS-validation score
 separate from the new overlap-clean UDED maps. No missing-family or aggregation
 claim is made unless a later prospectively registered cross-domain diagnosis
 passes.
+
+Stage 23G9 subsequently completed that baseline materialization with exact
+hash/runtime provenance and cache-reuse checks. Report its standard-Berkeley
+attachment only as documentary reproduction (`0.587264/0.618599/0.583649`
+ODS/OIS/AP) under the reference-unverified matcher. The next analysis is the
+preregistered QFrD/FH frozen-map gap diagnosis: FH region boundaries test a
+missing region-adaptive evidence family, not a candidate fusion. Keep any
+complementarity conclusion separate from operational and ranking transfer,
+and do not imply that a passing diagnosis itself improves QFrD.
