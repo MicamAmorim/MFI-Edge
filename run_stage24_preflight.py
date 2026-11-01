@@ -62,12 +62,42 @@ def run_synthetic_checks():
     return checks
 
 
+def _run_unit_tests():
+    """Run the Stage-24 tests without requiring ``tests`` to be a Python package.
+
+    ``python -m unittest tests.test_stage24_integrity`` can resolve an unrelated
+    installed top-level ``tests`` package on Windows environments. Discovery by
+    filesystem path is deterministic and works whether or not tests/__init__.py
+    exists.
+    """
+    tests_dir = ROOT / "tests"
+    test_file = tests_dir / "test_stage24_integrity.py"
+    if not test_file.is_file():
+        return _case("unit_test_suite", False, f"missing {test_file.relative_to(ROOT)}")
+
+    cmd = [
+        sys.executable,
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        str(tests_dir),
+        "-p",
+        "test_stage24_integrity.py",
+        "-t",
+        str(ROOT),
+        "-v",
+    ]
+    p = subprocess.run(cmd, cwd=str(ROOT), text=True, capture_output=True)
+    detail = "command: " + " ".join(cmd) + "\n" + p.stdout + "\n" + p.stderr
+    return _case("unit_test_suite", p.returncode == 0, detail[-6000:])
+
+
 def main():
     parser = argparse.ArgumentParser(); parser.add_argument("--out", default=str(OUT_DEFAULT)); args = parser.parse_args()
     out = Path(args.out); out.mkdir(parents=True, exist_ok=True)
     checks = run_synthetic_checks()
-    p = subprocess.run([sys.executable, "-m", "unittest", "tests.test_stage24_integrity", "-v"], cwd=str(ROOT), text=True, capture_output=True)
-    checks.append(_case("unit_test_suite", p.returncode == 0, (p.stdout + "\n" + p.stderr)[-6000:]))
+    checks.append(_run_unit_tests())
     official_files = [ROOT / "evaluation/bsds_official/run_official_bsds.py", ROOT / "evaluation/bsds_official/matlab/evaluate_bsds_official.m", ROOT / "evaluation/bsds_official/config.json"]
     checks.append(_case("official_bsds_path_present", all(x.is_file() for x in official_files), "; ".join(str(x.relative_to(ROOT)) for x in official_files)))
     failed = [x for x in checks if not x["passed"]]
