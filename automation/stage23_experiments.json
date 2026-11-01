@@ -355,6 +355,28 @@
       "results/local_dev/stage23g7_compass_persistence_gap_diagnosis/official_eval_manifest.json"
     ]
   },
+  "stage23g8_compass_persistence_logistic_additive": {
+    "description": "Stage 23G8 single preregistered intervention combining exact author Compass and cached Gabor scale persistence through the Stage-23E class-balanced nonnegative logistic additive family under docs/paper/STAGE23G8_PREREGISTRATION.md; zero detector/descriptor recomputation, overlap-clean UDED repeated CV, and matched standard-Berkeley Compass comparison with operational and ranking transfer reported separately.",
+    "runner": "python",
+    "path": "automation/stage23g8_compass_persistence_logistic_additive_launcher.py",
+    "args": [],
+    "role": "development_intervention",
+    "feedback_policy": "single_preregistered_compass_persistence_nonnegative_logistic_joint_uded_and_standard_bsds_validation_no_weight_cue_aggregator_target_parameter_or_protected_feedback_tuning",
+    "one_shot": true,
+    "official_eval_manifest": "results/local_dev/stage23g8_compass_persistence_logistic_additive/official_eval_manifest.json",
+    "result_files": [
+      "results/local_dev/stage23g8_compass_persistence_logistic_additive/summary.json",
+      "results/local_dev/stage23g8_compass_persistence_logistic_additive/fold_results.csv",
+      "results/local_dev/stage23g8_compass_persistence_logistic_additive/per_image_metrics.csv",
+      "results/local_dev/stage23g8_compass_persistence_logistic_additive/model_provenance.csv",
+      "results/local_dev/stage23g8_compass_persistence_logistic_additive/frozen_input_provenance.csv",
+      "results/local_dev/stage23g8_compass_persistence_logistic_additive/frozen_map_hashes.csv",
+      "results/local_dev/stage23g8_compass_persistence_logistic_additive/map_provenance.jsonl",
+      "results/local_dev/stage23g8_compass_persistence_logistic_additive/best_method_preview.png",
+      "results/local_dev/stage23g8_compass_persistence_logistic_additive/official_eval_manifest.json",
+      "results/official_eval/stage23g8_compass_persistence_logistic_additive/summary.json"
+    ]
+  },
   "stage23_literature_escalation": {
     "description": "Repeatable Stage-23 literature/mechanism checkpoint for resolving descriptor, aggregator, protocol, implementation, or gap-guided design uncertainty without benchmark scoring.",
     "runner": "python",

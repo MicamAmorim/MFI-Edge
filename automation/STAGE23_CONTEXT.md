@@ -303,3 +303,21 @@ cue maps plus exact Compass maps, runs no detector or descriptor, creates no
 candidate, and applies the frozen four-condition rule separately in both
 development domains. It preselects no fusion; Stage-23G5 remains binding
 negative evidence against equal-mean reuse.
+
+Stage 23G7 passed every frozen gap condition on both development domains with
+zero detector runs, zero descriptor computations, and 114 exact cache hits.
+On overlap-clean UDED and BSDS validation, respectively, mean cue-only GT
+fractions were `0.19622/0.26150`, conditional correctness given Compass error
+was `0.63882/0.54719`, unique GT support occurred on every image, and mean
+Spearman correlations were `0.22564/0.10061`. This establishes
+complementarity transfer only.
+
+The active next task is
+`stage23g8_compass_persistence_logistic_additive` under
+`docs/paper/STAGE23G8_PREREGISTRATION.md`. It uses the closest frozen Stage-23
+evidence-structure relationship: nonnegative logistic addition for persistence
+plus opposed-region distribution evidence. The model is fitted only on
+overlap-clean UDED, runs no detector or descriptor, and is evaluated against
+exact Compass with separate UDED, Berkeley operational ODS/OIS, and AP ranking
+gates. Equal mean is not reused, and no weight, cue, aggregator, target, or
+Compass parameter search is allowed.

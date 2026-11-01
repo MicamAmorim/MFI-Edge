@@ -3335,3 +3335,19 @@ both development domains. It creates no candidate and chooses no fusion. A
 failure closes this route; a pass permits only a separate prospective
 intervention decision that must account for the failed SCO/persistence mean.
 
+## Stage 23G7 complete - Compass/persistence logistic intervention active
+
+The frozen diagnosis passed every gap condition in both development domains.
+Persistence had mean cue-only GT fractions of `0.19622/0.26150` on overlap-
+clean UDED/BSDS validation, conditional correctness on Compass errors of
+`0.63882/0.54719`, unique support on every image, and low rank correlation.
+This establishes complementarity transfer but creates no candidate.
+
+The active action is `stage23g8_compass_persistence_logistic_additive`. It
+uses the prospectively closest Stage-23 landscape relationship: a
+class-balanced nonnegative logistic additive model for persistence plus
+opposed-region distribution evidence. It reuses all frozen maps, fits only on
+overlap-clean UDED, and evaluates operational ODS/OIS separately from AP
+ranking against exact Compass. Equal mean and all weight/cue/aggregator/target
+substitutions are forbidden.
+

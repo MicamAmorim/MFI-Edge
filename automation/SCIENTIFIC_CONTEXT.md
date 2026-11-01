@@ -3712,3 +3712,23 @@ four gap conditions to pass separately on overlap-clean UDED and BSDS500
 validation. Stage-23G5 remains binding negative evidence against naive
 equal-mean reuse. Compact MFI remains incumbent.
 
+### Stage 23G7 closure - Compass/persistence logistic intervention registered
+
+The frozen-map diagnosis passed all four gap conditions independently on both
+development domains with zero detector runs, zero descriptor computations,
+and 114 exact cache hits. On overlap-clean UDED and BSDS500 validation,
+respectively, persistence cue-only GT support averaged `0.19622/0.26150`,
+`P(cue correct | Compass wrong)` averaged `0.63882/0.54719`, unique support
+occurred on every image, and Compass/cue Spearman correlation averaged
+`0.22564/0.10061`. This is complementarity transfer, not promotion.
+
+The registered next action is
+`stage23g8_compass_persistence_logistic_additive`. It tests the single
+prospectively justified Stage-23E aggregation property for persistence plus
+opposed-region distribution evidence: class-balanced nonnegative logistic
+addition over common fold-fitted memberships. It reuses exact Compass and
+cached persistence maps, fits only on overlap-clean UDED, and separates UDED,
+standard-Berkeley operational ODS/OIS, and AP ranking transfer. Stage-23G5's
+failed equal mean is not reused. No weight, cue, aggregator, target, or Compass
+parameter tuning is allowed; compact MFI remains incumbent.
+

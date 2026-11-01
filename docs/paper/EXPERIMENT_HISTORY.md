@@ -5796,3 +5796,25 @@ detector or extractor, validates 114 exact cache inputs plus all Compass
 hashes, and applies the fixed four-condition gap rule separately on
 overlap-clean UDED and BSDS validation. It creates no candidate and preselects
 no fusion. Stage-23G5 remains binding evidence against naive equal-mean reuse.
+
+### Stage 23G7 gap diagnosis complete; Stage 23G8 registered
+
+The Compass/persistence frozen-map diagnosis completed with zero detector
+calls, zero descriptor computations, 114 exact cache hits, and no protected-
+lineage byte read. All four preregistered gap conditions passed independently
+on overlap-clean UDED and BSDS500 validation. Mean cue-only GT fractions were
+`0.196220` and `0.261502`; mean `P(cue correct | Compass wrong)` values were
+`0.638824` and `0.547186`; unique support occurred on every image; and mean
+Spearman correlations were `0.225639` and `0.100610`. This supports
+complementarity transfer only; the incumbent-only official attachment adds no
+candidate evidence.
+
+The registered next action is
+`stage23g8_compass_persistence_logistic_additive`. Compass supplies complete
+opposed-region distribution evidence, making the closest frozen landscape
+analogue Stage-23E/F's persistence plus half-disc distribution pair. That pair
+selected nonnegative logistic addition and preserved operational ODS/OIS while
+losing AP. Stage 23G8 therefore tests exactly that fitted aggregation property
+against exact Compass, with separate UDED, Berkeley operational, and ranking
+gates. The failed SCO/persistence equal mean is not reused, and no alternative
+weight, cue, aggregator, target, or Compass parameter is permitted.
