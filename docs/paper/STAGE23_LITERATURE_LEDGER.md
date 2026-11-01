@@ -192,3 +192,35 @@ open direction, Stage 23G7 prospectively selects only the already cached
 reuse Stage-23G5's failed equal-mean intervention: no aggregation is selected,
 and any later intervention requires a separate preregistration informed by
 the existing negative transfer evidence.
+
+## Post-Stage-23G8 live escalation - exact QFrD cross-domain surface
+
+The 2026-11-01 refresh checked the primary QFrD article (Huang, Hu, and Lian,
+2026, DOI `10.3390/fractalfract10060412`) and the official public repository
+`https://github.com/renhu9120/QFrD`. The repository still exposes one commit,
+already pinned by Stage 15I at
+`8dcc8d846e6dcbe1bc4b931b89f1c814f5f9a245`; its exact CPU path and frozen
+tracked-tree manifest have already passed a synthetic repeatability preflight
+and native-resolution BSDS500-validation reproduction. The primary paper
+confirms joint RGB quaternion processing, fractional order `0.8`, fixed
+Hilbert rotation/quaternion axis, Gaussian conditioning, NMS, and hysteresis.
+The existing paper/code multiplication-order caveat and missing explicit code
+license remain unchanged.
+
+QFrD is selected as the next distinct, already runnable soft-output analytic
+target after the closed SED, PMI, SCO, and Compass routes. Its quaternion
+fractional-spectral evidence is not an instance of the opposed-distribution or
+fixed-scale persistence interventions just rejected. CO is nested within the
+closed SCO architecture, EDPF supplies only a binary operating point, and the
+exact Structured Edge forest is already closed by severe UDED transfer
+failure. This selection does not claim QFrD is the strongest published
+non-neural method and does not choose a missing cue.
+
+The registered action is `stage23g9_qfrd_overlap_clean_materialization` under
+`docs/paper/STAGE23G9_PREREGISTRATION.md`. It creates only the absent exact
+QFrD surface on the fourteen overlap-clean Stage-23 UDED working rasters,
+with atomic per-image provenance and a fixed positions 1/7/14 preview. The
+standard-Berkeley attachment hash-reuses the frozen Stage-15i maps without
+detector execution. No GT score, gap family, aggregator, intervention, or
+promotion is authorized; a pass permits only a separate prospective gap
+diagnosis.

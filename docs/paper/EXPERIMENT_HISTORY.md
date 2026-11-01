@@ -5844,3 +5844,23 @@ The registered next action is the existing repeatable planning-only
 `stage23_literature_escalation`. It must preserve the Stage-23F/G1/G2/G5/G8
 negative evidence, score no dataset, reopen no closed route, and select at
 most one distinct prospective Stage-23 action or close the campaign path.
+
+### Post-Stage-23G8 literature escalation - exact QFrD materialization registered
+
+Live primary-source and official-code review selected exact pinned-author QFrD
+as the next distinct runnable soft-output target. QFrD jointly processes RGB
+through a quaternion fractional-Dirac spectral operator, unlike the closed
+opposed-distribution, feedback/surround, PMI-affinity, and persistence-fusion
+routes. Stage 15I already established its pinned source manifest, synthetic
+repeatability, fixed author parameters, complete BSDS500-validation map set,
+and explicit paper/code multiplication-order caveat.
+
+The single registered next action is
+`stage23g9_qfrd_overlap_clean_materialization` under
+`docs/paper/STAGE23G9_PREREGISTRATION.md`. It materializes only the missing
+fourteen-image overlap-clean UDED surface with atomic hashes, runtimes, exact
+reuse checks, and positions 1/7/14 preview. It excludes protected-lineage item
+`03-35028` before byte access, scores no UDED GT, and selects no cue,
+aggregator, or intervention. The official attachment byte-reuses the 100
+frozen Stage-15i maps. A pass can lead only to a separate prospective
+cross-domain gap diagnosis; compact MFI remains incumbent.

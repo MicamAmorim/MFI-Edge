@@ -3366,3 +3366,19 @@ The active action returns to the repeatable planning-only
 score no dataset, and choose at most one distinct prospective action or close
 the campaign path. Compact MFI remains incumbent.
 
+## Stage 23 post-G8 escalation - exact QFrD materialization active
+
+The live checkpoint selected exact pinned-author QFrD as the next distinct
+runnable soft-output target. Its joint RGB quaternion fractional-Dirac
+evidence differs from the closed SED, complete-PMI, SCO, and Compass routes;
+Stage 15I already supplies immutable source provenance and frozen BSDS500-
+validation maps.
+
+The active action is `stage23g9_qfrd_overlap_clean_materialization`. It
+creates only the missing exact QFrD surface on the fourteen overlap-clean UDED
+working rasters with per-image resumable hashes and a positions 1/7/14 preview.
+It scores no GT and chooses no missing cue, aggregator, or intervention. Its
+standard-Berkeley attachment byte-reuses the frozen Stage-15i maps without
+detector execution. A complete pass advances only to a separate prospective
+gap-diagnosis decision; compact MFI remains incumbent.
+

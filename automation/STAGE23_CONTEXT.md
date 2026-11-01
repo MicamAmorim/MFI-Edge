@@ -336,3 +336,21 @@ The active next task is the existing repeatable planning-only
 negative evidence, score no dataset, reopen no closed route, and choose at most
 one distinct prospective Stage-23 action or close the campaign path. Compact
 MFI remains incumbent and Berkeley reference reproduction remains unverified.
+
+The planning-only escalation selected Huang, Hu, and Lian's exact pinned-
+author QFrD detector as the next distinct soft-output analytic target. QFrD's
+joint RGB quaternion fractional-Dirac evidence differs from the closed SED,
+PMI, SCO, and Compass routes. Stage 15I already established immutable source
+provenance, synthetic repeatability, and 100 frozen native-resolution
+BSDS500-validation maps; the paper/code multiplication-order caveat and absent
+explicit code license remain recorded.
+
+The active next task is `stage23g9_qfrd_overlap_clean_materialization` under
+`docs/paper/STAGE23G9_PREREGISTRATION.md`. It applies only the unchanged fixed
+author path to the fourteen overlap-clean UDED Stage-23 working rasters,
+excluding `03-35028` before byte access, and persists resumable maps, hashes,
+runtimes, provenance, and the positions 1/7/14 preview. It scores no GT and
+chooses no gap cue, aggregation, intervention, or promotion. Its official
+attachment byte-reuses the frozen Stage-15i QFrD maps. Only a complete pass may
+authorize a separately preregistered cross-domain gap diagnosis; compact MFI
+remains incumbent.

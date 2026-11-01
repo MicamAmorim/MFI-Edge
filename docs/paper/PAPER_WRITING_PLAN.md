@@ -1825,3 +1825,11 @@ Berkeley ODS/OIS/AP. Report this as no operational or ranking transfer, while
 preserving the separate positive complementarity result. No ranking follow-up
 was authorized because the operational gate also failed. Retain the
 reference-unverified evaluator caveat.
+
+The next Stage-23 target surface is exact pinned-author QFrD. This is a
+baseline-materialization step rather than an improvement claim: describe the
+method as parameter-fixed but author-tuned, retain the paper/code quaternion-
+multiplication-order caveat, and keep its frozen local BSDS-validation score
+separate from the new overlap-clean UDED maps. No missing-family or aggregation
+claim is made unless a later prospectively registered cross-domain diagnosis
+passes.

@@ -3748,3 +3748,24 @@ The registered next action is the repeatable planning-only
 Stage-23 negative evidence and closed routes, and may choose at most one
 distinct prospective action or close the campaign path.
 
+### Post-Stage-23G8 escalation - exact QFrD materialization registered
+
+The live primary-source and official-code checkpoint selected Huang, Hu, and
+Lian's exact pinned-author QFrD as the next distinct runnable soft-output
+target. Its joint RGB quaternion fractional-Dirac transform is mechanistically
+different from the closed SED, PMI, SCO, and Compass routes. Stage 15I already
+pinned the sole author commit, established exact runtime repeatability, and
+froze all 100 native-resolution BSDS500-validation maps. The paper/code
+multiplication-order caveat and missing explicit code license remain binding.
+
+The registered next action is
+`stage23g9_qfrd_overlap_clean_materialization`. It applies the unchanged fixed
+author path to the fourteen overlap-clean UDED Stage-23 working rasters,
+excluding `03-35028` before byte access, and persists maps, hashes, runtimes,
+provenance, and a fixed positions 1/7/14 preview. It scores no GT and selects
+no gap cue, aggregation, intervention, or promotion. Its official attachment
+hash-reuses the frozen Stage-15i maps without detector execution. Only a pass
+may authorize a separately preregistered cross-domain gap diagnosis. Compact
+distorted-Choquet MFI remains incumbent and Berkeley reference reproduction
+remains unverified.
+
