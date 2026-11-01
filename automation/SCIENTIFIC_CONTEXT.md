@@ -3793,3 +3793,20 @@ conditions to pass separately on overlap-clean UDED and BSDS500 validation.
 Persistence and the closed SED/SCO/Compass routes are not reopened. Compact
 MFI remains incumbent.
 
+### Stage 23G10 closure - QFrD/FH gap diagnosis failed
+
+The frozen-map diagnosis used zero detector runs, zero descriptor
+computations, and 114 exact cache hits. FH region-boundary support passed the
+cue-only GT, image-stability, and rank-nonredundancy conditions in both
+development domains, but mean conditional correctness on QFrD errors was only
+`0.38670` on overlap-clean UDED and `0.30825` on BSDS500 validation, below the
+fixed `0.50` requirement. The conjunctive gap hypothesis therefore fails.
+No QFrD/FH intervention, fusion, substitution, or promotion is authorized.
+
+The registered next action is the repeatable planning-only
+`stage23_literature_escalation`. It scores no dataset, must preserve all
+Stage-23F/G1/G2/G5/G8/G10 negative evidence and closed routes, and may choose
+at most one distinct prospective action or close the campaign path. Compact
+distorted-Choquet MFI remains incumbent and Berkeley reference reproduction
+remains unverified.
+

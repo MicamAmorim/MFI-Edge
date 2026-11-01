@@ -5897,3 +5897,27 @@ diagnosis reuses 114 exact cache artifacts and frozen QFrD maps, runs no
 detector or extractor, creates no candidate, and applies the established four
 gap conditions separately on overlap-clean UDED and BSDS500 validation. No
 fusion is preselected and closed Stage-23 routes remain closed.
+
+### Stage 23G10 closure - QFrD/FH gap diagnosis failed
+
+The frozen-map diagnosis completed with zero detector runs, zero descriptor
+computations, 114 exact cache hits, no protected-lineage byte read, and the
+fixed qualitative preview. FH region boundaries were nonredundant with QFrD
+and supplied unique GT support on essentially every image, but the decisive
+conditional-correctness condition failed in both development domains. Mean
+`P(FH correct | QFrD wrong)` was `0.38670` on overlap-clean UDED selection and
+`0.30825` on BSDS500 validation, below the preregistered `0.50` minimum.
+Mean cue-only GT fractions were `0.10972/0.15211`, unique-support image
+fractions were `1.00/0.99`, and mean Spearman correlations were
+`0.15184/0.14243`, so the other three conditions passed.
+
+The conjunctive gap hypothesis is rejected. No QFrD/FH intervention,
+aggregation choice, cue substitution, or promotion is authorized, and the
+QFrD/FH route closes. The incumbent-only official attachment supplies no
+candidate comparison. Compact distorted-Choquet MFI remains incumbent and
+Berkeley reference reproduction remains unverified.
+
+The registered next action is the existing repeatable planning-only
+`stage23_literature_escalation`. It must preserve all Stage-23F/G1/G2/G5/G8/G10
+negative evidence, score no dataset, reopen no closed route, and select at
+most one distinct prospective Stage-23 action or close the campaign path.

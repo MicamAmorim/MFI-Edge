@@ -381,3 +381,17 @@ hypothesis is cached FH region boundaries. The experiment reuses 114 frozen
 cue maps plus exact QFrD maps, runs no detector or extractor, creates no
 candidate, and applies the fixed four-condition rule separately on both
 development domains. No fusion is preselected.
+
+Stage 23G10 is complete and rejected. The run used zero detector calls, zero
+descriptor computations, and 114 exact cache hits. FH boundaries passed the
+cue-only GT-support, unique-support frequency, and low-rank-correlation checks
+in both domains, but mean `P(FH correct | QFrD wrong)` was only `0.38670` on
+overlap-clean UDED and `0.30825` on BSDS validation, below the preregistered
+`0.50` requirement. The QFrD/FH gap hypothesis therefore fails and the route
+closes without intervention, substitution, or promotion.
+
+The active next task returns to the repeatable planning-only
+`stage23_literature_escalation`. It must preserve all Stage-23 negative
+evidence and closed routes, score no dataset, and may select at most one
+distinct prospective action or close the campaign path. Compact MFI remains
+incumbent and Berkeley reference reproduction remains unverified.

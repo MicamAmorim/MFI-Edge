@@ -3408,3 +3408,17 @@ uses frozen maps and 114 exact cache hits, runs no detector or descriptor,
 creates no intervention, and preselects no aggregation. A failure closes the
 route; a pass permits only a separately preregistered intervention decision.
 
+## Stage 23G10 complete - QFrD/FH route closed
+
+The frozen diagnosis used zero detector or descriptor computation and 114
+exact cache hits. FH support was sparse, nonredundant, and uniquely GT-
+supportive, but its conditional correctness on QFrD errors was only
+`0.38670` on overlap-clean UDED and `0.30825` on BSDS validation, below the
+fixed `0.50` requirement in both domains. The conjunctive gap rule therefore
+failed and no intervention is authorized.
+
+The active action returns to the repeatable planning-only
+`stage23_literature_escalation`. It must preserve all closed Stage-23 routes
+and negative evidence, score no dataset, and choose at most one distinct
+prospective action or close the campaign path. Compact MFI remains incumbent.
+
