@@ -5818,3 +5818,29 @@ losing AP. Stage 23G8 therefore tests exactly that fitted aggregation property
 against exact Compass, with separate UDED, Berkeley operational, and ranking
 gates. The failed SCO/persistence equal mean is not reused, and no alternative
 weight, cue, aggregator, target, or Compass parameter is permitted.
+
+### Stage 23G8 logistic intervention rejected
+
+The frozen-map intervention satisfied every implementation contract: zero
+detector runs, zero descriptor computations, 114 exact cue-cache hits, no
+protected-lineage byte read, `15/15` converged nonnegative fits, 100 frozen
+BSDS candidate maps, and the fixed preview. On overlap-clean UDED it passed
+all preregistered conditions, changing aggregate precision/recall/F1 by
+`+0.064870/+0.084594/+0.073442`, mean fold F1 by `+0.077112`, with `15/15`
+fold wins.
+
+The cross-domain intervention failed decisively. Under standard Berkeley
+BSDS500 validation, exact Compass obtained ODS/OIS/AP
+`0.630822/0.656662/0.518429`, while the candidate obtained
+`0.618435/0.640110/0.399812`; candidate-minus-Compass changes were
+`-0.012387/-0.016552/-0.118618`. Thus neither operational nor ranking
+transfer occurred despite the strong UDED result and prior cross-domain
+complementarity diagnosis. The Compass/persistence route closes without a
+ranking diagnosis, cue/aggregator substitution, coefficient or parameter
+tuning, or target reuse. Compact distorted-Choquet MFI remains incumbent and
+Berkeley reference reproduction remains unverified.
+
+The registered next action is the existing repeatable planning-only
+`stage23_literature_escalation`. It must preserve the Stage-23F/G1/G2/G5/G8
+negative evidence, score no dataset, reopen no closed route, and select at
+most one distinct prospective Stage-23 action or close the campaign path.

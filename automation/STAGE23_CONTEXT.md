@@ -321,3 +321,18 @@ overlap-clean UDED, runs no detector or descriptor, and is evaluated against
 exact Compass with separate UDED, Berkeley operational ODS/OIS, and AP ranking
 gates. Equal mean is not reused, and no weight, cue, aggregator, target, or
 Compass parameter search is allowed.
+
+Stage 23G8 is complete and rejected. It passed every overlap-clean UDED gate,
+improving aggregate precision/recall/F1 by
+`+0.064870/+0.084594/+0.073442`, mean fold F1 by `+0.077112`, and winning
+`15/15` folds with all fits converged. On standard Berkeley BSDS500 validation,
+however, candidate-minus-exact-Compass ODS/OIS/AP changed by
+`-0.012387/-0.016552/-0.118618`. The intervention therefore has neither
+operational nor ranking transfer. The Compass/persistence route closes without
+a ranking diagnosis, tuning, substitution, or promotion.
+
+The active next task is the existing repeatable planning-only
+`stage23_literature_escalation`. It must preserve the Stage-23F/G1/G2/G5/G8
+negative evidence, score no dataset, reopen no closed route, and choose at most
+one distinct prospective Stage-23 action or close the campaign path. Compact
+MFI remains incumbent and Berkeley reference reproduction remains unverified.

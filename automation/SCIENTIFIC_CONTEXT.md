@@ -3732,3 +3732,19 @@ standard-Berkeley operational ODS/OIS, and AP ranking transfer. Stage-23G5's
 failed equal mean is not reused. No weight, cue, aggregator, target, or Compass
 parameter tuning is allowed; compact MFI remains incumbent.
 
+### Stage 23G8 closure - Compass/persistence logistic intervention rejected
+
+The fixed nonnegative logistic intervention passed every overlap-clean UDED
+condition, changing precision/recall/F1 by
+`+0.06487/+0.08459/+0.07344`, mean fold F1 by `+0.07711`, with `15/15`
+wins and fits. Against exact Compass on standard Berkeley BSDS500 validation,
+ODS/OIS/AP instead changed by `-0.01239/-0.01655/-0.11862`. It therefore has
+neither operational nor ranking transfer. The Compass/persistence route closes
+without diagnosis, tuning, substitution, or promotion; compact MFI remains
+incumbent and reference reproduction remains unverified.
+
+The registered next action is the repeatable planning-only
+`stage23_literature_escalation`. It scores no dataset, must preserve all
+Stage-23 negative evidence and closed routes, and may choose at most one
+distinct prospective action or close the campaign path.
+

@@ -1815,3 +1815,13 @@ author's stated open multiscale question preselects persistence, and do not
 reuse the failed SCO/persistence equal mean. Any Compass gap cue and
 aggregation require a later cross-domain diagnosis and separate
 preregistration.
+
+Stage 23G7 subsequently established cross-domain complementarity transfer for
+Compass and Gabor scale persistence, but Stage 23G8 showed that this did not
+predict a transferable fitted integration. The nonnegative logistic candidate
+improved overlap-clean UDED precision, recall, and F1 and won every fold, yet
+regressed from exact Compass by `-0.01239/-0.01655/-0.11862` in standard-
+Berkeley ODS/OIS/AP. Report this as no operational or ranking transfer, while
+preserving the separate positive complementarity result. No ranking follow-up
+was authorized because the operational gate also failed. Retain the
+reference-unverified evaluator caveat.

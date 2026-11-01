@@ -3351,3 +3351,18 @@ overlap-clean UDED, and evaluates operational ODS/OIS separately from AP
 ranking against exact Compass. Equal mean and all weight/cue/aggregator/target
 substitutions are forbidden.
 
+## Stage 23G8 complete - Compass/persistence route closed
+
+The nonnegative logistic intervention passed the complete overlap-clean UDED
+gate, improving precision/recall/F1 by `+0.06487/+0.08459/+0.07344` and
+winning `15/15` folds. It did not transfer to standard Berkeley validation:
+relative to exact Compass, ODS/OIS/AP changed by
+`-0.01239/-0.01655/-0.11862`. This is no operational or ranking transfer, so
+the route closes without the ranking-diagnosis branch or any substitution or
+tuning.
+
+The active action returns to the repeatable planning-only
+`stage23_literature_escalation`. It must preserve all closed Stage-23 routes,
+score no dataset, and choose at most one distinct prospective action or close
+the campaign path. Compact MFI remains incumbent.
+

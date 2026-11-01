@@ -1,0 +1,116 @@
+{
+  "status": "completed",
+  "experiment_id": "stage23g8_compass_persistence_logistic_additive",
+  "dataset": "BSDS500",
+  "split": "val",
+  "dataset_role": "development_official_metric",
+  "feedback_allowed": true,
+  "metric_policy": "Agent may use these metrics for development decisions.",
+  "evaluator": {
+    "family": "original Berkeley BSDS boundary benchmark",
+    "matlab": "C:\\Program Files\\MATLAB\\R2023a\\bin\\matlab.exe",
+    "nthresh": 99,
+    "max_dist": 0.0075,
+    "thinpb": true,
+    "multi_annotator": true,
+    "bsds500_commit": "a04b7c6c3a9f0ace74bf205c72a43d32e1c72722",
+    "windows_correspondPixels_source_commit": "94260b5d0fc068202598312e01a37604972dcc9e",
+    "reference_reproduction_verified": false
+  },
+  "methods": {
+    "incumbent_compact_positive_choquet": {
+      "ODS": 0.545410453249663,
+      "ODS_precision": 0.46263210074461575,
+      "ODS_recall": 0.6642671947410326,
+      "ODS_threshold": 0.18,
+      "OIS": 0.5793772470336526,
+      "OIS_precision": 0.48743242971107675,
+      "OIS_recall": 0.7140735901571293,
+      "AP": 0.5342732222851566,
+      "n_images": 100,
+      "nthresh": 99,
+      "max_dist": 0.0075,
+      "thinpb": true,
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+      "matlab_evaluate_returncode": 0,
+      "matlab_evaluate_processes": 1,
+      "matlab_evaluate_stdout_tail": "MFI_BSDS_EVAL 71/100 37073\nMFI_BSDS_EVAL 72/100 376043\nMFI_BSDS_EVAL 73/100 38082\nMFI_BSDS_EVAL 74/100 38092\nMFI_BSDS_EVAL 75/100 385039\nMFI_BSDS_EVAL 76/100 41033\nMFI_BSDS_EVAL 77/100 41069\nMFI_BSDS_EVAL 78/100 42012\nMFI_BSDS_EVAL 79/100 42049\nMFI_BSDS_EVAL 80/100 43074\nMFI_BSDS_EVAL 81/100 45096\nMFI_BSDS_EVAL 82/100 54082\nMFI_BSDS_EVAL 83/100 55073\nMFI_BSDS_EVAL 84/100 58060\nMFI_BSDS_EVAL 85/100 62096\nMFI_BSDS_EVAL 86/100 65033\nMFI_BSDS_EVAL 87/100 66053\nMFI_BSDS_EVAL 88/100 69015\nMFI_BSDS_EVAL 89/100 69020\nMFI_BSDS_EVAL 90/100 69040\nMFI_BSDS_EVAL 91/100 76053\nMFI_BSDS_EVAL 92/100 78004\nMFI_BSDS_EVAL 93/100 8023\nMFI_BSDS_EVAL 94/100 85048\nMFI_BSDS_EVAL 95/100 86000\nMFI_BSDS_EVAL 96/100 86016\nMFI_BSDS_EVAL 97/100 86068\nMFI_BSDS_EVAL 98/100 87046\nMFI_BSDS_EVAL 99/100 89072\nMFI_BSDS_EVAL 100/100 97033",
+      "matlab_collect_stdout_tail": ""
+    },
+    "exact_author_compass": {
+      "ODS": 0.6308224704054398,
+      "ODS_precision": 0.6429154275991895,
+      "ODS_recall": 0.6191760406671702,
+      "ODS_threshold": 0.43,
+      "OIS": 0.656661768216054,
+      "OIS_precision": 0.6435857344948254,
+      "OIS_recall": 0.6702801652273919,
+      "AP": 0.5184294992069977,
+      "n_images": 100,
+      "nthresh": 99,
+      "max_dist": 0.0075,
+      "thinpb": true,
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+      "matlab_evaluate_returncode": 0,
+      "matlab_evaluate_processes": 1,
+      "matlab_evaluate_stdout_tail": "MFI_BSDS_EVAL 71/100 37073\nMFI_BSDS_EVAL 72/100 376043\nMFI_BSDS_EVAL 73/100 38082\nMFI_BSDS_EVAL 74/100 38092\nMFI_BSDS_EVAL 75/100 385039\nMFI_BSDS_EVAL 76/100 41033\nMFI_BSDS_EVAL 77/100 41069\nMFI_BSDS_EVAL 78/100 42012\nMFI_BSDS_EVAL 79/100 42049\nMFI_BSDS_EVAL 80/100 43074\nMFI_BSDS_EVAL 81/100 45096\nMFI_BSDS_EVAL 82/100 54082\nMFI_BSDS_EVAL 83/100 55073\nMFI_BSDS_EVAL 84/100 58060\nMFI_BSDS_EVAL 85/100 62096\nMFI_BSDS_EVAL 86/100 65033\nMFI_BSDS_EVAL 87/100 66053\nMFI_BSDS_EVAL 88/100 69015\nMFI_BSDS_EVAL 89/100 69020\nMFI_BSDS_EVAL 90/100 69040\nMFI_BSDS_EVAL 91/100 76053\nMFI_BSDS_EVAL 92/100 78004\nMFI_BSDS_EVAL 93/100 8023\nMFI_BSDS_EVAL 94/100 85048\nMFI_BSDS_EVAL 95/100 86000\nMFI_BSDS_EVAL 96/100 86016\nMFI_BSDS_EVAL 97/100 86068\nMFI_BSDS_EVAL 98/100 87046\nMFI_BSDS_EVAL 99/100 89072\nMFI_BSDS_EVAL 100/100 97033",
+      "matlab_collect_stdout_tail": ""
+    },
+    "stage23g8_compass_persistence_logistic_additive": {
+      "ODS": 0.6184350531924638,
+      "ODS_precision": 0.6025733706052053,
+      "ODS_recall": 0.6351543732859699,
+      "ODS_threshold": 0.77,
+      "OIS": 0.6401099542243085,
+      "OIS_precision": 0.5996725555443911,
+      "OIS_recall": 0.6863952799951003,
+      "AP": 0.39981170114413955,
+      "n_images": 100,
+      "nthresh": 99,
+      "max_dist": 0.0075,
+      "thinpb": true,
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+      "matlab_evaluate_returncode": 0,
+      "matlab_evaluate_processes": 1,
+      "matlab_evaluate_stdout_tail": "MFI_BSDS_EVAL 71/100 37073\nMFI_BSDS_EVAL 72/100 376043\nMFI_BSDS_EVAL 73/100 38082\nMFI_BSDS_EVAL 74/100 38092\nMFI_BSDS_EVAL 75/100 385039\nMFI_BSDS_EVAL 76/100 41033\nMFI_BSDS_EVAL 77/100 41069\nMFI_BSDS_EVAL 78/100 42012\nMFI_BSDS_EVAL 79/100 42049\nMFI_BSDS_EVAL 80/100 43074\nMFI_BSDS_EVAL 81/100 45096\nMFI_BSDS_EVAL 82/100 54082\nMFI_BSDS_EVAL 83/100 55073\nMFI_BSDS_EVAL 84/100 58060\nMFI_BSDS_EVAL 85/100 62096\nMFI_BSDS_EVAL 86/100 65033\nMFI_BSDS_EVAL 87/100 66053\nMFI_BSDS_EVAL 88/100 69015\nMFI_BSDS_EVAL 89/100 69020\nMFI_BSDS_EVAL 90/100 69040\nMFI_BSDS_EVAL 91/100 76053\nMFI_BSDS_EVAL 92/100 78004\nMFI_BSDS_EVAL 93/100 8023\nMFI_BSDS_EVAL 94/100 85048\nMFI_BSDS_EVAL 95/100 86000\nMFI_BSDS_EVAL 96/100 86016\nMFI_BSDS_EVAL 97/100 86068\nMFI_BSDS_EVAL 98/100 87046\nMFI_BSDS_EVAL 99/100 89072\nMFI_BSDS_EVAL 100/100 97033",
+      "matlab_collect_stdout_tail": ""
+    }
+  },
+  "comparisons_vs_incumbent": {
+    "exact_author_compass": {
+      "delta_ODS": 0.08541201715577684,
+      "delta_OIS": 0.07728452118240148,
+      "delta_AP": -0.015843723078158956
+    },
+    "stage23g8_compass_persistence_logistic_additive": {
+      "delta_ODS": 0.07302459994280086,
+      "delta_OIS": 0.06073270719065593,
+      "delta_AP": -0.13446152114101706
+    }
+  },
+  "export": {
+    "incumbent_compact_positive_choquet": {
+      "source": "incumbent_cache",
+      "fingerprint": "e4fa09acaf61ec23"
+    },
+    "exact_author_compass": {
+      "source": "export_script",
+      "script": "automation/stage23g6_compass_frozen_bsds_export.py",
+      "stdout_tail": "STAGE23G6_BSDS reuse frozen 37073\nSTAGE23G6_BSDS reuse frozen 376043\nSTAGE23G6_BSDS reuse frozen 38082\nSTAGE23G6_BSDS reuse frozen 38092\nSTAGE23G6_BSDS reuse frozen 385039\nSTAGE23G6_BSDS reuse frozen 41033\nSTAGE23G6_BSDS reuse frozen 41069\nSTAGE23G6_BSDS reuse frozen 42012\nSTAGE23G6_BSDS reuse frozen 42049\nSTAGE23G6_BSDS reuse frozen 43074\nSTAGE23G6_BSDS reuse frozen 45096\nSTAGE23G6_BSDS reuse frozen 54082\nSTAGE23G6_BSDS reuse frozen 55073\nSTAGE23G6_BSDS reuse frozen 58060\nSTAGE23G6_BSDS reuse frozen 62096\nSTAGE23G6_BSDS reuse frozen 65033\nSTAGE23G6_BSDS reuse frozen 66053\nSTAGE23G6_BSDS reuse frozen 69015\nSTAGE23G6_BSDS reuse frozen 69020\nSTAGE23G6_BSDS reuse frozen 69040\nSTAGE23G6_BSDS reuse frozen 76053\nSTAGE23G6_BSDS reuse frozen 78004\nSTAGE23G6_BSDS reuse frozen 8023\nSTAGE23G6_BSDS reuse frozen 85048\nSTAGE23G6_BSDS reuse frozen 86000\nSTAGE23G6_BSDS reuse frozen 86016\nSTAGE23G6_BSDS reuse frozen 86068\nSTAGE23G6_BSDS reuse frozen 87046\nSTAGE23G6_BSDS reuse frozen 89072\nSTAGE23G6_BSDS reuse frozen 97033"
+    },
+    "stage23g8_compass_persistence_logistic_additive": {
+      "source": "export_script",
+      "script": "automation/stage23g8_frozen_bsds_export.py",
+      "stdout_tail": "STAGE23G8_BSDS reuse frozen 37073\nSTAGE23G8_BSDS reuse frozen 376043\nSTAGE23G8_BSDS reuse frozen 38082\nSTAGE23G8_BSDS reuse frozen 38092\nSTAGE23G8_BSDS reuse frozen 385039\nSTAGE23G8_BSDS reuse frozen 41033\nSTAGE23G8_BSDS reuse frozen 41069\nSTAGE23G8_BSDS reuse frozen 42012\nSTAGE23G8_BSDS reuse frozen 42049\nSTAGE23G8_BSDS reuse frozen 43074\nSTAGE23G8_BSDS reuse frozen 45096\nSTAGE23G8_BSDS reuse frozen 54082\nSTAGE23G8_BSDS reuse frozen 55073\nSTAGE23G8_BSDS reuse frozen 58060\nSTAGE23G8_BSDS reuse frozen 62096\nSTAGE23G8_BSDS reuse frozen 65033\nSTAGE23G8_BSDS reuse frozen 66053\nSTAGE23G8_BSDS reuse frozen 69015\nSTAGE23G8_BSDS reuse frozen 69020\nSTAGE23G8_BSDS reuse frozen 69040\nSTAGE23G8_BSDS reuse frozen 76053\nSTAGE23G8_BSDS reuse frozen 78004\nSTAGE23G8_BSDS reuse frozen 8023\nSTAGE23G8_BSDS reuse frozen 85048\nSTAGE23G8_BSDS reuse frozen 86000\nSTAGE23G8_BSDS reuse frozen 86016\nSTAGE23G8_BSDS reuse frozen 86068\nSTAGE23G8_BSDS reuse frozen 87046\nSTAGE23G8_BSDS reuse frozen 89072\nSTAGE23G8_BSDS reuse frozen 97033"
+    }
+  },
+  "manifest": "results/local_dev/stage23g8_compass_persistence_logistic_additive/official_eval_manifest.json",
+  "final_claim_guard": "Development metrics are decision-capable on train/val, but a final SOTA claim still requires an independently verified reference reproduction and the project's protected multi-benchmark gate.",
+  "manifest_sha256": "9a9271a9ab5231ea2df7f6eda80b20e19272260e953dde5ba1fa37f73eb89741"
+}
