@@ -63,12 +63,10 @@ def run_synthetic_checks():
 
 
 def _run_unit_tests():
-    """Run the Stage-24 tests without requiring ``tests`` to be a Python package.
+    """Run Stage-24 tests via filesystem discovery, not package import.
 
-    ``python -m unittest tests.test_stage24_integrity`` can resolve an unrelated
-    installed top-level ``tests`` package on Windows environments. Discovery by
-    filesystem path is deterministic and works whether or not tests/__init__.py
-    exists.
+    This avoids collisions with unrelated installed top-level ``tests`` packages
+    and does not require tests/__init__.py on Windows or other platforms.
     """
     tests_dir = ROOT / "tests"
     test_file = tests_dir / "test_stage24_integrity.py"
@@ -84,8 +82,6 @@ def _run_unit_tests():
         str(tests_dir),
         "-p",
         "test_stage24_integrity.py",
-        "-t",
-        str(ROOT),
         "-v",
     ]
     p = subprocess.run(cmd, cwd=str(ROOT), text=True, capture_output=True)
