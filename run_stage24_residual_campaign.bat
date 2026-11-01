@@ -10,8 +10,9 @@ set MKL_NUM_THREADS=1
 set NUMEXPR_NUM_THREADS=1
 
 echo ============================================================
-echo MFI-Edge Stage 24 - Residual/Error Suppression
+echo MFI-Edge Stage 24 - Residual/Error Suppression STRICT
 echo Native GT + one-to-one evaluation + nested selection
+echo Canonical matcher used for every scientific threshold
 echo ============================================================
 
 if exist automation\STOP_STAGE24 (
@@ -29,7 +30,7 @@ if errorlevel 1 (
   exit /b %errorlevel%
 )
 
-python run_stage24_residual_campaign.py %*
+python run_stage24_residual_campaign_strict.py %*
 set RC=%ERRORLEVEL%
 if not "%RC%"=="0" (
   echo.
