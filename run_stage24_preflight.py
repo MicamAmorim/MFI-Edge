@@ -5,6 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 import argparse
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -63,10 +64,11 @@ def run_synthetic_checks():
 
 
 def _run_unit_tests():
-    """Run Stage-24 tests via filesystem discovery, not package import.
+    """Run Stage-24 tests via filesystem discovery with repo root on PYTHONPATH.
 
-    This avoids collisions with unrelated installed top-level ``tests`` packages
-    and does not require tests/__init__.py on Windows or other platforms.
+    This avoids collisions with unrelated installed top-level ``tests`` packages,
+    does not require tests/__init__.py, and guarantees ``from src...`` resolves in
+    the subprocess on Windows as well as POSIX environments.
     """
     tests_dir = ROOT / "tests"
     test_file = tests_dir / "test_stage24_integrity.py"
@@ -84,8 +86,11 @@ def _run_unit_tests():
         "test_stage24_integrity.py",
         "-v",
     ]
-    p = subprocess.run(cmd, cwd=str(ROOT), text=True, capture_output=True)
-    detail = "command: " + " ".join(cmd) + "\n" + p.stdout + "\n" + p.stderr
+    env = os.environ.copy()
+    existing = env.get("PYTHONPATH", "")
+    env["PYTHONPATH"] = str(ROOT) if not existing else str(ROOT) + os.pathsep + existing
+    p = subprocess.run(cmd, cwd=str(ROOT), env=env, text=True, capture_output=True)
+    detail = "command: " + " ".join(cmd) + "\nPYTHONPATH=" + env["PYTHONPATH"] + "\n" + p.stdout + "\n" + p.stderr
     return _case("unit_test_suite", p.returncode == 0, detail[-6000:])
 
 
