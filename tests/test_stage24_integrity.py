@@ -1,9 +1,14 @@
 from __future__ import annotations
 
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 import numpy as np
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from src.stage24_integrity import load_float_artifact, one_to_one_boundary_counts, save_float_artifact, select_threshold
 
@@ -40,4 +45,4 @@ class Stage24IntegrityTests(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(verbosity=2)
