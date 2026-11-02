@@ -5,14 +5,14 @@ from __future__ import annotations
 from pathlib import Path
 import argparse
 import json
-import os
 import subprocess
 import sys
 import tempfile
 import numpy as np
 
 ROOT = Path(__file__).resolve().parent
-if str(ROOT) not in sys.path: sys.path.insert(0, str(ROOT))
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from src.stage24_integrity import load_float_artifact, one_to_one_boundary_counts, resize_score_to_native, save_float_artifact
 
@@ -57,40 +57,28 @@ def run_synthetic_checks():
         save_float_artifact(p, registered.astype(np.float32), identity)
         loaded = load_float_artifact(p, identity)
         checks.append(_case("float_artifact_roundtrip", np.array_equal(loaded, registered.astype(np.float32)), "bitwise float32 round-trip"))
-        try: load_float_artifact(Path(td) / "map.png")
-        except (ValueError, FileNotFoundError): checks.append(_case("quantized_input_rejected", True, "PNG rejected"))
-        else: checks.append(_case("quantized_input_rejected", False, "PNG accepted unexpectedly"))
+        try:
+            load_float_artifact(Path(td) / "map.png")
+        except (ValueError, FileNotFoundError):
+            checks.append(_case("quantized_input_rejected", True, "PNG rejected"))
+        else:
+            checks.append(_case("quantized_input_rejected", False, "PNG accepted unexpectedly"))
     return checks
 
 
 def _run_unit_tests():
-    """Run Stage-24 tests via filesystem discovery with repo root on PYTHONPATH.
+    """Execute the Stage-24 test file directly.
 
-    This avoids collisions with unrelated installed top-level ``tests`` packages,
-    does not require tests/__init__.py, and guarantees ``from src...`` resolves in
-    the subprocess on Windows as well as POSIX environments.
+    The test file inserts the repository root into sys.path itself, so this does
+    not depend on package discovery or PYTHONPATH behavior on Windows.
     """
-    tests_dir = ROOT / "tests"
-    test_file = tests_dir / "test_stage24_integrity.py"
+    test_file = ROOT / "tests" / "test_stage24_integrity.py"
     if not test_file.is_file():
         return _case("unit_test_suite", False, f"missing {test_file.relative_to(ROOT)}")
 
-    cmd = [
-        sys.executable,
-        "-m",
-        "unittest",
-        "discover",
-        "-s",
-        str(tests_dir),
-        "-p",
-        "test_stage24_integrity.py",
-        "-v",
-    ]
-    env = os.environ.copy()
-    existing = env.get("PYTHONPATH", "")
-    env["PYTHONPATH"] = str(ROOT) if not existing else str(ROOT) + os.pathsep + existing
-    p = subprocess.run(cmd, cwd=str(ROOT), env=env, text=True, capture_output=True)
-    detail = "command: " + " ".join(cmd) + "\nPYTHONPATH=" + env["PYTHONPATH"] + "\n" + p.stdout + "\n" + p.stderr
+    cmd = [sys.executable, str(test_file)]
+    p = subprocess.run(cmd, cwd=str(ROOT), text=True, capture_output=True)
+    detail = "command: " + " ".join(cmd) + "\n" + p.stdout + "\n" + p.stderr
     return _case("unit_test_suite", p.returncode == 0, detail[-6000:])
 
 
@@ -112,4 +100,5 @@ def main():
     print(json.dumps(summary, indent=2)); return 0 if not failed else 2
 
 
-if __name__ == "__main__": raise SystemExit(main())
+if __name__ == "__main__":
+    raise SystemExit(main())
