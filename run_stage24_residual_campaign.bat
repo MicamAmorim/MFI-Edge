@@ -30,7 +30,7 @@ if errorlevel 1 (
   exit /b %errorlevel%
 )
 
-python run_stage24_residual_campaign_strict.py %*
+python -c "import sys; sys.path.insert(0, r'%CD%'); import run_stage24_residual_campaign_strict as m; raise SystemExit(m.main())" %*
 set RC=%ERRORLEVEL%
 if not "%RC%"=="0" (
   echo.
