@@ -30,7 +30,7 @@
 | Etapa | Operação | Artefatos |
 | --- | --- | --- |
 | 24G0 | Todos os 78 pares pontuados por fold. Auditoria de geometria para pares prioritários com a MESMA fórmula Stage24 na geometria antiga e nova. Baseline held-out individual dos 13 descritores. | geometry_impact_stage24_proxy.csv, individual_descriptors_corrected_*.csv |
-| 24G | Landscape de 19 agregadores: mean, min, max, product, logistic, OWA fixos/aprendidos, Choquet aditivo, 2-aditivo positivo e assinado, Choquet distorcido, quasi-arithmetic Choquet, Sugeno. | aggregator_landscape_fold.csv, aggregator_landscape_per_image.csv |
+| 24G | Landscape de 20 agregadores: mean, min, max, product, logistic, OWA fixos/aprendidos, Choquet aditivo, 2-aditivo positivo e assinado, Choquet distorcido, quasi-arithmetic Choquet, Sugeno. | aggregator_landscape_fold.csv, aggregator_landscape_per_image.csv |
 | 24H | Pares candidatos selecionados sem outer labels (top-K + relações históricas); triplas top-K + históricas. | pair_complementarity_*.csv, checkpoints por grupo |
 | 24I | Ablações com identity, disagreement (.5/1), local coherence (2/4), compression (1.5) e learned gate (.5/1/2), e inner CV real. | suppressor_ablation_*.csv, inner_cv_trials.csv, receitas selecionadas |
 | Thinning | Três tratamentos UDED: raw, nms_image, binary_thin_diagnostic. | Comparação controlada por grupo, agregador e fold |
