@@ -25,6 +25,7 @@ from src.stage24_recertification_ops import (
     calibrate_memberships, score_distribution_diagnostics,
     deterministic_seed, fit_aggregator,
     apply_aggregator, thin_score, binary_map, choose_threshold, serialize_model,
+    inference_recipe,
 )
 
 HISTORIC_PAIRS = (
@@ -353,6 +354,32 @@ def run_group(group, items, maps, train, valid, fold_id, out, cfg):
                 histograms.append(score_distribution_diagnostics(
                     ms[idx][...,channel],items[idx]["id"],
                     "calibration="+calibration+"|cue="+desc))
+    # Inspect the final continuous scores as well as individual memberships;
+    # this is essential to diagnose Berkeley 99-grid AP compression.
+    for agg_name,diag_supp in dict.fromkeys((
+        (selected["aggregator"],("identity",1.0)),
+        (selected["aggregator"],(selected["suppressor"],selected["strength"])),
+        ("equal_mean",("identity",1.0)),
+    )):
+        if agg_name not in AGGREGATORS:continue
+        try:
+            probe=fit_and_score(
+                group,agg_name,items,maps,train,valid,selected["mode"],
+                count=cfg["threshold_count"],suppression=diag_supp)
+            model=probe["model"]
+            for ii in valid:
+                idx=int(ii)
+                score=inference_recipe(
+                    [maps[d][idx] for d in group],model,items[idx]["img"])
+                histograms.append(score_distribution_diagnostics(
+                    score,items[idx]["id"],
+                    "final_score|aggregator="+agg_name+
+                    "|suppressor="+diag_supp[0]+
+                    "|thinning="+selected["mode"]))
+        except (ValueError,RuntimeError) as exc:
+            histograms.append({"label":"final_score_probe_failed",
+                               "aggregator":agg_name,
+                               "error":str(exc)})
     result = {"fold_id": fold_id, "group": list(group),
               "config_sha256": signature,
               "landscape": landscape, "landscape_per_image": per_image,
