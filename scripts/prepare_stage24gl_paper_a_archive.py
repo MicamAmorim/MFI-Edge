@@ -46,6 +46,9 @@ FILES=(
     "paper_a_aggregator_group_descriptives.csv",
     "bootstrap_paired_ods_ois_ap.csv", "bootstrap_integrity.json",
     "historical_stage24_bootstrap_guard.json",
+    "historical_stage23f_bootstrap_guard.json",
+    "historical_stage23f_paired_bootstrap/bootstrap_paired_ods_ois_ap.csv",
+    "historical_stage23f_paired_bootstrap/bootstrap_integrity.json",
     "historical_stage24_paired_bootstrap/bootstrap_paired_ods_ois_ap.csv",
     "historical_stage24_paired_bootstrap/bootstrap_integrity.json",
 )
