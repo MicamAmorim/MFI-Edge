@@ -341,10 +341,16 @@ def freeze_recipe(best, items, maps, out):
         # Berkeley calibration audit: same rank (apart from quantization/ties)
         # but redistribution over the 99 fixed official thresholds.
         processed=[thin_score(z,mode,item["img"]) for z,item in zip(scores,items)]
-        calib=quantile_mapping_fit(processed,n=256)
-        qm={**m,"score_quantile_mapping":calib}
-        qm["selection_source"]="deterministic_train_only_monotone_quantile_diagnostic"
-        models[variant+"_quantile"]=qm
+        try:
+            calib=quantile_mapping_fit(processed,n=256)
+        except ValueError as exc:
+            write_json(out/("quantile_guard_"+variant+".json"),{
+                "status":"BLOCKED_DEGENERATE_SCORE_DISTRIBUTION",
+                "reason":str(exc)})
+        else:
+            qm={**m,"score_quantile_mapping":calib}
+            qm["selection_source"]="deterministic_train_only_monotone_quantile_diagnostic"
+            models[variant+"_quantile"]=qm
 
     # Best individual descriptor: choose solely by TRAIN-only selection frequency.
     single_path=out/"best_single_train_selected_fold.csv"
