@@ -86,7 +86,7 @@ def preflight_math():
     checks = []
     for n in (2, 3):
         x = rng.uniform(0.1, .9, (48, n))
-        y = rng.integers(0, 2, size=48)
+        y = (x.mean(axis=-1) > 0.5).astype(float)
         for signed in (False, True):
             co = capacity_coefficients(x, y, signed=signed)
             cap = capacity_from_mobius(co, n)
