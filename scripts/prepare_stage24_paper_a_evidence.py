@@ -270,6 +270,26 @@ def legacy_archive(ev, include=True):
 
 
 
+
+def historical_official_summaries(ev):
+    """Preserve earlier official stage23 result summaries for Paper A comparison."""
+    base = ROOT / "results/official_eval"
+    if not base.is_dir():
+        return {"available": False, "summaries": 0}
+    count = 0
+    for src in sorted(base.glob("*/summary.json")):
+        exp = src.parent.name.lower()
+        if not exp.startswith("stage23"):
+            continue
+        if count >= 30:
+            ev.notes.append("Limite de 30 summaries historicos de official eval atingido")
+            break
+        if ev.copy(src, OUT / "historical_stage23_OFFICIAL_validation_summaries" /
+                   src.parent.name / "summary.json", "historical_stage23_Berkeley_summary"):
+            count += 1
+    return {"available": True, "summaries": count,
+            "note": "Historical model selection/protocol; not a new corrected-GT experiment"}
+
 def cache_metadata_archive(ev):
     """Retain Stage24 float-map identity and hashes, never binary .npy maps."""
     folder = ROOT / "cache/local_dev/stage24/descriptors"
@@ -360,6 +380,7 @@ Arquivos principais:
 - descriptor_cache_metadata/: identidade e SHA dos mapas float (sem .npy).
 - preflight/: relatorios de integridade Stage24R0, se presentes.
 - historical_stage23_NOT_CORRECTED/: registros antigos, identificados como legado.
+- historical_stage23_OFFICIAL_validation_summaries/: summaries Berkeley antigos, se presentes.
 - paper_a_evidence_gaps.json: metricas/ablacoes que AINDA NAO EXISTEM.
 
 Os sete arquivos originais da Stage24 estao no commit 0c9af74 em
@@ -409,7 +430,9 @@ def main():
     cache_metadata_archive(ev)
     folds = folds_archive(ev)
     official = official_archive(ev)
+    historical_official = historical_official_summaries(ev)
     historical = legacy_archive(ev, not args.no_legacy)
+    historical["official_summaries"] = historical_official
     finalize(ev, folds, official, historical)
     files = [p for p in OUT.rglob("*") if p.is_file()]
     total = sum(p.stat().st_size for p in files)
