@@ -13,6 +13,7 @@ from pathlib import Path
 import shutil
 import subprocess
 from build_stage24gl_repro_package import prepare as build_complete_evidence
+from verify_stage24gl_repro import verify_git, verify_binary
 
 ROOT=Path(__file__).resolve().parents[1]
 SOURCE=ROOT/"results/local_dev/stage24_paper_a_recertification"
@@ -191,6 +192,9 @@ def main():
         require_complete=complete and not args.allow_partial,
         build_binary=(not args.no_binary_bundle and complete),
     )
+    verify_git()
+    if expanded["external_binary_deposit"].get("parts",0):
+        verify_binary()
     required={"environment.lock.txt","environment_manifest.json",
               "preflight.json","strict_math_contracts.json",
               "campaign_source_fingerprint.json","native_dataset_manifest.json",
