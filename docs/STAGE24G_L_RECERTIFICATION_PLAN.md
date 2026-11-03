@@ -322,3 +322,57 @@ separately verified Berkeley reference, an untouched confirmatory
 test, formal match to the manuscript's generalized integral
 equations, and the 14-image sample limitation remain explicit
 publication guards. Do not claim final SOTA automatically.
+
+
+## Full evidence preservation for independent scientific reanalysis
+
+**Two-tier publication is now part of the same full campaign**, rather than
+an optional afterthought. It is documented in
+docs/STAGE24G_L_FULL_REPRODUCIBILITY.md.
+
+**GitHub (Tier A)** includes all previously curated tables PLUS:
+- full inner/outer CV per-group JSON checkpoints, full candidate lists,
+  training/heldout image IDs and learned parameters as compressed ZIP parts;
+- original Berkeley per-image and per-threshold numeric source files;
+- per-file and per-package SHA-256, ZIP CRC, complete manifest and
+  independent verifier for readers;
+- UDED and BSDS native continuous float-map inventories and SHA-256;
+- stable Python lock and source/configuration fingerprints.
+
+**External scientific data (Tier B)** is created automatically in
+results/local_dev/stage24gl_binary_publication/ (ignored by Git):
+- all materialized cached float descriptor NPYs;
+- native float output maps of frozen UDED and BSDS recipes saved DURING
+  the original campaign, before 8-bit Berkeley export;
+- Berkeley prediction PNGs when available, each indexed and hashed;
+- size-bounded ZIP parts and manifest; rights-review is mandatory.
+
+The external package is prepared for release/Zenodo but NOT uploaded or
+published without a deliberate action. This protects licenses of third-party
+input datasets and any rights concerning derived score maps.
+The Git compact archive records the binary manifest hash and the exact
+status as PENDING_USER_PUBLICATION. No DOI is invented.
+
+**Checks before commit:**
+
+    .\.venv\Scripts\python.exe scripts\verify_stage24gl_repro.py --all
+    Get-Content .\results\paper_a_evidence\stage24gl\archive_manifest.json -Raw
+    Get-Content .\results\paper_a_evidence\stage24gl\campaign\bsds_float_prediction_guard.json -Raw
+    git --no-pager diff --cached --stat
+
+If the BSDS float prediction guard indicates incomplete coverage due to
+reused Berkeley PNG caches, report this openly. The CSVs/official counts
+can still be complete, but pre-quantization visual reproducibility is not.
+
+**After Git commit and push:** prepare (not publish) a verified draft
+Release for large assets:
+
+    .\scripts\publish_stage24gl_data_release.ps1
+    .\scripts\publish_stage24gl_data_release.ps1 -PrepareDraft -RightsReviewed
+
+The first invocation is a dry-run inventory. The second requires that the
+researcher has independently confirmed redistribution rights and uploaded
+the Git results commit; it creates a GitHub Release draft to review.
+Do not publish third-party raw images or ground truths. A separate Zenodo
+data record can receive the public data files, with a DOI cross-referenced
+from the repository when actually issued.
