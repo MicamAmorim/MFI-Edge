@@ -1,6 +1,11 @@
 from __future__ import annotations
 """Research math regressions: copulas, CF1F2 Eq9 and tie reduction."""
 import unittest
+from pathlib import Path
+import sys
+ROOT=Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0,str(ROOT))
 import numpy as np
 
 from src.operators import FUNCTIONS, cf1f2_integral
@@ -25,8 +30,7 @@ class StrictGeneralizedIntegralTests(unittest.TestCase):
     def test_pseudo_pairs_pass_numerical_screen(self):
         for name,fn in VALID_PAIRS.items():
             a,b=(FUNCTIONS[x] for x in fn)
-            self.assertTrue(all(check_pseudo_pair(a,b,n=61).values()) if False else
-                            all(check_pseudo_pair(a,b,grid=61).values()), name)
+            self.assertTrue(all(check_pseudo_pair(a,b,grid=61).values()),name)
 
     def test_right_neutral_shortcut_failure_gm(self):
         val=apply_registered_gcf(np.array([.25]),np.array([0.,1.]),"gcf_gm_gm")
