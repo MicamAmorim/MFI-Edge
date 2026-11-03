@@ -322,6 +322,55 @@ def freeze_recipe(best, items, maps, out):
         m["selection_source"] = "frequency_of_outer_train_inner_CV_winners"
         m["source_commit_note"] = "Stage24 original experiment remains immutable"
         models[variant] = m
+        # Berkeley calibration audit: same rank (apart from quantization/ties)
+        # but redistribution over the 99 fixed official thresholds.
+        processed=[thin_score(z,mode,item["img"]) for z,item in zip(scores,items)]
+        calib=quantile_mapping_fit(processed,n=256)
+        qm={**m,"score_quantile_mapping":calib}
+        qm["selection_source"]="deterministic_train_only_monotone_quantile_diagnostic"
+        models[variant+"_quantile"]=qm
+
+    # Best individual descriptor: choose solely by TRAIN-only selection frequency.
+    single_path=out/"best_single_train_selected_fold.csv"
+    if not single_path.exists():
+        raise RuntimeError("Best-single fold audit required before external freeze")
+    with single_path.open(encoding="utf-8",newline="") as reader:
+        singles=list(csv.DictReader(reader))
+    if len(singles)!=15:raise RuntimeError("15 best-single fold selections required")
+    single_name=Counter(r["descriptor_id"] for r in singles).most_common(1)[0][0]
+    one=(single_name,)
+    one_mem,one_ms=memberships_on_split(one,maps,gts,idx)
+    one_agg={"family":"equal_mean","n_inputs":1}
+    one_scores=[apply_aggregator(m,one_agg) for m in one_ms]
+    one_t,one_fit=choose_threshold(one_scores,gts,[it["img"] for it in items],
+                                   "nms_image",count=41)
+    one_model=serialize_model(one,one_mem,one_agg,("identity",1.0),"nms_image")
+    one_model["threshold"]=one_t
+    one_model["fit_all_UDED_F1_NOT_HELDOUT"]=one_fit.f1
+    one_model["selection_source"]="15_train_only_best_single_fold_votes"
+    models["best_single"]=one_model
+
+    # Rank-equivalence control for historical Pair 04: learned nonnegative
+    # logistic and weighted sum with IDENTICAL learned positive weights.
+    historical=("gabor4_scale_persistence","halfdisc_distribution_contrast")
+    hm,hms=memberships_on_split(historical,maps,gts,idx)
+    logistic=fit_aggregator("nonnegative_logistic",hms,gts,idx,
+                           seed=deterministic_seed(SEED,"pair04_logistic"))
+    beta=np.asarray(logistic["logistic"]["beta"],float)
+    if np.any(beta[1:] < -1e-8) or beta[1:].sum()<=1e-8:
+        raise RuntimeError("Pair04 nonnegative logistic weights are degenerate")
+    weights=np.maximum(beta[1:],0)/np.sum(np.maximum(beta[1:],0))
+    weighted={"family":"weighted_mean","n_inputs":2,"weights":weights.tolist()}
+    for label,operator in (("pair04_logistic",logistic),
+                           ("pair04_weighted",weighted)):
+        ss=[apply_aggregator(m,operator) for m in hms]
+        t,fit=choose_threshold(ss,gts,[it["img"] for it in items],
+                               "nms_image",count=41)
+        model=serialize_model(historical,hm,operator,("identity",1.0),"nms_image")
+        model["threshold"]=t
+        model["fit_all_UDED_F1_NOT_HELDOUT"]=fit.f1
+        model["selection_source"]="predeclared_rank_equivalence_control"
+        models[label]=model
     write_json(out/"frozen_models.json",
                {"models":models,"selection_counts":[{"model":list(k),"n":v}
                   for k,v in counts.most_common()],
@@ -384,6 +433,8 @@ def run_bsds_export(args):
             cues=[external_descriptor(original,path,name,shape,Path(args.cache_root))
                   for name in model["descriptors"]]
             score=inference_recipe(cues,model,original)
+            if "score_quantile_mapping" in model:
+                score=quantile_mapping_apply(score,model["score_quantile_mapping"])
         if not np.isfinite(score).all() or score.shape!=shape:
             raise RuntimeError("Invalid native BSDS export score "+path.name)
         # PNG is a terminal Berkeley adapter only; author maps and descriptor
