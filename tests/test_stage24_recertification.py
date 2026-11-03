@@ -174,7 +174,9 @@ class PaperARecertificationTests(unittest.TestCase):
         for name in ("weighted_mean","nonnegative_logistic","owa_learned",
                      "choquet_additive","choquet_positive_2add",
                      "choquet_signed_2add","choquet_generalized_055",
-                     "sugeno_additive","sugeno_positive_2add"):
+                     "sugeno_additive","sugeno_positive_2add",
+                     "gcf_tp_tp","gcf_cl_cl","gcf_tp_tl",
+                     "gcf_tm_fna","gcf_gm_gm"):
             state=fit_aggregator(name,arr,gt,[0],seed=12)
             p=apply_aggregator(arr[1],state)
             self.assertEqual(p.shape,g.shape)
