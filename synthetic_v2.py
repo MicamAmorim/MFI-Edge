@@ -13,13 +13,19 @@ ROOT=Path(__file__).resolve().parent
 BASE=ROOT/'datasets'/'sintetics'/'benchmark_v2'
 
 
-def _region(primitive,n,rng,angle=None):
+def _region(primitive,n,rng,angle=None,line_offset_px=0.0):
     yy,xx=np.mgrid[:n,:n]; c=(n-1)/2.0
     if angle is None: angle=float(rng.uniform(0,180))
     th=np.deg2rad(angle)
     d=-np.sin(th)*(xx-c)+np.cos(th)*(yy-c)
     if primitive=='line':
-        m=d>0
+        # Optional synthetic diagnostic only. Zero is the historical v2
+        # behavior; offsets must be explicitly requested, never randomized
+        # in the already frozen validation/test splits.
+        shift=float(line_offset_px)
+        if not np.isfinite(shift) or abs(shift)>n/3:
+            raise ValueError("line_offset_px must be finite and within n/3")
+        m=d>shift
     elif primitive=='stripe':
         m=np.abs(d)<rng.uniform(7,14)
     elif primitive=='circle':
@@ -62,7 +68,8 @@ def _motion_kernel(length,angle):
 
 def make_sample(cfg):
     n=int(cfg.get('n',96)); seed=int(cfg['seed']); rng=np.random.default_rng(seed)
-    m,angle,d=_region(cfg['primitive'],n,rng,cfg.get('angle'))
+    m,angle,d=_region(cfg['primitive'],n,rng,cfg.get('angle'),
+                       line_offset_px=cfg.get('line_offset_px',0.0))
     contrast=float(cfg.get('contrast',0.5)); mid=0.5
     lo=mid-contrast/2; hi=mid+contrast/2
     img=np.where(m,hi,lo).astype(float)
