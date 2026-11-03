@@ -172,6 +172,8 @@ def build_binary_deposit():
     """Prepare but DO NOT publish potentially rights-restricted derived maps."""
     bases = [
         (CACHE / "descriptors", "cache_descriptor_scores"),
+        (SOURCE / "float_predictions_uded", "uded_native_float_predictions"),
+        (SOURCE / "float_predictions_bsds", "bsds_native_float_predictions"),
         (PRED, "berkeley_prediction_png"),
     ]
     # Include only native derived cache and generated outputs: never original
@@ -204,7 +206,10 @@ def build_binary_deposit():
         "third_party_ground_truth_included": False,
         "external_literature_maps_included": False,
         "score_cache_file_count": types["cache_descriptor_scores"],
+        "uded_native_float_prediction_count": types["uded_native_float_predictions"],
+        "bsds_native_float_prediction_count": types["bsds_native_float_predictions"],
         "official_prediction_file_count": types["berkeley_prediction_png"],
+        "bsds_float_completeness": "CHECK_AGAINST_FROZEN_MODELS_AND_100_IMAGE_IDS",
         "total_source_bytes": size,
         "assets": packs, "files": entries,
         "publication_target": "GitHub Release assets or Zenodo dataset record",
