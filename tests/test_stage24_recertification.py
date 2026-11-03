@@ -92,6 +92,24 @@ class PaperARecertificationTests(unittest.TestCase):
         self.assertEqual(c.tp,6)
         self.assertEqual(c.fp,0)
 
+    def test_same_fitted_aggregation_for_raw_and_nms(self):
+        from src.stage24_recertification_cv import fit_and_score, clear_group_cache
+        clear_group_cache()
+        yy, xx = np.mgrid[:20, :20]
+        gt = (yy == 10) & (xx >= 3) & (xx <= 16)
+        img = yy.astype(float) / 20
+        scores = np.clip(np.exp(-((yy - 10)/2.)**2), 0, 1).astype(np.float32)
+        a, b = np.clip(scores + .05, 0, 1), np.clip(scores*.7 + .1, 0, 1)
+        items = [{"id": str(i), "gt": gt.copy(), "img": img.copy()} for i in range(3)]
+        maps = {"a": [a.copy() for _ in items], "b": [b.copy() for _ in items]}
+        raw = fit_and_score(("a","b"),"choquet_positive_2add",items,maps,[0,1],[2],
+                            "raw",count=9,seed=17)
+        nms = fit_and_score(("a","b"),"choquet_positive_2add",items,maps,[0,1],[2],
+                            "nms_image",count=9,seed=99)
+        self.assertEqual(raw["model"]["aggregator"], nms["model"]["aggregator"])
+        self.assertTrue(np.array_equal(items[0]["gt"], gt))
+        clear_group_cache()
+
     def test_train_only_aggregator_models(self):
         g=np.zeros((13,13),bool);g[4,3:9]=True
         x=np.stack([g.astype(np.float32)*.85+.05,g.astype(np.float32)*.75+.1],axis=-1)
