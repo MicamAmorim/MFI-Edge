@@ -43,6 +43,7 @@ from src.stage24_recertification_ops import (
 from src.stage24_integrity import sha256_file, one_to_one_boundary_counts
 from src.stage24_residual import fit_residual_gate, apply_suppressor
 from src.stage24_integrity import load_float_artifact
+from src.stage24_paper_a_runtime import run_runtime_audit
 from src.stage24_paper_a_historical import (
     historical_score_comparison, synthetic_contract as historical_formula_contract,
 )
@@ -880,6 +881,9 @@ def main():
     ap.add_argument("--top-triples",type=int,default=2)
     ap.add_argument("--max-folds",type=int,default=15)
     ap.add_argument("--skip-official",action="store_true")
+    ap.add_argument("--skip-runtime",action="store_true")
+    ap.add_argument("--runtime-images",type=int,default=4)
+    ap.add_argument("--runtime-repeats",type=int,default=2)
     ap.add_argument("--export-bsds",action="store_true")
     ap.add_argument("--image-dir")
     ap.add_argument("--output-dir")
@@ -917,7 +921,13 @@ def main():
         best=collate(args,out)
         if args.phase=="all":
             if args.max_folds!=15:raise RuntimeError("Full campaign requires 15 outer folds")
-            freeze_recipe(best,items,maps,out)
+            models=freeze_recipe(best,items,maps,out)
+            if not args.skip_runtime:
+                run_runtime_audit(items,{"models":models},out,
+                    max_images=args.runtime_images,repeats=args.runtime_repeats)
+            else:
+                write_json(out/"runtime_end_to_end_manifest.json",{
+                    "status":"SKIPPED_BY_USER","reason":"--skip-runtime"})
             run_literature(args,items,maps,out)
     if args.phase=="j":
         items,maps,_,_=local_dataset(args)
