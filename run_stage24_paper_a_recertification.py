@@ -38,10 +38,20 @@ from src.stage24_recertification_cv import (
 from src.stage24_recertification_ops import (
     AGGREGATORS, SUPPRESSORS, deterministic_seed, fit_aggregator,
     apply_aggregator, choose_threshold, serialize_model, inference_recipe,
+    quantile_mapping_fit, quantile_mapping_apply, thin_score,
 )
 from src.stage24_integrity import sha256_file, one_to_one_boundary_counts
 from src.stage24_residual import fit_residual_gate, apply_suppressor
 from src.stage24_integrity import load_float_artifact
+from src.stage24_paper_a_controls import (
+    null_and_random_controls, rank_equivalence_on_uded,
+    select_best_single, variance_decomposition,
+    complementarity_predictive_test, scale_audit,
+)
+from src.stage24_paper_a_berkeley_bootstrap import (
+    load_official_counts, load_archived_counts, paired_bootstrap,
+    write_results, synthetic_contract as bsds_bootstrap_contract,
+)
 
 EXPERIMENT = "stage24_paper_a_recertification"
 OUT = ROOT / "results" / "local_dev" / EXPERIMENT
@@ -160,6 +170,14 @@ def run_uded(args, items, maps, out):
                           lambda: dict(zip(("summary", "per_image"),
                               individual_descriptor_baselines(items, maps, train,
                                  valid, fid, args.thresholds))))
+        if args.phase in ("all","g0"):
+            def fold_controls():
+                return {
+                    "baselines":null_and_random_controls(items,train,valid,fid,seed=SEED),
+                    "logistic_rank_equivalence":rank_equivalence_on_uded(
+                        items,maps,train,valid,fid),
+                }
+            _load_or_make(_fold_path(out,"scientific_controls",fid),fold_controls)
         if args.phase == "g0":
             continue
         groups = (pairs if args.phase in ("all", "g", "i") else [])
@@ -205,6 +223,9 @@ def collate(args, out):
         dump("inner_cv_trials.csv", "inner")
         dump("suppressor_ablation_fold.csv", "suppression_ablation")
         dump("suppressor_ablation_per_image.csv", "suppression_ablation_per_image")
+        dump("calibration_ablation_fold.csv", "calibration_ablation")
+        dump("calibration_ablation_per_image.csv", "calibration_ablation_per_image")
+        dump("membership_score_histograms.csv", "membership_score_histograms")
         write_csv(out / "selected_recipes_fold.csv",
                   [{**r["selected_outer"], "fold_id":r["fold_id"]}
                    for r in records])
@@ -237,6 +258,26 @@ def collate(args, out):
     write_csv(out / "geometry_impact_stage24_proxy.csv", audit)
     write_csv(out / "individual_descriptors_corrected_fold.csv", baselines)
     write_csv(out / "individual_descriptors_corrected_per_image.csv", image_b)
+    best_singles,best_single_images=select_best_single(baselines,image_b)
+    write_csv(out/"best_single_train_selected_fold.csv",best_singles)
+    write_csv(out/"best_single_train_selected_per_image.csv",best_single_images)
+    scientific_controls=[]
+    logistic_ranks=[]
+    for path in sorted((out/"folds").glob("r*_f*/scientific_controls.json")):
+        obj=json.loads(path.read_text(encoding="utf-8"))
+        scientific_controls.extend(obj.get("baselines",[]))
+        logistic_ranks.extend(obj.get("logistic_rank_equivalence",[]))
+    write_csv(out/"trivial_density_baselines_per_image.csv",scientific_controls)
+    write_csv(out/"logistic_weighted_rank_equivalence_per_image.csv",logistic_ranks)
+    if records:
+        base_landscape=[dict(fold_id=r["fold_id"], **x)
+                        for r in records for x in r["landscape"]]
+        write_json(out/"factorial_variance_decomposition.json",
+                   variance_decomposition(base_landscape))
+        prediction=complementarity_predictive_test(screens,base_landscape)
+        write_json(out/"complementarity_predictive_test.json",prediction)
+        if prediction.get("rows"):
+            write_csv(out/"complementarity_predictive_pairs.csv",prediction["rows"])
     # One winning group per outer fold, using only inner-CV results.
     best = {}
     for r in records:
@@ -713,6 +754,8 @@ def main():
     out.mkdir(parents=True,exist_ok=True)
     preflight=assert_preflight()
     checks=preflight_math()
+    if not bsds_bootstrap_contract():
+        raise RuntimeError('Berkeley bootstrap synthetic contract failed')
     write_json(out/"preflight.json",{"status":"passed","n_tests":len(checks),
                 "checks":checks,"inherited_R0":True,"GT":"native_never_resized",
                 "berkeley_thinpb_not_equated_to_python_thinning":True})
@@ -723,6 +766,7 @@ def main():
         items,maps,manifest,provenance=local_dataset(args)
         write_json(out/"native_dataset_manifest.json",manifest)
         write_csv(out/"descriptor_provenance.csv",provenance)
+        write_csv(out/"descriptor_scale_audit.csv",scale_audit(items))
         finished=run_uded(args,items,maps,out)
         if not finished:return 0
         best=collate(args,out)
