@@ -68,6 +68,15 @@ def capture(out):
         Path(sys.executable).resolve().is_relative_to((ROOT / ".venv").resolve())
     ):
         raise RuntimeError("Use the project .venv interpreter, not system Python")
+    if sys.version_info < (3, 10):
+        raise RuntimeError("Python >=3.10 is required for Stage24G-L")
+    checked = subprocess.run(
+        [sys.executable, "-m", "pip", "check"], text=True,
+        capture_output=True, check=False,
+    )
+    if checked.returncode != 0:
+        raise RuntimeError("Project .venv has incompatible installed dependencies: " +
+                           (checked.stdout + checked.stderr).strip()[:1500])
     lock, direct = environment_lock()
     lock_path = out / "environment.lock.txt"
     if lock_path.exists() and lock_path.read_text(encoding="utf-8") != lock:
@@ -85,6 +94,7 @@ def capture(out):
         "platform_machine": platform.machine(),
         "direct_versions": direct,
         "package_count": len(lock.splitlines()),
+        "pip_dependency_check_passed": True,
         "environment_lock_sha256": hashlib.sha256(lock.encode("utf-8")).hexdigest(),
     }
     if manifest_path.exists():
