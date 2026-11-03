@@ -27,6 +27,7 @@ não está excluída pelo .gitignore.
 | results/official_eval/stage24_residual_suppression/matlab/<método>/official_summary.json | Métricas originais de cada método | official_bsds/method_summaries/ |
 | results/official_eval/stage24_residual_suppression/matlab/<método>/*_ev1.txt | Contagens por imagem/threshold, inclusive multi-anotador | official_bsds/per_image_threshold_counts.csv + per_image_source_manifest.csv |
 | results/local_dev/stage23*/ (CSV/JSON pequenos selecionados) | Rankings e baselines históricos para comparação **rotulada como não corrigida** | historical_stage23_NOT_CORRECTED/ |
+| results/official_eval/stage23*/summary.json | Resumos Berkeley históricos (não equivalem a recertificação GT corrigida) | historical_stage23_OFFICIAL_validation_summaries/ |
 | Todos os itens copiados/consumidos | Hashes SHA-256 e caminhos de origem | source_provenance.csv, archive_manifest.json |
 
 O script valida que existem **15 pair screens com 78 relações cada**; consolida
