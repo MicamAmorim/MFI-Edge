@@ -36,6 +36,8 @@ FILES=(
     "statistical_tests_exploratory.csv", "claim_status.csv",
     "PAPER_A_METHODS_RESULTS_STATUS.md", "summary.json",
     "descriptor_scale_audit.csv", "trivial_density_baselines_per_image.csv",
+    "runtime_end_to_end_per_image.csv", "runtime_end_to_end_manifest.json",
+    "aggregator_image_bootstrap_ci.csv",
     "best_single_train_selected_fold.csv", "best_single_train_selected_per_image.csv",
     "logistic_weighted_rank_equivalence_per_image.csv",
     "historical_stage23d_formula_control.csv",
