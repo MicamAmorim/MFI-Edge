@@ -18,6 +18,7 @@ SOURCE=ROOT/"results/local_dev/stage24_paper_a_recertification"
 OFFICIAL=ROOT/"results/official_eval/stage24_paper_a_recertification"
 DEST=ROOT/"results/paper_a_evidence/stage24gl"
 FILES=(
+    "environment.lock.txt", "environment_manifest.json",
     "preflight.json", "strict_math_contracts.json",
     "campaign_source_fingerprint.json",
     "native_dataset_manifest.json", "descriptor_provenance.csv",
@@ -183,7 +184,8 @@ def main():
         else:
             missing.append(name)
     official=consolidate_official(rows,args.allow_partial)
-    required={"preflight.json","strict_math_contracts.json",
+    required={"environment.lock.txt","environment_manifest.json",
+              "preflight.json","strict_math_contracts.json",
               "campaign_source_fingerprint.json","native_dataset_manifest.json",
               "pair_complementarity_ranked.csv",
               "individual_descriptors_corrected_per_image.csv",
