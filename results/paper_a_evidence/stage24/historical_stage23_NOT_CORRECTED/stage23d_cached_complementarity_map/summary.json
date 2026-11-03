@@ -1,0 +1,44 @@
+{
+  "status": "completed",
+  "experiment_id": "stage23d_cached_complementarity_map",
+  "role": "cached_gt_conditioned_complementarity_map",
+  "dataset": "UDED selection overlap-clean",
+  "retained_images": 14,
+  "protected_lineage_bytes_read": false,
+  "descriptor_count": 13,
+  "pair_count": 78,
+  "cache_hits": 182,
+  "cache_computations": 0,
+  "selected_pair_count": 8,
+  "selected_triple_count": 4,
+  "single_controls": [
+    "semiglobal_changepoint",
+    "halfdisc_distribution_contrast"
+  ],
+  "incumbent_changed": false,
+  "evaluation": "repository tolerant proxy at 0.0075 image diagonal; not Berkeley official evaluation",
+  "visual_preview": {
+    "path": "results/local_dev/stage23d_cached_complementarity_map/best_method_preview.png",
+    "selection": "sorted overlap-clean UDED positions 1, 7, and 14",
+    "panel_order": [
+      "input",
+      "ground_truth",
+      "scharr_pre_nms_magnitude",
+      "lab_dizenzo_tensor_gradient",
+      "gabor4_s5",
+      "hessian_s7",
+      "gabor4_s13",
+      "hessian_s13",
+      "gabor4_scale_persistence",
+      "structure_tensor_coherence",
+      "phase_congruency_max_moment",
+      "halfdisc_distribution_contrast",
+      "pmi_dependency_deficit",
+      "semiglobal_changepoint",
+      "fh_region_boundary"
+    ],
+    "optimization_use": "none"
+  },
+  "official_attachment": "incumbent-only BSDS500-validation attachment",
+  "next_contract": "Stage 23E may consume only stage23e_input_sets.json and exact cached maps under the frozen eight-family aggregator screen."
+}

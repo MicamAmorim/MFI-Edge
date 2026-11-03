@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "include_incumbent": true,
+  "methods": [],
+  "analysis_only_note": "Frozen Compass/persistence gap diagnosis; no candidate map. Official attachment is incumbent-only."
+}

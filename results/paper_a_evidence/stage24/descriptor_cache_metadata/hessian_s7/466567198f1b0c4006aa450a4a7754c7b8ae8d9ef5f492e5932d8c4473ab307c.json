@@ -1,0 +1,33 @@
+{
+  "artifact_sha256": "e65d75bccf6bd18331404a08934533a2b05a97d7141a043f1d9134c40377a9ea",
+  "dtype": "float32",
+  "identity": {
+    "code_hash": "7f0a80cb4f435094c6368128a2eba488863450223ec4e22670ce4c0bd5f57dc5",
+    "dataset": "BSDS500",
+    "descriptor_id": "hessian_s7",
+    "dtype": "float32",
+    "gt_used": false,
+    "image_id": "145086",
+    "inference_shape": [
+      171,
+      256
+    ],
+    "native_shape": [
+      321,
+      481
+    ],
+    "parameters": {
+      "mode": "oriented_ms",
+      "window": 7
+    },
+    "preprocessing": "downscale_maxside256_then_registered_descriptor_preprocessing_v1",
+    "schema_version": 1,
+    "source_sha256": "ea31167eece902040a4dfc2e50e1a6112a6888c19566aa93ba698ec754f6e815",
+    "split": "val"
+  },
+  "schema_version": 1,
+  "shape": [
+    171,
+    256
+  ]
+}

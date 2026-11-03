@@ -1,0 +1,153 @@
+{
+  "status": "completed",
+  "experiment_id": "stage23e_cached_descriptor_aggregator_landscape",
+  "role": "bounded_cached_descriptor_aggregator_landscape",
+  "dataset": "UDED selection overlap-clean",
+  "retained_images": 14,
+  "protected_lineage_bytes_read": false,
+  "cache_hits": 182,
+  "cache_computations": 0,
+  "input_sets": 15,
+  "aggregators": [
+    "equal_arithmetic_mean",
+    "nonnegative_logistic_additive",
+    "maximum_disjunction",
+    "minimum_conjunction",
+    "median_owa",
+    "sugeno_capacity",
+    "distorted_choquet_gamma055",
+    "monotone_2additive_choquet"
+  ],
+  "nominal_cells": 120,
+  "algebraic_alias_cells": 20,
+  "fold_rows": 1800,
+  "frontier": {
+    "schema_version": 1,
+    "source_experiment": "stage23e_cached_descriptor_aggregator_landscape",
+    "selection_rule": "docs/paper/STAGE23E_PREREGISTRATION.md",
+    "primary_cells": [
+      {
+        "set_id": "pair_03",
+        "descriptors": [
+          "gabor4_scale_persistence",
+          "structure_tensor_coherence"
+        ],
+        "aggregator": "minimum_conjunction",
+        "frontier_score": 0.06446082577371628,
+        "matched_control": "equal_arithmetic_mean"
+      },
+      {
+        "set_id": "pair_04",
+        "descriptors": [
+          "gabor4_scale_persistence",
+          "halfdisc_distribution_contrast"
+        ],
+        "aggregator": "nonnegative_logistic_additive",
+        "frontier_score": 0.023898298926865708,
+        "matched_control": "equal_arithmetic_mean"
+      },
+      {
+        "set_id": "triple_04",
+        "descriptors": [
+          "fh_region_boundary",
+          "halfdisc_distribution_contrast",
+          "structure_tensor_coherence"
+        ],
+        "aggregator": "median_owa",
+        "frontier_score": 0.02274927178795977,
+        "matched_control": "equal_arithmetic_mean"
+      }
+    ],
+    "validation_cells": [
+      {
+        "set_id": "pair_03",
+        "descriptors": [
+          "gabor4_scale_persistence",
+          "structure_tensor_coherence"
+        ],
+        "aggregator": "minimum_conjunction",
+        "frontier_score": 0.06446082577371628,
+        "matched_control": "equal_arithmetic_mean"
+      },
+      {
+        "set_id": "pair_03",
+        "descriptors": [
+          "gabor4_scale_persistence",
+          "structure_tensor_coherence"
+        ],
+        "aggregator": "equal_arithmetic_mean",
+        "matched_primary": "minimum_conjunction"
+      },
+      {
+        "set_id": "pair_04",
+        "descriptors": [
+          "gabor4_scale_persistence",
+          "halfdisc_distribution_contrast"
+        ],
+        "aggregator": "nonnegative_logistic_additive",
+        "frontier_score": 0.023898298926865708,
+        "matched_control": "equal_arithmetic_mean"
+      },
+      {
+        "set_id": "pair_04",
+        "descriptors": [
+          "gabor4_scale_persistence",
+          "halfdisc_distribution_contrast"
+        ],
+        "aggregator": "equal_arithmetic_mean",
+        "matched_primary": "nonnegative_logistic_additive"
+      },
+      {
+        "set_id": "triple_04",
+        "descriptors": [
+          "fh_region_boundary",
+          "halfdisc_distribution_contrast",
+          "structure_tensor_coherence"
+        ],
+        "aggregator": "median_owa",
+        "frontier_score": 0.02274927178795977,
+        "matched_control": "equal_arithmetic_mean"
+      },
+      {
+        "set_id": "triple_04",
+        "descriptors": [
+          "fh_region_boundary",
+          "halfdisc_distribution_contrast",
+          "structure_tensor_coherence"
+        ],
+        "aggregator": "equal_arithmetic_mean",
+        "matched_primary": "median_owa"
+      }
+    ],
+    "maximum_cells": 6,
+    "bsds_validation_read": false
+  },
+  "incumbent_changed": false,
+  "bsds_validation_candidate_read": false,
+  "evaluation": "repository tolerant proxy at 0.0075 image diagonal; ranking/AP diagnostics are not Berkeley official metrics",
+  "visual_preview": {
+    "path": "results/local_dev/stage23e_cached_descriptor_aggregator_landscape/best_method_preview.png",
+    "selection": "fixed overlap-clean UDED positions 1, 7, and 14",
+    "selected_cell": {
+      "set_id": "pair_03",
+      "descriptors": [
+        "gabor4_scale_persistence",
+        "structure_tensor_coherence"
+      ],
+      "aggregator": "minimum_conjunction",
+      "frontier_score": 0.06446082577371628,
+      "matched_control": "equal_arithmetic_mean"
+    },
+    "panel_order": [
+      "input",
+      "ground_truth",
+      "primary_score",
+      "primary_prediction",
+      "equal_mean_score",
+      "equal_mean_prediction"
+    ],
+    "optimization_use": "none"
+  },
+  "official_attachment": "incumbent-only BSDS500-validation attachment",
+  "next_contract": "Stage 23F must preregister and validate only stage23f_frontier.json cells under matched development protocols."
+}

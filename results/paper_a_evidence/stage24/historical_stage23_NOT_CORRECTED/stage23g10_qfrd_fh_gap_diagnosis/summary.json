@@ -1,0 +1,62 @@
+{
+  "status": "completed",
+  "experiment_id": "stage23g10_qfrd_fh_gap_diagnosis",
+  "role": "frozen_strong_detector_gap_diagnosis",
+  "target": "exact pinned-author QFrD",
+  "missing_evidence_hypothesis": "fh_region_boundary",
+  "detector_runs": 0,
+  "descriptor_computations": 0,
+  "cache_hits": 114,
+  "protected_lineage_bytes_read": false,
+  "summaries": {
+    "UDED_selection_overlap_clean": {
+      "n_rows": 70,
+      "n_unique_images": 14,
+      "mean_spearman": 0.1518386369504495,
+      "mean_cue_unique_gt_fraction": 0.109724457341063,
+      "mean_cue_rescue_of_qfrd_misses": 0.4335759345772549,
+      "mean_cue_unique_fp_fraction": 0.21212139691646262,
+      "mean_p_cue_correct_given_qfrd_wrong": 0.3866950743817692,
+      "unique_gt_image_fraction": 1.0
+    },
+    "BSDS500_validation": {
+      "n_rows": 100,
+      "n_unique_images": 100,
+      "mean_spearman": 0.14242583248487614,
+      "mean_cue_unique_gt_fraction": 0.15211405072941578,
+      "mean_cue_rescue_of_qfrd_misses": 0.5920068712834938,
+      "mean_cue_unique_fp_fraction": 0.4112367333519719,
+      "mean_p_cue_correct_given_qfrd_wrong": 0.3082508154853379,
+      "unique_gt_image_fraction": 0.99
+    }
+  },
+  "preregistered_checks": {
+    "UDED_selection_overlap_clean": {
+      "unique_gt_at_least_0p02": true,
+      "conditional_correctness_at_least_0p50": false,
+      "unique_gt_on_at_least_0p60_images": true,
+      "mean_spearman_at_most_0p80": true
+    },
+    "BSDS500_validation": {
+      "unique_gt_at_least_0p02": true,
+      "conditional_correctness_at_least_0p50": false,
+      "unique_gt_on_at_least_0p60_images": true,
+      "mean_spearman_at_most_0p80": true
+    }
+  },
+  "gap_supported": false,
+  "decision_semantics": "A pass authorizes only a separate prospective intervention decision; no fusion is preselected. Failure closes QFrD/FH without substitution.",
+  "incumbent_changed": false,
+  "visual_preview": {
+    "path": "results/local_dev/stage23g10_qfrd_fh_gap_diagnosis/best_method_preview.png",
+    "selection": "UDED 1/7/14 then BSDS-val 1/50/100",
+    "panel_order": [
+      "input",
+      "GT union",
+      "exact QFrD",
+      "cached FH region boundary"
+    ],
+    "optimization_use": "documentary only"
+  },
+  "official_attachment": "incumbent-only; no candidate exists"
+}

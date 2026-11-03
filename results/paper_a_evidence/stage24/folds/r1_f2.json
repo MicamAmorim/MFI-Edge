@@ -1,0 +1,27 @@
+{
+  "aggregator": "minimum",
+  "fn": 54833,
+  "fold": 2,
+  "fp": 83851,
+  "model_sha256": "e6c5f5d92e594e40a3be128e69e201bd71cea45750cefc20b6f82e9f19f77b9a",
+  "pair": [
+    "gabor4_scale_persistence",
+    "halfdisc_distribution_contrast"
+  ],
+  "parameter": 1.0,
+  "repeat": 1,
+  "suppressor": "disagreement",
+  "threshold": 0.5351424247026444,
+  "tp": 65806,
+  "train_F1": 0.46403960570381736,
+  "valid_ids": [
+    "07-CITYSCAPES-2C",
+    "09-MDBD-1C",
+    "15-P1020854",
+    "17-1194",
+    "27-img_5264"
+  ],
+  "validation_F1": 0.4869180454020777,
+  "validation_precision": 0.4397121417641674,
+  "validation_recall": 0.5454786594716469
+}

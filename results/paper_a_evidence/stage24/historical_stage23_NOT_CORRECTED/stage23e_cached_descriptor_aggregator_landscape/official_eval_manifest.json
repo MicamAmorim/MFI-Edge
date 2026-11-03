@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "include_incumbent": true,
+  "methods": [],
+  "analysis_only_note": "Stage 23E is a UDED cached-map screen; Stage 23F validates the frozen frontier. This attachment is incumbent-only."
+}

@@ -1,0 +1,35 @@
+{
+  "artifact_sha256": "19403e9188e1392b499781abfab772b64daf0a44af9d34ada86eef8db5a271ba",
+  "dtype": "float32",
+  "identity": {
+    "code_hash": "7f0a80cb4f435094c6368128a2eba488863450223ec4e22670ce4c0bd5f57dc5",
+    "dataset": "UDED",
+    "descriptor_id": "fh_region_boundary",
+    "dtype": "float32",
+    "gt_used": false,
+    "image_id": "17-1194",
+    "inference_shape": [
+      256,
+      256
+    ],
+    "native_shape": [
+      600,
+      600
+    ],
+    "parameters": {
+      "connectivity": 8,
+      "min_size_cleanup": false,
+      "scale": 300.0,
+      "sigma": 0.8
+    },
+    "preprocessing": "downscale_maxside256_then_registered_descriptor_preprocessing_v1",
+    "schema_version": 1,
+    "source_sha256": "b74994f7957c1331dbbe94ae02e48b6067b89102a7546b6f0a42be8fda24d967",
+    "split": "selection_overlap_clean"
+  },
+  "schema_version": 1,
+  "shape": [
+    256,
+    256
+  ]
+}

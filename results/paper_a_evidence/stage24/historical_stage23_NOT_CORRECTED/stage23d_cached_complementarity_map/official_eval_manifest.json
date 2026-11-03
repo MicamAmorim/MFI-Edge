@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "include_incumbent": true,
+  "methods": [],
+  "analysis_only_note": "Stage 23D is UDED cached-map analysis and defines no BSDS candidate; official attachment is incumbent-only."
+}

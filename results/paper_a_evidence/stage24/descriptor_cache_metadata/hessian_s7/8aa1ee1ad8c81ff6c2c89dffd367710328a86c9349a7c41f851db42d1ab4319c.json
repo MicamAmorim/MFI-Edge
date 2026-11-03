@@ -1,0 +1,33 @@
+{
+  "artifact_sha256": "fd0d7659e75a40787cc120a405e85720b57826e232a9f106541f4129a0d1852a",
+  "dtype": "float32",
+  "identity": {
+    "code_hash": "7f0a80cb4f435094c6368128a2eba488863450223ec4e22670ce4c0bd5f57dc5",
+    "dataset": "UDED",
+    "descriptor_id": "hessian_s7",
+    "dtype": "float32",
+    "gt_used": false,
+    "image_id": "21-00065305",
+    "inference_shape": [
+      205,
+      256
+    ],
+    "native_shape": [
+      400,
+      500
+    ],
+    "parameters": {
+      "mode": "oriented_ms",
+      "window": 7
+    },
+    "preprocessing": "downscale_maxside256_then_registered_descriptor_preprocessing_v1",
+    "schema_version": 1,
+    "source_sha256": "77b27bae475950c120a3e82ea7081c2c8175af384c9eda53cb8513c06f68402d",
+    "split": "selection_overlap_clean"
+  },
+  "schema_version": 1,
+  "shape": [
+    205,
+    256
+  ]
+}

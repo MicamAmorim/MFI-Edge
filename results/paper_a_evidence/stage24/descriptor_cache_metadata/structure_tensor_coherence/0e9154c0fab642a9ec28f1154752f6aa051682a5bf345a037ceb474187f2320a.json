@@ -1,0 +1,33 @@
+{
+  "artifact_sha256": "c383693866e8a1584509942f09d0801e01042d70ec361d19274b08740e1d5533",
+  "dtype": "float32",
+  "identity": {
+    "code_hash": "7f0a80cb4f435094c6368128a2eba488863450223ec4e22670ce4c0bd5f57dc5",
+    "dataset": "UDED",
+    "descriptor_id": "structure_tensor_coherence",
+    "dtype": "float32",
+    "gt_used": false,
+    "image_id": "05-WIREFRAME-2",
+    "inference_shape": [
+      170,
+      256
+    ],
+    "native_shape": [
+      332,
+      500
+    ],
+    "parameters": {
+      "integration_sigma": 4.0,
+      "noise_sigma": 0.5
+    },
+    "preprocessing": "downscale_maxside256_then_registered_descriptor_preprocessing_v1",
+    "schema_version": 1,
+    "source_sha256": "976ca00658a6bf5de0735f852d970dd0a39ef0a60b2dec0c3248e5ff1773caf8",
+    "split": "selection_overlap_clean"
+  },
+  "schema_version": 1,
+  "shape": [
+    170,
+    256
+  ]
+}

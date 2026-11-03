@@ -1,0 +1,34 @@
+{
+  "artifact_sha256": "fc470a06ca761fa30d8ec2c437b296409b9f8eba58e278909a32da480c0d825d",
+  "dtype": "float32",
+  "identity": {
+    "code_hash": "7f0a80cb4f435094c6368128a2eba488863450223ec4e22670ce4c0bd5f57dc5",
+    "dataset": "UDED",
+    "descriptor_id": "pmi_dependency_deficit",
+    "dtype": "float32",
+    "gt_used": false,
+    "image_id": "01-0843x4",
+    "inference_shape": [
+      170,
+      256
+    ],
+    "native_shape": [
+      339,
+      510
+    ],
+    "parameters": {
+      "levels": 256,
+      "pair_axes": 4,
+      "rho": 1.25
+    },
+    "preprocessing": "downscale_maxside256_then_registered_descriptor_preprocessing_v1",
+    "schema_version": 1,
+    "source_sha256": "17fabb2a80226f7f83f2a10649354af7f3412199f80493660b132f48f6bb5c22",
+    "split": "selection_overlap_clean"
+  },
+  "schema_version": 1,
+  "shape": [
+    170,
+    256
+  ]
+}

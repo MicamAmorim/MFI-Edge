@@ -1,0 +1,40 @@
+{
+  "artifact_sha256": "de58a3026dc1eafdbe9959d4f6008929255df13c9f3f12b2c0a5e69170f48544",
+  "dtype": "float32",
+  "identity": {
+    "code_hash": "7f0a80cb4f435094c6368128a2eba488863450223ec4e22670ce4c0bd5f57dc5",
+    "dataset": "UDED",
+    "descriptor_id": "gabor4_scale_persistence",
+    "dtype": "float32",
+    "gt_used": false,
+    "image_id": "21-00065305",
+    "inference_shape": [
+      205,
+      256
+    ],
+    "native_shape": [
+      400,
+      500
+    ],
+    "parameters": {
+      "definition": "mean_over_max",
+      "mode": "oriented_ms",
+      "scales": [
+        25,
+        13,
+        7,
+        5,
+        3
+      ]
+    },
+    "preprocessing": "downscale_maxside256_then_registered_descriptor_preprocessing_v1",
+    "schema_version": 1,
+    "source_sha256": "77b27bae475950c120a3e82ea7081c2c8175af384c9eda53cb8513c06f68402d",
+    "split": "selection_overlap_clean"
+  },
+  "schema_version": 1,
+  "shape": [
+    205,
+    256
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "status": "completed",
+  "experiment_id": "stage23f_literature_validation_frontier",
+  "role": "literature_comparable_validation_frontier",
+  "dataset": "BSDS500 validation",
+  "images": 100,
+  "descriptor_ids": [
+    "fh_region_boundary",
+    "gabor4_scale_persistence",
+    "halfdisc_distribution_contrast",
+    "structure_tensor_coherence"
+  ],
+  "descriptor_requests": 400,
+  "descriptor_cache_hits": 0,
+  "descriptor_cache_computations": 400,
+  "aggregated_requests": 600,
+  "aggregated_cache_hits": 0,
+  "aggregated_cache_computations": 600,
+  "frontier": {
+    "schema_version": 1,
+    "source_experiment": "stage23e_cached_descriptor_aggregator_landscape",
+    "selection_rule": "docs/paper/STAGE23E_PREREGISTRATION.md",
+    "primary_cells": [
+      {
+        "set_id": "pair_03",
+        "descriptors": [
+          "gabor4_scale_persistence",
+          "structure_tensor_coherence"
+        ],
+        "aggregator": "minimum_conjunction",
+        "frontier_score": 0.06446082577371628,
+        "matched_control": "equal_arithmetic_mean"
+      },
+      {
+        "set_id": "pair_04",
+        "descriptors": [
+          "gabor4_scale_persistence",
+          "halfdisc_distribution_contrast"
+        ],
+        "aggregator": "nonnegative_logistic_additive",
+        "frontier_score": 0.023898298926865708,
+        "matched_control": "equal_arithmetic_mean"
+      },
+      {
+        "set_id": "triple_04",
+        "descriptors": [
+          "fh_region_boundary",
+          "halfdisc_distribution_contrast",
+          "structure_tensor_coherence"
+        ],
+        "aggregator": "median_owa",
+        "frontier_score": 0.02274927178795977,
+        "matched_control": "equal_arithmetic_mean"
+      }
+    ],
+    "validation_cells": [
+      {
+        "set_id": "pair_03",
+        "descriptors": [
+          "gabor4_scale_persistence",
+          "structure_tensor_coherence"
+        ],
+        "aggregator": "minimum_conjunction",
+        "frontier_score": 0.06446082577371628,
+        "matched_control": "equal_arithmetic_mean"
+      },
+      {
+        "set_id": "pair_03",
+        "descriptors": [
+          "gabor4_scale_persistence",
+          "structure_tensor_coherence"
+        ],
+        "aggregator": "equal_arithmetic_mean",
+        "matched_primary": "minimum_conjunction"
+      },
+      {
+        "set_id": "pair_04",
+        "descriptors": [
+          "gabor4_scale_persistence",
+          "halfdisc_distribution_contrast"
+        ],
+        "aggregator": "nonnegative_logistic_additive",
+        "frontier_score": 0.023898298926865708,
+        "matched_control": "equal_arithmetic_mean"
+      },
+      {
+        "set_id": "pair_04",
+        "descriptors": [
+          "gabor4_scale_persistence",
+          "halfdisc_distribution_contrast"
+        ],
+        "aggregator": "equal_arithmetic_mean",
+        "matched_primary": "nonnegative_logistic_additive"
+      },
+      {
+        "set_id": "triple_04",
+        "descriptors": [
+          "fh_region_boundary",
+          "halfdisc_distribution_contrast",
+          "structure_tensor_coherence"
+        ],
+        "aggregator": "median_owa",
+        "frontier_score": 0.02274927178795977,
+        "matched_control": "equal_arithmetic_mean"
+      },
+      {
+        "set_id": "triple_04",
+        "descriptors": [
+          "fh_region_boundary",
+          "halfdisc_distribution_contrast",
+          "structure_tensor_coherence"
+        ],
+        "aggregator": "equal_arithmetic_mean",
+        "matched_primary": "median_owa"
+      }
+    ],
+    "maximum_cells": 6,
+    "bsds_validation_read": false
+  },
+  "validation_gt_used_by_inference": false,
+  "incumbent_changed": false,
+  "visual_preview": {
+    "path": "results/local_dev/stage23f_literature_validation_frontier/best_method_preview.png",
+    "positions": [
+      1,
+      50,
+      100
+    ],
+    "panel_order": [
+      "input",
+      "pair03 primary",
+      "pair03 mean",
+      "pair04 primary",
+      "pair04 mean",
+      "triple04 primary",
+      "triple04 mean"
+    ],
+    "optimization_use": "none"
+  },
+  "decision_rule": "primary vs matched mean: delta ODS >= 0.002 and delta OIS/AP >= 0; relationship identification only",
+  "official_attachment": "required standard Berkeley BSDS500-validation scoring of all six frozen cells plus compact MFI"
+}

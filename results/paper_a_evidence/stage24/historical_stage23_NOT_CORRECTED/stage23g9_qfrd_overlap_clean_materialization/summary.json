@@ -1,0 +1,49 @@
+{
+  "status": "completed",
+  "experiment_id": "stage23g9_qfrd_overlap_clean_materialization",
+  "scientific_role": "exact_target_baseline_materialization_no_scoring_or_intervention",
+  "target": "Huang-Hu-Lian exact pinned-author QFrD soft boundary detector",
+  "implementation_fidelity": "exact author-code path on declared Stage-23 max-side-256 UDED raster adapter",
+  "training_class": "parameter-fixed but author-tuned",
+  "fixed_parameters": {
+    "alpha_1": 0.8,
+    "alpha_2": 1.0,
+    "mu": [
+      0.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "pad": 64,
+    "pad_mode": "replicate",
+    "gauss_sigma": 2.0,
+    "nms_radius": 1.5,
+    "hysteresis_low": 0.8,
+    "hysteresis_high": 2.5
+  },
+  "paper_code_order_caveat": "paper describes left multiplier application; pinned code computes q_mul(Q, M_full)",
+  "raster_adapter": "stage23c_maxside256_bilinear_then_round_uint8_png_v1",
+  "n_images": 14,
+  "protected_lineage_excluded_before_bytes": true,
+  "detector_calls_this_invocation": 14,
+  "second_traversal_cache_hits": 14,
+  "second_traversal_detector_calls": 0,
+  "gt_use": "preview only; no scoring, fitting, thresholding, or detector access",
+  "existing_bsds_validation_baseline": {
+    "ODS": 0.5872613845372252,
+    "OIS": 0.6186212023808676,
+    "AP": 0.5836498026767001
+  },
+  "torch_version": "2.9.0+cpu",
+  "preview": {
+    "path": "results/local_dev/stage23g9_qfrd_overlap_clean_materialization/best_method_preview.png",
+    "selection": "overlap-clean UDED positions 1, 7, 14",
+    "panel_order": [
+      "input",
+      "GT",
+      "exact pinned-author QFrD soft score"
+    ],
+    "optimization_use": "none"
+  },
+  "decision_semantics": "pass authorizes only a separately preregistered cross-domain gap diagnosis; no cue, aggregation, intervention, or incumbent decision"
+}

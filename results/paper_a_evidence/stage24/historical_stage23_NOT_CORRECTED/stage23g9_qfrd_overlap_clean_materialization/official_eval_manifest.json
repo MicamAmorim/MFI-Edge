@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "include_incumbent": false,
+  "methods": [
+    {
+      "name": "stage23g9_exact_author_qfrd_frozen_baseline",
+      "export": {
+        "script": "automation/stage23g9_qfrd_frozen_bsds_export.py",
+        "args": [
+          "--image-dir",
+          "{image_dir}",
+          "--output-dir",
+          "{output_dir}",
+          "--split",
+          "{split}"
+        ]
+      }
+    }
+  ],
+  "reuse_note": "hash-validated byte reuse of 100 frozen Stage-15i QFrD maps; no detector rerun"
+}

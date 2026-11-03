@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "include_incumbent": true,
+  "methods": [
+    {
+      "name": "stage23f_pair_03_minimum_conjunction",
+      "prediction_dir": "results/local_dev/stage23f_literature_validation_frontier/frozen_maps/stage23f_pair_03_minimum_conjunction"
+    },
+    {
+      "name": "stage23f_pair_03_equal_arithmetic_mean",
+      "prediction_dir": "results/local_dev/stage23f_literature_validation_frontier/frozen_maps/stage23f_pair_03_equal_arithmetic_mean"
+    },
+    {
+      "name": "stage23f_pair_04_nonnegative_logistic_additive",
+      "prediction_dir": "results/local_dev/stage23f_literature_validation_frontier/frozen_maps/stage23f_pair_04_nonnegative_logistic_additive"
+    },
+    {
+      "name": "stage23f_pair_04_equal_arithmetic_mean",
+      "prediction_dir": "results/local_dev/stage23f_literature_validation_frontier/frozen_maps/stage23f_pair_04_equal_arithmetic_mean"
+    },
+    {
+      "name": "stage23f_triple_04_median_owa",
+      "prediction_dir": "results/local_dev/stage23f_literature_validation_frontier/frozen_maps/stage23f_triple_04_median_owa"
+    },
+    {
+      "name": "stage23f_triple_04_equal_arithmetic_mean",
+      "prediction_dir": "results/local_dev/stage23f_literature_validation_frontier/frozen_maps/stage23f_triple_04_equal_arithmetic_mean"
+    }
+  ],
+  "stage23_note": "Frozen Stage-23E frontier only; Stage 23F identifies transfer relationships and does not promote a detector."
+}

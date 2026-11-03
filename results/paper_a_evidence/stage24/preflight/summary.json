@@ -1,0 +1,73 @@
+{
+  "status": "completed",
+  "stage": "24R0",
+  "role": "evaluation_integrity_preflight",
+  "ground_truth_policy": "native bytes/geometry; never resized",
+  "training_target_policy": "exact GT only; tolerance is matcher-only",
+  "internal_matcher": "maximum-cardinality one-to-one Euclidean proximity",
+  "bsds_final_metric_policy": "official Berkeley MATLAB evaluator only",
+  "scientific_artifact_policy": "floating .npy; quantized PNG is export/visualization only",
+  "checks": [
+    {
+      "name": "perfect_match",
+      "passed": true,
+      "detail": "{'tp': 20, 'fp': 0, 'fn': 0, 'pred_count': 20, 'gt_count': 20, 'tolerance_px': 0, 'precision': 1.0, 'recall': 1.0, 'F1': 1.0}"
+    },
+    {
+      "name": "one_pixel_shift_within_tolerance",
+      "passed": true,
+      "detail": "{'tp': 20, 'fp': 0, 'fn': 0, 'pred_count': 20, 'gt_count': 20, 'tolerance_px': 1, 'precision': 1.0, 'recall': 1.0, 'F1': 1.0}"
+    },
+    {
+      "name": "thick_prediction_not_multiply_rewarded",
+      "passed": true,
+      "detail": "{'tp': 20, 'fp': 80, 'fn': 0, 'pred_count': 100, 'gt_count': 20, 'tolerance_px': 2, 'precision': 0.2, 'recall': 1.0, 'F1': 0.33333333333333337}"
+    },
+    {
+      "name": "fragmentation_reduces_recall",
+      "passed": true,
+      "detail": "{'tp': 10, 'fp': 0, 'fn': 10, 'pred_count': 10, 'gt_count': 20, 'tolerance_px': 0, 'precision': 1.0, 'recall': 0.5, 'F1': 0.6666666666666666}"
+    },
+    {
+      "name": "empty_prediction",
+      "passed": true,
+      "detail": "{'tp': 0, 'fp': 0, 'fn': 20, 'pred_count': 0, 'gt_count': 20, 'tolerance_px': 1, 'precision': 0.0, 'recall': 0.0, 'F1': 0.0}"
+    },
+    {
+      "name": "empty_both",
+      "passed": true,
+      "detail": "{'tp': 0, 'fp': 0, 'fn': 0, 'pred_count': 0, 'gt_count': 0, 'tolerance_px': 1, 'precision': 1.0, 'recall': 1.0, 'F1': 1.0}"
+    },
+    {
+      "name": "empty_gt_with_prediction",
+      "passed": true,
+      "detail": "{'tp': 0, 'fp': 20, 'fn': 0, 'pred_count': 20, 'gt_count': 0, 'tolerance_px': 1, 'precision': 0.0, 'recall': 1.0, 'F1': 0.0}"
+    },
+    {
+      "name": "geometry_contract_score_to_native_gt",
+      "passed": true,
+      "detail": "score (15, 21)->(41, 57); GT untouched"
+    },
+    {
+      "name": "float_artifact_roundtrip",
+      "passed": true,
+      "detail": "bitwise float32 round-trip"
+    },
+    {
+      "name": "quantized_input_rejected",
+      "passed": true,
+      "detail": "PNG rejected"
+    },
+    {
+      "name": "unit_test_suite",
+      "passed": true,
+      "detail": "command: C:\\Users\\Windows 11\\Documents\\MFI-Edge\\.venv\\Scripts\\python.exe C:\\Users\\Windows 11\\Documents\\MFI-Edge\\tests\\test_stage24_integrity.py\n\ntest_float_artifact (__main__.Stage24IntegrityTests.test_float_artifact) ... ok\ntest_perfect (__main__.Stage24IntegrityTests.test_perfect) ... ok\ntest_png_rejected (__main__.Stage24IntegrityTests.test_png_rejected) ... ok\ntest_thick_predictions_do_not_get_duplicate_tp (__main__.Stage24IntegrityTests.test_thick_predictions_do_not_get_duplicate_tp) ... ok\ntest_threshold_is_train_data_only_api (__main__.Stage24IntegrityTests.test_threshold_is_train_data_only_api) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.015s\n\nOK\n"
+    },
+    {
+      "name": "official_bsds_path_present",
+      "passed": true,
+      "detail": "evaluation\\bsds_official\\run_official_bsds.py; evaluation\\bsds_official\\matlab\\evaluate_bsds_official.m; evaluation\\bsds_official\\config.json"
+    }
+  ],
+  "blockers": []
+}

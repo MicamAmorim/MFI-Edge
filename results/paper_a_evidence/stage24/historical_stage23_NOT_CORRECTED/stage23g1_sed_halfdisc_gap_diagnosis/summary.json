@@ -1,0 +1,62 @@
+{
+  "status": "completed",
+  "experiment_id": "stage23g1_sed_halfdisc_gap_diagnosis",
+  "role": "frozen_strong_detector_gap_diagnosis",
+  "target": "exact author-code SED full model",
+  "missing_evidence_hypothesis": "halfdisc_distribution_contrast",
+  "detector_runs": 0,
+  "descriptor_computations": 0,
+  "cache_hits": 114,
+  "protected_lineage_bytes_read": false,
+  "summaries": {
+    "UDED_selection_overlap_clean": {
+      "n_rows": 70,
+      "n_unique_images": 14,
+      "mean_spearman": 0.044175000752486815,
+      "mean_cue_unique_gt_fraction": 0.256667589917124,
+      "mean_cue_rescue_of_sed_misses": 0.8866179579377842,
+      "mean_cue_unique_fp_fraction": 0.5260311912502491,
+      "mean_p_cue_correct_given_sed_wrong": 0.6010937255850035,
+      "unique_gt_image_fraction": 0.9285714285714286
+    },
+    "BSDS500_validation": {
+      "n_rows": 100,
+      "n_unique_images": 100,
+      "mean_spearman": -0.01520875294613784,
+      "mean_cue_unique_gt_fraction": 0.1723260375905706,
+      "mean_cue_rescue_of_sed_misses": 0.668244771047766,
+      "mean_cue_unique_fp_fraction": 0.5985124331291871,
+      "mean_p_cue_correct_given_sed_wrong": 0.38055506190582633,
+      "unique_gt_image_fraction": 1.0
+    }
+  },
+  "preregistered_checks": {
+    "UDED_selection_overlap_clean": {
+      "unique_gt_at_least_0p02": true,
+      "conditional_correctness_at_least_0p50": true,
+      "unique_gt_on_at_least_0p60_images": true,
+      "mean_spearman_at_most_0p80": true
+    },
+    "BSDS500_validation": {
+      "unique_gt_at_least_0p02": true,
+      "conditional_correctness_at_least_0p50": false,
+      "unique_gt_on_at_least_0p60_images": true,
+      "mean_spearman_at_most_0p80": true
+    }
+  },
+  "gap_supported": false,
+  "decision_semantics": "If and only if gap_supported is true, a later separately preregistered intervention may test the fixed equal-arithmetic-mean control after the already frozen Stage23F UDED membership transform. Failure closes this SED/half-disc route without substitution.",
+  "incumbent_changed": false,
+  "visual_preview": {
+    "path": "results/local_dev/stage23g1_sed_halfdisc_gap_diagnosis/best_method_preview.png",
+    "selection": "UDED overlap-clean positions 1/7/14 followed by BSDS500-val positions 1/50/100",
+    "panel_order": [
+      "input",
+      "GT union",
+      "exact author SED score",
+      "cached half-disc distribution contrast"
+    ],
+    "optimization_use": "documentary only; no result-driven example selection"
+  },
+  "official_attachment": "incumbent-only; no Stage-23G1 candidate exists"
+}

@@ -1,0 +1,33 @@
+{
+  "artifact_sha256": "285d9653d710eb898d0d43d5c0e7cd3eca7c12aebbb5c3615c11fdc3fe90780f",
+  "dtype": "float32",
+  "identity": {
+    "code_hash": "7f0a80cb4f435094c6368128a2eba488863450223ec4e22670ce4c0bd5f57dc5",
+    "dataset": "UDED",
+    "descriptor_id": "structure_tensor_coherence",
+    "dtype": "float32",
+    "gt_used": false,
+    "image_id": "01-0843x4",
+    "inference_shape": [
+      170,
+      256
+    ],
+    "native_shape": [
+      339,
+      510
+    ],
+    "parameters": {
+      "integration_sigma": 4.0,
+      "noise_sigma": 0.5
+    },
+    "preprocessing": "downscale_maxside256_then_registered_descriptor_preprocessing_v1",
+    "schema_version": 1,
+    "source_sha256": "17fabb2a80226f7f83f2a10649354af7f3412199f80493660b132f48f6bb5c22",
+    "split": "selection_overlap_clean"
+  },
+  "schema_version": 1,
+  "shape": [
+    170,
+    256
+  ]
+}

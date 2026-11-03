@@ -1,0 +1,37 @@
+{
+  "artifact_sha256": "6a59b3214e8414d3913da3d677c6e72588be23661e5acd1d3094bf5290921a13",
+  "dtype": "float32",
+  "identity": {
+    "code_hash": "7f0a80cb4f435094c6368128a2eba488863450223ec4e22670ce4c0bd5f57dc5",
+    "dataset": "BSDS500",
+    "descriptor_id": "halfdisc_distribution_contrast",
+    "dtype": "float32",
+    "gt_used": false,
+    "image_id": "304074",
+    "inference_shape": [
+      256,
+      171
+    ],
+    "native_shape": [
+      481,
+      321
+    ],
+    "parameters": {
+      "comparison": "chi_square",
+      "lbp_points": 8,
+      "lbp_radius": 1.0,
+      "minimum_radius": 3,
+      "orientations": 8,
+      "radius_fraction": 0.02
+    },
+    "preprocessing": "downscale_maxside256_then_registered_descriptor_preprocessing_v1",
+    "schema_version": 1,
+    "source_sha256": "5f9d7dbb32bc871450ce1384e5fbca5df7cfd5edbafb4464aed140194d41329e",
+    "split": "val"
+  },
+  "schema_version": 1,
+  "shape": [
+    256,
+    171
+  ]
+}

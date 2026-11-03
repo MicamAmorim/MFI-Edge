@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "include_incumbent": false,
+  "methods": [
+    {
+      "name": "stage23g3_exact_author_sco_frozen_baseline",
+      "export": {
+        "script": "automation/stage23g3_sco_frozen_bsds_export.py",
+        "args": [
+          "--image-dir",
+          "{image_dir}",
+          "--output-dir",
+          "{output_dir}",
+          "--split",
+          "{split}"
+        ]
+      }
+    }
+  ],
+  "reuse_note": "hash-validated byte reuse of the 100 frozen Stage-15E exact SCO maps; no detector rerun"
+}

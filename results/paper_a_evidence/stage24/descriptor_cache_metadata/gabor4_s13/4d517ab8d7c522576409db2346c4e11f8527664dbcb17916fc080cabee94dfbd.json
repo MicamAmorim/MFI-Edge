@@ -1,0 +1,34 @@
+{
+  "artifact_sha256": "9c1ae8b551111a7dfb3a5e04137cc8ddd7e873453b01c8fefecb193c3d7da2df",
+  "dtype": "float32",
+  "identity": {
+    "code_hash": "7f0a80cb4f435094c6368128a2eba488863450223ec4e22670ce4c0bd5f57dc5",
+    "dataset": "UDED",
+    "descriptor_id": "gabor4_s13",
+    "dtype": "float32",
+    "gt_used": false,
+    "image_id": "09-MDBD-1C",
+    "inference_shape": [
+      256,
+      256
+    ],
+    "native_shape": [
+      720,
+      720
+    ],
+    "parameters": {
+      "mode": "oriented_ms",
+      "orientations": 4,
+      "window": 13
+    },
+    "preprocessing": "downscale_maxside256_then_registered_descriptor_preprocessing_v1",
+    "schema_version": 1,
+    "source_sha256": "639aa076cb9ef7a59e19219f55ed21d930c299e4b8c92cc291251ea3d599bf9c",
+    "split": "selection_overlap_clean"
+  },
+  "schema_version": 1,
+  "shape": [
+    256,
+    256
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "status": "completed",
+  "experiment_id": "stage23g3_sco_overlap_clean_materialization",
+  "scientific_role": "exact_target_baseline_materialization_no_scoring_or_intervention",
+  "target": "Yang et al. exact author SCO with modified spatial-sparseness constraint",
+  "implementation_fidelity": "exact author detector on declared Stage-23 max-side-256 UDED raster adapter",
+  "fixed_parameters": {
+    "sigma": 1.1,
+    "orientations": 8,
+    "cone_weight": -0.7,
+    "sparseness_window": 5
+  },
+  "raster_adapter": "stage23c_maxside256_bilinear_then_round_uint8_png_v1",
+  "n_images": 14,
+  "protected_lineage_excluded_before_bytes": true,
+  "detector_calls_this_invocation": 14,
+  "second_traversal_cache_hits": 14,
+  "second_traversal_detector_calls": 0,
+  "gt_use": "preview only; no scoring, fitting, thresholding, or detector access",
+  "existing_bsds_validation_baseline": {
+    "ODS": 0.6565815483216721,
+    "OIS": 0.6825643902583052,
+    "AP": 0.6949393533879493
+  },
+  "preview": {
+    "path": "results/local_dev/stage23g3_sco_overlap_clean_materialization/best_method_preview.png",
+    "selection": "overlap-clean UDED positions 1, 7, 14",
+    "panel_order": [
+      "input",
+      "GT",
+      "exact author SCO score"
+    ],
+    "optimization_use": "none"
+  },
+  "decision_semantics": "pass authorizes only a separately preregistered target-gap diagnosis; no cue, aggregation, intervention, or incumbent decision"
+}

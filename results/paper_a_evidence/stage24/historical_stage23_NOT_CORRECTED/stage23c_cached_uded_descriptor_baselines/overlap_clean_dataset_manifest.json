@@ -1,0 +1,313 @@
+{
+  "schema_version": 1,
+  "selection_count_before": 15,
+  "selection_count_after": 14,
+  "known_lineage_id": "35028",
+  "lineage_filter_applied_before_bytes": true,
+  "records": [
+    {
+      "selection_position": 1,
+      "uded_pair_position": 1,
+      "image_id": "01-0843x4",
+      "image_path": "imgs/01-0843x4.png",
+      "gt_path": "gt/01-0843x4.png",
+      "excluded": false,
+      "reason": "none",
+      "bytes_read": true,
+      "source_sha256": "17fabb2a80226f7f83f2a10649354af7f3412199f80493660b132f48f6bb5c22",
+      "gt_sha256": "9ef0a734af94f93a193cf981f26a7d4f16810f32baca56349bdaafca474f6242",
+      "original_shape": [
+        339,
+        510
+      ],
+      "evaluation_shape": [
+        170,
+        256
+      ],
+      "resize_scale": 0.5019607843137255
+    },
+    {
+      "selection_position": 2,
+      "uded_pair_position": 3,
+      "image_id": "03-35028",
+      "image_path": "imgs/03-35028.png",
+      "gt_path": "gt/03-35028.png",
+      "excluded": true,
+      "reason": "known protected BSDS-test filename lineage",
+      "bytes_read": false
+    },
+    {
+      "selection_position": 3,
+      "uded_pair_position": 5,
+      "image_id": "05-WIREFRAME-2",
+      "image_path": "imgs/05-WIREFRAME-2.png",
+      "gt_path": "gt/05-WIREFRAME-2.png",
+      "excluded": false,
+      "reason": "none",
+      "bytes_read": true,
+      "source_sha256": "976ca00658a6bf5de0735f852d970dd0a39ef0a60b2dec0c3248e5ff1773caf8",
+      "gt_sha256": "757385529f4fc81d61b55ed29c1813d6bae5e8f69af826b4b27e9fdde9ba7ce6",
+      "original_shape": [
+        332,
+        500
+      ],
+      "evaluation_shape": [
+        170,
+        256
+      ],
+      "resize_scale": 0.512
+    },
+    {
+      "selection_position": 4,
+      "uded_pair_position": 7,
+      "image_id": "07-CITYSCAPES-2C",
+      "image_path": "imgs/07-CITYSCAPES-2C.png",
+      "gt_path": "gt/07-CITYSCAPES-2C.png",
+      "excluded": false,
+      "reason": "none",
+      "bytes_read": true,
+      "source_sha256": "e9e54c2af0579a3f99e63cb96c614b2ab3f07814cd4369f247178da18019250b",
+      "gt_sha256": "e949d363900c647183ac8cecca79673f2a637ce95670a609dbda141302bad479",
+      "original_shape": [
+        720,
+        720
+      ],
+      "evaluation_shape": [
+        256,
+        256
+      ],
+      "resize_scale": 0.35555555555555557
+    },
+    {
+      "selection_position": 5,
+      "uded_pair_position": 9,
+      "image_id": "09-MDBD-1C",
+      "image_path": "imgs/09-MDBD-1C.png",
+      "gt_path": "gt/09-MDBD-1C.png",
+      "excluded": false,
+      "reason": "none",
+      "bytes_read": true,
+      "source_sha256": "639aa076cb9ef7a59e19219f55ed21d930c299e4b8c92cc291251ea3d599bf9c",
+      "gt_sha256": "3a89495451c4a9a67c3a7635232201069396157098c345d82d7b37a84d6356cf",
+      "original_shape": [
+        720,
+        720
+      ],
+      "evaluation_shape": [
+        256,
+        256
+      ],
+      "resize_scale": 0.35555555555555557
+    },
+    {
+      "selection_position": 6,
+      "uded_pair_position": 11,
+      "image_id": "11-NYUD-2",
+      "image_path": "imgs/11-NYUD-2.png",
+      "gt_path": "gt/11-NYUD-2.png",
+      "excluded": false,
+      "reason": "none",
+      "bytes_read": true,
+      "source_sha256": "50186edde4fcf47ff476c35c951be77080a93c24cd28786fd6255459414fdd53",
+      "gt_sha256": "456e43676f0b0cb54caef7bb81dfbd50a45061c47fdb67c8db816c1bb5e61263",
+      "original_shape": [
+        425,
+        560
+      ],
+      "evaluation_shape": [
+        194,
+        256
+      ],
+      "resize_scale": 0.45714285714285713
+    },
+    {
+      "selection_position": 7,
+      "uded_pair_position": 13,
+      "image_id": "13-BIPED-1C",
+      "image_path": "imgs/13-BIPED-1C.png",
+      "gt_path": "gt/13-BIPED-1C.png",
+      "excluded": false,
+      "reason": "none",
+      "bytes_read": true,
+      "source_sha256": "d9b0c39c41904dee242bd1ccded7400d02ab0cd14a6f4ce5e1c03d178cec9d79",
+      "gt_sha256": "7accfa1a3b49641752f93aafe395a8624d4ec37d8977fd39339bd75c3d088191",
+      "original_shape": [
+        720,
+        720
+      ],
+      "evaluation_shape": [
+        256,
+        256
+      ],
+      "resize_scale": 0.35555555555555557
+    },
+    {
+      "selection_position": 8,
+      "uded_pair_position": 15,
+      "image_id": "15-P1020854",
+      "image_path": "imgs/15-P1020854.png",
+      "gt_path": "gt/15-P1020854.png",
+      "excluded": false,
+      "reason": "none",
+      "bytes_read": true,
+      "source_sha256": "cbee4e8c122f0ae1baa4fa00a7703bf03cdeec3db55ac35adf5fe6c1e3ce9e6d",
+      "gt_sha256": "ae728ad9d5e8057881ba1f040e8bd59b079f963bc8fca134b188f715cd7b4c21",
+      "original_shape": [
+        480,
+        640
+      ],
+      "evaluation_shape": [
+        192,
+        256
+      ],
+      "resize_scale": 0.4
+    },
+    {
+      "selection_position": 9,
+      "uded_pair_position": 17,
+      "image_id": "17-1194",
+      "image_path": "imgs/17-1194.png",
+      "gt_path": "gt/17-1194.png",
+      "excluded": false,
+      "reason": "none",
+      "bytes_read": true,
+      "source_sha256": "b74994f7957c1331dbbe94ae02e48b6067b89102a7546b6f0a42be8fda24d967",
+      "gt_sha256": "73d5ff1b8a6d8320606676e0206d9e8ff557e7b105daaeb9a251986ba64c9da5",
+      "original_shape": [
+        600,
+        600
+      ],
+      "evaluation_shape": [
+        256,
+        256
+      ],
+      "resize_scale": 0.4266666666666667
+    },
+    {
+      "selection_position": 10,
+      "uded_pair_position": 19,
+      "image_id": "19-img_6150",
+      "image_path": "imgs/19-img_6150.png",
+      "gt_path": "gt/19-img_6150.png",
+      "excluded": false,
+      "reason": "none",
+      "bytes_read": true,
+      "source_sha256": "533f794dd69a0e4f61f3f0a106e1e4d3fbfb30cd8798b822604800ae1c86c11f",
+      "gt_sha256": "f3f27847340c7715c09f1268bf22242d9eeaeed7ec7d589bd90a25cedec37e24",
+      "original_shape": [
+        425,
+        560
+      ],
+      "evaluation_shape": [
+        194,
+        256
+      ],
+      "resize_scale": 0.45714285714285713
+    },
+    {
+      "selection_position": 11,
+      "uded_pair_position": 21,
+      "image_id": "21-00065305",
+      "image_path": "imgs/21-00065305.png",
+      "gt_path": "gt/21-00065305.png",
+      "excluded": false,
+      "reason": "none",
+      "bytes_read": true,
+      "source_sha256": "77b27bae475950c120a3e82ea7081c2c8175af384c9eda53cb8513c06f68402d",
+      "gt_sha256": "de5165e4a27bb62466488c1df2b6870ded586b9a457b717d66e8f8b22aeeab41",
+      "original_shape": [
+        400,
+        500
+      ],
+      "evaluation_shape": [
+        205,
+        256
+      ],
+      "resize_scale": 0.512
+    },
+    {
+      "selection_position": 12,
+      "uded_pair_position": 23,
+      "image_id": "23-img_011_SRF_2_HR",
+      "image_path": "imgs/23-img_011_SRF_2_HR.png",
+      "gt_path": "gt/23-img_011_SRF_2_HR.png",
+      "excluded": false,
+      "reason": "none",
+      "bytes_read": true,
+      "source_sha256": "0d41b27b50768db3fcaf3e2893a1fb7b5e75d7f1a46112ae7af157955be6ad9b",
+      "gt_sha256": "5554f4d24501e12150ffd6f0494b9c65bdf2f934420f53e176972f6d19143487",
+      "original_shape": [
+        512,
+        282
+      ],
+      "evaluation_shape": [
+        256,
+        141
+      ],
+      "resize_scale": 0.5
+    },
+    {
+      "selection_position": 13,
+      "uded_pair_position": 25,
+      "image_id": "25-2008_002622",
+      "image_path": "imgs/25-2008_002622.png",
+      "gt_path": "gt/25-2008_002622.png",
+      "excluded": false,
+      "reason": "none",
+      "bytes_read": true,
+      "source_sha256": "7976d25cba20f33b3453643a640362d408e0fff7a38fe41f39e35e111469e2a1",
+      "gt_sha256": "d026ae6dd3af99b7731b8f96ce35d2ac0578538f7981000323c368af398b1b52",
+      "original_shape": [
+        500,
+        355
+      ],
+      "evaluation_shape": [
+        256,
+        182
+      ],
+      "resize_scale": 0.512
+    },
+    {
+      "selection_position": 14,
+      "uded_pair_position": 27,
+      "image_id": "27-img_5264",
+      "image_path": "imgs/27-img_5264.png",
+      "gt_path": "gt/27-img_5264.png",
+      "excluded": false,
+      "reason": "none",
+      "bytes_read": true,
+      "source_sha256": "28eb1cf610f9025e72a45ff9af31be6d4ab9056f907b5ea75e5d304ac3a3fcec",
+      "gt_sha256": "feb83430c8a73ba80e746faf2243c4c75401eb91355dcbf24a76b6b1b0a1e79a",
+      "original_shape": [
+        425,
+        560
+      ],
+      "evaluation_shape": [
+        194,
+        256
+      ],
+      "resize_scale": 0.45714285714285713
+    },
+    {
+      "selection_position": 15,
+      "uded_pair_position": 29,
+      "image_id": "29-img_5182",
+      "image_path": "imgs/29-img_5182.png",
+      "gt_path": "gt/29-img_5182.png",
+      "excluded": false,
+      "reason": "none",
+      "bytes_read": true,
+      "source_sha256": "b081b120fd84ebb23e0541cab5d64aeffbb050993cd094af8169b32a3e4d6fb0",
+      "gt_sha256": "2f7837433a88b4e2dc3ec5057d4497d5bc27c64a608eadf0cb0f63d93d177070",
+      "original_shape": [
+        425,
+        560
+      ],
+      "evaluation_shape": [
+        194,
+        256
+      ],
+      "resize_scale": 0.45714285714285713
+    }
+  ]
+}

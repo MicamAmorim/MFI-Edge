@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "include_incumbent": false,
+  "methods": [
+    {
+      "name": "stage23g6_exact_author_compass_frozen_baseline",
+      "export": {
+        "script": "automation/stage23g6_compass_frozen_bsds_export.py",
+        "args": [
+          "--image-dir",
+          "{image_dir}",
+          "--output-dir",
+          "{output_dir}",
+          "--split",
+          "{split}"
+        ]
+      }
+    }
+  ],
+  "reuse_note": "hash-validated byte reuse of 100 frozen Stage-15F Compass maps; no detector rerun"
+}

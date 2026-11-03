@@ -1,0 +1,47 @@
+[
+  {
+    "item": "individual_descriptor_corrected_heldout",
+    "reason": "Stage24 nao avaliou individualmente os 13 descritores com GT nativo.",
+    "status": "NOT_PRODUCED"
+  },
+  {
+    "item": "heldout_per_image_fold_counts",
+    "reason": "Stage24 salvou TP/FP/FN agregados por fold, nao por imagem.",
+    "status": "NOT_PRODUCED"
+  },
+  {
+    "item": "matched_identity_vs_suppressor_ablation",
+    "reason": "residual_anatomy.csv registra pixels exatos, nao delta F1 one-to-one.",
+    "status": "NOT_PRODUCED"
+  },
+  {
+    "item": "old_vs_new_same_complementarity_formula",
+    "reason": "Scores Stage23D e Stage24 possuem formulas diferentes.",
+    "status": "NOT_PRODUCED"
+  },
+  {
+    "item": "full_choquet_sugeno_owa_landscape",
+    "reason": "Stage24 avaliou apenas cinco agregadores e pares.",
+    "status": "NOT_PERFORMED"
+  },
+  {
+    "item": "triples_recertification",
+    "reason": "Stage24 nao avaliou triplas.",
+    "status": "NOT_PERFORMED"
+  },
+  {
+    "item": "literature_float_detector_transfer",
+    "reason": "Os mapas historicos PNG sao rejeitados para transferencia corrigida.",
+    "status": "GUARDED"
+  },
+  {
+    "item": "official_Berkeley_reference_reproduction",
+    "reason": "Flag de reproducao independente nao verificada.",
+    "status": "PENDING"
+  },
+  {
+    "item": "protected_BSDS_test",
+    "reason": "A avaliacao Stage24 cobriu BSDS validation.",
+    "status": "NOT_PERFORMED"
+  }
+]

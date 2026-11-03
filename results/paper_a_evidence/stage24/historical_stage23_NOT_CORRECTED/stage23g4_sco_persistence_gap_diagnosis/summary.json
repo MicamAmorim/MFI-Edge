@@ -1,0 +1,62 @@
+{
+  "status": "completed",
+  "experiment_id": "stage23g4_sco_persistence_gap_diagnosis",
+  "role": "frozen_strong_detector_gap_diagnosis",
+  "target": "exact author-code SCO",
+  "missing_evidence_hypothesis": "gabor4_scale_persistence",
+  "detector_runs": 0,
+  "descriptor_computations": 0,
+  "cache_hits": 114,
+  "protected_lineage_bytes_read": false,
+  "summaries": {
+    "UDED_selection_overlap_clean": {
+      "n_rows": 70,
+      "n_unique_images": 14,
+      "mean_spearman": 0.17022221398533757,
+      "mean_cue_unique_gt_fraction": 0.21663536330661265,
+      "mean_cue_rescue_of_sed_misses": 0.7761711624445715,
+      "mean_cue_unique_fp_fraction": 0.37050673388281213,
+      "mean_p_cue_correct_given_sed_wrong": 0.5471790327699424,
+      "unique_gt_image_fraction": 1.0
+    },
+    "BSDS500_validation": {
+      "n_rows": 100,
+      "n_unique_images": 100,
+      "mean_spearman": 0.11977178940194654,
+      "mean_cue_unique_gt_fraction": 0.2595877340407569,
+      "mean_cue_rescue_of_sed_misses": 0.9487278188427644,
+      "mean_cue_unique_fp_fraction": 0.6777919620687898,
+      "mean_p_cue_correct_given_sed_wrong": 0.6038047292990012,
+      "unique_gt_image_fraction": 1.0
+    }
+  },
+  "preregistered_checks": {
+    "UDED_selection_overlap_clean": {
+      "unique_gt_at_least_0p02": true,
+      "conditional_correctness_at_least_0p50": true,
+      "unique_gt_on_at_least_0p60_images": true,
+      "mean_spearman_at_most_0p80": true
+    },
+    "BSDS500_validation": {
+      "unique_gt_at_least_0p02": true,
+      "conditional_correctness_at_least_0p50": true,
+      "unique_gt_on_at_least_0p60_images": true,
+      "mean_spearman_at_most_0p80": true
+    }
+  },
+  "gap_supported": true,
+  "decision_semantics": "Only gap_supported=true may authorize a separately preregistered equal-mean intervention after the frozen Stage23F persistence membership transform. Failure closes SCO/persistence without substitution.",
+  "incumbent_changed": false,
+  "visual_preview": {
+    "path": "results/local_dev/stage23g4_sco_persistence_gap_diagnosis/best_method_preview.png",
+    "selection": "UDED overlap-clean positions 1/7/14 followed by BSDS500-val positions 1/50/100",
+    "panel_order": [
+      "input",
+      "GT union",
+      "exact author SCO score",
+      "cached Gabor scale persistence"
+    ],
+    "optimization_use": "documentary only; no result-driven example selection"
+  },
+  "official_attachment": "incumbent-only; no Stage-23G4 candidate exists"
+}

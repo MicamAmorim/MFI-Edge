@@ -1,0 +1,33 @@
+{
+  "artifact_sha256": "2613ffb660a94c7273a24044e937836f18ddf42e36060b5a79bd97c75d22a13e",
+  "dtype": "float32",
+  "identity": {
+    "code_hash": "7f0a80cb4f435094c6368128a2eba488863450223ec4e22670ce4c0bd5f57dc5",
+    "dataset": "UDED",
+    "descriptor_id": "scharr_pre_nms_magnitude",
+    "dtype": "float32",
+    "gt_used": false,
+    "image_id": "01-0843x4",
+    "inference_shape": [
+      170,
+      256
+    ],
+    "native_shape": [
+      339,
+      510
+    ],
+    "parameters": {
+      "conditioning": "median3_reflect",
+      "sigma": 1.0
+    },
+    "preprocessing": "downscale_maxside256_then_registered_descriptor_preprocessing_v1",
+    "schema_version": 1,
+    "source_sha256": "17fabb2a80226f7f83f2a10649354af7f3412199f80493660b132f48f6bb5c22",
+    "split": "selection_overlap_clean"
+  },
+  "schema_version": 1,
+  "shape": [
+    170,
+    256
+  ]
+}

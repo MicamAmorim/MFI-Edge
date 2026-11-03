@@ -1,0 +1,26 @@
+{
+  "aggregator": "minimum",
+  "fn": 41381,
+  "fold": 3,
+  "fp": 54020,
+  "model_sha256": "8176d0fdfbeadd31c230fdbe87377610c38a462ce1bda730b659564452aa80bc",
+  "pair": [
+    "hessian_s7",
+    "halfdisc_distribution_contrast"
+  ],
+  "parameter": 1.0,
+  "repeat": 2,
+  "suppressor": "disagreement",
+  "threshold": 0.5119625255465508,
+  "tp": 46105,
+  "train_F1": 0.5074437869225453,
+  "valid_ids": [
+    "01-0843x4",
+    "13-BIPED-1C",
+    "21-00065305",
+    "23-img_011_SRF_2_HR"
+  ],
+  "validation_F1": 0.4914957012115494,
+  "validation_precision": 0.4604744069912609,
+  "validation_recall": 0.5269986054911643
+}

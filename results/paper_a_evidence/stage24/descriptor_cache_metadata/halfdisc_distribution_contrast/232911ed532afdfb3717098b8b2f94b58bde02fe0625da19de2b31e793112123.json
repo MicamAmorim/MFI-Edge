@@ -1,0 +1,37 @@
+{
+  "artifact_sha256": "393f251c1cad4736d48b5867a96a6d91fef61119a723616fc8e6a9c6561f62ff",
+  "dtype": "float32",
+  "identity": {
+    "code_hash": "7f0a80cb4f435094c6368128a2eba488863450223ec4e22670ce4c0bd5f57dc5",
+    "dataset": "UDED",
+    "descriptor_id": "halfdisc_distribution_contrast",
+    "dtype": "float32",
+    "gt_used": false,
+    "image_id": "27-img_5264",
+    "inference_shape": [
+      194,
+      256
+    ],
+    "native_shape": [
+      425,
+      560
+    ],
+    "parameters": {
+      "comparison": "chi_square",
+      "lbp_points": 8,
+      "lbp_radius": 1.0,
+      "minimum_radius": 3,
+      "orientations": 8,
+      "radius_fraction": 0.02
+    },
+    "preprocessing": "downscale_maxside256_then_registered_descriptor_preprocessing_v1",
+    "schema_version": 1,
+    "source_sha256": "28eb1cf610f9025e72a45ff9af31be6d4ab9056f907b5ea75e5d304ac3a3fcec",
+    "split": "selection_overlap_clean"
+  },
+  "schema_version": 1,
+  "shape": [
+    194,
+    256
+  ]
+}

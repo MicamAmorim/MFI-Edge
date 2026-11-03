@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "include_incumbent": true,
+  "methods": [],
+  "analysis_only_note": "Stage 23G4 reuses exact SCO and cached persistence maps for gap diagnosis; no candidate map is created. Official attachment is incumbent-only."
+}

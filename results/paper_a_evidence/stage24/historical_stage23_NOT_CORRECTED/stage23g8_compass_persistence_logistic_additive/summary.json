@@ -1,0 +1,47 @@
+{
+  "status": "completed",
+  "experiment_id": "stage23g8_compass_persistence_logistic_additive",
+  "detector_runs": 0,
+  "descriptor_computations": 0,
+  "cache_hits": 114,
+  "protected_lineage_bytes_read": false,
+  "uded": {
+    "compass": {
+      "precision": 0.5590681985931532,
+      "recall": 0.7491749734888653,
+      "F1": 0.640308945305521
+    },
+    "candidate": {
+      "precision": 0.6239379890333313,
+      "recall": 0.8337688229056204,
+      "F1": 0.713751267980227
+    },
+    "delta": {
+      "precision": 0.06486979044017815,
+      "recall": 0.08459384941675507,
+      "F1": 0.07344232267470607
+    },
+    "mean_fold_F1_delta": 0.07711214698221575,
+    "fold_wins": 15,
+    "n_folds": 15,
+    "fit_successes": 15,
+    "gate_pass": true
+  },
+  "bsds_candidate_maps": 100,
+  "candidate_map_cache_hits": 0,
+  "final_model_sha256": "047eb1eb3923ccc3a40f06e82f9bcc26ed0edf2e82f67cee75fe9e997c074eff",
+  "incumbent_changed": false,
+  "decision_semantics": "Official exact-Compass comparison separates operational ODS/OIS from ranking AP; complete eligibility also requires the frozen UDED gate.",
+  "visual_preview": {
+    "path": "results/local_dev/stage23g8_compass_persistence_logistic_additive/best_method_preview.png",
+    "selection": "UDED 1/7/14 then BSDS val 1/50/100",
+    "panel_order": [
+      "input",
+      "GT union",
+      "exact Compass",
+      "persistence membership",
+      "nonnegative logistic candidate"
+    ],
+    "optimization_use": "documentary only"
+  }
+}

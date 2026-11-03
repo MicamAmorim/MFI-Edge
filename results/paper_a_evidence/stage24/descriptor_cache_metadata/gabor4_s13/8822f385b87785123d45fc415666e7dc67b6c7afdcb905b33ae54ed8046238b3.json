@@ -1,0 +1,34 @@
+{
+  "artifact_sha256": "fb8fd924bb4eef3c8679366a095b63d6b0238b37faff355c516c95de8d35c005",
+  "dtype": "float32",
+  "identity": {
+    "code_hash": "7f0a80cb4f435094c6368128a2eba488863450223ec4e22670ce4c0bd5f57dc5",
+    "dataset": "UDED",
+    "descriptor_id": "gabor4_s13",
+    "dtype": "float32",
+    "gt_used": false,
+    "image_id": "23-img_011_SRF_2_HR",
+    "inference_shape": [
+      256,
+      141
+    ],
+    "native_shape": [
+      512,
+      282
+    ],
+    "parameters": {
+      "mode": "oriented_ms",
+      "orientations": 4,
+      "window": 13
+    },
+    "preprocessing": "downscale_maxside256_then_registered_descriptor_preprocessing_v1",
+    "schema_version": 1,
+    "source_sha256": "0d41b27b50768db3fcaf3e2893a1fb7b5e75d7f1a46112ae7af157955be6ad9b",
+    "split": "selection_overlap_clean"
+  },
+  "schema_version": 1,
+  "shape": [
+    256,
+    141
+  ]
+}

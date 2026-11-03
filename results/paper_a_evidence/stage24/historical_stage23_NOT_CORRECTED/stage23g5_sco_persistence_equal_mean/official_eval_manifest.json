@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "include_incumbent": true,
+  "methods": [
+    {
+      "name": "exact_author_sco",
+      "export": {
+        "script": "automation/stage23g3_sco_frozen_bsds_export.py",
+        "args": [
+          "--image-dir",
+          "{image_dir}",
+          "--output-dir",
+          "{output_dir}",
+          "--split",
+          "{split}"
+        ]
+      }
+    },
+    {
+      "name": "stage23g5_sco_persistence_equal_mean",
+      "export": {
+        "script": "automation/stage23g5_frozen_bsds_export.py",
+        "args": [
+          "--image-dir",
+          "{image_dir}",
+          "--output-dir",
+          "{output_dir}",
+          "--split",
+          "{split}"
+        ]
+      }
+    }
+  ],
+  "stage23_note": "Compare exact SCO baseline and the single preregistered equal-mean intervention; standard Berkeley only is promotional."
+}

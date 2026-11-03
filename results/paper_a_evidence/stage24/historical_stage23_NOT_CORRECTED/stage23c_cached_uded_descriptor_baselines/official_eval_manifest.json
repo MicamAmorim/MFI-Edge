@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "include_incumbent": true,
+  "methods": [],
+  "analysis_only_note": "Stage 23C defines no BSDS candidate detector. The attachment is incumbent-only; split-specific BSDS evidence extraction is reserved for Stage 23F."
+}

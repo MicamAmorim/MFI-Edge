@@ -1,0 +1,34 @@
+{
+  "artifact_sha256": "274e31ca132a4880a67901a3ef2f613e77e9ed2e7bd325b6140be03a24d82c38",
+  "dtype": "float32",
+  "identity": {
+    "code_hash": "7f0a80cb4f435094c6368128a2eba488863450223ec4e22670ce4c0bd5f57dc5",
+    "dataset": "UDED",
+    "descriptor_id": "lab_dizenzo_tensor_gradient",
+    "dtype": "float32",
+    "gt_used": false,
+    "image_id": "29-img_5182",
+    "inference_shape": [
+      194,
+      256
+    ],
+    "native_shape": [
+      425,
+      560
+    ],
+    "parameters": {
+      "color_space": "CIELAB",
+      "conditioning": "channel_median3_reflect",
+      "nms": false
+    },
+    "preprocessing": "downscale_maxside256_then_registered_descriptor_preprocessing_v1",
+    "schema_version": 1,
+    "source_sha256": "b081b120fd84ebb23e0541cab5d64aeffbb050993cd094af8169b32a3e4d6fb0",
+    "split": "selection_overlap_clean"
+  },
+  "schema_version": 1,
+  "shape": [
+    194,
+    256
+  ]
+}

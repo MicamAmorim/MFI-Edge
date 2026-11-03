@@ -1,0 +1,45 @@
+{
+  "status": "completed",
+  "experiment_id": "stage23g5_sco_persistence_equal_mean",
+  "detector_runs": 0,
+  "descriptor_computations": 0,
+  "cache_hits": 114,
+  "protected_lineage_bytes_read": false,
+  "uded": {
+    "sco": {
+      "precision": 0.6349731032146329,
+      "recall": 0.6816246023329798,
+      "F1": 0.657472342762123
+    },
+    "candidate": {
+      "precision": 0.5966066865190363,
+      "recall": 0.7982693531283139,
+      "F1": 0.6828604409033839
+    },
+    "delta": {
+      "precision": -0.038366416695596595,
+      "recall": 0.1166447507953341,
+      "F1": 0.025388098141260973
+    },
+    "mean_fold_F1_delta": 0.03579775271283438,
+    "fold_wins": 15,
+    "n_folds": 15,
+    "gate_pass": false
+  },
+  "bsds_candidate_maps": 100,
+  "candidate_map_cache_hits": 0,
+  "incumbent_changed": false,
+  "decision_semantics": "Final classification requires official exact-SCO comparison: operational ODS/OIS and ranking AP are separate axes.",
+  "visual_preview": {
+    "path": "results/local_dev/stage23g5_sco_persistence_equal_mean/best_method_preview.png",
+    "selection": "UDED 1/7/14 then BSDS val 1/50/100",
+    "panel_order": [
+      "input",
+      "GT union",
+      "exact SCO",
+      "persistence membership",
+      "equal mean"
+    ],
+    "optimization_use": "documentary only"
+  }
+}

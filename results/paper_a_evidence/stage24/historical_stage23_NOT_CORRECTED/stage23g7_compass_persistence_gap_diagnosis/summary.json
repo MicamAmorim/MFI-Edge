@@ -1,0 +1,62 @@
+{
+  "status": "completed",
+  "experiment_id": "stage23g7_compass_persistence_gap_diagnosis",
+  "role": "frozen_strong_detector_gap_diagnosis",
+  "target": "exact author-code Compass",
+  "missing_evidence_hypothesis": "gabor4_scale_persistence",
+  "detector_runs": 0,
+  "descriptor_computations": 0,
+  "cache_hits": 114,
+  "protected_lineage_bytes_read": false,
+  "summaries": {
+    "UDED_selection_overlap_clean": {
+      "n_rows": 70,
+      "n_unique_images": 14,
+      "mean_spearman": 0.2256394072311908,
+      "mean_cue_unique_gt_fraction": 0.19621975987183124,
+      "mean_cue_rescue_of_sed_misses": 0.8502233896795915,
+      "mean_cue_unique_fp_fraction": 0.2596137078452861,
+      "mean_p_cue_correct_given_sed_wrong": 0.6388243049658325,
+      "unique_gt_image_fraction": 1.0
+    },
+    "BSDS500_validation": {
+      "n_rows": 100,
+      "n_unique_images": 100,
+      "mean_spearman": 0.10061021861625218,
+      "mean_cue_unique_gt_fraction": 0.2615023283227421,
+      "mean_cue_rescue_of_sed_misses": 0.9600352362052567,
+      "mean_cue_unique_fp_fraction": 0.640536435525203,
+      "mean_p_cue_correct_given_sed_wrong": 0.5471855860797881,
+      "unique_gt_image_fraction": 1.0
+    }
+  },
+  "preregistered_checks": {
+    "UDED_selection_overlap_clean": {
+      "unique_gt_at_least_0p02": true,
+      "conditional_correctness_at_least_0p50": true,
+      "unique_gt_on_at_least_0p60_images": true,
+      "mean_spearman_at_most_0p80": true
+    },
+    "BSDS500_validation": {
+      "unique_gt_at_least_0p02": true,
+      "conditional_correctness_at_least_0p50": true,
+      "unique_gt_on_at_least_0p60_images": true,
+      "mean_spearman_at_most_0p80": true
+    }
+  },
+  "gap_supported": true,
+  "decision_semantics": "A pass authorizes only a separate prospective intervention decision; no fusion is preselected. Failure closes Compass/persistence without substitution.",
+  "incumbent_changed": false,
+  "visual_preview": {
+    "path": "results/local_dev/stage23g7_compass_persistence_gap_diagnosis/best_method_preview.png",
+    "selection": "UDED 1/7/14 then BSDS-val 1/50/100",
+    "panel_order": [
+      "input",
+      "GT union",
+      "exact Compass",
+      "cached persistence"
+    ],
+    "optimization_use": "documentary only"
+  },
+  "official_attachment": "incumbent-only; no candidate exists"
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "split": "val",
+  "include_incumbent": true,
+  "methods": [
+    {
+      "name": "exact_author_compass",
+      "export": {
+        "script": "automation/stage23g6_compass_frozen_bsds_export.py",
+        "args": [
+          "--image-dir",
+          "{image_dir}",
+          "--output-dir",
+          "{output_dir}",
+          "--split",
+          "{split}"
+        ]
+      }
+    },
+    {
+      "name": "stage23g8_compass_persistence_logistic_additive",
+      "export": {
+        "script": "automation/stage23g8_frozen_bsds_export.py",
+        "args": [
+          "--image-dir",
+          "{image_dir}",
+          "--output-dir",
+          "{output_dir}",
+          "--split",
+          "{split}"
+        ]
+      }
+    }
+  ],
+  "stage23_note": "Compare exact Compass with the single preregistered persistence/logistic intervention; report operational ODS/OIS and ranking AP separately."
+}
