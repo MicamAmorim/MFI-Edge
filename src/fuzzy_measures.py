@@ -53,7 +53,7 @@ def power_tail_capacities(n, q=0.1, lead_shape=()):
 
 
 def adaptive_q_from_features(X, mode="mean", q_min=0.02, q_max=1.0):
-    """SWAFED-inspired local q from the descriptor vector at each pixel.
+    """Historical input-dependent local exponent, not published SWAFED.
 
     The 2024/2025 sliding-window adaptive-measure work computes the exponent of a
     power measure from local information. Here the same mechanism is transferred
@@ -238,7 +238,12 @@ def resolve_measure_spec(spec: Optional[Mapping[str, Any]], scale=None, context=
 
 
 def tail_capacities(X, spec=None, context=None, scale=None):
-    """Return mu(A_(i)) aligned with ascending-sorted X for each sample/pixel."""
+    """Return tail weights aligned with ascending-sorted X.
+
+    Adaptive-power/local-additive modes depend on X itself. They are not
+    evaluations of one fixed fuzzy measure; preserve historic names only
+    to reproduce prior explorations, not for mathematical capacity claims.
+    """
     X = np.clip(np.asarray(X, dtype=float), 0.0, 1.0)
     n = X.shape[-1]
     context = context or {}
