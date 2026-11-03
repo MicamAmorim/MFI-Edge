@@ -848,6 +848,9 @@ def stats_and_claims(out):
     selected=read_csv("inner_selected_heldout.csv")
     complete=(len(selected)==15)
     claims=[
+      {"claim":"Exact local Python package inventory captured",
+       "status":"FROZEN_ENVIRONMENT_IN_ARCHIVE" if (out/"environment.lock.txt").is_file()
+                and (out/"environment_manifest.json").is_file() else "MISSING"},
       {"claim":"Native GT correctness","status":"PROTOCOL_VERIFIED"},
       {"claim":"Full 78-pair corrected proxy landscape","status":"COMPLETED" if complete else "INCOMPLETE_CV"},
       {"claim":"Pair/triple and aggregator factorial","status":"EXPLORATORY_COMPLETE" if complete else "INCOMPLETE_CV"},
