@@ -421,6 +421,39 @@ def freeze_recipe(best, items, maps, out):
     return models
 
 
+def save_uded_publication_float_maps(items,maps,models,out):
+    """Save frozen continuous maps in native UDED geometry, without re-fitting.
+
+    Source images and ground truths are NOT copied. Derivative maps are stored
+    locally for the external scientific data package and SHA-indexed in Git.
+    """
+    folder=out/"float_predictions_uded"
+    rows=[]
+    for variant,model in sorted(models.items()):
+        name=re.sub(r"[^A-Za-z0-9_.-]","_",variant)
+        target=folder/name
+        target.mkdir(parents=True,exist_ok=True)
+        for item_index,item in enumerate(items):
+            cue=[maps[d][item_index] for d in model["descriptors"]]
+            score=inference_recipe(cue,model,item["img"])
+            if "score_quantile_mapping" in model:
+                score=quantile_mapping_apply(score,model["score_quantile_mapping"])
+            score=np.asarray(score,np.float32)
+            if score.shape!=item["gt"].shape or not np.isfinite(score).all():
+                raise RuntimeError("UDED publication map invalid: "+variant+"/"+item["id"])
+            path=target/(item["id"]+".npy")
+            np.save(path,score,allow_pickle=False)
+            rows.append({"dataset":"UDED","split":"selection_overlap_clean",
+                         "image_id":item["id"],"variant":variant,
+                         "shape":str(tuple(score.shape)),"dtype":"float32",
+                         "source_image_sha256":item.get("source_sha256",""),
+                         "score_sha256":sha256_file(path),
+                         "relative_path":path.relative_to(ROOT).as_posix(),
+                         "GT_embedded":False})
+    write_csv(out/"uded_float_prediction_manifest.csv",rows)
+    return {"n_float_maps":len(rows),"n_variants":len(models)}
+
+
 def run_bsds_export(args):
     if args.split != "val":
         raise RuntimeError("BSDS test split protected, export blocked")
@@ -468,6 +501,15 @@ def run_bsds_export(args):
                 score=quantile_mapping_apply(score,model["score_quantile_mapping"])
         if not np.isfinite(score).all() or score.shape!=shape:
             raise RuntimeError("Invalid native BSDS export score "+path.name)
+        # Preserve pre-8bit precision for independent score/AP auditing.
+        # This folder is ignored by Git and included only in the reviewed
+        # full scientific-data ZIP package.
+        native_float=ROOT/"results/local_dev/stage24_paper_a_recertification/float_predictions_bsds"
+        safe_variant=re.sub(r"[^A-Za-z0-9_.-]","_",args.variant)
+        float_dir=native_float/safe_variant
+        float_dir.mkdir(parents=True,exist_ok=True)
+        np.save(float_dir/(path.stem+".npy"),np.asarray(score,np.float32),
+                allow_pickle=False)
         # PNG is a terminal Berkeley adapter only; author maps and descriptor
         # scientific caches remain floating-point and SHA-verified.
         Image.fromarray(np.rint(np.clip(score,0,1)*255).astype(np.uint8),mode="L").save(
@@ -1008,6 +1050,7 @@ def main():
         if args.phase=="all":
             if args.max_folds!=15:raise RuntimeError("Full campaign requires 15 outer folds")
             models=freeze_recipe(best,items,maps,out)
+            save_uded_publication_float_maps(items,maps,models,out)
             if not args.skip_runtime:
                 run_runtime_audit(items,{"models":models},out,
                     max_images=args.runtime_images,repeats=args.runtime_repeats)
