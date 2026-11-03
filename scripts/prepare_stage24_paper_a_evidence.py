@@ -269,6 +269,47 @@ def legacy_archive(ev, include=True):
             "bytes": total, "protocol": "HISTORICAL_NOT_CORRECTED"}
 
 
+
+def cache_metadata_archive(ev):
+    """Retain Stage24 float-map identity and hashes, never binary .npy maps."""
+    folder = ROOT / "cache/local_dev/stage24/descriptors"
+    if not folder.is_dir():
+        ev.notes.append("Metadados do cache Stage24 nao encontrados")
+        return {"available": False}
+    sources, rows = sorted(folder.rglob("*.json")), []
+    if len(sources) > 1000:
+        raise RuntimeError("Mais de 1000 sidecars: confira cache de descritores antes de arquivar")
+    for src in sources:
+        data = json.loads(src.read_text(encoding="utf-8"))
+        ident = data.get("identity", {})
+        binary = src.with_suffix(".npy")
+        if binary.is_file() and data.get("artifact_sha256") != digest(binary):
+            raise RuntimeError("Hash do mapa float divergente: " + relative(binary))
+        ev.source(src, "float_descriptor_sidecar")
+        ev.copy(src, OUT / "descriptor_cache_metadata" / src.relative_to(folder),
+                "float_descriptor_sidecar_copy")
+        rows.append({
+            "dataset": ident.get("dataset"), "split": ident.get("split"),
+            "image_id": ident.get("image_id"), "descriptor_id": ident.get("descriptor_id"),
+            "native_shape": json.dumps(ident.get("native_shape")),
+            "inference_shape": json.dumps(ident.get("inference_shape")),
+            "dtype": data.get("dtype"), "map_sha256": data.get("artifact_sha256"),
+            "sidecar_sha256": digest(src), "binary_exists_locally": binary.is_file(),
+        })
+    p = OUT / "descriptor_float_cache_manifest.csv"
+    csv_write(p, ["dataset","split","image_id","descriptor_id","native_shape",
+                  "inference_shape","dtype","map_sha256","sidecar_sha256",
+                  "binary_exists_locally"], rows)
+    ev.output(p)
+    # Stage23 supplied verified float maps in 182/182 UDED cases.
+    upstream = ROOT / "cache/local_dev/stage23/manifests"
+    if upstream.is_dir():
+        for src in sorted(upstream.glob("*descriptor*.jsonl")):
+            ev.copy(src, OUT / "stage23_descriptor_cache_manifests" / src.name,
+                    "historical_upstream_float_descriptor_manifest")
+    return {"available": True, "sidecars": len(rows),
+            "note": "metadata/hashes only; no floating-point map binaries"}
+
 def finalize(ev, folds, official, historical):
     gaps = [
         ("individual_descriptor_corrected_heldout",
@@ -317,6 +358,7 @@ Arquivos principais:
 - folds/: 15 pair screens originais e 15 checkpoints.
 - official_bsds/: resumo oficial e contagens Berkeley por imagem/threshold.
 - stage24_additional/: manifest da geometria nativa e checkpoint.
+- descriptor_cache_metadata/: identidade e SHA dos mapas float (sem .npy).
 - preflight/: relatorios de integridade Stage24R0, se presentes.
 - historical_stage23_NOT_CORRECTED/: registros antigos, identificados como legado.
 - paper_a_evidence_gaps.json: metricas/ablacoes que AINDA NAO EXISTEM.
@@ -365,6 +407,7 @@ def main():
                 "stage24_native_manifest_or_checkpoint",
                 required=(filename == "native_dataset_manifest.json"))
     preflight_archive(ev)
+    cache_metadata_archive(ev)
     folds = folds_archive(ev)
     official = official_archive(ev)
     historical = legacy_archive(ev, not args.no_legacy)
