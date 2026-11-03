@@ -232,12 +232,12 @@ O launcher confere sintaxe e executa os testes antes de iniciar a
 campanha, seguida de recertificação UDED, congelamento, transferência
 guardada, Berkeley oficial, bootstrap e auditoria do Paper A.
 
-Para arquivar e revisar resultados antes do commit:
+A execução integral concluída prepara e adiciona ao staging o pacote curado automaticamente, sem fazer commit. Para regenerar o arquivo ou revisar resultados antes do commit:
 
     .\.venv\Scripts\python.exe scripts\prepare_stage24gl_paper_a_archive.py --stage --replace
     git --no-pager diff --cached --stat
 
-A campanha não faz git commit nem push automaticamente. Consultar os
+A campanha completa faz git add apenas do pacote científico ao terminar, mas não faz git commit nem push automaticamente. Consultar os
 arquivos claim_status.csv, bootstrap_integrity.json e
 final_claim_guard.json para distinguir resultados verificados de
 hipóteses em aberto.
