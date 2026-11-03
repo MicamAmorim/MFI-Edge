@@ -1,0 +1,183 @@
+{
+  "experiment_id": "stage24_residual_suppression",
+  "final_claim_guard": {
+    "final_claim_eligible": false,
+    "official_evaluation_completed": true,
+    "reference_reproduction_verified": false,
+    "rule": "BSDS validation can be reported as development evidence when completed, but final benchmark/SOTA claims remain blocked until the pinned official Berkeley path has reproduced its registered reference output."
+  },
+  "frozen_model": {
+    "gate": {
+      "beta": [
+        0.019262478410190586,
+        -0.25398509489374205,
+        1.1500218397133435,
+        0.20327790846445054,
+        0.05886926028367204,
+        -0.25398509489374205,
+        0.06470681642611201,
+        -0.0726231673357578,
+        0.2873219595863586
+      ],
+      "mean": [
+        0.43656226992607117,
+        0.4368377923965454,
+        0.03295149654150009,
+        0.011800924316048622,
+        0.43656226992607117,
+        0.6515225172042847,
+        0.5440422296524048,
+        0.21496742963790894
+      ],
+      "scale": [
+        0.13558462262153625,
+        0.1292647272348404,
+        0.026672078296542168,
+        0.014643337577581406,
+        0.13558462262153625,
+        0.19842584431171417,
+        0.14869175851345062,
+        0.1645398586988449
+      ]
+    },
+    "inference_geometry": "maxside256 score -> native",
+    "logistic": {
+      "beta": [
+        -2.3521170556973887,
+        3.587810993151747,
+        0.687295846598633
+      ]
+    },
+    "membership": {
+      "midpoint": [
+        0.12791669741272926,
+        0.2599221169948578
+      ],
+      "scale": [
+        0.1611314546316862,
+        0.2126612812280655
+      ]
+    },
+    "model_sha256": "eebd8dde6f360b4a04dbbcd01bf1cad77b7dd25e9a56cc24447862cdf1689992",
+    "pair": [
+      "hessian_s7",
+      "halfdisc_distribution_contrast"
+    ],
+    "recipe": {
+      "aggregator": "minimum",
+      "all_uded_F1": 0.5057938330919571,
+      "parameter": 1.0,
+      "suppressor": "disagreement",
+      "threshold": 0.49961796015501025
+    },
+    "schema_version": 1,
+    "training_target": "exact native GT; no dilation"
+  },
+  "literature_transfer": {
+    "next": "materialize author/native float detector maps before literature transfer",
+    "rule": "legacy uint8 PNG detector maps rejected as scientific inputs",
+    "status": "guarded"
+  },
+  "nested_cv": {
+    "F1": 0.4767155882807632,
+    "mean_fold_F1": 0.4741467432575422,
+    "precision": 0.4012925950836618,
+    "recall": 0.5870521043709285
+  },
+  "official_evaluation": {
+    "comparisons_vs_incumbent": {
+      "stage24_residual_suppression": {
+        "delta_AP": -0.09571798247377955,
+        "delta_ODS": -0.025699451752477454,
+        "delta_OIS": -0.026397564530198148
+      }
+    },
+    "dataset": "BSDS500",
+    "dataset_role": "development_official_metric",
+    "evaluator": {
+      "bsds500_commit": "a04b7c6c3a9f0ace74bf205c72a43d32e1c72722",
+      "family": "original Berkeley BSDS boundary benchmark",
+      "matlab": "C:\\Program Files\\MATLAB\\R2023a\\bin\\matlab.exe",
+      "max_dist": 0.0075,
+      "multi_annotator": true,
+      "nthresh": 99,
+      "reference_reproduction_verified": false,
+      "thinpb": true,
+      "windows_correspondPixels_source_commit": "94260b5d0fc068202598312e01a37604972dcc9e"
+    },
+    "experiment_id": "stage24_residual_suppression",
+    "export": {
+      "incumbent_compact_positive_choquet": {
+        "fingerprint": "e4fa09acaf61ec23",
+        "source": "incumbent_cache"
+      },
+      "stage24_residual_suppression": {
+        "script": "run_stage24_residual_campaign.py",
+        "source": "export_script",
+        "stdout_tail": "STAGE24_BSDS_EXPORT_COMPLETED 100"
+      }
+    },
+    "feedback_allowed": true,
+    "final_claim_guard": "Development metrics are decision-capable on train/val, but a final SOTA claim still requires an independently verified reference reproduction and the project's protected multi-benchmark gate.",
+    "manifest": "results/local_dev/stage24_residual_suppression/official_eval_manifest.json",
+    "manifest_sha256": "5e0dd4dfd3ce17a36a5f8e3a3dc326138262c57e19098bddd735265ad3725286",
+    "methods": {
+      "incumbent_compact_positive_choquet": {
+        "AP": 0.5342797661514589,
+        "ODS": 0.5454040412175503,
+        "ODS_precision": 0.4626215537789778,
+        "ODS_recall": 0.6642699167738467,
+        "ODS_threshold": 0.18,
+        "OIS": 0.5794800032587148,
+        "OIS_precision": 0.4874504452371287,
+        "OIS_recall": 0.714347154454947,
+        "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+        "matcher": "Berkeley correspondPixels / CSA++",
+        "matlab_collect_stdout_tail": "",
+        "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+        "matlab_evaluate_processes": 1,
+        "matlab_evaluate_returncode": 0,
+        "matlab_evaluate_stdout_tail": "MFI_BSDS_EVAL 71/100 37073\nMFI_BSDS_EVAL 72/100 376043\nMFI_BSDS_EVAL 73/100 38082\nMFI_BSDS_EVAL 74/100 38092\nMFI_BSDS_EVAL 75/100 385039\nMFI_BSDS_EVAL 76/100 41033\nMFI_BSDS_EVAL 77/100 41069\nMFI_BSDS_EVAL 78/100 42012\nMFI_BSDS_EVAL 79/100 42049\nMFI_BSDS_EVAL 80/100 43074\nMFI_BSDS_EVAL 81/100 45096\nMFI_BSDS_EVAL 82/100 54082\nMFI_BSDS_EVAL 83/100 55073\nMFI_BSDS_EVAL 84/100 58060\nMFI_BSDS_EVAL 85/100 62096\nMFI_BSDS_EVAL 86/100 65033\nMFI_BSDS_EVAL 87/100 66053\nMFI_BSDS_EVAL 88/100 69015\nMFI_BSDS_EVAL 89/100 69020\nMFI_BSDS_EVAL 90/100 69040\nMFI_BSDS_EVAL 91/100 76053\nMFI_BSDS_EVAL 92/100 78004\nMFI_BSDS_EVAL 93/100 8023\nMFI_BSDS_EVAL 94/100 85048\nMFI_BSDS_EVAL 95/100 86000\nMFI_BSDS_EVAL 96/100 86016\nMFI_BSDS_EVAL 97/100 86068\nMFI_BSDS_EVAL 98/100 87046\nMFI_BSDS_EVAL 99/100 89072\nMFI_BSDS_EVAL 100/100 97033",
+        "max_dist": 0.0075,
+        "n_images": 100,
+        "nthresh": 99,
+        "thinpb": true
+      },
+      "stage24_residual_suppression": {
+        "AP": 0.43856178367767934,
+        "ODS": 0.5197045894650728,
+        "ODS_precision": 0.4260973511117604,
+        "ODS_recall": 0.6660190496929774,
+        "ODS_threshold": 0.508888888888889,
+        "OIS": 0.5530824387285167,
+        "OIS_precision": 0.46003699273905035,
+        "OIS_recall": 0.693308562834725,
+        "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+        "matcher": "Berkeley correspondPixels / CSA++",
+        "matlab_collect_stdout_tail": "",
+        "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+        "matlab_evaluate_processes": 1,
+        "matlab_evaluate_returncode": 0,
+        "matlab_evaluate_stdout_tail": "MFI_BSDS_EVAL 71/100 37073\nMFI_BSDS_EVAL 72/100 376043\nMFI_BSDS_EVAL 73/100 38082\nMFI_BSDS_EVAL 74/100 38092\nMFI_BSDS_EVAL 75/100 385039\nMFI_BSDS_EVAL 76/100 41033\nMFI_BSDS_EVAL 77/100 41069\nMFI_BSDS_EVAL 78/100 42012\nMFI_BSDS_EVAL 79/100 42049\nMFI_BSDS_EVAL 80/100 43074\nMFI_BSDS_EVAL 81/100 45096\nMFI_BSDS_EVAL 82/100 54082\nMFI_BSDS_EVAL 83/100 55073\nMFI_BSDS_EVAL 84/100 58060\nMFI_BSDS_EVAL 85/100 62096\nMFI_BSDS_EVAL 86/100 65033\nMFI_BSDS_EVAL 87/100 66053\nMFI_BSDS_EVAL 88/100 69015\nMFI_BSDS_EVAL 89/100 69020\nMFI_BSDS_EVAL 90/100 69040\nMFI_BSDS_EVAL 91/100 76053\nMFI_BSDS_EVAL 92/100 78004\nMFI_BSDS_EVAL 93/100 8023\nMFI_BSDS_EVAL 94/100 85048\nMFI_BSDS_EVAL 95/100 86000\nMFI_BSDS_EVAL 96/100 86016\nMFI_BSDS_EVAL 97/100 86068\nMFI_BSDS_EVAL 98/100 87046\nMFI_BSDS_EVAL 99/100 89072\nMFI_BSDS_EVAL 100/100 97033",
+        "max_dist": 0.0075,
+        "n_images": 100,
+        "nthresh": 99,
+        "thinpb": true
+      }
+    },
+    "metric_policy": "Agent may use these metrics for development decisions.",
+    "split": "val",
+    "status": "completed"
+  },
+  "protocol": {
+    "bsds": "official_Berkeley_one_shot_after_freeze",
+    "gt": "native_never_resized",
+    "matcher": "one_to_one_max_cardinality",
+    "outer_cv": "5x3",
+    "pair_selection": "outer_train_only",
+    "scientific_maps": "float32_npy",
+    "threshold": "train_only",
+    "training_target": "exact_GT"
+  },
+  "status": "completed"
+}

@@ -1,0 +1,25 @@
+{
+  "include_incumbent": true,
+  "methods": [
+    {
+      "export": {
+        "args": [
+          "--export-bsds",
+          "--image-dir",
+          "{image_dir}",
+          "--output-dir",
+          "{output_dir}",
+          "--split",
+          "{split}",
+          "--out",
+          "results/local_dev/stage24_residual_suppression"
+        ],
+        "script": "run_stage24_residual_campaign.py"
+      },
+      "name": "stage24_residual_suppression"
+    }
+  ],
+  "schema_version": 1,
+  "split": "val",
+  "stage24_note": "UDED-only freeze before BSDS val; PNG is terminal official-evaluator adapter only."
+}
