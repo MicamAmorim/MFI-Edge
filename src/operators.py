@@ -87,6 +87,9 @@ FUNCTIONS: Dict[str, Callable] = {
     "FNA":FNA, "FNA2":FNA2, "FIM":FIM, "FIP":FIP
 }
 
+# Historical search-category label ONLY; includes fusion functions that do NOT
+# satisfy copula margins or 2-increasingness. Do not use this set as a
+# theoretical CC-integral certification. See src/stage24_math_contracts.py.
 COPULA_LIKE = {"TP","TM","TL","THP","TDP","OB","OmM","ODiv","GM","HM","S","CF","CL","ORS"}
 
 KNOWN_CF1F2_PAIRS = [
