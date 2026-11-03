@@ -12,6 +12,7 @@ import json
 from pathlib import Path
 import shutil
 import subprocess
+from build_stage24gl_repro_package import prepare as build_complete_evidence
 
 ROOT=Path(__file__).resolve().parents[1]
 SOURCE=ROOT/"results/local_dev/stage24_paper_a_recertification"
@@ -162,6 +163,8 @@ def main():
     ap.add_argument("--allow-partial",action="store_true",
                     help="Allow incomplete package for inspection; never stage automatically")
     ap.add_argument("--replace",action="store_true")
+    ap.add_argument("--no-binary-bundle", action="store_true",
+                    help="Package full compact evidence, defer derived float/prediction ZIPs")
     args=ap.parse_args()
     if not (ROOT/".git").exists():
         ap.error("Not a Git checkout of MFI-Edge")
@@ -184,6 +187,10 @@ def main():
         else:
             missing.append(name)
     official=consolidate_official(rows,args.allow_partial)
+    expanded=build_complete_evidence(
+        require_complete=complete and not args.allow_partial,
+        build_binary=(not args.no_binary_bundle and complete),
+    )
     required={"environment.lock.txt","environment_manifest.json",
               "preflight.json","strict_math_contracts.json",
               "campaign_source_fingerprint.json","native_dataset_manifest.json",
@@ -205,6 +212,8 @@ def main():
               ["source","destination","bytes","sha256"],rows)
     manifest={
         "schema_version":1,"experiment":"stage24_paper_a_recertification",
+        "complete_reproducibility_evidence":expanded,
+        "big_float_assets_automatically_uploaded":False,
         "complete":complete,"not_a_new_experiment":True,
         "source_file_count":len(rows),"missing_optional":missing,
         "missing_required":absent,"official":official,
@@ -213,6 +222,7 @@ def main():
         "note":"BSDS val is development; independent Berkeley reproduction and protected multi-benchmark still pending.",
     }
     json_write(DEST/"archive_manifest.json",manifest)
+    print("Complete evidence:",json.dumps(expanded,sort_keys=True))
     print("Archive:",DEST.relative_to(ROOT),"files:",len(rows),
           "complete:",complete,"official:",official.get("status"))
     if args.stage:
