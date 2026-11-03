@@ -340,7 +340,30 @@ def run_official(out):
     write_json(out/"final_claim_guard.json",guard)
 
 
+def _float_literature_score(entry, expected_shape=None):
+    """Only author-native float32 NPY, with hash. Never accept 8-bit PNG."""
+    path = Path(entry["score_path"])
+    if not path.is_absolute():
+        path = ROOT / path
+    if path.suffix.lower() != ".npy" or not path.is_file():
+        raise RuntimeError("Native float detector map missing: " + str(path))
+    if sha256_file(path) != entry["sha256"]:
+        raise RuntimeError("Detector float map SHA256 mismatch: " + str(path))
+    score = np.load(path, allow_pickle=False)
+    if score.ndim != 2 or score.dtype != np.float32 or not np.isfinite(score).all():
+        raise RuntimeError("Detector map must be finite 2-D float32: " + str(path))
+    if expected_shape is not None and score.shape != tuple(expected_shape):
+        raise RuntimeError("Literature map/native GT geometry mismatch: " + str(path))
+    return score
+
+
 def run_literature(args, items, maps, out):
+    """Recertify float literature baselines, matched complement/aggregation ablations.
+
+    Transfer configurations are fixed by the UDED-only main campaign.
+    The official BSDS exporter consumes author/native float scores and never
+    uses BSDS labels in fitting. Missing author maps are an explicit guard.
+    """
     manifest = Path(args.literature_manifest)
     if not manifest.is_file():
         write_json(out/"literature_transfer_guard.json",{
@@ -348,53 +371,134 @@ def run_literature(args, items, maps, out):
             "required_manifest_fields":["dataset","split","method","image_id","score_path","sha256"],
             "quantized_png_permitted":False})
         return
-    entries = json.loads(manifest.read_text(encoding="utf-8"))
-    if not isinstance(entries,list):
-        raise ValueError("Literature manifest must be a JSON list")
+    frozen_path=out/"frozen_models.json"
+    if not frozen_path.exists():
+        raise RuntimeError("First freeze the UDED-only Stage24G-L recipe")
+    winner=json.loads(frozen_path.read_text(encoding="utf-8"))["models"]["winner"]
+    entries=json.loads(manifest.read_text(encoding="utf-8"))
+    if not isinstance(entries,list) or not entries:
+        raise ValueError("Literature manifest must be a nonempty JSON array")
     id_to_item={i["id"]:i for i in items}
-    per_method=defaultdict(dict)
-    for entry in entries:
-        if entry["dataset"]!="UDED" or entry["split"]!="selection_overlap_clean":
-            continue  # BSDS images validated only during official external evaluation.
-        if entry["image_id"] not in id_to_item:
-            raise ValueError("Unknown literature UDED image id")
-        p=Path(entry["score_path"])
-        if not p.is_absolute():p=ROOT/p
-        if p.suffix!=".npy" or not p.is_file():
-            raise RuntimeError("Float scientific literature map missing: "+str(p))
-        if sha256_file(p)!=entry["sha256"]:
-            raise RuntimeError("Literature map hash mismatch: "+str(p))
-        arr=np.load(p,allow_pickle=False)
-        if arr.dtype!=np.float32 or arr.shape!=id_to_item[entry["image_id"]]["gt"].shape:
-            raise RuntimeError("Detector map is not native float32: "+str(p))
-        per_method[entry["method"]][entry["image_id"]]=arr
-    rows=[]
-    for method,entry_maps in per_method.items():
+    uded=defaultdict(dict)
+    bsds=defaultdict(dict)
+    for e in entries:
+        for field in ("dataset","split","method","image_id","score_path","sha256"):
+            if not e.get(field):
+                raise ValueError("Incomplete literature manifest entry: "+field)
+        if e["dataset"]=="UDED" and e["split"]=="selection_overlap_clean":
+            if e["image_id"] not in id_to_item:
+                raise ValueError("Unknown UDED ID in literature manifest")
+            score=_float_literature_score(e,id_to_item[e["image_id"]]["gt"].shape)
+            if e["image_id"] in uded[e["method"]]:
+                raise RuntimeError("Duplicate literature UDED image")
+            uded[e["method"]][e["image_id"]]=score
+        elif e["dataset"]=="BSDS500" and e["split"]=="val":
+            if e["image_id"] in bsds[e["method"]]:
+                raise RuntimeError("Duplicate literature BSDS image")
+            # Load/check lazily against BSDS image native dimensions in exporter.
+            bsds[e["method"]][e["image_id"]]=e
+        else:
+            raise ValueError("Unsupported detector manifest scope; only UDED selection and BSDS val")
+    if not uded:
+        raise RuntimeError("No native float UDED literature detectors")
+    historical_cues={
+        "compass":"gabor4_scale_persistence","sco":"gabor4_scale_persistence",
+        "sed":"halfdisc_distribution_contrast","qfrd":"fh_region_boundary",
+    }
+    from src.stage24_recertification_cv import fit_and_score, memberships_on_split
+    from src.stage24_recertification_ops import fit_aggregator,apply_aggregator
+    from src.stage24_integrity import aggregate_counts
+    from src.stage24_residual import fit_residual_gate
+    all_result=[]; per_image=[]; frozen_lit={}
+    current_manifest=json.loads((out/"official_eval_manifest.json").read_text(encoding="utf-8"))
+    methods_heldout=[]
+    for method,entry_maps in sorted(uded.items()):
         if set(entry_maps)!=set(id_to_item):
-            raise RuntimeError("Incomplete UDED float detector maps: "+method)
+            raise RuntimeError("Incomplete 14 UDED images for detector: "+method)
+        cue=historical_cues.get(method.lower(),winner["descriptors"][0])
         source=[entry_maps[item["id"]] for item in items]
+        key="literature_"+method
+        extended={**maps,key:source}
+        group=(key,cue)
         for repeat,fold,train,valid in _make_repeated_folds(14,3,5,SEED):
             fid=f"r{repeat+1}_f{fold+1}"
-            for mode in TRANSFER_MODES:
-                t,_=choose_threshold([source[int(i)] for i in train],
-                                     [items[int(i)]["gt"] for i in train],
-                                     [items[int(i)]["img"] for i in train],mode)
-                vals=[]
-                from src.stage24_recertification_ops import thin_score,binary_map
-                for i in valid:
-                    j=int(i)
-                    pred=binary_map(thin_score(source[j],mode,items[j]["img"]),t,mode)
-                    c=one_to_one_boundary_counts(pred,items[j]["gt"])
-                    vals.append({"method":method,"fold":fid,"image_id":items[j]["id"],
-                                 "mode":mode,"tp":c.tp,"fp":c.fp,"fn":c.fn,
-                                 "F1":c.f1,"threshold":t})
-                rows.extend(vals)
-    write_csv(out/"literature_baselines_uded_per_image.csv",rows)
+            cp=out/"literature_folds"/method/(fid+".json")
+            if cp.exists():
+                result=json.loads(cp.read_text(encoding="utf-8"))
+            else:
+                result=[]
+                # Baseline uses UDED-calibrated continuous score and train-only threshold.
+                for ag in AGGREGATORS:
+                    for mode in TRANSFER_MODES:
+                        candidate=fit_and_score(group,ag,items,extended,train,valid,mode,
+                              count=args.thresholds,
+                              seed=deterministic_seed(SEED,"literature",method,fid,ag,mode))
+                        candidate.pop("model")
+                        candidate["method"]=method;candidate["fold"]=fid
+                        result.append(candidate)
+                # Isolate suppression for fixed preselected aggregator/mode.
+                for sup in (("identity",1.0),tuple(winner["suppression"])):
+                    candidate=fit_and_score(group,winner["aggregator"]["family"],
+                          items,extended,train,valid,winner["thinning"],
+                          count=args.thresholds,
+                          seed=deterministic_seed(SEED,"literature_supp",method,fid),
+                          suppression=sup)
+                    candidate.pop("model")
+                    candidate["method"]=method;candidate["fold"]=fid
+                    result.append(candidate)
+                write_json(cp,result)
+            for row in result:
+                details=row.pop("per_image",[]) if "per_image" in row else []
+                per_image.extend([{"method":method,"fold":fid,**x} for x in details])
+                all_result.append(row)
+        # Freeze transferred D+C model with fixed UDED-selected operator and mode.
+        gt=[i["gt"] for i in items]
+        train=np.arange(len(items))
+        mem,membership=memberships_on_split(group,extended,gt,train)
+        agg=fit_aggregator(winner["aggregator"]["family"],membership,gt,train,
+                      seed=deterministic_seed(SEED,"litfreeze",method))
+        base=[apply_aggregator(x,agg) for x in membership]
+        gate=fit_residual_gate(base,membership,gt,train,
+              seed=deterministic_seed(SEED,"litgate",method)) if winner["suppression"][0]=="learned_gate" else None
+        supp=tuple(winner["suppression"])
+        scores=[apply_suppressor(base[i],membership[i],kind=supp[0],
+                                 parameter=supp[1],gate_model=gate) for i in train]
+        threshold,_=choose_threshold(scores,gt,[it["img"] for it in items],
+                                     winner["thinning"],count=41)
+        model=serialize_model(group,mem,agg,supp,winner["thinning"],gate)
+        model["threshold"]=threshold
+        model["selected_without_BSDS_labels"]=True
+        flat=np.concatenate([x.ravel() for x in source])
+        lo,hi=np.quantile(flat,[0.01,.99])
+        if hi<=lo: raise RuntimeError("Literature baseline UDED calibration is degenerate")
+        frozen_lit[method]={"cue":cue,"model":model,
+                             "baseline_uded_quantiles": [float(lo),float(hi)],
+                             "ready_for_bsds":len(bsds.get(method,{}))==100}
+        if len(bsds.get(method,{}))==100:
+            for role in ("baseline","fusion"):
+                # Only registered native float author detector maps are allowed.
+                safe="".join(c if c.isalnum() else "_" for c in method)
+                variant="literature::"+method+"::"+role
+                current_manifest["methods"].append({
+                    "name":"lit_"+safe+"_"+role,
+                    "export":{"script":"run_stage24_paper_a_recertification.py",
+                              "args":["--export-bsds","--variant",variant,
+                                      "--image-dir","{image_dir}","--output-dir","{output_dir}",
+                                      "--split","{split}","--out",str(out.relative_to(ROOT)).replace("\\","/"),
+                                      "--literature-manifest",str(manifest)]}})
+            methods_heldout.append(method)
+    write_csv(out/"literature_aggregator_landscape_fold.csv",all_result)
+    write_csv(out/"literature_aggregator_landscape_per_image.csv",per_image)
+    write_json(out/"frozen_literature_models.json",frozen_lit)
+    write_json(out/"official_eval_manifest.json",current_manifest)
     write_json(out/"literature_transfer_guard.json",{
-        "status":"uded_baselines_complete_external_transfer_pending",
-        "methods":list(per_method),
-        "note":"BSDS author-native float maps and complement+suppression train-only experiments still required"})
-
+        "status":"ready_for_official_bsds_val" if len(methods_heldout)==len(uded)
+                 else "partial_author_native_float_maps",
+        "uded_methods":sorted(uded),
+        "bsds_val_complete_methods":methods_heldout,
+        "required_per_method_bsds_float_maps":100,
+        "selection":"UDED-only main recipe; all literature alternatives reported as exploratory",
+        "quantized_png_permitted":False})
 
 def stats_and_claims(out):
     p=out/"suppressor_ablation_per_image.csv"
@@ -479,7 +583,7 @@ def main():
     ap.add_argument("--export-bsds",action="store_true")
     ap.add_argument("--image-dir")
     ap.add_argument("--output-dir")
-    ap.add_argument("--variant",choices=("winner","identity"),default="winner")
+    ap.add_argument("--variant",default="winner")
     ap.add_argument("--split",default="val")
     args=ap.parse_args()
     if args.max_folds < 1 or args.max_folds > 15:
