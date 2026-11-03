@@ -195,3 +195,45 @@ def scale_audit(items, maxside=256):
                          float(25*np.hypot(h,w)/np.hypot(ih,iw)),
                      "status":"documented_scaled_implementation_not_native_recomputed"})
     return rows
+
+
+def image_level_bootstrap_deltas(per_image_rows, seed=20261104, reps=2000):
+    """Paired F1 delta CI across unique UDED images, repeat-average first.
+
+    This is descriptive/exploratory; images recur across folds and groups are
+    selected adaptively. The resampling unit is the image, NEVER an outer fold.
+    """
+    pivot=defaultdict(list)
+    for r in per_image_rows:
+        if r.get("thinning")!="raw" or r.get("suppressor")!="identity":
+            continue
+        if not r.get("F1"):continue
+        key=(r["group"],r["aggregator"],r["image_id"])
+        pivot[key].append(float(r["F1"]))
+    averages={k:float(np.mean(v)) for k,v in pivot.items()}
+    groups=sorted({g for g,_,_ in averages})
+    rng=np.random.default_rng(seed)
+    output=[]
+    for group in groups:
+        ids=sorted({im for g,_,im in averages if g==group})
+        baseline={im:averages[(group,"equal_mean",im)]
+                  for im in ids if (group,"equal_mean",im) in averages}
+        for operator in sorted({op for g,op,_ in averages if g==group}):
+            if operator=="equal_mean":continue
+            common=sorted(set(baseline)&{
+                im for im in ids if (group,operator,im) in averages})
+            if len(common)<6:continue
+            dif=np.asarray([averages[(group,operator,im)]-baseline[im]
+                            for im in common],float)
+            choices=rng.integers(0,len(dif),size=(reps,len(dif)))
+            draws=dif[choices].mean(axis=1)
+            output.append({"group":group,"aggregator":operator,
+                           "control":"equal_mean","thinning":"raw",
+                           "n_unique_images":len(common),
+                           "delta_F1_mean":float(np.mean(dif)),
+                           "ci95_low":float(np.quantile(draws,.025)),
+                           "ci95_high":float(np.quantile(draws,.975)),
+                           "p_bootstrap_two_sided":float(min(1,2*min(
+                               np.mean(draws>=0),np.mean(draws<=0)))),
+                           "status":"exploratory_fold_repeated_image_bootstrap"})
+    return output
