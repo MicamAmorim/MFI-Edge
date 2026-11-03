@@ -30,7 +30,7 @@
 | Etapa | Operação | Artefatos |
 | --- | --- | --- |
 | 24G0 | Todos os 78 pares pontuados por fold. Auditoria de geometria para pares prioritários com a MESMA fórmula Stage24 na geometria antiga e nova. Baseline held-out individual dos 13 descritores. | geometry_impact_stage24_proxy.csv, individual_descriptors_corrected_*.csv |
-| 24G | Landscape de 20 agregadores: mean, min, max, product, logistic, OWA fixos/aprendidos, Choquet aditivo, 2-aditivo positivo e assinado, Choquet distorcido, quasi-arithmetic Choquet, Sugeno. | aggregator_landscape_fold.csv, aggregator_landscape_per_image.csv |
+| 24G | Landscape de 21 agregadores: mean, min, max, product, logistic, OWA fixos/aprendidos, Choquet aditivo, 2-aditivo positivo e assinado, Choquet distorcido, quasi-arithmetic Choquet, Sugeno. | aggregator_landscape_fold.csv, aggregator_landscape_per_image.csv |
 | 24H | Pares candidatos selecionados sem outer labels (top-K + relações históricas); triplas top-K + históricas. | pair_complementarity_*.csv, checkpoints por grupo |
 | 24I | Ablações com identity, disagreement (.5/1), local coherence (2/4), compression (1.5) e learned gate (.5/1/2), e inner CV real. | suppressor_ablation_*.csv, inner_cv_trials.csv, receitas selecionadas |
 | Thinning | Três tratamentos UDED: raw, nms_image, binary_thin_diagnostic. | Comparação controlada por grupo, agregador e fold |
@@ -154,3 +154,90 @@ Não comitar dados de imagens, GTs, modelos binários enormes, score caches NPY,
 6. A escolha de um suppressor não comprova melhoria; somente ablações pareadas held-out e transferência externa podem fazê-lo.
 
 O plano foi implementado para **produzir** evidência científica e relatar ausências de maneira transparente, não para transformar resultados ainda não executados em conclusões.
+
+
+---
+
+## Auditoria externa incorporada à campanha — versão ampliada
+
+As críticas sobre o antigo GT reamostrado, matching muitos-para-um,
+seleção otimista e compressão das pertinências foram examinadas. O novo
+protocolo não altera os resultados encerrados da Stage23/24.
+
+### Novos testes automáticos
+
+- Score histórico Stage23D: a fórmula original é reaplicada a um mesmo
+  conjunto de pares, usando GT nativo e representação reduzida, com
+  limiares treinados e descrição explícita dos fatores de confusão.
+  Não é um experimento causal isolado de mudança do GT.
+- Controles: predição vazia, tudo positivo (solução exata), aleatório
+  na densidade do GT de treino e melhor descritor individual escolhido
+  por F1 apenas de treino.
+- Calibração: pertinência sigmoidal histórica contra versão ancorada
+  no zero. Cada comparação preserva conjunto, agregador, modo de
+  afinamento, suppressor e partição. Não afirmar que pertinência
+  ancorada equivale a probabilidade calibrada.
+- Histogramas: quantis do score, massa no zero, fração em torno de 0,5,
+  largura q95-q05, níveis distintos quantizados em 8 bits. Incluem
+  as saídas agregadas de interesse, não apenas memberships.
+- Conjunções: mínimo, produto e t-norma Łukasiewicz.
+- AP de Berkeley: comparar mapa original e remapeamento monotônico
+  global aprendido só no UDED, mantendo os 99 thresholds e o
+  afinamento oficial Berkeley, sem ler o GT BSDS para parametrização.
+- Controle logístico: par histórico 04 com pesos logísticos positivos
+  vs média ponderada com os mesmos pesos normalizados, antes de
+  qualquer suppressor, para medir diferenças de grade e quantização.
+- Bootstrap pareado por imagem: reamostrar os mesmos 100 IDs com
+  contagens originais por threshold e recomputar ODS, OIS, AP. A
+  rotina verifica sua agregação contra o resultado MATLAB oficial e
+  bloqueia os intervalos de confiança se houver divergência acima
+  da tolerância. Aplica também sobre Stage24 arquivada e Stage23F,
+  quando as tabelas originais estiverem disponíveis.
+- Decomposição de variância conjunto-agregador-interação, correlação
+  score-complementaridade vs ganho de agregação com permutação,
+  auditoria do efeito físico das escalas e teste do melhor descritor.
+- Parada segura e checkpoints fingerprinted pelo SHA-256 dos códigos:
+  resultados antigos não são silenciosamente misturados com código novo.
+
+### Limitações e separação das inferências
+
+1. A inner CV é condicional à pré-seleção dos grupos no outer-train.
+   O outer-heldout segue intocado até a avaliação, mas não alegar
+   uma nested CV plenamente independente para toda a descoberta.
+2. Stage23D/E e sua avaliação original são históricos; a Stage24
+   não os transforma retroativamente em evidências confirmatórias.
+3. A AP de transformações monotônicas pode variar por quantização
+   e grade Berkeley; só pode ser atribuída ao efeito de discretização
+   após análise pareada dos resultados verificados.
+4. As 14 imagens UDED são reutilizadas nos 15 folds; a unidade de
+   bootstrap/teste deve ser a imagem, não o fold.
+5. BSDS500 val é superfície de desenvolvimento. Test protegido não
+   é executado automaticamente. Reproduzir uma referência Berkeley
+   independente continua pendente.
+6. A análise física das escalas está documentada, mas não substitui
+   rematerialização em mais resoluções e um benchmark de runtime
+   ponta a ponta.
+7. Generalizações de Choquet devem ser verificadas contra as
+   equações originais do Paper A antes de reivindicar equivalência.
+8. Mapas de detectores externos devem ser author-native NPY float32
+   com hashes completos; ausências permanecem pendências explícitas.
+
+### Execução única com verificações
+
+No PowerShell, na raiz do projeto, após atualizar a branch:
+
+    .\run_stage24_paper_a_recertification.bat --phase all
+
+O launcher confere sintaxe e executa os testes antes de iniciar a
+campanha, seguida de recertificação UDED, congelamento, transferência
+guardada, Berkeley oficial, bootstrap e auditoria do Paper A.
+
+Para arquivar e revisar resultados antes do commit:
+
+    .\.venv\Scripts\python.exe scripts\prepare_stage24gl_paper_a_archive.py --stage --replace
+    git --no-pager diff --cached --stat
+
+A campanha não faz git commit nem push automaticamente. Consultar os
+arquivos claim_status.csv, bootstrap_integrity.json e
+final_claim_guard.json para distinguir resultados verificados de
+hipóteses em aberto.
