@@ -921,6 +921,13 @@ def verify_campaign_source_fingerprint(out,args):
                "source/configuration. Preserve/archive existing results and use "
                "a NEW --out directory before rerunning. No silent overwrite.")
     else:
+        # Prevent accepting partial checkpoints written before fingerprinting
+        # or by a now-obsolete version of this evolving campaign.
+        fold_root=out/"folds"
+        if fold_root.exists() and any(fold_root.rglob("*.json")):
+            raise RuntimeError("Found pre-fingerprint Stage24G-L checkpoints. "
+                "Keep those files for audit, and start a fresh --out directory. "
+                "Do not silently reuse old scientific selections.")
         write_json(file,manifest)
     return manifest
 
