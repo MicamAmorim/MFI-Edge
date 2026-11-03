@@ -35,6 +35,19 @@ FILES=(
     "official_bsds_summary.json", "final_claim_guard.json",
     "statistical_tests_exploratory.csv", "claim_status.csv",
     "PAPER_A_METHODS_RESULTS_STATUS.md", "summary.json",
+    "descriptor_scale_audit.csv", "trivial_density_baselines_per_image.csv",
+    "best_single_train_selected_fold.csv", "best_single_train_selected_per_image.csv",
+    "logistic_weighted_rank_equivalence_per_image.csv",
+    "historical_stage23d_formula_control.csv",
+    "calibration_ablation_fold.csv", "calibration_ablation_per_image.csv",
+    "membership_score_histograms.csv", "factorial_variance_decomposition.json",
+    "complementarity_predictive_test.json", "complementarity_predictive_pairs.csv",
+    "friedman_aggregator_image_tests.csv",
+    "paper_a_aggregator_group_descriptives.csv",
+    "bootstrap_paired_ods_ois_ap.csv", "bootstrap_integrity.json",
+    "historical_stage24_bootstrap_guard.json",
+    "historical_stage24_paired_bootstrap/bootstrap_paired_ods_ois_ap.csv",
+    "historical_stage24_paired_bootstrap/bootstrap_integrity.json",
 )
 
 
@@ -168,7 +181,13 @@ def main():
               "individual_descriptors_corrected_per_image.csv",
               "aggregator_landscape_per_image.csv",
               "suppressor_ablation_per_image.csv",
-              "inner_cv_trials.csv","frozen_models.json","claim_status.csv"}
+              "inner_cv_trials.csv","frozen_models.json","claim_status.csv",
+              "best_single_train_selected_fold.csv",
+              "calibration_ablation_per_image.csv",
+              "membership_score_histograms.csv",
+              "trivial_density_baselines_per_image.csv",
+              "factorial_variance_decomposition.json",
+              "historical_stage23d_formula_control.csv"}
     absent=sorted(required.intersection(missing))
     if absent and not args.allow_partial:
         raise RuntimeError("Required science files absent: "+", ".join(absent))
