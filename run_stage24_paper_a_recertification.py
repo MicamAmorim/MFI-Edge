@@ -456,7 +456,34 @@ def run_literature(args, items, maps, out):
                 result=json.loads(cp.read_text(encoding="utf-8"))
             else:
                 result=[]
-                # Baseline uses UDED-calibrated continuous score and train-only threshold.
+                # Individual native-float detector baseline, on the SAME folds.
+                from src.stage24_recertification_ops import thin_score, binary_map
+                from src.stage24_integrity import aggregate_counts
+                for mode in TRANSFER_MODES:
+                    tt,_=choose_threshold([source[int(i)] for i in train],
+                        [items[int(i)]["gt"] for i in train],
+                        [items[int(i)]["img"] for i in train],mode,
+                        count=args.thresholds)
+                    counts=[];individual=[]
+                    for i in valid:
+                        idx=int(i)
+                        c=one_to_one_boundary_counts(
+                            binary_map(thin_score(source[idx],mode,items[idx]["img"]),tt,mode),
+                            items[idx]["gt"])
+                        counts.append(c)
+                        individual.append({"method":method,"fold":fid,"image_id":items[idx]["id"],
+                            "group":key,"aggregator":"detector_baseline",
+                            "thinning":mode,"suppressor":"identity","strength":1.,
+                            "threshold":tt,"tp":c.tp,"fp":c.fp,"fn":c.fn,
+                            "precision":c.precision,"recall":c.recall,"F1":c.f1})
+                    total=aggregate_counts(counts)
+                    result.append({"group":key,"arity":1,"aggregator":"detector_baseline",
+                        "suppressor":"identity","strength":1.,"thinning":mode,
+                        "method":method,"fold":fid,"threshold":tt,
+                        "validation_F1":total.f1,"validation_precision":total.precision,
+                        "validation_recall":total.recall,
+                        "tp":total.tp,"fp":total.fp,"fn":total.fn,
+                        "per_image":individual})
                 for ag in AGGREGATORS:
                     for mode in TRANSFER_MODES:
                         candidate=fit_and_score(group,ag,items,extended,train,valid,mode,
