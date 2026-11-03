@@ -430,7 +430,8 @@ def main():
     cache_metadata_archive(ev)
     folds = folds_archive(ev)
     official = official_archive(ev)
-    historical_official = historical_official_summaries(ev)
+    historical_official = (historical_official_summaries(ev) if not args.no_legacy
+                           else {"available": False, "summaries": 0})
     historical = legacy_archive(ev, not args.no_legacy)
     historical["official_summaries"] = historical_official
     finalize(ev, folds, official, historical)
