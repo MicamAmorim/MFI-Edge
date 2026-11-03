@@ -6,6 +6,11 @@ derivative for top-to-bottom increasing intensities, so normal 45 degrees
 uses (upper-left, lower-right); 135 degrees uses (upper-right, lower-left).
 """
 import unittest
+from pathlib import Path
+import sys
+ROOT=Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0,str(ROOT))
 import numpy as np
 from src.postprocess import gradient_orientation, non_maximum_suppression
 
