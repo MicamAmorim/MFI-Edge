@@ -6,6 +6,7 @@ aggregator, suppressor, thinning variant or threshold.
 """
 from collections import Counter
 from itertools import combinations
+import hashlib
 import csv
 import json
 from pathlib import Path
@@ -241,11 +242,19 @@ def select_inner_recipe(group, items, maps, outer_train, candidates, seed, count
 def run_group(group, items, maps, train, valid, fold_id, out, cfg):
     """Fixed factorial landscape plus inner-CV chosen recipe and matched ablations."""
     path = out / "folds" / fold_id / ("__".join(group) + ".json")
-    configuration = {"cfg": cfg, "aggregators": AGGREGATORS,
+    sources = [
+        Path(__file__), Path(__file__).with_name("stage24_recertification_ops.py"),
+        Path(__file__).with_name("stage24_integrity.py"),
+        Path(__file__).with_name("stage24_residual.py"),
+    ]
+    source_hashes={str(p.name):hashlib.sha256(p.read_bytes()).hexdigest()
+                   for p in sources}
+    configuration = {"source_sha256": source_hashes,
+                     "cfg": cfg, "aggregators": AGGREGATORS,
                      "thinning": THINNING, "suppressors": SUPPRESSORS,
                      "calibrations": CALIBRATION_MODES,
                      "protocol": "native_GT_one_to_one_v1"}
-    signature = __import__("hashlib").sha256(json.dumps(
+    signature = hashlib.sha256(json.dumps(
         configuration, sort_keys=True, default=str).encode()).hexdigest()
     if path.exists():
         stored = json.loads(path.read_text(encoding="utf-8"))
