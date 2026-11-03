@@ -50,6 +50,7 @@ from src.stage24_paper_a_controls import (
     null_and_random_controls, rank_equivalence_on_uded,
     select_best_single, variance_decomposition,
     complementarity_predictive_test, scale_audit,
+    image_level_bootstrap_deltas,
 )
 from src.stage24_paper_a_berkeley_bootstrap import (
     load_official_counts, load_archived_counts, paired_bootstrap,
@@ -786,6 +787,8 @@ def stats_and_claims(out):
     write_csv(out/"statistical_tests_exploratory.csv",tests)
 
     landscape=read_csv("aggregator_landscape_per_image.csv")
+    write_csv(out/"aggregator_image_bootstrap_ci.csv",
+              image_level_bootstrap_deltas(landscape,seed=20261104,reps=2000))
     pivot=defaultdict(list)
     for r in landscape:
         pivot[(r["group"],r["thinning"],r["aggregator"],r["image_id"])].append(float(r["F1"]))
@@ -840,7 +843,7 @@ def stats_and_claims(out):
        if official else "PENDING"},
       {"claim":"BSDS reference reproduction","status":"BLOCKED_UNTIL_INDEPENDENT_REFERENCE"},
       {"claim":"Literature detector transfer","status":literature.get("status","GUARDED")},
-      {"claim":"Stage23D same-score GT correction","status":"REQUIRES_EXACT_HISTORICAL_IMPLEMENTATION"},
+      {"claim":"Stage23D equation under geometries","status":"EXPLORATORY_RESAMPLED_REPRESENTATION"},
       {"claim":"Exact Paper A generalized Choquet operators","status":"REQUIRES_MANUSCRIPT_FORMULA_AUDIT"},
       {"claim":"Publication/SOTA","status":"BLOCKED_UNTIL_PROTECTED_BENCHMARK_GATE"},
     ]
