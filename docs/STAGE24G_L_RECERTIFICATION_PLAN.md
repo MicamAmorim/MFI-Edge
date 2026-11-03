@@ -270,3 +270,55 @@ diffusion, ROI feather, and Stage3/4 Canny/baseline issues are not part
 of the Stage24G descriptor-pair inference and cannot be used to support
 Paper A claims. See the full scope assessment in
 docs/STAGE24G_L_EXTERNAL_AUDIT_ROUTE_20261103.md.
+
+
+## Reproducibility and historical synthetic review (2026-11-03)
+
+The independent review inspected the older main branch and correctly
+identified weak environment pinning, bare assertions in the legacy math
+test, and a central-only synthetic straight-line generator. The alleged
+Shapley error was a false alarm: capacity_table_2additive normalizes
+its raw Mobius mass 0.71 to mu(N)=1 BEFORE Shapley calculation.
+
+Changes applied to the experimental research branch:
+
+- test_math.py now uses unittest with explicit operator identifiers.
+  Tests verify raw mass 0.71, capacity normalization, and exact
+  analytical Shapley coefficients after normalization. Checks remain
+  active under python -O; original module-level asserts did not.
+- scripts/capture_stage24gl_environment.py inventories the ACTUAL
+  installed distributions as pinned name==version, verifies pip check,
+  records Python and OS identity, direct library versions, Git HEAD,
+  SHA256 of environment.lock.txt. If versions change during a campaign
+  resumes fail closed. The snapshot does not install dependencies or
+  assert cross-platform wheel-hash reproducibility.
+- synthetic_v2.py accepts optional line_offset_px (historical default 0)
+  for a future synthetic diagnostic; existing seeds, v2 files and
+  generated splits remain unchanged. Dedicated regression tests verify
+  identity with the historical configuration and offset behavior.
+- Historical datasets/sintetics remains unchanged to avoid breaking
+  old manifest paths; a separate v3 can adopt datasets/synthetics.
+- The scientific archive includes environment.lock.txt and
+  environment_manifest.json; experiment source/config fingerprint
+  includes a SHA256 of the exact installed dependency inventory.
+
+Launch on Windows PowerShell, in the repo root:
+
+    git fetch origin
+    git switch mfi-edge-stage24-residual-suppression
+    git pull --ff-only origin mfi-edge-stage24-residual-suppression
+
+    .\run_stage24_paper_a_recertification.bat --phase preflight
+
+Only after preflight succeeds:
+
+    .\run_stage24_paper_a_recertification.bat --phase all
+
+A manuscript can be updated responsibly only after the campaign
+completes and every relevant claim has been checked against the original
+per-image and per-fold evidence with uncertainty. Finishing a script is
+not independent certification. Missing author-native float maps, a
+separately verified Berkeley reference, an untouched confirmatory
+test, formal match to the manuscript's generalized integral
+equations, and the 14-image sample limitation remain explicit
+publication guards. Do not claim final SOTA automatically.
