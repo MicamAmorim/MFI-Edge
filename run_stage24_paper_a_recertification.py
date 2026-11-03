@@ -303,23 +303,52 @@ def run_bsds_export(args):
     if args.split != "val":
         raise RuntimeError("BSDS test split protected, export blocked")
     out = Path(args.out)
-    data = json.loads((out/"frozen_models.json").read_text(encoding="utf-8"))
-    model = data["models"][args.variant]
     source = Path(args.image_dir)
     target = Path(args.output_dir)
     target.mkdir(parents=True, exist_ok=True)
-    for path in sorted(source.glob("*.jpg")):
-        original = imread(path)
-        shape = original.shape[:2]
-        cues = [external_descriptor(original,path,name,shape,Path(args.cache_root))
-                for name in model["descriptors"]]
-        score = inference_recipe(cues,model,original)
-        if not np.isfinite(score).all() or score.shape != shape:
-            raise RuntimeError("Invalid BSDS export score " + path.name)
-        # Final PNG is an official-evaluator adapter only; never a scientific cache.
-        Image.fromarray(np.rint(np.clip(score,0,1)*255).astype(np.uint8),mode="L").save(target/(path.stem+".png"))
-    print("STAGE24GL_BSDS_EXPORT_DONE",len(list(source.glob("*.jpg"))))
-
+    paths = sorted(source.glob("*.jpg"))
+    if not paths:
+        raise RuntimeError("No BSDS validation images supplied by official evaluator")
+    literature_role = args.variant.startswith("literature::")
+    if literature_role:
+        _, method, role = args.variant.split("::", 2)
+        if role not in ("baseline", "fusion"):
+            raise ValueError("Unknown literature export role")
+        frozen = json.loads((out/"frozen_literature_models.json").read_text(encoding="utf-8"))
+        if method not in frozen or not frozen[method]["ready_for_bsds"]:
+            raise RuntimeError("Author-native BSDS float maps incomplete: "+method)
+        literature = frozen[method]
+        manifest = json.loads(Path(args.literature_manifest).read_text(encoding="utf-8"))
+        external = {e["image_id"]:e for e in manifest
+                    if e["dataset"]=="BSDS500" and e["split"]=="val" and e["method"]==method}
+        if set(external)!={p.stem for p in paths}:
+            raise RuntimeError("Literature BSDS float image IDs do not match 100 official images")
+        model = literature["model"]
+    else:
+        data=json.loads((out/"frozen_models.json").read_text(encoding="utf-8"))
+        model=data["models"][args.variant]
+    for path in paths:
+        original=imread(path)
+        shape=original.shape[:2]
+        if literature_role:
+            raw=_float_literature_score(external[path.stem],shape)
+            if role=="baseline":
+                lo,hi=literature["baseline_uded_quantiles"]
+                score=np.clip((raw-lo)/(hi-lo),0.,1.).astype(np.float32)
+            else:
+                cue=external_descriptor(original,path,literature["cue"],shape,Path(args.cache_root))
+                score=inference_recipe([raw,cue],model,original)
+        else:
+            cues=[external_descriptor(original,path,name,shape,Path(args.cache_root))
+                  for name in model["descriptors"]]
+            score=inference_recipe(cues,model,original)
+        if not np.isfinite(score).all() or score.shape!=shape:
+            raise RuntimeError("Invalid native BSDS export score "+path.name)
+        # PNG is a terminal Berkeley adapter only; author maps and descriptor
+        # scientific caches remain floating-point and SHA-verified.
+        Image.fromarray(np.rint(np.clip(score,0,1)*255).astype(np.uint8),mode="L").save(
+            target/(path.stem+".png"))
+    print("STAGE24GL_BSDS_EXPORT_DONE",len(paths),args.variant,flush=True)
 
 def run_official(out):
     path = out/"official_eval_manifest.json"
