@@ -17,7 +17,12 @@ def gradient_orientation(img, sigma: float = 1.0):
     return np.arctan2(gy, gx)
 
 def non_maximum_suppression(score, theta):
-    """Classic 4-direction NMS on a scalar edge score using edge-normal orientation."""
+    """Classic 4-direction NMS on a scalar edge score using edge-normal orientation.
+
+    Image y axis points downward; +45 degrees means upper-left/lower-right,
+    whereas +135 degrees means upper-right/lower-left. Stage 24G-L fixes the
+    inverted historical diagonals (main/Stage4 remain unchanged).
+    """
     s = np.asarray(score, dtype=float)
     a = (np.rad2deg(theta) + 180.0) % 180.0
     out = np.zeros_like(s)
@@ -29,9 +34,9 @@ def non_maximum_suppression(score, theta):
     down_right = np.roll(down, -1, 1)
     masks = [
         ((a < 22.5) | (a >= 157.5), left, right),
-        ((a >= 22.5) & (a < 67.5), up_right, down_left),
+        ((a >= 22.5) & (a < 67.5), up_left, down_right),
         ((a >= 67.5) & (a < 112.5), up, down),
-        ((a >= 112.5) & (a < 157.5), up_left, down_right),
+        ((a >= 112.5) & (a < 157.5), up_right, down_left),
     ]
     for m, n1, n2 in masks:
         keep = m & (s >= n1) & (s >= n2)
