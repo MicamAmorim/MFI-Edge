@@ -15,6 +15,7 @@ from scipy.special import expit
 from skimage.morphology import thin
 
 from src.postprocess import gradient_orientation, non_maximum_suppression
+from src.stage24_strict_generalized_cf1f2 import VALID_PAIRS, apply_registered_gcf
 from src.stage24_integrity import (
     one_to_one_boundary_counts, canonical_threshold_candidates, aggregate_counts,
 )
@@ -31,6 +32,7 @@ AGGREGATORS = (
     "choquet_additive", "choquet_positive_2add", "choquet_signed_2add",
     "choquet_distorted_055", "choquet_generalized_055", "choquet_generalized_150",
     "sugeno_additive", "sugeno_positive_2add",
+    *tuple(VALID_PAIRS),
 )
 THINNING = ("raw", "nms_image", "binary_thin_diagnostic")
 CALIBRATION_MODES = ("legacy_sigmoid", "zero_anchored")
@@ -167,14 +169,15 @@ def fit_aggregator(name, memberships, gts, train, seed=SEED):
     elif name in ("weighted_mean", "owa_learned", "choquet_additive",
                   "choquet_positive_2add", "choquet_signed_2add",
                   "sugeno_additive", "sugeno_positive_2add",
-                  "choquet_generalized_055", "choquet_generalized_150"):
+                  "choquet_generalized_055", "choquet_generalized_150",
+                  *tuple(VALID_PAIRS)):
         x, y = _sample_training(memberships, gts, train, seed=seed)
         if name == "owa_learned":
             weights = simplex_fit(np.sort(x, axis=1)[:, ::-1], y)
             state["weights"] = weights.tolist()
         elif name in ("choquet_positive_2add", "sugeno_positive_2add",
                       "choquet_generalized_055", "choquet_generalized_150",
-                      "choquet_signed_2add"):
+                      "choquet_signed_2add", *tuple(VALID_PAIRS)):
             signed = name == "choquet_signed_2add"
             if name.startswith("choquet_generalized"):
                 gamma = 0.55 if name.endswith("055") else 1.5
@@ -205,6 +208,8 @@ def apply_aggregator(membership, state):
     elif kind == "nonnegative_logistic":
         from src.stage24_residual import LogisticModel
         out = apply_nonnegative_fusion(m, LogisticModel(np.asarray(state["logistic"]["beta"])))
+    elif kind in VALID_PAIRS:
+        out = apply_registered_gcf(m, np.asarray(state["capacity"]), kind)
     elif kind.startswith("owa_"):
         if kind == "owa_optimistic": weights = np.array([1.0] + [0.] * (n-1))
         elif kind == "owa_pessimistic": weights = np.array([0.] * (n-1) + [1.])
