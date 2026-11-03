@@ -201,8 +201,16 @@ def select_inner_recipe(group, items, maps, outer_train, candidates, seed, count
 def run_group(group, items, maps, train, valid, fold_id, out, cfg):
     """Fixed factorial landscape plus inner-CV chosen recipe and matched ablations."""
     path = out / "folds" / fold_id / ("__".join(group) + ".json")
+    configuration = {"cfg": cfg, "aggregators": AGGREGATORS,
+                     "thinning": THINNING, "suppressors": SUPPRESSORS,
+                     "protocol": "native_GT_one_to_one_v1"}
+    signature = __import__("hashlib").sha256(json.dumps(
+        configuration, sort_keys=True, default=str).encode()).hexdigest()
     if path.exists():
-        return json.loads(path.read_text(encoding="utf-8"))
+        stored = json.loads(path.read_text(encoding="utf-8"))
+        if stored.get("config_sha256") != signature:
+            raise RuntimeError("Checkpoint configuration mismatch: " + str(path))
+        return stored
     landscape = []
     per_image = []
     for name in AGGREGATORS:
@@ -247,6 +255,7 @@ def run_group(group, items, maps, train, valid, fold_id, out, cfg):
         ab["fold"] = fold_id
         ablation_summaries.append(ab)
     result = {"fold_id": fold_id, "group": list(group),
+              "config_sha256": signature,
               "landscape": landscape, "landscape_per_image": per_image,
               "selected": selected, "selected_outer": selected_result,
               "selected_per_image": winner_image, "inner": inner,
