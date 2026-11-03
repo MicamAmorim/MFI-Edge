@@ -42,6 +42,7 @@ FILES=(
     "PAPER_A_METHODS_RESULTS_STATUS.md", "summary.json",
     "descriptor_scale_audit.csv", "trivial_density_baselines_per_image.csv",
     "uded_float_prediction_manifest.csv",
+    "bsds_float_prediction_manifest.csv", "bsds_float_prediction_guard.json",
     "runtime_end_to_end_per_image.csv", "runtime_end_to_end_manifest.json",
     "aggregator_image_bootstrap_ci.csv",
     "best_single_train_selected_fold.csv", "best_single_train_selected_per_image.csv",
