@@ -530,69 +530,123 @@ def run_literature(args, items, maps, out):
         "quantized_png_permitted":False})
 
 def stats_and_claims(out):
-    p=out/"suppressor_ablation_per_image.csv"
-    rows=[]
-    if p.is_file():
-        with p.open(encoding="utf-8",newline="") as f:rows=list(csv.DictReader(f))
+    """Image-paired tests with one observation per unique UDED image.
+
+    Repeated folds are averaged within the same image; no BSDS aggregate metric
+    is treated as 100 independent ODS values.
+    """
+    def read_csv(name):
+        path=out/name
+        if not path.is_file():return []
+        with path.open(encoding="utf-8",newline="") as f:
+            return list(csv.DictReader(f))
+
+    rows=read_csv("suppressor_ablation_per_image.csv")
     by=defaultdict(dict)
     for r in rows:
         key=(r["fold_id"],r["group"],r["aggregator"],r["thinning"],r["image_id"])
         by[key][(r["suppressor"],r["strength"])]=float(r["F1"])
     per_img=defaultdict(list)
     for key,rec in by.items():
-        iden=rec.get(("identity","1.0"))
-        for name,val in rec.items():
-            if name[0]!="identity" and iden is not None:
-                per_img[(key[-1],name)].append(val-iden)
+        identity=rec.get(("identity","1.0"))
+        if identity is None:continue
+        for (name,strength),val in rec.items():
+            if name!="identity":
+                per_img[(*key[1:4],name,strength,key[-1])].append(val-identity)
+    per_test=defaultdict(dict)
+    for (*group,name,strength,image),vals in per_img.items():
+        per_test[(*group,name,strength)][image]=float(np.mean(vals))
     tests=[]
-    by_name=defaultdict(dict)
-    for (image,typ),vals in per_img.items():
-        by_name[typ][image]=float(np.mean(vals))
-    for typ,images in sorted(by_name.items()):
+    for key,images in sorted(per_test.items()):
         dif=np.asarray(list(images.values()))
-        if len(dif)<6 or np.allclose(dif,0):
-            continue
-        test=wilcoxon(dif,alternative="two-sided",zero_method="wilcox")
-        tests.append({"comparison":str(typ),"n_unique_images":len(dif),
-                      "mean_delta_F1":float(np.mean(dif)),"median_delta_F1":float(np.median(dif)),
-                      "p_unadjusted":float(test.pvalue),
-                      "sampling":"per-image mean over repeated folds; exploratory, dependencies remain"})
+        if len(dif)<6 or np.allclose(dif,0):continue
+        try:p=float(wilcoxon(dif,alternative="two-sided",zero_method="wilcox").pvalue)
+        except ValueError:continue
+        tests.append({"group":key[0],"aggregator":key[1],"thinning":key[2],
+                      "suppressor":key[3],"strength":key[4],
+                      "n_unique_images":len(dif),"mean_delta_F1":float(np.mean(dif)),
+                      "median_delta_F1":float(np.median(dif)),
+                      "p_unadjusted":p,
+                      "unit":"unique image (repeat-average); exploratory"})
     tests.sort(key=lambda r:r["p_unadjusted"])
-    m=len(tests)
-    running=0.0
-    for i,r in enumerate(tests):
-        running=max(running,min(1.,(m-i)*r["p_unadjusted"]))
+    running=0.
+    for j,r in enumerate(tests):
+        running=max(running,min(1.,(len(tests)-j)*r["p_unadjusted"]))
         r["p_holm"]=running
     write_csv(out/"statistical_tests_exploratory.csv",tests)
+
+    landscape=read_csv("aggregator_landscape_per_image.csv")
+    pivot=defaultdict(list)
+    for r in landscape:
+        pivot[(r["group"],r["thinning"],r["aggregator"],r["image_id"])].append(float(r["F1"]))
+    by_group=defaultdict(dict)
+    for (group,mode,agg,image),vals in pivot.items():
+        by_group[(group,mode)][(agg,image)]=float(np.mean(vals))
+    friedman=[]
+    aggregate=[]
+    family_shortlist=("equal_mean","minimum","maximum","nonnegative_logistic",
+                      "choquet_positive_2add","choquet_signed_2add",
+                      "sugeno_additive","choquet_generalized_055")
+    for (group,mode),arr in sorted(by_group.items()):
+        images=sorted({im for _,im in arr})
+        names=[n for n in family_shortlist if all((n,im) in arr for im in images)]
+        if len(names)>=3 and len(images)>=6:
+            test=friedmanchisquare(*[np.asarray([arr[(n,im)] for im in images]) for n in names])
+            friedman.append({"group":group,"thinning":mode,"n_images":len(images),
+                            "operators":"|".join(names),"statistic":float(test.statistic),
+                            "p_unadjusted":float(test.pvalue),"unit":"unique UDED image"})
+        for name in AGGREGATORS:
+            values=[arr[(name,im)] for im in images if (name,im) in arr]
+            if not values:continue
+            aggregate.append({"group":group,"thinning":mode,"aggregator":name,
+                              "n_unique_images":len(values),
+                              "mean_image_F1":float(np.mean(values)),
+                              "median_image_F1":float(np.median(values)),
+                              "std_image_F1":float(np.std(values)),
+                              "descriptive_only":True})
+    friedman.sort(key=lambda r:r["p_unadjusted"])
+    running=0.
+    for i,r in enumerate(friedman):
+        running=max(running,min(1.,(len(friedman)-i)*r["p_unadjusted"]))
+        r["p_holm"]=running
+    write_csv(out/"friedman_aggregator_image_tests.csv",friedman)
+    write_csv(out/"paper_a_aggregator_group_descriptives.csv",aggregate)
+
     official_path=out/"official_bsds_summary.json"
     official=json.loads(official_path.read_text(encoding="utf-8")) if official_path.is_file() else None
+    guardpath=out/"literature_transfer_guard.json"
+    literature=json.loads(guardpath.read_text(encoding="utf-8")) if guardpath.exists() else {}
+    selected=read_csv("inner_selected_heldout.csv")
+    complete=(len(selected)==15)
     claims=[
       {"claim":"Native GT correctness","status":"PROTOCOL_VERIFIED"},
-      {"claim":"Full 78-pair corrected proxy landscape","status":"REQUIRES_ALL_15_FOLDS"},
-      {"claim":"Pair/triple and aggregator factorial","status":"REQUIRES_COMPLETE_CV"},
-      {"claim":"Suppression helps heldout F1","status":"CONDITIONAL_ON_PAIRED_ABLATIONS"},
+      {"claim":"Full 78-pair corrected proxy landscape","status":"COMPLETED" if complete else "INCOMPLETE_CV"},
+      {"claim":"Pair/triple and aggregator factorial","status":"EXPLORATORY_COMPLETE" if complete else "INCOMPLETE_CV"},
+      {"claim":"Matched suppressor ablation","status":"HELDOUT_COMPARISONS_AVAILABLE" if tests else "PENDING"},
       {"claim":"BSDS validation","status":"DEVELOPMENT_ONLY" if official else "PENDING"},
       {"claim":"BSDS reference reproduction","status":"BLOCKED_UNTIL_INDEPENDENT_REFERENCE"},
-      {"claim":"Literature detector transfer","status":"GUARDED_BY_AUTHOR_NATIVE_FLOAT_MAPS"},
+      {"claim":"Literature detector transfer","status":literature.get("status","GUARDED")},
+      {"claim":"Stage23D same-score GT correction","status":"REQUIRES_EXACT_HISTORICAL_IMPLEMENTATION"},
+      {"claim":"Exact Paper A generalized Choquet operators","status":"REQUIRES_MANUSCRIPT_FORMULA_AUDIT"},
       {"claim":"Publication/SOTA","status":"BLOCKED_UNTIL_PROTECTED_BENCHMARK_GATE"},
     ]
     write_csv(out/"claim_status.csv",claims)
-    report=out/"PAPER_A_METHODS_RESULTS_STATUS.md"
-    report.write_text(
-        "# Stage 24G-L — auditoria para Paper A\n\n"
-        "GTs nativos preservados; descritores float, 5x3 outer CV, inner CV real.\n\n"
-        "As comparacoes de agregadores e suppressors usam as mesmas particoes; "
-        "thresholds ajustados apenas nos dados de treino.\n\n"
-        "Modos: raw, NMS orientado pela imagem e thinning binario apenas diagnostico. "
-        "O avaliador Berkeley oficial usa thinpb=true; nenhum thinning morfologico "
-        "Python deve ser apresentado como identico ao Berkeley.\n\n"
-        "A avaliacao BSDS500 val nao valida claims SOTA nem autoriza tuning no test.\n\n"
-        "Os dados estatisticos de folds repetidos nao sao 15 observacoes independentes. "
-        "Testes agregados por imagem ainda sao exploratorios.\n\n"
-        "Consultar claim_status.csv e final_claim_guard.json antes de atualizar o paper.\n",
+    (out/"PAPER_A_METHODS_RESULTS_STATUS.md").write_text(
+        "# Stage 24G-L — status para Paper A\n\n"
+        "Os GTs nativos foram preservados; as comparacoes de agregadores e "
+        "suppressors usam os mesmos folds e thresholds ajustados somente no treino.\n\n"
+        "A recertificacao inclui raw, NMS orientado pela imagem e thinning binario "
+        "apenas diagnostico UDED. O BSDS continua com thinpb=true oficial; "
+        "nao equiparar os algoritmos de afinamento.\n\n"
+        "Os scores Stage23D e Stage24 usam formulas diferentes; G0 isola geometria "
+        "somente na formula Stage24.\n\n"
+        "Os testes estatisticos usam medias por imagem entre repeticoes e sao "
+        "exploratorios; os folds repetidos nao sao 15 observacoes independentes.\n\n"
+        "O BSDS val e desenvolvimento. Sem reproducao independente de referencia "
+        "e teste protegido multi-benchmark, SOTA/final claims estao bloqueados.\n\n"
+        "Consultar claim_status.csv, final_claim_guard.json e literature_transfer_guard.json.\n",
         encoding="utf-8",
     )
-
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__)
