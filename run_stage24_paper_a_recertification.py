@@ -516,6 +516,45 @@ def run_bsds_export(args):
             target/(path.stem+".png"))
     print("STAGE24GL_BSDS_EXPORT_DONE",len(paths),args.variant,flush=True)
 
+def inventory_bsds_native_float(out):
+    """Index saved prequantization BSDS validation maps; never assume full coverage."""
+    folder=out/"float_predictions_bsds"
+    rows=[]
+    counts={}
+    for sub in sorted(folder.iterdir()) if folder.is_dir() else []:
+        if not sub.is_dir():continue
+        maps=sorted(sub.glob("*.npy"))
+        counts[sub.name]=len(maps)
+        ids=set()
+        for path in maps:
+            if path.stem in ids:raise RuntimeError("Duplicate BSDS score ID")
+            ids.add(path.stem)
+            arr=np.load(path,mmap_mode="r",allow_pickle=False)
+            if arr.ndim!=2 or arr.dtype!=np.float32:
+                raise RuntimeError("Bad frozen BSDS float map "+str(path))
+            rows.append({"dataset":"BSDS500","split":"val","variant":sub.name,
+                         "image_id":path.stem,"dtype":"float32",
+                         "shape":str(tuple(arr.shape)),"bytes":path.stat().st_size,
+                         "sha256":sha256_file(path),
+                         "relative_path":path.relative_to(ROOT).as_posix()})
+    frozen=out/"frozen_models.json"
+    expected=[]
+    if frozen.is_file():
+        expected=sorted(json.loads(frozen.read_text(encoding="utf-8"))["models"])
+    missing=[name for name in expected
+             if counts.get(re.sub(r"[^A-Za-z0-9_.-]","_",name),0)!=100]
+    write_csv(out/"bsds_float_prediction_manifest.csv",rows)
+    write_json(out/"bsds_float_prediction_guard.json",{
+        "maps_total":len(rows),"maps_by_variant":counts,
+        "expected_frozen_variants":expected,
+        "missing_or_partial_frozen_variants":missing,
+        "status":"complete_frozen_models" if expected and not missing
+                 else "INCOMPLETE_CHECK_BERKELEY_PNG_CACHE_REUSE",
+        "note":"All source/GT photographs excluded; ZIP for data deposit is separate from Git.",
+    })
+    return len(rows)
+
+
 def _bootstrap_historical_stage24(out):
     """No evaluator re-run: consume archived Stage24 200×99 Berkeley counts."""
     archived=ROOT/"results/paper_a_evidence/stage24/official_bsds/per_image_threshold_counts.csv"
@@ -594,6 +633,7 @@ def run_official(out):
     p = ROOT/"results/official_eval"/EXPERIMENT/"summary.json"
     data = json.loads(p.read_text(encoding="utf-8"))
     write_json(out/"official_bsds_summary.json",data)
+    inventory_bsds_native_float(out)
     guard = {"official_evaluation_completed":data.get("status")=="completed",
              "reference_reproduction_verified":bool(data.get("evaluator",{}).get("reference_reproduction_verified",False)),
              "final_claim_eligible":False,
