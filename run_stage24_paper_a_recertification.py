@@ -437,7 +437,7 @@ def run_literature(args, items, maps, out):
         "compass":"gabor4_scale_persistence","sco":"gabor4_scale_persistence",
         "sed":"halfdisc_distribution_contrast","qfrd":"fh_region_boundary",
     }
-    from src.stage24_recertification_cv import fit_and_score, memberships_on_split
+    from src.stage24_recertification_cv import fit_and_score, memberships_on_split, clear_group_cache
     from src.stage24_recertification_ops import fit_aggregator,apply_aggregator
     from src.stage24_integrity import aggregate_counts
     from src.stage24_residual import fit_residual_gate
@@ -453,6 +453,7 @@ def run_literature(args, items, maps, out):
         extended={**maps,key:source}
         group=(key,cue)
         for repeat,fold,train,valid in _make_repeated_folds(14,3,5,SEED):
+            clear_group_cache()
             fid=f"r{repeat+1}_f{fold+1}"
             cp=out/"literature_folds"/method/(fid+".json")
             if cp.exists():
