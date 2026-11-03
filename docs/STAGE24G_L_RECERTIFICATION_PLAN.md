@@ -30,7 +30,7 @@
 | Etapa | Operação | Artefatos |
 | --- | --- | --- |
 | 24G0 | Todos os 78 pares pontuados por fold. Auditoria de geometria para pares prioritários com a MESMA fórmula Stage24 na geometria antiga e nova. Baseline held-out individual dos 13 descritores. | geometry_impact_stage24_proxy.csv, individual_descriptors_corrected_*.csv |
-| 24G | Landscape de 21 agregadores: mean, min, max, product, logistic, OWA fixos/aprendidos, Choquet aditivo, 2-aditivo positivo e assinado, Choquet distorcido, quasi-arithmetic Choquet, Sugeno. | aggregator_landscape_fold.csv, aggregator_landscape_per_image.csv |
+| 24G | Landscape de 26 agregadores: mean, min, max, product, logistic, OWA fixos/aprendidos, Choquet aditivo, 2-aditivo positivo e assinado, Choquet distorcido, quasi-arithmetic Choquet, Sugeno. | aggregator_landscape_fold.csv, aggregator_landscape_per_image.csv |
 | 24H | Pares candidatos selecionados sem outer labels (top-K + relações históricas); triplas top-K + históricas. | pair_complementarity_*.csv, checkpoints por grupo |
 | 24I | Ablações com identity, disagreement (.5/1), local coherence (2/4), compression (1.5) e learned gate (.5/1/2), e inner CV real. | suppressor_ablation_*.csv, inner_cv_trials.csv, receitas selecionadas |
 | Thinning | Três tratamentos UDED: raw, nms_image, binary_thin_diagnostic. | Comparação controlada por grupo, agregador e fold |
@@ -241,3 +241,32 @@ A campanha completa faz git add apenas do pacote científico ao terminar, mas n�
 arquivos claim_status.csv, bootstrap_integrity.json e
 final_claim_guard.json para distinguir resultados verificados de
 hipóteses em aberto.
+
+
+## External mathematical review correction (Nov 3, 2026)
+
+A separate audit discovered that the research-branch NMS still compared
+the 45-degree and 135-degree diagonals in the wrong order. The research
+branch now has corrected signed NMS, regression tests, and a source SHA
+checkpoint guard. This changes the NMS factorial; never merge pre-fix
+partial results with post-fix runs.
+
+The original src/operators.py CF1F2 implementation uses a historical
+shortcut and cannot be used as a faithful implementation of the
+2020 generalized gCF1F2 integral. A separate strict Eq.9 implementation
+has been added, with reduction to distinct input values (ties) and the
+first term F1(y1,mu(N))-F2(0,mu(N)); its five labeled pairs now enter
+the aggregation landscape. Such generalized Choquet operators are
+DISTINCT from quasi-arithmetic Choquet operators.
+
+The old COPULA_LIKE registry is not a mathematical certificate. New
+tests distinguish bivariate copulas from fusion/pre-aggregation
+functions on finite grids; this is necessary screening but NOT proof.
+The Hamacher n-ary mode now uses associative composition; archived
+heuristic values remain accessible as hamacher_legacy.
+
+Legacy MFI surprisal truncation, redundant combined features, toroidal
+diffusion, ROI feather, and Stage3/4 Canny/baseline issues are not part
+of the Stage24G descriptor-pair inference and cannot be used to support
+Paper A claims. See the full scope assessment in
+docs/STAGE24G_L_EXTERNAL_AUDIT_ROUTE_20261103.md.
