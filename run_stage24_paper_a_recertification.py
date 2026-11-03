@@ -10,6 +10,7 @@ from collections import Counter, defaultdict
 import csv
 import hashlib
 import json
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -414,6 +415,8 @@ def run_literature(args, items, maps, out):
         for field in ("dataset","split","method","image_id","score_path","sha256"):
             if not e.get(field):
                 raise ValueError("Incomplete literature manifest entry: "+field)
+        if not re.fullmatch(r"[A-Za-z0-9_-]{1,64}", str(e["method"])):
+            raise ValueError("Unsafe or ambiguous detector method identifier")
         if e["dataset"]=="UDED" and e["split"]=="selection_overlap_clean":
             if e["image_id"] not in id_to_item:
                 raise ValueError("Unknown UDED ID in literature manifest")
@@ -535,8 +538,11 @@ def run_literature(args, items, maps, out):
                 # Only registered native float author detector maps are allowed.
                 safe="".join(c if c.isalnum() else "_" for c in method)
                 variant="literature::"+method+"::"+role
+                method_name="lit_"+safe+"_"+role
+                if any(x.get("name")==method_name for x in current_manifest["methods"]):
+                    continue
                 current_manifest["methods"].append({
-                    "name":"lit_"+safe+"_"+role,
+                    "name":method_name,
                     "export":{"script":"run_stage24_paper_a_recertification.py",
                               "args":["--export-bsds","--variant",variant,
                                       "--image-dir","{image_dir}","--output-dir","{output_dir}",
