@@ -243,7 +243,7 @@ def legacy_archive(ev, include=True):
     if not include:
         return {"enabled": False}
     base = ROOT / "results/local_dev"
-    dirs = sorted(d for d in base.glob("stage23*") if d.is_dir())
+    dirs = sorted((d for d in base.glob("stage23*") if d.is_dir()), reverse=True)
     words = ("descriptor","complement","aggregat","rank","pair","triple",
              "transfer","fold","per_image","baseline","summary","statistic",
              "manifest","incumbent","candidate")
@@ -285,7 +285,6 @@ def cache_metadata_archive(ev):
         binary = src.with_suffix(".npy")
         if binary.is_file() and data.get("artifact_sha256") != digest(binary):
             raise RuntimeError("Hash do mapa float divergente: " + relative(binary))
-        ev.source(src, "float_descriptor_sidecar")
         ev.copy(src, OUT / "descriptor_cache_metadata" / src.relative_to(folder),
                 "float_descriptor_sidecar_copy")
         rows.append({
