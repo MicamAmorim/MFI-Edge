@@ -43,6 +43,7 @@ from src.stage24_recertification_ops import (
 from src.stage24_integrity import sha256_file, one_to_one_boundary_counts
 from src.stage24_residual import fit_residual_gate, apply_suppressor
 from src.stage24_integrity import load_float_artifact
+from scripts.capture_stage24gl_environment import capture as capture_scientific_environment
 from src.stage24_paper_a_runtime import run_runtime_audit
 from src.stage24_math_contracts import synthetic_contract as strict_math_contract
 from src.stage24_paper_a_historical import (
@@ -899,8 +900,15 @@ def verify_campaign_source_fingerprint(out,args):
         "src/stage24_paper_a_controls.py",
         "src/stage24_paper_a_berkeley_bootstrap.py",
         "src/stage24_paper_a_runtime.py",
+        "scripts/capture_stage24gl_environment.py",
+        "test_math.py",
+        "synthetic_v2.py",
     ]
     evidence={name:sha256_file(ROOT/name) for name in paths}
+    env_path=out/"environment_manifest.json"
+    if not env_path.is_file():
+        raise RuntimeError("Stage24G-L environment capture missing. Run preflight.")
+    env_identity=json.loads(env_path.read_text(encoding="utf-8"))
     options={"thresholds":args.thresholds,
              "inner_thresholds":args.inner_thresholds,
              "inner_top":args.inner_top,
@@ -909,7 +917,10 @@ def verify_campaign_source_fingerprint(out,args):
              "max_folds":args.max_folds,
              "cache_root":str(Path(args.cache_root).resolve()),
              "uded_root":str(Path(args.uded_root).resolve()),
-             "seed":SEED}
+             "seed":SEED,
+             "environment_lock_sha256":env_identity["environment_lock_sha256"],
+             "environment_python":env_identity["python_version"],
+             "environment_platform":env_identity["platform_system"]}
     manifest={"source_sha256":evidence,"configuration":options,
               "cache_invalidation":"fail_closed_on_change",
               "legacy_campaigns_unchanged":True}
@@ -964,13 +975,16 @@ def main():
         return 0
     out=Path(args.out)
     out.mkdir(parents=True,exist_ok=True)
+    environment_identity=capture_scientific_environment(out)
     preflight=assert_preflight()
     checks=preflight_math()
     if not bsds_bootstrap_contract() or not historical_formula_contract():
         raise RuntimeError('Scientific bootstrap or historical-formula contract failed')
     mathematical_contracts=strict_math_contract()
     write_json(out/"strict_math_contracts.json",mathematical_contracts)
-    write_json(out/"preflight.json",{"status":"passed","n_tests":len(checks),
+    write_json(out/"preflight.json",{"status":"passed",
+                "environment_lock_sha256":environment_identity["environment_lock_sha256"],
+                "n_tests":len(checks),
                 "checks":checks,"inherited_R0":True,"GT":"native_never_resized",
                 "berkeley_thinpb_not_equated_to_python_thinning":True})
     if args.phase in ("all","preflight","l"):
