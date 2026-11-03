@@ -36,6 +36,23 @@ HISTORIC_TRIPLES = (
 )
 TRANSFER_MODES = ("raw", "nms_image")
 
+# Cache is confined to the current group; it never includes validation GT.
+_MEMBERSHIP_CACHE = {}
+_AGGREGATOR_CACHE = {}
+_GATE_CACHE = {}
+_BASE_CACHE = {}
+
+
+def clear_group_cache():
+    _MEMBERSHIP_CACHE.clear()
+    _AGGREGATOR_CACHE.clear()
+    _GATE_CACHE.clear()
+    _BASE_CACHE.clear()
+
+
+def _training_key(group, items, train):
+    return (tuple(group), id(items), tuple(sorted(int(i) for i in train)))
+
 
 def write_json(path, obj):
     path = Path(path)
@@ -67,10 +84,14 @@ def group_maps(maps, group):
 
 
 def memberships_on_split(group, maps, gts, train):
-    cue = group_maps(maps, group)
-    mem = fit_membership(cue, gts, train)
-    arrays = [apply_membership([c[i] for c in cue], mem) for i in range(len(gts))]
-    return mem, arrays
+    # Each fitted membership sees only training GT; reuse across aggregator modes.
+    key = (tuple(group), id(maps), tuple(sorted(int(i) for i in train)))
+    if key not in _MEMBERSHIP_CACHE:
+        cue = group_maps(maps, group)
+        mem = fit_membership(cue, gts, train)
+        arrays = [apply_membership([c[i] for c in cue], mem) for i in range(len(gts))]
+        _MEMBERSHIP_CACHE[key] = (mem, arrays)
+    return _MEMBERSHIP_CACHE[key]
 
 
 def train_pair_screen(items, maps, train):
@@ -121,12 +142,25 @@ def fit_and_score(group, name, items, maps, train, valid, mode, count=21, seed=0
                   suppression=("identity", 1.0)):
     gts = [v["gt"] for v in items]
     mem, ms = memberships_on_split(group, maps, gts, train)
-    agg = fit_aggregator(name, ms, gts, train, seed=seed)
-    base = [apply_aggregator(m, agg) for m in ms]
+    # Model parameters must NOT change between raw/NMS or suppressor ablations.
+    key = (tuple(group), id(maps), tuple(sorted(int(i) for i in train)), name)
+    if key not in _AGGREGATOR_CACHE:
+        _AGGREGATOR_CACHE[key] = fit_aggregator(
+            name, ms, gts, train,
+            seed=deterministic_seed(SEED, "shared_aggregator", key[0], key[2], name),
+        )
+    agg = _AGGREGATOR_CACHE[key]
+    if key not in _BASE_CACHE:
+        _BASE_CACHE[key] = [apply_aggregator(m, agg) for m in ms]
+    base = _BASE_CACHE[key]
     gate = None
     if suppression[0] == "learned_gate":
-        gate = fit_residual_gate(base, ms, gts, train,
-                                 seed=deterministic_seed(seed, "gate"))
+        if key not in _GATE_CACHE:
+            _GATE_CACHE[key] = fit_residual_gate(
+                base, ms, gts, train,
+                seed=deterministic_seed(SEED, "shared_gate", key[0], key[2], name),
+            )
+        gate = _GATE_CACHE[key]
     scores = [
         apply_suppressor(base[i], ms[i], kind=suppression[0],
                          parameter=suppression[1], gate_model=gate)
@@ -211,6 +245,7 @@ def run_group(group, items, maps, train, valid, fold_id, out, cfg):
         if stored.get("config_sha256") != signature:
             raise RuntimeError("Checkpoint configuration mismatch: " + str(path))
         return stored
+    clear_group_cache()
     landscape = []
     per_image = []
     for name in AGGREGATORS:
@@ -262,6 +297,7 @@ def run_group(group, items, maps, train, valid, fold_id, out, cfg):
               "suppression_ablation": ablation_summaries,
               "suppression_ablation_per_image": ablations}
     write_json(path, result)
+    clear_group_cache()
     return result
 
 
