@@ -59,7 +59,8 @@ def adaptive_q_from_features(X, mode="mean", q_min=0.02, q_max=1.0):
     power measure from local information. Here the same mechanism is transferred
     from ordered neighbourhood differences to the current MFI descriptor vector.
     """
-    x = np.clip(np.asarray(X, dtype=float), EPS, 1.0)
+    original = np.asarray(X, dtype=float)
+    x = np.clip(original, EPS, 1.0)
     n = x.shape[-1]
     mode = str(mode).lower()
     if mode == "max":
@@ -77,6 +78,13 @@ def adaptive_q_from_features(X, mode="mean", q_min=0.02, q_max=1.0):
     elif mode in ("lukasiewicz", "tl"):
         q = np.maximum(np.sum(x, axis=-1) - (n - 1.0), 0.0)
     elif mode in ("hamacher", "thp"):
+        # The associative Hamacher t-norm iterated over n arguments:
+        # T_H(x_1,...,x_n) = 1 / (sum_i 1/x_i -(n-1)), with 0 absorbing.
+        den = np.sum(1.0 / x, axis=-1) - (n - 1.0)
+        q = np.where(np.any(original <= 0.0, axis=-1),
+                     0.0, 1.0 / np.maximum(den, EPS))
+    elif mode in ("hamacher_legacy", "thp_legacy"):
+        # Archived Stage5 heuristic. NOT the associative n-ary t-norm.
         qsum = np.sum(x, axis=-1)
         qprod = np.prod(x, axis=-1)
         q = np.where(qsum - qprod > EPS, qprod / (qsum - qprod), 0.0)
