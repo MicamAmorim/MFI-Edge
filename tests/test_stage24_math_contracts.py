@@ -63,6 +63,17 @@ class StrictGeneralizedIntegralTests(unittest.TestCase):
             return min(1,total)
         self.assertAlmostEqual(expected,direct(x),places=6)
 
+    def test_hamacher_n_ary_associativity(self):
+        from src.fuzzy_measures import adaptive_q_from_features
+        x=np.array([.2,.4,.6,.8])
+        exact=1./(sum(1./x)-3.)
+        new=float(adaptive_q_from_features(x,mode="hamacher",q_min=0.,q_max=1.))
+        legacy=float(adaptive_q_from_features(x,mode="hamacher_legacy",q_min=0.,q_max=1.))
+        self.assertAlmostEqual(new,exact,places=6)
+        self.assertGreater(abs(new-legacy),.05)
+        self.assertEqual(float(adaptive_q_from_features(
+            np.array([.0,.5,.5]),mode="hamacher",q_min=0.,q_max=1.)),0.)
+
     def test_pseudo_pair_is_not_proof(self):
         x=np.array([.3,.5,.9],float)
         cap=np.array([0.,.2,.2,.5,.3,.6,.7,1.],float)
