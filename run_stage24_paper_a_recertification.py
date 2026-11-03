@@ -43,6 +43,9 @@ from src.stage24_recertification_ops import (
 from src.stage24_integrity import sha256_file, one_to_one_boundary_counts
 from src.stage24_residual import fit_residual_gate, apply_suppressor
 from src.stage24_integrity import load_float_artifact
+from src.stage24_paper_a_historical import (
+    historical_score_comparison, synthetic_contract as historical_formula_contract,
+)
 from src.stage24_paper_a_controls import (
     null_and_random_controls, rank_equivalence_on_uded,
     select_best_single, variance_decomposition,
@@ -178,6 +181,13 @@ def run_uded(args, items, maps, out):
                         items,maps,train,valid,fid),
                 }
             _load_or_make(_fold_path(out,"scientific_controls",fid),fold_controls)
+            def old_score_control():
+                wanted=set(tuple(sorted(z)) for z in
+                    HISTORIC_PAIRS + (("hessian_s7","halfdisc_distribution_contrast"),))
+                return historical_score_comparison(
+                    items,maps,train,fid,[p for p in wanted])
+            _load_or_make(_fold_path(out,"historical_score_formula",fid),
+                          old_score_control)
         if args.phase == "g0":
             continue
         groups = (pairs if args.phase in ("all", "g", "i") else [])
@@ -256,6 +266,10 @@ def collate(args, out):
         obj = json.loads(p.read_text(encoding="utf-8"))
         baselines.extend(obj["summary"]); image_b.extend(obj["per_image"])
     write_csv(out / "geometry_impact_stage24_proxy.csv", audit)
+    historic=[]
+    for path in sorted((out/"folds").glob("r*_f*/historical_score_formula.json")):
+        historic.extend(json.loads(path.read_text(encoding="utf-8")))
+    write_csv(out/"historical_stage23d_formula_control.csv",historic)
     write_csv(out / "individual_descriptors_corrected_fold.csv", baselines)
     write_csv(out / "individual_descriptors_corrected_per_image.csv", image_b)
     best_singles,best_single_images=select_best_single(baselines,image_b)
@@ -853,8 +867,8 @@ def main():
     out.mkdir(parents=True,exist_ok=True)
     preflight=assert_preflight()
     checks=preflight_math()
-    if not bsds_bootstrap_contract():
-        raise RuntimeError('Berkeley bootstrap synthetic contract failed')
+    if not bsds_bootstrap_contract() or not historical_formula_contract():
+        raise RuntimeError('Scientific bootstrap or historical-formula contract failed')
     write_json(out/"preflight.json",{"status":"passed","n_tests":len(checks),
                 "checks":checks,"inherited_R0":True,"GT":"native_never_resized",
                 "berkeley_thinpb_not_equated_to_python_thinning":True})
