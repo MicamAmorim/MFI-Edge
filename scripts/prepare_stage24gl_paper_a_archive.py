@@ -18,7 +18,9 @@ SOURCE=ROOT/"results/local_dev/stage24_paper_a_recertification"
 OFFICIAL=ROOT/"results/official_eval/stage24_paper_a_recertification"
 DEST=ROOT/"results/paper_a_evidence/stage24gl"
 FILES=(
-    "preflight.json", "native_dataset_manifest.json", "descriptor_provenance.csv",
+    "preflight.json", "strict_math_contracts.json",
+    "campaign_source_fingerprint.json",
+    "native_dataset_manifest.json", "descriptor_provenance.csv",
     "campaign_progress.json", "pair_complementarity_all_folds.csv",
     "pair_complementarity_ranked.csv", "geometry_impact_stage24_proxy.csv",
     "individual_descriptors_corrected_fold.csv",
@@ -181,7 +183,8 @@ def main():
         else:
             missing.append(name)
     official=consolidate_official(rows,args.allow_partial)
-    required={"preflight.json","native_dataset_manifest.json",
+    required={"preflight.json","strict_math_contracts.json",
+              "campaign_source_fingerprint.json","native_dataset_manifest.json",
               "pair_complementarity_ranked.csv",
               "individual_descriptors_corrected_per_image.csv",
               "aggregator_landscape_per_image.csv",
