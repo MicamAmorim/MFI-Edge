@@ -11,6 +11,7 @@ import json
 import numpy as np
 from scipy.optimize import minimize, nnls
 from scipy.ndimage import gaussian_filter
+from scipy.special import expit
 from skimage.morphology import thin
 
 from src.postprocess import gradient_orientation, non_maximum_suppression
@@ -24,6 +25,7 @@ from src.stage24_residual import (
 
 AGGREGATORS = (
     "equal_mean", "minimum", "maximum", "median", "product",
+    "lukasiewicz",
     "weighted_mean", "nonnegative_logistic",
     "owa_centered", "owa_median", "owa_optimistic", "owa_pessimistic", "owa_learned",
     "choquet_additive", "choquet_positive_2add", "choquet_signed_2add",
@@ -31,6 +33,7 @@ AGGREGATORS = (
     "sugeno_additive", "sugeno_positive_2add",
 )
 THINNING = ("raw", "nms_image", "binary_thin_diagnostic")
+CALIBRATION_MODES = ("legacy_sigmoid", "zero_anchored")
 SUPPRESSORS = (
     ("identity", 1.0), ("disagreement", 0.5), ("disagreement", 1.0),
     ("local_coherence", 2.0), ("local_coherence", 4.0), ("compress", 1.5),
@@ -196,6 +199,7 @@ def apply_aggregator(membership, state):
     elif kind == "maximum": out = np.max(m, axis=-1)
     elif kind == "median": out = np.median(m, axis=-1)
     elif kind == "product": out = np.prod(m, axis=-1)
+    elif kind == "lukasiewicz": out = lukasiewicz_tnorm(m)
     elif kind in ("weighted_mean", "choquet_additive"):
         out = np.tensordot(m, np.asarray(state["weights"]), axes=([-1], [0]))
     elif kind == "nonnegative_logistic":
@@ -234,6 +238,74 @@ def apply_aggregator(membership, state):
     if not np.isfinite(out).all():
         raise RuntimeError("Nonfinite aggregator result")
     return np.clip(out, 0, 1)
+
+
+def calibrate_memberships(membership_map, model, mode="legacy_sigmoid"):
+    """Train-fitted calibration with exact zero-evidence baseline anchored to zero.
+
+    'legacy_sigmoid' reproduces Stage24 sigmoid memberships.
+    'zero_anchored' removes the fitted sigmoid response to a zero descriptor.
+    This is monotone and nonnegative; it does NOT assert probability calibration.
+    """
+    m = np.asarray(membership_map, dtype=np.float32)
+    if mode == "legacy_sigmoid":
+        return m
+    if mode != "zero_anchored":
+        raise ValueError("Unknown membership calibration: " + str(mode))
+    midpoint = np.asarray(model.midpoint, dtype=float)
+    scale = np.maximum(np.asarray(model.scale, dtype=float), 1e-6)
+    baseline = expit(-midpoint / scale)
+    out = (np.asarray(m, dtype=float) - baseline) / np.maximum(1.0 - baseline, 1e-9)
+    return np.asarray(np.clip(out, 0.0, 1.0), dtype=np.float32)
+
+
+def score_distribution_diagnostics(score, image_id, label):
+    """Auditable score concentration, quantization and saturation diagnostics."""
+    s = np.asarray(score, dtype=float).ravel()
+    s = s[np.isfinite(s)]
+    if len(s) == 0:
+        raise ValueError("Empty score map")
+    levels = np.unique(np.rint(np.clip(s, 0, 1) * 255).astype(np.uint8))
+    qs = np.quantile(s, [.01,.05,.25,.50,.75,.95,.99])
+    return {"image_id": image_id, "label": label, "count": len(s),
+            "fraction_exact_zero": float(np.mean(s <= 1e-7)),
+            "fraction_near_half_001": float(np.mean(np.abs(s-.5) <= .01)),
+            "q01": float(qs[0]), "q05": float(qs[1]), "q25": float(qs[2]),
+            "median": float(qs[3]), "q75": float(qs[4]), "q95": float(qs[5]),
+            "q99": float(qs[6]), "p95_p05_span": float(qs[5]-qs[1]),
+            "distinct_quantized_8bit_levels": int(len(levels)),
+            "raw_distinct_float_levels": int(len(np.unique(s)))}
+
+
+def quantile_mapping_fit(scores, n=256):
+    """Fit strictly monotone global score remapping on UDED only.
+
+    A monotone mapping does not change the ranking before export; the fixed
+    Berkeley 99-threshold grid and 8-bit quantization may change its AP.
+    """
+    all_scores = np.concatenate([np.asarray(s,float).ravel() for s in scores])
+    if not np.isfinite(all_scores).all():
+        raise ValueError("Nonfinite UDED scores in quantile mapping")
+    quantiles = np.quantile(all_scores, np.linspace(0,1,int(n)))
+    values, first_indices = np.unique(quantiles, return_index=True)
+    if values.size < 3:
+        raise ValueError("Degenerate quantile mapping")
+    ranks = first_indices/(len(quantiles)-1)
+    return {"score_values": values.tolist(), "mapped_quantiles": ranks.tolist(),
+            "fitted_on": "UDED_selection_only"}
+
+
+def quantile_mapping_apply(score, calibration):
+    x = np.asarray(score,dtype=np.float32)
+    vals = np.asarray(calibration["score_values"], float)
+    ranks = np.asarray(calibration["mapped_quantiles"], float)
+    return np.asarray(np.interp(x, vals, ranks, left=0., right=1.),dtype=np.float32)
+
+
+def lukasiewicz_tnorm(membership_map):
+    """Canonical n-ary Łukasiewicz conjunction: max(0, sum(x_i)-n+1)."""
+    m=np.asarray(membership_map,float)
+    return np.asarray(np.maximum(0.0,np.sum(m,axis=-1)-m.shape[-1]+1.0),np.float32)
 
 
 def thin_score(score, mode, image):
@@ -283,11 +355,13 @@ def choose_threshold(scores, gts, images, mode, count=21):
     return float(t), c
 
 
-def serialize_model(pair, membership, agg, suppression, mode, gate=None):
+def serialize_model(pair, membership, agg, suppression, mode, gate=None,
+                    calibration_mode="legacy_sigmoid"):
     return {
         "descriptors": list(pair), "membership": membership.to_dict(),
         "aggregator": agg, "suppression": list(suppression),
         "thinning": mode, "gate": gate.to_dict() if gate is not None else None,
+        "calibration_mode": calibration_mode,
         "GT": "native",
     }
 
@@ -297,6 +371,9 @@ def inference_recipe(cues, model, image):
     mem = model["membership"]
     membership = apply_membership(cues, MembershipModel(
         np.asarray(mem["midpoint"]), np.asarray(mem["scale"])))
+    membership = calibrate_memberships(membership, MembershipModel(
+        np.asarray(mem["midpoint"]), np.asarray(mem["scale"])),
+        model.get("calibration_mode","legacy_sigmoid"))
     base = apply_aggregator(membership, model["aggregator"])
     gate = model.get("gate")
     gate_obj = None if gate is None else LogisticModel(np.asarray(gate["beta"]),
