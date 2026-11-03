@@ -25,7 +25,7 @@ from src.stage24_residual import (
 AGGREGATORS = (
     "equal_mean", "minimum", "maximum", "median", "product",
     "weighted_mean", "nonnegative_logistic",
-    "owa_centered", "owa_optimistic", "owa_pessimistic", "owa_learned",
+    "owa_centered", "owa_median", "owa_optimistic", "owa_pessimistic", "owa_learned",
     "choquet_additive", "choquet_positive_2add", "choquet_signed_2add",
     "choquet_distorted_055", "choquet_generalized_055", "choquet_generalized_150",
     "sugeno_additive", "sugeno_positive_2add",
@@ -205,6 +205,10 @@ def apply_aggregator(membership, state):
         if kind == "owa_optimistic": weights = np.array([1.0] + [0.] * (n-1))
         elif kind == "owa_pessimistic": weights = np.array([0.] * (n-1) + [1.])
         elif kind == "owa_centered": weights = np.ones(n) / n
+        elif kind == "owa_median":
+            weights = np.zeros(n)
+            if n % 2: weights[n//2] = 1.
+            else: weights[n//2-1:n//2+1] = .5
         else: weights = np.asarray(state["weights"])
         out = np.tensordot(np.sort(m, axis=-1)[..., ::-1], weights, axes=([-1], [0]))
     elif kind == "choquet_distorted_055":
