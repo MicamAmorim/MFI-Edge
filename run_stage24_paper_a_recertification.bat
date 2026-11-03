@@ -4,37 +4,50 @@ cd /d "%~dp0"
 if exist ".venv\Scripts\python.exe" (
   set "PYTHON=.venv\Scripts\python.exe"
 ) else (
-  echo ERROR: .venv\Scripts\python.exe not found. Activate/create project virtualenv first.
+  echo ERROR: .venv\Scripts\python.exe not found. Create the project virtualenv first.
   exit /b 2
 )
-echo [1/3] Stage24G-L Python syntax validation
-"%PYTHON%" -m compileall -q "src\postprocess.py" "src\stage24_strict_generalized_cf1f2.py" "src\stage24_math_contracts.py" "src\stage24_recertification_ops.py" "src\stage24_recertification_cv.py" "src\stage24_paper_a_controls.py" "src\stage24_paper_a_historical.py" "src\stage24_paper_a_berkeley_bootstrap.py" "src\stage24_paper_a_runtime.py" "run_stage24_paper_a_recertification.py" "scripts\prepare_stage24gl_paper_a_archive.py"
+
+echo [1/3] Stage24G-L source and test syntax validation
+"%PYTHON%" -m compileall -q "test_math.py" "synthetic_v2.py" "src\postprocess.py" "src\stage24_strict_generalized_cf1f2.py" "src\stage24_math_contracts.py" "src\stage24_recertification_ops.py" "src\stage24_recertification_cv.py" "src\stage24_paper_a_controls.py" "src\stage24_paper_a_historical.py" "src\stage24_paper_a_berkeley_bootstrap.py" "src\stage24_paper_a_runtime.py" "scripts\capture_stage24gl_environment.py" "run_stage24_paper_a_recertification.py" "scripts\prepare_stage24gl_paper_a_archive.py" "tests\test_stage24_recertification.py" "tests\test_stage24_signed_nms.py" "tests\test_stage24_math_contracts.py" "tests\test_synthetic_line_offset.py"
 if errorlevel 1 (
-  echo ERROR: syntax validation FAILED; campaign not started.
+  echo ERROR: Python syntax validation FAILED; campaign not started.
   exit /b 3
 )
-echo [2/3] Synthetic scientific integrity tests
+
+echo [2/3] Mathematical, NMS, baseline and synthetic regressions
+"%PYTHON%" -m unittest -v test_math
+if errorlevel 1 (
+  echo ERROR: legacy math tests FAILED; campaign not started.
+  exit /b 4
+)
 "%PYTHON%" "tests\test_stage24_recertification.py"
 if errorlevel 1 (
-  echo ERROR: existing Stage24 unit tests FAILED.
-  exit /b 4
+  echo ERROR: Stage24 math/science tests FAILED; campaign not started.
+  exit /b 5
 )
 "%PYTHON%" "tests\test_stage24_signed_nms.py"
 if errorlevel 1 (
-  echo ERROR: 45/135 degree NMS regression tests FAILED.
-  exit /b 5
+  echo ERROR: signed diagonal NMS tests FAILED; campaign not started.
+  exit /b 6
 )
 "%PYTHON%" "tests\test_stage24_math_contracts.py"
 if errorlevel 1 (
-  echo ERROR: tests FAILED; campaign not started.
-  exit /b 4
+  echo ERROR: generalized Choquet/capacity tests FAILED; campaign not started.
+  exit /b 7
 )
-echo [3/3] Running Stage24G-L. Stop safely with .\stop_stage24_paper_a_safely.bat
+"%PYTHON%" "tests\test_synthetic_line_offset.py"
+if errorlevel 1 (
+  echo ERROR: historical/offset synthetic contract FAILED; campaign not started.
+  exit /b 8
+)
+
+echo [3/3] Campaign phase and exact scientific environment capture
 "%PYTHON%" "run_stage24_paper_a_recertification.py" %*
 set "EXITCODE=%ERRORLEVEL%"
 if not "%EXITCODE%"=="0" (
   echo ERROR: Stage24G-L exited with code %EXITCODE%. Inspect checkpoint/output.
   exit /b %EXITCODE%
 )
-echo Stage24G-L command completed; see claim_status.csv for scientific status.
+echo Stage24G-L phase completed; inspect claim_status.csv before scientific claims.
 exit /b 0
