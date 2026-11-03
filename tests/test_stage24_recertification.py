@@ -47,7 +47,7 @@ class PaperARecertificationTests(unittest.TestCase):
             z=np.clip(x+.01,0,1)
             cap=np.array([int(mask).bit_count()/n for mask in range(1<<n)])
             for name in ("equal_mean","minimum","maximum","product","median",
-                         "owa_optimistic","owa_pessimistic","owa_median",
+                         "owa_optimistic","owa_pessimistic","owa_median","lukasiewicz",
                          "choquet_distorted_055"):
                 params={"family":name,"n_inputs":n}
                 a=apply_aggregator(x,params)
@@ -109,6 +109,62 @@ class PaperARecertificationTests(unittest.TestCase):
         self.assertEqual(raw["model"]["aggregator"], nms["model"]["aggregator"])
         self.assertTrue(np.array_equal(items[0]["gt"], gt))
         clear_group_cache()
+
+    def test_zero_anchored_membership_calibration(self):
+        from src.stage24_recertification_ops import calibrate_memberships, CALIBRATION_MODES
+        from src.stage24_residual import MembershipModel
+        from scipy.special import expit
+        m=MembershipModel(np.array([0.,.25]),np.array([.1,.2]))
+        inp=np.zeros((3,4,2),np.float32)
+        scores=np.broadcast_to(expit(-m.midpoint/m.scale),inp.shape).copy()
+        anchored=calibrate_memberships(scores,m,"zero_anchored")
+        self.assertTrue(np.allclose(anchored,0.,atol=1e-6))
+        self.assertTrue(np.allclose(calibrate_memberships(scores,m,"legacy_sigmoid"),scores))
+        self.assertEqual(len(CALIBRATION_MODES),2)
+
+    def test_quantile_mapping_is_monotone(self):
+        from src.stage24_recertification_ops import (
+            quantile_mapping_fit,quantile_mapping_apply,
+        )
+        x=np.linspace(0.,1.,121,dtype=np.float32).reshape(11,11)
+        model=quantile_mapping_fit([x],n=32)
+        f=quantile_mapping_apply(x,model)
+        self.assertEqual(f.shape,x.shape)
+        self.assertTrue(np.all(np.diff(f.ravel())>=-1e-7))
+        self.assertGreaterEqual(f.min(),0)
+        self.assertLessEqual(f.max(),1)
+
+    def test_paired_berkeley_count_bootstrap_synthetic(self):
+        from src.stage24_paper_a_berkeley_bootstrap import (
+            synthetic_contract,_curve_metrics,
+        )
+        self.assertTrue(synthetic_contract())
+        x=np.zeros((3,99,5),dtype=np.float64)
+        x[:,:,0]=np.arange(1,100)[None,:]/100.
+        x[:,:,2]=100.
+        x[:,:,4]=100.
+        x[:,:,1]=40
+        x[:,:,3]=40
+        m=_curve_metrics(x)
+        self.assertAlmostEqual(m["ODS"],.4,places=5)
+        self.assertAlmostEqual(m["OIS"],.4,places=5)
+
+    def test_historical_stage23d_formula_contract(self):
+        from src.stage24_paper_a_historical import synthetic_contract
+        self.assertTrue(synthetic_contract())
+
+    def test_full_positive_analytic_baseline(self):
+        from src.stage24_paper_a_controls import null_and_random_controls
+        gt=np.zeros((18,20),bool)
+        gt[6,2:14]=True
+        a=[{"id":str(i),"gt":gt.copy()} for i in range(4)]
+        rows=null_and_random_controls(a,[0,1],[2,3],"f1")
+        full=[x for x in rows if x["baseline"]=="full_image"]
+        self.assertEqual(len(full),2)
+        self.assertEqual(full[0]["tp"],int(gt.sum()))
+        self.assertEqual(full[0]["fp"],gt.size-int(gt.sum()))
+        self.assertEqual(full[0]["fn"],0)
+        self.assertTrue(np.array_equal(a[0]["gt"],gt))
 
     def test_train_only_aggregator_models(self):
         g=np.zeros((13,13),bool);g[4,3:9]=True
