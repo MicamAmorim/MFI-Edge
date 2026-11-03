@@ -20,7 +20,9 @@ from src.stage24_residual import (
     apply_membership, fit_membership, fit_residual_gate, apply_suppressor,
 )
 from src.stage24_recertification_ops import (
-    AGGREGATORS, THINNING, SUPPRESSORS, deterministic_seed, fit_aggregator,
+    AGGREGATORS, THINNING, SUPPRESSORS, CALIBRATION_MODES,
+    calibrate_memberships, score_distribution_diagnostics,
+    deterministic_seed, fit_aggregator,
     apply_aggregator, thin_score, binary_map, choose_threshold, serialize_model,
 )
 
@@ -83,13 +85,15 @@ def group_maps(maps, group):
     return [maps[k] for k in group]
 
 
-def memberships_on_split(group, maps, gts, train):
+def memberships_on_split(group, maps, gts, train, calibration_mode="legacy_sigmoid"):
     # Each fitted membership sees only training GT; reuse across aggregator modes.
-    key = (tuple(group), id(maps), tuple(sorted(int(i) for i in train)))
+    key = (tuple(group), id(maps), tuple(sorted(int(i) for i in train)), calibration_mode)
     if key not in _MEMBERSHIP_CACHE:
         cue = group_maps(maps, group)
         mem = fit_membership(cue, gts, train)
-        arrays = [apply_membership([c[i] for c in cue], mem) for i in range(len(gts))]
+        arrays = [calibrate_memberships(
+            apply_membership([c[i] for c in cue], mem), mem, calibration_mode)
+            for i in range(len(gts))]
         _MEMBERSHIP_CACHE[key] = (mem, arrays)
     return _MEMBERSHIP_CACHE[key]
 
@@ -139,11 +143,12 @@ def _heldout_rows(scores, items, valid, threshold, mode, identifiers):
 
 
 def fit_and_score(group, name, items, maps, train, valid, mode, count=21, seed=0,
-                  suppression=("identity", 1.0)):
+                  suppression=("identity", 1.0), calibration_mode="legacy_sigmoid"):
     gts = [v["gt"] for v in items]
-    mem, ms = memberships_on_split(group, maps, gts, train)
+    mem, ms = memberships_on_split(group, maps, gts, train, calibration_mode)
     # Model parameters must NOT change between raw/NMS or suppressor ablations.
-    key = (tuple(group), id(maps), tuple(sorted(int(i) for i in train)), name)
+    key = (tuple(group), id(maps), tuple(sorted(int(i) for i in train)),
+           name, calibration_mode)
     if key not in _AGGREGATOR_CACHE:
         _AGGREGATOR_CACHE[key] = fit_aggregator(
             name, ms, gts, train,
@@ -174,10 +179,11 @@ def fit_and_score(group, name, items, maps, train, valid, mode, count=21, seed=0
         "group": "|".join(group), "arity": len(group), "aggregator": name,
         "thinning": mode, "suppressor": suppression[0],
         "strength": suppression[1],
-        "threshold": threshold,
+        "threshold": threshold, "calibration_mode": calibration_mode,
     }
     heldout, per_image = _heldout_rows(scores, items, valid, threshold, mode, identifiers)
-    model = serialize_model(group, mem, agg, suppression, mode, gate)
+    model = serialize_model(group, mem, agg, suppression, mode, gate,
+                            calibration_mode=calibration_mode)
     model["threshold"] = threshold
     return {
         **identifiers, "train_F1": training.f1,
@@ -237,6 +243,7 @@ def run_group(group, items, maps, train, valid, fold_id, out, cfg):
     path = out / "folds" / fold_id / ("__".join(group) + ".json")
     configuration = {"cfg": cfg, "aggregators": AGGREGATORS,
                      "thinning": THINNING, "suppressors": SUPPRESSORS,
+                     "calibrations": CALIBRATION_MODES,
                      "protocol": "native_GT_one_to_one_v1"}
     signature = __import__("hashlib").sha256(json.dumps(
         configuration, sort_keys=True, default=str).encode()).hexdigest()
@@ -300,13 +307,53 @@ def run_group(group, items, maps, train, valid, fold_id, out, cfg):
         ab.pop("model")
         ab["fold"] = fold_id
         ablation_summaries.append(ab)
+    # Calibration-by-thinning/suppression ablation on matched outer held-out.
+    # Does not alter candidate discovery or the frozen recipe.
+    cal_rows, cal_images, histograms = [], [], []
+    for calibration in CALIBRATION_MODES:
+        for calibration_thinning in TRANSFER_MODES:
+            for cal_suppression in dict.fromkeys(
+                (("identity",1.0),
+                 (selected["suppressor"],selected["strength"]))):
+                try:
+                    cr = fit_and_score(
+                        group, selected["aggregator"], items, maps, train, valid,
+                        calibration_thinning,
+                        seed=deterministic_seed(cfg["seed"],"calibration",fold_id,group),
+                        count=cfg["threshold_count"],
+                        suppression=cal_suppression,
+                        calibration_mode=calibration,
+                    )
+                    cr["fold"] = fold_id
+                    cal_images.extend(cr.pop("per_image"))
+                    cr.pop("model")
+                    cal_rows.append(cr)
+                except (ValueError,RuntimeError) as exc:
+                    cal_rows.append({"group":"|".join(group), "fold":fold_id,
+                                     "calibration_mode":calibration,
+                                     "aggregator":selected["aggregator"],
+                                     "thinning":calibration_thinning,
+                                     "suppressor":cal_suppression[0],
+                                     "strength":cal_suppression[1],
+                                     "status":"failed","error":str(exc)})
+        mem, ms = memberships_on_split(group, maps, [x["gt"] for x in items],
+                                        train, calibration_mode=calibration)
+        for ii in valid:
+            idx=int(ii)
+            for channel,desc in enumerate(group):
+                histograms.append(score_distribution_diagnostics(
+                    ms[idx][...,channel],items[idx]["id"],
+                    "calibration="+calibration+"|cue="+desc))
     result = {"fold_id": fold_id, "group": list(group),
               "config_sha256": signature,
               "landscape": landscape, "landscape_per_image": per_image,
               "selected": selected, "selected_outer": selected_result,
               "selected_per_image": winner_image, "inner": inner,
               "suppression_ablation": ablation_summaries,
-              "suppression_ablation_per_image": ablations}
+              "suppression_ablation_per_image": ablations,
+              "calibration_ablation": cal_rows,
+              "calibration_ablation_per_image": cal_images,
+              "membership_score_histograms": histograms}
     write_json(path, result)
     clear_group_cache()
     return result
