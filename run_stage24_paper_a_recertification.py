@@ -44,6 +44,7 @@ from src.stage24_integrity import sha256_file, one_to_one_boundary_counts
 from src.stage24_residual import fit_residual_gate, apply_suppressor
 from src.stage24_integrity import load_float_artifact
 from src.stage24_paper_a_runtime import run_runtime_audit
+from src.stage24_math_contracts import synthetic_contract as strict_math_contract
 from src.stage24_paper_a_historical import (
     historical_score_comparison, synthetic_contract as historical_formula_contract,
 )
@@ -86,6 +87,13 @@ def local_dataset(args):
     items, manifest = load_uded_native(Path(args.uded_root))
     if len(items) != 14:
         raise RuntimeError("UDED 14-image native geometry contract drift")
+    for item in items:
+        source=np.asarray(item["img"])
+        if not np.issubdtype(source.dtype,np.uint8):
+            raise RuntimeError("Stage24G-L only certifies 8-bit UDED imagery; "+
+                "16-bit gray_float legacy normalization is NOT validated: "+str(source.dtype))
+        if source.max()>255 or source.min()<0:
+            raise RuntimeError("Invalid 8-bit UDED pixel range")
     maps, provenance = load_maps(items, Path(args.cache_root), STOP)
     if set(maps) != set(DESCRIPTOR_IDS):
         raise RuntimeError("Descriptor registry mismatch")
@@ -872,6 +880,51 @@ def stats_and_claims(out):
         encoding="utf-8",
     )
 
+def verify_campaign_source_fingerprint(out,args):
+    """Fail closed when resuming with different source or model configuration."""
+    paths=[
+        "run_stage24_paper_a_recertification.py",
+        "src/stage24_recertification_cv.py",
+        "src/stage24_recertification_ops.py",
+        "src/stage24_strict_generalized_cf1f2.py",
+        "src/stage24_math_contracts.py",
+        "src/stage24_integrity.py",
+        "src/stage24_residual.py",
+        "src/postprocess.py",
+        "src/operators.py",
+        "src/features.py",
+        "src/fuzzy_measures.py",
+        "src/stage23_descriptors.py",
+        "src/stage24_paper_a_historical.py",
+        "src/stage24_paper_a_controls.py",
+        "src/stage24_paper_a_berkeley_bootstrap.py",
+        "src/stage24_paper_a_runtime.py",
+    ]
+    evidence={name:sha256_file(ROOT/name) for name in paths}
+    options={"thresholds":args.thresholds,
+             "inner_thresholds":args.inner_thresholds,
+             "inner_top":args.inner_top,
+             "top_pairs":args.top_pairs,
+             "top_triples":args.top_triples,
+             "max_folds":args.max_folds,
+             "cache_root":str(Path(args.cache_root).resolve()),
+             "uded_root":str(Path(args.uded_root).resolve()),
+             "seed":SEED}
+    manifest={"source_sha256":evidence,"configuration":options,
+              "cache_invalidation":"fail_closed_on_change",
+              "legacy_campaigns_unchanged":True}
+    file=out/"campaign_source_fingerprint.json"
+    if file.is_file():
+        former=json.loads(file.read_text(encoding="utf-8"))
+        if former!=manifest:
+            raise RuntimeError("Stage24G-L existing checkpoints are for DIFFERENT "
+               "source/configuration. Preserve/archive existing results and use "
+               "a NEW --out directory before rerunning. No silent overwrite.")
+    else:
+        write_json(file,manifest)
+    return manifest
+
+
 def main():
     ap=argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--phase",choices=("all","preflight","g0","g","h","i","j","k","l"),
@@ -908,6 +961,8 @@ def main():
     checks=preflight_math()
     if not bsds_bootstrap_contract() or not historical_formula_contract():
         raise RuntimeError('Scientific bootstrap or historical-formula contract failed')
+    mathematical_contracts=strict_math_contract()
+    write_json(out/"strict_math_contracts.json",mathematical_contracts)
     write_json(out/"preflight.json",{"status":"passed","n_tests":len(checks),
                 "checks":checks,"inherited_R0":True,"GT":"native_never_resized",
                 "berkeley_thinpb_not_equated_to_python_thinning":True})
@@ -918,6 +973,7 @@ def main():
         print("STAGE24GL_PREFLIGHT_OK")
         return 0
     if args.phase in ("all","g0","g","h","i"):
+        verify_campaign_source_fingerprint(out,args)
         items,maps,manifest,provenance=local_dataset(args)
         write_json(out/"native_dataset_manifest.json",manifest)
         write_csv(out/"descriptor_provenance.csv",provenance)
@@ -936,6 +992,7 @@ def main():
                     "status":"SKIPPED_BY_USER","reason":"--skip-runtime"})
             run_literature(args,items,maps,out)
     if args.phase=="j":
+        verify_campaign_source_fingerprint(out,args)
         items,maps,_,_=local_dataset(args)
         run_literature(args,items,maps,out)
     if args.phase in ("all","k") and not args.skip_official:
