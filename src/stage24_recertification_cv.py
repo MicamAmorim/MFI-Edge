@@ -251,13 +251,24 @@ def run_group(group, items, maps, train, valid, fold_id, out, cfg):
     for name in AGGREGATORS:
         for mode in THINNING:
             seed = deterministic_seed(cfg["seed"], fold_id, group, name, mode)
-            row = fit_and_score(group, name, items, maps, train, valid, mode,
-                                seed=seed, count=cfg["threshold_count"])
+            try:
+                row = fit_and_score(group, name, items, maps, train, valid, mode,
+                                    seed=seed, count=cfg["threshold_count"])
+            except (ValueError, RuntimeError, FloatingPointError) as exc:
+                landscape.append({"group": "|".join(group), "arity": len(group),
+                                  "aggregator": name, "thinning": mode,
+                                  "status": "failed", "error": str(exc),
+                                  "train_F1": None, "validation_F1": None})
+                continue
             per_image.extend(row.pop("per_image"))
             row.pop("model")
+            row["status"] = "completed"
             landscape.append(row)
-    # Preselect only on outer TRAIN; outer-held-out F1 must not guide inner search.
-    ordered = sorted(landscape, key=lambda r: (-r["train_F1"], r["aggregator"], r["thinning"]))
+    # Failures remain explicit in the landscape; outer held-out never selects models.
+    ordered = sorted((r for r in landscape if r["train_F1"] is not None),
+                     key=lambda r: (-r["train_F1"], r["aggregator"], r["thinning"]))
+    if not ordered:
+        raise RuntimeError("No valid aggregation for group " + str(group))
     finalists = [(r["aggregator"], r["thinning"]) for r in ordered[:cfg["inner_top"]]]
     # Include core mathematical controls even if train-only screening misses them.
     finalists += [(name, "raw") for name in
