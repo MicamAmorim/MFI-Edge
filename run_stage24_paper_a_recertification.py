@@ -443,6 +443,46 @@ def run_bsds_export(args):
             target/(path.stem+".png"))
     print("STAGE24GL_BSDS_EXPORT_DONE",len(paths),args.variant,flush=True)
 
+def _bootstrap_historical_stage24(out):
+    """No evaluator re-run: consume archived Stage24 200×99 Berkeley counts."""
+    archived=ROOT/"results/paper_a_evidence/stage24/official_bsds/per_image_threshold_counts.csv"
+    previous=ROOT/"results/local_dev/stage24_residual_suppression/summary.json"
+    if not archived.is_file() or not previous.is_file():
+        write_json(out/"historical_stage24_bootstrap_guard.json",{
+            "status":"PENDING_ARCHIVED_BERKELEY_COUNTS"})
+        return
+    summary=json.loads(previous.read_text(encoding="utf-8")).get("official_evaluation",{})
+    methods=load_archived_counts(archived)
+    comparisons=[("stage24_residual_suppression","incumbent_compact_positive_choquet")]
+    analysis=paired_bootstrap(methods,comparisons,summary,seed=20261104,replicates=1000)
+    hist=out/"historical_stage24_paired_bootstrap"
+    write_results(hist,analysis)
+    write_json(out/"historical_stage24_bootstrap_guard.json",{
+        "status":"complete" if analysis["confidence_intervals"] else "BLOCKED_REFERENCE_MISMATCH",
+        "integrity_checks":analysis["verification"],
+        "contrasts":analysis["comparisons"]})
+
+
+def _bootstrap_new_official(out,summary):
+    source=ROOT/"results/official_eval"/EXPERIMENT
+    method_maps=load_official_counts(source)
+    tests=[
+        ("stage24gl_winner","stage24gl_identity"),
+        ("stage24gl_winner","stage24gl_winner_quantile"),
+        ("stage24gl_identity","stage24gl_identity_quantile"),
+        ("stage24gl_winner","stage24gl_best_single"),
+        ("stage24gl_winner","incumbent_compact_positive_choquet"),
+        ("stage24gl_pair04_logistic","stage24gl_pair04_weighted"),
+    ]
+    for meth in sorted(method_maps):
+        if meth.startswith("lit_") and meth.endswith("_fusion"):
+            base=meth[:-7]+"_baseline"
+            if base in method_maps: tests.append((meth,base))
+    analysis=paired_bootstrap(method_maps,tests,summary,seed=20261104,replicates=1000)
+    write_results(out,analysis)
+    return analysis
+
+
 def run_official(out):
     path = out/"official_eval_manifest.json"
     if not path.exists():
@@ -460,6 +500,10 @@ def run_official(out):
              "final_claim_eligible":False,
              "note":"BSDS validation is development evidence; protected multi-benchmark gate pending"}
     write_json(out/"final_claim_guard.json",guard)
+    analysis=_bootstrap_new_official(out,data)
+    if not analysis["confidence_intervals"]:
+        print("WARNING_BERKELEY_BOOTSTRAP_BLOCKED: reference verification mismatch",
+              flush=True)
 
 
 def _float_literature_score(entry, expected_shape=None):
@@ -750,6 +794,10 @@ def stats_and_claims(out):
       {"claim":"Pair/triple and aggregator factorial","status":"EXPLORATORY_COMPLETE" if complete else "INCOMPLETE_CV"},
       {"claim":"Matched suppressor ablation","status":"HELDOUT_COMPARISONS_AVAILABLE" if tests else "PENDING"},
       {"claim":"BSDS validation","status":"DEVELOPMENT_ONLY" if official else "PENDING"},
+      {"claim":"Bootstrap Berkeley ODS/OIS/AP 95% CI","status":"RECALCULATED_WITH_REFERENCES"
+       if (out/"bootstrap_paired_ods_ois_ap.csv").is_file() else "BLOCKED_OR_PENDING"},
+      {"claim":"Scores AP quantile-calibrated","status":"BSDS_DEVELOPMENT_DIAGNOSTIC"
+       if official else "PENDING"},
       {"claim":"BSDS reference reproduction","status":"BLOCKED_UNTIL_INDEPENDENT_REFERENCE"},
       {"claim":"Literature detector transfer","status":literature.get("status","GUARDED")},
       {"claim":"Stage23D same-score GT correction","status":"REQUIRES_EXACT_HISTORICAL_IMPLEMENTATION"},
@@ -810,6 +858,8 @@ def main():
     write_json(out/"preflight.json",{"status":"passed","n_tests":len(checks),
                 "checks":checks,"inherited_R0":True,"GT":"native_never_resized",
                 "berkeley_thinpb_not_equated_to_python_thinning":True})
+    if args.phase in ("all","preflight","l"):
+        _bootstrap_historical_stage24(out)
     if args.phase=="preflight":
         print("STAGE24GL_PREFLIGHT_OK")
         return 0
