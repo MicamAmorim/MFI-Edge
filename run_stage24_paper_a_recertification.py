@@ -934,6 +934,14 @@ def main():
         "final_claim_eligible":False,
         "official_reference_reproduction_verified":False,
         "literature_transfer_requires_author_float_data":True})
+    if args.phase=="all" and args.max_folds==15 and not args.skip_official:
+        print("STAGE24GL_ARCHIVING_SCIENCE_AND_STAGING_GIT",flush=True)
+        subprocess.run([
+            sys.executable,
+            str(ROOT/"scripts/prepare_stage24gl_paper_a_archive.py"),
+            "--stage","--replace",
+        ],cwd=ROOT,check=True)
+        print("STAGE24GL_GIT_STAGED_NEEDS_MANUAL_REVIEW_AND_COMMIT",flush=True)
     print("STAGE24GL_PHASE_COMPLETED",args.phase,str(out),flush=True)
     return 0
 
