@@ -477,6 +477,32 @@ def _bootstrap_historical_stage24(out):
         "contrasts":analysis["comparisons"]})
 
 
+def _bootstrap_historical_stage23f(out):
+    """Reanalyse 23F if original per-image Berkeley sources remain available."""
+    base=ROOT/"results/official_eval/stage23f_literature_validation_frontier"
+    output=out/"historical_stage23f_paired_bootstrap"
+    summaryfile=base/"summary.json"
+    if not summaryfile.is_file():
+        write_json(out/"historical_stage23f_bootstrap_guard.json",{
+            "status":"PENDING_LOCAL_23F_EVALUATOR_SOURCES"})
+        return
+    prior=json.loads(summaryfile.read_text(encoding="utf-8"))
+    source=load_official_counts(base)
+    pairs=[
+        ("stage23f_pair_03_minimum_conjunction",
+         "stage23f_pair_03_equal_arithmetic_mean"),
+        ("stage23f_pair_04_nonnegative_logistic_additive",
+         "stage23f_pair_04_equal_arithmetic_mean"),
+        ("stage23f_triple_04_median_owa",
+         "stage23f_triple_04_equal_arithmetic_mean"),
+    ]
+    result=paired_bootstrap(source,pairs,prior,seed=20261104,replicates=1000)
+    write_results(output,result)
+    write_json(out/"historical_stage23f_bootstrap_guard.json",{
+        "status":"complete" if result["confidence_intervals"] else "BLOCKED_MISSING_OR_MISMATCH",
+        "checks":result["verification"],"comparisons":result["comparisons"]})
+
+
 def _bootstrap_new_official(out,summary):
     source=ROOT/"results/official_eval"/EXPERIMENT
     method_maps=load_official_counts(source)
@@ -874,6 +900,7 @@ def main():
                 "berkeley_thinpb_not_equated_to_python_thinning":True})
     if args.phase in ("all","preflight","l"):
         _bootstrap_historical_stage24(out)
+        _bootstrap_historical_stage23f(out)
     if args.phase=="preflight":
         print("STAGE24GL_PREFLIGHT_OK")
         return 0
