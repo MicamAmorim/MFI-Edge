@@ -206,7 +206,7 @@ def run_group(group, items, maps, train, valid, fold_id, out, cfg):
     landscape = []
     per_image = []
     for name in AGGREGATORS:
-        for mode in TRANSFER_MODES:
+        for mode in THINNING:
             seed = deterministic_seed(cfg["seed"], fold_id, group, name, mode)
             row = fit_and_score(group, name, items, maps, train, valid, mode,
                                 seed=seed, count=cfg["threshold_count"])
@@ -235,6 +235,7 @@ def run_group(group, items, maps, train, valid, fold_id, out, cfg):
     winner_image = selected_result.pop("per_image")
     selected_result.pop("model")
     ablations = []
+    ablation_summaries = []
     for supp in SUPPRESSORS:
         ab = fit_and_score(
             group, selected["aggregator"], items, maps, train, valid, selected["mode"],
@@ -244,14 +245,6 @@ def run_group(group, items, maps, train, valid, fold_id, out, cfg):
         ablations.extend(ab.pop("per_image"))
         ab.pop("model")
         ab["fold"] = fold_id
-        # Preserve grouped aggregate metrics too.
-        if "ablation_rows" not in locals():
-            pass
-        # rows are stored separately below.
-        if len(ablations) == 0:
-            raise AssertionError
-        if "ablation_summaries" not in locals():
-            ablation_summaries = []
         ablation_summaries.append(ab)
     result = {"fold_id": fold_id, "group": list(group),
               "landscape": landscape, "landscape_per_image": per_image,
@@ -289,7 +282,6 @@ def individual_descriptor_baselines(items, maps, train, valid, fold, count=21):
 def geometry_audit(items, maps, train, pair_rows, fold):
     """Isolate GT GEOMETRY for the SAME Stage24 proxy; NOT Stage23D score."""
     from src.stage24_residual import fit_membership
-    from skimage.transform import resize
     original_gts = [item["gt"] for item in items]
     inf_shapes = [i["inference_img"].shape[:2] for i in items]
     legacy_gts = [resize(g.astype(np.uint8), shape, order=0, preserve_range=True,
@@ -301,9 +293,6 @@ def geometry_audit(items, maps, train, pair_rows, fold):
         raw = [[resize(maps[d][j], inf_shapes[j], order=1,
                        preserve_range=True, anti_aliasing=True).astype(np.float32)
                 for j in range(len(items))] for d in p]
-        m = fit_membership(raw, legacy_gts, train)
-        norm = [[apply_membership([x], fit_membership([maps[d]], original_gts, train))[..., 0]
-                 for x in []] for d in []]  # not used; native score comes from screen
         a = [apply_membership([v], fit_membership([raw[0]], legacy_gts, train))[..., 0]
              for v in raw[0]]
         b = [apply_membership([v], fit_membership([raw[1]], legacy_gts, train))[..., 0]
