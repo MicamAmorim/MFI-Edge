@@ -5,8 +5,10 @@ Scientific scores stay float32. GT is never resized. Binary thinning is only a
 UDED diagnostic; official BSDS uses the pinned Berkeley thinpb procedure.
 """
 from itertools import combinations
+from concurrent.futures import ThreadPoolExecutor
 import hashlib
 import json
+import os
 
 import numpy as np
 from scipy.optimize import minimize, nnls
@@ -343,38 +345,60 @@ def evaluate_at(scores, gts, images, threshold, mode, tolerance=0.0075):
 
 
 def choose_threshold(scores, gts, images, mode, count=21, progress=None):
-    """Train-only threshold search with one GT spatial index per training image.
+    """Exact train-only threshold selection with bounded parallel matching.
 
-    `progress` receives (completed_thresholds, total_thresholds) for reporting
-    only; it cannot affect fitting, the candidate set or tie-breaking.
+    Each threshold uses the same immutable GT geometry and the same matching
+    contract. Executor.map preserves threshold order, so scores and tie breaks
+    are bitwise-equivalent to the serial method. Worker count affects runtime
+    only; never changes candidates, GT access, or F1 definitions.
     """
     if not (len(scores) == len(gts) == len(images)):
         raise ValueError("scores, gts and images must have equal lengths")
     processed = [thin_score(s, mode, im) for s, im in zip(scores, images)]
     thresholds = canonical_threshold_candidates(processed, count=count)
-    # Avoid a zero threshold classifying the entire image as positive.
     thresholds = [float(t) for t in thresholds if t > 1e-7]
     if not thresholds:
         thresholds = [0.5]
-    # A fixed training GT is matched against every threshold candidate. Building
-    # a KD-tree for every candidate redundantly dominated the full campaign.
     references = [prepare_boundary_reference(g) for g in gts]
-    best = None
+
+    def counts_at(threshold):
+        vals = [one_to_one_boundary_counts(binary_map(p, threshold, mode), g,
+                                           reference=ref)
+                for p, g, ref in zip(processed, gts, references)]
+        return aggregate_counts(vals)
+
+    raw_workers = os.environ.get("STAGE24GL_MATCH_WORKERS", "4")
+    try:
+        workers = int(raw_workers)
+    except ValueError as exc:
+        raise ValueError("STAGE24GL_MATCH_WORKERS must be an integer 1..8") from exc
+    if not 1 <= workers <= 8:
+        raise ValueError("STAGE24GL_MATCH_WORKERS must be an integer 1..8")
+    workers = min(workers, len(thresholds), os.cpu_count() or 1)
     if progress is not None:
         progress(0, len(thresholds))
-    for index, t in enumerate(thresholds, 1):
-        vals = [one_to_one_boundary_counts(binary_map(p, t, mode), g,
-                                           reference=reference)
-                for p, g, reference in zip(processed, gts, references)]
-        c = aggregate_counts(vals)
-        key = (c.f1, c.precision, c.recall, t)
-        if best is None or key > best[0]:
-            best = (key, c, t)
-        if progress is not None:
-            progress(index, len(thresholds))
+
+    best = None
+    # A bounded pool has no process-spawn/deserialization overhead and SciPy
+    # matching releases the GIL for its expensive kernels.
+    if workers == 1:
+        candidate_counts = map(counts_at, thresholds)
+        for index, (t, c) in enumerate(zip(thresholds, candidate_counts), 1):
+            key = (c.f1, c.precision, c.recall, t)
+            if best is None or key > best[0]:
+                best = (key, c, t)
+            if progress is not None:
+                progress(index, len(thresholds))
+    else:
+        with ThreadPoolExecutor(max_workers=workers, thread_name_prefix="stage24-match") as pool:
+            for index, (t, c) in enumerate(zip(thresholds, pool.map(counts_at, thresholds)), 1):
+                key = (c.f1, c.precision, c.recall, t)
+                if best is None or key > best[0]:
+                    best = (key, c, t)
+                if progress is not None:
+                    progress(index, len(thresholds))
     _, c, t = best
     return float(t), c
-
 
 def serialize_model(pair, membership, agg, suppression, mode, gate=None,
                     calibration_mode="legacy_sigmoid"):
