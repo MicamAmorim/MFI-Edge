@@ -403,26 +403,82 @@ def run_group(group, items, maps, train, valid, fold_id, out, cfg):
     return result
 
 
-def individual_descriptor_baselines(items, maps, train, valid, fold, count=21):
-    from src.stage24_residual import MembershipModel
+class Stage24StopRequested(RuntimeError):
+    """Cooperative stop at a completed scientific checkpoint boundary."""
+
+
+def individual_descriptor_baselines(
+    items, maps, train, valid, fold, count=21, *, checkpoint_dir=None,
+    stop_requested=None, show_progress=False,
+):
+    """Resumable individual baselines: one atomic checkpoint per cue and mode.
+
+    Existing source/configuration protection is enforced by the parent campaign.
+    Each part additionally records its fold, split indices and search count.
+    The final summary and per-image schema remain unchanged.
+    """
     results, per_image = [], []
     gts = [v["gt"] for v in items]
-    for name in DESCRIPTOR_IDS:
-        mem = fit_membership([maps[name]], gts, train)
-        scores = [apply_membership([maps[name][i]], mem)[..., 0] for i in range(len(items))]
-        for mode in TRANSFER_MODES:
-            threshold, ctrain = choose_threshold(
-                [scores[int(i)] for i in train], subset(items, train, "gt"),
-                subset(items, train, "img"), mode, count=count,
-            )
-            c, detail = _heldout_rows(scores, items, valid, threshold, mode, {
-                "fold": fold, "descriptor_id": name, "thinning": mode,
-                "threshold": threshold,
-            })
-            per_image.extend(detail)
-            results.append({"fold": fold, "descriptor_id": name, "thinning": mode,
-                            "threshold": threshold, "train_F1": ctrain.f1,
-                            "validation_F1": c.f1, "tp": c.tp, "fp": c.fp, "fn": c.fn})
+    folder = Path(checkpoint_dir) if checkpoint_dir is not None else None
+    if folder is not None:
+        folder.mkdir(parents=True, exist_ok=True)
+    n_modes = len(DESCRIPTOR_IDS) * len(TRANSFER_MODES)
+    with tqdm(total=n_modes, desc=f"{fold} individual descriptors",
+              position=1, leave=False, unit="mode",
+              dynamic_ncols=True, disable=not show_progress) as cue_bar:
+        for name in DESCRIPTOR_IDS:
+            scores = None
+            for mode in TRANSFER_MODES:
+                if stop_requested is not None and stop_requested():
+                    raise Stage24StopRequested("Stop before individual descriptor " + name)
+                spec = {"schema": 1, "fold": fold, "descriptor_id": name,
+                        "thinning": mode, "threshold_count": int(count),
+                        "train_indices": sorted(int(i) for i in train),
+                        "valid_indices": sorted(int(i) for i in valid)}
+                part_path = folder / (name + "__" + mode + ".json") if folder else None
+                if part_path is not None and part_path.exists():
+                    part = json.loads(part_path.read_text(encoding="utf-8"))
+                    if (part.get("spec") != spec or
+                            not isinstance(part.get("summary"), dict) or
+                            not isinstance(part.get("per_image"), list)):
+                        raise RuntimeError("Individual checkpoint mismatch: " + str(part_path))
+                    row, detail = part["summary"], part["per_image"]
+                    if (row.get("descriptor_id") != name or row.get("thinning") != mode or
+                            row.get("fold") != fold or
+                            len(detail) != len(valid)):
+                        raise RuntimeError("Malformed individual checkpoint: " + str(part_path))
+                    cue_bar.set_postfix_str(name + " " + mode + " cached", refresh=False)
+                else:
+                    if scores is None:
+                        mem = fit_membership([maps[name]], gts, train)
+                        scores = [apply_membership([maps[name][i]], mem)[..., 0]
+                                  for i in range(len(items))]
+                    with tqdm(total=0, desc=name + " " + mode + " thresholds",
+                              position=2, leave=False, unit="threshold",
+                              dynamic_ncols=True, disable=not show_progress) as threshold_bar:
+                        def on_threshold(done, total):
+                            threshold_bar.total = total
+                            threshold_bar.n = done
+                            threshold_bar.refresh()
+                        threshold, ctrain = choose_threshold(
+                            [scores[int(i)] for i in train], subset(items, train, "gt"),
+                            subset(items, train, "img"), mode, count=count,
+                            progress=on_threshold if show_progress else None,
+                        )
+                    c, detail = _heldout_rows(scores, items, valid, threshold, mode, {
+                        "fold": fold, "descriptor_id": name, "thinning": mode,
+                        "threshold": threshold,
+                    })
+                    row = {"fold": fold, "descriptor_id": name, "thinning": mode,
+                           "threshold": threshold, "train_F1": ctrain.f1,
+                           "validation_F1": c.f1, "tp": c.tp, "fp": c.fp, "fn": c.fn}
+                    if part_path is not None:
+                        write_json(part_path, {"spec": spec, "summary": row,
+                                               "per_image": detail})
+                    cue_bar.set_postfix_str(name + " " + mode + " saved", refresh=False)
+                results.append(row)
+                per_image.extend(detail)
+                cue_bar.update(1)
     return results, per_image
 
 
