@@ -16,7 +16,13 @@ if errorlevel 1 (
 )
 
 echo [2/3] Mathematical, NMS, baseline and synthetic regressions
-"%PYTHON%" -m unittest -v test_math
+if not exist "test_math.py" (
+  echo ERROR: Cannot find test_math.py in "%CD%". Verify checkout and project root.
+  exit /b 4
+)
+echo Project root: "%CD%"
+set "PYTHONPATH=%CD%;%PYTHONPATH%"
+"%PYTHON%" "test_math.py"
 if errorlevel 1 (
   echo ERROR: legacy math tests FAILED; campaign not started.
   exit /b 4
