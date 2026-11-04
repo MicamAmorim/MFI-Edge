@@ -19,10 +19,10 @@ Paper A local: `cde7463`, ainda descreve os resultados Stage23C–F.
 
 ## Estado local observado
 
-Ryzen 7 5700X, 16 processadores lógicos, Python 3.12.10 na .venv existente.
+Ryzen 7 5700X, 32 GB de RAM, 16 processadores lógicos, Python 3.12.10 na .venv existente.
 Inventário científico local registra NumPy 2.5.3 e SciPy 1.18.1; não houve upgrade.
 Cerca de 17 GB livres em C: no início da inspeção. MATLAB R2023a está instalado.
-Não foram encontrados processos python/MATLAB ativos nas consultas realizadas.
+A consulta inicial isolada não mostrou processos. Uma consulta posterior ao Windows revelou quatro processos Python antigos: PID 11928 consumiu 5,30 s de CPU em 2 s (aproximadamente 2,65 núcleos) e cerca de 777 MB; PID 30572 ficou ocioso. Os demais parecem processos pais. Comando/caminho não ficaram disponíveis: não foi possível atribuir sua origem e nenhum foi encerrado.
 
 A campanha original possui fingerprint, preflight, pair_screen, geometry_audit e
 somente dois de 26 modos individuais de r1_f1: Scharr raw/NMS. Nenhum fold completo
@@ -123,3 +123,25 @@ a cardinalidade. Se a atribuição gulosa falhar, um matching completo no subgra
 dos oito vizinhos mais próximos também certifica a mesma cota superior. Se não
 cobrir todos os vértices ativos, o grafo de raio completo permanece obrigatório.
 Essas otimizações não tornam o matching aproximado.
+
+
+## Estado final da atualização local
+
+Código publicado e pull aplicado por fast-forward. A campanha antiga foi
+preservada em `results/local_dev/stage24_paper_a_recertification_before_b25ceb2_20261104`.
+Os backups `antes_barra_20261103_224415` e `backup_20261104_065110` também existem:
+ambos têm somente pair_screen/geometry_audit em r1_f1 e não têm summary completed.
+
+Novo launcher/preflight executado na workstation: 55 testes OK e marcador
+STAGE24GL_PREFLIGHT_OK. Reanálises históricas Stage24 e Stage23F com status complete,
+sem alteração dos resultados históricos. Ambiente manteve o SHA do inventário anterior.
+No ambiente isolado do assistente, testes precisaram de TEMP/TMP dentro do workspace;
+isso é uma restrição do sandbox, não um erro observado no PowerShell normal do usuário.
+
+Piloto com 14 imagens: baseline Scharr raw reproduziu o checkpoint original.
+O piloto NMS completo foi interrompido por continuar caro; não constitui validação
+completa de runtime/retomada nativa. A retomada foi testada por fixtures sintéticas;
+o matcher por oráculo independente. A campanha completa e a avaliação oficial nova
+NÃO foram executadas: estão prontas para o usuário iniciar e acompanhar pelo shell.
+A saída -1 original permanece sem causa determinada, portanto não se afirma que
+esse encerramento específico foi reproduzido ou definitivamente eliminado.
