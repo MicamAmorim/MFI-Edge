@@ -174,8 +174,27 @@ def one_to_one_boundary_counts(
     elif gt_count >= pred_count and not np.any(p & ~g):
         tp = pred_count
     else:
-        pred_idx, _ = _match_indices(p, g, tol, reference=reference)
-        tp = int(len(pred_idx))
+        # A distinct nearest-neighbour assignment is a CERTIFICATE of a
+        # maximum-cardinality match when it covers the smaller side. A failed
+        # certificate is NOT treated as a mismatch: use the exact graph solver.
+        pred_xy = np.argwhere(p)
+        if pred_count >= gt_count:
+            gt_xy = reference.coords if reference is not None else np.argwhere(g)
+            distances, neighbors = cKDTree(pred_xy.astype(float)).query(
+                gt_xy.astype(float), k=1, distance_upper_bound=float(tol)+1e-8)
+            certified = (np.all(distances <= float(tol)+1e-8) and
+                         len(np.unique(neighbors)) == gt_count)
+        else:
+            tree = reference.tree if reference is not None else cKDTree(np.argwhere(g).astype(float))
+            distances, neighbors = tree.query(
+                pred_xy.astype(float), k=1, distance_upper_bound=float(tol)+1e-8)
+            certified = (np.all(distances <= float(tol)+1e-8) and
+                         len(np.unique(neighbors)) == pred_count)
+        if certified:
+            tp = min(pred_count, gt_count)
+        else:
+            pred_idx, _ = _match_indices(p, g, tol, reference=reference)
+            tp = int(len(pred_idx))
     return BoundaryCounts(
         tp=tp,
         fp=pred_count - tp,
