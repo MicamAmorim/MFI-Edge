@@ -34,7 +34,7 @@ from src.stage23_descriptors import DESCRIPTOR_IDS
 from src.stage24_recertification_cv import (
     write_json, write_csv, train_pair_screen, choose_groups, run_group,
     geometry_audit, individual_descriptor_baselines, memberships_on_split,
-    HISTORIC_PAIRS, HISTORIC_TRIPLES, TRANSFER_MODES,
+    HISTORIC_PAIRS, HISTORIC_TRIPLES, TRANSFER_MODES, Stage24StopRequested,
 )
 from src.stage24_recertification_ops import (
     AGGREGATORS, SUPPRESSORS, deterministic_seed, fit_aggregator,
@@ -151,10 +151,14 @@ def _fold_path(out, key, fold):
 
 
 def _load_or_make(path, fn):
+    """Atomic stage checkpoint with visible start/reuse/completion events."""
     if path.exists():
+        tqdm.write(f"STAGE24GL_STAGE_CACHED {path.parent.name} {path.stem}")
         return json.loads(path.read_text(encoding="utf-8"))
+    tqdm.write(f"STAGE24GL_STAGE_START {path.parent.name} {path.stem}")
     value = fn()
     write_json(path, value)
+    tqdm.write(f"STAGE24GL_STAGE_DONE {path.parent.name} {path.stem}")
     return value
 
 
@@ -192,10 +196,17 @@ def run_uded(args, items, maps, out):
                                   r for r in candidates if tuple(sorted((r["a"],r["b"]))) in
                                   {tuple(sorted(p)) for p in HISTORIC_PAIRS + (("hessian_s7", "halfdisc_distribution_contrast"),)}
                               ], fid))
-                _load_or_make(_fold_path(out, "individual_descriptor", fid),
-                              lambda: dict(zip(("summary", "per_image"),
-                                  individual_descriptor_baselines(items, maps, train,
-                                     valid, fid, args.thresholds))))
+                try:
+                    _load_or_make(_fold_path(out, "individual_descriptor", fid),
+                                  lambda: dict(zip(("summary", "per_image"),
+                                      individual_descriptor_baselines(
+                                          items, maps, train, valid, fid, args.thresholds,
+                                          checkpoint_dir=out/"folds"/fid/"individual_descriptor_parts",
+                                          stop_requested=STOP.exists, show_progress=True))))
+                except Stage24StopRequested:
+                    tqdm.write("STAGE24GL_STOPPED_SAFELY during " + fid +
+                               " individual descriptors; completed modes are saved")
+                    return False
             if args.phase in ("all","g0"):
                 def fold_controls():
                     return {
