@@ -85,30 +85,64 @@ def exact_binary_gt(gt: np.ndarray) -> np.ndarray:
     return np.asarray(out, dtype=bool)
 
 
-def _match_indices(pred: np.ndarray, gt: np.ndarray, tol: int) -> tuple[np.ndarray, np.ndarray]:
+@dataclass(frozen=True)
+class BoundaryReference:
+    """Immutable training-GT geometry reusable across threshold candidates.
+
+    Use only for the same unmodified ground-truth image. No labels from held-out
+    images are used when selecting thresholds.
+    """
+    mask: np.ndarray
+    coords: np.ndarray
+    tree: cKDTree | None
+    tolerance_px: int
+    count: int
+
+
+def prepare_boundary_reference(
+    gt: np.ndarray, *, tolerance_ratio: float = 0.0075,
+    tolerance_px: int | None = None,
+) -> BoundaryReference:
+    mask = exact_binary_gt(gt).copy()
+    mask.setflags(write=False)
+    tol = tolerance_pixels(mask.shape, tolerance_ratio) if tolerance_px is None else max(0, int(tolerance_px))
+    coords = np.argwhere(mask)
+    tree = cKDTree(coords.astype(float)) if len(coords) and tol else None
+    return BoundaryReference(mask, coords, tree, tol, len(coords))
+
+
+def _match_indices(
+    pred: np.ndarray, gt: np.ndarray, tol: int,
+    *, reference: BoundaryReference | None = None,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Exact maximum-cardinality matching; prune isolated prediction rows."""
     pred_xy = np.argwhere(np.asarray(pred, bool))
-    gt_xy = np.argwhere(np.asarray(gt, bool))
+    gt_xy = reference.coords if reference is not None else np.argwhere(np.asarray(gt, bool))
     if len(pred_xy) == 0 or len(gt_xy) == 0:
         return np.empty(0, dtype=np.int64), np.empty(0, dtype=np.int64)
 
-    tree = cKDTree(gt_xy.astype(float))
+    tree = reference.tree if reference is not None else cKDTree(gt_xy.astype(float))
     neighborhoods = tree.query_ball_point(pred_xy.astype(float), r=float(tol), p=2.0)
-    rows: list[int] = []
-    cols: list[int] = []
-    for i, js in enumerate(neighborhoods):
-        if js:
-            rows.extend([i] * len(js))
-            cols.extend(int(j) for j in js)
-    if not rows:
+    lengths = np.fromiter((len(js) for js in neighborhoods), dtype=np.intp,
+                          count=len(neighborhoods))
+    active = np.flatnonzero(lengths)
+    if not len(active):
         return np.empty(0, dtype=np.int64), np.empty(0, dtype=np.int64)
 
+    # Keep the exact original edge relation; isolated rows cannot participate in
+    # a matching and need not inflate the sparse graph's row dimension.
+    edge_count = int(lengths.sum())
+    rows = np.repeat(np.arange(len(active), dtype=np.intp), lengths[active])
+    cols = np.fromiter((j for js in neighborhoods for j in js),
+                       dtype=np.intp, count=edge_count)
     graph = csr_matrix(
-        (np.ones(len(rows), dtype=np.uint8), (rows, cols)),
-        shape=(len(pred_xy), len(gt_xy)),
+        (np.ones(edge_count, dtype=np.uint8), (rows, cols)),
+        shape=(len(active), len(gt_xy)),
     )
     matched_gt = maximum_bipartite_matching(graph, perm_type="column")
-    pred_idx = np.flatnonzero(matched_gt >= 0).astype(np.int64)
-    gt_idx = np.asarray(matched_gt[pred_idx], dtype=np.int64)
+    matched_active = np.flatnonzero(matched_gt >= 0)
+    pred_idx = active[matched_active].astype(np.int64, copy=False)
+    gt_idx = np.asarray(matched_gt[matched_active], dtype=np.int64)
     return pred_idx, gt_idx
 
 
@@ -118,16 +152,30 @@ def one_to_one_boundary_counts(
     *,
     tolerance_ratio: float = 0.0075,
     tolerance_px: int | None = None,
+    reference: BoundaryReference | None = None,
 ) -> BoundaryCounts:
     p = np.asarray(pred, dtype=bool)
-    g = exact_binary_gt(gt)
+    g = reference.mask if reference is not None else exact_binary_gt(gt)
     if p.shape != g.shape:
         raise ValueError(f"prediction/GT shape mismatch: {p.shape} vs {g.shape}")
-    tol = tolerance_pixels(g.shape, tolerance_ratio) if tolerance_px is None else max(0, int(tolerance_px))
+    tol = (reference.tolerance_px if reference is not None else
+           tolerance_pixels(g.shape, tolerance_ratio) if tolerance_px is None
+           else max(0, int(tolerance_px)))
     pred_count = int(np.count_nonzero(p))
-    gt_count = int(np.count_nonzero(g))
-    pred_idx, _ = _match_indices(p, g, tol)
-    tp = int(len(pred_idx))
+    gt_count = reference.count if reference is not None else int(np.count_nonzero(g))
+    # Exact cardinality shortcuts: identity coordinates give distinct legal
+    # matches, so a full inclusion achieves the upper bound min(|P|,|GT|).
+    if tol == 0:
+        tp = int(np.count_nonzero(p & g))
+    elif pred_count == 0 or gt_count == 0:
+        tp = 0
+    elif pred_count >= gt_count and not np.any(g & ~p):
+        tp = gt_count
+    elif gt_count >= pred_count and not np.any(p & ~g):
+        tp = pred_count
+    else:
+        pred_idx, _ = _match_indices(p, g, tol, reference=reference)
+        tp = int(len(pred_idx))
     return BoundaryCounts(
         tp=tp,
         fp=pred_count - tp,
