@@ -378,26 +378,55 @@ def run_group(group, items, maps, train, valid, fold_id, out, cfg,
         checkpoint_dir=parts_dir / "inner", signature=signature,
         stop_requested=stop_requested,
     )
-    selected_result = fit_and_score(
-        group, selected["aggregator"], items, maps, train, valid, selected["mode"],
-        seed=deterministic_seed(cfg["seed"], "selected", fold_id, group),
-        count=cfg["threshold_count"],
-        suppression=(selected["suppressor"], selected["strength"]),
+    if stop_requested is not None and stop_requested():
+        raise Stage24StopRequested("Stop before final selected recipe")
+
+    def build_selected():
+        row = fit_and_score(
+            group, selected["aggregator"], items, maps, train, valid, selected["mode"],
+            seed=deterministic_seed(cfg["seed"], "selected", fold_id, group),
+            count=cfg["threshold_count"],
+            suppression=(selected["suppressor"], selected["strength"]),
+        )
+        images = row.pop("per_image")
+        row.pop("model")
+        return {"summary": row, "per_image": images}
+
+    winner_piece = _checkpoint_piece(
+        parts_dir / "selected.json", piece_spec("selected", recipe=selected),
+        build_selected,
     )
-    winner_image = selected_result.pop("per_image")
-    selected_result.pop("model")
+    selected_result = winner_piece["summary"]
+    winner_image = winner_piece["per_image"]
     ablations = []
     ablation_summaries = []
-    for supp in SUPPRESSORS:
-        ab = fit_and_score(
-            group, selected["aggregator"], items, maps, train, valid, selected["mode"],
-            seed=deterministic_seed(cfg["seed"], "ablation", fold_id, group),
-            count=cfg["threshold_count"], suppression=supp,
-        )
-        ablations.extend(ab.pop("per_image"))
-        ab.pop("model")
-        ab["fold"] = fold_id
-        ablation_summaries.append(ab)
+    with tqdm(total=len(SUPPRESSORS), desc="suppression ablations", position=2,
+              leave=False, unit="setting", dynamic_ncols=True) as supp_bar:
+        for supp in SUPPRESSORS:
+            if stop_requested is not None and stop_requested():
+                raise Stage24StopRequested("Stop between suppression ablations")
+
+            def build_ablation():
+                row = fit_and_score(
+                    group, selected["aggregator"], items, maps, train, valid,
+                    selected["mode"],
+                    seed=deterministic_seed(cfg["seed"], "ablation", fold_id, group),
+                    count=cfg["threshold_count"], suppression=supp,
+                )
+                images = row.pop("per_image")
+                row.pop("model")
+                row["fold"] = fold_id
+                return {"summary": row, "per_image": images}
+
+            ab = _checkpoint_piece(
+                parts_dir / "suppression" /
+                (supp[0] + "__" + str(supp[1]).replace(".", "_") + ".json"),
+                piece_spec("suppression", recipe=selected, suppression=list(supp)),
+                build_ablation,
+            )
+            ablations.extend(ab["per_image"])
+            ablation_summaries.append(ab["summary"])
+            supp_bar.update(1)
     # Calibration-by-thinning/suppression ablation on matched outer held-out.
     # Does not alter candidate discovery or the frozen recipe.
     cal_rows, cal_images, histograms = [], [], []
@@ -406,27 +435,45 @@ def run_group(group, items, maps, train, valid, fold_id, out, cfg,
             for cal_suppression in dict.fromkeys(
                 (("identity",1.0),
                  (selected["suppressor"],selected["strength"]))):
-                try:
-                    cr = fit_and_score(
-                        group, selected["aggregator"], items, maps, train, valid,
-                        calibration_thinning,
-                        seed=deterministic_seed(cfg["seed"],"calibration",fold_id,group),
-                        count=cfg["threshold_count"],
-                        suppression=cal_suppression,
-                        calibration_mode=calibration,
-                    )
-                    cr["fold"] = fold_id
-                    cal_images.extend(cr.pop("per_image"))
-                    cr.pop("model")
-                    cal_rows.append(cr)
-                except (ValueError,RuntimeError) as exc:
-                    cal_rows.append({"group":"|".join(group), "fold":fold_id,
-                                     "calibration_mode":calibration,
-                                     "aggregator":selected["aggregator"],
-                                     "thinning":calibration_thinning,
-                                     "suppressor":cal_suppression[0],
-                                     "strength":cal_suppression[1],
-                                     "status":"failed","error":str(exc)})
+                if stop_requested is not None and stop_requested():
+                    raise Stage24StopRequested("Stop between calibration ablations")
+
+                def build_calibration():
+                    try:
+                        row = fit_and_score(
+                            group, selected["aggregator"], items, maps, train, valid,
+                            calibration_thinning,
+                            seed=deterministic_seed(cfg["seed"], "calibration", fold_id, group),
+                            count=cfg["threshold_count"],
+                            suppression=cal_suppression,
+                            calibration_mode=calibration,
+                        )
+                        row["fold"] = fold_id
+                        images = row.pop("per_image")
+                        row.pop("model")
+                        return {"summary": row, "per_image": images}
+                    except (ValueError, RuntimeError) as exc:
+                        return {"summary": {"group": "|".join(group), "fold": fold_id,
+                                            "calibration_mode": calibration,
+                                            "aggregator": selected["aggregator"],
+                                            "thinning": calibration_thinning,
+                                            "suppressor": cal_suppression[0],
+                                            "strength": cal_suppression[1],
+                                            "status": "failed", "error": str(exc)},
+                                "per_image": []}
+
+                cal = _checkpoint_piece(
+                    parts_dir / "calibration" /
+                    (calibration + "__" + calibration_thinning + "__" +
+                     cal_suppression[0] + "__" +
+                     str(cal_suppression[1]).replace(".", "_") + ".json"),
+                    piece_spec("calibration", recipe=selected,
+                               calibration=calibration, thinning=calibration_thinning,
+                               suppression=list(cal_suppression)),
+                    build_calibration,
+                )
+                cal_images.extend(cal["per_image"])
+                cal_rows.append(cal["summary"])
         mem, ms = memberships_on_split(group, maps, [x["gt"] for x in items],
                                         train, calibration_mode=calibration)
         for ii in valid:
