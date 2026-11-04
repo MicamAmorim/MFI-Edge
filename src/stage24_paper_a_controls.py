@@ -207,7 +207,7 @@ def image_level_bootstrap_deltas(per_image_rows, seed=20261104, reps=2000):
     for r in per_image_rows:
         if r.get("thinning")!="raw" or r.get("suppressor")!="identity":
             continue
-        if not r.get("F1"):continue
+        if r.get("F1") in (None, ""):continue
         key=(r["group"],r["aggregator"],r["image_id"])
         pivot[key].append(float(r["F1"]))
     averages={k:float(np.mean(v)) for k,v in pivot.items()}

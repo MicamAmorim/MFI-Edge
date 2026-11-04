@@ -116,8 +116,14 @@ def preflight_math():
         for signed in (False, True):
             co = capacity_coefficients(x, y, signed=signed)
             cap = capacity_from_mobius(co, n)
+            monotone = all(cap[a] <= cap[b] + 1e-8
+                           for a in range(1 << n) for b in range(1 << n)
+                           if a & b == a)
+            passed = bool(monotone and np.isclose(cap[0], 0) and np.isclose(cap[-1], 1))
+            if not passed:
+                raise RuntimeError("Non-monotone or unnormalized fitted capacity")
             checks.append({"test": "capacity_monotone", "arity": n,
-                           "signed": signed, "passed": np.isclose(cap[-1], 1)})
+                           "signed": signed, "passed": passed})
         for aggregator in ("equal_mean", "minimum", "maximum", "median",
                            "choquet_distorted_055"):
             out = apply_aggregator(x, {"n_inputs": n, "family": aggregator})
@@ -558,7 +564,7 @@ def run_bsds_export(args):
         # Preserve pre-8bit precision for independent score/AP auditing.
         # This folder is ignored by Git and included only in the reviewed
         # full scientific-data ZIP package.
-        native_float=ROOT/"results/local_dev/stage24_paper_a_recertification/float_predictions_bsds"
+        native_float=out/"float_predictions_bsds"
         safe_variant=re.sub(r"[^A-Za-z0-9_.-]","_",args.variant)
         float_dir=native_float/safe_variant
         float_dir.mkdir(parents=True,exist_ok=True)
@@ -1043,6 +1049,12 @@ def verify_campaign_source_fingerprint(out,args):
         "test_math.py",
         "synthetic_v2.py",
     ]
+    # Include transitive descriptor/model helpers and fold/loader definitions.
+    # Hashing only their callers allowed changed implementations to reuse old
+    # checkpoints under an unchanged campaign identity.
+    paths = sorted(set(paths) | {
+        p.relative_to(ROOT).as_posix() for p in (ROOT / "src").rglob("*.py")
+    } | {p.name for p in ROOT.glob("*.py")})
     evidence={name:sha256_file(ROOT/name) for name in paths}
     env_path=out/"environment_manifest.json"
     if not env_path.is_file():
@@ -1082,6 +1094,15 @@ def verify_campaign_source_fingerprint(out,args):
     return manifest
 
 
+def campaign_complete(args, out):
+    """Completion requires all registered phases, including the official run."""
+    if (args.phase != "all" or args.max_folds != FOLDS or
+            args.skip_official or args.skip_runtime):
+        return False
+    path = Path(out) / "official_bsds_summary.json"
+    return path.is_file() and json.loads(path.read_text(encoding="utf-8")).get("status") == "completed"
+
+
 def main():
     ap=argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--phase",choices=("all","preflight","g0","g","h","i","j","k","l"),
@@ -1108,6 +1129,16 @@ def main():
     args=ap.parse_args()
     if args.max_folds < 1 or args.max_folds > 15:
         ap.error("--max-folds must be 1..15")
+    if args.phase == "all" and args.max_folds != FOLDS:
+        ap.error("--phase all requires 15 folds; use g0/g/h/i for bounded diagnostics")
+    if min(args.thresholds, args.inner_thresholds) < 3 or args.inner_top < 1:
+        ap.error("threshold counts must be >=3 and --inner-top must be positive")
+    if min(args.top_pairs, args.top_triples) < 0:
+        ap.error("group counts must be nonnegative")
+    if (args.phase in ("all", "k") and not args.skip_official and
+            Path(args.out).resolve() != OUT.resolve()):
+        ap.error("Official evaluation/archive currently requires the default --out; "
+                 "preserve the old directory under another name before a new campaign")
     if args.export_bsds:
         if not args.image_dir or not args.output_dir:ap.error("--export-bsds requires image/output directories")
         run_bsds_export(args)
@@ -1115,6 +1146,9 @@ def main():
     out=Path(args.out)
     out.mkdir(parents=True,exist_ok=True)
     environment_identity=capture_scientific_environment(out)
+    if args.phase in ("all", "preflight", "g0", "g", "h", "i", "j"):
+        # Check BEFORE overwriting preflight/contracts in an older campaign.
+        verify_campaign_source_fingerprint(out,args)
     preflight=assert_preflight()
     checks=preflight_math()
     if not bsds_bootstrap_contract() or not historical_formula_contract():
@@ -1162,13 +1196,15 @@ def main():
         stats_and_claims(out)
     write_json(out/"summary.json",{
         "experiment":EXPERIMENT,"phase":args.phase,
-        "status":"completed" if args.phase=="all" and args.max_folds==15 else "phase_completed",
+        "status":"completed" if campaign_complete(args,out) else "phase_completed",
         "full_cv_folds":args.max_folds,"native_gt":True,
         "no_validation_decisions":True,
+        "inner_cv_scope":"conditional_on_outer_training_candidate_screen",
+        "independent_joint_nested_cv":False,
         "final_claim_eligible":False,
         "official_reference_reproduction_verified":False,
         "literature_transfer_requires_author_float_data":True})
-    if args.phase=="all" and args.max_folds==15 and not args.skip_official:
+    if campaign_complete(args,out):
         print("STAGE24GL_ARCHIVING_SCIENCE_AND_STAGING_GIT",flush=True)
         subprocess.run([
             sys.executable,

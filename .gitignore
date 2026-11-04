@@ -17,6 +17,7 @@ results/automation/
 cache/local_dev/
 automation/runtime/
 automation/STOP
+automation/STOP_STAGE24_PAPER_A
 .matlab_prefs/
 
 # Local-only worktrees / downloaded external material

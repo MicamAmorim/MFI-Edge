@@ -2,7 +2,7 @@
 
 MFI-Edge is an experimental edge-detection research project centered on **multiscale fuzzy aggregation, context-aware evidence fusion and precise spatial localization**.  The project started from functional-information-guided multiscale edge detection and has evolved into **CH-MFI (Contextual Hierarchical MFI)**.
 
-> This checkout is the **`mfi-edge-local-dev`** research branch.  It is intentionally broader than `main`: many competing variants live here before promotion.
+> This branch is **`mfi-edge-stage24-residual-suppression`**, including the Paper A Stage24G–L recertification. Read [the workstation audit and current execution instructions](docs/STAGE24_WORKSTATION_AUDIT_20261104.md) before running it. The CH-MFI-v2 overview and older quick-start commands below describe the historical research line.
 
 ## Project status
 

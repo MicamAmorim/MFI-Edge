@@ -41,6 +41,11 @@ if errorlevel 1 (
   echo ERROR: Stage24 math/science tests FAILED; campaign not started.
   exit /b 5
 )
+"%PYTHON%" "tests\test_stage24_integrity.py"
+if errorlevel 1 (
+  echo ERROR: native geometry/matching integrity tests FAILED; campaign not started.
+  exit /b 5
+)
 "%PYTHON%" "tests\test_stage24_signed_nms.py"
 if errorlevel 1 (
   echo ERROR: signed diagonal NMS tests FAILED; campaign not started.
@@ -64,7 +69,7 @@ if errorlevel 1 (
 )
 
 echo [3/3] Campaign phase and exact scientific environment capture
-"%PYTHON%" "run_stage24_paper_a_recertification.py" %*
+"%PYTHON%" -u -X faulthandler "run_stage24_paper_a_recertification.py" %*
 set "EXITCODE=%ERRORLEVEL%"
 if not "%EXITCODE%"=="0" (
   echo ERROR: Stage24G-L exited with code %EXITCODE%. Inspect checkpoint/output.

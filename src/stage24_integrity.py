@@ -121,28 +121,28 @@ def _match_indices(
     if len(pred_xy) == 0 or len(gt_xy) == 0:
         return np.empty(0, dtype=np.int64), np.empty(0, dtype=np.int64)
 
-    tree = reference.tree if reference is not None else cKDTree(gt_xy.astype(float))
-    neighborhoods = tree.query_ball_point(pred_xy.astype(float), r=float(tol), p=2.0)
-    lengths = np.fromiter((len(js) for js in neighborhoods), dtype=np.intp,
-                          count=len(neighborhoods))
-    active = np.flatnonzero(lengths)
-    if not len(active):
+    pred_tree = cKDTree(pred_xy.astype(float))
+    gt_tree = reference.tree if reference is not None else cKDTree(gt_xy.astype(float))
+    # Enumerate the SAME Euclidean edge relation in compiled code, avoiding
+    # millions of Python neighbour integers/lists in dense native predictions.
+    edges = pred_tree.sparse_distance_matrix(gt_tree, float(tol), output_type="coo_matrix")
+    if edges.nnz == 0:
         return np.empty(0, dtype=np.int64), np.empty(0, dtype=np.int64)
-
-    # Keep the exact original edge relation; isolated rows cannot participate in
-    # a matching and need not inflate the sparse graph's row dimension.
-    edge_count = int(lengths.sum())
-    rows = np.repeat(np.arange(len(active), dtype=np.intp), lengths[active])
-    cols = np.fromiter((j for js in neighborhoods for j in js),
-                       dtype=np.intp, count=edge_count)
-    graph = csr_matrix(
-        (np.ones(edge_count, dtype=np.uint8), (rows, cols)),
-        shape=(len(active), len(gt_xy)),
-    )
-    matched_gt = maximum_bipartite_matching(graph, perm_type="column")
-    matched_active = np.flatnonzero(matched_gt >= 0)
-    pred_idx = active[matched_active].astype(np.int64, copy=False)
-    gt_idx = np.asarray(matched_gt[matched_active], dtype=np.int64)
+    # Run augmenting paths from the smaller active side. Compact both vertex
+    # sets; isolated vertices contribute FP/FN outside this graph.
+    pred_active, pred_rows = np.unique(edges.row, return_inverse=True)
+    gt_active, gt_cols = np.unique(edges.col, return_inverse=True)
+    transpose = len(pred_active) > len(gt_active)
+    rows, cols = (gt_cols, pred_rows) if transpose else (pred_rows, gt_cols)
+    shape = ((len(gt_active), len(pred_active)) if transpose else
+             (len(pred_active), len(gt_active)))
+    graph = csr_matrix((np.ones(edges.nnz, dtype=np.uint8), (rows, cols)), shape=shape)
+    matched = maximum_bipartite_matching(graph, perm_type="column")
+    active = np.flatnonzero(matched >= 0)
+    if transpose:
+        pred_idx, gt_idx = pred_active[matched[active]], gt_active[active]
+    else:
+        pred_idx, gt_idx = pred_active[active], gt_active[matched[active]]
     return pred_idx, gt_idx
 
 
@@ -197,7 +197,13 @@ def one_to_one_boundary_counts(
             neighbors = neighbors[:, None]
         used = np.zeros(len(larger), dtype=bool)
         certified = True
+        certified_count = 0
         for candidate_distances, candidate_indices in zip(distances, neighbors):
+            # A vertex with NO neighbour cannot be matched by any solver.
+            # Covering every non-isolated vertex on this side therefore also
+            # attains an exact cardinality upper bound, even with uncovered GT.
+            if candidate_distances[0] > tol:
+                continue
             assigned = False
             for distance, candidate_index in zip(candidate_distances, candidate_indices):
                 if distance > tol + 1e-8:
@@ -205,12 +211,30 @@ def one_to_one_boundary_counts(
                 if candidate_index < len(larger) and not used[candidate_index]:
                     used[candidate_index] = True
                     assigned = True
+                    certified_count += 1
                     break
             if not assigned:
                 certified = False
                 break
+        if not certified:
+            # Greedy ordering can fail even when an augmenting path within
+            # these nearest neighbours covers all non-isolated vertices.
+            # A complete matching on this SUBGRAPH is also a valid certificate
+            # for the full radius graph. Partial coverage is never accepted.
+            valid_edges = (distances <= float(tol)) & (neighbors < len(larger))
+            active_rows = np.flatnonzero(valid_edges.any(axis=1))
+            candidate_rows, candidate_slots = np.nonzero(valid_edges[active_rows])
+            candidate_cols = neighbors[active_rows[candidate_rows], candidate_slots]
+            _, compact_cols = np.unique(candidate_cols, return_inverse=True)
+            restricted = csr_matrix(
+                (np.ones(len(candidate_rows), dtype=np.uint8), (candidate_rows, compact_cols)),
+                shape=(len(active_rows), int(compact_cols.max()) + 1),
+            )
+            restricted_match = maximum_bipartite_matching(restricted, perm_type="column")
+            certified_count = int(np.count_nonzero(restricted_match >= 0))
+            certified = certified_count == len(active_rows)
         if certified:
-            tp = min(pred_count, gt_count)
+            tp = certified_count
         else:
             pred_idx, _ = _match_indices(p, g, tol, reference=reference)
             tp = int(len(pred_idx))

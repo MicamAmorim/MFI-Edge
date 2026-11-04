@@ -20,6 +20,40 @@ from src.stage24_integrity import one_to_one_boundary_counts, prepare_boundary_r
 
 
 class PaperARecertificationTests(unittest.TestCase):
+    def test_preflight_rejects_normalized_nonmonotone_capacity(self):
+        from run_stage24_paper_a_recertification import preflight_math
+        with patch("src.stage24_recertification_ops.capacity_from_mobius",
+                   return_value=np.array([0., 1.2, .5, 1.])):
+            with self.assertRaisesRegex(RuntimeError, "Non-monotone"):
+                preflight_math()
+        self.assertTrue(all(type(row["passed"]) is bool for row in preflight_math()))
+
+    def test_zero_f1_is_retained_in_image_bootstrap(self):
+        from src.stage24_paper_a_controls import image_level_bootstrap_deltas
+        rows = [{"group": "a|b", "aggregator": operator, "image_id": str(i),
+                 "thinning": "raw", "suppressor": "identity", "F1": score}
+                for i in range(6)
+                for operator, score in (("equal_mean", .5), ("minimum", 0.))]
+        result = image_level_bootstrap_deltas(rows, reps=20)
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0]["delta_F1_mean"], -.5)
+        self.assertEqual(result[0]["n_unique_images"], 6)
+
+    def test_skipped_official_or_runtime_is_not_complete(self):
+        from argparse import Namespace
+        from run_stage24_paper_a_recertification import campaign_complete
+        import json
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)
+            args = Namespace(phase="all", max_folds=15, skip_official=False, skip_runtime=False)
+            self.assertFalse(campaign_complete(args, path))
+            (path / "official_bsds_summary.json").write_text(json.dumps({"status": "completed"}))
+            self.assertTrue(campaign_complete(args, path))
+            args.skip_official = True
+            self.assertFalse(campaign_complete(args, path))
+            args.skip_official, args.skip_runtime = False, True
+            self.assertFalse(campaign_complete(args, path))
+
     def test_additive_choquet_is_mean(self):
         for n in (2, 3):
             rng = np.random.default_rng(n)
