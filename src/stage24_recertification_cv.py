@@ -13,6 +13,7 @@ from pathlib import Path
 
 import numpy as np
 from skimage.transform import resize
+from tqdm.auto import tqdm
 
 from run_stage24_residual_campaign import select_pair, train_normalized, pair_proxy
 from src.stage23_descriptors import DESCRIPTOR_IDS
@@ -266,22 +267,28 @@ def run_group(group, items, maps, train, valid, fold_id, out, cfg):
     clear_group_cache()
     landscape = []
     per_image = []
-    for name in AGGREGATORS:
-        for mode in THINNING:
-            seed = deterministic_seed(cfg["seed"], fold_id, group, name, mode)
-            try:
-                row = fit_and_score(group, name, items, maps, train, valid, mode,
-                                    seed=seed, count=cfg["threshold_count"])
-            except (ValueError, RuntimeError, FloatingPointError) as exc:
-                landscape.append({"group": "|".join(group), "arity": len(group),
-                                  "aggregator": name, "thinning": mode,
-                                  "status": "failed", "error": str(exc),
-                                  "train_F1": None, "validation_F1": None})
-                continue
-            per_image.extend(row.pop("per_image"))
-            row.pop("model")
-            row["status"] = "completed"
-            landscape.append(row)
+    with tqdm(total=len(AGGREGATORS)*len(THINNING),
+              desc=f"operators {fold_id} ({len(group)} cues)",
+              position=2, leave=False, unit="config",
+              dynamic_ncols=True, mininterval=0.75) as agg_bar:
+        for name in AGGREGATORS:
+            for mode in THINNING:
+                seed = deterministic_seed(cfg["seed"], fold_id, group, name, mode)
+                try:
+                    row = fit_and_score(group, name, items, maps, train, valid, mode,
+                                        seed=seed, count=cfg["threshold_count"])
+                except (ValueError, RuntimeError, FloatingPointError) as exc:
+                    landscape.append({"group": "|".join(group), "arity": len(group),
+                                      "aggregator": name, "thinning": mode,
+                                      "status": "failed", "error": str(exc),
+                                      "train_F1": None, "validation_F1": None})
+                    agg_bar.update(1)
+                    continue
+                per_image.extend(row.pop("per_image"))
+                row.pop("model")
+                row["status"] = "completed"
+                landscape.append(row)
+                agg_bar.update(1)
     # Failures remain explicit in the landscape; outer held-out never selects models.
     ordered = sorted((r for r in landscape if r["train_F1"] is not None),
                      key=lambda r: (-r["train_F1"], r["aggregator"], r["thinning"]))
