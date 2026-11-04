@@ -275,8 +275,22 @@ def select_inner_recipe(group, items, maps, outer_train, candidates, seed, count
                               x["mode"], x["suppressor"], x["strength"]))
     return valid[0], out
 
-def run_group(group, items, maps, train, valid, fold_id, out, cfg):
-    """Fixed factorial landscape plus inner-CV chosen recipe and matched ablations."""
+def _checkpoint_piece(path, spec, builder):
+    """Load an exact signed partial result, or write the completed unit atomically."""
+    path = Path(path)
+    if path.is_file():
+        stored = json.loads(path.read_text(encoding="utf-8"))
+        if stored.get("spec") != spec or not isinstance(stored.get("value"), dict):
+            raise RuntimeError("Group partial checkpoint mismatch: " + str(path))
+        return stored["value"]
+    value = builder()
+    write_json(path, {"spec": spec, "value": value})
+    return value
+
+
+def run_group(group, items, maps, train, valid, fold_id, out, cfg,
+              *, stop_requested=None):
+    """Fixed factorial landscape with signed, resumable train-only checkpoints."""
     path = out / "folds" / fold_id / ("__".join(group) + ".json")
     sources = [
         Path(__file__), Path(__file__).with_name("stage24_recertification_ops.py"),
@@ -298,6 +312,13 @@ def run_group(group, items, maps, train, valid, fold_id, out, cfg):
             raise RuntimeError("Checkpoint configuration mismatch: " + str(path))
         return stored
     clear_group_cache()
+    parts_dir = out / "folds" / fold_id / "group_parts" / "__".join(group)
+    parts_dir.mkdir(parents=True, exist_ok=True)
+
+    def piece_spec(kind, **fields):
+        return {"schema": 1, "signature": signature, "fold_id": fold_id,
+                "group": list(group), "kind": kind, **fields}
+
     landscape = []
     per_image = []
     with tqdm(total=len(AGGREGATORS)*len(THINNING),
@@ -306,21 +327,38 @@ def run_group(group, items, maps, train, valid, fold_id, out, cfg):
               dynamic_ncols=True, mininterval=0.75) as agg_bar:
         for name in AGGREGATORS:
             for mode in THINNING:
+                if stop_requested is not None and stop_requested():
+                    clear_group_cache()
+                    raise Stage24StopRequested("Stop between operator configurations")
                 seed = deterministic_seed(cfg["seed"], fold_id, group, name, mode)
-                try:
-                    row = fit_and_score(group, name, items, maps, train, valid, mode,
-                                        seed=seed, count=cfg["threshold_count"])
-                except (ValueError, RuntimeError, FloatingPointError) as exc:
-                    landscape.append({"group": "|".join(group), "arity": len(group),
-                                      "aggregator": name, "thinning": mode,
-                                      "status": "failed", "error": str(exc),
-                                      "train_F1": None, "validation_F1": None})
-                    agg_bar.update(1)
-                    continue
-                per_image.extend(row.pop("per_image"))
-                row.pop("model")
-                row["status"] = "completed"
-                landscape.append(row)
+                spec = piece_spec("landscape", aggregator=name, thinning=mode,
+                                  seed=seed)
+
+                def build_operator():
+                    try:
+                        row = fit_and_score(group, name, items, maps, train, valid,
+                                            mode, seed=seed,
+                                            count=cfg["threshold_count"])
+                    except (ValueError, RuntimeError, FloatingPointError) as exc:
+                        return {"row": {"group": "|".join(group), "arity": len(group),
+                                        "aggregator": name, "thinning": mode,
+                                        "status": "failed", "error": str(exc),
+                                        "train_F1": None, "validation_F1": None},
+                                "per_image": []}
+                    detail = row.pop("per_image")
+                    row.pop("model")
+                    row["status"] = "completed"
+                    return {"row": row, "per_image": detail}
+
+                agg_bar.set_postfix_str(name + " " + mode, refresh=False)
+                piece = _checkpoint_piece(
+                    parts_dir / "landscape" / (name + "__" + mode + ".json"),
+                    spec, build_operator,
+                )
+                if not isinstance(piece.get("row"), dict) or not isinstance(piece.get("per_image"), list):
+                    raise RuntimeError("Malformed landscape partial checkpoint")
+                landscape.append(piece["row"])
+                per_image.extend(piece["per_image"])
                 agg_bar.update(1)
     # Failures remain explicit in the landscape; outer held-out never selects models.
     ordered = sorted((r for r in landscape if r["train_F1"] is not None),
@@ -337,6 +375,8 @@ def run_group(group, items, maps, train, valid, fold_id, out, cfg):
         group, items, maps, train, finalists,
         deterministic_seed(cfg["seed"], "inner", fold_id, group),
         count=cfg["inner_threshold_count"],
+        checkpoint_dir=parts_dir / "inner", signature=signature,
+        stop_requested=stop_requested,
     )
     selected_result = fit_and_score(
         group, selected["aggregator"], items, maps, train, valid, selected["mode"],
