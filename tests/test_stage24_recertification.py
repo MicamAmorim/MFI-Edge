@@ -254,7 +254,7 @@ class PaperARecertificationTests(unittest.TestCase):
             with patch.object(cv, "DESCRIPTOR_IDS", ("toy",)), \
                  patch.object(cv, "fit_membership", return_value=object()), \
                  patch.object(cv, "apply_membership",
-                              side_effect=lambda cues, model: cues[0][..., None]), \\
+                              side_effect=lambda cues, model: cues[0][..., None]), \
                  patch.object(cv, "choose_threshold", return_value=(.5, counts)):
                 first = cv.individual_descriptor_baselines(
                     items, maps, [0, 1], [2], "r1_f1",
