@@ -3,6 +3,8 @@ from __future__ import annotations
 from pathlib import Path
 import sys
 import unittest
+import tempfile
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -14,7 +16,7 @@ from src.stage24_recertification_ops import (
     choquet, sugeno, fit_aggregator, apply_aggregator,
     thin_score, binary_map, choose_threshold,
 )
-from src.stage24_integrity import one_to_one_boundary_counts
+from src.stage24_integrity import one_to_one_boundary_counts, prepare_boundary_reference
 
 
 class PaperARecertificationTests(unittest.TestCase):
@@ -181,6 +183,111 @@ class PaperARecertificationTests(unittest.TestCase):
             p=apply_aggregator(arr[1],state)
             self.assertEqual(p.shape,g.shape)
             self.assertTrue(np.isfinite(p).all(),name)
+
+
+    def test_bipartite_matching_preserves_exact_maximum_cardinality(self):
+        """Independent sparse-graph oracle, including dense and uncovered GT."""
+        from scipy.sparse import csr_matrix
+        from scipy.sparse.csgraph import maximum_bipartite_matching
+        rng = np.random.default_rng(20261104)
+        for size in ((7, 9), (13, 11)):
+            for tol in (0, 1, 2, 3):
+                for probability in (0., .05, .3, .8, 1.):
+                    for _ in range(3):
+                        gt = rng.random(size) < .2
+                        pred = rng.random(size) < probability
+                        pxy, gxy = np.argwhere(pred), np.argwhere(gt)
+                        if not len(pxy) or not len(gxy):
+                            expected = 0
+                        else:
+                            d2 = ((pxy[:, None, :] - gxy[None, :, :])**2).sum(axis=2)
+                            edges = csr_matrix((d2 <= tol**2).astype(np.uint8))
+                            expected = int(np.count_nonzero(
+                                maximum_bipartite_matching(edges, perm_type="column") >= 0))
+                        reference = prepare_boundary_reference(gt, tolerance_px=tol)
+                        old = one_to_one_boundary_counts(pred, gt, tolerance_px=tol)
+                        cached = one_to_one_boundary_counts(pred, gt, reference=reference)
+                        self.assertEqual(old.tp, expected)
+                        self.assertEqual(cached, old)
+                        self.assertEqual(old.fp, int(pred.sum()) - expected)
+                        self.assertEqual(old.fn, int(gt.sum()) - expected)
+
+    def test_threshold_prepared_reference_matches_uncached_oracle(self):
+        from src.stage24_recertification_ops import canonical_threshold_candidates
+        from src.stage24_integrity import aggregate_counts
+        rng = np.random.default_rng(17)
+        gts = [rng.random((15, 17)) < .18 for _ in range(3)]
+        scores = [rng.random((15, 17)).astype(np.float32) for _ in range(3)]
+        images = [np.zeros((15, 17), dtype=np.float32) for _ in range(3)]
+        candidates = [float(t) for t in canonical_threshold_candidates(scores, count=9)
+                      if t > 1e-7]
+        if not candidates:
+            candidates = [.5]
+        old = []
+        for threshold in candidates:
+            counts = aggregate_counts([
+                one_to_one_boundary_counts(score >= threshold, gt)
+                for score, gt in zip(scores, gts)
+            ])
+            old.append(((counts.f1, counts.precision, counts.recall, threshold),
+                        counts, threshold))
+        oracle = max(old, key=lambda item: item[0])
+        steps = []
+        selected, counts = choose_threshold(scores, gts, images, "raw", count=9,
+                                            progress=lambda done, total: steps.append((done, total)))
+        self.assertEqual(selected, oracle[2])
+        self.assertEqual(counts, oracle[1])
+        self.assertEqual(steps[0][0], 0)
+        self.assertEqual(steps[-1], (len(candidates), len(candidates)))
+
+    def test_individual_descriptor_parts_resume_without_recomputation(self):
+        import src.stage24_recertification_cv as cv
+        gt = np.zeros((13, 13), dtype=bool)
+        gt[6, 3:11] = True
+        score = gt.astype(np.float32) * .8 + .1
+        image = np.tile(np.arange(13, dtype=np.float32), (13, 1))
+        items = [{"id": str(j), "gt": gt.copy(), "img": image.copy()}
+                 for j in range(3)]
+        maps = {"toy": [score.copy() for _ in items]}
+        counts = one_to_one_boundary_counts(score >= .5, gt, tolerance_px=0)
+        with tempfile.TemporaryDirectory() as directory:
+            with patch.object(cv, "DESCRIPTOR_IDS", ("toy",)), \
+                 patch.object(cv, "fit_membership", return_value=object()), \
+                 patch.object(cv, "apply_membership",
+                              side_effect=lambda cues, model: cues[0][..., None]), \\
+                 patch.object(cv, "choose_threshold", return_value=(.5, counts)):
+                first = cv.individual_descriptor_baselines(
+                    items, maps, [0, 1], [2], "r1_f1",
+                    checkpoint_dir=directory, count=5,
+                )
+                self.assertEqual(len(first[0]), 2)
+                self.assertEqual(len(list(Path(directory).glob("*.json"))), 2)
+                with patch.object(cv, "choose_threshold",
+                                  side_effect=AssertionError("should use checkpoint")):
+                    resumed = cv.individual_descriptor_baselines(
+                        items, maps, [0, 1], [2], "r1_f1",
+                        checkpoint_dir=directory, count=5,
+                    )
+                self.assertEqual(first, resumed)
+                with self.assertRaises(RuntimeError):
+                    cv.individual_descriptor_baselines(
+                        items, maps, [0, 1], [2], "r1_f1",
+                        checkpoint_dir=directory, count=7,
+                    )
+
+    def test_group_piece_is_signature_guarded(self):
+        from src.stage24_recertification_cv import _checkpoint_piece
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "test.json"
+            spec = {"signature": "approved", "fold": "r1_f1"}
+            self.assertEqual(_checkpoint_piece(path, spec, lambda: {"count": 2}),
+                             {"count": 2})
+            self.assertEqual(_checkpoint_piece(path, spec,
+                             lambda: (_ for _ in ()).throw(AssertionError("recalculated"))),
+                             {"count": 2})
+            with self.assertRaises(RuntimeError):
+                _checkpoint_piece(path, {"signature": "other"},
+                                  lambda: {"count": 9})
 
 
 if __name__=="__main__":
