@@ -18,7 +18,8 @@ def TL(x,y): return np.maximum(0.0, np.asarray(x)+np.asarray(y)-1.0)
 def THP(x,y):
     x,y=np.asarray(x,dtype=float),np.asarray(y,dtype=float)
     den=x+y-x*y
-    return np.where(np.abs(den)<EPS, 0.0, (x*y)/den)
+    return np.divide(x*y, den, out=np.zeros_like(den, dtype=float),
+                     where=np.abs(den)>=EPS)
 def TDP(x,y):
     x,y=np.asarray(x,dtype=float),np.asarray(y,dtype=float)
     return np.where(np.isclose(y,1),x,np.where(np.isclose(x,1),y,0.0))
@@ -42,7 +43,8 @@ def GM(x,y):
 def HM(x,y):
     x,y=clip01(x),clip01(y)
     den=x+y
-    return np.where(den<EPS,0.0,2*x*y/den)
+    return np.divide(2*x*y, den, out=np.zeros_like(den, dtype=float),
+                     where=den>=EPS)
 def S(x,y):
     x,y=clip01(x),clip01(y)
     return np.sin((np.pi/2.0)*np.power(x*y,0.25))
