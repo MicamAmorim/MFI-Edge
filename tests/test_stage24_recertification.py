@@ -240,6 +240,23 @@ class PaperARecertificationTests(unittest.TestCase):
         self.assertEqual(steps[0][0], 0)
         self.assertEqual(steps[-1], (len(candidates), len(candidates)))
 
+    def test_parallel_threshold_search_is_identical_to_serial(self):
+        import os
+        rng = np.random.default_rng(921)
+        gts = [rng.random((31, 28)) < .2 for _ in range(4)]
+        images = [rng.random((31, 28)).astype(np.float32) for _ in range(4)]
+        scores = [rng.random((31, 28)).astype(np.float32) for _ in range(4)]
+        from unittest.mock import patch
+        for mode in ("raw", "nms_image"):
+            with patch.dict(os.environ, {"STAGE24GL_MATCH_WORKERS": "1"}):
+                a = choose_threshold(scores, gts, images, mode, count=11)
+            with patch.dict(os.environ, {"STAGE24GL_MATCH_WORKERS": "4"}):
+                b = choose_threshold(scores, gts, images, mode, count=11)
+            self.assertEqual(a, b)
+        with patch.dict(os.environ, {"STAGE24GL_MATCH_WORKERS": "0"}):
+            with self.assertRaises(ValueError):
+                choose_threshold(scores, gts, images, "raw", count=3)
+
     def test_individual_descriptor_parts_resume_without_recomputation(self):
         import src.stage24_recertification_cv as cv
         gt = np.zeros((13, 13), dtype=bool)
