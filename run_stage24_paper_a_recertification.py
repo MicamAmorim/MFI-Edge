@@ -19,6 +19,7 @@ import numpy as np
 from PIL import Image
 from scipy.stats import wilcoxon, friedmanchisquare
 from skimage.io import imread
+from tqdm.auto import tqdm
 
 ROOT = Path(__file__).resolve().parent
 if str(ROOT) not in sys.path:
@@ -158,63 +159,98 @@ def _load_or_make(path, fn):
 
 
 def run_uded(args, items, maps, out):
+    """UDED recertification with resumable checkpoints and live progress bars.
+
+    Bars measure completed folds/groups and factorial configs, not elapsed
+    time or estimated BSDS/MATLAB duration. Cached groups advance immediately.
+    """
     cfg = {"seed": SEED, "threshold_count": args.thresholds,
            "inner_threshold_count": args.inner_thresholds,
            "inner_top": args.inner_top}
     summary = []
-    for pos, (repeat, fold, train, valid) in enumerate(_fold_plan(items, args.max_folds), 1):
-        fid = f"r{repeat+1}_f{fold+1}"
-        if STOP.exists():
-            print("STAGE24GL_STOPPED_SAFELY at", fid, flush=True)
-            return False
-        print(f"STAGE24GL_OUTER {pos}/{args.max_folds} {fid}", flush=True)
-        candidates = _load_or_make(
-            _fold_path(out, "pair_screen", fid),
-            lambda: train_pair_screen(items, maps, train))
-        if len(candidates) != 78:
-            raise RuntimeError("Expected 78 pair scores")
-        pairs, triples = choose_groups(candidates, args.top_pairs, args.top_triples)
-        if args.phase in ("all", "g0"):
-            _load_or_make(_fold_path(out, "geometry_audit", fid), lambda:
-                          geometry_audit(items, maps, train, [
-                              r for r in candidates if tuple(sorted((r["a"],r["b"]))) in
-                              {tuple(sorted(p)) for p in HISTORIC_PAIRS + (("hessian_s7", "halfdisc_distribution_contrast"),)}
-                          ], fid))
-            _load_or_make(_fold_path(out, "individual_descriptor", fid),
-                          lambda: dict(zip(("summary", "per_image"),
-                              individual_descriptor_baselines(items, maps, train,
-                                 valid, fid, args.thresholds))))
-        if args.phase in ("all","g0"):
-            def fold_controls():
-                return {
-                    "baselines":null_and_random_controls(items,train,valid,fid,seed=SEED),
-                    "logistic_rank_equivalence":rank_equivalence_on_uded(
-                        items,maps,train,valid,fid),
-                }
-            _load_or_make(_fold_path(out,"scientific_controls",fid),fold_controls)
-            def old_score_control():
-                wanted=set(tuple(sorted(z)) for z in
-                    HISTORIC_PAIRS + (("hessian_s7","halfdisc_distribution_contrast"),))
-                return historical_score_comparison(
-                    items,maps,train,fid,[p for p in wanted])
-            _load_or_make(_fold_path(out,"historical_score_formula",fid),
-                          old_score_control)
-        if args.phase == "g0":
-            continue
-        groups = (pairs if args.phase in ("all", "g", "i") else [])
-        groups += (triples if args.phase in ("all", "h", "i") else [])
-        for group in groups:
+    cached_groups = 0
+    computed_groups = 0
+    with tqdm(total=args.max_folds, desc="UDED outer folds",
+              position=0, leave=True, unit="fold", dynamic_ncols=True,
+              mininterval=1.0) as fold_bar:
+        for pos, (repeat, fold, train, valid) in enumerate(
+                _fold_plan(items, args.max_folds), 1):
+            fid = f"r{repeat+1}_f{fold+1}"
             if STOP.exists():
-                print("STAGE24GL_STOPPED_SAFELY after", fid, flush=True)
+                tqdm.write("STAGE24GL_STOPPED_SAFELY at " + fid)
                 return False
-            print("STAGE24GL_GROUP", fid, "|".join(group), flush=True)
-            run_group(group, items, maps, train, valid, fid, out, cfg)
-        summary.append({"fold_id":fid, "pairs":pairs, "triples":triples})
-    write_json(out / "campaign_progress.json", {"processed":len(summary),
-               "expected":args.max_folds, "phase":args.phase,
-               "warning":"Outer folds repeated on the same 14 images; not independent replicates"})
+            fold_bar.set_postfix_str(fid)
+            candidates = _load_or_make(
+                _fold_path(out, "pair_screen", fid),
+                lambda: train_pair_screen(items, maps, train))
+            if len(candidates) != 78:
+                raise RuntimeError("Expected 78 pair scores")
+            pairs, triples = choose_groups(candidates, args.top_pairs, args.top_triples)
+            if args.phase in ("all", "g0"):
+                _load_or_make(_fold_path(out, "geometry_audit", fid), lambda:
+                              geometry_audit(items, maps, train, [
+                                  r for r in candidates if tuple(sorted((r["a"],r["b"]))) in
+                                  {tuple(sorted(p)) for p in HISTORIC_PAIRS + (("hessian_s7", "halfdisc_distribution_contrast"),)}
+                              ], fid))
+                _load_or_make(_fold_path(out, "individual_descriptor", fid),
+                              lambda: dict(zip(("summary", "per_image"),
+                                  individual_descriptor_baselines(items, maps, train,
+                                     valid, fid, args.thresholds))))
+            if args.phase in ("all","g0"):
+                def fold_controls():
+                    return {
+                        "baselines":null_and_random_controls(items,train,valid,fid,seed=SEED),
+                        "logistic_rank_equivalence":rank_equivalence_on_uded(
+                            items,maps,train,valid,fid),
+                    }
+                _load_or_make(_fold_path(out,"scientific_controls",fid),fold_controls)
+                def old_score_control():
+                    wanted=set(tuple(sorted(z)) for z in
+                        HISTORIC_PAIRS + (("hessian_s7","halfdisc_distribution_contrast"),))
+                    return historical_score_comparison(
+                        items,maps,train,fid,[p for p in wanted])
+                _load_or_make(_fold_path(out,"historical_score_formula",fid),
+                              old_score_control)
+            if args.phase == "g0":
+                fold_bar.update(1)
+                continue
+            groups = (pairs if args.phase in ("all", "g", "i") else [])
+            groups += (triples if args.phase in ("all", "h", "i") else [])
+            with tqdm(total=len(groups), desc=f"{fid} descriptor groups",
+                      position=1, leave=False, unit="group",
+                      dynamic_ncols=True, mininterval=1.0) as group_bar:
+                for group in groups:
+                    if STOP.exists():
+                        tqdm.write("STAGE24GL_STOPPED_SAFELY after " + fid)
+                        return False
+                    checkpoint=out/"folds"/fid/("__".join(group)+".json")
+                    reused=checkpoint.is_file()
+                    group_bar.set_postfix_str(
+                        ("cached " if reused else "fitting ")+"|".join(group),
+                        refresh=False)
+                    run_group(group, items, maps, train, valid, fid, out, cfg)
+                    if reused:
+                        cached_groups += 1
+                    else:
+                        computed_groups += 1
+                    group_bar.update(1)
+            summary.append({"fold_id":fid, "pairs":pairs, "triples":triples})
+            fold_bar.update(1)
+            fold_bar.set_postfix(
+                completed=pos, cached=cached_groups, fitted=computed_groups,
+                refresh=False)
+            write_json(out / "campaign_progress.json", {
+                "processed":len(summary), "expected":args.max_folds,
+                "phase":args.phase, "status":"running",
+                "cached_groups":cached_groups,"fitted_groups":computed_groups,
+                "last_completed_fold":fid,
+                "warning":"Outer folds repeated on the same 14 images; not independent replicates"})
+    write_json(out / "campaign_progress.json", {
+        "processed":len(summary), "expected":args.max_folds,
+        "phase":args.phase, "status":"completed",
+        "cached_groups":cached_groups,"fitted_groups":computed_groups,
+        "warning":"Outer folds repeated on the same 14 images; not independent replicates"})
     return True
-
 
 def _gather(out, args):
     results = []
