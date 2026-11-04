@@ -577,13 +577,17 @@ def individual_descriptor_baselines(
                               position=2, leave=False, unit="threshold",
                               dynamic_ncols=True, disable=not show_progress) as threshold_bar:
                         def on_threshold(done, total):
-                            threshold_bar.total = total
-                            threshold_bar.n = done
-                            threshold_bar.refresh()
+                            if stop_requested is not None and stop_requested():
+                                raise Stage24StopRequested(
+                                    "Stop during " + fold + " " + name + " " + mode)
+                            if show_progress:
+                                threshold_bar.total = total
+                                threshold_bar.n = done
+                                threshold_bar.refresh()
                         threshold, ctrain = choose_threshold(
                             [scores[int(i)] for i in train], subset(items, train, "gt"),
                             subset(items, train, "img"), mode, count=count,
-                            progress=on_threshold if show_progress else None,
+                            progress=on_threshold if show_progress or stop_requested is not None else None,
                         )
                     c, detail = _heldout_rows(scores, items, valid, threshold, mode, {
                         "fold": fold, "descriptor_id": name, "thinning": mode,
