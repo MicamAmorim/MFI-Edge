@@ -239,7 +239,14 @@ def run_uded(args, items, maps, out):
                     group_bar.set_postfix_str(
                         ("cached " if reused else "fitting ")+"|".join(group),
                         refresh=False)
-                    run_group(group, items, maps, train, valid, fid, out, cfg)
+                    try:
+                        run_group(group, items, maps, train, valid, fid, out, cfg,
+                                  stop_requested=STOP.exists)
+                    except Stage24StopRequested:
+                        tqdm.write("STAGE24GL_STOPPED_SAFELY within " + fid +
+                                   " group " + "|".join(group) +
+                                   "; completed configurations are saved")
+                        return False
                     if reused:
                         cached_groups += 1
                     else:
