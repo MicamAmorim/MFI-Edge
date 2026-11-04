@@ -5,7 +5,7 @@ Scientific scores stay float32. GT is never resized. Binary thinning is only a
 UDED diagnostic; official BSDS uses the pinned Berkeley thinpb procedure.
 """
 from itertools import combinations
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutureTimeout
 import hashlib
 import json
 import os
@@ -354,7 +354,11 @@ def choose_threshold(scores, gts, images, mode, count=21, progress=None):
     """
     if not (len(scores) == len(gts) == len(images)):
         raise ValueError("scores, gts and images must have equal lengths")
-    processed = [thin_score(s, mode, im) for s, im in zip(scores, images)]
+    processed = []
+    for i, (score, im) in enumerate(zip(scores, images), 1):
+        print(f"STAGE24 PREP {mode} image {i}/{len(images)}", flush=True)
+        processed.append(thin_score(score, mode, im))
+    print(f"STAGE24 THRESHOLDS {mode}: computing candidates", flush=True)
     thresholds = canonical_threshold_candidates(processed, count=count)
     thresholds = [float(t) for t in thresholds if t > 1e-7]
     if not thresholds:
@@ -394,7 +398,15 @@ def choose_threshold(scores, gts, images, mode, count=21, progress=None):
         try:
             futures = [pool.submit(counts_at, t) for t in thresholds]
             for index, (t, future) in enumerate(zip(thresholds, futures), 1):
-                c = future.result()
+                waited = 0
+                while True:
+                    try:
+                        c = future.result(timeout=15)
+                        break
+                    except FutureTimeout:
+                        waited += 15
+                        finished = sum(f.done() for f in futures)
+                        print(f"STAGE24 MATCH {mode}: {finished}/{len(futures)} finished; waiting threshold {index} for {waited}s", flush=True)
                 key = (c.f1, c.precision, c.recall, t)
                 if best is None or key > best[0]:
                     best = (key, c, t)
