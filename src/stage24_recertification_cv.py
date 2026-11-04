@@ -208,31 +208,65 @@ def _inner_splits(train, seed, count=3):
             yield tr, heldout
 
 
-def select_inner_recipe(group, items, maps, outer_train, candidates, seed, count=13):
-    """Genuine inner CV for every promoted recipe, including suppression/thinning."""
+def select_inner_recipe(group, items, maps, outer_train, candidates, seed, count=13,
+                        *, checkpoint_dir=None, signature=None, stop_requested=None):
+    """Genuine inner CV for each train-only recipe; resumable at candidate boundary."""
     split_plan = list(_inner_splits(outer_train, seed, 3))
+    folder = Path(checkpoint_dir) if checkpoint_dir is not None else None
+    if folder is not None:
+        folder.mkdir(parents=True, exist_ok=True)
+        if not signature:
+            raise ValueError("Signature required for inner-CV checkpoints")
     out = []
-    for name, mode in candidates:
-        if mode not in TRANSFER_MODES:
-            continue
-        for suppression in SUPPRESSORS:
-            folds = []
-            failed = None
-            for j, (tr, va) in enumerate(split_plan):
-                try:
-                    res = fit_and_score(
-                        group, name, items, maps, tr, va, mode, count=count,
-                        seed=deterministic_seed(seed, name, mode, suppression, j),
-                        suppression=suppression,
-                    )
-                    folds.append(res["validation_F1"])
-                except (ValueError, RuntimeError) as exc:
-                    failed = str(exc)
-                    break
-            out.append({"aggregator": name, "mode": mode,
-                        "suppressor": suppression[0], "strength": suppression[1],
-                        "mean_inner_F1": (float(np.mean(folds)) if len(folds) == len(split_plan) else None),
-                        "error": failed})
+    n_tasks = sum(1 for _, mode in candidates if mode in TRANSFER_MODES) * len(SUPPRESSORS)
+    with tqdm(total=n_tasks, desc="train-only inner CV", position=2, leave=False,
+              unit="recipe", dynamic_ncols=True) as inner_bar:
+        for name, mode in candidates:
+            if mode not in TRANSFER_MODES:
+                continue
+            for suppression in SUPPRESSORS:
+                if stop_requested is not None and stop_requested():
+                    raise Stage24StopRequested("Stop between inner-CV recipes")
+                key = (name, mode, suppression[0], float(suppression[1]))
+                spec = {"schema": 1, "group": list(group), "candidate": list(key),
+                        "signature": signature, "seed": int(seed), "count": int(count),
+                        "outer_train": sorted(int(i) for i in outer_train)}
+                filename = (name + "__" + mode + "__" + suppression[0] + "__" +
+                            str(suppression[1]).replace(".", "_") + ".json")
+                part_path = folder / filename if folder is not None else None
+                if part_path is not None and part_path.exists():
+                    stored = json.loads(part_path.read_text(encoding="utf-8"))
+                    if stored.get("spec") != spec or not isinstance(stored.get("row"), dict):
+                        raise RuntimeError("Inner-CV checkpoint mismatch: " + str(part_path))
+                    row = stored["row"]
+                    if (row.get("aggregator"), row.get("mode"),
+                        row.get("suppressor"), row.get("strength")) != key:
+                        raise RuntimeError("Malformed inner-CV checkpoint: " + str(part_path))
+                    inner_bar.set_postfix_str(name + " cached", refresh=False)
+                else:
+                    folds = []
+                    failed = None
+                    inner_bar.set_postfix_str(name + " " + mode + " " + suppression[0],
+                                            refresh=False)
+                    for j, (tr, va) in enumerate(split_plan):
+                        try:
+                            res = fit_and_score(
+                                group, name, items, maps, tr, va, mode, count=count,
+                                seed=deterministic_seed(seed, name, mode, suppression, j),
+                                suppression=suppression,
+                            )
+                            folds.append(res["validation_F1"])
+                        except (ValueError, RuntimeError) as exc:
+                            failed = str(exc)
+                            break
+                    row = {"aggregator": name, "mode": mode,
+                           "suppressor": suppression[0], "strength": suppression[1],
+                           "mean_inner_F1": (float(np.mean(folds)) if len(folds) == len(split_plan) else None),
+                           "error": failed}
+                    if part_path is not None:
+                        write_json(part_path, {"spec": spec, "row": row})
+                out.append(row)
+                inner_bar.update(1)
     valid = [x for x in out if x["mean_inner_F1"] is not None]
     if not valid:
         raise RuntimeError("No valid inner model for " + str(group))
@@ -240,7 +274,6 @@ def select_inner_recipe(group, items, maps, outer_train, candidates, seed, count
     valid.sort(key=lambda x: (-x["mean_inner_F1"], x["aggregator"],
                               x["mode"], x["suppressor"], x["strength"]))
     return valid[0], out
-
 
 def run_group(group, items, maps, train, valid, fold_id, out, cfg):
     """Fixed factorial landscape plus inner-CV chosen recipe and matched ablations."""
