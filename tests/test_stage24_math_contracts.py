@@ -18,6 +18,21 @@ from src.stage24_math_contracts import (
 
 
 class StrictGeneralizedIntegralTests(unittest.TestCase):
+    def test_hamacher_and_harmonic_zero_denominators_are_finite(self):
+        from src.operators import THP, HM
+        a = np.array([0., 0., .2, .7, 1.])
+        b = np.array([0., .5, .4, .3, 1.])
+        with np.errstate(divide="raise", invalid="raise"):
+            thp = THP(a, b)
+            hm = HM(a, b)
+            self.assertEqual(float(THP(0., 0.)), 0.)
+            self.assertEqual(float(HM(0., 0.)), 0.)
+        self.assertTrue(np.isfinite(thp).all())
+        self.assertTrue(np.isfinite(hm).all())
+        self.assertTrue(np.allclose(thp[2:], (a[2:]*b[2:]) /
+                                    (a[2:]+b[2:]-a[2:]*b[2:])))
+        self.assertTrue(np.allclose(hm[2:], 2*a[2:]*b[2:] / (a[2:]+b[2:])))
+
     def test_candidate_copulas_and_legacy_misnomers(self):
         for name in COPULA_THEORETICAL_CANDIDATES:
             out=numerical_copula_contract(FUNCTIONS[name],n=81)
