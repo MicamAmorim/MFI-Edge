@@ -8,7 +8,19 @@ under python -O, unlike the former module-level 'assert' statements.
 """
 from __future__ import annotations
 
+from pathlib import Path
+import sys
 import unittest
+
+# Explicitly put the checkout root on sys.path. On some Windows Python
+# installations the script directory and PYTHONPATH are not automatically
+# honoured; do not depend on implicit cwd/module discovery.
+ROOT = Path(__file__).resolve().parent
+if not (ROOT / "src" / "__init__.py").is_file():
+    raise RuntimeError("MFI-Edge src package missing next to test_math.py: " + str(ROOT))
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 import numpy as np
 
 from src.operators import (
