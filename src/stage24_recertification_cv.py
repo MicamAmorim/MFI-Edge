@@ -21,6 +21,7 @@ from src.stage24_residual import (
     apply_membership, fit_membership, fit_residual_gate, apply_suppressor,
 )
 from src.stage24_recertification_ops import (
+    SEED as AGGREGATOR_FIT_SEED,
     AGGREGATORS, THINNING, SUPPRESSORS, CALIBRATION_MODES,
     calibrate_memberships, score_distribution_diagnostics,
     deterministic_seed, fit_aggregator,
@@ -154,7 +155,7 @@ def fit_and_score(group, name, items, maps, train, valid, mode, count=21, seed=0
     if key not in _AGGREGATOR_CACHE:
         _AGGREGATOR_CACHE[key] = fit_aggregator(
             name, ms, gts, train,
-            seed=deterministic_seed(SEED, "shared_aggregator", key[0], key[2], name),
+            seed=deterministic_seed(AGGREGATOR_FIT_SEED, "shared_aggregator", key[0], key[2], name),
         )
     agg = _AGGREGATOR_CACHE[key]
     if key not in _BASE_CACHE:
@@ -165,7 +166,7 @@ def fit_and_score(group, name, items, maps, train, valid, mode, count=21, seed=0
         if key not in _GATE_CACHE:
             _GATE_CACHE[key] = fit_residual_gate(
                 base, ms, gts, train,
-                seed=deterministic_seed(SEED, "shared_gate", key[0], key[2], name),
+                seed=deterministic_seed(AGGREGATOR_FIT_SEED, "shared_gate", key[0], key[2], name),
             )
         gate = _GATE_CACHE[key]
     scores = [
