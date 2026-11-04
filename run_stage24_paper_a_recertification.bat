@@ -21,7 +21,16 @@ if not exist "test_math.py" (
   exit /b 4
 )
 echo Project root: "%CD%"
+if not exist "src\__init__.py" (
+  echo ERROR: src\__init__.py missing. Your checkout is incomplete or sparse.
+  exit /b 4
+)
 set "PYTHONPATH=%CD%;%PYTHONPATH%"
+"%PYTHON%" -c "import sys,pathlib; sys.path.insert(0,str(pathlib.Path('.').resolve())); import src; print('MFI-Edge source package OK:',src.__file__)"
+if errorlevel 1 (
+  echo ERROR: Python could not import the src package even with an explicit root path.
+  exit /b 4
+)
 "%PYTHON%" "test_math.py"
 if errorlevel 1 (
   echo ERROR: legacy math tests FAILED; campaign not started.
