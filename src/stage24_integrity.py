@@ -198,13 +198,15 @@ def one_to_one_boundary_counts(
         used = np.zeros(len(larger), dtype=bool)
         certified = True
         for candidate_distances, candidate_indices in zip(distances, neighbors):
+            assigned = False
             for distance, candidate_index in zip(candidate_distances, candidate_indices):
                 if distance > tol + 1e-8:
                     break
                 if candidate_index < len(larger) and not used[candidate_index]:
                     used[candidate_index] = True
+                    assigned = True
                     break
-            else:
+            if not assigned:
                 certified = False
                 break
         if certified:
