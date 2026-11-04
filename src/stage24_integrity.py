@@ -174,22 +174,39 @@ def one_to_one_boundary_counts(
     elif gt_count >= pred_count and not np.any(p & ~g):
         tp = pred_count
     else:
-        # A distinct nearest-neighbour assignment is a CERTIFICATE of a
-        # maximum-cardinality match when it covers the smaller side. A failed
-        # certificate is NOT treated as a mismatch: use the exact graph solver.
+        # An injective neighbour assignment covering the smaller vertex set is
+        # a mathematical certificate of a maximum-cardinality matching. Unlike
+        # greedy approximate metrics, a failed certificate ALWAYS falls through
+        # to the exact sparse bipartite solver.
         pred_xy = np.argwhere(p)
+        gt_xy = reference.coords if reference is not None else np.argwhere(g)
         if pred_count >= gt_count:
-            gt_xy = reference.coords if reference is not None else np.argwhere(g)
-            distances, neighbors = cKDTree(pred_xy.astype(float)).query(
-                gt_xy.astype(float), k=1, distance_upper_bound=float(tol)+1e-8)
-            certified = (np.all(distances <= float(tol)+1e-8) and
-                         len(np.unique(neighbors)) == gt_count)
+            smaller, larger = gt_xy, pred_xy
+            tree = cKDTree(pred_xy.astype(float))
         else:
-            tree = reference.tree if reference is not None else cKDTree(np.argwhere(g).astype(float))
-            distances, neighbors = tree.query(
-                pred_xy.astype(float), k=1, distance_upper_bound=float(tol)+1e-8)
-            certified = (np.all(distances <= float(tol)+1e-8) and
-                         len(np.unique(neighbors)) == pred_count)
+            smaller, larger = pred_xy, gt_xy
+            tree = reference.tree if reference is not None else cKDTree(gt_xy.astype(float))
+
+        neighbor_count = min(8, len(larger))
+        distances, neighbors = tree.query(
+            smaller.astype(float), k=neighbor_count,
+            distance_upper_bound=float(tol) + 1e-8,
+        )
+        if neighbor_count == 1:
+            distances = distances[:, None]
+            neighbors = neighbors[:, None]
+        used = np.zeros(len(larger), dtype=bool)
+        certified = True
+        for candidate_distances, candidate_indices in zip(distances, neighbors):
+            for distance, candidate_index in zip(candidate_distances, candidate_indices):
+                if distance > tol + 1e-8:
+                    break
+                if candidate_index < len(larger) and not used[candidate_index]:
+                    used[candidate_index] = True
+                    break
+            else:
+                certified = False
+                break
         if certified:
             tp = min(pred_count, gt_count)
         else:
