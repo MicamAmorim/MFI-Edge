@@ -390,13 +390,20 @@ def choose_threshold(scores, gts, images, mode, count=21, progress=None):
             if progress is not None:
                 progress(index, len(thresholds))
     else:
-        with ThreadPoolExecutor(max_workers=workers, thread_name_prefix="stage24-match") as pool:
-            for index, (t, c) in enumerate(zip(thresholds, pool.map(counts_at, thresholds)), 1):
+        pool = ThreadPoolExecutor(max_workers=workers, thread_name_prefix="stage24-match")
+        try:
+            futures = [pool.submit(counts_at, t) for t in thresholds]
+            for index, (t, future) in enumerate(zip(thresholds, futures), 1):
+                c = future.result()
                 key = (c.f1, c.precision, c.recall, t)
                 if best is None or key > best[0]:
                     best = (key, c, t)
                 if progress is not None:
                     progress(index, len(thresholds))
+        finally:
+            # In case of cooperative STOP / Ctrl+C, discard queued threshold
+            # work; only already-running matching kernels need to finish.
+            pool.shutdown(wait=True, cancel_futures=True)
     _, c, t = best
     return float(t), c
 
