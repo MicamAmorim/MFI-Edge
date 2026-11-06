@@ -18,7 +18,7 @@ from typing import Iterable, Sequence
 
 import numpy as np
 from scipy.sparse import csr_matrix
-from scipy.sparse.csgraph import maximum_bipartite_matching
+from scipy.sparse.csgraph import maximum_bipartite_matching, maximum_flow
 from scipy.spatial import cKDTree
 from skimage.transform import resize
 
@@ -137,7 +137,19 @@ def _match_indices(
     shape = ((len(gt_active), len(pred_active)) if transpose else
              (len(pred_active), len(gt_active)))
     graph = csr_matrix((np.ones(edges.nnz, dtype=np.uint8), (rows, cols)), shape=shape)
-    matched = maximum_bipartite_matching(graph, perm_type="column")
+    # Unit-capacity max flow is exactly maximum bipartite matching. Dinic
+    # avoids the pathological augmenting-path behaviour observed on native NMS.
+    n, m = graph.shape
+    coo = graph.tocoo()
+    source, sink = n + m, n + m + 1
+    flow_rows = np.concatenate((np.full(n, source), coo.row, n + np.arange(m)))
+    flow_cols = np.concatenate((np.arange(n), n + coo.col, np.full(m, sink)))
+    network = csr_matrix((np.ones(len(flow_rows), dtype=np.int32),
+                          (flow_rows, flow_cols)), shape=(sink + 1, sink + 1))
+    flow = maximum_flow(network, source, sink, method="dinic").flow[:n, n:n+m].tocoo()
+    positive = flow.data > 0
+    matched = np.full(n, -1, dtype=np.int64)
+    matched[flow.row[positive]] = flow.col[positive]
     active = np.flatnonzero(matched >= 0)
     if transpose:
         pred_idx, gt_idx = pred_active[matched[active]], gt_active[active]
@@ -216,23 +228,6 @@ def one_to_one_boundary_counts(
             if not assigned:
                 certified = False
                 break
-        if not certified:
-            # Greedy ordering can fail even when an augmenting path within
-            # these nearest neighbours covers all non-isolated vertices.
-            # A complete matching on this SUBGRAPH is also a valid certificate
-            # for the full radius graph. Partial coverage is never accepted.
-            valid_edges = (distances <= float(tol)) & (neighbors < len(larger))
-            active_rows = np.flatnonzero(valid_edges.any(axis=1))
-            candidate_rows, candidate_slots = np.nonzero(valid_edges[active_rows])
-            candidate_cols = neighbors[active_rows[candidate_rows], candidate_slots]
-            _, compact_cols = np.unique(candidate_cols, return_inverse=True)
-            restricted = csr_matrix(
-                (np.ones(len(candidate_rows), dtype=np.uint8), (candidate_rows, compact_cols)),
-                shape=(len(active_rows), int(compact_cols.max()) + 1),
-            )
-            restricted_match = maximum_bipartite_matching(restricted, perm_type="column")
-            certified_count = int(np.count_nonzero(restricted_match >= 0))
-            certified = certified_count == len(active_rows)
         if certified:
             tp = certified_count
         else:
