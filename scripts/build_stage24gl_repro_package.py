@@ -17,6 +17,9 @@ import shutil
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
+import sys
+sys.path.insert(0, str(ROOT))
+from src.stage24_recertification_cv import native_path
 SOURCE = ROOT / "results/local_dev/stage24_paper_a_recertification"
 OFFICIAL = ROOT / "results/official_eval/stage24_paper_a_recertification"
 DEST = ROOT / "results/paper_a_evidence/stage24gl"
@@ -32,7 +35,7 @@ MAX_GIT_ARCHIVE = 180 * 1024 * 1024
 
 def sha256(path: Path) -> str:
     h = hashlib.sha256()
-    with path.open("rb") as handle:
+    with native_path(path).open("rb") as handle:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             h.update(chunk)
     return h.hexdigest()
@@ -57,11 +60,12 @@ def find_sources(base, extensions):
     if base.is_symlink():
         raise RuntimeError("Refusing symlink source directory " + str(base))
     out = []
-    for path in base.rglob("*"):
-        if path.is_symlink():
+    for long_path in native_path(base).rglob("*"):
+        path = base / long_path.relative_to(native_path(base))
+        if native_path(path).is_symlink():
             raise RuntimeError("Refusing symlink scientific source " + str(path))
-        if path.is_file() and path.suffix.lower() in extensions:
-            if path.stat().st_size == 0 or path.name.endswith(".tmp"):
+        if native_path(path).is_file() and path.suffix.lower() in extensions:
+            if native_path(path).stat().st_size == 0 or path.name.endswith(".tmp"):
                 raise RuntimeError("Empty or transient scientific source " + str(path))
             out.append(path)
     return sorted(out)
@@ -75,7 +79,7 @@ def create_shards(files, dest, prefix, root, limit):
     groups = []
     current, bytes_ = [], 0
     for path in files:
-        n = path.stat().st_size
+        n = native_path(path).stat().st_size
         if n > limit:
             raise RuntimeError(f"File too large for a reproducibility shard: {path} ({n})")
         if current and bytes_ + n > limit:
@@ -94,12 +98,12 @@ def create_shards(files, dest, prefix, root, limit):
                              compresslevel=6, allowZip64=True) as z:
             for source in group:
                 name = source.relative_to(root).as_posix()
-                z.write(source, arcname=name)
+                z.write(native_path(source), arcname=name)
                 listing.append({
                     "source": source.relative_to(ROOT).as_posix(),
                     "archive": filename,
                     "member": name,
-                    "bytes": source.stat().st_size,
+                    "bytes": native_path(source).stat().st_size,
                     "sha256": sha256(source),
                 })
         with zipfile.ZipFile(outfile, "r") as z:

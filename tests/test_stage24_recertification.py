@@ -20,6 +20,29 @@ from src.stage24_integrity import one_to_one_boundary_counts, prepare_boundary_r
 
 
 class PaperARecertificationTests(unittest.TestCase):
+    def test_long_checkpoint_atomic_write_resume_and_archive(self):
+        import shutil
+        import zipfile
+        from src.stage24_recertification_cv import native_path, _checkpoint_piece, write_json
+        from scripts.build_stage24gl_repro_package import create_shards
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            long_root = root / ("group_" + "a" * 70)
+            target = long_root / ("b" * 70) / ("c" * 70) / "checkpoint.json"
+            self.assertGreater(len(str(target)), 260)
+            try:
+                self.assertEqual(_checkpoint_piece(target, {"v": 1}, lambda: {"F1": 0.}), {"F1": 0.})
+                self.assertEqual(_checkpoint_piece(target, {"v": 1}, lambda: self.fail("recomputed")), {"F1": 0.})
+                write_json(target, {"spec": {"v": 1}, "value": {"F1": .5}})
+                with patch("scripts.build_stage24gl_repro_package.ROOT", root):
+                    entries, archives = create_shards([target], root / "zip", "test", root, 100000)
+                self.assertEqual(len(entries), 1)
+                with zipfile.ZipFile(root / "zip" / archives[0]["archive"]) as z:
+                    self.assertIsNone(z.testzip())
+            finally:
+                if native_path(long_root).exists():
+                    shutil.rmtree(native_path(long_root))
+
     def test_preflight_rejects_normalized_nonmonotone_capacity(self):
         from run_stage24_paper_a_recertification import preflight_math
         with patch("src.stage24_recertification_ops.capacity_from_mobius",

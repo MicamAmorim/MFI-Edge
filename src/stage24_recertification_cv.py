@@ -9,6 +9,7 @@ from itertools import combinations
 import hashlib
 import csv
 import json
+import os
 from pathlib import Path
 
 import numpy as np
@@ -60,8 +61,24 @@ def _training_key(group, items, train):
     return (tuple(group), id(items), tuple(sorted(int(i) for i in train)))
 
 
-def write_json(path, obj):
+def native_path(path):
+    """Extended absolute Windows path for I/O; keeps scientific identities intact."""
     path = Path(path)
+    if os.name != "nt":
+        return path
+    value = str(path.absolute())
+    prefix = chr(92) * 2 + "?" + chr(92)
+    if value.startswith(prefix):
+        return path
+    if value.startswith(chr(92) * 2):
+        value = prefix + "UNC" + chr(92) + value[2:]
+    else:
+        value = prefix + value
+    return Path(value)
+
+
+def write_json(path, obj):
+    path = native_path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_suffix(path.suffix + ".tmp")
     tmp.write_text(json.dumps(obj, indent=2, sort_keys=True, default=str), encoding="utf-8")
@@ -69,7 +86,7 @@ def write_json(path, obj):
 
 
 def write_csv(path, rows):
-    path = Path(path)
+    path = native_path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     if not rows:
         path.write_text("", encoding="utf-8")
@@ -212,7 +229,7 @@ def select_inner_recipe(group, items, maps, outer_train, candidates, seed, count
                         *, checkpoint_dir=None, signature=None, stop_requested=None):
     """Genuine inner CV for each train-only recipe; resumable at candidate boundary."""
     split_plan = list(_inner_splits(outer_train, seed, 3))
-    folder = Path(checkpoint_dir) if checkpoint_dir is not None else None
+    folder = native_path(checkpoint_dir) if checkpoint_dir is not None else None
     if folder is not None:
         folder.mkdir(parents=True, exist_ok=True)
         if not signature:
@@ -277,7 +294,7 @@ def select_inner_recipe(group, items, maps, outer_train, candidates, seed, count
 
 def _checkpoint_piece(path, spec, builder):
     """Load an exact signed partial result, or write the completed unit atomically."""
-    path = Path(path)
+    path = native_path(path)
     if path.is_file():
         stored = json.loads(path.read_text(encoding="utf-8"))
         if stored.get("spec") != spec or not isinstance(stored.get("value"), dict):
@@ -291,6 +308,7 @@ def _checkpoint_piece(path, spec, builder):
 def run_group(group, items, maps, train, valid, fold_id, out, cfg,
               *, stop_requested=None):
     """Fixed factorial landscape with signed, resumable train-only checkpoints."""
+    out = native_path(out)
     path = out / "folds" / fold_id / ("__".join(group) + ".json")
     sources = [
         Path(__file__), Path(__file__).with_name("stage24_recertification_ops.py"),
@@ -539,7 +557,7 @@ def individual_descriptor_baselines(
     """
     results, per_image = [], []
     gts = [v["gt"] for v in items]
-    folder = Path(checkpoint_dir) if checkpoint_dir is not None else None
+    folder = native_path(checkpoint_dir) if checkpoint_dir is not None else None
     if folder is not None:
         folder.mkdir(parents=True, exist_ok=True)
     n_modes = len(DESCRIPTOR_IDS) * len(TRANSFER_MODES)
