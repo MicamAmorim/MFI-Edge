@@ -342,6 +342,34 @@ def _matlab_quote(path: Path | str) -> str:
     return str(path).replace("'", "''").replace("\\", "/")
 
 
+def _valid_counts(path: Path, nthresh: int) -> bool:
+    """Reject truncated/nonfinite native soft-boundary result files."""
+    import math
+    try:
+        rows = [[float(x) for x in line.split()] for line in path.read_text().splitlines()]
+        return len(rows) == nthresh and all(
+            len(row) == 5 and all(math.isfinite(v) and v >= 0 for v in row)
+            and abs(row[0] - (i + 1) / (nthresh + 1)) < 1e-5
+            and row[1] <= row[2] and row[3] <= row[4]
+            for i, row in enumerate(rows)
+        )
+    except (OSError, ValueError):
+        return False
+
+
+def _evaluation_identity(benchmark_dir, image_dir, gt_dir, pred_dir, cfg):
+    files = list(image_dir.glob("*.jpg")) + list(gt_dir.glob("*.mat"))
+    for img in image_dir.glob("*.jpg"):
+        pred = pred_dir / (img.stem + ".png")
+        files.append(pred if pred.exists() else pred.with_suffix(".mat"))
+    files += list(benchmark_dir.glob("*.m")) + list(benchmark_dir.glob("*.mex*"))
+    files += list(MATLAB_WRAPPER_DIR.glob("*.m"))
+    return {"parameters": {k: cfg.get(k, v) for k, v in
+             (("nthresh", 99), ("max_dist", .0075), ("thinpb", True))},
+            "files": {str(p.resolve()): hashlib.sha256(p.read_bytes()).hexdigest()
+                      for p in sorted(files)}}
+
+
 def _evaluate_one(
     matlab: Path,
     *,
@@ -352,9 +380,21 @@ def _evaluate_one(
     out_dir: Path,
     cfg: dict,
 ) -> dict:
-    if out_dir.exists():
-        shutil.rmtree(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
+    identity = _evaluation_identity(benchmark_dir, image_dir, gt_dir, pred_dir, cfg)
+    identity_path = out_dir / "evaluation_identity.json"
+    if identity_path.exists():
+        if _load_json(identity_path) != identity:
+            raise RuntimeError("Evaluation inputs changed; preserve results and use a new output directory")
+    else:
+        existing = list(out_dir.glob("*_ev1.txt"))
+        if existing and not cfg.get("adopt_existing_evaluation", False):
+            raise RuntimeError("Legacy counts require explicit --adopt-existing-evaluation after provenance review")
+        if existing:
+            _save_json(out_dir / "legacy_adoption.json", {
+                "reason": "Explicit adoption after provenance review; historical identity was not recorded",
+                "counts_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in existing}})
+        _save_json(identity_path, identity)
 
     nthresh = int(cfg.get("nthresh", 99))
     max_dist = float(cfg.get("max_dist", 0.0075))
@@ -378,7 +418,13 @@ def _evaluate_one(
     # computation and leaves the pinned sources untouched.
     expected_ids = sorted(path.stem for path in image_dir.glob("*.jpg"))
     eval_runs: list[subprocess.CompletedProcess] = []
-    missing_eval = list(expected_ids)
+    missing_eval = [iid for iid in expected_ids
+                    if not _valid_counts(out_dir / f"{iid}_ev1.txt", nthresh)]
+    for iid in missing_eval:
+        bad = out_dir / f"{iid}_ev1.txt"
+        if bad.exists():
+            bad.replace(bad.with_name(bad.name + ".invalid." + str(__import__('time').time_ns())))
+    print(f"BSDS_RESUME {out_dir.name}: {len(expected_ids)-len(missing_eval)}/{len(expected_ids)} images validated", flush=True)
     # The pinned Windows MEX intermittently terminates MATLAB with heap
     # corruption after it has successfully written a prefix of per-image
     # results. Resume those immutable results in fresh MATLAB processes rather
@@ -386,19 +432,27 @@ def _evaluate_one(
     # skips only nonempty result files, so each image is still matched exactly
     # once by the original Berkeley implementation.
     for _ in range(len(expected_ids) + 1):
+        if not missing_eval:
+            break
         before = len(missing_eval)
-        p_eval = _run(
-            [str(matlab), "-batch", expr_base + ",'evaluate');"],
-            timeout=4 * 60 * 60,
-            check=False,
-        )
+        command = [str(matlab), "-batch", expr_base + ",'evaluate');"]
+        try:
+            p_eval = _run(command, timeout=4 * 60 * 60, check=False)
+        except subprocess.TimeoutExpired:
+            # A time limit is not a scientific failure if complete image counts
+            # were saved. Retry only when there is measurable durable progress.
+            p_eval = subprocess.CompletedProcess(command, 124, "MATLAB time limit reached", "")
         eval_runs.append(p_eval)
         missing_eval = [
             image_id
             for image_id in expected_ids
-            if not (out_dir / f"{image_id}_ev1.txt").exists()
-            or (out_dir / f"{image_id}_ev1.txt").stat().st_size == 0
+            if not _valid_counts(out_dir / f"{image_id}_ev1.txt", nthresh)
         ]
+        print(f"BSDS_PROGRESS {out_dir.name}: {len(expected_ids)-len(missing_eval)}/{len(expected_ids)} images validated", flush=True)
+        for iid in missing_eval:
+            bad = out_dir / f"{iid}_ev1.txt"
+            if bad.exists():
+                bad.replace(bad.with_name(bad.name + ".invalid." + str(__import__('time').time_ns())))
         if not missing_eval:
             break
         if len(missing_eval) >= before:
@@ -415,6 +469,9 @@ def _evaluate_one(
             f"missing={missing_eval[:10]}\nSTDOUT:\n{p_eval.stdout}\n"
             f"STDERR:\n{p_eval.stderr}"
         )
+    if not eval_runs:
+        p_eval = subprocess.CompletedProcess([], 0, "Reused validated per-image counts", "")
+        eval_runs.append(p_eval)
     p_collect = _run(
         [str(matlab), "-batch", expr_base + ",'collect');"],
         timeout=4 * 60 * 60,
@@ -445,12 +502,15 @@ def main() -> int:
     ap.add_argument("--experiment-id", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--config", default=str(DEFAULT_CONFIG))
+    ap.add_argument("--adopt-existing-evaluation", action="store_true",
+                    help="Explicitly adopt legacy counts after reviewing provenance; record hashes")
     args = ap.parse_args()
 
     cfg_path = Path(args.config)
     if not cfg_path.is_absolute():
         cfg_path = ROOT / cfg_path
     cfg = _load_json(cfg_path)
+    cfg["adopt_existing_evaluation"] = args.adopt_existing_evaluation
 
     manifest_path = Path(args.manifest)
     if not manifest_path.is_absolute():
