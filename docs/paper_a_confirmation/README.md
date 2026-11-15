@@ -189,3 +189,17 @@ Ver [`LOCAL_EXECUTION_EVIDENCE_20261115.md`](LOCAL_EXECUTION_EVIDENCE_20261115.m
 As 198 candidatas BIPED train **não estão certificadas** e seguem sem F1
 confirmatório. Não confundir preflight técnico de dimensões/GT com
 seleção de operadores.
+
+## Stage13c concluído; fonte MultiCue em pré-viabilidade
+
+O preflight histórico da workstation retornou `Ready=True`, 200/200
+pares train e 50/50 test, sem erros. Esse resultado comprova a integridade
+técnica verificada na Stage13c, **não** independência estatística nem
+inexistência de acessos ao GT train.
+
+Leia [`STAGE13C_CLOSEOUT_AND_MULTICUE_PREFLIGHT_20261115.md`](STAGE13C_CLOSEOUT_AND_MULTICUE_PREFLIGHT_20261115.md).
+Para verificar espaço livre e presença local do MultiCue, sem baixar ou ler GT:
+
+```powershell
+python .\scripts\preflight_paper_a_multicue_source.py
+```
