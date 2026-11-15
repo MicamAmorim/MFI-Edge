@@ -290,3 +290,26 @@ prefixo de captura como independente enquanto não houver prova de
 cenas distintas. Portanto, pode haver 100 sequências mas apenas 96
 grupos conservadores antes da auditoria de sobreposição UDED.
 Os nomes não certificam semântica de GT ou independência de cena.
+
+## Materialização seletiva para auditoria de sobreposição (sem GT)
+
+O scanner H5 verificou 100 sequências, 96 prefixos de captura e 2.000
+imagens originais correspondentes a 1.100 nomes de anotações, sem erros.
+
+A próxima etapa é extrair **somente um quadro original esquerdo por
+sequência** (100 imagens; não abre GT). O script compara cada nome com
+o manifesto H5 ancorado e a lista de membros previamente verificada,
+aceita apenas `multicue/images/*.png` e tem limite de 25 MiB
+por imagem e 1 GiB no total:
+
+```powershell
+git pull --ff-only origin experiment/paper-a-conditional-confirmation
+python .\scripts\materialize_paper_a_multicue_source_frames.py
+```
+
+O TAR/BZip2 será percorrido em streaming uma vez. Saídas no F::
+`source_frames_only/` (100 originais), `multicue_source_frames_only_manifest.csv`
+(hashes por imagem) e `multicue_source_frames_only_summary.json`.
+**Não** copia anotações, não abre HDF5/GT, não roda F1. Os 100 arquivos
+são usados apenas na auditoria de possível sobreposição de cena/linhagem.
+Gravação deliberadamente não permite sobrescrever imagens existentes.
