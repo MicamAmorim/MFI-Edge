@@ -153,3 +153,20 @@ imagens, GT ou CSV de F1, nem roda modelos. Cria localmente
 ausência de referências não prova não exposição, sobretudo em logs
 locais ignorados, versões não publicadas e decisões feitas fora do
 repositório. Nenhuma candidata passa a estar certificada por isso.
+
+## Classificação das referências históricas (sem GT/F1)
+
+Quando a auditoria histórica retornar referências de código, separá-las por
+menção explícita ao split train, ao split test, menção genérica ao BIPED e
+identificação literal de alguma imagem candidata:
+
+```powershell
+git pull --ff-only origin experiment/paper-a-conditional-confirmation
+python .\scripts\summarize_paper_a_confirmation_history.py --max-show 25
+```
+
+Lê apenas o JSON já produzido. Escreve
+`results/local_dev/paper_a_confirmation_inventory/predata_audit/historical_source_triage.csv`
+e imprime a classificação e até 25 trechos relevantes para revisão humana.
+Um arquivo que menciona `train` não prova que foi executado;
+a ausência de menção não certifica o conjunto. Não abre GT nem F1.
