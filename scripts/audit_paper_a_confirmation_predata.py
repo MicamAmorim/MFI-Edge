@@ -116,13 +116,22 @@ def main():
     reference_hash = defaultdict(list)
     reference_visual = []
     ref_stats = {}
+    # The UDED directory may include a known protected BSDS-test lineage (35028).
+    # Never decode a file bearing any protected BSDS-test stem, even via UDED.
+    protected_bsds_stems = {
+        p.stem for p in original_files(repo / "datasets/BSDS500/images/test")
+    } | {"35028"}
     for label, path, allow_decode in references:
         paths = original_files(path)
-        ref_stats[label] = {"n_image_files": len(paths), "decoded": allow_decode and not args.no_dhash}
+        n_decoded = 0
+        ref_stats[label] = {"n_image_files": len(paths), "decoded": False}
         for f in paths:
             reference_hash[sha256(f)].append(f"{label}:{f.name}")
-            if allow_decode and not args.no_dhash:
+            if allow_decode and not args.no_dhash and f.stem not in protected_bsds_stems:
                 reference_visual.append((label, f.name, dhash(f)))
+                n_decoded += 1
+        ref_stats[label]["n_decoded"] = n_decoded
+        ref_stats[label]["decoded"] = n_decoded > 0
 
     candidates = []
     observed = defaultdict(list)
