@@ -72,7 +72,9 @@ def roots_from_args(items):
             raise ValueError(f"Dataset directory missing: {folder}")
         # Guard even when a GT/output directory was explicitly passed as the root.
         parts = {part.lower() for part in folder.parts}
-        forbidden = parts & EXCLUDE_DIRS
+        # BIPEDv2 uses "edges" as a container of both imgs and edge_maps.
+        # Allow it in ancestors; explicitly prohibit edge_maps and GT locations.
+        forbidden = parts & (EXCLUDE_DIRS - {"edges"})
         if forbidden:
             raise ValueError(f"Refusing annotation/output root {folder}: {sorted(forbidden)}")
         if "test" in parts:
