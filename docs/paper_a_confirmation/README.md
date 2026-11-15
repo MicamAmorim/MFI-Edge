@@ -244,3 +244,23 @@ e `archive_member_summary.json`. O resumo permite planejar
 extração seletiva posterior, nunca autoriza abrir GT antes do protocolo
 e da análise de independência. Se quiser verificar o hash inteiro novamente,
 adicione `--rehash` (releitura de 3,58 GB).
+
+## Auditoria de correspondência cena/quadros/GT por nomes (MultiCue)
+
+O inventário TAR verificou a fonte SHA256 e os 3.207 membros (3.200 arquivos;
+3.100 PNG e 100 H5), sem extração. Com o CSV já gerado, rode:
+
+```powershell
+git pull --ff-only origin experiment/paper-a-conditional-confirmation
+python .\scripts\audit_paper_a_multicue_scene_layout.py
+```
+
+O script lê **somente** o índice CSV e seu resumo JSON no F:, sem reler o
+TAR, decodificar imagens/GT ou abrir H5. Agrupa o identificador de cena,
+os frames por vista, o último frame esquerdo e as anotações cujos **nomes**
+correspondem ao frame. O resultado detalhado é
+`F:MFI-Edge-DataMultiCuemulticue_scene_name_candidates.csv`
+e o relatório
+`F:MFI-Edge-DataMultiCuemulticue_scene_name_summary.json`.
+Nenhum nome de anotação certifica compatibilidade com o avaliador; a
+identidade das cenas e o GT devem ser congelados antes de avaliações.
