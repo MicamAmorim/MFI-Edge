@@ -1,0 +1,226 @@
+{
+  "experiment": "stage24_conditional_landscape_posthoc",
+  "source_campaign": "stage24_paper_a_recertification",
+  "original_experiment_modified": false,
+  "no_refitting": true,
+  "UDED": {
+    "n_images": 14,
+    "n_groups": 7,
+    "n_operators_reported_in_source": 26,
+    "n_canonical_group_operators": 149,
+    "n_fusion_scores": 2086,
+    "n_candidate_models_with_singles": 195,
+    "primary_cases": [
+      {
+        "group": "fh_region_boundary|halfdisc_distribution_contrast",
+        "aggregator": "equal_mean",
+        "n_images": 14,
+        "mean_delta_vs_equal_mean": 0.0,
+        "median_delta_vs_equal_mean": 0.0,
+        "min_delta": 0.0,
+        "max_delta": 0.0,
+        "n_strict_positive": 0,
+        "n_strict_negative": 0,
+        "n_gain_ge_0p01": 0,
+        "n_loss_le_minus_0p01": 0,
+        "mean_delta_vs_best_member_posthoc": 0.04904408337505183,
+        "n_above_best_member_posthoc": 11,
+        "scope": "14 unique images; repeated folds averaged; exploratory, no multiplicity correction"
+      },
+      {
+        "group": "gabor4_scale_persistence|halfdisc_distribution_contrast",
+        "aggregator": "maximum",
+        "n_images": 14,
+        "mean_delta_vs_equal_mean": -0.009414583815323488,
+        "median_delta_vs_equal_mean": 0.0006446707134794283,
+        "min_delta": -0.24902779495054028,
+        "max_delta": 0.15479068428371534,
+        "n_strict_positive": 7,
+        "n_strict_negative": 7,
+        "n_gain_ge_0p01": 6,
+        "n_loss_le_minus_0p01": 6,
+        "mean_delta_vs_best_member_posthoc": -0.0525618730558574,
+        "n_above_best_member_posthoc": 4,
+        "scope": "14 unique images; repeated folds averaged; exploratory, no multiplicity correction"
+      },
+      {
+        "group": "gabor4_scale_persistence|halfdisc_distribution_contrast",
+        "aggregator": "nonnegative_logistic",
+        "n_images": 14,
+        "mean_delta_vs_equal_mean": 0.02901486764697291,
+        "median_delta_vs_equal_mean": 0.02193282442844663,
+        "min_delta": -0.11226654457869006,
+        "max_delta": 0.1624266726142689,
+        "n_strict_positive": 11,
+        "n_strict_negative": 3,
+        "n_gain_ge_0p01": 11,
+        "n_loss_le_minus_0p01": 3,
+        "mean_delta_vs_best_member_posthoc": -0.014132421593561003,
+        "n_above_best_member_posthoc": 11,
+        "scope": "14 unique images; repeated folds averaged; exploratory, no multiplicity correction"
+      },
+      {
+        "group": "gabor4_scale_persistence|pmi_dependency_deficit|structure_tensor_coherence",
+        "aggregator": "median",
+        "n_images": 14,
+        "mean_delta_vs_equal_mean": 0.015786594153586804,
+        "median_delta_vs_equal_mean": 0.010477246797717776,
+        "min_delta": -0.029703501960700707,
+        "max_delta": 0.07515912505996003,
+        "n_strict_positive": 12,
+        "n_strict_negative": 2,
+        "n_gain_ge_0p01": 8,
+        "n_loss_le_minus_0p01": 2,
+        "mean_delta_vs_best_member_posthoc": 0.0029195738452352715,
+        "n_above_best_member_posthoc": 9,
+        "scope": "14 unique images; repeated folds averaged; exploratory, no multiplicity correction"
+      },
+      {
+        "group": "halfdisc_distribution_contrast|hessian_s7",
+        "aggregator": "choquet_signed_2add",
+        "n_images": 14,
+        "mean_delta_vs_equal_mean": 0.03294983376694568,
+        "median_delta_vs_equal_mean": 0.03750837984007693,
+        "min_delta": -0.04102191673780775,
+        "max_delta": 0.09297792222707346,
+        "n_strict_positive": 11,
+        "n_strict_negative": 3,
+        "n_gain_ge_0p01": 11,
+        "n_loss_le_minus_0p01": 3,
+        "mean_delta_vs_best_member_posthoc": 0.02439693845553473,
+        "n_above_best_member_posthoc": 11,
+        "scope": "14 unique images; repeated folds averaged; exploratory, no multiplicity correction"
+      }
+    ],
+    "source_sha256": {
+      "results\\paper_a_evidence\\stage24_image_groups\\common_candidate_scores.csv": "260c6dc0143c66580ebfd558b50128864bc12c6c29e1e1b65a94b6790f7044e1",
+      "results\\paper_a_evidence\\stage24_image_groups\\image_features.csv": "cc54332d9cd75c41ce72a16b28953735d4a13fa6c5f7e29ff8405f23463875c0"
+    },
+    "notes": [
+      "O ganho contra o melhor descritor por imagem usa controle retrospectivo (oráculo), não seletor implantável.",
+      "As cinco repetições da mesma imagem são agregadas e NÃO contadas como cinco imagens independentes.",
+      "Correlações entre 78 resumos marginais e ganhos são exploratórias; não medem acordo espacial diretamente.",
+      "Operadores algebricamente equivalentes são colapsados, com validação de consistência numérica."
+    ]
+  },
+  "spatial": {
+    "status": "complete",
+    "verified_descriptor_maps": 182,
+    "group_image_records": 98,
+    "note": "Sem GT ou reextração; correlações exploratórias (muitos testes)"
+  },
+  "BSDS500": {
+    "status": "complete",
+    "original_threshold_rows": 79200,
+    "methods": 8,
+    "images": 100,
+    "contrasts": [
+      {
+        "method": "stage24gl_best_single",
+        "reference": "incumbent_compact_positive_choquet",
+        "n_images": 100,
+        "mean_per_image_delta": 0.0217602368959207,
+        "median_per_image_delta": 0.02739207187211462,
+        "n_positive": 70,
+        "n_negative": 30,
+        "n_ge_0p01": 65,
+        "n_le_minus_0p01": 28,
+        "limitation": "Not official ODS delta: per-image F1 at nearest method-specific ODS thresholds chosen on validation"
+      },
+      {
+        "method": "stage24gl_identity",
+        "reference": "incumbent_compact_positive_choquet",
+        "n_images": 100,
+        "mean_per_image_delta": 0.03782419479636535,
+        "median_per_image_delta": 0.036424274702760884,
+        "n_positive": 90,
+        "n_negative": 10,
+        "n_ge_0p01": 76,
+        "n_le_minus_0p01": 7,
+        "limitation": "Not official ODS delta: per-image F1 at nearest method-specific ODS thresholds chosen on validation"
+      },
+      {
+        "method": "stage24gl_identity_quantile",
+        "reference": "incumbent_compact_positive_choquet",
+        "n_images": 100,
+        "mean_per_image_delta": 0.03418480364176342,
+        "median_per_image_delta": 0.03475519373631536,
+        "n_positive": 80,
+        "n_negative": 20,
+        "n_ge_0p01": 70,
+        "n_le_minus_0p01": 11,
+        "limitation": "Not official ODS delta: per-image F1 at nearest method-specific ODS thresholds chosen on validation"
+      },
+      {
+        "method": "stage24gl_pair04_logistic",
+        "reference": "incumbent_compact_positive_choquet",
+        "n_images": 100,
+        "mean_per_image_delta": -0.062484679141359474,
+        "median_per_image_delta": -0.037897001864927005,
+        "n_positive": 33,
+        "n_negative": 67,
+        "n_ge_0p01": 28,
+        "n_le_minus_0p01": 64,
+        "limitation": "Not official ODS delta: per-image F1 at nearest method-specific ODS thresholds chosen on validation"
+      },
+      {
+        "method": "stage24gl_pair04_weighted",
+        "reference": "incumbent_compact_positive_choquet",
+        "n_images": 100,
+        "mean_per_image_delta": -0.06244698164582968,
+        "median_per_image_delta": -0.038333731981363306,
+        "n_positive": 33,
+        "n_negative": 67,
+        "n_ge_0p01": 28,
+        "n_le_minus_0p01": 64,
+        "limitation": "Not official ODS delta: per-image F1 at nearest method-specific ODS thresholds chosen on validation"
+      },
+      {
+        "method": "stage24gl_winner",
+        "reference": "incumbent_compact_positive_choquet",
+        "n_images": 100,
+        "mean_per_image_delta": -0.022952904725146064,
+        "median_per_image_delta": -0.022175437024983702,
+        "n_positive": 38,
+        "n_negative": 62,
+        "n_ge_0p01": 29,
+        "n_le_minus_0p01": 55,
+        "limitation": "Not official ODS delta: per-image F1 at nearest method-specific ODS thresholds chosen on validation"
+      },
+      {
+        "method": "stage24gl_winner_quantile",
+        "reference": "incumbent_compact_positive_choquet",
+        "n_images": 100,
+        "mean_per_image_delta": -0.023793505826819022,
+        "median_per_image_delta": -0.025203626780020055,
+        "n_positive": 33,
+        "n_negative": 67,
+        "n_ge_0p01": 27,
+        "n_le_minus_0p01": 57,
+        "limitation": "Not official ODS delta: per-image F1 at nearest method-specific ODS thresholds chosen on validation"
+      },
+      {
+        "method": "stage24gl_winner",
+        "reference": "stage24gl_identity",
+        "n_images": 100,
+        "mean_per_image_delta": -0.060777099521511425,
+        "median_per_image_delta": -0.059141614218958305,
+        "n_positive": 9,
+        "n_negative": 91,
+        "n_ge_0p01": 6,
+        "n_le_minus_0p01": 89,
+        "limitation": "Not official ODS delta: per-image F1 at nearest method-specific ODS thresholds chosen on validation"
+      }
+    ],
+    "warning": "Esses deltas F1 por imagem NÃO substituem os deltas ODS/OIS/AP oficiais; thresholds são da validation."
+  },
+  "BSDS_final_maps": {
+    "status": "complete",
+    "expected": 700,
+    "verified": 700,
+    "missing": 0,
+    "winner_identity_pairs": 100,
+    "note": "Somente scores agregados finais; não substituem 13 mapas de descritores BSDS"
+  },
+  "status": "completed_exploratory_not_confirmatory"
+}

@@ -1,0 +1,8 @@
+group,n_images,n_unique_canonical_operators,distinct_retrospective_winners,retrospective_modal_operator,modal_fraction,mean_cross_image_spearman,negative_cross_image_rank_fraction,analysis_is_posthoc
+fh_region_boundary|halfdisc_distribution_contrast,14,21,5,lukasiewicz,0.5,0.6524903667760811,0.0,True
+fh_region_boundary|halfdisc_distribution_contrast|structure_tensor_coherence,14,22,7,choquet_generalized_150,0.35714285714285715,0.8417359038477051,0.0,True
+gabor4_scale_persistence|halfdisc_distribution_contrast,14,21,5,lukasiewicz,0.35714285714285715,0.24398991226639064,0.3626373626373626,True
+gabor4_scale_persistence|pmi_dependency_deficit|structure_tensor_coherence,14,22,5,median,0.5714285714285714,0.618009319872674,0.0,True
+gabor4_scale_persistence|structure_tensor_coherence,14,21,6,gcf_cl_cl,0.42857142857142855,0.39883560291223996,0.17582417582417584,True
+halfdisc_distribution_contrast|hessian_s7,14,21,9,gcf_tp_tl,0.2857142857142857,0.43416718523779163,0.2087912087912088,True
+halfdisc_distribution_contrast|pmi_dependency_deficit,14,21,6,minimum,0.2857142857142857,0.6651178229772325,0.0,True

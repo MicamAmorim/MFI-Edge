@@ -1,0 +1,5 @@
+feature,n_images,spearman_exploratory,warning
+mean_winner_minus_identity,100,-0.22675067506750674,Posthoc: final prediction maps only; not proof of complementarity mechanism
+mean_abs_score_difference,100,0.2569096909690969,Posthoc: final prediction maps only; not proof of complementarity mechanism
+fraction_winner_less_than_identity,100,0.006546693949676518,Posthoc: final prediction maps only; not proof of complementarity mechanism
+fraction_winner_greater_than_identity,100,0.2432403240324032,Posthoc: final prediction maps only; not proof of complementarity mechanism

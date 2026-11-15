@@ -1,0 +1,9 @@
+method,reference,n_images,mean_per_image_delta,median_per_image_delta,n_positive,n_negative,n_ge_0p01,n_le_minus_0p01,limitation
+stage24gl_best_single,incumbent_compact_positive_choquet,100,0.0217602368959207,0.02739207187211462,70,30,65,28,Not official ODS delta: per-image F1 at nearest method-specific ODS thresholds chosen on validation
+stage24gl_identity,incumbent_compact_positive_choquet,100,0.03782419479636535,0.036424274702760884,90,10,76,7,Not official ODS delta: per-image F1 at nearest method-specific ODS thresholds chosen on validation
+stage24gl_identity_quantile,incumbent_compact_positive_choquet,100,0.03418480364176342,0.03475519373631536,80,20,70,11,Not official ODS delta: per-image F1 at nearest method-specific ODS thresholds chosen on validation
+stage24gl_pair04_logistic,incumbent_compact_positive_choquet,100,-0.062484679141359474,-0.037897001864927005,33,67,28,64,Not official ODS delta: per-image F1 at nearest method-specific ODS thresholds chosen on validation
+stage24gl_pair04_weighted,incumbent_compact_positive_choquet,100,-0.06244698164582968,-0.038333731981363306,33,67,28,64,Not official ODS delta: per-image F1 at nearest method-specific ODS thresholds chosen on validation
+stage24gl_winner,incumbent_compact_positive_choquet,100,-0.022952904725146064,-0.022175437024983702,38,62,29,55,Not official ODS delta: per-image F1 at nearest method-specific ODS thresholds chosen on validation
+stage24gl_winner_quantile,incumbent_compact_positive_choquet,100,-0.023793505826819022,-0.025203626780020055,33,67,27,57,Not official ODS delta: per-image F1 at nearest method-specific ODS thresholds chosen on validation
+stage24gl_winner,stage24gl_identity,100,-0.060777099521511425,-0.059141614218958305,9,91,6,89,Not official ODS delta: per-image F1 at nearest method-specific ODS thresholds chosen on validation
