@@ -63,3 +63,27 @@ mas BIPEDv2 test e BSDS500 test permanecem protegidos por possível uso históri
 A segunda fonte candidata é MultiCue/MDBD (100 cenas), dependente de nova auditoria
 de sobreposição e da disponibilidade de GT por cena. O scanner agora recusa
 pastas de GT, outputs e diretórios de teste como raiz.
+
+## Segunda auditoria da BIPEDv2 train (apenas imagens, sem GT)
+
+Após obter 200 linhas `PENDING_MANUAL` no inventário, execute:
+
+```powershell
+git pull --ff-only origin experiment/paper-a-conditional-confirmation
+python .\scripts\audit_paper_a_confirmation_predata.py
+```
+
+Esse comando confere novamente os SHA-256 das 200 imagens BIPEDv2 train
+e compara com manifestos UDED, com imagens UDED de desenvolvimento e com
+os arquivos originais BIPED/BSDS test. **As partições test são lidas
+apenas como bytes para SHA256, sem decodificação e sem GT**. A inspeção
+visual automática por dHash é feita somente nas imagens BIPED train
+e nas imagens UDED já expostas. Ela emite **alertas de possível quase
+duplicação**, que exigem revisão humana. Não classifica nenhuma imagem
+como aprovada. Não acessa F1 nem executa detectores.
+
+Resultados locais: `results/local_dev/paper_a_confirmation_inventory/predata_audit/summary.json`
+e `candidate_review.csv`. Não faça `git add .` nem compartilhe imagens
+ou anotações protegidas. Caso Pillow não esteja disponível,
+`python -m pip install pillow` ou a opção `--no-dhash`
+(o segundo caso não detecta quase duplicatas).
