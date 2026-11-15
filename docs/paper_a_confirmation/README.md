@@ -54,3 +54,12 @@ de candidatos deve ser auditada manualmente por origem/cena, quase duplicatas,
 exposição anterior e disponibilidade de anotações `holdout` antes de preencher
 o manifesto de confirmação ou congelar o protocolo. Não faça `git add .` em
 datasets locais.
+
+## Candidatos à coorte: auditoria preliminar 15/11/2026
+
+Ver [`COHORT_AUDIT_20261115.md`](COHORT_AUDIT_20261115.md).
+O inventário da workstation aponta BIPEDv2 train (200 imagens) como candidato local,
+mas BIPEDv2 test e BSDS500 test permanecem protegidos por possível uso histórico.
+A segunda fonte candidata é MultiCue/MDBD (100 cenas), dependente de nova auditoria
+de sobreposição e da disponibilidade de GT por cena. O scanner agora recusa
+pastas de GT, outputs e diretórios de teste como raiz.

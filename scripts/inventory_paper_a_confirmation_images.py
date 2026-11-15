@@ -70,6 +70,16 @@ def roots_from_args(items):
         folder = Path(path.strip()).expanduser().resolve()
         if not folder.is_dir():
             raise ValueError(f"Dataset directory missing: {folder}")
+        # Guard even when a GT/output directory was explicitly passed as the root.
+        parts = {part.lower() for part in folder.parts}
+        forbidden = parts & EXCLUDE_DIRS
+        if forbidden:
+            raise ValueError(f"Refusing annotation/output root {folder}: {sorted(forbidden)}")
+        if "test" in parts:
+            raise ValueError(
+                f"Test split is protected pending the historical-exposure audit: {folder}. "
+                "Do not use this inventory to silently consume held-out test images."
+            )
         results.append((label, folder))
     return results
 
