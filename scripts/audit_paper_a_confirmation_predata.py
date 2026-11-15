@@ -121,16 +121,26 @@ def main():
     protected_bsds_stems = {
         p.stem for p in original_files(repo / "datasets/BSDS500/images/test")
     } | {"35028"}
+    def is_protected_stem(stem: str) -> bool:
+        # UDED names may prefix the original BSDS ID, e.g. "03-35028".
+        # Compare complete identifiers, never a substring in the middle.
+        return any(stem == known or stem.endswith("-" + known)
+                   for known in protected_bsds_stems)
     for label, path, allow_decode in references:
         paths = original_files(path)
         n_decoded = 0
+        n_protected_skipped = 0
         ref_stats[label] = {"n_image_files": len(paths), "decoded": False}
         for f in paths:
             reference_hash[sha256(f)].append(f"{label}:{f.name}")
-            if allow_decode and not args.no_dhash and f.stem not in protected_bsds_stems:
+            if is_protected_stem(f.stem):
+                n_protected_skipped += 1
+                continue  # SHA comparison only; no image decoding.
+            if allow_decode and not args.no_dhash:
                 reference_visual.append((label, f.name, dhash(f)))
                 n_decoded += 1
         ref_stats[label]["n_decoded"] = n_decoded
+        ref_stats[label]["n_protected_stems_excluded_from_decode"] = n_protected_skipped
         ref_stats[label]["decoded"] = n_decoded > 0
 
     candidates = []
@@ -194,6 +204,15 @@ def main():
         "candidate_root": str(folder),
         "candidate_review_csv": str(csvfile),
         "status_counts": dict(statuses),
+        "flagged_cases": [
+            {
+                "image_id": r["image_id"],
+                "status": r["status"],
+                "near_image_flags": r["near_image_flags"],
+                "exact_historical_sources": r["exact_historical_sources"],
+            }
+            for r in rows if r["status"] != "REVIEW_NOT_CERTIFIED"
+        ],
         "historical_manifest_sha_count": len(historical),
         "reference_counts": ref_stats,
         "dhash_warning_distance": None if args.no_dhash else args.dhash_distance,
