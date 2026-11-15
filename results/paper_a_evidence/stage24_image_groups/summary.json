@@ -1,0 +1,131 @@
+{
+  "status": "complete_exploratory",
+  "n_images": 14,
+  "descriptor_maps": 182,
+  "n_features": 78,
+  "PCA_components": 3,
+  "PCA_explained_fraction": 0.8274139909239646,
+  "primary_k": 3,
+  "silhouettes": {
+    "2": 0.5425704967567377,
+    "3": 0.36945272552123015,
+    "4": 0.39114305639135377
+  },
+  "leave_one_descriptor_out_ARI_range": [
+    1.0,
+    1.0
+  ],
+  "common_candidate_count": 195,
+  "canonical_candidate_count": 162,
+  "mathematical_aliases_collapsed_for_modes": true,
+  "all_candidate_count": 481,
+  "modes": [
+    {
+      "k": 2,
+      "cluster": 1,
+      "n_images": 13,
+      "image_ids": "01-0843x4 ; 05-WIREFRAME-2 ; 07-CITYSCAPES-2C ; 09-MDBD-1C ; 11-NYUD-2 ; 13-BIPED-1C ; 15-P1020854 ; 17-1194 ; 19-img_6150 ; 21-00065305 ; 25-2008_002622 ; 27-img_5264 ; 29-img_5182",
+      "modal_models": "gabor4_scale_persistence|pmi_dependency_deficit|structure_tensor_coherence::median",
+      "modal_fractional_votes": 3.0,
+      "modal_share": 0.23076923076923078,
+      "n_tied_modes": 1
+    },
+    {
+      "k": 2,
+      "cluster": 2,
+      "n_images": 1,
+      "image_ids": "23-img_011_SRF_2_HR",
+      "modal_models": "semiglobal_changepoint::single",
+      "modal_fractional_votes": 1.0,
+      "modal_share": 1.0,
+      "n_tied_modes": 1
+    },
+    {
+      "k": 3,
+      "cluster": 1,
+      "n_images": 9,
+      "image_ids": "01-0843x4 ; 05-WIREFRAME-2 ; 07-CITYSCAPES-2C ; 09-MDBD-1C ; 15-P1020854 ; 19-img_6150 ; 25-2008_002622 ; 27-img_5264 ; 29-img_5182",
+      "modal_models": "gabor4_scale_persistence|pmi_dependency_deficit|structure_tensor_coherence::median",
+      "modal_fractional_votes": 3.0,
+      "modal_share": 0.3333333333333333,
+      "n_tied_modes": 1
+    },
+    {
+      "k": 3,
+      "cluster": 2,
+      "n_images": 4,
+      "image_ids": "11-NYUD-2 ; 13-BIPED-1C ; 17-1194 ; 21-00065305",
+      "modal_models": "semiglobal_changepoint::single",
+      "modal_fractional_votes": 2.0,
+      "modal_share": 0.5,
+      "n_tied_modes": 1
+    },
+    {
+      "k": 3,
+      "cluster": 3,
+      "n_images": 1,
+      "image_ids": "23-img_011_SRF_2_HR",
+      "modal_models": "semiglobal_changepoint::single",
+      "modal_fractional_votes": 1.0,
+      "modal_share": 1.0,
+      "n_tied_modes": 1
+    },
+    {
+      "k": 4,
+      "cluster": 1,
+      "n_images": 1,
+      "image_ids": "01-0843x4",
+      "modal_models": "lab_dizenzo_tensor_gradient::single",
+      "modal_fractional_votes": 1.0,
+      "modal_share": 1.0,
+      "n_tied_modes": 1
+    },
+    {
+      "k": 4,
+      "cluster": 2,
+      "n_images": 8,
+      "image_ids": "05-WIREFRAME-2 ; 07-CITYSCAPES-2C ; 09-MDBD-1C ; 15-P1020854 ; 19-img_6150 ; 25-2008_002622 ; 27-img_5264 ; 29-img_5182",
+      "modal_models": "gabor4_scale_persistence|pmi_dependency_deficit|structure_tensor_coherence::median",
+      "modal_fractional_votes": 3.0,
+      "modal_share": 0.375,
+      "n_tied_modes": 1
+    },
+    {
+      "k": 4,
+      "cluster": 3,
+      "n_images": 4,
+      "image_ids": "11-NYUD-2 ; 13-BIPED-1C ; 17-1194 ; 21-00065305",
+      "modal_models": "semiglobal_changepoint::single",
+      "modal_fractional_votes": 2.0,
+      "modal_share": 0.5,
+      "n_tied_modes": 1
+    },
+    {
+      "k": 4,
+      "cluster": 4,
+      "n_images": 1,
+      "image_ids": "23-img_011_SRF_2_HR",
+      "modal_models": "semiglobal_changepoint::single",
+      "modal_fractional_votes": 1.0,
+      "modal_share": 1.0,
+      "n_tied_modes": 1
+    }
+  ],
+  "boundary_audit": {
+    "BSDS_all_eight_thinpb": true,
+    "UDED_all_15_selected_NMS": true,
+    "extra_thinning_mean_removed": {
+      "winner": 0.10206555680259667,
+      "identity": 0.11258485331548387,
+      "best_single": 0.40163309138294867
+    },
+    "warning": "NMS is not morphological skeletonization; diagnostic maps are final refits, not held-out predictions."
+  },
+  "limits": [
+    "Descriptive transductive clustering of 14 images; no independent test.",
+    "Cluster construction does not load GT or performance; all images inform scaling/PCA.",
+    "Model winners and modes use held-out outcomes retrospectively: oracle, not deployable selection.",
+    "Only common complete-coverage candidates, nms_image, identity suppression and legacy calibration.",
+    "No inference that image features cause model performance; no confirmatory p-values."
+  ]
+}

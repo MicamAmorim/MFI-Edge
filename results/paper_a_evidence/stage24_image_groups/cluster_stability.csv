@@ -1,0 +1,14 @@
+omitted_descriptor,ARI_k3
+fh_region_boundary,1.0
+gabor4_s13,1.0
+gabor4_s5,1.0
+gabor4_scale_persistence,1.0
+halfdisc_distribution_contrast,1.0
+hessian_s13,1.0
+hessian_s7,1.0
+lab_dizenzo_tensor_gradient,1.0
+phase_congruency_max_moment,1.0
+pmi_dependency_deficit,1.0
+scharr_pre_nms_magnitude,1.0
+semiglobal_changepoint,1.0
+structure_tensor_coherence,1.0

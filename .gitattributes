@@ -2,3 +2,9 @@
 # These files intentionally retain their original whitespace; do not let
 # `git diff --check` reject historical trailing spaces or blank-at-EOF.
 evaluation/legacy_thesis/** whitespace=-trailing-space,-blank-at-eof
+
+# Preserve scientific diagnostic bytes across platforms.
+**/stage24_image_groups/* -text
+*.pdf binary
+*.png binary
+scripts/analyze_stage24_image_groups.py -text

@@ -1,0 +1,15 @@
+image_id,cluster_k3,winners,n_ties,oracle_F1,best_single_F1,oracle_gain_over_best_single
+01-0843x4,1,lab_dizenzo_tensor_gradient::single,1,0.8114111077061494,0.8114111077061494,0.0
+05-WIREFRAME-2,1,hessian_s13::single,1,0.7238947720622014,0.7238947720622014,0.0
+07-CITYSCAPES-2C,1,halfdisc_distribution_contrast|hessian_s7::gcf_tp_tl,1,0.7348635104448846,0.7152918007838863,0.019571709660998304
+09-MDBD-1C,1,gabor4_scale_persistence|pmi_dependency_deficit|structure_tensor_coherence::median,1,0.7447066836600431,0.7388059618527107,0.005900721807332365
+11-NYUD-2,2,semiglobal_changepoint::single,1,0.8129374406904777,0.8129374406904777,0.0
+13-BIPED-1C,2,gabor4_scale_persistence|halfdisc_distribution_contrast::maximum,1,0.7039589584683716,0.6584605624904816,0.04549839597789007
+15-P1020854,1,gabor4_scale_persistence|pmi_dependency_deficit|structure_tensor_coherence::median,1,0.6946025980339783,0.6825231290218209,0.012079469012157396
+17-1194,2,semiglobal_changepoint::single,1,0.788878359748033,0.788878359748033,0.0
+19-img_6150,1,halfdisc_distribution_contrast|hessian_s7::gcf_tp_tl,1,0.7836263926933584,0.7700521689056278,0.013574223787730655
+21-00065305,2,halfdisc_distribution_contrast|pmi_dependency_deficit::minimum,1,0.649977703161624,0.647353526601484,0.0026241765601399125
+23-img_011_SRF_2_HR,3,semiglobal_changepoint::single,1,0.7244140086025745,0.7244140086025745,0.0
+25-2008_002622,1,gabor4_scale_persistence|pmi_dependency_deficit|structure_tensor_coherence::median,1,0.6791358772196486,0.658094259284985,0.021041617934663637
+27-img_5264,1,gabor4_s5::single,1,0.6843519268784682,0.6843519268784682,0.0
+29-img_5182,1,halfdisc_distribution_contrast|hessian_s7::choquet_generalized_150,1,0.7966811343364861,0.7957197860863618,0.0009613482501242832

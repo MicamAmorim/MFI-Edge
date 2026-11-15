@@ -1,0 +1,15 @@
+{
+  "boundary_thickness_audit.csv": "7789a0825605129ebc4cbae61f8d2e00fabf275b94756233129820eaf8852e0e",
+  "candidate_coverage.csv": "40cff6be280964a358be32bcdfe0040b29aff38d4d8494c303772aca6e4fcd34",
+  "cluster_descriptor_profiles.csv": "fadc8cfead29f98b72605ea534343b0d7caab36367a460d878c373d7850c3918",
+  "cluster_modes.csv": "b38324b57aa676440e1360e9390fcfb0cd5329d10b4f2629cbd7f539c7efffe8",
+  "cluster_stability.csv": "bfeb12db648e1e52ef3e3c31f8f6f88368290331621176d4e8ae6bb15113b22b",
+  "clusters.csv": "0cb1fe3f6d59d8cb424ffc847d05ffd2c0e53ae163af1e6cf6307bd414a939d3",
+  "common_candidate_scores.csv": "260c6dc0143c66580ebfd558b50128864bc12c6c29e1e1b65a94b6790f7044e1",
+  "image_features.csv": "cc54332d9cd75c41ce72a16b28953735d4a13fa6c5f7e29ff8405f23463875c0",
+  "image_winners.csv": "f383a0b2d161ef8882d4abc77b1af0f27a416c4d1823e3ea367554b1ccf9c4e4",
+  "PLANO.md": "de22c00d1454ddfb6dc5b0b8fa176a1bf4a56d836150b96e7475da675dd158de",
+  "provenance.json": "e40aecce467ff822f1de44371e67910593f6c29b2bb38e9469e2d82cf66227d5",
+  "README.md": "7afd93519c78207029b37da8e7cf654cddc22b3e7f342e0e1e66fdd0afad34cb",
+  "summary.json": "e9a80b458623bca3bbdac2f13460a62f7e36895836cc49fa14e01f7a168ab191"
+}

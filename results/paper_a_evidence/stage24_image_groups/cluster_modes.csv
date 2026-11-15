@@ -1,0 +1,10 @@
+k,cluster,n_images,image_ids,modal_models,modal_fractional_votes,modal_share,n_tied_modes
+2,1,13,01-0843x4 ; 05-WIREFRAME-2 ; 07-CITYSCAPES-2C ; 09-MDBD-1C ; 11-NYUD-2 ; 13-BIPED-1C ; 15-P1020854 ; 17-1194 ; 19-img_6150 ; 21-00065305 ; 25-2008_002622 ; 27-img_5264 ; 29-img_5182,gabor4_scale_persistence|pmi_dependency_deficit|structure_tensor_coherence::median,3.0,0.23076923076923078,1
+2,2,1,23-img_011_SRF_2_HR,semiglobal_changepoint::single,1.0,1.0,1
+3,1,9,01-0843x4 ; 05-WIREFRAME-2 ; 07-CITYSCAPES-2C ; 09-MDBD-1C ; 15-P1020854 ; 19-img_6150 ; 25-2008_002622 ; 27-img_5264 ; 29-img_5182,gabor4_scale_persistence|pmi_dependency_deficit|structure_tensor_coherence::median,3.0,0.3333333333333333,1
+3,2,4,11-NYUD-2 ; 13-BIPED-1C ; 17-1194 ; 21-00065305,semiglobal_changepoint::single,2.0,0.5,1
+3,3,1,23-img_011_SRF_2_HR,semiglobal_changepoint::single,1.0,1.0,1
+4,1,1,01-0843x4,lab_dizenzo_tensor_gradient::single,1.0,1.0,1
+4,2,8,05-WIREFRAME-2 ; 07-CITYSCAPES-2C ; 09-MDBD-1C ; 15-P1020854 ; 19-img_6150 ; 25-2008_002622 ; 27-img_5264 ; 29-img_5182,gabor4_scale_persistence|pmi_dependency_deficit|structure_tensor_coherence::median,3.0,0.375,1
+4,3,4,11-NYUD-2 ; 13-BIPED-1C ; 17-1194 ; 21-00065305,semiglobal_changepoint::single,2.0,0.5,1
+4,4,1,23-img_011_SRF_2_HR,semiglobal_changepoint::single,1.0,1.0,1

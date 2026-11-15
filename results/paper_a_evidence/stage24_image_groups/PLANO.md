@@ -1,0 +1,11 @@
+# Plano fixado antes de calcular os grupos e suas modas
+
+1. Superfície: 14 imagens UDED overlap-clean e os 13 mapas float já extraídos. Não ler GT nem usar F1 para construir características ou clusters.
+2. Características: seis resumos por descritor (média, desvio, quantil 90%, fração > 0,5, gradiente médio e coerência de orientação do campo). Validar SHA256 e identidade dos 182 mapas contra a campanha. Nenhuma extração nova e nenhum JPG/PNG como fonte de mapas.
+3. Padronizar cada característica nas 14 imagens; PCA com três componentes; clusterização Ward. K=3 primário, K=2 e K=4 como sensibilidade; não escolher K pelo modelo vencedor ou F1. Desenho transdutivo/exploratório, sem teste independente.
+4. Comparação de resultados: apenas NMS + limiar definido no treino, sem supressão e com calibração legacy_sigmoid. Universo comum: modelos individuais e grupos/agregadores presentes nos mesmos 70 registros imagem/fold (14 imagens, cinco repetições). Não comparar candidatos com coberturas diferentes nem preencher ausências.
+5. Por imagem, tirar média das cinco avaliações externas para cada candidato. Identificar máximo e todos os empates numéricos (tolerância 1e-10). Isso é um vencedor retrospectivo, não uma regra validada de seleção.
+6. Por cluster, contar votos fracionários em caso de empate; informar todas as modas empatadas e sua frequência, os modelos individuais/fusões e o perfil médio dos descritores. Não forçar uma moda única se não houver concentração.
+7. Sensibilidade: K=2/4; retirar um descritor por vez e medir ARI em relação aos clusters primários. Informar limites de amostra pequena e de agrupamento em alta dimensão; não produzir p-valores confirmatórios.
+8. Auditoria de bordas: verificar NMS/binário na UDED, thinpb verdadeiro nos oito métodos BSDS, e medir remoção de pixels por afinamento morfológico adicional nos mapas float finais UDED. Esse diagnóstico usa limiares já congelados e não redefine retroativamente resultados ou modelos.
+9. Publicação: resultados, script e proveniência separados da campanha original; figuras regeneradas; discussão e equações históricas preservadas. Qualquer seletor prospectivo futuro requer agrupamento/aprendizagem somente no treino.
