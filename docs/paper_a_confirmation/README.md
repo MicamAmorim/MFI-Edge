@@ -203,3 +203,11 @@ Para verificar espaço livre e presença local do MultiCue, sem baixar ou ler GT
 ```powershell
 python .\scripts\preflight_paper_a_multicue_source.py
 ```
+
+## MultiCue no volume F: (148,05 GiB livres)
+
+O disco C: tem somente 3,63 GiB livres. Leia
+[`MULTICUE_F_DRIVE_PLAN_20261115.md`](MULTICUE_F_DRIVE_PLAN_20261115.md)
+para conferir destino `F:\MFI-Edge-Data\MultiCue` e executar o download
+**somente mediante `--download`**, com cache/temporários no F:, SHA256,
+revisão da fonte e sem extração/GT/F1.
