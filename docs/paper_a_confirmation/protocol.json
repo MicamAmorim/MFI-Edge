@@ -1,0 +1,123 @@
+{
+  "schema_version": "0.1.0",
+  "status": "draft_not_frozen",
+  "created_utc": "2026-11-15",
+  "research_question": "Can frozen, ground-truth-free descriptor-map statistics predict the sign/direction of the benefit of a specified aggregator relative to equal_mean for unseen images?",
+  "exploratory_source": {
+    "repository": "MicamAmorim/MFI-Edge",
+    "branch": "mfi-edge-stage24-residual-suppression",
+    "commit": "9957a0c1f4fcaadd0159c3c21ad6315f08f891a8",
+    "audit": "analise_condicional/auditoria_condicional.json",
+    "discovery_images": [
+      "01-0843x4",
+      "05-WIREFRAME-2",
+      "07-CITYSCAPES-2C",
+      "09-MDBD-1C",
+      "11-NYUD-2",
+      "13-BIPED-1C",
+      "15-P1020854",
+      "17-1194",
+      "19-img_6150",
+      "21-00065305",
+      "23-img_011_SRF_2_HR",
+      "25-2008_002622",
+      "27-img_5264",
+      "29-img_5182"
+    ],
+    "never_count_as_confirmatory": true
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "group": [
+        "halfdisc_distribution_contrast",
+        "pmi_dependency_deficit"
+      ],
+      "candidate": "maximum",
+      "control": "equal_mean",
+      "preoutcome_feature": "abs(mean(halfdisc_distribution_contrast)-mean(pmi_dependency_deficit))",
+      "signed_prediction": "negative",
+      "primary_statistic": "spearman_rho",
+      "exploratory_rho": -0.8065934065934066
+    },
+    {
+      "id": "H2",
+      "group": [
+        "fh_region_boundary",
+        "halfdisc_distribution_contrast",
+        "structure_tensor_coherence"
+      ],
+      "candidate": "choquet_generalized_150",
+      "control": "equal_mean",
+      "preoutcome_feature": "mean of pairwise Pearson correlations between three descriptor score maps",
+      "signed_prediction": "positive",
+      "primary_statistic": "spearman_rho",
+      "exploratory_rho": 0.7802197802197802
+    }
+  ],
+  "measures": {
+    "unit": "independent_original_image",
+    "map_dtype": "float32",
+    "descriptor_names": [
+      "halfdisc_distribution_contrast",
+      "pmi_dependency_deficit",
+      "fh_region_boundary",
+      "structure_tensor_coherence"
+    ],
+    "map_cache_sha256_required": true,
+    "image_gt_used_for_features": false,
+    "score": "F1 with native-ground-truth-geometry one-to-one maximal-cardinality matcher; do not substitute official Berkeley metrics",
+    "comparison": "delta_F1(candidate)-delta_F1(equal_mean) is shorthand; actual outcome is F1(candidate)-F1(equal_mean) on the same image and fixed evaluator",
+    "postprocessing": "NMS; suppression identity; legacy_sigmoid calibration; identical interface between candidate and control",
+    "threshold_selection": "training/calibration cohort only; parameter values and code SHA frozen before opening confirmatory GT",
+    "repeats": "If folds/repetitions are used, average per original image before analysis. No pseudoreplication"
+  },
+  "cohort": {
+    "target_n_independent_images": 150,
+    "min_n_per_domain": 60,
+    "required_domains": 2,
+    "dataset_names": null,
+    "eligibility": "Two datasets/domains selected and committed before analyzing any confirmatory outcome; original images with GT, necessary descriptor support, same fixed evaluator, no discovery/test overlap",
+    "selection": "Deterministic hash-sorted eligible image list from declared versioned dataset manifests; exclusions based only on prespecified technical criteria without seeing F1",
+    "exclusion": "Exclude 14 UDED discovery images; any prior Stage23/24 model development/selection/evaluation exposure, exact content duplicates and manually reviewed near duplicates; document each exclusion",
+    "no_GT_until_lock": true,
+    "power_analysis": "Design target 150 is provisional; validate power and domain mix prior to freeze; do not revise after any confirmatory outcomes"
+  },
+  "inference": {
+    "family": [
+      "H1",
+      "H2"
+    ],
+    "alpha_familywise": 0.05,
+    "test": "one-sided Spearman rank association with permutation p-value",
+    "permutations": 100000,
+    "permutation_seed": 20261115,
+    "multiplicity": "Holm step-down across the two primary p-values",
+    "directional_alternative": {
+      "H1": "rho<0",
+      "H2": "rho>0"
+    },
+    "ties": "midranks; permute outcomes across independent images; if stratified by design, restrict permutation within domains and preregister the variant before freeze",
+    "uncertainty": "image-level stratified bootstrap 95% CI for rho; inference remains Holm permutation p values",
+    "missing_data": "Reject missing, NaN, or incomplete maps/GT; report exclusion, no outcome-dependent filtering",
+    "effect_size_report": "rho, 95% CI, unadjusted and Holm-adjusted p; per-domain diagnostics",
+    "secondary_analysis": "Domain-specific rho and influence analysis as exploratory, not additional primary tests"
+  },
+  "adaptive_selector": {
+    "status": "not_started",
+    "gate": "Only propose evaluation after H1/H2 confirmatory analysis; separate held-out set never used to choose features, operators or hyperparameters",
+    "comparator": "best fixed operator selected on training data, selected single descriptor, equal_mean",
+    "minimum_practical_gain_F1": 0.01,
+    "evaluation": "pre-locked paired image-level comparison and CI entirely on untouched test data; oracle is only a ceiling"
+  },
+  "freeze_requirements": [
+    "Select and identify the two datasets/domains and manifest versions",
+    "Document previous-exposure audit including Stage23/24 BSDS validation and 14 UDED images",
+    "Lock image IDs, source SHA256 and exact technical exclusions",
+    "Fix code SHA/commit for score generation, feature extraction, evaluator and threshold selection",
+    "Calculate and document power/sensitivity before any outcome inspection",
+    "Change protocol status to frozen only through a separately reviewed commit"
+  ],
+  "freeze_commit": null,
+  "confirmatory_outcomes_opened": false
+}
