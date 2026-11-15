@@ -1,0 +1,10 @@
+method,reference,n_images,positive,negative,mean_delta_F1,median_delta_F1,min_delta_F1,max_delta_F1,criterion
+stage24gl_best_single,incumbent_compact_positive_choquet,100,70,30,0.021760237,0.027392072,-0.221885875,0.206871108,nearest_method_validation_ODS_threshold
+stage24gl_identity,incumbent_compact_positive_choquet,100,90,10,0.037824195,0.036424275,-0.139569756,0.131571440,nearest_method_validation_ODS_threshold
+stage24gl_identity_quantile,incumbent_compact_positive_choquet,100,80,20,0.034184804,0.034755194,-0.135858285,0.161343187,nearest_method_validation_ODS_threshold
+stage24gl_pair04_logistic,incumbent_compact_positive_choquet,100,33,67,-0.062484679,-0.037897002,-0.550910580,0.117224963,nearest_method_validation_ODS_threshold
+stage24gl_pair04_weighted,incumbent_compact_positive_choquet,100,33,67,-0.062446982,-0.038333732,-0.545893532,0.118032505,nearest_method_validation_ODS_threshold
+stage24gl_winner,incumbent_compact_positive_choquet,100,38,62,-0.022952905,-0.022175437,-0.256878227,0.100443542,nearest_method_validation_ODS_threshold
+stage24gl_winner_quantile,incumbent_compact_positive_choquet,100,33,67,-0.023793506,-0.025203626,-0.226371280,0.105840875,nearest_method_validation_ODS_threshold
+stage24gl_winner,stage24gl_identity,100,9,91,-0.060777100,-0.059141614,-0.262904086,0.060044084,nearest_method_validation_ODS_threshold
+stage24gl_pair04_logistic,stage24gl_pair04_weighted,100,54,46,-0.000037697,0.000271852,-0.006375248,0.008724881,nearest_method_validation_ODS_threshold
