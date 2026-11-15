@@ -87,3 +87,24 @@ e `candidate_review.csv`. Não faça `git add .` nem compartilhe imagens
 ou anotações protegidas. Caso Pillow não esteja disponível,
 `python -m pip install pillow` ou a opção `--no-dhash`
 (o segundo caso não detecta quase duplicatas).
+
+## Revisao manual dos pares suspeitos BIPED train
+
+A auditoria identificou os pares `RGB_171` / `RGB_172` e
+`RGB_221` / `RGB_222`, apenas por dHash (distancia <= 5).
+Para gerar uma prancha de comparacao **local**, usando exclusivamente
+originais `BIPEDv2/edges/imgs/train/rgbr/real`:
+
+```powershell
+git pull --ff-only origin experiment/paper-a-conditional-confirmation
+python .\scripts\review_paper_a_confirmation_pairs.py
+Start-Process ".\results\local_dev\paper_a_confirmation_inventory\predata_audit\biped_train_near_duplicate_review.png"
+```
+
+A prancha PNG e o template CSV de decisao sao gerados somente em
+`results/local_dev/paper_a_confirmation_inventory/predata_audit/`.
+A validacao confere os SHA256 contra `candidate_review.csv`; nenhum GT,
+teste, anotacao ou F1 e lido. dHash indica semelhanca, **nao prova**
+identidade de cena. Evitar contar quadros da mesma sequencia como
+observacoes independentes. Nao excluir automaticamente nem selecionar
+as imagens com base no beneficio do agregador.
