@@ -211,3 +211,14 @@ O disco C: tem somente 3,63 GiB livres. Leia
 para conferir destino `F:\MFI-Edge-Data\MultiCue` e executar o download
 **somente mediante `--download`**, com cache/temporários no F:, SHA256,
 revisão da fonte e sem extração/GT/F1.
+
+## Falha SSL no cliente MultiCue resolvida por isolamento (15/11/2026)
+
+A atualização global instalada para Hugging Face Hub 2.4.0 conflitou com
+tokenizers 0.23.2 e falhou com RecursionError em truststore no Windows.
+O arquivo MultiCue não começou a ser transferido na execução informada.
+
+Usar scripts/setup_paper_a_multicue_env.ps1 para criar um venv no F:
+com Hub 1.33.0, e executar a aquisição somente pelo Python desse venv.
+Procedimento atualizado: [MULTICUE_F_DRIVE_PLAN_20261115.md](MULTICUE_F_DRIVE_PLAN_20261115.md).
+Não desativar TLS nem promover coorte antes do congelamento do protocolo.

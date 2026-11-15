@@ -14,6 +14,7 @@ import os
 import shutil
 import sys
 from datetime import datetime, timezone
+from importlib.metadata import PackageNotFoundError, version as installed_version
 from pathlib import Path
 
 DATASET = "Serrelab/multicue-boundary-detection"
@@ -95,15 +96,34 @@ def main() -> int:
     os.environ["TEMP"] = str(temp)
     os.environ["TMPDIR"] = str(temp)
 
+    # Pin an isolated environment for reproducibility. Hub 2.4.0 brought
+    # incompatible tokenizers requirements and Windows truststore recursion.
+    expected_hub_version = "1.33.0"
+    try:
+        current_hub_version = installed_version("huggingface_hub")
+    except PackageNotFoundError:
+        current_hub_version = None
+    if current_hub_version != expected_hub_version:
+        raise SystemExit(
+            f"Unsupported huggingface_hub version {current_hub_version!r}; "
+            f"required {expected_hub_version}. Use "
+            "scripts/setup_paper_a_multicue_env.ps1 and invoke this script "
+            "with F:\\MFI-Edge-Data\\Venvs\\multicue-download\\Scripts\\python.exe. "
+            "Never disable TLS certificate verification."
+        )
     try:
         from huggingface_hub import HfApi, hf_hub_download
     except ImportError as exc:
-        raise SystemExit(
-            "Install dependency first: python -m pip install -U 'huggingface_hub[hf_xet]'"
-        ) from exc
+        raise SystemExit("Hugging Face import failed inside isolated environment") from exc
 
     api = HfApi()
-    metadata = api.dataset_info(DATASET, files_metadata=True)
+    try:
+        metadata = api.dataset_info(DATASET, files_metadata=True)
+    except RecursionError as exc:
+        raise RuntimeError(
+            "TLS/SSL recursion detected before downloading. Verify the isolated "
+            "venv and pinned Hub 1.33.0 installation; never disable SSL checks."
+        ) from exc
     revision = str(metadata.sha)
     if not revision or len(revision) < 20:
         raise RuntimeError("No immutable repository commit returned: stopping.")
@@ -148,6 +168,7 @@ def main() -> int:
         "archive": str(downloaded),
         "archive_bytes": actual_size,
         "archive_sha256": actual_sha,
+        "huggingface_hub_version": current_hub_version,
         "official_lfs_sha256": lfs_sha,
         "official_lfs_sha256_verified": bool(lfs_sha),
         "completed_utc": datetime.now(timezone.utc).isoformat(),

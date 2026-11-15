@@ -22,16 +22,27 @@ python .\scripts\acquire_paper_a_multicue_archive.py --destination "F:\MFI-Edge-
 Os dois comandos Python acima **não fazem download**. Verifique que o espaço livre
 informado pertence ao F:.
 
-## Aquisição explícita
+## Correção do erro SSL no Windows (15/11/2026)
 
-Instalar o cliente oficial (configurando cache de pip no F:):
+A atualização global instalou huggingface_hub 2.4.0, que conflita com
+tokenizers 0.23.2 (requer Hub <2). A chamada de metadados falhou com
+RecursionError em truststore, antes do download. Não desative verificações
+de certificados HTTPS e não faça upgrades globais sem limites.
 
-```powershell
-New-Item -ItemType Directory -Force "F:\MFI-Edge-Data\PipCache" | Out-Null
-$env:PIP_CACHE_DIR = "F:\MFI-Edge-Data\PipCache"
-python -m pip install -U "huggingface_hub[hf_xet]"
-python .\scripts\acquire_paper_a_multicue_archive.py --destination "F:\MFI-Edge-Data\MultiCue" --download
-```
+A nova aquisição utiliza ambiente virtual isolado no F: com a versão exata
+huggingface_hub[hf_xet]==1.33.0. O bootstrap não baixa o dataset:
+
+~~~powershell
+git pull --ff-only origin experiment/paper-a-conditional-confirmation
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\setup_paper_a_multicue_env.ps1
+~~~
+
+Depois de confirmar que a instalação retornou sucesso, iniciar o download
+explicitamente com o Python isolado:
+
+~~~powershell
+& "F:\MFI-Edge-Data\Venvs\multicue-download\Scripts\python.exe" .\scripts\acquire_paper_a_multicue_archive.py --destination "F:\MFI-Edge-Data\MultiCue" --download
+~~~
 
 O `--download` é a única opção que permite transferir dados. O script:
 (a) exige 15 GiB livres; (b) grava caches e temporários de Hugging Face no F:;
