@@ -264,3 +264,29 @@ e o relatório
 `F:MFI-Edge-DataMultiCuemulticue_scene_name_summary.json`.
 Nenhum nome de anotação certifica compatibilidade com o avaliador; a
 identidade das cenas e o GT devem ser congelados antes de avaliações.
+
+## Correção: 96 prefixos de captura não são 96 sequências MultiCue
+
+O scanner de nomes inicial agrupou por prefixo numérico (p.ex., `4108`),
+detectando 96 prefixos e duas anomalias: `4108` tem 40 quadros por vista
+(quatro sequências possíveis) e `4113` tem 20 (duas sequências).
+O dataset contém 100 H5: usar o stem do H5 como identificador da
+sequência e seu quadro esquerdo final, não o prefixo isolado.
+
+```powershell
+git pull --ff-only origin experiment/paper-a-conditional-confirmation
+python .\scripts\audit_paper_a_multicue_sequence_units.py
+```
+
+O scanner novo **não relê TAR, extrai nem abre imagens, H5, GT ou F1**.
+Ele confere, exclusivamente por nomes, cada âncora H5, os dez quadros
+anteriores até ela em cada vista, e a disponibilidade nominal de seis
+PNG `edges` e cinco PNG `boundaries` por sequência. Emite:
+`F:MFI-Edge-DataMultiCuemulticue_h5_anchored_sequence_summary.json`
+e `F:MFI-Edge-DataMultiCuemulticue_h5_anchored_sequence_candidates.csv`.
+
+**Unidade conservadora:** nunca contar mais de uma sequência do mesmo
+prefixo de captura como independente enquanto não houver prova de
+cenas distintas. Portanto, pode haver 100 sequências mas apenas 96
+grupos conservadores antes da auditoria de sobreposição UDED.
+Os nomes não certificam semântica de GT ou independência de cena.
