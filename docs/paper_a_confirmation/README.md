@@ -179,3 +179,13 @@ afirmam que train não foi usado nos modelos Stage13d; uma delas faz verificaç�
 de resolução de imagens **e GT train** se o preflight foi executado.
 Leia [`HISTORICAL_BIPED_ADJUDICATION_20261115.md`](HISTORICAL_BIPED_ADJUDICATION_20261115.md).
 Não tratar ausência de matches como certificação de independência.
+
+## Evidências locais de execução histórica — 15/11/2026
+
+Foram localizados arquivos produzidos por Stage13c (preflight técnico em
+05/10) e Stage13d (transferência BIPED test em 06/10), bem como saídas UDED
+com linhagens `09-MDBD-1C` e `13-BIPED-1C` em estágios subsequentes.
+Ver [`LOCAL_EXECUTION_EVIDENCE_20261115.md`](LOCAL_EXECUTION_EVIDENCE_20261115.md).
+As 198 candidatas BIPED train **não estão certificadas** e seguem sem F1
+confirmatório. Não confundir preflight técnico de dimensões/GT com
+seleção de operadores.
