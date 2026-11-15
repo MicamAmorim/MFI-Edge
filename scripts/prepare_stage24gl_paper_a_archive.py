@@ -12,6 +12,11 @@ import json
 from pathlib import Path
 import shutil
 import subprocess
+import sys
+
+# Embedded/isolated Python may omit the script directory from sys.path.
+# Resolve sibling tools from this checkout, independent of cwd/PYTHONPATH.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_stage24gl_repro_package import prepare as build_complete_evidence
 from verify_stage24gl_repro import verify_git, verify_binary
 
