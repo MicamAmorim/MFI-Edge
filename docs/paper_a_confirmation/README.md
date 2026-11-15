@@ -222,3 +222,25 @@ Usar scripts/setup_paper_a_multicue_env.ps1 para criar um venv no F:
 com Hub 1.33.0, e executar a aquisição somente pelo Python desse venv.
 Procedimento atualizado: [MULTICUE_F_DRIVE_PLAN_20261115.md](MULTICUE_F_DRIVE_PLAN_20261115.md).
 Não desativar TLS nem promover coorte antes do congelamento do protocolo.
+
+## MultiCue: inventário de nomes e tamanhos dentro do TAR (sem extração)
+
+A aquisição no F: foi concluída em 15/11/2026, revisão imutável
+`f47b14959e9764c8aa854cb7958d54462c46f8ef`, SHA256 oficial e local
+`8e5fdb2ff7343e4a55f110e9ffe189b2c81689cd326324e34c6c73562191819e`,
+arquivo com 3.575.680.805 bytes. A próxima auditoria não seleciona cenas nem GT.
+
+```powershell
+git pull --ff-only origin experiment/paper-a-conditional-confirmation
+python .\scripts\inventory_paper_a_multicue_archive.py
+```
+
+O scanner lê cabeçalhos do TAR e seus nomes, tipos e tamanhos, percorre
+o BZip2 em streaming (o fluxo comprimido precisa ser internamente descompactado
+para alcançar os cabeçalhos posteriores), **não extrai membros**, não chama
+`extractfile()`, não decodifica imagens/anotações, não calcula F1,
+nem roda modelos. Gera no F: `archive_members_inventory.csv`
+e `archive_member_summary.json`. O resumo permite planejar
+extração seletiva posterior, nunca autoriza abrir GT antes do protocolo
+e da análise de independência. Se quiser verificar o hash inteiro novamente,
+adicione `--rehash` (releitura de 3,58 GB).
