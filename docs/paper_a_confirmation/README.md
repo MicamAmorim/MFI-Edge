@@ -132,3 +132,24 @@ sem ler GT/F1 e sem modificar as imagens originais. Outras duplicações de
 cena ou dependências temporais podem existir; não abrir resultados da
 coorte antes de concluir auditoria histórica, segundo domínio, análise de
 poder e congelamento.
+
+## Auditoria de exposição histórica (sem GT/F1)
+
+Depois da deduplicação visual (198 candidatas), execute:
+
+```powershell
+git fetch origin
+git pull --ff-only origin experiment/paper-a-conditional-confirmation
+python .\scripts\audit_paper_a_confirmation_history.py
+```
+
+A ferramenta examina referencias a BIPED nos codigos-fonte versionados
+das branches `origin/*` e procura identificadores/hashes das candidatas nos
+manifestos de proveniência `results/paper_a_evidence`. Ela **nao** abre
+imagens, GT ou CSV de F1, nem roda modelos. Cria localmente
+`results/local_dev/paper_a_confirmation_inventory/predata_audit/historical_source_audit.json`.
+
+**Limite essencial:** presença de BIPED em código não prova execução, e
+ausência de referências não prova não exposição, sobretudo em logs
+locais ignorados, versões não publicadas e decisões feitas fora do
+repositório. Nenhuma candidata passa a estar certificada por isso.
