@@ -108,3 +108,27 @@ teste, anotacao ou F1 e lido. dHash indica semelhanca, **nao prova**
 identidade de cena. Evitar contar quadros da mesma sequencia como
 observacoes independentes. Nao excluir automaticamente nem selecionar
 as imagens com base no beneficio do agregador.
+
+## Decisão visual humana — 15/11/2026
+
+A comparação original (somente imagens BIPED train) revelou pares da mesma cena,
+conforme confirmado visualmente pelo pesquisador em 15/11/2026:
+`RGB_171`–`RGB_172` e `RGB_221`–`RGB_222` (dHash 1/64).
+O arquivo versionado [`visual_duplicate_decisions.csv`](visual_duplicate_decisions.csv)
+mantém as decisões auditáveis. Para evitar pseudorreplicação, mantemos apenas
+`RGB_171` e `RGB_221` como representantes potenciais; `RGB_172` e
+`RGB_222` não poderão ser sorteados para a coorte H1/H2.
+
+Após atualizar a branch, rode:
+
+```powershell
+python .\scripts\apply_paper_a_visual_dedup.py
+```
+
+O script verifica que ambos os pares estavam alertados na auditoria, que as
+decisões estão corretas e que o inventário inclui 200 originais. Ele
+gera um CSV local com **198 imagens candidatas, ainda não certificadas**,
+sem ler GT/F1 e sem modificar as imagens originais. Outras duplicações de
+cena ou dependências temporais podem existir; não abrir resultados da
+coorte antes de concluir auditoria histórica, segundo domínio, análise de
+poder e congelamento.
