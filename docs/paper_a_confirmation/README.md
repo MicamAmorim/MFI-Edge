@@ -170,3 +170,12 @@ Lê apenas o JSON já produzido. Escreve
 e imprime a classificação e até 25 trechos relevantes para revisão humana.
 Um arquivo que menciona `train` não prova que foi executado;
 a ausência de menção não certifica o conjunto. Não abre GT nem F1.
+
+## Adjudicação das 120 referências ao BIPED
+
+A triagem da workstation encontrou 11 referências ao split train: 2 pertencem
+à pesquisa histórica e 9 aos scripts criados nesta branch. As duas antigas
+afirmam que train não foi usado nos modelos Stage13d; uma delas faz verificação
+de resolução de imagens **e GT train** se o preflight foi executado.
+Leia [`HISTORICAL_BIPED_ADJUDICATION_20261115.md`](HISTORICAL_BIPED_ADJUDICATION_20261115.md).
+Não tratar ausência de matches como certificação de independência.
