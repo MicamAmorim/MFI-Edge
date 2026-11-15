@@ -27,3 +27,30 @@ python scripts\check_paper_a_confirmation_manifest.py --protocol-only
 ```
 
 **Não há coleta, processamento de mapas novos, resultados confirmatórios nem modelo adaptativo em execução por este commit.** O plano inicial propunha cerca de 100–120 imagens; 150 é um alvo conservador preliminar para efeitos moderados, sujeito a análise de poder formal pré-freeze.
+
+## Inventário local de imagens, sem GT (etapa de preparação)
+
+Depois de atualizar esta branch, execute o scanner `scripts/inventory_paper_a_confirmation_images.py`.
+Ele procura **somente arquivos de imagem** dentro de diretórios indicados explicitamente,
+pula pastas de GT/máscaras/anotações e compara hashes com os dois manifestos UDED
+arquivados e nomes com a lista das 100 imagens BSDS500 validation. Não lê
+anotações, não gera mapas, não calcula F1 e **não atesta independência**.
+
+Para identificar se há diretórios de datasets no computador:
+
+```powershell
+python scripts\inventory_paper_a_confirmation_images.py
+```
+
+Para inventariar dois diretórios de imagens escolhidos posteriormente (ajuste os caminhos reais):
+
+```powershell
+python scripts\inventory_paper_a_confirmation_images.py --dataset "DOMINIO_A=C:\\dados\\dominio_a\\imagens" --dataset "DOMINIO_B=C:\\dados\\dominio_b\\imagens"
+```
+
+A saída é local, em `results/local_dev/paper_a_confirmation_inventory/candidates.csv`,
+ignorando o Git; inspecione as estatísticas retornadas pelo terminal. A lista
+de candidatos deve ser auditada manualmente por origem/cena, quase duplicatas,
+exposição anterior e disponibilidade de anotações `holdout` antes de preencher
+o manifesto de confirmação ou congelar o protocolo. Não faça `git add .` em
+datasets locais.
