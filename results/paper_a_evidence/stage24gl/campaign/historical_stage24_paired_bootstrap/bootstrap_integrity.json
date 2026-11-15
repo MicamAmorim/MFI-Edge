@@ -1,0 +1,44 @@
+{
+  "verification": [
+    {
+      "method": "incumbent_compact_positive_choquet",
+      "status": "verified_against_official",
+      "differences": {
+        "ODS": 0.0,
+        "OIS": 0.0,
+        "AP": 1.1102230246251565e-16
+      },
+      "recalculated": {
+        "ODS": 0.5454040412175503,
+        "ODS_sampled": 0.5454040412175503,
+        "OIS": 0.5794800032587148,
+        "AP": 0.534279766151459,
+        "ODS_threshold_sampled": 0.18
+      }
+    },
+    {
+      "method": "stage24_residual_suppression",
+      "status": "verified_against_official",
+      "differences": {
+        "ODS": -8.6559515111162e-10,
+        "OIS": 0.0,
+        "AP": 0.0
+      },
+      "recalculated": {
+        "ODS": 0.5197045885994777,
+        "ODS_sampled": 0.5196956794636166,
+        "OIS": 0.5530824387285167,
+        "AP": 0.43856178367767934,
+        "ODS_threshold_sampled": 0.51
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "method": "stage24_residual_suppression",
+      "reference": "incumbent_compact_positive_choquet",
+      "status": "complete"
+    }
+  ],
+  "caution": "ODS/OIS are oracle threshold summaries of re-sampled validation, not fixed-threshold prospective test results"
+}

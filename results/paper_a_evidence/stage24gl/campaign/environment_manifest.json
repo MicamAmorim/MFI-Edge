@@ -1,0 +1,28 @@
+{
+  "direct_versions": {
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.3",
+    "opencv-python": "5.0.0.93",
+    "pandas": "3.0.6",
+    "pillow": "12.3.0",
+    "requests": "2.34.2",
+    "scikit-image": "0.26.0",
+    "scipy": "1.18.1",
+    "tqdm": "4.70.1"
+  },
+  "environment_lock_sha256": "ac4a6a6111f79ab536a652aec1067e78228a1e68496f22cf0bb49f1e026474ae",
+  "git_head_at_first_run": "53a4f089171c299d24daef23544a3497ab3af74a",
+  "lock_is_not_cross_platform": true,
+  "lock_kind": "actual_environment_inventory_no_hashes",
+  "package_count": 72,
+  "pip_dependency_check_passed": true,
+  "pip_install_recommendation": "Do not change environment mid-campaign; use an isolated Windows .venv",
+  "platform_machine": "AMD64",
+  "platform_release": "11",
+  "platform_system": "Windows",
+  "python_abi": "",
+  "python_implementation": "CPython",
+  "python_version": "3.12.10",
+  "schema_version": 1,
+  "scope": "scientific Python and runtime provenance; MATLAB separately pinned by evaluation/bsds_official/config.json"
+}

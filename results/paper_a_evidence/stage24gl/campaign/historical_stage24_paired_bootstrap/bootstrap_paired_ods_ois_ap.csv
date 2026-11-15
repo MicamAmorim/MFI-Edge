@@ -1,0 +1,4 @@
+method,reference,metric,delta,ci95_low,ci95_high,p_bootstrap_two_sided,replicates,n_unique_images,methodology,reference_status
+stage24_residual_suppression,incumbent_compact_positive_choquet,ODS,-0.025699452618072605,-0.04002717445620877,-0.011137253531002318,0.002,1000,100,paired bootstrap image-level count reaggregation,verified_against_official
+stage24_residual_suppression,incumbent_compact_positive_choquet,OIS,-0.026397564530198148,-0.040879025894979985,-0.010176304982565826,0.0,1000,100,paired bootstrap image-level count reaggregation,verified_against_official
+stage24_residual_suppression,incumbent_compact_positive_choquet,AP,-0.09571798247377966,-0.11531549453656074,-0.07248292567827967,0.0,1000,100,paired bootstrap image-level count reaggregation,verified_against_official

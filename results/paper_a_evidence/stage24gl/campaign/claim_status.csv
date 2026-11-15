@@ -1,0 +1,14 @@
+claim,status
+Exact local Python package inventory captured,FROZEN_ENVIRONMENT_IN_ARCHIVE
+Native GT correctness,PROTOCOL_VERIFIED
+Full 78-pair corrected proxy landscape,COMPLETED
+Pair/triple and aggregator factorial,EXPLORATORY_COMPLETE
+Matched suppressor ablation,HELDOUT_COMPARISONS_AVAILABLE
+BSDS validation,DEVELOPMENT_ONLY
+Bootstrap Berkeley ODS/OIS/AP 95% CI,RECALCULATED_WITH_REFERENCES
+Scores AP quantile-calibrated,BSDS_DEVELOPMENT_DIAGNOSTIC
+BSDS reference reproduction,BLOCKED_UNTIL_INDEPENDENT_REFERENCE
+Literature detector transfer,guarded
+Stage23D equation under geometries,EXPLORATORY_RESAMPLED_REPRESENTATION
+Exact Paper A generalized Choquet operators,REQUIRES_MANUSCRIPT_FORMULA_AUDIT
+Publication/SOTA,BLOCKED_UNTIL_PROTECTED_BENCHMARK_GATE

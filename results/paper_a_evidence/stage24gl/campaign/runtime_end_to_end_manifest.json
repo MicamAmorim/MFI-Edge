@@ -1,0 +1,39 @@
+{
+  "all_descriptor_maps_recomputed": true,
+  "cache_reused": false,
+  "distinct_images": 4,
+  "hardware": {
+    "cpu": "AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD",
+    "logical_cores": 16,
+    "machine": "AMD64",
+    "numpy": "2.5.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
+  },
+  "measured_repetitions": 2,
+  "scope": "selected images; no claim about universal performance",
+  "status": "descriptive_repeated_CPU_benchmark",
+  "summary": {
+    "best_single": {
+      "mean_seconds": 2.7142689375032205,
+      "median_seconds": 2.7850781999877654,
+      "n_trials": 8
+    },
+    "scharr_median3_nms": {
+      "mean_seconds": 0.16159836248698412,
+      "median_seconds": 0.15080574998864904,
+      "n_trials": 8
+    },
+    "scharr_raw_nms": {
+      "mean_seconds": 0.06969973749801284,
+      "median_seconds": 0.05986495001707226,
+      "n_trials": 8
+    },
+    "winner": {
+      "mean_seconds": 1.0138181999936933,
+      "median_seconds": 1.0272786499990616,
+      "n_trials": 8
+    }
+  },
+  "warmup_runs_per_image": 1
+}

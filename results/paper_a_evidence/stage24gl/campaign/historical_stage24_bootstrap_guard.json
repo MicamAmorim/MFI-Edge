@@ -1,0 +1,44 @@
+{
+  "contrasts": [
+    {
+      "method": "stage24_residual_suppression",
+      "reference": "incumbent_compact_positive_choquet",
+      "status": "complete"
+    }
+  ],
+  "integrity_checks": [
+    {
+      "differences": {
+        "AP": 1.1102230246251565e-16,
+        "ODS": 0.0,
+        "OIS": 0.0
+      },
+      "method": "incumbent_compact_positive_choquet",
+      "recalculated": {
+        "AP": 0.534279766151459,
+        "ODS": 0.5454040412175503,
+        "ODS_sampled": 0.5454040412175503,
+        "ODS_threshold_sampled": 0.18,
+        "OIS": 0.5794800032587148
+      },
+      "status": "verified_against_official"
+    },
+    {
+      "differences": {
+        "AP": 0.0,
+        "ODS": -8.6559515111162e-10,
+        "OIS": 0.0
+      },
+      "method": "stage24_residual_suppression",
+      "recalculated": {
+        "AP": 0.43856178367767934,
+        "ODS": 0.5197045885994777,
+        "ODS_sampled": 0.5196956794636166,
+        "ODS_threshold_sampled": 0.51,
+        "OIS": 0.5530824387285167
+      },
+      "status": "verified_against_official"
+    }
+  ],
+  "status": "complete"
+}

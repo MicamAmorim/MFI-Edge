@@ -1,0 +1,207 @@
+{
+  "CF": {
+    "grid_size": 101,
+    "legacy_registry": true,
+    "margins_pass": true,
+    "max_margin_error": 0.0,
+    "min_rectangular_volume": 2.9700999999993094e-06,
+    "strict_candidate": true,
+    "two_increasing_grid_pass": true,
+    "warning": "Finite grid is screening, not a mathematical proof"
+  },
+  "CL": {
+    "grid_size": 101,
+    "legacy_registry": true,
+    "margins_pass": true,
+    "max_margin_error": 1.1102230246251565e-16,
+    "min_rectangular_volume": -4.440892098500626e-16,
+    "strict_candidate": true,
+    "two_increasing_grid_pass": true,
+    "warning": "Finite grid is screening, not a mathematical proof"
+  },
+  "GM": {
+    "grid_size": 101,
+    "legacy_registry": true,
+    "margins_pass": false,
+    "max_margin_error": 0.25,
+    "min_rectangular_volume": 2.512578676006072e-05,
+    "strict_candidate": false,
+    "two_increasing_grid_pass": true,
+    "warning": "Finite grid is screening, not a mathematical proof"
+  },
+  "HM": {
+    "grid_size": 101,
+    "legacy_registry": true,
+    "margins_pass": false,
+    "max_margin_error": 0.17156028368794318,
+    "min_rectangular_volume": 1.980198019800594e-06,
+    "strict_candidate": false,
+    "two_increasing_grid_pass": true,
+    "warning": "Finite grid is screening, not a mathematical proof"
+  },
+  "OB": {
+    "grid_size": 101,
+    "legacy_registry": true,
+    "margins_pass": true,
+    "max_margin_error": 0.0,
+    "min_rectangular_volume": 5.012562893369488e-05,
+    "strict_candidate": true,
+    "two_increasing_grid_pass": true,
+    "warning": "Finite grid is screening, not a mathematical proof"
+  },
+  "ODiv": {
+    "grid_size": 101,
+    "legacy_registry": true,
+    "margins_pass": true,
+    "max_margin_error": 0.0,
+    "min_rectangular_volume": 4.999999999977245e-05,
+    "strict_candidate": true,
+    "two_increasing_grid_pass": true,
+    "warning": "Finite grid is screening, not a mathematical proof"
+  },
+  "ORS": {
+    "grid_size": 101,
+    "legacy_registry": true,
+    "margins_pass": false,
+    "max_margin_error": 0.25,
+    "min_rectangular_volume": 5.012562893369488e-05,
+    "strict_candidate": false,
+    "two_increasing_grid_pass": true,
+    "warning": "Finite grid is screening, not a mathematical proof"
+  },
+  "OmM": {
+    "grid_size": 101,
+    "legacy_registry": true,
+    "margins_pass": true,
+    "max_margin_error": 0.0,
+    "min_rectangular_volume": -0.00970100000000007,
+    "strict_candidate": false,
+    "two_increasing_grid_pass": false,
+    "warning": "Finite grid is screening, not a mathematical proof"
+  },
+  "S": {
+    "grid_size": 101,
+    "legacy_registry": true,
+    "margins_pass": false,
+    "max_margin_error": 0.6796740643362569,
+    "min_rectangular_volume": -1.7061545759422536e-05,
+    "strict_candidate": false,
+    "two_increasing_grid_pass": false,
+    "warning": "Finite grid is screening, not a mathematical proof"
+  },
+  "TDP": {
+    "grid_size": 101,
+    "legacy_registry": true,
+    "margins_pass": true,
+    "max_margin_error": 0.0,
+    "min_rectangular_volume": -0.98,
+    "strict_candidate": false,
+    "two_increasing_grid_pass": false,
+    "warning": "Finite grid is screening, not a mathematical proof"
+  },
+  "THP": {
+    "grid_size": 101,
+    "legacy_registry": true,
+    "margins_pass": true,
+    "max_margin_error": 1.1102230246251565e-16,
+    "min_rectangular_volume": 1.0099989899998302e-06,
+    "strict_candidate": true,
+    "two_increasing_grid_pass": true,
+    "warning": "Finite grid is screening, not a mathematical proof"
+  },
+  "TL": {
+    "grid_size": 101,
+    "legacy_registry": true,
+    "margins_pass": true,
+    "max_margin_error": 1.1102230246251565e-16,
+    "min_rectangular_volume": -4.440892098500626e-16,
+    "strict_candidate": true,
+    "two_increasing_grid_pass": true,
+    "warning": "Finite grid is screening, not a mathematical proof"
+  },
+  "TM": {
+    "grid_size": 101,
+    "legacy_registry": true,
+    "margins_pass": true,
+    "max_margin_error": 0.0,
+    "min_rectangular_volume": 0.0,
+    "strict_candidate": true,
+    "two_increasing_grid_pass": true,
+    "warning": "Finite grid is screening, not a mathematical proof"
+  },
+  "TP": {
+    "grid_size": 101,
+    "legacy_registry": true,
+    "margins_pass": true,
+    "max_margin_error": 0.0,
+    "min_rectangular_volume": 9.999999999987796e-05,
+    "strict_candidate": true,
+    "two_increasing_grid_pass": true,
+    "warning": "Finite grid is screening, not a mathematical proof"
+  },
+  "gcf_cl_cl": {
+    "generalized_pair": [
+      "CL",
+      "CL"
+    ],
+    "numerical_pseudo_pair": {
+      "f1_dominates_f2": true,
+      "f1_first_increasing": true,
+      "one_at_mu_N": true,
+      "zero_agreement": true,
+      "zero_at_mu_N": true
+    }
+  },
+  "gcf_gm_gm": {
+    "generalized_pair": [
+      "GM",
+      "GM"
+    ],
+    "numerical_pseudo_pair": {
+      "f1_dominates_f2": true,
+      "f1_first_increasing": true,
+      "one_at_mu_N": true,
+      "zero_agreement": true,
+      "zero_at_mu_N": true
+    }
+  },
+  "gcf_tm_fna": {
+    "generalized_pair": [
+      "TM",
+      "FNA"
+    ],
+    "numerical_pseudo_pair": {
+      "f1_dominates_f2": true,
+      "f1_first_increasing": true,
+      "one_at_mu_N": true,
+      "zero_agreement": true,
+      "zero_at_mu_N": true
+    }
+  },
+  "gcf_tp_tl": {
+    "generalized_pair": [
+      "TP",
+      "TL"
+    ],
+    "numerical_pseudo_pair": {
+      "f1_dominates_f2": true,
+      "f1_first_increasing": true,
+      "one_at_mu_N": true,
+      "zero_agreement": true,
+      "zero_at_mu_N": true
+    }
+  },
+  "gcf_tp_tp": {
+    "generalized_pair": [
+      "TP",
+      "TP"
+    ],
+    "numerical_pseudo_pair": {
+      "f1_dominates_f2": true,
+      "f1_first_increasing": true,
+      "one_at_mu_N": true,
+      "zero_agreement": true,
+      "zero_at_mu_N": true
+    }
+  }
+}

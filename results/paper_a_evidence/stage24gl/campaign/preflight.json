@@ -1,0 +1,34 @@
+{
+  "GT": "native_never_resized",
+  "berkeley_thinpb_not_equated_to_python_thinning": true,
+  "checks": [
+    {
+      "arity": 2,
+      "passed": true,
+      "signed": false,
+      "test": "capacity_monotone"
+    },
+    {
+      "arity": 2,
+      "passed": true,
+      "signed": true,
+      "test": "capacity_monotone"
+    },
+    {
+      "arity": 3,
+      "passed": true,
+      "signed": false,
+      "test": "capacity_monotone"
+    },
+    {
+      "arity": 3,
+      "passed": true,
+      "signed": true,
+      "test": "capacity_monotone"
+    }
+  ],
+  "environment_lock_sha256": "ac4a6a6111f79ab536a652aec1067e78228a1e68496f22cf0bb49f1e026474ae",
+  "inherited_R0": true,
+  "n_tests": 4,
+  "status": "passed"
+}

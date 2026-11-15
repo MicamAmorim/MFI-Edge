@@ -1,0 +1,23 @@
+{
+  "dataset_doi": null,
+  "github_release_url": null,
+  "manifest_sha256": "74b890bf258ef201257fae6731f4ad9f49e17edcecc467be9c0c3526d4f9ac9f",
+  "parts": [
+    {
+      "archive": "stage24gl_float_part_001.zip",
+      "bytes": 138662305,
+      "sha256": "4b6a695dd54733dab38ec89b08b266122e878cf8c32d0006558c07785694ce20",
+      "source_files": 1800
+    },
+    {
+      "archive": "stage24gl_float_part_002.zip",
+      "bytes": 77705216,
+      "sha256": "d6b94081de37baeeece4b698958e61ec047507c1107d83fc2247a0df0855f5c9",
+      "source_files": 1118
+    }
+  ],
+  "prepared_locally": true,
+  "publication_status": "PENDING_USER_PUBLICATION",
+  "rights_review_required": true,
+  "uploaded": false
+}

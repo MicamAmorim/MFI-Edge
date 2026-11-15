@@ -1,0 +1,56 @@
+{
+  "berkeley_original_source_files": 843,
+  "folds_found": 15,
+  "git_archive_bytes": 33548653,
+  "parts": [
+    {
+      "archive": "cv_part_001.zip",
+      "bytes": 6833744,
+      "category": "cv",
+      "sha256": "3f0112ebb0c4876a0084f48d5b33d2d7c90c55152572f9965ee77e42e70ac280",
+      "source_files": 5217
+    },
+    {
+      "archive": "cv_part_002.zip",
+      "bytes": 7303902,
+      "category": "cv",
+      "sha256": "660bb39ba44b425ebe2d14642a7ee2deb11a40b6eda8abcc0a3efd4ce8340dd7",
+      "source_files": 5819
+    },
+    {
+      "archive": "cv_part_003.zip",
+      "bytes": 7569357,
+      "category": "cv",
+      "sha256": "721be24f22707d7daa69f3c9212ad124be723f0fe3b924417ccf45d4f3f8f1d6",
+      "source_files": 6093
+    },
+    {
+      "archive": "cv_part_004.zip",
+      "bytes": 6813488,
+      "category": "cv",
+      "sha256": "840eaa1806466e276dd658ce6181d62be3e7b0055eecd1746436c016b22fdbcf",
+      "source_files": 5201
+    },
+    {
+      "archive": "cv_part_005.zip",
+      "bytes": 3884218,
+      "category": "cv",
+      "sha256": "4b63e07209a29d26f44cfedefdd9eb7c04592317bfdb4e54c547f6edf0eb63dc",
+      "source_files": 3149
+    },
+    {
+      "archive": "berkeley_original_part_001.zip",
+      "bytes": 1143944,
+      "category": "berkeley_original",
+      "sha256": "532b07ff1051edd5a42e87a852d2583ff522a77ebc2a118341a9fbaed2424da0",
+      "source_files": 843
+    }
+  ],
+  "per_fold_checkpoint_source_files": 25479,
+  "purpose": "independent per-fold and Berkeley evaluation audit",
+  "rights": "only derived metrics and model checkpoints; no third-party images or GT",
+  "schema_version": 1,
+  "source_files": 26322,
+  "status": "complete",
+  "verify": "python scripts/verify_stage24gl_repro.py --check-git"
+}

@@ -1,0 +1,13 @@
+{
+  "experiment": "stage24_paper_a_recertification",
+  "final_claim_eligible": false,
+  "full_cv_folds": 15,
+  "independent_joint_nested_cv": false,
+  "inner_cv_scope": "conditional_on_outer_training_candidate_screen",
+  "literature_transfer_requires_author_float_data": true,
+  "native_gt": true,
+  "no_validation_decisions": true,
+  "official_reference_reproduction_verified": false,
+  "phase": "all",
+  "status": "completed"
+}

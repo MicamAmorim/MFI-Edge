@@ -1,0 +1,59 @@
+{
+  "big_float_assets_automatically_uploaded": false,
+  "claims_eligible": false,
+  "complete": true,
+  "complete_reproducibility_evidence": {
+    "external_binary_deposit": {
+      "local_folder": "results\\local_dev\\stage24gl_binary_publication",
+      "parts": 2,
+      "source_files": 2918,
+      "total_source_bytes": 707522332
+    },
+    "git_numeric_evidence": {
+      "parts": 6,
+      "source_files": 26322,
+      "status": "complete",
+      "total_bytes": 33548653
+    }
+  },
+  "experiment": "stage24_paper_a_recertification",
+  "literature_status": {
+    "quantized_png_permitted": false,
+    "reason": "Author/native float detector manifest not provided",
+    "required_manifest_fields": [
+      "dataset",
+      "split",
+      "method",
+      "image_id",
+      "score_path",
+      "sha256"
+    ],
+    "status": "guarded"
+  },
+  "missing_optional": [
+    "literature_aggregator_landscape_fold.csv",
+    "literature_aggregator_landscape_per_image.csv",
+    "frozen_literature_models.json"
+  ],
+  "missing_required": [],
+  "not_a_new_experiment": true,
+  "note": "BSDS val is development; independent Berkeley reproduction and protected multi-benchmark still pending.",
+  "official": {
+    "method_images": {
+      "incumbent_compact_positive_choquet": 100,
+      "stage24gl_best_single": 100,
+      "stage24gl_identity": 100,
+      "stage24gl_identity_quantile": 100,
+      "stage24gl_pair04_logistic": 100,
+      "stage24gl_pair04_weighted": 100,
+      "stage24gl_winner": 100,
+      "stage24gl_winner_quantile": 100
+    },
+    "per_image_files": 800,
+    "reference_reproduction_verified": false,
+    "status": "completed",
+    "threshold_rows": 79200
+  },
+  "schema_version": 1,
+  "source_file_count": 68
+}

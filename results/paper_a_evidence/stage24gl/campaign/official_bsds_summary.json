@@ -1,0 +1,263 @@
+{
+  "comparisons_vs_incumbent": {
+    "stage24gl_best_single": {
+      "delta_AP": -0.06632848127066965,
+      "delta_ODS": 0.02947091354150355,
+      "delta_OIS": 0.02722310506343595
+    },
+    "stage24gl_identity": {
+      "delta_AP": 0.040888053677174074,
+      "delta_ODS": 0.041473941369615575,
+      "delta_OIS": 0.033791672248225435
+    },
+    "stage24gl_identity_quantile": {
+      "delta_AP": -0.18825750322334006,
+      "delta_ODS": 0.040898135343044095,
+      "delta_OIS": 0.02882669943330063
+    },
+    "stage24gl_pair04_logistic": {
+      "delta_AP": -0.06042451029386897,
+      "delta_ODS": -0.04198803558825792,
+      "delta_OIS": -0.040808595648531454
+    },
+    "stage24gl_pair04_weighted": {
+      "delta_AP": -0.06049668560436078,
+      "delta_ODS": -0.04189580826216277,
+      "delta_OIS": -0.04181902668122395
+    },
+    "stage24gl_winner": {
+      "delta_AP": -0.002110999999999974,
+      "delta_ODS": -0.019055999999999962,
+      "delta_OIS": -0.008301000000000003
+    },
+    "stage24gl_winner_quantile": {
+      "delta_AP": -0.21999696709025335,
+      "delta_ODS": -0.0187781987916662,
+      "delta_OIS": -0.01196438190130611
+    }
+  },
+  "dataset": "BSDS500",
+  "dataset_role": "development_official_metric",
+  "evaluator": {
+    "bsds500_commit": "a04b7c6c3a9f0ace74bf205c72a43d32e1c72722",
+    "family": "original Berkeley BSDS boundary benchmark",
+    "matlab": "C:\\Program Files\\MATLAB\\R2023a\\bin\\matlab.exe",
+    "max_dist": 0.0075,
+    "multi_annotator": true,
+    "nthresh": 99,
+    "reference_reproduction_verified": false,
+    "thinpb": true,
+    "windows_correspondPixels_source_commit": "94260b5d0fc068202598312e01a37604972dcc9e"
+  },
+  "experiment_id": "stage24_paper_a_recertification",
+  "export": {
+    "incumbent_compact_positive_choquet": {
+      "fingerprint": "e4fa09acaf61ec23",
+      "source": "incumbent_cache"
+    },
+    "stage24gl_best_single": {
+      "script": "run_stage24_paper_a_recertification.py",
+      "source": "export_cache"
+    },
+    "stage24gl_identity": {
+      "script": "run_stage24_paper_a_recertification.py",
+      "source": "export_cache"
+    },
+    "stage24gl_identity_quantile": {
+      "script": "run_stage24_paper_a_recertification.py",
+      "source": "export_cache"
+    },
+    "stage24gl_pair04_logistic": {
+      "script": "run_stage24_paper_a_recertification.py",
+      "source": "export_cache"
+    },
+    "stage24gl_pair04_weighted": {
+      "script": "run_stage24_paper_a_recertification.py",
+      "source": "export_cache"
+    },
+    "stage24gl_winner": {
+      "script": "run_stage24_paper_a_recertification.py",
+      "source": "export_cache"
+    },
+    "stage24gl_winner_quantile": {
+      "script": "run_stage24_paper_a_recertification.py",
+      "source": "export_cache"
+    }
+  },
+  "feedback_allowed": true,
+  "final_claim_guard": "Development metrics are decision-capable on train/val, but a final SOTA claim still requires an independently verified reference reproduction and the project's protected multi-benchmark gate.",
+  "manifest": "results/local_dev/stage24_paper_a_recertification/official_eval_manifest.json",
+  "methods": {
+    "incumbent_compact_positive_choquet": {
+      "AP": 0.534293,
+      "ODS": 0.545434,
+      "ODS_precision": 0.462667,
+      "ODS_recall": 0.664264,
+      "ODS_threshold": 0.18,
+      "OIS": 0.579141,
+      "OIS_precision": 0.487285,
+      "OIS_recall": 0.713673,
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "matlab_collect_stdout_tail": "",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+      "matlab_evaluate_processes": 1,
+      "matlab_evaluate_returncode": 0,
+      "matlab_evaluate_stdout_tail": "Reused validated per-image counts",
+      "max_dist": 0.0075,
+      "n_images": 100,
+      "nthresh": 99,
+      "thinpb": true
+    },
+    "stage24gl_best_single": {
+      "AP": 0.46796451872933037,
+      "ODS": 0.5749049135415035,
+      "ODS_precision": 0.4951784193279877,
+      "ODS_recall": 0.6852309235850466,
+      "ODS_threshold": 0.6691919191919192,
+      "OIS": 0.606364105063436,
+      "OIS_precision": 0.5123302129018239,
+      "OIS_recall": 0.7426760304595472,
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "matlab_collect_stdout_tail": "",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+      "matlab_evaluate_processes": 1,
+      "matlab_evaluate_returncode": 0,
+      "matlab_evaluate_stdout_tail": "MFI_BSDS_EVAL 71/100 37073\nMFI_BSDS_EVAL 72/100 376043\nMFI_BSDS_EVAL 73/100 38082\nMFI_BSDS_EVAL 74/100 38092\nMFI_BSDS_EVAL 75/100 385039\nMFI_BSDS_EVAL 76/100 41033\nMFI_BSDS_EVAL 77/100 41069\nMFI_BSDS_EVAL 78/100 42012\nMFI_BSDS_EVAL 79/100 42049\nMFI_BSDS_EVAL 80/100 43074\nMFI_BSDS_EVAL 81/100 45096\nMFI_BSDS_EVAL 82/100 54082\nMFI_BSDS_EVAL 83/100 55073\nMFI_BSDS_EVAL 84/100 58060\nMFI_BSDS_EVAL 85/100 62096\nMFI_BSDS_EVAL 86/100 65033\nMFI_BSDS_EVAL 87/100 66053\nMFI_BSDS_EVAL 88/100 69015\nMFI_BSDS_EVAL 89/100 69020\nMFI_BSDS_EVAL 90/100 69040\nMFI_BSDS_EVAL 91/100 76053\nMFI_BSDS_EVAL 92/100 78004\nMFI_BSDS_EVAL 93/100 8023\nMFI_BSDS_EVAL 94/100 85048\nMFI_BSDS_EVAL 95/100 86000\nMFI_BSDS_EVAL 96/100 86016\nMFI_BSDS_EVAL 97/100 86068\nMFI_BSDS_EVAL 98/100 87046\nMFI_BSDS_EVAL 99/100 89072\nMFI_BSDS_EVAL 100/100 97033",
+      "max_dist": 0.0075,
+      "n_images": 100,
+      "nthresh": 99,
+      "thinpb": true
+    },
+    "stage24gl_identity": {
+      "AP": 0.5751810536771741,
+      "ODS": 0.5869079413696155,
+      "ODS_precision": 0.49931616629407793,
+      "ODS_recall": 0.7117689150863926,
+      "ODS_threshold": 0.6443434343434344,
+      "OIS": 0.6129326722482255,
+      "OIS_precision": 0.5171306254979016,
+      "OIS_recall": 0.7523018189984281,
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "matlab_collect_stdout_tail": "",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+      "matlab_evaluate_processes": 1,
+      "matlab_evaluate_returncode": 0,
+      "matlab_evaluate_stdout_tail": "MFI_BSDS_EVAL 71/100 37073\nMFI_BSDS_EVAL 72/100 376043\nMFI_BSDS_EVAL 73/100 38082\nMFI_BSDS_EVAL 74/100 38092\nMFI_BSDS_EVAL 75/100 385039\nMFI_BSDS_EVAL 76/100 41033\nMFI_BSDS_EVAL 77/100 41069\nMFI_BSDS_EVAL 78/100 42012\nMFI_BSDS_EVAL 79/100 42049\nMFI_BSDS_EVAL 80/100 43074\nMFI_BSDS_EVAL 81/100 45096\nMFI_BSDS_EVAL 82/100 54082\nMFI_BSDS_EVAL 83/100 55073\nMFI_BSDS_EVAL 84/100 58060\nMFI_BSDS_EVAL 85/100 62096\nMFI_BSDS_EVAL 86/100 65033\nMFI_BSDS_EVAL 87/100 66053\nMFI_BSDS_EVAL 88/100 69015\nMFI_BSDS_EVAL 89/100 69020\nMFI_BSDS_EVAL 90/100 69040\nMFI_BSDS_EVAL 91/100 76053\nMFI_BSDS_EVAL 92/100 78004\nMFI_BSDS_EVAL 93/100 8023\nMFI_BSDS_EVAL 94/100 85048\nMFI_BSDS_EVAL 95/100 86000\nMFI_BSDS_EVAL 96/100 86016\nMFI_BSDS_EVAL 97/100 86068\nMFI_BSDS_EVAL 98/100 87046\nMFI_BSDS_EVAL 99/100 89072\nMFI_BSDS_EVAL 100/100 97033",
+      "max_dist": 0.0075,
+      "n_images": 100,
+      "nthresh": 99,
+      "thinpb": true
+    },
+    "stage24gl_identity_quantile": {
+      "AP": 0.34603549677665996,
+      "ODS": 0.5863321353430441,
+      "ODS_precision": 0.5057252637892692,
+      "ODS_recall": 0.697506810409246,
+      "ODS_threshold": 0.9671717171717171,
+      "OIS": 0.6079676994333006,
+      "OIS_precision": 0.5103014710459157,
+      "OIS_recall": 0.7518669742563746,
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "matlab_collect_stdout_tail": "",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+      "matlab_evaluate_processes": 1,
+      "matlab_evaluate_returncode": 124,
+      "matlab_evaluate_stdout_tail": "MATLAB time limit reached",
+      "max_dist": 0.0075,
+      "n_images": 100,
+      "nthresh": 99,
+      "thinpb": true
+    },
+    "stage24gl_pair04_logistic": {
+      "AP": 0.47386848970613105,
+      "ODS": 0.503445964411742,
+      "ODS_precision": 0.4189977102061595,
+      "ODS_recall": 0.6305277217389583,
+      "ODS_threshold": 0.6236363636363637,
+      "OIS": 0.5383324043514686,
+      "OIS_precision": 0.43933846119286823,
+      "OIS_recall": 0.6949138816868438,
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "matlab_collect_stdout_tail": "",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+      "matlab_evaluate_processes": 1,
+      "matlab_evaluate_returncode": 0,
+      "matlab_evaluate_stdout_tail": "MFI_BSDS_EVAL 71/100 37073\nMFI_BSDS_EVAL 72/100 376043\nMFI_BSDS_EVAL 73/100 38082\nMFI_BSDS_EVAL 74/100 38092\nMFI_BSDS_EVAL 75/100 385039\nMFI_BSDS_EVAL 76/100 41033\nMFI_BSDS_EVAL 77/100 41069\nMFI_BSDS_EVAL 78/100 42012\nMFI_BSDS_EVAL 79/100 42049\nMFI_BSDS_EVAL 80/100 43074\nMFI_BSDS_EVAL 81/100 45096\nMFI_BSDS_EVAL 82/100 54082\nMFI_BSDS_EVAL 83/100 55073\nMFI_BSDS_EVAL 84/100 58060\nMFI_BSDS_EVAL 85/100 62096\nMFI_BSDS_EVAL 86/100 65033\nMFI_BSDS_EVAL 87/100 66053\nMFI_BSDS_EVAL 88/100 69015\nMFI_BSDS_EVAL 89/100 69020\nMFI_BSDS_EVAL 90/100 69040\nMFI_BSDS_EVAL 91/100 76053\nMFI_BSDS_EVAL 92/100 78004\nMFI_BSDS_EVAL 93/100 8023\nMFI_BSDS_EVAL 94/100 85048\nMFI_BSDS_EVAL 95/100 86000\nMFI_BSDS_EVAL 96/100 86016\nMFI_BSDS_EVAL 97/100 86068\nMFI_BSDS_EVAL 98/100 87046\nMFI_BSDS_EVAL 99/100 89072\nMFI_BSDS_EVAL 100/100 97033",
+      "max_dist": 0.0075,
+      "n_images": 100,
+      "nthresh": 99,
+      "thinpb": true
+    },
+    "stage24gl_pair04_weighted": {
+      "AP": 0.47379631439563924,
+      "ODS": 0.5035381917378372,
+      "ODS_precision": 0.41918600379467275,
+      "ODS_recall": 0.6303908158612852,
+      "ODS_threshold": 0.61,
+      "OIS": 0.5373219733187761,
+      "OIS_precision": 0.435677258209279,
+      "OIS_recall": 0.7008268174672846,
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "matlab_collect_stdout_tail": "",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+      "matlab_evaluate_processes": 1,
+      "matlab_evaluate_returncode": 0,
+      "matlab_evaluate_stdout_tail": "MFI_BSDS_EVAL 71/100 37073\nMFI_BSDS_EVAL 72/100 376043\nMFI_BSDS_EVAL 73/100 38082\nMFI_BSDS_EVAL 74/100 38092\nMFI_BSDS_EVAL 75/100 385039\nMFI_BSDS_EVAL 76/100 41033\nMFI_BSDS_EVAL 77/100 41069\nMFI_BSDS_EVAL 78/100 42012\nMFI_BSDS_EVAL 79/100 42049\nMFI_BSDS_EVAL 80/100 43074\nMFI_BSDS_EVAL 81/100 45096\nMFI_BSDS_EVAL 82/100 54082\nMFI_BSDS_EVAL 83/100 55073\nMFI_BSDS_EVAL 84/100 58060\nMFI_BSDS_EVAL 85/100 62096\nMFI_BSDS_EVAL 86/100 65033\nMFI_BSDS_EVAL 87/100 66053\nMFI_BSDS_EVAL 88/100 69015\nMFI_BSDS_EVAL 89/100 69020\nMFI_BSDS_EVAL 90/100 69040\nMFI_BSDS_EVAL 91/100 76053\nMFI_BSDS_EVAL 92/100 78004\nMFI_BSDS_EVAL 93/100 8023\nMFI_BSDS_EVAL 94/100 85048\nMFI_BSDS_EVAL 95/100 86000\nMFI_BSDS_EVAL 96/100 86016\nMFI_BSDS_EVAL 97/100 86068\nMFI_BSDS_EVAL 98/100 87046\nMFI_BSDS_EVAL 99/100 89072\nMFI_BSDS_EVAL 100/100 97033",
+      "max_dist": 0.0075,
+      "n_images": 100,
+      "nthresh": 99,
+      "thinpb": true
+    },
+    "stage24gl_winner": {
+      "AP": 0.532182,
+      "ODS": 0.526378,
+      "ODS_precision": 0.430124,
+      "ODS_recall": 0.678131,
+      "ODS_threshold": 0.494141,
+      "OIS": 0.57084,
+      "OIS_precision": 0.475353,
+      "OIS_recall": 0.714334,
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "matlab_collect_stdout_tail": "",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+      "matlab_evaluate_processes": 1,
+      "matlab_evaluate_returncode": 0,
+      "matlab_evaluate_stdout_tail": "Reused validated per-image counts",
+      "max_dist": 0.0075,
+      "n_images": 100,
+      "nthresh": 99,
+      "thinpb": true
+    },
+    "stage24gl_winner_quantile": {
+      "AP": 0.31429603290974667,
+      "ODS": 0.5266558012083338,
+      "ODS_precision": 0.4456141398865484,
+      "ODS_recall": 0.6437273400219728,
+      "ODS_threshold": 0.9722222222222222,
+      "OIS": 0.5671766180986939,
+      "OIS_precision": 0.46813099188669266,
+      "OIS_recall": 0.7193808736364317,
+      "annotation_protocol": "all human boundary annotations, original Berkeley accumulation",
+      "matcher": "Berkeley correspondPixels / CSA++",
+      "matlab_collect_stdout_tail": "",
+      "matlab_compatibility": "run-local syntax-only explicit groundTruth load/cell assignment and unused fourth fileparts output removal; native matching is resumable across isolated MATLAB processes and aggregation runs separately; pinned vendor source unchanged",
+      "matlab_evaluate_processes": 1,
+      "matlab_evaluate_returncode": 0,
+      "matlab_evaluate_stdout_tail": "Reused validated per-image counts",
+      "max_dist": 0.0075,
+      "n_images": 100,
+      "nthresh": 99,
+      "thinpb": true
+    }
+  },
+  "metric_policy": "Agent may use these metrics for development decisions.",
+  "split": "val",
+  "status": "completed"
+}

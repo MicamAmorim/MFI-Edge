@@ -1,0 +1,13 @@
+{
+  "quantized_png_permitted": false,
+  "reason": "Author/native float detector manifest not provided",
+  "required_manifest_fields": [
+    "dataset",
+    "split",
+    "method",
+    "image_id",
+    "score_path",
+    "sha256"
+  ],
+  "status": "guarded"
+}

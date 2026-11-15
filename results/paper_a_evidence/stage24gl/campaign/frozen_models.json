@@ -1,0 +1,663 @@
+{
+  "models": {
+    "best_single": {
+      "GT": "native",
+      "aggregator": {
+        "family": "equal_mean",
+        "n_inputs": 1
+      },
+      "calibration_mode": "legacy_sigmoid",
+      "descriptors": [
+        "semiglobal_changepoint"
+      ],
+      "fit_all_UDED_F1_NOT_HELDOUT": 0.7071545584045584,
+      "gate": null,
+      "membership": {
+        "midpoint": [
+          0.0453273169696331
+        ],
+        "scale": [
+          0.052741148916538805
+        ]
+      },
+      "selection_source": "15_train_only_best_single_fold_votes",
+      "suppression": [
+        "identity",
+        1.0
+      ],
+      "thinning": "nms_image",
+      "threshold": 0.5183401197195054
+    },
+    "identity": {
+      "GT": "native",
+      "aggregator": {
+        "capacity": [
+          0.0,
+          0.03416976484426677,
+          1.7211709488207383e-18,
+          0.034169764844266766,
+          0.6209604633949706,
+          0.6209604633949706,
+          1.0,
+          1.0
+        ],
+        "family": "choquet_signed_2add",
+        "mobius": [
+          0.03416976484426677,
+          1.7211709488207383e-18,
+          0.6209604633949706,
+          -3.550762114890027e-18,
+          -0.03416976484426677,
+          0.3790395366050294
+        ],
+        "n_inputs": 3
+      },
+      "calibration_mode": "legacy_sigmoid",
+      "descriptors": [
+        "fh_region_boundary",
+        "halfdisc_distribution_contrast",
+        "hessian_s7"
+      ],
+      "fit_all_UDED_F1_NOT_HELDOUT": 0.7136123817884291,
+      "gate": null,
+      "membership": {
+        "midpoint": [
+          0.0,
+          0.2599221169948578,
+          0.12791669741272926
+        ],
+        "scale": [
+          0.05,
+          0.2126612812280655,
+          0.1611314546316862
+        ]
+      },
+      "selection_source": "frequency_of_outer_train_inner_CV_winners",
+      "source_commit_note": "Stage24 original experiment remains immutable",
+      "suppression": [
+        "identity",
+        1.0
+      ],
+      "thinning": "nms_image",
+      "threshold": 0.39478453248739276
+    },
+    "identity_quantile": {
+      "GT": "native",
+      "aggregator": {
+        "capacity": [
+          0.0,
+          0.03416976484426677,
+          1.7211709488207383e-18,
+          0.034169764844266766,
+          0.6209604633949706,
+          0.6209604633949706,
+          1.0,
+          1.0
+        ],
+        "family": "choquet_signed_2add",
+        "mobius": [
+          0.03416976484426677,
+          1.7211709488207383e-18,
+          0.6209604633949706,
+          -3.550762114890027e-18,
+          -0.03416976484426677,
+          0.3790395366050294
+        ],
+        "n_inputs": 3
+      },
+      "calibration_mode": "legacy_sigmoid",
+      "descriptors": [
+        "fh_region_boundary",
+        "halfdisc_distribution_contrast",
+        "hessian_s7"
+      ],
+      "fit_all_UDED_F1_NOT_HELDOUT": 0.7136123817884291,
+      "gate": null,
+      "membership": {
+        "midpoint": [
+          0.0,
+          0.2599221169948578,
+          0.12791669741272926
+        ],
+        "scale": [
+          0.05,
+          0.2126612812280655,
+          0.1611314546316862
+        ]
+      },
+      "score_quantile_mapping": {
+        "fitted_on": "UDED_selection_only",
+        "mapped_quantiles": [
+          0.0,
+          0.8235294117647058,
+          0.8470588235294118,
+          0.8509803921568627,
+          0.8588235294117647,
+          0.8627450980392157,
+          0.8705882352941177,
+          0.8745098039215686,
+          0.8784313725490196,
+          0.8823529411764706,
+          0.8862745098039215,
+          0.8901960784313725,
+          0.8941176470588236,
+          0.8980392156862745,
+          0.9019607843137255,
+          0.9058823529411765,
+          0.9098039215686274,
+          0.9137254901960784,
+          0.9176470588235294,
+          0.9215686274509803,
+          0.9254901960784314,
+          0.9294117647058824,
+          0.9333333333333333,
+          0.9372549019607843,
+          0.9411764705882353,
+          0.9450980392156862,
+          0.9490196078431372,
+          0.9529411764705882,
+          0.9568627450980393,
+          0.9607843137254902,
+          0.9647058823529412,
+          0.9686274509803922,
+          0.9725490196078431,
+          0.9764705882352941,
+          0.9803921568627451,
+          0.984313725490196,
+          0.9882352941176471,
+          0.9921568627450981,
+          0.996078431372549,
+          1.0
+        ],
+        "score_values": [
+          0.0,
+          0.2860237956047058,
+          0.2869250476360321,
+          0.30061134696006775,
+          0.3015376031398773,
+          0.3029937446117401,
+          0.31778576970100403,
+          0.3230975416361117,
+          0.32746356491949036,
+          0.33111451303257666,
+          0.33473180988255663,
+          0.33847839376505684,
+          0.34179621934890747,
+          0.34524856104570284,
+          0.3484024107456207,
+          0.353084150132011,
+          0.3586395841018826,
+          0.36549208795323074,
+          0.37400880981894097,
+          0.38431409819453355,
+          0.39644609420907273,
+          0.41088770207236786,
+          0.4272691269715627,
+          0.4453172192854038,
+          0.4649861034225015,
+          0.48658313447353857,
+          0.5102631627344618,
+          0.5365803592345291,
+          0.5657313206616569,
+          0.5972816780501722,
+          0.6298918920404772,
+          0.6627320628540185,
+          0.6944856426295112,
+          0.723079223492566,
+          0.7495787132020091,
+          0.7754993761287012,
+          0.8028123462901399,
+          0.8358190772580172,
+          0.8834588050842311,
+          0.9860662221908569
+        ]
+      },
+      "selection_source": "deterministic_train_only_monotone_quantile_diagnostic",
+      "source_commit_note": "Stage24 original experiment remains immutable",
+      "suppression": [
+        "identity",
+        1.0
+      ],
+      "thinning": "nms_image",
+      "threshold": 0.39478453248739276
+    },
+    "pair04_logistic": {
+      "GT": "native",
+      "aggregator": {
+        "family": "nonnegative_logistic",
+        "logistic": {
+          "beta": [
+            -2.3644920054985086,
+            3.782534592749098,
+            0.9299191036953735
+          ]
+        },
+        "n_inputs": 2
+      },
+      "calibration_mode": "legacy_sigmoid",
+      "descriptors": [
+        "gabor4_scale_persistence",
+        "halfdisc_distribution_contrast"
+      ],
+      "fit_all_UDED_F1_NOT_HELDOUT": 0.6041855487634414,
+      "gate": null,
+      "membership": {
+        "midpoint": [
+          0.5939957499504089,
+          0.2599221169948578
+        ],
+        "scale": [
+          0.2709580361843109,
+          0.2126612812280655
+        ]
+      },
+      "selection_source": "predeclared_rank_equivalence_control",
+      "suppression": [
+        "identity",
+        1.0
+      ],
+      "thinning": "nms_image",
+      "threshold": 0.4117949113249785
+    },
+    "pair04_weighted": {
+      "GT": "native",
+      "aggregator": {
+        "family": "weighted_mean",
+        "n_inputs": 2,
+        "weights": [
+          0.8026677472933064,
+          0.19733225270669374
+        ]
+      },
+      "calibration_mode": "legacy_sigmoid",
+      "descriptors": [
+        "gabor4_scale_persistence",
+        "halfdisc_distribution_contrast"
+      ],
+      "fit_all_UDED_F1_NOT_HELDOUT": 0.6041819875035389,
+      "gate": null,
+      "membership": {
+        "midpoint": [
+          0.5939957499504089,
+          0.2599221169948578
+        ],
+        "scale": [
+          0.2709580361843109,
+          0.2126612812280655
+        ]
+      },
+      "selection_source": "predeclared_rank_equivalence_control",
+      "suppression": [
+        "identity",
+        1.0
+      ],
+      "thinning": "nms_image",
+      "threshold": 0.4260911710560327
+    },
+    "winner": {
+      "GT": "native",
+      "aggregator": {
+        "capacity": [
+          0.0,
+          0.03416976484426677,
+          1.7211709488207383e-18,
+          0.034169764844266766,
+          0.6209604633949706,
+          0.6209604633949706,
+          1.0,
+          1.0
+        ],
+        "family": "choquet_signed_2add",
+        "mobius": [
+          0.03416976484426677,
+          1.7211709488207383e-18,
+          0.6209604633949706,
+          -3.550762114890027e-18,
+          -0.03416976484426677,
+          0.3790395366050294
+        ],
+        "n_inputs": 3
+      },
+      "calibration_mode": "legacy_sigmoid",
+      "descriptors": [
+        "fh_region_boundary",
+        "halfdisc_distribution_contrast",
+        "hessian_s7"
+      ],
+      "fit_all_UDED_F1_NOT_HELDOUT": 0.7133760683760684,
+      "gate": null,
+      "membership": {
+        "midpoint": [
+          0.0,
+          0.2599221169948578,
+          0.12791669741272926
+        ],
+        "scale": [
+          0.05,
+          0.2126612812280655,
+          0.1611314546316862
+        ]
+      },
+      "selection_source": "frequency_of_outer_train_inner_CV_winners",
+      "source_commit_note": "Stage24 original experiment remains immutable",
+      "suppression": [
+        "disagreement",
+        1.0
+      ],
+      "thinning": "nms_image",
+      "threshold": 0.34985721185803415
+    },
+    "winner_quantile": {
+      "GT": "native",
+      "aggregator": {
+        "capacity": [
+          0.0,
+          0.03416976484426677,
+          1.7211709488207383e-18,
+          0.034169764844266766,
+          0.6209604633949706,
+          0.6209604633949706,
+          1.0,
+          1.0
+        ],
+        "family": "choquet_signed_2add",
+        "mobius": [
+          0.03416976484426677,
+          1.7211709488207383e-18,
+          0.6209604633949706,
+          -3.550762114890027e-18,
+          -0.03416976484426677,
+          0.3790395366050294
+        ],
+        "n_inputs": 3
+      },
+      "calibration_mode": "legacy_sigmoid",
+      "descriptors": [
+        "fh_region_boundary",
+        "halfdisc_distribution_contrast",
+        "hessian_s7"
+      ],
+      "fit_all_UDED_F1_NOT_HELDOUT": 0.7133760683760684,
+      "gate": null,
+      "membership": {
+        "midpoint": [
+          0.0,
+          0.2599221169948578,
+          0.12791669741272926
+        ],
+        "scale": [
+          0.05,
+          0.2126612812280655,
+          0.1611314546316862
+        ]
+      },
+      "score_quantile_mapping": {
+        "fitted_on": "UDED_selection_only",
+        "mapped_quantiles": [
+          0.0,
+          0.807843137254902,
+          0.8117647058823529,
+          0.8352941176470589,
+          0.8392156862745098,
+          0.8470588235294118,
+          0.8509803921568627,
+          0.8588235294117647,
+          0.8627450980392157,
+          0.8666666666666667,
+          0.8705882352941177,
+          0.8745098039215686,
+          0.8784313725490196,
+          0.8823529411764706,
+          0.8862745098039215,
+          0.8901960784313725,
+          0.8941176470588236,
+          0.8980392156862745,
+          0.9019607843137255,
+          0.9058823529411765,
+          0.9098039215686274,
+          0.9137254901960784,
+          0.9176470588235294,
+          0.9215686274509803,
+          0.9254901960784314,
+          0.9294117647058824,
+          0.9333333333333333,
+          0.9372549019607843,
+          0.9411764705882353,
+          0.9450980392156862,
+          0.9490196078431372,
+          0.9529411764705882,
+          0.9568627450980393,
+          0.9607843137254902,
+          0.9647058823529412,
+          0.9686274509803922,
+          0.9725490196078431,
+          0.9764705882352941,
+          0.9803921568627451,
+          0.984313725490196,
+          0.9882352941176471,
+          0.9921568627450981,
+          0.996078431372549,
+          1.0
+        ],
+        "score_values": [
+          0.0,
+          0.18899227322316647,
+          0.21780894696712494,
+          0.22232571209178298,
+          0.2289174646139145,
+          0.22962281107902527,
+          0.23073166608810425,
+          0.24454650861375468,
+          0.25827390364572117,
+          0.2643108069896698,
+          0.2701090570758371,
+          0.2736483126294379,
+          0.27716692300403817,
+          0.28078853382783775,
+          0.28433318617297143,
+          0.28838450254178516,
+          0.2919884737800149,
+          0.2957733496731404,
+          0.30072103879031015,
+          0.30649644171490387,
+          0.3132710849537569,
+          0.32134073107850314,
+          0.3305092257611891,
+          0.34052613436007007,
+          0.3512510794050554,
+          0.36249906701200146,
+          0.37413756052653024,
+          0.38575177835483165,
+          0.39752032651620767,
+          0.40937648006513994,
+          0.42146186816926096,
+          0.4339218181722302,
+          0.44677850978047223,
+          0.4603416236007915,
+          0.4743624406702378,
+          0.4889980166566138,
+          0.503979573296566,
+          0.5160057292265048,
+          0.5289080107913298,
+          0.5446728790507593,
+          0.5674507344470311,
+          0.6087022599051983,
+          0.710139789300811,
+          0.9655895829200745
+        ]
+      },
+      "selection_source": "deterministic_train_only_monotone_quantile_diagnostic",
+      "source_commit_note": "Stage24 original experiment remains immutable",
+      "suppression": [
+        "disagreement",
+        1.0
+      ],
+      "thinning": "nms_image",
+      "threshold": 0.34985721185803415
+    }
+  },
+  "outer_split_validation_used_in_freeze": false,
+  "selection_counts": [
+    {
+      "model": [
+        [
+          "halfdisc_distribution_contrast",
+          "scharr_pre_nms_magnitude"
+        ],
+        "gcf_cl_cl",
+        "nms_image",
+        "disagreement",
+        0.5
+      ],
+      "n": 2
+    },
+    {
+      "model": [
+        [
+          "gabor4_scale_persistence",
+          "pmi_dependency_deficit",
+          "structure_tensor_coherence"
+        ],
+        "median",
+        "nms_image",
+        "disagreement",
+        0.5
+      ],
+      "n": 2
+    },
+    {
+      "model": [
+        [
+          "fh_region_boundary",
+          "halfdisc_distribution_contrast",
+          "hessian_s7"
+        ],
+        "choquet_signed_2add",
+        "nms_image",
+        "disagreement",
+        1.0
+      ],
+      "n": 2
+    },
+    {
+      "model": [
+        [
+          "fh_region_boundary",
+          "halfdisc_distribution_contrast",
+          "hessian_s7"
+        ],
+        "gcf_cl_cl",
+        "nms_image",
+        "disagreement",
+        0.5
+      ],
+      "n": 1
+    },
+    {
+      "model": [
+        [
+          "gabor4_s5",
+          "halfdisc_distribution_contrast"
+        ],
+        "minimum",
+        "nms_image",
+        "learned_gate",
+        2.0
+      ],
+      "n": 1
+    },
+    {
+      "model": [
+        [
+          "fh_region_boundary",
+          "halfdisc_distribution_contrast",
+          "hessian_s7"
+        ],
+        "choquet_generalized_150",
+        "nms_image",
+        "disagreement",
+        1.0
+      ],
+      "n": 1
+    },
+    {
+      "model": [
+        [
+          "halfdisc_distribution_contrast",
+          "scharr_pre_nms_magnitude"
+        ],
+        "choquet_signed_2add",
+        "nms_image",
+        "compress",
+        1.5
+      ],
+      "n": 1
+    },
+    {
+      "model": [
+        [
+          "gabor4_s5",
+          "halfdisc_distribution_contrast"
+        ],
+        "owa_pessimistic",
+        "nms_image",
+        "learned_gate",
+        2.0
+      ],
+      "n": 1
+    },
+    {
+      "model": [
+        [
+          "halfdisc_distribution_contrast",
+          "lab_dizenzo_tensor_gradient"
+        ],
+        "nonnegative_logistic",
+        "nms_image",
+        "disagreement",
+        1.0
+      ],
+      "n": 1
+    },
+    {
+      "model": [
+        [
+          "halfdisc_distribution_contrast",
+          "lab_dizenzo_tensor_gradient"
+        ],
+        "gcf_cl_cl",
+        "nms_image",
+        "learned_gate",
+        2.0
+      ],
+      "n": 1
+    },
+    {
+      "model": [
+        [
+          "gabor4_s5",
+          "halfdisc_distribution_contrast"
+        ],
+        "gcf_cl_cl",
+        "nms_image",
+        "learned_gate",
+        2.0
+      ],
+      "n": 1
+    },
+    {
+      "model": [
+        [
+          "halfdisc_distribution_contrast",
+          "hessian_s7"
+        ],
+        "gcf_cl_cl",
+        "nms_image",
+        "disagreement",
+        0.5
+      ],
+      "n": 1
+    }
+  ],
+  "training_dataset": "UDED_overlap_clean_14"
+}

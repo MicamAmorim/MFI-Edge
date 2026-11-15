@@ -1,0 +1,24 @@
+{
+  "expected_frozen_variants": [
+    "best_single",
+    "identity",
+    "identity_quantile",
+    "pair04_logistic",
+    "pair04_weighted",
+    "winner",
+    "winner_quantile"
+  ],
+  "maps_by_variant": {
+    "best_single": 100,
+    "identity": 100,
+    "identity_quantile": 100,
+    "pair04_logistic": 100,
+    "pair04_weighted": 100,
+    "winner": 100,
+    "winner_quantile": 100
+  },
+  "maps_total": 700,
+  "missing_or_partial_frozen_variants": [],
+  "note": "All source/GT photographs excluded; ZIP for data deposit is separate from Git.",
+  "status": "complete_frozen_models"
+}

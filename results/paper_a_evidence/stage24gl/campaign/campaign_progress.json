@@ -1,0 +1,9 @@
+{
+  "cached_groups": 152,
+  "expected": 15,
+  "fitted_groups": 0,
+  "phase": "all",
+  "processed": 15,
+  "status": "completed",
+  "warning": "Outer folds repeated on the same 14 images; not independent replicates"
+}

@@ -1,0 +1,9 @@
+{
+  "fraction_aggregator": 0.032291460240370086,
+  "fraction_group": 0.6292534685256169,
+  "fraction_interaction": 0.338455071234013,
+  "n_aggregators": 26,
+  "n_groups": 18,
+  "note": "No inference from folds treated as independent; repeated-image analysis",
+  "status": "descriptive_only"
+}

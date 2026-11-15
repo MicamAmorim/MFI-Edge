@@ -1,0 +1,15 @@
+image_id,native_h,native_w,inference_h,inference_w,pixel_scale_factor,physical_window_25px_at_native_equivalent,status
+01-0843x4,339,510,170,256,1.992778376329049,49.81945940822622,documented_scaled_implementation_not_native_recomputed
+05-WIREFRAME-2,332,500,170,256,1.9530687468073418,48.826718670183546,documented_scaled_implementation_not_native_recomputed
+07-CITYSCAPES-2C,720,720,256,256,2.8125,70.3125,documented_scaled_implementation_not_native_recomputed
+09-MDBD-1C,720,720,256,256,2.8125,70.3125,documented_scaled_implementation_not_native_recomputed
+11-NYUD-2,425,560,194,256,2.188675771379991,54.71689428449978,documented_scaled_implementation_not_native_recomputed
+13-BIPED-1C,720,720,256,256,2.8125,70.3125,documented_scaled_implementation_not_native_recomputed
+15-P1020854,480,640,192,256,2.5,62.5,documented_scaled_implementation_not_native_recomputed
+17-1194,600,600,256,256,2.34375,58.59375,documented_scaled_implementation_not_native_recomputed
+19-img_6150,425,560,194,256,2.188675771379991,54.71689428449978,documented_scaled_implementation_not_native_recomputed
+21-00065305,400,500,205,256,1.9523807310226053,48.80951827556514,documented_scaled_implementation_not_native_recomputed
+23-img_011_SRF_2_HR,512,282,256,141,2.0,50.0,documented_scaled_implementation_not_native_recomputed
+25-2008_002622,500,355,256,182,1.9522606667467368,48.80651666866842,documented_scaled_implementation_not_native_recomputed
+27-img_5264,425,560,194,256,2.188675771379991,54.71689428449978,documented_scaled_implementation_not_native_recomputed
+29-img_5182,425,560,194,256,2.188675771379991,54.71689428449978,documented_scaled_implementation_not_native_recomputed

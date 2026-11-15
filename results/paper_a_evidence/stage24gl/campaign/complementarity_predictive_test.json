@@ -1,0 +1,69 @@
+{
+  "n_distinct_pairs": 10,
+  "permutation_p": 0.7746126936531734,
+  "rows": [
+    {
+      "max_gain_vs_mean": 0.029147335761301463,
+      "mean_control_F1": 0.38641774690127284,
+      "pair": "fh_region_boundary|halfdisc_distribution_contrast",
+      "score_mean": 0.8385405276417044
+    },
+    {
+      "max_gain_vs_mean": 0.02339471667297277,
+      "mean_control_F1": 0.4366633112605861,
+      "pair": "halfdisc_distribution_contrast|hessian_s7",
+      "score_mean": 0.8715104731328424
+    },
+    {
+      "max_gain_vs_mean": 0.0366196498792119,
+      "mean_control_F1": 0.3892034633558193,
+      "pair": "gabor4_s5|halfdisc_distribution_contrast",
+      "score_mean": 0.8658472696131736
+    },
+    {
+      "max_gain_vs_mean": 0.10286482577477851,
+      "mean_control_F1": 0.3210365516028376,
+      "pair": "fh_region_boundary|structure_tensor_coherence",
+      "score_mean": 0.7864909823994694
+    },
+    {
+      "max_gain_vs_mean": 0.046841432534537986,
+      "mean_control_F1": 0.4264050195465559,
+      "pair": "halfdisc_distribution_contrast|semiglobal_changepoint",
+      "score_mean": 0.8622635889211345
+    },
+    {
+      "max_gain_vs_mean": 0.016643408765650347,
+      "mean_control_F1": 0.4446003023289667,
+      "pair": "halfdisc_distribution_contrast|scharr_pre_nms_magnitude",
+      "score_mean": 0.8622123138454434
+    },
+    {
+      "max_gain_vs_mean": 0.007832626698634493,
+      "mean_control_F1": 0.43181674818733284,
+      "pair": "halfdisc_distribution_contrast|lab_dizenzo_tensor_gradient",
+      "score_mean": 0.8592826471341284
+    },
+    {
+      "max_gain_vs_mean": 0.052264483589935185,
+      "mean_control_F1": 0.3765524062331739,
+      "pair": "gabor4_scale_persistence|halfdisc_distribution_contrast",
+      "score_mean": 0.8610871914595062
+    },
+    {
+      "max_gain_vs_mean": 1.1917215680945503e-07,
+      "mean_control_F1": 0.41743544164529217,
+      "pair": "gabor4_scale_persistence|structure_tensor_coherence",
+      "score_mean": 0.8342578068664674
+    },
+    {
+      "max_gain_vs_mean": 0.008387039860930423,
+      "mean_control_F1": 0.44929138273386565,
+      "pair": "halfdisc_distribution_contrast|pmi_dependency_deficit",
+      "score_mean": 0.8044763146817296
+    }
+  ],
+  "sampling_unit": "pair; rank and gains share UDED data, not independent confirmation",
+  "spearman": 0.11515151515151514,
+  "status": "exploratory"
+}

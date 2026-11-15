@@ -1,0 +1,19 @@
+method,reference,metric,delta,ci95_low,ci95_high,p_bootstrap_two_sided,replicates,n_unique_images,methodology,reference_status
+stage24gl_winner,stage24gl_identity,ODS,-0.060529757062862344,-0.06938363711784436,-0.05131537538149436,0.0,1000,100,paired bootstrap image-level count reaggregation,verified_against_official
+stage24gl_winner,stage24gl_identity,OIS,-0.042092414471037065,-0.051128837951946914,-0.03266362298247812,0.0,1000,100,paired bootstrap image-level count reaggregation,verified_against_official
+stage24gl_winner,stage24gl_identity,AP,-0.04299895394208608,-0.05086550640446501,-0.03520756312570234,0.0,1000,100,paired bootstrap image-level count reaggregation,verified_against_official
+stage24gl_winner,stage24gl_winner_quantile,ODS,-0.0002776224630591795,-0.0011971785993383137,0.00017313397480396285,0.194,1000,100,paired bootstrap image-level count reaggregation,verified_against_official
+stage24gl_winner,stage24gl_winner_quantile,OIS,0.003663639678494479,0.0012634267926447617,0.006495750980205825,0.0,1000,100,paired bootstrap image-level count reaggregation,verified_against_official
+stage24gl_winner,stage24gl_winner_quantile,AP,0.21788606682534123,0.20129543529615623,0.2431568005552887,0.0,1000,100,paired bootstrap image-level count reaggregation,verified_against_official
+stage24gl_identity,stage24gl_identity_quantile,ODS,0.000576087895279076,-9.912798302960379e-05,0.0015556872160574662,0.12,1000,100,paired bootstrap image-level count reaggregation,verified_against_official
+stage24gl_identity,stage24gl_identity_quantile,OIS,0.004964972814924806,0.0030311304062607737,0.006952594747974014,0.0,1000,100,paired bootstrap image-level count reaggregation,verified_against_official
+stage24gl_identity,stage24gl_identity_quantile,AP,0.22914555690051402,0.20731687686237893,0.2511978834208812,0.0,1000,100,paired bootstrap image-level count reaggregation,verified_against_official
+stage24gl_winner,stage24gl_best_single,ODS,-0.04852672835216776,-0.0653807579682332,-0.03250365141621818,0.0,1000,100,paired bootstrap image-level count reaggregation,verified_against_official
+stage24gl_winner,stage24gl_best_single,OIS,-0.03552384728624758,-0.045702491781897746,-0.02528019828981286,0.0,1000,100,paired bootstrap image-level count reaggregation,verified_against_official
+stage24gl_winner,stage24gl_best_single,AP,0.06421758100575747,0.03903111709329061,0.09322355717605986,0.0,1000,100,paired bootstrap image-level count reaggregation,verified_against_official
+stage24gl_winner,incumbent_compact_positive_choquet,ODS,-0.01905543247938002,-0.03248593859469717,-0.005335000566987048,0.004,1000,100,paired bootstrap image-level count reaggregation,verified_against_official
+stage24gl_winner,incumbent_compact_positive_choquet,OIS,-0.00830108262178253,-0.02296602352818762,0.005242506998859503,0.238,1000,100,paired bootstrap image-level count reaggregation,verified_against_official
+stage24gl_winner,incumbent_compact_positive_choquet,AP,-0.002111324769988987,-0.021867651235138154,0.01792230780369757,0.838,1000,100,paired bootstrap image-level count reaggregation,verified_against_official
+stage24gl_pair04_logistic,stage24gl_pair04_weighted,ODS,-9.223111361655878e-05,-0.00020710311054706332,0.00013491456935365296,0.664,1000,100,paired bootstrap image-level count reaggregation,verified_against_official
+stage24gl_pair04_logistic,stage24gl_pair04_weighted,OIS,0.0010104310326924937,0.00012309536973099667,0.0019522778639278443,0.024,1000,100,paired bootstrap image-level count reaggregation,verified_against_official
+stage24gl_pair04_logistic,stage24gl_pair04_weighted,AP,7.217531049169557e-05,-4.815184416819689e-05,0.00020383077500546045,0.238,1000,100,paired bootstrap image-level count reaggregation,verified_against_official

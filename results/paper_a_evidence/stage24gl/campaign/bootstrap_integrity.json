@@ -1,0 +1,165 @@
+{
+  "verification": [
+    {
+      "method": "incumbent_compact_positive_choquet",
+      "status": "verified_against_official",
+      "differences": {
+        "ODS": -3.8254969869644384e-07,
+        "OIS": 3.4039897089943594e-07,
+        "AP": 4.245050768680869e-07
+      },
+      "recalculated": {
+        "ODS": 0.5454336174503013,
+        "ODS_sampled": 0.5454336174503013,
+        "OIS": 0.5791413403989709,
+        "AP": 0.5342934245050769,
+        "ODS_threshold_sampled": 0.18
+      }
+    },
+    {
+      "method": "stage24gl_best_single",
+      "status": "verified_against_official",
+      "differences": {
+        "ODS": -2.1841450870141443e-10,
+        "OIS": 0.0,
+        "AP": 5.551115123125783e-17
+      },
+      "recalculated": {
+        "ODS": 0.574904913323089,
+        "ODS_sampled": 0.5749043428927367,
+        "OIS": 0.606364105063436,
+        "AP": 0.4679645187293304,
+        "ODS_threshold_sampled": 0.67
+      }
+    },
+    {
+      "method": "stage24gl_identity",
+      "status": "verified_against_official",
+      "differences": {
+        "ODS": 6.641680538876926e-10,
+        "OIS": 0.0,
+        "AP": -1.1102230246251565e-16
+      },
+      "recalculated": {
+        "ODS": 0.5869079420337836,
+        "ODS_sampled": 0.5868856071879085,
+        "OIS": 0.6129326722482255,
+        "AP": 0.575181053677174,
+        "ODS_threshold_sampled": 0.64
+      }
+    },
+    {
+      "method": "stage24gl_identity_quantile",
+      "status": "verified_against_official",
+      "differences": {
+        "ODS": -2.812045395428342e-07,
+        "OIS": 0.0,
+        "AP": 0.0
+      },
+      "recalculated": {
+        "ODS": 0.5863318541385045,
+        "ODS_sampled": 0.584906409296285,
+        "OIS": 0.6079676994333006,
+        "AP": 0.34603549677665996,
+        "ODS_threshold_sampled": 0.97
+      }
+    },
+    {
+      "method": "stage24gl_pair04_logistic",
+      "status": "verified_against_official",
+      "differences": {
+        "ODS": -3.787521407616623e-09,
+        "OIS": 0.0,
+        "AP": -1.1102230246251565e-16
+      },
+      "recalculated": {
+        "ODS": 0.5034459606242206,
+        "ODS_sampled": 0.5033922461679203,
+        "OIS": 0.5383324043514686,
+        "AP": 0.47386848970613094,
+        "ODS_threshold_sampled": 0.62
+      }
+    },
+    {
+      "method": "stage24gl_pair04_weighted",
+      "status": "verified_against_official",
+      "differences": {
+        "ODS": 0.0,
+        "OIS": 0.0,
+        "AP": 0.0
+      },
+      "recalculated": {
+        "ODS": 0.5035381917378372,
+        "ODS_sampled": 0.5035381917378372,
+        "OIS": 0.5373219733187761,
+        "AP": 0.47379631439563924,
+        "ODS_threshold_sampled": 0.61
+      }
+    },
+    {
+      "method": "stage24gl_winner",
+      "status": "verified_against_official",
+      "differences": {
+        "ODS": 1.8497092124647452e-07,
+        "OIS": 2.577771883727209e-07,
+        "AP": 9.973508785510177e-08
+      },
+      "recalculated": {
+        "ODS": 0.5263781849709213,
+        "ODS_sampled": 0.5262158332740082,
+        "OIS": 0.5708402577771884,
+        "AP": 0.5321820997350879,
+        "ODS_threshold_sampled": 0.49
+      }
+    },
+    {
+      "method": "stage24gl_winner_quantile",
+      "status": "verified_against_official",
+      "differences": {
+        "ODS": 6.225646664859141e-09,
+        "OIS": 0.0,
+        "AP": 0.0
+      },
+      "recalculated": {
+        "ODS": 0.5266558074339804,
+        "ODS_sampled": 0.5261537790859647,
+        "OIS": 0.5671766180986939,
+        "AP": 0.31429603290974667,
+        "ODS_threshold_sampled": 0.97
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "method": "stage24gl_winner",
+      "reference": "stage24gl_identity",
+      "status": "complete"
+    },
+    {
+      "method": "stage24gl_winner",
+      "reference": "stage24gl_winner_quantile",
+      "status": "complete"
+    },
+    {
+      "method": "stage24gl_identity",
+      "reference": "stage24gl_identity_quantile",
+      "status": "complete"
+    },
+    {
+      "method": "stage24gl_winner",
+      "reference": "stage24gl_best_single",
+      "status": "complete"
+    },
+    {
+      "method": "stage24gl_winner",
+      "reference": "incumbent_compact_positive_choquet",
+      "status": "complete"
+    },
+    {
+      "method": "stage24gl_pair04_logistic",
+      "reference": "stage24gl_pair04_weighted",
+      "status": "complete"
+    }
+  ],
+  "caution": "ODS/OIS are oracle threshold summaries of re-sampled validation, not fixed-threshold prospective test results"
+}

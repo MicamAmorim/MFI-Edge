@@ -1,0 +1,141 @@
+{
+  "include_incumbent": true,
+  "methods": [
+    {
+      "export": {
+        "args": [
+          "--export-bsds",
+          "--variant",
+          "winner",
+          "--image-dir",
+          "{image_dir}",
+          "--output-dir",
+          "{output_dir}",
+          "--split",
+          "{split}",
+          "--out",
+          "results/local_dev/stage24_paper_a_recertification"
+        ],
+        "script": "run_stage24_paper_a_recertification.py"
+      },
+      "name": "stage24gl_winner"
+    },
+    {
+      "export": {
+        "args": [
+          "--export-bsds",
+          "--variant",
+          "winner_quantile",
+          "--image-dir",
+          "{image_dir}",
+          "--output-dir",
+          "{output_dir}",
+          "--split",
+          "{split}",
+          "--out",
+          "results/local_dev/stage24_paper_a_recertification"
+        ],
+        "script": "run_stage24_paper_a_recertification.py"
+      },
+      "name": "stage24gl_winner_quantile"
+    },
+    {
+      "export": {
+        "args": [
+          "--export-bsds",
+          "--variant",
+          "identity",
+          "--image-dir",
+          "{image_dir}",
+          "--output-dir",
+          "{output_dir}",
+          "--split",
+          "{split}",
+          "--out",
+          "results/local_dev/stage24_paper_a_recertification"
+        ],
+        "script": "run_stage24_paper_a_recertification.py"
+      },
+      "name": "stage24gl_identity"
+    },
+    {
+      "export": {
+        "args": [
+          "--export-bsds",
+          "--variant",
+          "identity_quantile",
+          "--image-dir",
+          "{image_dir}",
+          "--output-dir",
+          "{output_dir}",
+          "--split",
+          "{split}",
+          "--out",
+          "results/local_dev/stage24_paper_a_recertification"
+        ],
+        "script": "run_stage24_paper_a_recertification.py"
+      },
+      "name": "stage24gl_identity_quantile"
+    },
+    {
+      "export": {
+        "args": [
+          "--export-bsds",
+          "--variant",
+          "best_single",
+          "--image-dir",
+          "{image_dir}",
+          "--output-dir",
+          "{output_dir}",
+          "--split",
+          "{split}",
+          "--out",
+          "results/local_dev/stage24_paper_a_recertification"
+        ],
+        "script": "run_stage24_paper_a_recertification.py"
+      },
+      "name": "stage24gl_best_single"
+    },
+    {
+      "export": {
+        "args": [
+          "--export-bsds",
+          "--variant",
+          "pair04_logistic",
+          "--image-dir",
+          "{image_dir}",
+          "--output-dir",
+          "{output_dir}",
+          "--split",
+          "{split}",
+          "--out",
+          "results/local_dev/stage24_paper_a_recertification"
+        ],
+        "script": "run_stage24_paper_a_recertification.py"
+      },
+      "name": "stage24gl_pair04_logistic"
+    },
+    {
+      "export": {
+        "args": [
+          "--export-bsds",
+          "--variant",
+          "pair04_weighted",
+          "--image-dir",
+          "{image_dir}",
+          "--output-dir",
+          "{output_dir}",
+          "--split",
+          "{split}",
+          "--out",
+          "results/local_dev/stage24_paper_a_recertification"
+        ],
+        "script": "run_stage24_paper_a_recertification.py"
+      },
+      "name": "stage24gl_pair04_weighted"
+    }
+  ],
+  "schema_version": 1,
+  "split": "val",
+  "warning": "Development validation only; reference reproduction must be verified externally."
+}
