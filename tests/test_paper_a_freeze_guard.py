@@ -23,7 +23,10 @@ def case():
         "inference":{"multiplicity":"Holm two hypotheses","permutations":100000},
         "freeze_commit": None,
     }
-    recipe = {"schema": "paper_a_h1h2_recipe_P0_1", "hypotheses":[
+    recipe = {"schema": "paper_a_h1h2_recipe_P1_fitted_development",
+              "development_GT_and_cached_maps_read":True,
+              "no_scientific_artifacts_or_outcomes_read":False,
+              "hypotheses":[
         {"id":"H1","group":["a","b"],"membership":{"midpoint":[0,0],"scale":[1,1]},
          "candidate":{"threshold":0.3},"control":{"threshold":0.4}},
         {"id":"H2","group":["a","b","c"],"membership":{"midpoint":[0,0,0],"scale":[1,1,1]},
@@ -88,6 +91,17 @@ class FreezeSafetyTests(unittest.TestCase):
     def test_ancestry_fails(self):
         p,r,a,c,h=case()
         self.assertTrue(check_freeze(p,r,a,c,h,lambda _:False))
+
+
+    def test_disallow_false_GT_free_claim_in_fitted_recipe(self):
+        p,r,a,c,h=case()
+        r["no_scientific_artifacts_or_outcomes_read"]=True
+        self.assertTrue(check_freeze(p,r,a,c,h,lambda _:True))
+
+    def test_reject_old_metadata_only_P0_1_as_fitted(self):
+        p,r,a,c,h=case()
+        r["schema"]="paper_a_h1h2_recipe_P0_1"
+        self.assertTrue(check_freeze(p,r,a,c,h,lambda _:True))
 
 
 if __name__ == "__main__":
