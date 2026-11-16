@@ -149,6 +149,9 @@ def prepare() -> dict:
         "reviewed_cohort_sheet_sha256":sha(reviewed) if reviewed.is_file() else None,
         "reviewed_P1_recipe_sha256":sha(P1),
         "approved_executor_source_sha256":sha(EXECUTOR),
+        "approved_runtime_sources_sha256":__import__(
+            "paper_a_freeze_guard",fromlist=["runtime_source_hashes"]
+        ).runtime_source_hashes(ROOT),
         "stage13c_summary_sha256":None,
     }
     stage=ROOT/"results/automation/stage13c_biped_preflight/summary.json"
@@ -165,7 +168,8 @@ def prepare() -> dict:
                 "reviewed_frozen_protocol_preview_sha256",
                 "reviewed_cohort_sheet_sha256",
                 "reviewed_P1_recipe_sha256",
-                "approved_executor_source_sha256")):
+                "approved_executor_source_sha256",
+                "approved_runtime_sources_sha256")):
             backup=TEMPLATE.with_name(TEMPLATE.stem+"_SUPERSEDED_"+
                 hashlib.sha256(TEMPLATE.read_bytes()).hexdigest()[:12]+".json")
             if not backup.exists():
@@ -232,7 +236,10 @@ def validate_signed_decision(decision: dict, sheet: list[dict],
         "reviewed_frozen_protocol_preview_sha256":sha(preview),
         "reviewed_cohort_sheet_sha256":sha(sheet_path),
         "reviewed_P1_recipe_sha256":sha(source_recipe),
-        "approved_executor_source_sha256":sha(executor)}
+        "approved_executor_source_sha256":sha(executor),
+        "approved_runtime_sources_sha256":__import__(
+            "paper_a_freeze_guard",fromlist=["runtime_source_hashes"]
+        ).runtime_source_hashes(ROOT)}
     if stage.is_file():
         required["stage13c_summary_sha256"]=sha(stage)
     for key,val in required.items():
@@ -304,6 +311,9 @@ def version_freeze_evidence(recipe: Path, cohort: Path,
         "external_signed_decision_sha256":sha(SIGNED),
         "external_review_sheet_sha256":sha(sheet_path),
         "executor_source_sha256":sha(EXECUTOR),
+        "approved_runtime_sources_sha256":__import__(
+            "paper_a_freeze_guard",fromlist=["runtime_source_hashes"]
+        ).runtime_source_hashes(ROOT),
         "stage13c_summary_sha256":sha(stage) if stage.is_file() else None,
         "reviewed_utc":decision["approved_utc"],
         "no_GT_opened_by_freeze_step":True,
@@ -381,6 +391,7 @@ def issue_approval_after_remote_freeze(decision: dict, sheet_path: Path,
         "recipe_sha256":sha(recipe),
         "scientific_approvals":{k:True for k in APPROVALS},
         "approved_executor_source_sha256":sha(EXECUTOR),
+        "approved_runtime_sources_sha256":decision["approved_runtime_sources_sha256"],
         "executor_contract_independently_reviewed":True,
         "gt_binary_decoding_contract":BIN_POLICY,
         "review_notes":decision["review_notes"],
@@ -463,7 +474,8 @@ def resume_freeze_after_interrupted_push() -> dict:
     manifest_blockers=verify_versioned_freeze_inputs(
         ROOT, PROTOCOL, recipe, cohort, {"review_decision_sha256":sha(SIGNED),
         "review_sheet_sha256":sha(sheet_path),
-        "approved_executor_source_sha256":sha(EXECUTOR)})
+        "approved_executor_source_sha256":sha(EXECUTOR),
+        "approved_runtime_sources_sha256":decision["approved_runtime_sources_sha256"]})
     if manifest_blockers:
         raise PermissionError("Review evidence changed during recovery: "+"; ".join(manifest_blockers))
     git("push","origin",BRANCH)

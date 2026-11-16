@@ -23,6 +23,65 @@ SHA = re.compile(r"^[0-9a-f]{64}$")
 GIT_SHA = re.compile(r"^[0-9a-f]{40}$")
 COLUMNS = ("dataset", "image_id", "relative_path", "image_sha256",
            "independence_review", "prior_exposure_review", "scene_group", "notes")
+
+# Freeze the actual inference/evaluation dependency closure, not just the
+# entrypoint. Each SHA binds the exact REVIEWED local source bytes. Differences
+# in runtime code after the freeze must block protected GT access.
+RUNTIME_SOURCES = (
+    "scripts/execute_paper_a_frozen_cohort.py",
+    "scripts/analyze_paper_a_confirmed.py",
+    "scripts/resume_paper_a_confirmation.py",
+    "scripts/finish_paper_a.py",
+    "scripts/paper_a_freeze_guard.py",
+    "scripts/continuar_paper_a.py",
+    "scripts/freeze_paper_a_from_independent_review.py",
+    "src/paper_a_prefreeze_map_adapter.py",
+    "src/paper_a_h1h2_inference_core.py",
+    "src/paper_a_confirmation_paired_f1.py",
+    "src/stage23_descriptors.py",
+    "src/stage24_integrity.py",
+    "src/stage24_strict_generalized_cf1f2.py",
+    "src/stage24_recertification_ops.py",
+    "src/stage24_recertification_cv.py",
+    "src/stage24_residual.py",
+    "src/postprocess.py",
+)
+
+
+def runtime_source_hashes(repo: Path) -> dict[str, str]:
+    result={}
+    for relative in RUNTIME_SOURCES:
+        source=repo/relative
+        if (not source.is_file() or source.is_symlink() or
+                not source.resolve().is_relative_to(repo.resolve()) or
+                source.stat().st_size>4_000_000):
+            raise ValueError("Unsafe or missing runtime source: "+relative)
+        result[relative]=sha256(source)
+    return result
+
+
+def check_commit_blob_integrity(repo: Path, commit: str,
+                                paths: tuple[str, ...]) -> list[str]:
+    """Confirm versioned freeze metadata really belongs to freeze_commit."""
+    if not ancestor(repo,commit):
+        return ["Freeze commit is not a verified Git ancestor"]
+    problems=[]
+    for relative in paths:
+        source=repo/relative
+        if not source.is_file() or source.is_symlink():
+            problems.append("Missing freeze-versioned metadata: "+relative)
+            continue
+        p=subprocess.run(["git","show",f"{commit}:{relative}"],
+            cwd=repo,capture_output=True,check=False,timeout=40)
+        if p.returncode or len(p.stdout)>4_000_000:
+            problems.append("Frozen Git commit lacks metadata: "+relative)
+            continue
+        # Git may normalize CRLF to LF when committing on Windows.
+        normalize=lambda b:b.replace(b"\r\n",b"\n")
+        if normalize(source.read_bytes())!=normalize(p.stdout):
+            problems.append("Working tree differs from committed freeze metadata: "+relative)
+    return problems
+
 REQUIRED_APPROVALS = (
     "training_lineage",
     "capacity_and_thresholds",
@@ -297,6 +356,30 @@ def verify_versioned_freeze_inputs(repo: Path, protocol: Path,
             problems.append("Versioned freeze evidence mismatch: "+key)
     if data.get("no_GT_opened_by_freeze_step") is not True:
         problems.append("Freeze provenance does not attest outcome lock")
+    reviewed_runtime=approval.get("approved_runtime_sources_sha256")
+    if (not isinstance(reviewed_runtime,dict) or
+            set(reviewed_runtime)!=set(RUNTIME_SOURCES)):
+        problems.append("Independent runtime module review hash list incomplete")
+    else:
+        if data.get("approved_runtime_sources_sha256")!=reviewed_runtime:
+            problems.append("Git-versioned and approved runtime sources disagree")
+        try:
+            actual=runtime_source_hashes(repo)
+        except ValueError as exc:
+            problems.append(str(exc))
+        else:
+            if actual!=reviewed_runtime:
+                problems.append("Runtime source SHA changed after scientific review")
+    pinned=approval.get("freeze_commit")
+    if isinstance(pinned,str) and GIT_SHA.fullmatch(pinned):
+        problems.extend(check_commit_blob_integrity(repo,pinned,(
+            "docs/paper_a_confirmation/protocol.json",
+            "docs/paper_a_confirmation/FROZEN_FREEZE_INPUTS_MANIFEST.json",
+            "docs/paper_a_confirmation/FROZEN_H1_H2_RECIPE_P1.json",
+            "docs/paper_a_confirmation/FROZEN_COHORT_IDS_PUBLIC.csv",
+        )))
+    else:
+        problems.append("No valid commit binding for frozen metadata")
     return problems
 
 
