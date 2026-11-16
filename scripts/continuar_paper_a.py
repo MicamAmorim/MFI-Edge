@@ -232,6 +232,8 @@ def one_shot() -> dict:
         info["steps"]["cohort_proposal"] = propose_review_cohort()
         from revisar_paper_a_pre_freeze import create_dossier
         info["steps"]["scientific_review"] = create_dossier()
+        from prepare_paper_a_final_signoff import run as prepare_review
+        info["steps"]["signoff_readiness"] = prepare_review()
     else:
         info["steps"]["cohort_proposal"] = {
             "status": "SKIPPED_AFTER_DRAFT_NO_FROZEN_ARTIFACT_CHANGES"}

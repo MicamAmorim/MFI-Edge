@@ -95,3 +95,20 @@ O ZIP contém somente CSV/JSON/Markdown listados explicitamente no código
 parecer e relatório de gates). Nunca contém imagens originais, arquivos
 GT, HDF5, TAR, máscaras, descritores nem métricas confirmatórias. Pode
 ser anexado para um revisor checar históricos/linhagens sem acessar GT.
+
+
+## Folha de revisão científica e rastreio Stage13c
+
+No mesmo comando PowerShell, enquanto o protocolo estiver em
+\`draft_not_frozen\`, o controlador também escreve:
+
+- \`F:\MFI-Edge-Data\MultiCue\paper_a_completion\scientific_signoff\REVIEW_220_IMAGES_PENDING.csv\`
+- \`F:\MFI-Edge-Data\MultiCue\paper_a_completion\scientific_signoff\REVIEWER_DECISION_REQUIRED.md\`
+- \`F:\MFI-Edge-Data\MultiCue\paper_a_completion\scientific_signoff\SIGNOFF_READINESS_NOT_APPROVAL.json\`
+
+A planilha preserva as decisões do revisor em reruns, valida que os 220
+originais/hash não foram substituídos e não aprova nenhuma linha.
+O relatório verifica a existência do resumo Stage13c somente por metadados.
+Na ausência de logs, mantém a pendência aberta; jamais declara
+independência/ausência de exposição. O review ZIP inclui os três arquivos
+(captura estática, antes da primeira leitura de dados confirmatórios).

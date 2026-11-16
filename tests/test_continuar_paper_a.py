@@ -41,6 +41,12 @@ class OneCommandTests(unittest.TestCase):
         self.assertIn("validate_inventory", src)
         self.assertNotIn("Image.open", src)
 
+    def test_review_packet_only_pre_freeze(self):
+        import inspect
+        src=inspect.getsource(app.one_shot)
+        self.assertIn("prepare_paper_a_final_signoff",src)
+        self.assertIn('if protocol_status == "draft_not_frozen":',src)
+
     def test_review_bundle_is_only_after_existing_science_gate_reports(self):
         import inspect
         src = inspect.getsource(app.one_shot)
