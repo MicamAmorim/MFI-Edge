@@ -107,5 +107,32 @@ class PreGTAdapterTests(unittest.TestCase):
             np.testing.assert_array_equal(out.predictions[k].control,direct[k].control)
         self.assertEqual(json.dumps(RECIPE,sort_keys=True),before)
 
+class SyntheticPreflightFixtureTests(unittest.TestCase):
+    def test_rich_synthetic_image_deterministic(self):
+        from scripts.preflight_paper_a_prefreeze_map_adapter import synthetic_original
+        a, b = synthetic_original(), synthetic_original()
+        self.assertEqual(a.shape, (160, 192, 3))
+        self.assertEqual(a.dtype, np.float32)
+        np.testing.assert_array_equal(a, b)
+        self.assertGreater(float(a.max() - a.min()), 0.8)
+
+    def test_descriptor_diagnostics_report_constant_map(self):
+        from scripts.preflight_paper_a_prefreeze_map_adapter import descriptor_statistics
+        data = descriptor_statistics(np.zeros((24, 26), np.float32))
+        self.assertEqual(data["std"], 0.0)
+        self.assertEqual(data["unique_values"], 1)
+
+    def test_still_rejects_true_h2_constant_map(self):
+        from src.paper_a_h1h2_inference_core import preoutcome_features
+        img = np.zeros((40, 40, 3), dtype=np.float32)
+        from scripts.preflight_paper_a_prefreeze_map_adapter import synthetic_original
+        base = synthetic_original()
+        self.assertGreater(float(base.std()), 0)
+        maps = {name:generated(name,img) for name in DESCRIPTORS}
+        maps["fh_region_boundary"] = np.zeros((40, 40), np.float32)
+        with self.assertRaises(ValueError):
+            preoutcome_features(maps)
+
+
 if __name__=="__main__":
     unittest.main()

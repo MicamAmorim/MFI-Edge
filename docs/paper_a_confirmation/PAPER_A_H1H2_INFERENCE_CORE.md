@@ -60,3 +60,32 @@ if ($LASTEXITCODE -ne 0) { throw "Falha no core H1/H2" }
 
 **Não confundir:** implementação da inferência GT-free não certifica GT,
 N, independência amostral nem estatística; não é resultado científico.
+
+## Correção do preflight real Stage23 (16/11/2026)
+
+A primeira execução no PC passou nos 9 testes sintéticos do adaptador, mas
+`--real-stage23` falhou em `Constant/degenerate X2 descriptor correlation`
+sobre uma imagem artificial de 48 × 52 pixels. Isso não é um resultado de
+BIPED/MultiCue nem prova um defeito de H2: o estimador Pearson é
+matematicamente indefinido se um dos três mapas é constante.
+
+A fixture do **teste**, e somente ela, foi substituída por uma imagem RGB
+sintética determinística de 160 × 192 pixels, com várias regiões e textura.
+O preflight agora imprime mínimo/máximo, média/desvio, quantidade de
+valores únicos e número de pixels não nulos **por descritor**.
+O método científico não foi alterado: um verdadeiro X2 indefinido
+continua abortando, sem atribuir correlação zero nem escolher outro operador.
+
+Executar:
+
+```powershell
+git pull --ff-only origin experiment/paper-a-conditional-confirmation
+.\.venv\Scripts\python.exe .\tests\test_paper_a_prefreeze_map_adapter.py
+if ($LASTEXITCODE -ne 0) { throw "Falha nos testes" }
+.\.venv\Scripts\python.exe .\scripts\preflight_paper_a_prefreeze_map_adapter.py --real-stage23
+if ($LASTEXITCODE -ne 0) { throw "Diagnostico Stage23 pendente; enviar saida JSON" }
+```
+
+Se o preflight ainda falhar, ler os diagnósticos de todos os descritores
+antes de modificar o pipeline; não relaxar o contrato de Pearson ou
+ajustar limiares sem decisão científica pré-freeze.
