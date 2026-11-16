@@ -415,3 +415,12 @@ Há cache de SIFT por SHA-256 e checkpoints por referência para evitar
 reprocessamento. O teste com imagens sintéticas é
 `python .\tests\test_paper_a_multicue_all_uded_geometry.py`.
 Documentação: [`MULTICUE_ALL_UDED_GEOMETRY_SCREEN_20261115.md`](MULTICUE_ALL_UDED_GEOMETRY_SCREEN_20261115.md).
+
+## Revisão de 25 alertas SIFT da UDED histórica
+
+A execução concluiu 2.700 comparações, sinalizando **25 pares**, dos quais
+apenas `09-MDBD-1C` ↔ `4113_left_0082` tem identidade de cena confirmada.
+Novos alertas não são exclusões; as pranchas de 25 pares são geradas por
+`python .\scripts\render_paper_a_multicue_uded_overlap_review.py` no F:
+sem repetir SIFT/GT/F1. Ver
+[`MULTICUE_ALL_UDED_GEOMETRY_RESULT_20261115.md`](MULTICUE_ALL_UDED_GEOMETRY_RESULT_20261115.md).
