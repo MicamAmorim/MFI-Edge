@@ -121,6 +121,7 @@ def verified_nonconfirmatory_gt_v2_evidence(
     original=json.loads(fmt.read_text(encoding="utf-8"))
     observed=json.loads(detail.read_text(encoding="utf-8"))
     if (original.get("schema_version") != 1 or
+            original.get("status") != "GT_FORMAT_SAMPLE_OBSERVED_NOT_INDEPENDENTLY_CERTIFIED" or
             original.get("only_nonconfirmatory_GT_opened") is not True or
             original.get("protected_confirmatory_GT_opened") is not False or
             original.get("confirmation_F1_computed") is not False or
@@ -131,6 +132,8 @@ def verified_nonconfirmatory_gt_v2_evidence(
             observed.get("status") != "NONCONFIRMATORY_GT_PIXEL_ENCODING_DETAIL_NOT_CERTIFIED" or
             observed.get("confirmatory_GT_accessed") is not False or
             observed.get("F1_computed") is not False or
+            observed.get("excluded_capture_only") is not True or
+            observed.get("no_threshold_selected") is not True or
             observed.get("requires_independent_encoding_review") is not True or
             observed.get("sample_counts") != {"BIPED_test":3,"MultiCue_excluded_4113":12}):
         raise PermissionError("Nonconfirmatory GT evidence is incomplete or mismatched")
