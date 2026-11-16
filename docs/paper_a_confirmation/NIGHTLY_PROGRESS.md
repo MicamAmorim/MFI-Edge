@@ -4,7 +4,7 @@
 
 - Latest technical audit: TECHNICAL_AUDITS_OK_SCIENTIFIC_GATES_STILL_OPEN
 - Verified development cache hashes: 56/56.
-- Detailed audit JSON: F:\MFI-Edge-Data\MultiCue\paper_a_prefreeze_combined_audit\prefreeze_20261116T023048_128697Z.json
+- Detailed audit JSON: F:\MFI-Edge-Data\MultiCue\paper_a_prefreeze_combined_audit\prefreeze_20261116T023522_659579Z.json
 - Codex invocations: 1
 - GT/H5/F1 confirmation opened: NO.
 - Research protocols frozen: NO (draft_not_frozen).
