@@ -306,7 +306,22 @@ def generate(*, biped=BIPED, multicue=MULTICUE, output=OUT,
         reused=False
     # User-editable answers live in localStorage / explicit downloads, never
     # in generated HTML. Refresh frontend without removing any browser answers.
-    present={**data,"items":images}
+    # On both fresh and reused builds, rehydrate complete source and cohort
+    # metadata. The slim manifest alone is not the UI's data model.
+    by_thumb={(r["dataset"],r["id"]):r for r in images}
+    browser_items=[]
+    for row in data["items"]:
+        cached=by_thumb.get((row["dataset"],row["id"]))
+        if cached is None or cached["original_sha256"]!=row["sha256"]:
+            raise RuntimeError("Review image/manifest identity drift")
+        source_path=original_source(row,biped,multicue)
+        browser_items.append({
+            **row,
+            "thumbnail":cached["thumbnail"],
+            "thumbnail_sha256":cached["thumbnail_sha256"],
+            "original_href":source_path.as_uri(),
+        })
+    present={**data,"items":browser_items}
     raw_json=json.dumps(present,ensure_ascii=False,separators=(",",":")).replace("<","\\u003c")
     html_source=(frontend/"index.template.html").read_text(encoding="utf-8")
     if html_source.count("__REVIEW_DATA_JSON__")!=1:
