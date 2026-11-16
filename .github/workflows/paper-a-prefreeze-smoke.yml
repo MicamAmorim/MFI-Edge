@@ -75,6 +75,11 @@ jobs:
         run: |
           python -m py_compile scripts/freeze_paper_a_from_independent_review.py
           python tests/test_freeze_paper_a_from_independent_review.py
+      - name: One-command Codex runner and excluded GT format synthetic tests
+        run: |
+          python -m py_compile scripts/paper_a_codex_finalizer.py scripts/paper_a_nonconfirmatory_gt_format.py
+          python tests/test_paper_a_codex_finalizer.py
+          python tests/test_paper_a_nonconfirmatory_gt_format.py
       - name: Build package without scientific data
         run: python scripts/package_paper_a_repro.py --outdir dist
       - name: Preserve baseline preconfirmatory manuscript and ZIP

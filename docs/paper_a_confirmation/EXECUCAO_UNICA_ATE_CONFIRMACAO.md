@@ -189,3 +189,37 @@ O guard valida os hashes contra os arquivos congelados no F: antes de qualquer G
 ### Retomada e testes após publicação
 
 O executor recupera tentativas interrompidas de publicação de freeze mediante a mesma decisão externa e comparação de SHA dos arquivos de revisão e do commit Git. Após o freeze, os testes específicos do rascunho deixam de ser exigidos; o guard continua obrigatório. A pipeline CI também não exige a presença de protocolo draft quando o status estiver corretamente congelado.
+
+
+## Chamada única de conclusão assistida por Codex
+
+O script \`scripts/concluir_paper_a.ps1\` agora chama
+\`scripts/paper_a_codex_finalizer.py\` em vez de invocar o controlador
+diretamente. Este executa o pipeline já validado uma vez e:
+
+- Se houver um freeze independente válido, executa as avaliações reais
+  e o teste H1/H2 com as verificações do controlador existente.
+- Se ainda houver bloqueios, executa uma vez a verificação do formato de
+  GT apenas sobre **amostras não confirmatórias**: GT BIPED **test**
+  (a coorte de confirmação proposta usa BIPED train) e anotações
+  \`edges\` do grupo MultiCue \`4113\` (explicitamente excluído do
+  desenho). **Nunca abre GT dos 125+95**.
+  A primeira análise pode ler o arquivo MultiCue TAR de ~3,5 GB;
+  execuções futuras reaproveitam
+  \`scientific_signoff/NONCONFIRMATORY_GT_ENCODING_EVIDENCE.json\`.
+- Se o executável \`codex\` estiver disponível e autenticado, roda até
+  **duas auditorias iterativas** em \`codex exec --sandbox read-only\`.
+  Cada rodada recebe o diagnóstico anterior e o primeiro relatório.
+  A IA não pode criar \`PASS\`, se autoassinar, alterar o protocolo,
+  recalibrar com GT, computar resultados protegidos ou editar código.
+  A saída é \`codex_final_audit/codex_round_1_final.md\` e
+  \`codex_round_2_final.md\` (quando Codex estiver disponível).
+- Em todos os casos registra o JSON
+  \`paper_a_completion/FINAL_ONE_COMMAND_REPORT.json\` com caminhos,
+  erros e bloqueios.
+
+O comando **não dispensa a revisão humana independente** das 220
+cenas, dos parâmetros P1 e da semântica de GT. Se estiver ausente,
+a execução produzirá um NO-GO explícito, não resultados H1/H2
+inventados. Sem Codex instalado, a execução científica permanece
+determinística e gera relatório de indisponibilidade do agente.

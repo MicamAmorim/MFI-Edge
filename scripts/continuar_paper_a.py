@@ -44,6 +44,8 @@ TESTS = (
     "test_export_paper_a_review_bundle.py",
     "test_prepare_paper_a_final_signoff.py",
     "test_freeze_paper_a_from_independent_review.py",
+    "test_paper_a_codex_finalizer.py",
+    "test_paper_a_nonconfirmatory_gt_format.py",
 )
 
 

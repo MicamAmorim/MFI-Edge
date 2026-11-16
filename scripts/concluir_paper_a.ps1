@@ -12,10 +12,12 @@ if (-not $SkipUpdate) {
 }
 $python = Join-Path $repo ".venv\Scripts\python.exe"
 if (-not (Test-Path $python)) { throw "Python da venv nao encontrado: $python" }
-& $python -u "scripts\continuar_paper_a.py"
+& $python -u "scripts\paper_a_codex_finalizer.py"
 $code = $LASTEXITCODE
 Write-Host "Resumo em F:\MFI-Edge-Data\MultiCue\paper_a_completion\ONE_COMMAND_STATUS.json"
 Write-Host "Pendencias em F:\MFI-Edge-Data\MultiCue\paper_a_completion\NEXT_ACTIONS.md"
 Write-Host "Revisao: F:\MFI-Edge-Data\MultiCue\paper_a_completion\scientific_signoff\REVIEWER_DECISION_REQUIRED.md"
 Write-Host "Pacote unico: F:\MFI-Edge-Data\MultiCue\paper_a_completion\PaperA_PRE_FREEZE_REVIEW_ONLY.zip"
+Write-Host "Relatorio final: F:\MFI-Edge-Data\MultiCue\paper_a_completion\FINAL_ONE_COMMAND_REPORT.json"
+Write-Host "Auditoria Codex: F:\MFI-Edge-Data\MultiCue\paper_a_completion\codex_final_audit"
 if ($code -ne 0) { throw "Erro tecnico: ver ONE_COMMAND_ERROR.json no F:" }
