@@ -137,7 +137,7 @@ def audit_index(manifest: dict, rows: list[dict], cache_root: Path) -> dict:
             elif len(hits) == 1:
                 sidecar, meta = hits[0]
                 status, _ = validate_sidecar(meta, image, prior_entry["sha256"])
-                if isinstance(meta.get("identity"), dict) and meta["identity"].get("descriptor_id") != descriptor:
+                if isinstance(meta, dict) and isinstance(meta.get("identity"), dict) and meta["identity"].get("descriptor_id") != descriptor:
                     status = "WRONG_DESCRIPTOR_ID"
                 npy = sidecar.with_suffix(".npy")
                 if npy.is_symlink() or not npy.resolve().is_relative_to(cache_root.resolve()):
