@@ -23,6 +23,8 @@ class ReviewBundleTests(unittest.TestCase):
                 ("work", "scientific_signoff/GT_PIXEL_ENCODING_DETAIL_PRE_FREEZE_v1.json"),
             "review/signoff/GT_PIXEL_ENCODING_REVIEW_REQUIRED.md":
                 ("work", "scientific_signoff/GT_PIXEL_ENCODING_REVIEW_REQUIRED.md"),
+            "science/GT_PIXEL_ENCODING_PROSPECTIVE_v2_NOT_APPROVED.md":
+                ("root", "docs/paper_a_confirmation/GT_PIXEL_ENCODING_PROSPECTIVE_v2_NOT_APPROVED.md"),
             "science/PARECER_CODEX_DUPLA_AUDITORIA_20261116.md":
                 ("root", "docs/paper_a_confirmation/PARECER_CODEX_DUPLA_AUDITORIA_20261116.md"),
         }
