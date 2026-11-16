@@ -28,28 +28,57 @@ class FrozenExecutorTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 task.safe_name(path)
 
-    def test_strict_binary_gt(self):
+    def test_biped_native_gt_v2_exact_254_255(self):
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp) / "gt.png"
-            a = np.zeros((12, 13), dtype=np.uint8)
-            a[4:6, 6:8] = 255
+            a = np.zeros((12,13),dtype=np.uint8)
+            a[2,3],a[4,5],a[1,1]=254,255,255
             Image.fromarray(a).save(p)
-            mask = task.binary_annotation(p, (12, 13))
-            self.assertEqual(mask.dtype, bool)
-            self.assertEqual(int(mask.sum()), 4)
-            a[2, 2] = 127
+            mask=task.binary_annotation(p,(12,13),dataset="BIPED")
+            self.assertEqual(mask.dtype,bool)
+            self.assertEqual(int(mask.sum()),3)
+            self.assertTrue(mask[2,3])
+            a[0,0]=128
             Image.fromarray(a).save(p)
             with self.assertRaises(ValueError):
-                task.binary_annotation(p, (12, 13))
+                task.binary_annotation(p,(12,13),dataset="BIPED")
 
-    def test_no_implicit_resize(self):
+    def test_multicue_native_uint16_gt_v2(self):
         with tempfile.TemporaryDirectory() as tmp:
-            p = Path(tmp) / "gt.png"
-            a = np.zeros((12, 13), dtype=np.uint8)
-            a[0, 0] = 1
+            p=Path(tmp)/"gt.png"
+            a=np.zeros((12,13),dtype=np.uint16)
+            a[5,4]=65535
+            Image.fromarray(a).save(p)
+            m=task.binary_annotation(p,(12,13),dataset="MultiCue")
+            self.assertTrue(m[5,4])
+            self.assertEqual(int(m.sum()),1)
+            with self.assertRaises(ValueError):
+                task.binary_annotation(p,(12,13),dataset="BIPED")
+            a[2,2]=65534
             Image.fromarray(a).save(p)
             with self.assertRaises(ValueError):
-                task.binary_annotation(p, (10, 10))
+                task.binary_annotation(p,(12,13),dataset="MultiCue")
+
+    def test_reject_implicit_resize_unknown_dataset_rgb_and_constant_gt(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            p=Path(tmp)/"gt.png"
+            a=np.zeros((12,13),dtype=np.uint8)
+            a[0,0]=255
+            Image.fromarray(a).save(p)
+            for kw in ({}, {"dataset":"Wrong"}, {"dataset":"MultiCue"}):
+                with self.subTest(kw=kw),self.assertRaises((ValueError,TypeError)):
+                    task.binary_annotation(p,(12,13),**kw)
+            with self.assertRaises(ValueError):
+                task.binary_annotation(p,(10,10),dataset="BIPED")
+            for constant in (0,255):
+                Image.fromarray(np.full((12,13),constant,dtype=np.uint8)).save(p)
+                with self.assertRaises(ValueError):
+                    task.binary_annotation(p,(12,13),dataset="BIPED")
+            rgb=np.zeros((12,13,3),dtype=np.uint8)
+            rgb[0,0,:]=255
+            Image.fromarray(rgb).save(p)
+            with self.assertRaises(ValueError):
+                task.binary_annotation(p,(12,13),dataset="BIPED")
 
     def test_frozen_guard_blocks_before_any_dataset_read(self):
         with patch("paper_a_freeze_guard.validate_files",
