@@ -511,3 +511,13 @@ uma referência, se validada. **Nomes não certificam conteúdo.**
 Contrato e decisões ainda não congeladas:
 [`GT_EDGES_MULTIANNOTATOR_CONTRACT_PROPOSAL.md`](GT_EDGES_MULTIANNOTATOR_CONTRACT_PROPOSAL.md).
 Checagem sem GT: `python .\scripts\check_paper_a_multicue_gt_task_names.py`.
+
+## Teste sintético do contrato de F1 multi-anotador (pré-freeze)
+
+Ver [`PAIRED_F1_SYNTHETIC_CONTRACT_PROPOSAL.md`](PAIRED_F1_SYNTHETIC_CONTRACT_PROPOSAL.md).
+O módulo [`src/paper_a_confirmation_paired_f1.py`](../../src/paper_a_confirmation_paired_f1.py)
+avalia máscaras booleanas sintéticas com 1 GT BIPED ou 6 GT MultiCue
+em matching exato um-a-um, sem unir GTs nem multiplicar N. Rejeita
+conversões 3D e uint8 implícitas e máscaras de geometria diferente.
+Executar `python .\tests\test_paper_a_paired_f1_contract.py`.
+**Não abrir GT de coorte real por este módulo antes do freeze.**
