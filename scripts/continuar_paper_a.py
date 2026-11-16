@@ -1,0 +1,215 @@
+#!/usr/bin/env python3
+"""One resumable Paper A command. No protected GT before signed freeze.
+
+Runs available predata audits/checks once, reuses development and MultiCue
+evidence, then invokes the existing fail-closed finish_paper_a controller.
+Never reruns descriptor maps, dev fit, image matching or dataset downloads.
+"""
+from __future__ import annotations
+import csv
+import hashlib
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+import subprocess
+import sys
+import traceback
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+WORK = Path(r"F:\MFI-Edge-Data\MultiCue\paper_a_completion")
+MULTICUE = Path(r"F:\MFI-Edge-Data\MultiCue")
+DATA = ROOT / "results/local_dev/paper_a_confirmation_inventory"
+INV = DATA / "biped_candidates_P1_20261116.csv"
+AUDIT = DATA / "predata_audit/candidate_review.csv"
+DEDUP = DATA / "predata_audit/biped_train_after_visual_dedup_candidates.csv"
+DEDUP_META = DATA / "predata_audit/visual_dedup_summary.json"
+DECISIONS = ROOT / "docs/paper_a_confirmation/visual_duplicate_decisions.csv"
+TESTS = (
+    "test_paper_a_prefreeze_map_adapter.py",
+    "test_paper_a_multicue_gt_task_names.py",
+    "test_paper_a_paired_f1_contract.py",
+    "test_paper_a_freeze_guard.py",
+    "test_analyze_paper_a_confirmed.py",
+)
+
+
+def hash_file(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(1048576), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def csv_rows(path: Path) -> list[dict]:
+    with path.open(encoding="utf-8-sig", newline="") as f:
+        return list(csv.DictReader(f))
+
+
+def run(label: str, arguments: list[str], timeout: int = 1800) -> None:
+    log = WORK / "one_command_logs" / (label + ".log")
+    log.parent.mkdir(parents=True, exist_ok=True)
+    print("[RUN]", label, flush=True)
+    with log.open("w", encoding="utf-8", errors="replace") as f:
+        p = subprocess.run(arguments, cwd=ROOT, stdout=f,
+                           stderr=subprocess.STDOUT, timeout=timeout, check=False)
+    if p.returncode:
+        raise RuntimeError(label + " failed (exit " + str(p.returncode) +
+                           "). See " + str(log))
+    print("[OK]", label, flush=True)
+
+
+def checkout() -> str:
+    for args, expectation in [
+        (["branch", "--show-current"], "experiment/paper-a-conditional-confirmation"),
+    ]:
+        p = subprocess.run(["git", *args], cwd=ROOT, check=True,
+                           capture_output=True, text=True, timeout=60)
+        if p.stdout.strip() != expectation:
+            raise RuntimeError("Wrong Git branch: " + p.stdout.strip())
+    state = subprocess.run(["git", "status", "--porcelain", "--untracked-files=no"],
+                           cwd=ROOT, check=True, capture_output=True,
+                           text=True, timeout=60).stdout.strip()
+    if state:
+        raise RuntimeError("Tracked files modified, no automatic overwrite: " + state)
+    return subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, check=True,
+                          capture_output=True, text=True, timeout=60).stdout.strip()
+
+
+def validate_biped() -> dict:
+    original, reviewed = csv_rows(INV), csv_rows(DEDUP)
+    meta = json.loads(DEDUP_META.read_text(encoding="utf-8"))
+    a = {r["image_id"]: r["sha256"].lower() for r in original}
+    b = {r["image_id"]: r["sha256"].lower() for r in reviewed}
+    if (len(original) != 200 or len(a) != 200 or len(reviewed) != 198
+            or len(b) != 198 or set(a) - set(b) != {"RGB_172", "RGB_222"}
+            or any(a.get(k) != sha for k, sha in b.items())
+            or meta.get("remaining_not_certified") != 198
+            or meta.get("audit_csv_sha256") != hash_file(AUDIT)
+            or meta.get("decision_csv_sha256") != hash_file(DECISIONS)
+            or meta.get("excluded_for_sampling") != ["RGB_172", "RGB_222"]
+            or any(r["confirmatory_eligibility"] !=
+                   "PENDING_HISTORICAL_AND_SCENE_LINEAGE_AUDIT"
+                   for r in reviewed)):
+        raise RuntimeError("Historical BIPED 198-image dedup changed; stop")
+    return {"status": "198_CANDIDATES_NOT_CERTIFIED",
+            "reused_csv_sha256": hash_file(DEDUP)}
+
+
+def biped_once() -> dict:
+    root = ROOT / "datasets/BIPEDv2/edges/imgs/train/rgbr/real"
+    if not INV.exists():
+        run("biped_inventory", [
+            sys.executable, str(ROOT / "scripts/inventory_paper_a_confirmation_images.py"),
+            "--dataset", "BIPEDv2_train=" + str(root), "--out", str(INV)])
+    if not AUDIT.exists():
+        run("biped_audit", [
+            sys.executable, str(ROOT / "scripts/audit_paper_a_confirmation_predata.py"),
+            "--inventory", str(INV)], timeout=2400)
+    if not DEDUP.exists() and not DEDUP_META.exists():
+        run("biped_dedup", [
+            sys.executable, str(ROOT / "scripts/apply_paper_a_visual_dedup.py"),
+            "--audit", str(AUDIT)])
+    result = validate_biped()
+    print("[REUSE] 198 BIPED candidates, no GT", flush=True)
+    return result
+
+
+def multicue_metadata() -> dict:
+    from check_paper_a_multicue_gt_task_names import validate_inventory
+    result = validate_inventory(MULTICUE)
+    if (result.get("status") != "TASK_GT_NAME_LAYOUT_VERIFIED_CONTENT_UNOPENED_NOT_FROZEN"
+            or result.get("sequence_count") != 100
+            or result.get("capture_prefix_count") != 96
+            or result.get("provisional_max_other_prefixes") != 95
+            or result.get("annotation_file_names_by_task") !=
+               {"edges": 600, "boundaries": 500}):
+        raise RuntimeError("MultiCue index not coherent with prior audit")
+    print("[REUSE] 100 sequences, 95 provisional capture groups, no GT", flush=True)
+    return {"status": "95_GROUPS_NOT_CERTIFIED",
+            "archive_sha256": result["archive_sha256"]}
+
+
+def p1_metadata() -> dict:
+    from src.paper_a_h1h2_inference_core import validate_fitted_recipe
+    path = ROOT / "docs/paper_a_confirmation/P1_DEVELOPMENT_RECIPE_UNATTESTED.json"
+    recipe = json.loads(path.read_text(encoding="utf-8"))
+    validate_fitted_recipe(recipe)
+    return {"status": "DEVELOPMENT_RECIPE_VALIDATED_NOT_ATTESTED",
+            "recipe_sha256": hash_file(path)}
+
+
+def find_old_audit() -> bool:
+    from finish_paper_a import audit_exists
+    return audit_exists(checkout()) is not None
+
+
+def one_shot() -> dict:
+    WORK.mkdir(exist_ok=True, parents=True)
+    info = {"schema": "paper_a_one_command_v1",
+            "started_utc": datetime.now(timezone.utc).isoformat(),
+            "git_commit": checkout(), "steps": {},
+            "GT_read_during_prefreeze": False,
+            "scientific_freeze_autoapproved": False,
+            "old_detector_maps_recomputed": False}
+    for name, action in [
+        ("biped", biped_once),
+        ("multicue", multicue_metadata),
+        ("P1", p1_metadata),
+    ]:
+        info["steps"][name] = action()
+    for file in TESTS:
+        run("test_" + file.replace(".py", ""), [
+            sys.executable, str(ROOT / "tests" / file)], timeout=600)
+    run("real_Stage23_synthetic_preflight", [
+        sys.executable, str(ROOT / "scripts/preflight_paper_a_prefreeze_map_adapter.py"),
+        "--real-stage23"], timeout=1200)
+    info["steps"]["synthetic_tests"] = {"status": "ALL_PASSED"}
+    # The existing central controller already signs nothing, verifies freeze
+    # before outcomes, and knows how to run Holm + 100000 permutations.
+    # Reuse a prior validated SHA audit; if absent it creates one safely.
+    options = ["--skip-baseline-zip"]
+    if find_old_audit():
+        options.append("--no-reaudit")
+    run("finish_paper_a_gated", [
+        sys.executable, str(ROOT / "scripts/finish_paper_a.py"), *options],
+        timeout=14400)
+    old = json.loads((WORK / "LAST_STATUS.json").read_text(encoding="utf-8"))
+    info["status"] = old.get("status", "UNSPECIFIED")
+    info["freeze_certified"] = old.get("freeze_certified", False)
+    info["blockers"] = old.get("blockers", [])
+    info["steps"]["existing_completion"] = {
+        "status": info["status"],
+        "source_status_file": str(WORK / "LAST_STATUS.json")}
+    # Preserve existing NEXT_ACTIONS.md from the scientific controller.
+    (WORK / "ONE_COMMAND_STATUS.json").write_text(
+        json.dumps(info, ensure_ascii=False, indent=2), encoding="utf-8")
+    return info
+
+
+def main() -> int:
+    try:
+        result = one_shot()
+    except Exception as exc:
+        WORK.mkdir(parents=True, exist_ok=True)
+        report = {"status": "TECHNICAL_ERROR_NOT_CONFIRMATION",
+                  "error": str(exc),
+                  "traceback": traceback.format_exc()[-2500:],
+                  "no_protected_GT_access_authorized": True}
+        (WORK / "ONE_COMMAND_ERROR.json").write_text(
+            json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(json.dumps(report, ensure_ascii=False, indent=2), flush=True)
+        return 2
+    print(json.dumps({
+        "status": result["status"],
+        "blockers": result["blockers"],
+        "NEXT_ACTIONS": str(WORK / "NEXT_ACTIONS.md"),
+        "ONE_COMMAND_STATUS": str(WORK / "ONE_COMMAND_STATUS.json"),
+        "message": "One-command run finished. Scientific approvals remain human-reviewed.",
+    }, ensure_ascii=False, indent=2), flush=True)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
