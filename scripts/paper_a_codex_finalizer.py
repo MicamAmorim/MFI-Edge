@@ -60,6 +60,9 @@ def capture(label:str,argv:list[str],timeout:int)->dict:
         result={"exit_code":p.returncode,"log_path":str(log)}
     except subprocess.TimeoutExpired:
         result={"exit_code":124,"log_path":str(log),"timeout":True}
+    except OSError as error:
+        result={"exit_code":127,"log_path":str(log),
+                "launch_error":str(error)}
     return result
 
 
