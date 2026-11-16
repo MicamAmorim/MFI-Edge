@@ -376,3 +376,12 @@ Teste sintético (sem tocar datasets):
     python .\tests\test_paper_a_multicue_mdbd_lineage.py
 
 Depois, rodar a ferramenta de revisão normalmente.
+
+## Revisão direcionada MultiCue/UDED 09: status real em 15/11
+
+Após corrigir a chave `id` do desenho de prancha, o teste sintético passou
+e a revisão das 100 imagens finais esquerdas concluiu. Melhor distância
+dHash = 23/64; melhor pHash = 20/63; nenhuma exclusão automática.
+**Não há certificação de não sobreposição entre cenas**: as duas pranchas
+foram geradas, mas ainda não se registrou uma inspeção visual humana.
+Ver [`MULTICUE_UDED09_RANKED_REVIEW_STATUS_20261115.md`](MULTICUE_UDED09_RANKED_REVIEW_STATUS_20261115.md).
