@@ -444,3 +444,13 @@ Antes de confiar em correspondências geométricas, execute os testes
 Ela reaproveita `.npz` de SIFT e confere 25 alertas com matching recíproco
 e dispersão dos inliers, sem decodificar imagens ou abrir GT/F1.
 Ver [`MULTICUE_SIFT_FALSE_POSITIVE_DIAGNOSTICS.md`](MULTICUE_SIFT_FALSE_POSITIVE_DIAGNOSTICS.md).
+
+## Diagnóstico BF e retriagem integral, sem abrir GT/F1
+
+Matching recíproco BF exato preservou 2.100/2.100 inliers do par de
+imagem exposta UDED/MultiCue, mas eliminou os falsos alarmes FLANN mais
+fortes (277, 267, 195 e 131 inliers anteriores → zero).
+Para avaliar 2.675 pares ainda não verificados sem depender de FLANN,
+execute `python .\scripts\rescreen_paper_a_multicue_uded_exact_mutual.py`.
+Retoma por checkpoint no F: e reutiliza os 25 pares já reavaliados.
+Ver [`MULTICUE_EXACT_MUTUAL_FULL_RESCREEN.md`](MULTICUE_EXACT_MUTUAL_FULL_RESCREEN.md).
