@@ -156,7 +156,9 @@ class FreezeSafetyTests(unittest.TestCase):
     def test_git_freeze_manifest_checks_signed_hashes_and_public_copy(self):
         import json
         import tempfile
-        from paper_a_freeze_guard import sha256, verify_versioned_freeze_inputs
+        from unittest.mock import patch
+        from paper_a_freeze_guard import (RUNTIME_SOURCES, sha256,
+            verify_versioned_freeze_inputs)
         with tempfile.TemporaryDirectory() as tmp:
             repo=Path(tmp)
             folder=repo/"docs"/"paper_a_confirmation"
@@ -175,6 +177,8 @@ class FreezeSafetyTests(unittest.TestCase):
                 "review_decision_sha256":"a"*64,
                 "review_sheet_sha256":"b"*64,
                 "approved_executor_source_sha256":"c"*64,
+                "freeze_commit":"b"*40,
+                "approved_runtime_sources_sha256":{p:"d"*64 for p in RUNTIME_SOURCES},
             }
             manifest={
                 "status":"REVIEWED_PRE_GT_CONFIRMATORY_LOCK",
@@ -187,15 +191,29 @@ class FreezeSafetyTests(unittest.TestCase):
                 "external_signed_decision_sha256":approval["review_decision_sha256"],
                 "external_review_sheet_sha256":approval["review_sheet_sha256"],
                 "executor_source_sha256":approval["approved_executor_source_sha256"],
+                "approved_runtime_sources_sha256":approval["approved_runtime_sources_sha256"],
                 "no_GT_opened_by_freeze_step":True,
             }
             (folder/"FROZEN_FREEZE_INPUTS_MANIFEST.json").write_text(
                 json.dumps(manifest),encoding="utf-8")
-            self.assertEqual(
-                verify_versioned_freeze_inputs(repo,protocol,recipe,cohort,approval),[])
-            public.write_text("modified",encoding="utf-8")
-            self.assertTrue(
-                verify_versioned_freeze_inputs(repo,protocol,recipe,cohort,approval))
+            # This synthetic fixture has no Git repository and no real runtime
+            # sources. Mock those boundaries, but validate all real manifests.
+            with patch("paper_a_freeze_guard.runtime_source_hashes",
+                       return_value=approval["approved_runtime_sources_sha256"]), \
+                 patch("paper_a_freeze_guard.check_commit_blob_integrity",
+                       return_value=[]):
+                self.assertEqual(
+                    verify_versioned_freeze_inputs(repo,protocol,recipe,cohort,approval),[])
+                public.write_text("modified",encoding="utf-8")
+                self.assertTrue(
+                    verify_versioned_freeze_inputs(repo,protocol,recipe,cohort,approval))
+                public.write_text("dataset,image_id\nBIPED,RGB_01\n",encoding="utf-8")
+                approval["approved_runtime_sources_sha256"] = {
+                    p:"e"*64 for p in RUNTIME_SOURCES}
+                self.assertTrue(any(
+                    "runtime sources disagree" in msg.lower()
+                    for msg in verify_versioned_freeze_inputs(
+                        repo,protocol,recipe,cohort,approval)))
 
 
 if __name__ == "__main__":
