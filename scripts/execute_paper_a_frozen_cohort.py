@@ -22,7 +22,13 @@ import numpy as np
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "scripts"))
+# Windows direct-script launches put scripts/, not the repository root, on
+# sys.path. Native packages (src.*) require the repository root explicitly.
+# Also works under python -I and does not modify the user's environment.
+for module_root in (ROOT, ROOT / "scripts"):
+    module_path = str(module_root)
+    if module_path not in sys.path:
+        sys.path.insert(0, module_path)
 DATA = Path(r"F:\MFI-Edge-Data\MultiCue")
 WORK = DATA / "paper_a_completion"
 PROTOCOL = ROOT / "docs/paper_a_confirmation/protocol.json"

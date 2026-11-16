@@ -10,6 +10,22 @@ import continuar_paper_a as app
 
 
 class OneCommandTests(unittest.TestCase):
+    def test_direct_script_launch_has_repo_root_on_sys_path(self):
+        # Regression for ModuleNotFoundError: No module named 'src' on Windows.
+        import subprocess
+        command = [
+            sys.executable, "-I", "-c",
+            ("import runpy, sys; "
+             "ns = runpy.run_path('scripts/continuar_paper_a.py'); "
+             "assert str(ns['ROOT']) in sys.path; "
+             "from src.paper_a_h1h2_inference_core import validate_fitted_recipe; "
+             "assert callable(validate_fitted_recipe)")
+        ]
+        result = subprocess.run(
+            command, cwd=app.ROOT, text=True, capture_output=True,
+            timeout=30, check=False)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
     def test_missing_inputs_do_not_trigger_gt(self):
         self.assertFalse(any("gt" in v.lower() for v in
             ["biped_inventory", "biped_audit", "biped_dedup"]))

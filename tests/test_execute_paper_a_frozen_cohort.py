@@ -14,6 +14,15 @@ import execute_paper_a_frozen_cohort as task
 
 
 class FrozenExecutorTests(unittest.TestCase):
+    def test_isolated_script_launch_resolves_src(self):
+        import subprocess
+        run = subprocess.run(
+            [sys.executable, "-I", "-c",
+             "import runpy, sys; ns=runpy.run_path('scripts/execute_paper_a_frozen_cohort.py'); assert str(ns['ROOT']) in sys.path; from src.paper_a_confirmation_paired_f1 import evaluate_paired_binary; assert callable(evaluate_paired_binary)"],
+            cwd=task.ROOT, capture_output=True, text=True,
+            timeout=30, check=False)
+        self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
+
     def test_relative_paths_fail_closed(self):
         for path in ("../gt.png", "/tmp/a.png", "C:\\gt.png", ".\\secret"):
             with self.assertRaises(ValueError):

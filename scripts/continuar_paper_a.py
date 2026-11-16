@@ -16,7 +16,13 @@ import sys
 import traceback
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "scripts"))
+# Windows direct-script launches put scripts/, not the repository root, on
+# sys.path. Native packages (src.*) require the repository root explicitly.
+# Also works under python -I and does not modify the user's environment.
+for module_root in (ROOT, ROOT / "scripts"):
+    module_path = str(module_root)
+    if module_path not in sys.path:
+        sys.path.insert(0, module_path)
 WORK = Path(r"F:\MFI-Edge-Data\MultiCue\paper_a_completion")
 MULTICUE = Path(r"F:\MFI-Edge-Data\MultiCue")
 DATA = ROOT / "results/local_dev/paper_a_confirmation_inventory"

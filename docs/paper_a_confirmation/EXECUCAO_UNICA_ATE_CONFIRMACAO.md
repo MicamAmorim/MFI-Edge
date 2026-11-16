@@ -63,3 +63,7 @@ A escolha é determinística por hash, sem consultar GT/F1. As 220 linhas
 permanecem com independência e exposição = pending; a revisão do pesquisador
 e a alteração explícita do protocolo de N=150 para N=220 (se justificadas)
 são obrigatórias ANTES de gerar frozen_cohort_manifest.csv.
+
+
+Atualização de 16/11: corrigido o caminho de importações Python em execução
+Windows por arquivo, com testes de regressão usando python -I, sem acesso a GT.
