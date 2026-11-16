@@ -32,6 +32,7 @@ FILES = {
     "review/signoff/REVIEW_220_IMAGES_PENDING.csv": ("work", "scientific_signoff/REVIEW_220_IMAGES_PENDING.csv"),
     "review/signoff/REVIEWER_DECISION_REQUIRED.md": ("work", "scientific_signoff/REVIEWER_DECISION_REQUIRED.md"),
     "review/signoff/SIGNOFF_READINESS_NOT_APPROVAL.json": ("work", "scientific_signoff/SIGNOFF_READINESS_NOT_APPROVAL.json"),
+    "review/signoff/P1_LINEAGE_METADATA_CROSSCHECK_NOT_APPROVED.json": ("work", "scientific_signoff/P1_LINEAGE_METADATA_CROSSCHECK_NOT_APPROVED.json"),
     "recipe/P1_DEVELOPMENT_RECIPE_UNATTESTED.json": ("root", "docs/paper_a_confirmation/P1_DEVELOPMENT_RECIPE_UNATTESTED.json"),
     "recipe/P1_DEVELOPMENT_FIT_20261116.md": ("root", "docs/paper_a_confirmation/P1_DEVELOPMENT_FIT_20261116.md"),
     "protocol/protocol_DRAFT.json": ("root", "docs/paper_a_confirmation/protocol.json"),
