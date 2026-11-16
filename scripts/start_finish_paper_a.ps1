@@ -9,7 +9,17 @@ git pull --ff-only origin experiment/paper-a-conditional-confirmation
 if ($LASTEXITCODE -ne 0) { throw 'Git pull failed' }
 $tracked = @(git status --porcelain --untracked-files=no)
 if ($tracked.Count -gt 0) { throw "Tracked files have uncommitted modifications: $tracked" }
-$python = (Resolve-Path '.\.venv\Scripts\python.exe').Path
+$python = (Resolve-Path '.\\.venv\\Scripts\\python.exe').Path
+$tests = @(
+    'tests/test_paper_a_freeze_guard.py',
+    'tests/test_analyze_paper_a_confirmed.py',
+    'tests/test_fit_paper_a_development_uded14.py',
+    'tests/test_finish_paper_a.py'
+)
+foreach ($test in $tests) {
+    & $python $test
+    if ($LASTEXITCODE -ne 0) { throw "Paper A synthetic safety test failed: $test" }
+}
 $logDir = 'F:\MFI-Edge-Data\MultiCue\paper_a_completion'
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
 $stamp = Get-Date -Format 'yyyyMMdd_HHmmss'
