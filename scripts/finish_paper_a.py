@@ -15,6 +15,7 @@ it must produce signed outcomes following an independently audited contract.
 from __future__ import annotations
 
 import argparse
+import ctypes
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -394,6 +395,11 @@ def main():
     p.add_argument("--authorize-uded-development-gt",action="store_true",
                    help="Explicitly fit on the 14 known UDED DEVELOPMENT GT masks")
     args=p.parse_args()
+    if os.name=="nt":
+        try:
+            ctypes.windll.kernel32.SetThreadExecutionState(0x80000001)
+        except Exception as exc:
+            print("[WARN] Could not disable Windows idle sleep:",exc,flush=True)
     try:
         result=run_pipeline(args.workspace,no_reaudit=args.no_reaudit,
                             skip_baseline_zip=args.skip_baseline_zip,
@@ -405,6 +411,9 @@ def main():
     except Exception as exc:
         print("[FAIL CLOSED]",type(exc).__name__+":",str(exc),flush=True)
         return 2
+    finally:
+        if os.name=="nt":
+            ctypes.windll.kernel32.SetThreadExecutionState(0x80000000)
 
 
 if __name__=="__main__":
