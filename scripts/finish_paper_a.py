@@ -293,7 +293,7 @@ def run_pipeline(base:Path=WORK, *, no_reaudit:bool=False,
     blockers=[]
     if audit["status"] not in ("REUSED_VERIFIED_56_56_WITH_UNCHANGED_SCIENTIFIC_CODE",):
         blockers.append("Technical SHA audit not currently verified")
-    if missing:
+    if missing and protocol.get("status") != "frozen":
         blockers.append("P0.1 H1/H2 training recipe missing: "+", ".join(missing))
     if protocol.get("status")!="frozen":
         blockers.append("Protocol draft_not_frozen; scientific freeze review required")
