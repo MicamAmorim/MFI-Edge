@@ -50,3 +50,16 @@ metadata (size, timestamp, mode), without reading the file contents.
 Original untracked items are excluded from every permitted commit;
 unexpected new paths and any changes to the inventory block staging.
 Git stages only explicit allowlisted Paper A code and documentation.
+
+## Codex CLI compatibility (2026-11-16)
+
+The first workstation run successfully checked 56/56 descriptor SHA256
+and generated/pushed the reproducibility snapshot, but `codex exec`
+returned code 2 before editing the manuscript. A likely cause is the
+`--ask-for-approval never` option being placed *after* `exec`, which some
+CLI versions reject. The controller now sets the equivalent
+`--config approval_policy=never` with `--sandbox workspace-write`.
+The result JSON preserves Codex stderr/stdout tails on subsequent failures,
+and a failed editorial pass is listed explicitly in the errors array.
+If it fails again, inspect the local `*.log` and authentication; do not
+assume the manuscript was revised just because the technical audit passed.
