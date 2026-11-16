@@ -1,6 +1,6 @@
 # Paper A — proposta prospectiva de decodificação GT (v2, NÃO APROVADA)
 
-**Status:** `DRAFT_NOT_APPROVED`. Não libera freeze, GT da coorte, F1, H1 ou H2. O módulo experimental `scripts/paper_a_gt_decoder_candidate_NOT_APPROVED.py` **não é importado pelo executor confirmatório** e não substitui a política vigente `STRICT_BINARY_0_1_OR_0_255_NATIVE_v1`.
+**Status:** `DRAFT_NOT_APPROVED`. Não libera freeze, GT da coorte, F1, H1 ou H2. A lógica candidata de decodificação v2 já foi implementada em `scripts/execute_paper_a_frozen_cohort.py`, **mas permanece bloqueada antes de qualquer GT confirmatório pelo guard de freeze e pelas verificações de SHA**. O protótipo independente `scripts/paper_a_gt_decoder_candidate_NOT_APPROVED.py` não participa do fluxo confirmatório. A versão estrita v1 não é mais candidata à aprovação, pois contradiz as amostras não confirmatórias observadas.
 
 ## Base empírica anterior à confirmação
 
@@ -33,7 +33,7 @@ Mély et al., *Vision Research* 120 (2016), distinguem anotações de *physical 
 
 - Evidência primária ou autorização metodológica responsável para interpretar 254 como foreground e 65535 como foreground, com rastreio da versão dos arquivos BIPED/MultiCue e referência ao exportador.
 - Escolha prospectiva da política e revisão independente dos testes, geometria, validez das máscaras e tratamento de degenerescências.
-- Caso aprovada, integração revisada no **executor** pós-freeze, testes sintéticos e de amostras **não confirmatórias**, hash SHA-256 atualizado e inclusão nos hashes do código aprovado. Não atualizar o executor silenciosamente.
+- **A integração prospectiva já está escrita, não aprovada**. Revisar independentemente o contrato, testes sintéticos e as amostras **não confirmatórias**; vincular os hashes SHA-256 do executor e de toda a sua dependência ao template de decisão antes da autorização. Não alterar código científico após a aprovação sem renovar a revisão.
 - Auditoria independente dos 220 registros de cena/exposição e sete atestações P1; aprovação responsável com evidências primárias antes do commit de freeze.
 - Só depois emitir autorização legítima por `freeze_paper_a_from_independent_review.py` e executar o controlador existente.
 
