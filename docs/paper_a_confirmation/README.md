@@ -424,3 +424,14 @@ Novos alertas não são exclusões; as pranchas de 25 pares são geradas por
 `python .\scripts\render_paper_a_multicue_uded_overlap_review.py` no F:
 sem repetir SIFT/GT/F1. Ver
 [`MULTICUE_ALL_UDED_GEOMETRY_RESULT_20261115.md`](MULTICUE_ALL_UDED_GEOMETRY_RESULT_20261115.md).
+
+## Adjudicação visual dos 25 alertas geométricos — 15/11/2026
+
+A revisão das cinco pranchas identificou 1 par de **mesma cena**
+(`09-MDBD-1C` / `4113_left_0082`) e 24 pares **visualmente distintos**.
+Isso fecha os alertas no nível das fotos exibidas, **não** certifica a
+independência histórica de sequências completas nem autoriza acesso a GT/F1.
+Foi identificado falso positivo geométrico sério (277/354 inliers em cenas
+visualmente sem relação), exigindo diagnóstico do matcher/homografia.
+Ver [`MULTICUE_VISUAL_25_ADJUDICATION_20261115.md`](MULTICUE_VISUAL_25_ADJUDICATION_20261115.md)
+e [`multicue_visual_25_decisions.csv`](multicue_visual_25_decisions.csv).
