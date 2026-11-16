@@ -47,6 +47,7 @@ FILES = {
     "history/multicue_image_only_overlap_summary.json": ("data", "multicue_image_only_overlap_summary.json"),
     "science/SAMPLE_SIZE_CONDITIONAL_DECISION.md": ("root", "docs/paper_a_confirmation/SAMPLE_SIZE_CONDITIONAL_DECISION_20261115.md"),
     "science/GT_EDGES_MULTIANNOTATOR_CONTRACT_PROPOSAL.md": ("root", "docs/paper_a_confirmation/GT_EDGES_MULTIANNOTATOR_CONTRACT_PROPOSAL.md"),
+    "science/GT_PIXEL_ENCODING_PROSPECTIVE_v2_NOT_APPROVED.md": ("root", "docs/paper_a_confirmation/GT_PIXEL_ENCODING_PROSPECTIVE_v2_NOT_APPROVED.md"),
     "science/PARECER_CONSOLIDADO_PARA_FREEZE_20261116.md": ("root", "docs/paper_a_confirmation/PARECER_CONSOLIDADO_PARA_FREEZE_20261116.md"),
 }
 REQUIRED = {
