@@ -53,7 +53,7 @@ def render_sheet(reference: Image.Image, target: list[dict], title: str,
         img = read_original(item["path"])
         metadata = (f"dHash {item['dhash_distance']}/64 | "
                     f"pHash {item['phash_distance']}/63")
-        picture = tile(img, item["sequence_id"], metadata)
+        picture = tile(img, item["id"], metadata)
         sheet.paste(picture, (pad + col * w, 320 + row * h))
     sheet.save(filename)
 

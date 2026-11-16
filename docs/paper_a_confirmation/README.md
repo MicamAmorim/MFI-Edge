@@ -361,3 +361,18 @@ Resultados da inspeção humana precisam ser registrados antes de eventuais
 exclusões. Não declarar ausência de overlap caso nenhum dos 100 quadros
 coincida: uma amostra histórica pode corresponder a outro frame da
 mesma sequência, recorte ou uma distribuição MDBD não idêntica.
+
+## Correção da prancha UDED 09-MDBD-1C (KeyError no render)
+
+O primeiro comando da revisão direcionada terminou com KeyError: sequence_id.
+O resultado de prepare_targets() usa a chave id para a sequência, e a prancha
+agora acessa item["id"], consistente com o CSV de ranking.
+A execução anterior gravou o CSV antes de falhar, mas não concluiu
+as duas imagens nem o JSON final. A revisão pode ser repetida no mesmo
+diretório sem novo download, extração ou auditoria geral.
+
+Teste sintético (sem tocar datasets):
+
+    python .\tests\test_paper_a_multicue_mdbd_lineage.py
+
+Depois, rodar a ferramenta de revisão normalmente.
