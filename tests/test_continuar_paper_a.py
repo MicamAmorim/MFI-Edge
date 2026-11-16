@@ -41,6 +41,12 @@ class OneCommandTests(unittest.TestCase):
         self.assertIn("validate_inventory", src)
         self.assertNotIn("Image.open", src)
 
+    def test_review_bundle_is_only_after_existing_science_gate_reports(self):
+        import inspect
+        src = inspect.getsource(app.one_shot)
+        self.assertIn("from export_paper_a_review_bundle import assemble", src)
+        self.assertIn('if protocol_status == "draft_not_frozen":', src)
+    
     def test_frozen_path_skips_draft_only_dossier(self):
         import inspect
         src = inspect.getsource(app.one_shot)

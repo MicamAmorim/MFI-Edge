@@ -293,6 +293,13 @@ def one_shot() -> dict:
     # Preserve existing NEXT_ACTIONS.md from the scientific controller.
     (WORK / "ONE_COMMAND_STATUS.json").write_text(
         json.dumps(info, ensure_ascii=False, indent=2), encoding="utf-8")
+    # Assemble a single review artifact using ONLY whitelisted metadata
+    # and documentation; do not bundle raw images, protected GT, cache maps.
+    if protocol_status == "draft_not_frozen":
+        from export_paper_a_review_bundle import assemble
+        info["steps"]["review_bundle"] = assemble()
+        (WORK / "ONE_COMMAND_STATUS.json").write_text(
+            json.dumps(info, ensure_ascii=False, indent=2), encoding="utf-8")
     return info
 
 

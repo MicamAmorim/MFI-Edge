@@ -57,6 +57,10 @@ jobs:
         run: |
           python -m py_compile scripts/revisar_paper_a_pre_freeze.py
           python tests/test_revisar_paper_a_pre_freeze.py
+      - name: Strict text-only prefreeze review bundle tests
+        run: |
+          python -m py_compile scripts/export_paper_a_review_bundle.py
+          python tests/test_export_paper_a_review_bundle.py
       - name: Build package without scientific data
         run: python scripts/package_paper_a_repro.py --outdir dist
       - name: Preserve baseline preconfirmatory manuscript and ZIP

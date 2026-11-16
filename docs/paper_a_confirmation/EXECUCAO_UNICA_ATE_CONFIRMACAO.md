@@ -82,3 +82,16 @@ original nem configura um congelamento. Registra 125+95 como desenho
 condicional a verificação de independência, os requisitos de anotação
 `edges` e a estatística ponderada dentro dos dois domínios. O dossiê
 preserva pendências como não aprovadas, inclusive a verificação de GT real.
+
+
+## Pacote único para revisão independente (sem GT)
+
+O mesmo comando único agora gera:
+
+`F:\MFI-Edge-Data\MultiCue\paper_a_completion\PaperA_PRE_FREEZE_REVIEW_ONLY.zip`
+
+O ZIP contém somente CSV/JSON/Markdown listados explicitamente no código
+(índices de nomes, IDs, SHA256 de fontes, proposta ainda não aprovada,
+parecer e relatório de gates). Nunca contém imagens originais, arquivos
+GT, HDF5, TAR, máscaras, descritores nem métricas confirmatórias. Pode
+ser anexado para um revisor checar históricos/linhagens sem acessar GT.
