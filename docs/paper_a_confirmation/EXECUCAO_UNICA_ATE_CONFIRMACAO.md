@@ -51,3 +51,15 @@ não comprovam sua codificação e não autorizam antecipar sua inspeção.
 A confirmação estatística, quando autorizada e com dados certificados, usa
 100.000 permutações, Holm e bootstrap e reporta inclusive hipóteses
 não confirmadas. O manuscrito ainda exige revisão científica independente.
+
+
+## Proposta de coorte gerada automaticamente (não aprovada)
+
+O launcher cria, se não existir, um CSV conservador com 125 imagens BIPED
+e uma sequência por cada um dos 95 prefixos MultiCue não bloqueados:
+F:\MFI-Edge-Data\MultiCue\paper_a_completion\COHORT_PROPOSAL_220_NOT_CERTIFIED.csv
+
+A escolha é determinística por hash, sem consultar GT/F1. As 220 linhas
+permanecem com independência e exposição = pending; a revisão do pesquisador
+e a alteração explícita do protocolo de N=150 para N=220 (se justificadas)
+são obrigatórias ANTES de gerar frozen_cohort_manifest.csv.

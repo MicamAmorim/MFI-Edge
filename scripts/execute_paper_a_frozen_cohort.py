@@ -212,11 +212,23 @@ def materialize_gt_once(names: dict[str, list[str]], work: Path,
                 raise ValueError("GT extraction exceeds byte cap")
             output = target / Path(raw).name
             if output.exists():
-                # Only reuse a file if the previous manifest authenticates it.
-                prior = existing.get("files", {}).get(raw, {})
-                if prior.get("sha256") != digest(output):
-                    raise ValueError("Unverified preexisting GT cache: " + str(output))
-                found[raw] = prior
+                # On interrupted extraction there may be no final manifest.
+                # Compare the local bytes against the *current archive member*
+                # before reusing; never trust an unverified partial cache.
+                stream = tar.extractfile(member)
+                if stream is None:
+                    raise ValueError("Cannot read GT source member")
+                h = hashlib.sha256()
+                size = 0
+                with stream:
+                    for block in iter(lambda: stream.read(1048576), b""):
+                        size += len(block)
+                        if size > MAX_GT:
+                            raise ValueError("GT payload exceeds byte cap")
+                        h.update(block)
+                if size != member.size or digest(output) != h.hexdigest():
+                    raise ValueError("Existing GT cache differs from verified TAR: " + str(output))
+                found[raw] = {"sha256": h.hexdigest(), "size_bytes": size}
                 continue
             tmp = output.with_suffix(output.suffix + ".part")
             if tmp.exists():
@@ -261,6 +273,9 @@ def checkpoint_one(row: dict, recipe: dict, executor_sha: str,
         "image_id": row["image_id"],
         "scene_group": row["scene_group"],
     }
+    # Verify the original's actual bytes even when the descriptor checkpoint
+    # is reused. The reviewed cohort digest must still match the disk file.
+    original = load_original(row)
     if checkpoint.is_file():
         existing = read_json(checkpoint)
         if existing.get("inputs") != key:
@@ -268,7 +283,6 @@ def checkpoint_one(row: dict, recipe: dict, executor_sha: str,
         return existing["outcome"]
     from src.paper_a_prefreeze_map_adapter import predict_original_pregt
     from src.paper_a_confirmation_paired_f1 import evaluate_paired_binary
-    original = load_original(row)
     predictions = predict_original_pregt(original, recipe).predictions
     masks = [binary_annotation(p, tuple(original.shape[:2])) for p in gt_paths]
     domain = row["dataset"]

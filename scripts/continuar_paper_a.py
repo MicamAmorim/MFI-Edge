@@ -140,6 +140,63 @@ def p1_metadata() -> dict:
             "recipe_sha256": hash_file(path)}
 
 
+def propose_review_cohort() -> dict:
+    """Deterministic 125+95 DRAFT; never copies to a frozen manifest."""
+    p = WORK / "COHORT_PROPOSAL_220_NOT_CERTIFIED.csv"
+    if p.exists():
+        rows = csv_rows(p)
+        if (len(rows) != 220 or
+                any(r["independence_review"] != "pending" or
+                    r["prior_exposure_review"] != "pending" for r in rows)):
+            raise RuntimeError("Existing proposal was changed; do not silently replace it")
+        return {"status": "DRAFT_REUSED_NOT_CERTIFIED", "file": str(p)}
+    biped = csv_rows(DEDUP)
+    source = csv_rows(MULTICUE / "multicue_source_frames_only_manifest.csv")
+    index = csv_rows(MULTICUE / "multicue_h5_anchored_sequence_candidates.csv")
+    seq = {r["sequence_id"]: r for r in index}
+    if len(biped) != 198 or len(source) != 100 or len(seq) != 100:
+        raise ValueError("Source manifests incomplete: no draft selection")
+    fields = ("dataset", "image_id", "relative_path", "image_sha256",
+              "independence_review", "prior_exposure_review", "scene_group", "notes")
+    rows = []
+    for r in sorted(biped, key=lambda x: (x["sha256"], x["image_id"]))[:125]:
+        rows.append({
+            "dataset": "BIPED", "image_id": r["image_id"],
+            "relative_path": r["relative_path"], "image_sha256": r["sha256"],
+            "independence_review": "pending", "prior_exposure_review": "pending",
+            "scene_group": r["image_id"],
+            "notes": "DRAFT: scene group provisional, prior exposure not certified"})
+    groups = {}
+    for r in source:
+        key = r["sequence_id"]
+        if key not in seq or r["capture_prefix"] != seq[key]["capture_prefix"]:
+            raise ValueError("MultiCue source/sequence manifest mismatch")
+        if r["capture_prefix"] == "4113":
+            continue
+        groups.setdefault(r["capture_prefix"], []).append(r)
+    if len(groups) != 95:
+        raise ValueError("Expected 95 MultiCue provisional capture prefixes")
+    for prefix, group in sorted(groups.items()):
+        chosen = sorted(group, key=lambda x: (x["sha256"], x["sequence_id"]))[0]
+        filename = Path(chosen["local_original_frame_path"]).name
+        if filename != Path(seq[chosen["sequence_id"]]["last_left_image"]).name:
+            raise ValueError("MultiCue original image filename mismatch")
+        rows.append({
+            "dataset": "MultiCue", "image_id": chosen["sequence_id"],
+            "relative_path": filename, "image_sha256": chosen["sha256"],
+            "independence_review": "pending", "prior_exposure_review": "pending",
+            "scene_group": prefix,
+            "notes": "DRAFT: one per capture prefix, scene lineage pending"})
+    if len(rows) != 220:
+        raise RuntimeError("Expected 220 draft rows")
+    with p.open("x", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(rows)
+    return {"status": "DRAFT_CREATED_NOT_CERTIFIED", "file": str(p),
+            "BIPED": 125, "MultiCue": 95, "sha256": hash_file(p)}
+
+
 def find_old_audit() -> bool:
     from finish_paper_a import audit_exists
     return audit_exists(checkout()) is not None
@@ -159,6 +216,7 @@ def one_shot() -> dict:
         ("P1", p1_metadata),
     ]:
         info["steps"][name] = action()
+    info["steps"]["cohort_proposal"] = propose_review_cohort()
     for file in TESTS:
         run("test_" + file.replace(".py", ""), [
             sys.executable, str(ROOT / "tests" / file)], timeout=600)
