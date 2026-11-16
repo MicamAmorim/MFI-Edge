@@ -317,8 +317,24 @@ def main() -> int:
     gate, approval, recipe, cohort = authorized(WORK)
     outcomes = WORK / "certified_outcomes.csv"
     provenance = WORK / "certified_outcomes_provenance.json"
-    if outcomes.exists() or provenance.exists():
-        raise RuntimeError("Signed output already exists; refuse overwrite")
+    if outcomes.exists() and provenance.exists():
+        raise RuntimeError("Signed result pair already exists; refuse overwrite")
+    if outcomes.exists() and not provenance.exists():
+        # Recover ONLY a byte-matched fully staged provenance. Neither files
+        # are regenerated or overwritten, and no protected GT is opened.
+        staged=provenance.with_suffix(".json.part")
+        if not staged.is_file() or staged.is_symlink():
+            raise RuntimeError("Orphan outcome CSV without staged provenance: "
+                               "manual forensic reconciliation required")
+        from analyze_paper_a_confirmed import verify_outcome_provenance
+        verify_outcome_provenance(staged,outcomes,gate,approval)
+        os.replace(staged,provenance)
+        print("[RECOVER] Atomically published exact hash-matched provenance "
+              "for existing signed outcomes; no recalculation",flush=True)
+        return 0
+    if provenance.exists() and not outcomes.exists():
+        raise RuntimeError("Orphan signed provenance without outcomes: "
+                           "manual forensic reconciliation required")
     source_sha = digest(Path(__file__))
     names = multicue_gt_names(cohort)
     ground = materialize_gt_once(names, WORK, gate["frozen_input_sha256"]["cohort_sha256"])
@@ -342,11 +358,10 @@ def main() -> int:
         writer = csv.DictWriter(f, fieldnames=OUTCOME_COLUMNS)
         writer.writeheader()
         writer.writerows(records)
-    os.replace(pending, outcomes)
     # This attestation INHERITS a previously independently signed executor
     # SHA and exact policy. There is no auto-approval or discovery-data fit.
     record = {
-        "schema_version": 1, "outcomes_csv_sha256": digest(outcomes),
+        "schema_version": 1, "outcomes_csv_sha256": digest(pending),
         "freeze_commit": gate["freeze_commit"],
         "protocol_frozen_before_first_GT_access": True,
         "no_parameter_tuning_or_threshold_fitting_on_confirmatory_GT": True,
@@ -362,6 +377,10 @@ def main() -> int:
     tmp = provenance.with_suffix(".json.part")
     with tmp.open("x", encoding="utf-8") as f:
         json.dump(record, f, ensure_ascii=False, indent=2)
+    # Stage both files FIRST, then expose the result CSV and its signed
+    # provenance. If interrupted between replaces, the next run resumes
+    # only if the staged provenance hash exactly matches the CSV.
+    os.replace(pending, outcomes)
     os.replace(tmp, provenance)
     print(json.dumps({
         "status": "FROZEN_EVALUATION_COMPLETE_INDEPENDENT_NUMERICAL_REVIEW_PENDING",

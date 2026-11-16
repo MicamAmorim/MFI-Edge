@@ -309,7 +309,7 @@ def one_shot() -> dict:
                     and approval.get("gt_binary_decoding_contract") == BIN_POLICY):
                     outcomes = WORK / "certified_outcomes.csv"
                     provenance = WORK / "certified_outcomes_provenance.json"
-                    if not outcomes.exists() and not provenance.exists():
+                    if not (outcomes.exists() and provenance.exists()):
                         run("frozen_image_to_xy_executor",
                             [sys.executable, str(executor)], timeout=172800)
                         info["steps"]["certified_evaluator"] = {

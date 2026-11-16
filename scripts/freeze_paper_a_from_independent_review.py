@@ -247,6 +247,19 @@ def validate_signed_decision(decision: dict, sheet: list[dict],
             raise PermissionError("Signed review hash is stale/different: "+key)
     if decision.get("gt_binary_decoding_contract")!=BIN_POLICY:
         raise PermissionError("No approved, independently verified GT decoder policy")
+    # Pre-confirmatory mask samples are already documented incompatible with
+    # STRICT_BINARY_0_1_OR_0_255_NATIVE_v1. Even a review JSON filled TRUE
+    # must NOT be able to override a directly contradictory technical sample.
+    sample_report=SIGNOFF/"NONCONFIRMATORY_GT_ENCODING_EVIDENCE.json"
+    if sample_report.is_file() and not sample_report.is_symlink():
+        sample=json.loads(sample_report.read_text(encoding="utf-8"))
+        if (sample.get("schema_version")==1 and sample.get(
+                "all_sampled_masks_pass_proposed_strict_decoder") is False):
+            raise PermissionError(
+                "The preregistered strict uint8 decoder contradicts observed "
+                "nonconfirmatory BIPED (0,254,255) / MultiCue (uint16) GT. "
+                "Prospectively justify and independently re-review a versioned "
+                "decoder/metric policy BEFORE any protected GT is opened.")
     if len(sheet)!=220:
         raise PermissionError("Review sheet does not have 220 original captures")
     counts={"BIPED":0,"MultiCue":0}
