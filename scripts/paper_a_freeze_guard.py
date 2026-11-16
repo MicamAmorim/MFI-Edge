@@ -21,6 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PROTOCOL = ROOT / "docs/paper_a_confirmation/protocol.json"
 SHA = re.compile(r"^[0-9a-f]{64}$")
 GIT_SHA = re.compile(r"^[0-9a-f]{40}$")
+GT_POLICY_V2 = "BIPED_UINT8_0_254_255_MULTICUE_UINT16_0_65535_NATIVE_v2"
 COLUMNS = ("dataset", "image_id", "relative_path", "image_sha256",
            "independence_review", "prior_exposure_review", "scene_group", "notes")
 
@@ -120,6 +121,10 @@ def check_freeze(protocol: dict, recipe: dict, approval: dict,
         problems.append("Protocol does not attest first protected outcome access")
     if protocol.get("cohort", {}).get("no_GT_until_lock") is not True:
         problems.append("Protected GT lock is missing")
+    if protocol.get("measures", {}).get("ground_truth_contract", {}).get("encoding") != GT_POLICY_V2:
+        problems.append("Frozen GT encoding policy does not match audited v2 runtime")
+    if approval.get("gt_binary_decoding_contract") != GT_POLICY_V2:
+        problems.append("Independent GT binary decoding approval does not match v2")
     hypotheses = protocol.get("hypotheses", [])
     if [(x.get("id"), x.get("candidate"), x.get("control"))
             for x in hypotheses] != [
