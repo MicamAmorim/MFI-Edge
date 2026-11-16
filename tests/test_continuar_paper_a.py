@@ -53,6 +53,12 @@ class OneCommandTests(unittest.TestCase):
         self.assertIn("from export_paper_a_review_bundle import assemble", src)
         self.assertIn('if protocol_status == "draft_not_frozen":', src)
     
+    def test_interrupted_signed_freeze_recovery_still_requires_review(self):
+        import inspect
+        src=inspect.getsource(app.one_shot)
+        self.assertIn("resume_freeze_after_interrupted_push",src)
+        self.assertIn("not (WORK / \"freeze_approval.json\").exists()",src)
+
     def test_frozen_path_skips_draft_only_dossier(self):
         import inspect
         src = inspect.getsource(app.one_shot)

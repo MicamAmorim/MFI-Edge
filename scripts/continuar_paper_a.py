@@ -274,6 +274,17 @@ def one_shot() -> dict:
         protocol_status = json.loads(
             (ROOT / "docs/paper_a_confirmation/protocol.json").read_text(encoding="utf-8")
         ).get("status")
+    elif protocol_status == "frozen" and not (WORK / "freeze_approval.json").exists():
+        # Recover a committed, independently reviewed freeze if the previous
+        # run was interrupted after Git commit/before its safe approval output.
+        from freeze_paper_a_from_independent_review import resume_freeze_after_interrupted_push
+        try:
+            info["steps"]["scientific_freeze_transition"] = resume_freeze_after_interrupted_push()
+        except PermissionError as denied:
+            info["steps"]["scientific_freeze_transition"] = {
+                "status": "FROZEN_UNPUBLISHED_OR_REVIEW_NOT_RECOVERABLE",
+                "reason": str(denied),
+            }
     # The *real* image->F1 executor is only allowed when the separately signed
     # scientific freeze passes and its exact source hash/policy were approved.
     # Before that condition: do not inspect GT, TAR, or protected outcomes.
