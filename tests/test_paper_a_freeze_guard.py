@@ -20,7 +20,11 @@ def case():
         "hypotheses": [
             {"id":"H1","candidate":"maximum","control":"equal_mean"},
             {"id":"H2","candidate":"choquet_generalized_150","control":"equal_mean"}],
-        "inference":{"multiplicity":"Holm two hypotheses","permutations":100000},
+        "inference":{"multiplicity":"Holm two hypotheses","permutations":100000,
+                  "alpha_familywise":0.05,
+                  "directional_alternative":{"H1":"rho<0","H2":"rho>0"},
+                  "permutation_seed":20261115,
+                  "test":"domain-blocked one-sided Spearman permutation"},
         "freeze_commit": None,
     }
     recipe = {"schema": "paper_a_h1h2_recipe_P1_fitted_development",
@@ -62,6 +66,15 @@ class FreezeSafetyTests(unittest.TestCase):
     def test_valid_synthetic(self):
         p,r,a,c,h=case()
         self.assertEqual(check_freeze(p,r,a,c,h,lambda _:True), [])
+
+    def test_reject_changed_direction_and_alpha_before_outcomes(self):
+        p,r,a,c,h=case()
+        p["inference"].update({
+            "alpha_familywise":0.01,
+            "directional_alternative":{"H1":"rho>0","H2":"rho<0"}})
+        problems=check_freeze(p,r,a,c,h,lambda _:True)
+        self.assertTrue(any("alpha" in v for v in problems))
+        self.assertTrue(any("directional" in v for v in problems))
 
     def test_unfrozen_fails(self):
         p,r,a,c,h=case();p["status"]="draft_not_frozen"

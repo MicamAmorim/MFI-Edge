@@ -71,6 +71,17 @@ def check_freeze(protocol: dict, recipe: dict, approval: dict,
         problems.append("Holm multiplicity not specified")
     if protocol.get("inference", {}).get("permutations") != 100000:
         problems.append("Expected 100000 preregistered permutations")
+    inference = protocol.get("inference", {})
+    if inference.get("alpha_familywise") != 0.05:
+        problems.append("Confirmatory implementation requires familywise alpha=0.05")
+    if inference.get("directional_alternative") != {
+            "H1": "rho<0", "H2": "rho>0"}:
+        problems.append("Preregistered directional alternatives disagree with H1/H2 implementation")
+    if inference.get("permutation_seed") != 20261115:
+        problems.append("Confirmatory RNG seed differs from implemented frozen protocol")
+    test_contract = str(inference.get("test", "")).lower()
+    if not all(s in test_contract for s in ("spearman", "domain", "permutation")):
+        problems.append("Blocked within-domain Spearman contract missing")
     if approval.get("schema_version") != 1:
         problems.append("Missing frozen-authorization schema_version=1")
     if approval.get("approved_for_first_confirmatory_outcome_access") is not True:

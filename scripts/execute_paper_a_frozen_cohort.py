@@ -103,8 +103,8 @@ def load_original(row: dict) -> np.ndarray:
         raise ValueError("Unsupported original image type")
     if digest(candidate) != row["image_sha256"].lower():
         raise ValueError("Frozen original SHA mismatch: " + rel)
-    if dataset == "MultiCue" and candidate.stem != row["image_id"]:
-        raise ValueError("MultiCue original/sequence ID mismatch")
+    if candidate.stem != row["image_id"]:
+        raise ValueError("Original filename / frozen cohort ID mismatch")
     with Image.open(candidate) as image:
         if image.format not in ("PNG", "JPEG", "BMP"):
             raise ValueError("Unexpected original image decoder")

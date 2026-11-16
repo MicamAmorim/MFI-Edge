@@ -64,8 +64,8 @@ def inspect_png(raw:bytes, name:str) ->dict:
     strict=(arr.dtype==np.uint8 and (arr.ndim==2 or
             (arr.ndim==3 and arr.shape[-1] in (3,4) and
              summary["all_channels_equal"] and summary["alpha_opaque"]))
-            and vals is not None and set(vals).issubset({0,1,255})
-            and len(vals)>=2)
+            and vals is not None and
+            (set(vals)=={0,1} or set(vals)=={0,255}))
     return {"source_file":name,"file_sha256":hashlib.sha256(raw).hexdigest(),
             "bytes":len(raw),"pil_mode":im_mode,"shape":dims,
             "dtype":str(arr.dtype),"values_first_32":vals,

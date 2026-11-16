@@ -377,7 +377,7 @@ def run_pipeline(base:Path=WORK, *, no_reaudit:bool=False,
         "protected_GT_H5_F1_opened_by_prefreeze":False,
         "automatic_freeze_performed":False,
     }
-    if gate and not gate["blockers"] and outcomes.is_file() and outcome_prov.is_file():
+    if not blockers and gate and not gate["blockers"] and outcomes.is_file() and outcome_prov.is_file():
         print("[3/5] Signed freeze validated; analyzing certified image outcomes",
               flush=True)
         from resume_paper_a_confirmation import run_once
@@ -387,7 +387,8 @@ def run_pipeline(base:Path=WORK, *, no_reaudit:bool=False,
                           "primary_decisions":{a["hypothesis"]:a["confirmed"]
                                                for a in result["analyses"]}}
         state["status"]="FROZEN_ANALYSIS_REQUIRES_INDEPENDENT_REVIEW"
-        state["blockers"]=["Independent review of final numerical report and article required"]
+        state["blockers"]=sorted(set(blockers+[
+            "Independent review of final numerical report and article required"]))
     else:
         print("[3/5] Outcome access BLOCKED until all signed gates pass",flush=True)
     if not skip_baseline_zip:

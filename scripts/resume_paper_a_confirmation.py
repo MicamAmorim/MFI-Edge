@@ -34,7 +34,7 @@ def request_fingerprint(approval_file: Path, protocol: Path, recipe: Path,
     expected=approval["approved_executor_source_sha256"]
     if (not EXECUTOR.is_file() or sha256(EXECUTOR)!=expected):
         raise PermissionError("Executor source SHA differs from independently reviewed source")
-    provenance_record=verify_outcome_provenance(provenance,outcome,gate)
+    provenance_record=verify_outcome_provenance(provenance,outcome,gate,approval)
     if (provenance_record.get("evaluator_source_sha256")!=expected or
         provenance_record.get("reviewed_by")!=approval.get("reviewed_by")):
         raise PermissionError("Outcome executor provenance contradicts independent freeze review")

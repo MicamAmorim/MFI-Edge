@@ -20,7 +20,8 @@ import numpy as np
 from scipy.stats import rankdata
 
 from paper_a_freeze_guard import (
-    ROOT, sha256, validate_files, COLUMNS as COHORT_COLUMNS,
+    ROOT, SHA, GIT_SHA, sha256, ancestor, validate_files,
+    COLUMNS as COHORT_COLUMNS,
 )
 
 OUTCOME_COLUMNS = ("dataset","image_id","scene_group","image_sha256",
@@ -177,7 +178,8 @@ def check_outcomes(rows: list[dict], cohort: list[dict]) -> list[dict]:
     return out
 
 
-def verify_outcome_provenance(path: Path, outcomes: Path, freeze: dict) -> dict:
+def verify_outcome_provenance(path: Path, outcomes: Path, freeze: dict,
+                              approval: dict | None = None) -> dict:
     if not path.is_file() or path.is_symlink() or path.stat().st_size>200000:
         raise ValueError("Missing/unsafe signed executor provenance")
     rec=json.loads(path.read_text(encoding="utf-8"))
@@ -190,10 +192,26 @@ def verify_outcome_provenance(path: Path, outcomes: Path, freeze: dict) -> dict:
               "complete_per_capture_output":True}
     if any(rec.get(k)!=v for k,v in required.items()):
         raise ValueError("Uncertified evaluator output or outcomes SHA mismatch")
-    if not isinstance(rec.get("evaluator_source_sha256"),str) or len(rec["evaluator_source_sha256"])!=64:
-        raise ValueError("Missing pinned evaluator source checksum")
-    if not rec.get("reviewed_by") or not rec.get("source_commit"):
-        raise ValueError("Missing executor provenance reviewer/commit")
+    if not isinstance(approval, dict) or approval.get(
+            "executor_contract_independently_reviewed") is not True:
+        raise PermissionError("Independent executor approval required for EVERY analysis entrypoint")
+    approved=approval.get("approved_executor_source_sha256")
+    if not isinstance(approved,str) or not SHA.fullmatch(approved):
+        raise ValueError("Approved evaluator SHA256 invalid")
+    if (not isinstance(rec.get("evaluator_source_sha256"),str)
+            or not SHA.fullmatch(rec["evaluator_source_sha256"])
+            or rec["evaluator_source_sha256"]!=approved):
+        raise ValueError("Executor provenance SHA256 does not match signed approval")
+    executor=ROOT/"scripts/execute_paper_a_frozen_cohort.py"
+    if not executor.is_file() or sha256(executor)!=approved:
+        raise ValueError("Executed evaluator source differs from independently approved source")
+    if rec.get("reviewed_by")!=approval.get("reviewed_by"):
+        raise ValueError("Executor provenance and independent reviewer mismatch")
+    commit=rec.get("source_commit")
+    if not isinstance(commit,str) or not GIT_SHA.fullmatch(commit) or not ancestor(ROOT,commit):
+        raise ValueError("Executor source commit is not a verified ancestor")
+    if rec.get("gt_decoding_policy")!=approval.get("gt_binary_decoding_contract"):
+        raise ValueError("Unapproved GT decoding policy in provenance")
     return rec
 
 
@@ -204,7 +222,8 @@ def run_confirmation(protocol_path:Path,recipe_path:Path,cohort_path:Path,
     gate=validate_files(protocol_path,recipe_path,cohort_path,approval_path)
     if gate["blockers"]:
         raise RuntimeError("Outcomes remain locked: "+ "; ".join(gate["blockers"]))
-    verify_outcome_provenance(provenance_path,outcomes_path,gate)
+    approval=json.loads(approval_path.read_text(encoding="utf-8"))
+    verify_outcome_provenance(provenance_path,outcomes_path,gate,approval)
     with cohort_path.open(encoding="utf-8-sig",newline="") as handle:
         cohort=list(csv.DictReader(handle))
     with outcomes_path.open(encoding="utf-8-sig",newline="") as handle:
