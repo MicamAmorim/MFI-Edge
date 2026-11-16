@@ -38,3 +38,15 @@ connect to local F: caches or run held-out outcomes; the local overnight
 controller remains responsible for bytewise checks and Codex editing.
 Download the artifact from the latest successful **Paper A prefreeze smoke
 checks** GitHub Actions run if the workstation was unavailable.
+
+## Preexisting untracked evidence is protected
+
+The initial checkout may contain untracked Stage24 evaluation folders,
+`resultado_analise_condicional.zip`, or other preexisting local artifacts.
+These should not be moved, deleted, stashed or ignored. The launcher now
+rejects only modified/staged **tracked** files. At the start of the local
+controller, it inventories preexisting untracked filenames and `lstat`
+metadata (size, timestamp, mode), without reading the file contents.
+Original untracked items are excluded from every permitted commit;
+unexpected new paths and any changes to the inventory block staging.
+Git stages only explicit allowlisted Paper A code and documentation.
