@@ -21,6 +21,8 @@ class ReviewBundleTests(unittest.TestCase):
                 ("work", "scientific_signoff/NONCONFIRMATORY_GT_ENCODING_EVIDENCE.json"),
             "review/signoff/GT_PIXEL_ENCODING_DETAIL_PRE_FREEZE_v1.json":
                 ("work", "scientific_signoff/GT_PIXEL_ENCODING_DETAIL_PRE_FREEZE_v1.json"),
+            "review/signoff/P1_LINEAGE_METADATA_CROSSCHECK_NOT_APPROVED.json":
+                ("work", "scientific_signoff/P1_LINEAGE_METADATA_CROSSCHECK_NOT_APPROVED.json"),
             "review/signoff/GT_PIXEL_ENCODING_REVIEW_REQUIRED.md":
                 ("work", "scientific_signoff/GT_PIXEL_ENCODING_REVIEW_REQUIRED.md"),
             "science/GT_PIXEL_ENCODING_PROSPECTIVE_v2_NOT_APPROVED.md":
