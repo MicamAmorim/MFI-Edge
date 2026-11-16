@@ -11,6 +11,14 @@ import revisar_paper_a_pre_freeze as r
 
 
 class ReviewSafety(unittest.TestCase):
+    def test_direct_script_imports_src_under_python_isolated(self):
+        import subprocess
+        p = subprocess.run(
+            [sys.executable, "-I", "-c",
+             "import runpy,sys; x=runpy.run_path('scripts/revisar_paper_a_pre_freeze.py'); assert str(x['ROOT']) in sys.path; from src.paper_a_h1h2_inference_core import validate_fitted_recipe"],
+            cwd=r.ROOT, capture_output=True, text=True, timeout=30, check=False)
+        self.assertEqual(p.returncode, 0, p.stdout + p.stderr)
+
     def setUp(self):
         self.p = json.loads(r.PROTOCOL.read_text(encoding="utf-8"))
         self.recipe = json.loads(r.P1.read_text(encoding="utf-8"))

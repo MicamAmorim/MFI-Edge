@@ -17,6 +17,10 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+# Direct Windows invocation puts scripts/, not the repository root, on
+# sys.path. Explicitly add the project root for native src.* imports.
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 DATA = Path(r"F:\MFI-Edge-Data\MultiCue")
 WORK = DATA / "paper_a_completion"
 PROTOCOL = ROOT / "docs/paper_a_confirmation/protocol.json"
