@@ -470,3 +470,12 @@ uma grade de efeitos conservadores. Veja
 [sensibilidade de poder](PREFREEZE_POWER_SENSITIVITY.md).
 A aproximação Fisher-z não substitui a simulação final do teste Spearman
 e da permutação por domínio.
+
+## Próximo gate estatístico: simulação sintética por domínio
+
+Nova simulação com diferenças BIPED/MultiCue, postos de Spearman dentro
+de cada domínio, permutação restrita, Holm e poder conjunto H1/H2.
+O método é **proposta ainda não congelada**, não substitui o protocolo.
+Execute `python .\tests\test_paper_a_domain_blocked_power.py` e
+`python .\scripts\simulate_paper_a_domain_blocked_power.py`.
+Ver [`PREFREEZE_DOMAIN_BLOCKED_POWER_SIMULATION.md`](PREFREEZE_DOMAIN_BLOCKED_POWER_SIMULATION.md).
