@@ -43,6 +43,10 @@ jobs:
           python tests/test_paper_a_prefreeze_map_adapter.py
           python scripts/preflight_paper_a_prefreeze_map_adapter.py
           python scripts/preflight_paper_a_prefreeze_map_adapter.py --real-stage23
+      - name: MultiCue filename-only contract tests (synthetic, no dataset or GT)
+        run: |
+          python -m py_compile scripts/check_paper_a_multicue_gt_task_names.py
+          python tests/test_paper_a_multicue_gt_task_names.py
       - name: Build package without scientific data
         run: python scripts/package_paper_a_repro.py --outdir dist
       - name: Preserve baseline preconfirmatory manuscript and ZIP
