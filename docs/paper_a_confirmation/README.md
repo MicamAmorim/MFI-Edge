@@ -521,3 +521,11 @@ em matching exato um-a-um, sem unir GTs nem multiplicar N. Rejeita
 conversões 3D e uint8 implícitas e máscaras de geometria diferente.
 Executar `python .\tests\test_paper_a_paired_f1_contract.py`.
 **Não abrir GT de coorte real por este módulo antes do freeze.**
+
+## P0 — auditoria estática de proveniência dos parâmetros
+
+Execute no ambiente `.venv`: `python .\tests\test_paper_a_parameter_provenance_P0.py`
+e `python .\scripts\audit_paper_a_parameter_provenance_P0.py`.
+A ferramenta só lê código-fonte e documento de protocolo; usa `stat()`
+para três artefatos históricos sem ler seus conteúdos (podem conter F1).
+Ver [`PARAMETER_PROVENANCE_P0.md`](PARAMETER_PROVENANCE_P0.md).
