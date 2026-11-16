@@ -36,6 +36,7 @@ TESTS = (
     "test_paper_a_uded14_cache_sidecars_P0_3.py",
     "test_paper_a_multicue_gt_task_names.py",
     "test_paper_a_paired_f1_contract.py",
+    "test_paper_a_prefreeze_one_shot.py",
 )
 MAX_ARRAY_BYTES = 16 * 1024 * 1024
 
@@ -62,7 +63,8 @@ def hash_npy(path: Path) -> tuple[str, int]:
 
 def validate_56(p03: dict, rows: list[dict]) -> dict:
     records = [v for v in p03["records"] if "image_id" in v]
-    if len(records) != 56 or p03.get("matching_sidecar_and_npy_metadata") != 56:
+    if (len(records) != 56 or p03.get("matching_sidecar_and_npy_metadata") != 56
+            or p03.get("status") != "P0_3_ALL_CACHE_METADATA_MATCH_ONLY_NOT_CONTENT_VERIFIED"):
         raise ValueError("P0.3 must pass 56/56 before hashing")
     refs = {(r["image_id"], r["descriptor_id"]): r for r in rows}
     if len(rows) != 182 or len(refs) != 182:
@@ -142,7 +144,9 @@ def perform(data: Path, draft: Path) -> dict:
         except Exception as exc:
             results["phases"][key] = {"status": "FAILED", "error": str(exc)}
             results["failures"].append(key + ": " + repr(exc))
-    if results["phases"].get("P0_3_sidecars", {}).get("matching") == 56:
+    if (results["phases"].get("P0_3_sidecars", {}).get("matching") == 56
+            and results["phases"]["P0_3_sidecars"]["status"] ==
+            "P0_3_ALL_CACHE_METADATA_MATCH_ONLY_NOT_CONTENT_VERIFIED"):
         print("[GATE] P0_4_cache_SHA256 (56 cache arrays)", flush=True)
         try:
             p03, rows = read_p03()
