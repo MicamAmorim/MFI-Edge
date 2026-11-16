@@ -97,8 +97,11 @@ def check_freeze(protocol: dict, recipe: dict, approval: dict,
                 problems.append("Scientific sign-off missing: " + item)
     if not isinstance(approval.get("review_notes"), str) or len(approval["review_notes"].strip()) < 30:
         problems.append("Review notes must document scientific basis")
-    if recipe.get("schema") != "paper_a_h1h2_recipe_P0_1":
-        problems.append("Unrecognized H1/H2 parameter recipe")
+    if recipe.get("schema") != "paper_a_h1h2_recipe_P1_fitted_development":
+        problems.append("Frozen input requires a truthful fitted-development P1 recipe")
+    if (recipe.get("development_GT_and_cached_maps_read") is not True or
+            recipe.get("no_scientific_artifacts_or_outcomes_read") is not False):
+        problems.append("Fitted recipe must explicitly disclose development GT/map access")
     if [r.get("id") for r in recipe.get("hypotheses", [])] != ["H1", "H2"]:
         problems.append("Unrecognized recipe hypotheses")
     for item in recipe.get("hypotheses", []):
@@ -175,10 +178,22 @@ def validate_fitted_recipe(recipe: dict, protocol: dict,
     pinned=recipe.get("source_commit")
     if not isinstance(pinned,str) or not ancestor(repository,pinned):
         return ["Recipe source commit is not a verified Git ancestor"]
+    if (recipe.get("schema")!="paper_a_h1h2_recipe_P1_fitted_development"
+            or recipe.get("development_GT_and_cached_maps_read") is not True
+            or recipe.get("no_scientific_artifacts_or_outcomes_read") is not False):
+        return ["Fitted P1 recipe must truthfully record development-GT access"]
+    # P0.1 originally described a metadata-only draft. A P1 recipe has
+    # ACTUALLY read permitted development GT; create a transient compatibility
+    # shape to reuse its rigorous monotonicity/provenance checks.
+    shadow=dict(recipe)
+    shadow.pop("development_GT_and_cached_maps_read",None)
+    shadow["schema"]="paper_a_h1h2_recipe_P0_1"
+    shadow["status"]="DRAFT_VALUES_UNVERIFIED_NOT_FROZEN"
+    shadow["no_scientific_artifacts_or_outcomes_read"]=True
     try:
-        result=recipe_validate(recipe,protocol,code_provenance(repository),pinned)
+        result=recipe_validate(shadow,protocol,code_provenance(repository),pinned)
     except (ValueError,KeyError,TypeError) as error:
-        return ["P0.1 model parameters/provenance invalid: "+str(error)]
+        return ["P1 fitted parameters/provenance invalid: "+str(error)]
     if result.get("pending_count")!=0:
         blockers.append("P0.1 H1/H2 fitted values/proofs incomplete: "
                         +str(result.get("pending_count")))
