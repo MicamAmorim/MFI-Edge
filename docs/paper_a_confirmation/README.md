@@ -479,3 +479,13 @@ O método é **proposta ainda não congelada**, não substitui o protocolo.
 Execute `python .\tests\test_paper_a_domain_blocked_power.py` e
 `python .\scripts\simulate_paper_a_domain_blocked_power.py`.
 Ver [`PREFREEZE_DOMAIN_BLOCKED_POWER_SIMULATION.md`](PREFREEZE_DOMAIN_BLOCKED_POWER_SIMULATION.md).
+
+## Simulação por domínio: execução concluída (15/11)
+
+5/5 testes passaram; 30 cenários sintéticos gerados. Para N=150,
+poder de confirmação simultânea de H1+H2 de 57,6% sob |rho|=0,20,
+84,8% sob |rho|=0,25 e 95,4% sob |rho|=0,30 homogêneos.
+Não equivale a poder real, nem fixa coorte/estatística. Inspeção de código
+identificou decisões pendentes no GT multi-anotador, limiares e
+Choquet calibrado. Ver
+[`DOMAIN_BLOCKED_POWER_RESULT_AND_EVALUATOR_GATES_20261115.md`](DOMAIN_BLOCKED_POWER_RESULT_AND_EVALUATOR_GATES_20261115.md).
