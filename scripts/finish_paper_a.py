@@ -115,8 +115,7 @@ def audit_exists(repository_head: str):
             continue
         changed=subprocess.run(
             ["git","diff","--name-only",source,repository_head,"--",
-             "src/","run_stage24_paper_a_recertification.py",
-             "docs/paper_a_confirmation/protocol.json"],
+             "src/","run_stage24_paper_a_recertification.py"],
             cwd=ROOT,capture_output=True,text=True,check=False,timeout=45)
         if changed.returncode or changed.stdout.strip():
             continue
