@@ -53,7 +53,7 @@ def read_rows(sheet: Path) -> list[dict]:
         rows = list(reader)
     if len(rows) != 220:
         raise ValueError("Expected exactly 220 proposed captures")
-    seen=set();groups=set();counts={"BIPED":0,"MultiCue":0}
+    seen=set();groups=set();hashes=set();counts={"BIPED":0,"MultiCue":0}
     for r in rows:
         ds,iid,sha,group = [r[k] for k in ("dataset","image_id","image_sha256","scene_group")]
         if (ds not in counts or not SAFE.fullmatch(iid) or
@@ -61,9 +61,9 @@ def read_rows(sheet: Path) -> list[dict]:
             r["independence_review"]!="pending" or
             r["prior_exposure_review"]!="pending"):
             raise ValueError("Unexpected provisional scene identity or approval")
-        if (ds,iid) in seen or (ds,group) in groups:
-            raise ValueError("Duplicate scene/group")
-        seen.add((ds,iid));groups.add((ds,group))
+        if (ds,iid) in seen or (ds,group) in groups or sha in hashes:
+            raise ValueError("Duplicate scene/group/source SHA")
+        seen.add((ds,iid));groups.add((ds,group));hashes.add(sha)
         counts[ds]+=1
     if counts != {"BIPED":125,"MultiCue":95}:
         raise ValueError("Wrong proposal domain mix")
