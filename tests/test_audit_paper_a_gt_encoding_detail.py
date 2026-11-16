@@ -3,7 +3,9 @@
 import hashlib
 import io
 import json
+import subprocess
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -45,6 +47,20 @@ def previous_fixture():
 
 
 class NonconfirmatoryEncodingTests(unittest.TestCase):
+    def test_direct_launch_imports_in_isolated_mode_without_reading_data(self):
+        # runpy uses a non-__main__ name: import script, NEVER execute run().
+        # -I excludes implicit sys.path entries and reproduces Windows
+        # launchers that do not include the adjacent scripts directory.
+        script = Path(__file__).resolve().parents[1] / (
+            "scripts/audit_paper_a_gt_encoding_detail.py")
+        command = [sys.executable, "-I", "-B", "-c",
+                   "import runpy,sys;runpy.run_path(sys.argv[1],run_name='_import_only_')",
+                   str(script)]
+        with tempfile.TemporaryDirectory() as directory:
+            result = subprocess.run(command, cwd=directory, capture_output=True,
+                                    text=True, timeout=45, check=False)
+        self.assertEqual(result.returncode, 0, result.stderr)
+
     def test_biped_254_kept_exact_without_threshold(self):
         a = np.array([[0,254,255],[0,0,255],[0,254,0]] * 5, dtype=np.uint8)
         raw, item = sample_png(a)
