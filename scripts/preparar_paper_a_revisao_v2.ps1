@@ -30,7 +30,7 @@ if (Test-Path (Join-Path $base "freeze_approval.json")) {
     throw "Ja existe freeze approval: nao reexecutar preparacao pre-freeze"
 }
 
-Write-Host "[1/6] Testes sinteticos, sem GT real"
+Write-Host "[1/7] Testes sinteticos, sem GT real"
 $patterns = @(
     "test_execute_paper_a_frozen_cohort.py",
     "test_freeze_paper_a_from_independent_review.py",
@@ -38,6 +38,7 @@ $patterns = @(
     "test_paper_a_post_codex_regressions.py",
     "test_paper_a_gt_decoder_candidate_NOT_APPROVED.py",
     "test_check_paper_a_p1_lineage_prefreeze.py",
+    "test_build_paper_a_image_only_review_atlas.py",
     "test_export_paper_a_review_bundle.py",
     "test_finish_paper_a.py"
 )
@@ -48,7 +49,7 @@ foreach ($pattern in $patterns) {
     }
 }
 
-Write-Host "[2/6] Conferindo auditoria tecnica anterior sem recalcular mapas"
+Write-Host "[2/7] Conferindo auditoria tecnica anterior sem recalcular mapas"
 & $python scripts/finish_paper_a.py --no-reaudit --skip-baseline-zip
 $finalizerCode = $LASTEXITCODE
 if ($finalizerCode -ne 0) {
@@ -65,11 +66,11 @@ if ($status.status -ne "PREFREEZE_SCIENTIFIC_GATES_OPEN" -or
     throw "Estado cientifico inesperado; nao criar novo pacote pre-freeze"
 }
 
-Write-Host "[3/6] Checando documentos de revisao; nenhuma linha aprovada automaticamente"
+Write-Host "[3/7] Checando documentos de revisao; nenhuma linha aprovada automaticamente"
 & $python scripts/prepare_paper_a_final_signoff.py
 if ($LASTEXITCODE -ne 0) { throw "Falha ao conferir planilha de revisao" }
 
-Write-Host "[4/6] Validando evidencia GT ja existente e gerando PREVIA, nao freeze"
+Write-Host "[4/7] Validando evidencia GT ja existente e gerando PREVIA, nao freeze"
 $cmd = @'
 import json, sys
 from pathlib import Path
@@ -113,7 +114,7 @@ if ($null -eq $template.approved_runtime_sources_sha256 -or
     throw "Hashes das dependencias do executor nao estao completos"
 }
 
-Write-Host "[5/6] Exportando apenas metadados, template e protocolo prospectivo"
+Write-Host "[5/7] Exportando apenas metadados, template e protocolo prospectivo"
 & $python scripts/export_paper_a_review_bundle.py
 if ($LASTEXITCODE -ne 0) { throw "Falha ao exportar pacote de revisao" }
 $zip = Join-Path $base "PaperA_PRE_FREEZE_REVIEW_ONLY.zip"
@@ -136,7 +137,19 @@ try {
 }
 finally { $archive.Dispose() }
 
-Write-Host "[6/6] CONCLUIDO: pacote pronto para revisao cientifica EXTERNA"
+Write-Host "[6/7] Gerando atlas local das 220 imagens ORIGINAIS (sem GT)"
+& $python -u scripts/build_paper_a_image_only_review_atlas.py
+if ($LASTEXITCODE -ne 0) {
+    throw "Falha na preparacao do atlas original. O ZIP de metadados continua disponivel"
+}
+$atlas = Join-Path $base "PaperA_ATLAS_220_ORIGINAIS_SEM_GT.zip"
+if (-not (Test-Path $atlas -PathType Leaf)) {
+    throw "Atlas de originais ausente"
+}
+Write-Host "ATLAS DE ORIGINAIS: $atlas"
+Get-FileHash $atlas -Algorithm SHA256 | Format-Table -AutoSize
+
+Write-Host "[7/7] CONCLUIDO: dois pacotes prontos para revisao cientifica EXTERNA"
 Write-Host "Status: $($status.status)"
 Write-Host "Auditoria: 56/56 (reutilizada)"
 Write-Host "Politica GT: $expectedPolicy (APENAS PROPOSTA)"
