@@ -9,8 +9,15 @@ import json
 import os
 from pathlib import Path, PureWindowsPath
 import re
+import sys
 import tarfile
 from datetime import datetime, timezone
+
+# Explicitly add the adjacent scripts directory. Some Windows Python
+# launchers omit the script directory from sys.path on direct invocation.
+SCRIPTS_DIR = str(Path(__file__).resolve().parent)
+if SCRIPTS_DIR not in sys.path:
+    sys.path.insert(0, SCRIPTS_DIR)
 
 import numpy as np
 from PIL import Image
