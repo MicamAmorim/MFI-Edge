@@ -1,6 +1,6 @@
 # Paper A — proposta prospectiva de decodificação GT (v2, NÃO APROVADA)
 
-**Status:** `DRAFT_NOT_APPROVED`. Não libera freeze, GT da coorte, F1, H1 ou H2. O módulo experimental `src/paper_a_gt_decoder_candidate_NOT_APPROVED.py` **não é importado pelo executor confirmatório** e não substitui a política vigente `STRICT_BINARY_0_1_OR_0_255_NATIVE_v1`.
+**Status:** `DRAFT_NOT_APPROVED`. Não libera freeze, GT da coorte, F1, H1 ou H2. O módulo experimental `scripts/paper_a_gt_decoder_candidate_NOT_APPROVED.py` **não é importado pelo executor confirmatório** e não substitui a política vigente `STRICT_BINARY_0_1_OR_0_255_NATIVE_v1`.
 
 ## Base empírica anterior à confirmação
 
