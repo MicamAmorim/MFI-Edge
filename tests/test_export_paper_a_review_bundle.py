@@ -13,6 +13,19 @@ import export_paper_a_review_bundle as task
 
 
 class ReviewBundleTests(unittest.TestCase):
+    def test_current_status_and_gt_evidence_are_explicit_metadata_only(self):
+        expected = {
+            "review/LAST_STATUS.json":
+                ("work", "LAST_STATUS.json"),
+            "review/signoff/NONCONFIRMATORY_GT_ENCODING_EVIDENCE.json":
+                ("work", "scientific_signoff/NONCONFIRMATORY_GT_ENCODING_EVIDENCE.json"),
+            "science/PARECER_CODEX_DUPLA_AUDITORIA_20261116.md":
+                ("root", "docs/paper_a_confirmation/PARECER_CODEX_DUPLA_AUDITORIA_20261116.md"),
+        }
+        for destination, source in expected.items():
+            self.assertEqual(task.FILES.get(destination), source)
+            self.assertNotIn(destination, task.REQUIRED)
+
     def test_curated_bundle_contains_only_explicit_text(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp) / "root"
