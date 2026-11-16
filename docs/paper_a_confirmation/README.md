@@ -585,3 +585,35 @@ Consultar [P1_DEVELOPMENT_FIT_20261116.md](P1_DEVELOPMENT_FIT_20261116.md) e a s
 ## Inferência H1/H2 pré-GT: núcleo implementado
 
 O novo [núcleo de predição sem GT](PAPER_A_H1H2_INFERENCE_CORE.md) aplica a receita P1 aos quatro mapas em memória e devolve as predições (candidato e controle) de ambas as hipóteses, com testes sintéticos e sem acesso a GT. **Não é ainda o avaliador confirmatório autorizado.**
+
+## Adaptação de descritores Stage23 para H1/H2 (16/11/2026)
+
+**Novo código:** `src/paper_a_prefreeze_map_adapter.py`.
+
+- Usa o `norm_image` histórico do Stage24 (max-side 256, reflexão,
+  bilinear e anti-aliasing), calcula os **quatro descritores** Stage23
+  necessários, registra os escores float32 à resolução da **imagem original**,
+  sem utilizar geometria do GT.
+- Integra o núcleo H1/H2 e devolve X1/X2, quatro predições booleanas
+  e as dimensões de pré-processamento; não calcula Y1/Y2.
+- Não faz leitura/gravação de datasets ou máscaras, não seleciona a coorte,
+  nem acessa GT ou F1. Testes usam exclusivamente imagens sintéticas.
+- A API aceita `descriptor_fn` injetado apenas para testes; se omitido,
+  importa `src.stage23_descriptors.compute_descriptor` real.
+- Faltam o cache persistente com identidade/hashes por original, o adaptador
+  de manifestos BIPED/MultiCue, verificação independente de linhagem e
+  os decodificadores certificados de GT pós-freeze.
+
+### Verificação agora
+
+```powershell
+git pull --ff-only origin experiment/paper-a-conditional-confirmation
+.\.venv\Scripts\python.exe .\tests\test_paper_a_prefreeze_map_adapter.py
+if ($LASTEXITCODE -ne 0) { throw "Falha no adaptador pre-GT" }
+.\.venv\Scripts\python.exe .\scripts\preflight_paper_a_prefreeze_map_adapter.py --real-stage23
+if ($LASTEXITCODE -ne 0) { throw "Falha nos descritores reais Stage23" }
+```
+
+Este preflight roda descritores reais, mas na imagem **sintética em memória**.
+**O primeiro acesso ao GT confirmatório permanece proibido até
+manifesto e receita congelados e revisão independente.**
