@@ -300,6 +300,9 @@ def run_pipeline(base:Path=WORK, *, no_reaudit:bool=False,
                      "requires_independent_overlap_attestation":True}
     draft=json.loads(DRAFT.read_text(encoding="utf-8")) if DRAFT.is_file() else {}
     missing=count_recipe_missing(draft)
+    candidates=sorted(base.glob("devfit_*_recipe_UNATTESTED.json"))
+    if candidates:
+        dev_fit["latest_unattested_recipe"]=str(candidates[-1])
     safe_write_template(base/"freeze_approval.template.json",approval_template())
     frozen_recipe=base/"frozen_H1_H2_recipe.json"
     cohort=base/"frozen_cohort_manifest.csv"
@@ -310,7 +313,12 @@ def run_pipeline(base:Path=WORK, *, no_reaudit:bool=False,
     if audit["status"] not in ("REUSED_VERIFIED_56_56_WITH_UNCHANGED_SCIENTIFIC_CODE",):
         blockers.append("Technical SHA audit not currently verified")
     if missing and protocol.get("status") != "frozen":
-        blockers.append("P0.1 H1/H2 training recipe missing: "+", ".join(missing))
+        if candidates:
+            blockers.append("Found fitted P1 development recipe; independent "
+                            "training/overlap attestation and promotion required: "
+                            +str(candidates[-1]))
+        else:
+            blockers.append("P0.1 H1/H2 training recipe missing: "+", ".join(missing))
     if dev_fit["status"]=="DEVELOPMENT_FIT_FAILED":
         blockers.append("Explicit development fitting failed; review development_fit.log")
     if dev_fit["status"]=="FITTED_UNATTESTED":
