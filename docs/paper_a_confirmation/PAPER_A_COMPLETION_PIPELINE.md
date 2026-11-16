@@ -40,7 +40,7 @@ confirmatory F1, H1/H2 correlations or outcome-dependent exclusions.
 The **same command** can resume once the following independently reviewed
 files are present in the completion directory:
 
-- `frozen_H1_H2_recipe.json` — full H1/H2 calibrated parameters and proofs
+- `frozen_H1_H2_recipe.json` — **P1 fitted-development** H1/H2 parameters, all proofs and explicit disclosure that UDED development GT/maps were read
 - `frozen_cohort_manifest.csv` — all independent source images/captures
 - `freeze_approval.json` — signed by reviewer, freeze commit and input SHAs
 - `certified_outcomes.csv` — one row per capture with X1,Y1,X2,Y2

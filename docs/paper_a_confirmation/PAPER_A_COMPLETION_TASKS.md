@@ -24,7 +24,7 @@ development-only thresholds (candidate/control per H1/H2) using existing
 Stage24 matching/NMS. Model fitting uses no BIPED or MultiCue GT.
 
 Produces an export and a recipe suffixed `_UNATTESTED.json` on F:.
-Those parameter values are **not** promoted automatically. Fitting may
+These are `paper_a_h1h2_recipe_P1_fitted_development` records: unlike the historical P0.1 metadata-only draft, they truthfully record that UDED development GT and cached maps were accessed. Those parameter values are **not** promoted automatically. Fitting may
 use the UDED-14 data only if their scene lineage does not overlap the
 proposed confirmatory cohort; known MultiCue capture 4113 is held.
 Every `no_confirmatory_overlap_attested` stays null until independently
