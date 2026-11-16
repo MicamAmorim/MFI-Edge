@@ -180,8 +180,10 @@ def code_checks():
     tasks = [
         [sys.executable, "-m", "py_compile",
          "scripts/run_paper_a_prefreeze_one_shot.py",
-         "scripts/package_paper_a_repro.py"],
+         "scripts/package_paper_a_repro.py",
+         "scripts/paper_a_overnight_agent.py"],
         [sys.executable, "tests/test_paper_a_prefreeze_one_shot.py"],
+        [sys.executable, "tests/test_paper_a_overnight_agent.py"],
         ["git", "diff", "--check"],
     ]
     for cmd in tasks:
