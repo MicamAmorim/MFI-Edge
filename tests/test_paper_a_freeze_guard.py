@@ -5,7 +5,7 @@ import sys
 import unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from paper_a_freeze_guard import check_freeze
+from paper_a_freeze_guard import check_freeze,GT_POLICY_V2
 
 H = "a"*64
 C = "b"*40
@@ -25,6 +25,7 @@ def case():
                   "directional_alternative":{"H1":"rho<0","H2":"rho>0"},
                   "permutation_seed":20261115,
                   "test":"domain-blocked one-sided Spearman permutation"},
+        "measures":{"ground_truth_contract":{"encoding":GT_POLICY_V2}},
         "freeze_commit": None,
     }
     recipe = {"schema": "paper_a_h1h2_recipe_P1_fitted_development",
@@ -49,6 +50,7 @@ def case():
             "independent_scenes_and_exposure","sample_size_and_inference",
             "independent_protocol_review")},
         "review_notes":"Independently reviewed source, cohort, frozen parameters, tests and annotations.",
+        "gt_binary_decoding_contract":GT_POLICY_V2,
     }
     rows=[]
     for d in ("BIPED","MultiCue"):
@@ -75,6 +77,16 @@ class FreezeSafetyTests(unittest.TestCase):
         problems=check_freeze(p,r,a,c,h,lambda _:True)
         self.assertTrue(any("alpha" in v for v in problems))
         self.assertTrue(any("directional" in v for v in problems))
+
+    def test_mismatched_gt_decoder_policy_rejected(self):
+        p,r,a,c,h=case()
+        p["measures"]["ground_truth_contract"]["encoding"]="STRICT_BINARY_0_1_OR_0_255_NATIVE_v1"
+        self.assertTrue(any("GT encoding policy" in x
+            for x in check_freeze(p,r,a,c,h,lambda _:True)))
+        p,r,a,c,h=case()
+        a["gt_binary_decoding_contract"]="STRICT_BINARY_0_1_OR_0_255_NATIVE_v1"
+        self.assertTrue(any("GT binary decoding approval" in x
+            for x in check_freeze(p,r,a,c,h,lambda _:True)))
 
     def test_unfrozen_fails(self):
         p,r,a,c,h=case();p["status"]="draft_not_frozen"
