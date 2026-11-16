@@ -43,6 +43,7 @@ TESTS = (
     "test_revisar_paper_a_pre_freeze.py",
     "test_export_paper_a_review_bundle.py",
     "test_prepare_paper_a_final_signoff.py",
+    "test_freeze_paper_a_from_independent_review.py",
 )
 
 
@@ -240,6 +241,8 @@ def one_shot() -> dict:
         info["steps"]["scientific_review"] = create_dossier()
         from prepare_paper_a_final_signoff import run as prepare_review
         info["steps"]["signoff_readiness"] = prepare_review()
+        from freeze_paper_a_from_independent_review import prepare as freeze_preview
+        info["steps"]["frozen_protocol_preview"] = freeze_preview()
     else:
         info["steps"]["cohort_proposal"] = {
             "status": "SKIPPED_AFTER_DRAFT_NO_FROZEN_ARTIFACT_CHANGES"}
@@ -258,6 +261,19 @@ def one_shot() -> dict:
         sys.executable, str(ROOT / "scripts/preflight_paper_a_prefreeze_map_adapter.py"),
         "--real-stage23"], timeout=1200)
     info["steps"]["synthetic_tests"] = {"status": "ALL_PASSED"}
+    if protocol_status == "draft_not_frozen":
+        from freeze_paper_a_from_independent_review import attempt_freeze
+        try:
+            result_freeze = attempt_freeze()
+        except PermissionError as denied:
+            result_freeze = {
+                "status": "SIGNED_REVIEW_NOT_AUTHORIZED_YET",
+                "reason": str(denied), "freeze_commit_created": False,
+            }
+        info["steps"]["scientific_freeze_transition"] = result_freeze
+        protocol_status = json.loads(
+            (ROOT / "docs/paper_a_confirmation/protocol.json").read_text(encoding="utf-8")
+        ).get("status")
     # The *real* image->F1 executor is only allowed when the separately signed
     # scientific freeze passes and its exact source hash/policy were approved.
     # Before that condition: do not inspect GT, TAR, or protected outcomes.

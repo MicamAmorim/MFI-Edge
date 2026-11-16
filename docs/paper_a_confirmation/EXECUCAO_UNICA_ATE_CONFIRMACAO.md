@@ -142,3 +142,29 @@ commit do protocolo, o mesmo comando continua para a etapa pós-freeze.
 ### Proveniência original da receita P1
 
 A verificação da receita compara os hashes aos blobs versionados do commit histórico de ajuste P1, e não aos arquivos alterados no checkout de freeze. A implementação atual continua exigindo aprovação independente de seu SHA256.
+
+
+## Um comando: revisão externa assinada → freeze Git → confirmação H1/H2
+
+O comando \`concluir_paper_a.ps1\` prepara o arquivo
+\`F:\MFI-Edge-Data\MultiCue\paper_a_completion\scientific_signoff\FINAL_INDEPENDENT_REVIEW.template.json\`
+e o protocolo byte-exato \`FROZEN_PROTOCOL_BYTES_TO_REVIEW_NOT_ACTIVE.json\`.
+O revisor *independente* precisa preencher a planilha de 220 cenas com
+decisões \`PASS\` fundamentadas, depois copiar o template para
+\`FINAL_INDEPENDENT_REVIEW.json\` e assinar conscientemente as sete
+proveniências P1, os seis gates, os cinco relatos de evidência e os SHA256
+dos arquivos efetivamente revistos.
+
+Nenhum \`PASS\` é criado automaticamente; um review ausente ou incompleto
+produz \`AWAITING_INDEPENDENT_SCIENTIFIC_SIGNOFF\` ou
+\`SIGNED_REVIEW_NOT_AUTHORIZED_YET\` sem abrir GT. Com decisão completa
+e coerente, o MESMO comando pode criar o protocolo congelado no Git,
+\`git commit\` e \`git push\` com a versão revisada, registrar receita
+e coorte assinadas no F:, executar guard e, se o hash exato do avaliador
+tiver sido aprovado, seguir aos GTs e F1 de H1/H2.
+
+**A decisão externa é necessária**: nenhum software pode inferir a
+independência científica por declarar que 220 amostras estão disponíveis.
+O preenchimento não pode ser delegado ao mesmo script, pois seria
+autorização circular. O estado de revisão e a exposição Stage13c são
+necessariamente registrados para o revisor antes da primeira abertura de GT.

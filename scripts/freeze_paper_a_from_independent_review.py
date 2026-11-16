@@ -74,9 +74,32 @@ def freeze_candidate(protocol: dict) -> dict:
     candidate["cohort"]["target_n_independent_images"]=220
     candidate["cohort"]["dataset_names"]=["BIPED","MultiCue"]
     candidate["measures"]["unit"]="independent_capture_or_scene"
+    candidate["cohort"]["selection"]=(
+        "Prospective fixed sample: 125 BIPED independent originals and 95 "
+        "independent MultiCue captures, one per reviewed scene/prefix, with "
+        "hash-ranked deterministic representatives and historic 4113 exclusion. "
+        "Each one must have passed the independent exposure and scene audit "
+        "before this protocol is committed.")
+    candidate["cohort"]["power_analysis"]=(
+        "Pre-outcome simulation: 1000 repetitions, homogeneous absolute "
+        "rho=0.20, 125 BIPED + 95 MultiCue, joint power about 0.823; "
+        "conditional only, not observed post-confirmatory evidence.")
+    contract=candidate["measures"].pop("ground_truth_contract_proposal")
+    contract["encoding"]=BIN_POLICY
+    contract["validation"]=(
+        "Independent GT-semantics and binary-decoding evidence is required "
+        "in the external reviewed freeze decision; no automatic decoding "
+        "or late threshold fitting.")
+    candidate["measures"]["ground_truth_contract"]=contract
+    candidate["inference"]["test"]=(
+        "Primary domain-blocked one-sided Spearman midranks, "
+        "weighted mean of within-domain rho with weights n_d-1; "
+        "100000 Y permutations restricted to each domain.")
     candidate["inference"]["ties"]=(
         "Midranks within domain, permute Y within each domain; constant ranks "
         "fail closed and require scientific escalation, no post-outcome exclusions.")
+    candidate["inference"]["multiplicity"]=(
+        "Holm step-down adjustment for the two preregistered primary hypotheses")
     return candidate
 
 

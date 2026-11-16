@@ -67,6 +67,10 @@ jobs:
           python tests/test_prepare_paper_a_final_signoff.py
       - name: Static validation for frozen analysis caching
         run: python -m py_compile scripts/resume_paper_a_confirmation.py
+      - name: Reviewer-gated freeze safety tests (no GT, no real signing)
+        run: |
+          python -m py_compile scripts/freeze_paper_a_from_independent_review.py
+          python tests/test_freeze_paper_a_from_independent_review.py
       - name: Build package without scientific data
         run: python scripts/package_paper_a_repro.py --outdir dist
       - name: Preserve baseline preconfirmatory manuscript and ZIP
