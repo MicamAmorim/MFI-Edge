@@ -22,7 +22,7 @@ SIGNOFF=WORK/"scientific_signoff"
 PROTOCOL=ROOT/"docs/paper_a_confirmation/protocol.json"
 P1=ROOT/"docs/paper_a_confirmation/P1_DEVELOPMENT_RECIPE_UNATTESTED.json"
 EXECUTOR=ROOT/"scripts/execute_paper_a_frozen_cohort.py"
-BIN_POLICY="STRICT_BINARY_0_1_OR_0_255_NATIVE_v1"
+from paper_a_freeze_guard import GT_POLICY_V2 as BIN_POLICY
 BRANCH="experiment/paper-a-conditional-confirmation"
 OUT_COMMIT_NOTE="freeze(paper-a): reviewed prospective H1/H2 protocol and N220 cohort"
 PROOFS=("H1.membership","H1.candidate_threshold","H1.control_threshold",
@@ -38,6 +38,8 @@ REVIEW_FIELDS=ROWS+("reviewer_independence_decision",
 SOURCE_SNAPSHOT=SIGNOFF/"FROZEN_PROTOCOL_BYTES_TO_REVIEW_NOT_ACTIVE.json"
 TEMPLATE=SIGNOFF/"FINAL_INDEPENDENT_REVIEW.template.json"
 SIGNED=SIGNOFF/"FINAL_INDEPENDENT_REVIEW.json"
+GT_FORMAT_EVIDENCE=SIGNOFF/"NONCONFIRMATORY_GT_ENCODING_EVIDENCE.json"
+GT_DETAIL_EVIDENCE=SIGNOFF/"GT_PIXEL_ENCODING_DETAIL_PRE_FREEZE_v1.json"
 
 
 def sha(path: Path) -> str:
@@ -103,6 +105,73 @@ def freeze_candidate(protocol: dict) -> dict:
     return candidate
 
 
+def verified_nonconfirmatory_gt_v2_evidence(
+        fmt: Path = GT_FORMAT_EVIDENCE,
+        detail: Path = GT_DETAIL_EVIDENCE) -> dict[str, str]:
+    """Metadata-only validation. Does NOT certify foreground semantics.
+
+    This only prevents approving a decoder that contradicts the exact
+    previously recorded out-of-cohort masks. Real scientific signoff is
+    still a separately required external decision.
+    """
+    for path in (fmt, detail):
+        if (not path.is_file() or path.is_symlink() or
+                path.stat().st_size > 1_000_000):
+            raise PermissionError("Nonconfirmatory GT metadata unavailable/unsafe: "+str(path))
+    original=json.loads(fmt.read_text(encoding="utf-8"))
+    observed=json.loads(detail.read_text(encoding="utf-8"))
+    if (original.get("schema_version") != 1 or
+            original.get("only_nonconfirmatory_GT_opened") is not True or
+            original.get("protected_confirmatory_GT_opened") is not False or
+            original.get("confirmation_F1_computed") is not False or
+            original.get("scientific_GT_semantics_approval") is not False or
+            original.get("sample_counts") != {"BIPED":3,"MultiCue":12} or
+            observed.get("schema_version") != 1 or
+            observed.get("source_report_sha256") != sha(fmt) or
+            observed.get("status") != "NONCONFIRMATORY_GT_PIXEL_ENCODING_DETAIL_NOT_CERTIFIED" or
+            observed.get("confirmatory_GT_accessed") is not False or
+            observed.get("F1_computed") is not False or
+            observed.get("requires_independent_encoding_review") is not True or
+            observed.get("sample_counts") != {"BIPED_test":3,"MultiCue_excluded_4113":12}):
+        raise PermissionError("Nonconfirmatory GT evidence is incomplete or mismatched")
+    for label, old_key, new_key, dtype, allowed in (
+            ("BIPED","BIPED_samples","BIPED_test","uint8",{0,254,255}),
+            ("MultiCue","MultiCue_samples","MultiCue_excluded_4113","uint16",{0,65535})):
+        earlier=original.get(old_key)
+        later=observed.get(new_key)
+        if not isinstance(earlier,list) or not isinstance(later,list) or len(earlier)!=len(later):
+            raise PermissionError("Nonconfirmatory sample count changed: "+label)
+        known={r.get("source_file"):r for r in earlier}
+        if len(known)!=len(earlier):
+            raise PermissionError("Duplicate earlier GT sample names")
+        union=set()
+        for entry in later:
+            name=entry.get("source_file")
+            previous=known.get(name)
+            values=entry.get("all_values_if_at_most_32")
+            if (not isinstance(name,str) or previous is None or
+                    entry.get("sha256") != previous.get("file_sha256") or
+                    entry.get("dtype") != dtype or
+                    entry.get("shape") != previous.get("shape") or
+                    not isinstance(values,list) or
+                    not values or not set(values).issubset(allowed) or
+                    entry.get("scientific_decoding_approved") is not False):
+                raise PermissionError("GT detailed encoding record drift: "+label)
+            if label=="BIPED":
+                if ("/edges/edge_maps/test/rgbr/" not in
+                    name.replace("\\","/").lower()):
+                    raise PermissionError("BIPED reference is not from test split")
+            elif not re.fullmatch(
+                    r"multicue/ground-truth/images/edges/4113_left_\d+\.\d+\.png",
+                    name.removeprefix("./")):
+                raise PermissionError("MultiCue reference not in excluded 4113")
+            union.update(values)
+        if union!=allowed:
+            raise PermissionError("Observed GT sample code set differs: "+label)
+    return {"nonconfirmatory_gt_format_sha256":sha(fmt),
+            "nonconfirmatory_gt_detail_sha256":sha(detail)}
+
+
 def git(*args: str) -> str:
     p=subprocess.run(["git",*args],cwd=ROOT,capture_output=True,
                      text=True,check=False,timeout=80)
@@ -121,13 +190,20 @@ def prepare() -> dict:
                 "external_approval_not_issued":True}
     draft=freeze_candidate(protocol)
     desired=jsonify(draft)
-    if SOURCE_SNAPSHOT.exists():
-        if SOURCE_SNAPSHOT.read_text(encoding="utf-8")!=desired:
-            raise RuntimeError("Existing reviewed protocol preview differs from current source")
-    else:
-        # Windows open(...,"w") otherwise translates LF to CRLF. New
-        # previews are serialized as exact UTF-8 LF bytes for reproducibility.
-        SOURCE_SNAPSHOT.write_bytes(desired.encode("utf-8"))
+    desired_bytes=desired.encode("utf-8")
+    if SOURCE_SNAPSHOT.exists() and SOURCE_SNAPSHOT.read_bytes()!=desired_bytes:
+        if SIGNED.exists():
+            raise PermissionError("Signed decision exists: cannot alter reviewed protocol preview")
+        previous=SOURCE_SNAPSHOT.read_bytes()
+        backup=SOURCE_SNAPSHOT.with_name(
+            SOURCE_SNAPSHOT.stem+"_SUPERSEDED_"+hashlib.sha256(previous).hexdigest()[:12]+".json")
+        if backup.exists() and backup.read_bytes()!=previous:
+            raise RuntimeError("Existing superseded protocol preview differs")
+        if not backup.exists():
+            backup.write_bytes(previous)
+        SOURCE_SNAPSHOT.write_bytes(desired_bytes)
+    elif not SOURCE_SNAPSHOT.exists():
+        SOURCE_SNAPSHOT.write_bytes(desired_bytes)
     reviewed=SIGNOFF/"REVIEW_220_IMAGES_PENDING.csv"
     original_sha=sha(PROTOCOL)
     candidate_sha=sha(SOURCE_SNAPSHOT)
@@ -153,6 +229,8 @@ def prepare() -> dict:
             "paper_a_freeze_guard",fromlist=["runtime_source_hashes"]
         ).runtime_source_hashes(ROOT),
         "stage13c_summary_sha256":None,
+        "nonconfirmatory_gt_format_sha256":sha(GT_FORMAT_EVIDENCE) if GT_FORMAT_EVIDENCE.is_file() else None,
+        "nonconfirmatory_gt_detail_sha256":sha(GT_DETAIL_EVIDENCE) if GT_DETAIL_EVIDENCE.is_file() else None,
     }
     stage=ROOT/"results/automation/stage13c_biped_preflight/summary.json"
     if stage.is_file() and not stage.is_symlink() and stage.stat().st_size<2_000_000:
@@ -169,7 +247,9 @@ def prepare() -> dict:
                 "reviewed_cohort_sheet_sha256",
                 "reviewed_P1_recipe_sha256",
                 "approved_executor_source_sha256",
-                "approved_runtime_sources_sha256")):
+                "approved_runtime_sources_sha256",
+                "nonconfirmatory_gt_format_sha256",
+                "nonconfirmatory_gt_detail_sha256")):
             backup=TEMPLATE.with_name(TEMPLATE.stem+"_SUPERSEDED_"+
                 hashlib.sha256(TEMPLATE.read_bytes()).hexdigest()[:12]+".json")
             if not backup.exists():
@@ -246,20 +326,14 @@ def validate_signed_decision(decision: dict, sheet: list[dict],
         if decision.get(key)!=val:
             raise PermissionError("Signed review hash is stale/different: "+key)
     if decision.get("gt_binary_decoding_contract")!=BIN_POLICY:
-        raise PermissionError("No approved, independently verified GT decoder policy")
-    # Pre-confirmatory mask samples are already documented incompatible with
-    # STRICT_BINARY_0_1_OR_0_255_NATIVE_v1. Even a review JSON filled TRUE
-    # must NOT be able to override a directly contradictory technical sample.
-    sample_report=SIGNOFF/"NONCONFIRMATORY_GT_ENCODING_EVIDENCE.json"
-    if sample_report.is_file() and not sample_report.is_symlink():
-        sample=json.loads(sample_report.read_text(encoding="utf-8"))
-        if (sample.get("schema_version")==1 and sample.get(
-                "all_sampled_masks_pass_proposed_strict_decoder") is False):
-            raise PermissionError(
-                "The preregistered strict uint8 decoder contradicts observed "
-                "nonconfirmatory BIPED (0,254,255) / MultiCue (uint16) GT. "
-                "Prospectively justify and independently re-review a versioned "
-                "decoder/metric policy BEFORE any protected GT is opened.")
+        raise PermissionError("No approved, independently verified v2 GT decoder policy")
+    verified=verified_nonconfirmatory_gt_v2_evidence()
+    for name,actual in verified.items():
+        if decision.get(name)!=actual:
+            raise PermissionError("Independently reviewed GT evidence SHA is stale: "+name)
+    # The matching metadata does not grant approval; the independently
+    # authored scientific_approvals.ground_truth_semantics and full reviewer
+    # evidence are separate mandatory checks above.
     if len(sheet)!=220:
         raise PermissionError("Review sheet does not have 220 original captures")
     counts={"BIPED":0,"MultiCue":0}
@@ -328,6 +402,7 @@ def version_freeze_evidence(recipe: Path, cohort: Path,
             "paper_a_freeze_guard",fromlist=["runtime_source_hashes"]
         ).runtime_source_hashes(ROOT),
         "stage13c_summary_sha256":sha(stage) if stage.is_file() else None,
+        **{k:decision[k] for k in ("nonconfirmatory_gt_format_sha256", "nonconfirmatory_gt_detail_sha256")},
         "reviewed_utc":decision["approved_utc"],
         "no_GT_opened_by_freeze_step":True,
         "explanation":"SHA-bound independent review; full reviewer notes retained privately on F:, not pushed to Git",
@@ -407,6 +482,7 @@ def issue_approval_after_remote_freeze(decision: dict, sheet_path: Path,
         "approved_runtime_sources_sha256":decision["approved_runtime_sources_sha256"],
         "executor_contract_independently_reviewed":True,
         "gt_binary_decoding_contract":BIN_POLICY,
+        **{k:decision[k] for k in ("nonconfirmatory_gt_format_sha256", "nonconfirmatory_gt_detail_sha256")},
         "review_notes":decision["review_notes"],
         "review_decision_sha256":sha(SIGNED),
         "review_sheet_sha256":sha(sheet_path),
