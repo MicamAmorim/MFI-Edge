@@ -32,6 +32,20 @@ def fixture():
 
 
 class MetadataOnlyContractTests(unittest.TestCase):
+    def test_source_pins_are_standalone(self):
+        # No dependency on an adjacent history-audit module at runtime.
+        import check_paper_a_multicue_gt_task_names as target
+        self.assertEqual(
+            target.REVISION,
+            "f47b14959e9764c8aa854cb7958d54462c46f8ef",
+        )
+        self.assertEqual(
+            target.SHA256,
+            "8e5fdb2ff7343e4a55f110e9ffe189b2c81689cd326324e34c6c73562191819e",
+        )
+        from pathlib import Path
+        self.assertEqual(Path(target.ROOT).name, "MultiCue")
+
     def test_correct_inventory_row(self):
         result = check_unit(fixture())
         self.assertEqual(result["tasks"]["edges"]["file_names"], 6)

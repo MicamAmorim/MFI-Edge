@@ -14,7 +14,13 @@ import re
 from collections import Counter
 from pathlib import Path
 
-from audit_paper_a_multicue_sequence_units import ROOT, REVISION, SHA256
+# Self-contained scientific provenance pin.  This name-only validator must
+# work even on partial Windows checkouts lacking the earlier sequence-audit
+# script; it validates the source revision/SHA against existing JSON.
+# Do not import other audit scripts or silently read the TAR/GT.
+ROOT = Path(r"F:\MFI-Edge-Data\MultiCue")
+REVISION = "f47b14959e9764c8aa854cb7958d54462c46f8ef"
+SHA256 = "8e5fdb2ff7343e4a55f110e9ffe189b2c81689cd326324e34c6c73562191819e"
 
 TASK_COUNTS = {"edges": 6, "boundaries": 5}
 GT_PATTERN = re.compile(
