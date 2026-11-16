@@ -17,3 +17,15 @@ Estado: **PENDENTE**. Sem assinatura/commit final, o estudo ainda não é confir
 - [ ] Identificado revisor da conformidade (pode ser auditoria independente por código) e registrado eventual desvio.
 
 **Proibido:** chamar `draft_not_frozen` de pré-registro concluído, executar seleção por GT para decidir amostra ou reportar retrospectivamente p de múltiplas buscas como teste único.
+
+## Condição amostral posterior à simulação (não é freeze)
+
+- [ ] Decidir efeito mínimo relevante (0,20 versus 0,25 ou outro),
+  sem usar resultados confirmatórios ou rho exploratório selecionado.
+- [ ] Distinguir poder individual H1/H2 de poder conjunto H1+H2.
+- [ ] Verificar se o desenho condicional 125+95 é realmente elegível;
+  caso contrário simular explicitamente o desenho alternativo escolhido.
+- [ ] Documentar por escrito qual estimando é primário: rho global ou
+  rho dentro de domínio com pesos n_d-1 e permutação bloqueada.
+- [ ] Fixar se MultiCue usa boundaries ou edges e como combina múltiplos
+  anotadores antes de qualquer F1 confirmatório.

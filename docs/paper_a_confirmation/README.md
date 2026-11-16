@@ -489,3 +489,13 @@ Não equivale a poder real, nem fixa coorte/estatística. Inspeção de código
 identificou decisões pendentes no GT multi-anotador, limiares e
 Choquet calibrado. Ver
 [`DOMAIN_BLOCKED_POWER_RESULT_AND_EVALUATOR_GATES_20261115.md`](DOMAIN_BLOCKED_POWER_RESULT_AND_EVALUATOR_GATES_20261115.md).
+
+## Escolha amostral preliminar, ainda não congelada
+
+Da tabela completa do usuário: N=220 (125 BIPED+95 MultiCue) tem poder
+conjunto sintético de 82,3% em |rho|=0,20 homogêneo; N=180 (90+90)
+tem 90,5% em |rho|=0,25, mas só 68,2% em |rho|=0,20.
+O desenho 220 é **meta condicional**, depende de todos os 95 grupos
+MultiCue ainda não certificados; não substituir automaticamente grupos
+perdidos com BIPED sem nova simulação e decisão pré-F1.
+Ver [`SAMPLE_SIZE_CONDITIONAL_DECISION_20261115.md`](SAMPLE_SIZE_CONDITIONAL_DECISION_20261115.md).
