@@ -7,9 +7,21 @@ if ($branch -ne "experiment/paper-a-conditional-confirmation") {
     throw "Branch incorreta: $branch"
 }
 if (-not $SkipUpdate) {
+    # PowerShell parses the entire script before git pull. If the pull
+    # replaces this launcher, the in-memory script is still the OLD version.
+    # Relaunch exactly once, from the newly updated path, without another pull.
+    $loadedFileSha = (Get-FileHash -Algorithm SHA256 -Path $PSCommandPath).Hash
     & git pull --ff-only origin experiment/paper-a-conditional-confirmation
     if ($LASTEXITCODE -ne 0) { throw "Falha no git pull. Nenhum arquivo foi descartado." }
+    $currentFileSha = (Get-FileHash -Algorithm SHA256 -Path $PSCommandPath).Hash
+    if ($loadedFileSha -ne $currentFileSha) {
+        Write-Host "[PAPER A] Launcher atualizado pelo git pull; reiniciando a versao NOVA do script sem repetir o pull."
+        & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $PSCommandPath -SkipUpdate
+        $restartCode = $LASTEXITCODE
+        exit $restartCode
+    }
 }
+Write-Host "[PAPER A] Launcher atual carregado: Codex + freeze guard + confirmacao H1/H2."
 $python = Join-Path $repo ".venv\Scripts\python.exe"
 if (-not (Test-Path $python)) { throw "Python da venv nao encontrado: $python" }
 & $python -u "scripts\paper_a_codex_finalizer.py"
