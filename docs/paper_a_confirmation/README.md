@@ -454,3 +454,19 @@ Para avaliar 2.675 pares ainda não verificados sem depender de FLANN,
 execute `python .\scripts\rescreen_paper_a_multicue_uded_exact_mutual.py`.
 Retoma por checkpoint no F: e reutiliza os 25 pares já reavaliados.
 Ver [`MULTICUE_EXACT_MUTUAL_FULL_RESCREEN.md`](MULTICUE_EXACT_MUTUAL_FULL_RESCREEN.md).
+
+## Triagem UDED × MultiCue concluída no escopo de 2.700 pares
+
+Retriagem BF recíproca: 2.700/2.700 pares, apenas a correspondência
+histórica `09-MDBD-1C` / `4113_left_0082`, nenhuma nova flag.
+O prefixo 4113 permanece fora da seleção. Esta é uma conclusão
+**somente para os quadros finais e imagens UDED originais auditados**.
+Ver [resultado completo](MULTICUE_EXACT_MUTUAL_RESCREEN_RESULT_20261115.md).
+
+## Poder: triagem pré-freeze sem usar GT/F1
+
+Rode `python .\scripts\estimate_paper_a_power_sensitivity.py` para
+uma grade de efeitos conservadores. Veja
+[sensibilidade de poder](PREFREEZE_POWER_SENSITIVITY.md).
+A aproximação Fisher-z não substitui a simulação final do teste Spearman
+e da permutação por domínio.
