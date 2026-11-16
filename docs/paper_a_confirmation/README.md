@@ -340,3 +340,24 @@ A ausência de flags **não certifica independência**. As sequências
 compartilhando prefixos 4108 e 4113 permanecem em hold; usar no máximo
 uma unidade por prefixo antes de eventual confirmação documental de
 independência. Toda escolha deve preceder F1 e o freeze do protocolo.
+
+## UDED 09-MDBD-1C: auditoria visual direcionada
+
+A auditoria geral encontrou 0 coincidências dHash/pHash **nos limiares fixados**,
+mas isso não exclui overlap de cena da imagem UDED `09-MDBD-1C`
+com outro quadro do vídeo MultiCue. Antes de congelar, gerar duas pranchas
+**usando somente originais** e ranking sem limiar binário:
+
+```powershell
+git pull --ff-only origin experiment/paper-a-conditional-confirmation
+python .\scripts\review_paper_a_multicue_mdbd_lineage.py --top-k 12
+Start-Process "F:\MFI-Edge-Data\MultiCue\multicue_uded09_nearest_by_dhash.png"
+Start-Process "F:\MFI-Edge-Data\MultiCue\multicue_uded09_nearest_by_phash.png"
+```
+
+Arquivos CSV/JSON no F: contêm distâncias e rankings de todas as 100
+imagens finais esquerdas, não scores F1. **Sem GT/H5 ou inferência.**
+Resultados da inspeção humana precisam ser registrados antes de eventuais
+exclusões. Não declarar ausência de overlap caso nenhum dos 100 quadros
+coincida: uma amostra histórica pode corresponder a outro frame da
+mesma sequência, recorte ou uma distribuição MDBD não idêntica.
