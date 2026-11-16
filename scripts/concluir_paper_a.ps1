@@ -16,4 +16,6 @@ if (-not (Test-Path $python)) { throw "Python da venv nao encontrado: $python" }
 $code = $LASTEXITCODE
 Write-Host "Resumo em F:\MFI-Edge-Data\MultiCue\paper_a_completion\ONE_COMMAND_STATUS.json"
 Write-Host "Pendencias em F:\MFI-Edge-Data\MultiCue\paper_a_completion\NEXT_ACTIONS.md"
+Write-Host "Revisao: F:\MFI-Edge-Data\MultiCue\paper_a_completion\scientific_signoff\REVIEWER_DECISION_REQUIRED.md"
+Write-Host "Pacote unico: F:\MFI-Edge-Data\MultiCue\paper_a_completion\PaperA_PRE_FREEZE_REVIEW_ONLY.zip"
 if ($code -ne 0) { throw "Erro tecnico: ver ONE_COMMAND_ERROR.json no F:" }

@@ -37,6 +37,12 @@ TESTS = (
     "test_paper_a_paired_f1_contract.py",
     "test_paper_a_freeze_guard.py",
     "test_analyze_paper_a_confirmed.py",
+    "test_finish_paper_a.py",
+    "test_continuar_paper_a.py",
+    "test_execute_paper_a_frozen_cohort.py",
+    "test_revisar_paper_a_pre_freeze.py",
+    "test_export_paper_a_review_bundle.py",
+    "test_prepare_paper_a_final_signoff.py",
 )
 
 
@@ -323,7 +329,10 @@ def main() -> int:
         "blockers": result["blockers"],
         "NEXT_ACTIONS": str(WORK / "NEXT_ACTIONS.md"),
         "ONE_COMMAND_STATUS": str(WORK / "ONE_COMMAND_STATUS.json"),
-        "message": "One-command run finished. Scientific approvals remain human-reviewed.",
+        "SCIENTIFIC_REVIEW_SHEET": str(WORK / "scientific_signoff/REVIEW_220_IMAGES_PENDING.csv")
+            if result.get("steps",{}).get("signoff_readiness") else None,
+        "REVIEW_ZIP": result.get("steps",{}).get("review_bundle",{}).get("path"),
+        "message": "The remaining scientific signoff is independent; no self-approval was issued.",
     }, ensure_ascii=False, indent=2), flush=True)
     return 0
 

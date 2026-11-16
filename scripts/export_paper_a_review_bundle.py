@@ -50,6 +50,9 @@ REQUIRED = {
     "review/COHORT_PROPOSAL_220_NOT_CERTIFIED.csv",
     "recipe/P1_DEVELOPMENT_RECIPE_UNATTESTED.json",
     "protocol/protocol_DRAFT.json",
+    "review/signoff/REVIEW_220_IMAGES_PENDING.csv",
+    "review/signoff/REVIEWER_DECISION_REQUIRED.md",
+    "review/signoff/SIGNOFF_READINESS_NOT_APPROVAL.json",
 }
 
 

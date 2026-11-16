@@ -125,3 +125,15 @@ resultado estatístico anterior é verificado por hash e reaproveitado.
 O ZIP de análise também não é sobrescrito; seus membros são conferidos
 contra o MANIFEST interno antes do reaproveitamento.
 A própria revalidação do freeze precede qualquer leitura de outcome.
+
+
+## Execução integral do pré-freeze com uma linha
+
+O comando único executa os testes sintéticos do avaliador, inferência, guard,
+runner, pacote de evidência e revisão (11 arquivos de teste), além do
+preflight de Stage23 com imagem sintética. Em seguida gera a planilha
+científica e o ZIP, registra as pendências e encerra normalmente quando o
+freeze não está aprovado. **Ausência do resultado confirmado não é falha
+técnica.** Após aprovação independentemente fundamentada dos GT, coorte,
+receita, prova de não sobreposição, teste estatístico, hash do avaliador e
+commit do protocolo, o mesmo comando continua para a etapa pós-freeze.

@@ -189,13 +189,20 @@ def run(root: Path = ROOT, data: Path = DATA, work: Path = WORK) -> dict:
                               "training_ids_sha256")})
     if len(seven)!=7:
         raise ValueError("Unexpected number of P1 provenance claims")
-    stage = root/"results/automation/stage13c_biped_preflight/summary.json"
-    stage_info = ({"status": "EXECUTION_EVIDENCE_NOT_FOUND", "expected_path": str(stage),
-                   "science_approval": False} if not stage.exists() else {
-                   "status": "TECHNICAL_SUMMARY_PRESENT_REVIEW_REQUIRED",
-                   "file_sha256": sha(stage),
-                   "file_path": str(stage),
-                   "science_approval": False})
+    stage = root / "results/automation/stage13c_biped_preflight/summary.json"
+    if stage.is_file() and not stage.is_symlink() and stage.stat().st_size <= 2_000_000:
+        stage_info = {
+            "status": "TECHNICAL_SUMMARY_PRESENT_REVIEW_REQUIRED",
+            "file_sha256": sha(stage),
+            "file_path": str(stage),
+            "science_approval": False,
+        }
+    else:
+        stage_info = {
+            "status": "EXECUTION_EVIDENCE_MISSING_OR_UNSAFE",
+            "expected_path": str(stage),
+            "science_approval": False,
+        }
     readme = path / "REVIEWER_DECISION_REQUIRED.md"
     readme.write_text(
         "# Paper A — independent signoff required before protected GT/F1\n\n"
