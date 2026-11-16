@@ -9,6 +9,15 @@ No protected GT, H5, maps, outcomes, training, F1, or new signoff.
 from __future__ import annotations
 
 import json
+import sys
+from pathlib import Path
+
+# Direct-script launchers on Windows may omit the sibling scripts/ directory.
+# Insert the exact resolved source directory explicitly before imports.
+SCRIPTS_DIR = str(Path(__file__).resolve().parent)
+if SCRIPTS_DIR not in sys.path:
+    sys.path.insert(0, SCRIPTS_DIR)
+
 from freeze_paper_a_from_independent_review import (
     prepare, verified_nonconfirmatory_gt_v2_evidence,
 )
