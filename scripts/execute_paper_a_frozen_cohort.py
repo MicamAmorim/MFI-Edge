@@ -282,11 +282,41 @@ def checkpoint_one(row: dict, recipe: dict, executor_sha: str,
     # Verify the original's actual bytes even when the descriptor checkpoint
     # is reused. The reviewed cohort digest must still match the disk file.
     original = load_original(row)
-    if checkpoint.is_file():
-        existing = read_json(checkpoint)
+    from analyze_paper_a_confirmed import OUTCOME_COLUMNS, check_outcomes
+    receipt = checkpoint.with_suffix(".sha256")
+    staged_receipt = checkpoint.with_suffix(".sha256.part")
+
+    def validate_checkpoint_payload(path: Path) -> dict:
+        existing=read_json(path)
         if existing.get("inputs") != key:
             raise ValueError("Existing image checkpoint provenance changed")
-        return existing["outcome"]
+        raw=existing.get("outcome")
+        if not isinstance(raw,dict) or set(raw)!=set(OUTCOME_COLUMNS):
+            raise ValueError("Existing image checkpoint outcome schema changed")
+        check_outcomes([{k:str(raw[k]) for k in OUTCOME_COLUMNS}],[row])
+        return raw
+
+    if checkpoint.is_file():
+        prior=validate_checkpoint_payload(checkpoint)
+        if not receipt.is_file() and staged_receipt.is_file():
+            expected=staged_receipt.read_text(encoding="ascii").strip()
+            if expected!=digest(checkpoint):
+                raise ValueError("Interrupted checkpoint receipt differs from payload")
+            os.replace(staged_receipt,receipt)
+        if (not receipt.is_file() or receipt.is_symlink() or
+                receipt.read_text(encoding="ascii").strip()!=digest(checkpoint)):
+            raise ValueError("Checkpoint has no matching separate SHA256 receipt; refuse reuse")
+        return prior
+    staged_json=checkpoint.with_suffix(".json.part")
+    if staged_json.is_file():
+        prior=validate_checkpoint_payload(staged_json)
+        if not staged_receipt.is_file() or staged_receipt.is_symlink():
+            raise RuntimeError("Interrupted checkpoint has no staged independent hash receipt")
+        if staged_receipt.read_text(encoding="ascii").strip()!=digest(staged_json):
+            raise ValueError("Interrupted checkpoint payload and receipt disagree")
+        os.replace(staged_json,checkpoint)
+        os.replace(staged_receipt,receipt)
+        return prior
     from src.paper_a_prefreeze_map_adapter import predict_original_pregt
     from src.paper_a_confirmation_paired_f1 import evaluate_paired_binary
     predictions = predict_original_pregt(original, recipe).predictions
@@ -308,7 +338,10 @@ def checkpoint_one(row: dict, recipe: dict, executor_sha: str,
     tmp = checkpoint.with_suffix(".json.part")
     with tmp.open("x", encoding="utf-8") as f:
         json.dump({"inputs": key, "outcome": outcome}, f, ensure_ascii=False, indent=2)
+    with staged_receipt.open("x", encoding="ascii") as f:
+        f.write(digest(tmp)+"\n")
     os.replace(tmp, checkpoint)
+    os.replace(staged_receipt, receipt)
     return outcome
 
 
