@@ -92,3 +92,7 @@ and a SHA-manifested ZIP, rather than claiming accepted publication.
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\start_finish_paper_a.ps1
 ```
+
+## Milestone D.1 — in-memory H1/H2 GT-free core implemented
+
+The first pre-outcome component is versioned as `src/paper_a_h1h2_inference_core.py`, with synthetic tests and a smoke CLI. It uses the completed P1 recipe, existing Stage24 inference/NMS and fixed thresholds. **No real BIPED/MultiCue outcomes have been produced.** The pending parts of D are the independent dataset image/descriptor adapter, reviewed GT decoders, cohort+freeze and certified evaluator. See `PAPER_A_H1H2_INFERENCE_CORE.md`. Do not rerun development fitting just to run the safe core.

@@ -581,3 +581,7 @@ e [`PAPER_A_COMPLETION_TASKS.md`](PAPER_A_COMPLETION_TASKS.md).
 ## Resultado P1: parâmetros ajustados no UDED-14 (16/11/2026)
 
 Consultar [P1_DEVELOPMENT_FIT_20261116.md](P1_DEVELOPMENT_FIT_20261116.md) e a seção 7 do manuscrito. A execução local `FITTED_UNATTESTED` ajustou pertinências, quatro limiares e a capacidade Choquet, **sem confirmação independente**. A receita completa foi publicada no commit `2b7be963` em [`P1_DEVELOPMENT_RECIPE_UNATTESTED.json`](P1_DEVELOPMENT_RECIPE_UNATTESTED.json), incluindo seis coeficientes de Möbius e hashes de proveniência. **A checagem SHA256 entre o arquivo original no F: e a cópia Git foi concluída** com Python em 16/11/2026: `628d1e345b6d1117c3cbfbc6ecaf75d4cac8db6a7796d328e2ea911ce9891a9c` para ambos, saída `IDENTICOS`; ver o registro reproduzível em `P1_DEVELOPMENT_FIT_20261116.md`. Este arquivo continua `UNATTESTED`, não congelado. Nunca executar `git add .` nem versionar GT, imagens de terceiros, H5, NPY ou ZIPs locais de resultados.
+
+## Inferência H1/H2 pré-GT: núcleo implementado
+
+O novo [núcleo de predição sem GT](PAPER_A_H1H2_INFERENCE_CORE.md) aplica a receita P1 aos quatro mapas em memória e devolve as predições (candidato e controle) de ambas as hipóteses, com testes sintéticos e sem acesso a GT. **Não é ainda o avaliador confirmatório autorizado.**
