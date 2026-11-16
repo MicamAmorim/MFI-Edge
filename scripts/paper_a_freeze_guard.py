@@ -354,6 +354,8 @@ def verify_versioned_freeze_inputs(repo: Path, protocol: Path,
         "external_signed_decision_sha256":approval.get("review_decision_sha256"),
         "external_review_sheet_sha256":approval.get("review_sheet_sha256"),
         "executor_source_sha256":approval.get("approved_executor_source_sha256"),
+        "nonconfirmatory_gt_format_sha256":approval.get("nonconfirmatory_gt_format_sha256"),
+        "nonconfirmatory_gt_detail_sha256":approval.get("nonconfirmatory_gt_detail_sha256"),
     }
     problems=[]
     for key,value in checks.items():
