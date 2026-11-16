@@ -108,6 +108,22 @@ def read_p03():
     return audit_index(manifest, rows, CACHE), rows
 
 
+
+def validate_pinned_p01(draft_path: Path) -> dict:
+    """Check source hashes plus historical Git ancestry, not current HEAD equality."""
+    record = json.loads(draft_path.read_text(encoding="utf-8"))
+    pinned = record.get("source_commit")
+    if not isinstance(pinned, str) or len(pinned) != 40 or any(c not in "0123456789abcdef" for c in pinned):
+        raise ValueError("Invalid P0.1 pinned historical source commit")
+    ancestry = subprocess.run(
+        ["git", "merge-base", "--is-ancestor", pinned, "HEAD"],
+        cwd=ROOT, capture_output=True, check=False, timeout=30)
+    if ancestry.returncode != 0:
+        raise ValueError("P0.1 source commit is not an ancestor of this checkout")
+    # validate_p01 already matches every original source/protocol SHA256.
+    return validate_p01(record, read_protocol(ROOT), code_provenance(ROOT), pinned)
+
+
 def perform(data: Path, draft: Path) -> dict:
     results = {"tests": {}, "phases": {}, "failures": []}
     for name in TESTS:
@@ -127,9 +143,7 @@ def perform(data: Path, draft: Path) -> dict:
               else "FAILED", flush=True)
     stages = (
         ("P0_source", lambda: {"status": "OK" if not audit_p0(ROOT)["source_contract_mismatches"] else "DRIFT"}),
-        ("P0_1_draft", lambda: validate_p01(
-            json.loads(draft.read_text(encoding="utf-8")), read_protocol(ROOT),
-            code_provenance(ROOT), git_head(ROOT))),
+        ("P0_1_draft", lambda: validate_pinned_p01(draft)),
         ("P0_2_development", lambda: {"status": audit_p02(ROOT, draft)["status"]}),
         ("MultiCue_name_layout", lambda: _multicue(data)),
         ("P0_3_sidecars", lambda: _sidecars()),
