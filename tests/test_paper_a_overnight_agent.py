@@ -4,7 +4,7 @@ import sys
 import unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from paper_a_overnight_agent import (ALLOWED_CODEX, ALLOWED_COMMIT, BRANCH, DATA, filter_status_changes)
+from paper_a_overnight_agent import (ALLOWED_CODEX, ALLOWED_COMMIT, BRANCH, DATA, filter_status_changes, codex_exec_command)
 
 class OvernightSafety(unittest.TestCase):
     def test_branch(self):
@@ -54,6 +54,18 @@ class OvernightSafety(unittest.TestCase):
         self.assertIn(
             "docs/paper_a_confirmation/protocol.json",
             filter_status_changes(entries, existing, lambda _: (120, 9, 0)))
+
+    def test_codex_exec_approval_never_in_config(self):
+        args = codex_exec_command("codex")
+        self.assertEqual(args[0:2], ["codex", "exec"])
+        self.assertNotIn("--ask-for-approval", args)
+        self.assertIn('approval_policy="never"', args)
+        self.assertIn("workspace-write", args)
+        self.assertEqual(args[-1], "-")
+
+    def test_codex_exec_keeps_reasoning_level(self):
+        args = codex_exec_command("codex.cmd")
+        self.assertIn("model_reasoning_effort=medium", args)
 
 if __name__ == "__main__":
     unittest.main()
