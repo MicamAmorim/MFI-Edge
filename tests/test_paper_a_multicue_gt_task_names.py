@@ -43,8 +43,7 @@ class MetadataOnlyContractTests(unittest.TestCase):
             target.SHA256,
             "8e5fdb2ff7343e4a55f110e9ffe189b2c81689cd326324e34c6c73562191819e",
         )
-        from pathlib import Path
-        self.assertEqual(Path(target.ROOT).name, "MultiCue")
+        self.assertTrue(str(target.ROOT).endswith(r"\MultiCue"))
 
     def test_correct_inventory_row(self):
         result = check_unit(fixture())
