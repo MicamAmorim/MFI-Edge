@@ -25,6 +25,12 @@ class ReviewBundleTests(unittest.TestCase):
                 ("work", "scientific_signoff/GT_PIXEL_ENCODING_REVIEW_REQUIRED.md"),
             "science/GT_PIXEL_ENCODING_PROSPECTIVE_v2_NOT_APPROVED.md":
                 ("root", "docs/paper_a_confirmation/GT_PIXEL_ENCODING_PROSPECTIVE_v2_NOT_APPROVED.md"),
+            "history/BIPED_visual_duplicate_decisions.csv":
+                ("root", "docs/paper_a_confirmation/visual_duplicate_decisions.csv"),
+            "history/BIPED_visual_dedup_summary.json":
+                ("root", "results/local_dev/paper_a_confirmation_inventory/predata_audit/visual_dedup_summary.json"),
+            "history/BIPED_stage13c_execution_summary.json":
+                ("root", "results/automation/stage13c_biped_preflight/summary.json"),
             "science/PARECER_CODEX_DUPLA_AUDITORIA_20261116.md":
                 ("root", "docs/paper_a_confirmation/PARECER_CODEX_DUPLA_AUDITORIA_20261116.md"),
         }
