@@ -21,6 +21,8 @@ DEFAULT_OUT = Path(r"F:\MFI-Edge-Data\MultiCue\paper_a_publication")
 DEFAULT_AUDITS = Path(r"F:\MFI-Edge-Data\MultiCue\paper_a_prefreeze_combined_audit")
 FILES = (
     "docs/paper_a_confirmation/PAPER_A_MANUSCRIPT_DRAFT.md",
+    "docs/paper_a_confirmation/P1_DEVELOPMENT_FIT_20261116.md",
+    "docs/paper_a_confirmation/P1_DEVELOPMENT_RECIPE_UNATTESTED.json",
     "docs/paper_a_confirmation/PREREGISTRATION.md",
     "docs/paper_a_confirmation/FREEZE_CHECKLIST.md",
     "docs/paper_a_confirmation/protocol.json",
@@ -108,8 +110,11 @@ def build_bundle(outdir: Path, audit_dir: Path) -> dict:
     for relative in FILES:
         path = ROOT / relative
         if not path.is_file():
-            # NIGHTLY_PROGRESS is created after the first offline phase.
-            if relative == "docs/paper_a_confirmation/NIGHTLY_PROGRESS.md":
+            # Both NIGHTLY_PROGRESS and the exact, workstation-reviewed P1
+            # JSON are optional until the researcher explicitly exports them.
+            if relative in (
+                    "docs/paper_a_confirmation/NIGHTLY_PROGRESS.md",
+                    "docs/paper_a_confirmation/P1_DEVELOPMENT_RECIPE_UNATTESTED.json"):
                 continue
             raise FileNotFoundError("Explicit package file missing: " + relative)
         if path.is_symlink() or not path.resolve().is_relative_to(ROOT.resolve()):

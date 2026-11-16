@@ -577,3 +577,7 @@ realmente confirmatórios, executa Spearman por domínio/Holm e empacota
 um manuscrito para revisão. Não altera GT/coorte/hipóteses automaticamente.
 Veja [`PAPER_A_COMPLETION_PIPELINE.md`](PAPER_A_COMPLETION_PIPELINE.md)
 e [`PAPER_A_COMPLETION_TASKS.md`](PAPER_A_COMPLETION_TASKS.md).
+
+## Resultado P1: parâmetros ajustados no UDED-14 (16/11/2026)
+
+Consultar [P1_DEVELOPMENT_FIT_20261116.md](P1_DEVELOPMENT_FIT_20261116.md) e a seção 7 do manuscrito. A execução local `FITTED_UNATTESTED` ajustou pertinências, quatro limiares e a capacidade Choquet, **sem confirmação independente**. A receita integral deve ser incorporada por cópia explicitamente revisada de `F:\MFI-Edge-Data\MultiCue\paper_a_completion\devfit_20261116T031932_410335Z_recipe_UNATTESTED.json` para `docs/paper_a_confirmation/P1_DEVELOPMENT_RECIPE_UNATTESTED.json`, com SHA256 local conferido. Este arquivo não existe no repositório até o pesquisador publicá-lo. Nunca executar `git add .` nem versionar GT, imagens de terceiros, H5, NPY ou ZIPs locais de resultados.
