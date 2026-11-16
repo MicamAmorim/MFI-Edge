@@ -271,8 +271,9 @@ def package_confirmatory(folder:Path,analysis_folder:Path,state:dict):
             "sha256":file_sha256(zipped)}
 
 
-def run_pipeline(base:Path=WORK, *, no_reaudit:bool=False, 
-                 skip_baseline_zip:bool=False) -> dict:
+def run_pipeline(base:Path=WORK, *, no_reaudit:bool=False,
+                 skip_baseline_zip:bool=False,
+                 authorize_uded_development_gt:bool=False) -> dict:
     base.mkdir(parents=True,exist_ok=True)
     folder=base/("run_"+stamp())
     folder.mkdir(parents=False,exist_ok=False)
@@ -282,6 +283,21 @@ def run_pipeline(base:Path=WORK, *, no_reaudit:bool=False,
     audit=audit_exists(head) if no_reaudit else ensure_audit(head,folder)
     if audit is None:
         audit={"status":"NO_RECENT_VALID_AUDIT"}
+    dev_fit={"status":"NOT_REQUESTED"}
+    if authorize_uded_development_gt:
+        if audit["status"]!="REUSED_VERIFIED_56_56_WITH_UNCHANGED_SCIENTIFIC_CODE":
+            dev_fit={"status":"REFUSED_WITHOUT_CURRENT_TECHNICAL_AUDIT"}
+        else:
+            print("[DEV FIT] Reading only explicitly authorized UDED-14 DEVELOPMENT GT",flush=True)
+            log=folder/"development_fit.log"
+            rc=run([sys.executable,
+                    str(ROOT/"scripts/fit_paper_a_development_uded14.py"),
+                    "--authorize-uded-development-gt",
+                    "--output-dir",str(base)],
+                   timeout=21600,log_path=log)
+            dev_fit={"status":"FITTED_UNATTESTED" if rc==0 else "DEVELOPMENT_FIT_FAILED",
+                     "log":str(log),"exit_code":rc,
+                     "requires_independent_overlap_attestation":True}
     draft=json.loads(DRAFT.read_text(encoding="utf-8")) if DRAFT.is_file() else {}
     missing=count_recipe_missing(draft)
     safe_write_template(base/"freeze_approval.template.json",approval_template())
@@ -295,6 +311,10 @@ def run_pipeline(base:Path=WORK, *, no_reaudit:bool=False,
         blockers.append("Technical SHA audit not currently verified")
     if missing and protocol.get("status") != "frozen":
         blockers.append("P0.1 H1/H2 training recipe missing: "+", ".join(missing))
+    if dev_fit["status"]=="DEVELOPMENT_FIT_FAILED":
+        blockers.append("Explicit development fitting failed; review development_fit.log")
+    if dev_fit["status"]=="FITTED_UNATTESTED":
+        blockers.append("Development-fit exports produced but independent training/overlap attestation still required")
     if protocol.get("status")!="frozen":
         blockers.append("Protocol draft_not_frozen; scientific freeze review required")
     if not frozen_recipe.is_file():
@@ -328,6 +348,7 @@ def run_pipeline(base:Path=WORK, *, no_reaudit:bool=False,
         "technical_audit":audit,
         "recipe_structural_pending":missing,
         "protocol_status":protocol.get("status"),
+        "development_fit":dev_fit,
         "freeze_certified":bool(gate and not gate["blockers"]),
         "blockers":sorted(set(blockers)),
         "protected_GT_H5_F1_opened_by_prefreeze":False,
@@ -366,10 +387,13 @@ def main():
     p.add_argument("--no-reaudit",action="store_true",
                    help="Use previous verified SHA record only; do not read map bytes")
     p.add_argument("--skip-baseline-zip",action="store_true")
+    p.add_argument("--authorize-uded-development-gt",action="store_true",
+                   help="Explicitly fit on the 14 known UDED DEVELOPMENT GT masks")
     args=p.parse_args()
     try:
         result=run_pipeline(args.workspace,no_reaudit=args.no_reaudit,
-                            skip_baseline_zip=args.skip_baseline_zip)
+                            skip_baseline_zip=args.skip_baseline_zip,
+                            authorize_uded_development_gt=args.authorize_uded_development_gt)
         # A gate being open is an expected, reportable result, not an execution crash.
         return 0 if result["technical_audit"]["status"]!="TECHNICAL_AUDIT_FAILED" else 2
     except Exception as exc:
