@@ -14,6 +14,7 @@ import hashlib
 import json
 import os
 import re
+import sys
 import tarfile
 from pathlib import Path, PurePosixPath
 
@@ -132,7 +133,12 @@ def main() -> int:
     found = {}
     total = 0
     with tarfile.open(archive, mode="r|bz2") as tar:
-        for member in tar:
+        for n_header, member in enumerate(tar, 1):
+            if n_header % 500 == 0:
+                print(
+                    f"Inspected {n_header} TAR headers; {len(found)}/100 original frames materialized; no GT extracted",
+                    file=sys.stderr, flush=True,
+                )
             name = canonical(member.name)
             if name not in requested:
                 continue
