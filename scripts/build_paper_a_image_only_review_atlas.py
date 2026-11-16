@@ -187,19 +187,34 @@ def build(*, sheet: Path = SHEET, biped: Path = BIPED,
         (temp/"index.html").write_text(gallery_html(images),encoding="utf-8")
         temp.rename(final)
         meta=report
+    reused=False
     if archive.exists():
-        raise RuntimeError("Existing atlas ZIP not overwritten; inspect before retry")
-    # Separate original-image atlas from the mandatory METADATA-ONLY freeze ZIP.
-    with zipfile.ZipFile(archive,"x",compression=zipfile.ZIP_STORED) as z:
-        for rel in ("MANIFEST.json","index.html"):
-            z.write(final/rel,rel)
-        for record in meta["images"]:
-            z.write(final/record["thumbnail"],record["thumbnail"])
+        # Verify and reuse exact old ZIP; never overwrite a reviewer artifact.
+        if archive.is_symlink():
+            raise RuntimeError("Unsafe existing reviewer atlas ZIP")
+        with zipfile.ZipFile(archive) as z:
+            expected={"MANIFEST.json","index.html"} | {
+                entry["thumbnail"] for entry in meta["images"]}
+            if set(z.namelist())!=expected:
+                raise RuntimeError("Existing visual reviewer ZIP contents changed")
+            if z.read("MANIFEST.json")!=(final/"MANIFEST.json").read_bytes():
+                raise RuntimeError("Reviewer atlas manifest in ZIP changed")
+            for record in meta["images"]:
+                if sha_bytes(z.read(record["thumbnail"]))!=record["thumbnail_sha256"]:
+                    raise RuntimeError("Existing reviewer atlas image ZIP hash mismatch")
+        reused=True
+    else:
+        # Separate original-image atlas from the mandatory METADATA-ONLY freeze ZIP.
+        with zipfile.ZipFile(archive,"x",compression=zipfile.ZIP_STORED) as z:
+            for rel in ("MANIFEST.json","index.html"):
+                z.write(final/rel,rel)
+            for record in meta["images"]:
+                z.write(final/record["thumbnail"],record["thumbnail"])
     return {
         "status":"ORIGINAL_IMAGE_ATLAS_READY_HUMAN_REVIEW_REQUIRED",
         "images":220,"folder":str(final),"atlas_zip":str(archive),
         "atlas_sha256":sha_bytes(archive.read_bytes()),
-        "signed_or_frozen":False,"GT_opened":False,
+        "reused":reused,"signed_or_frozen":False,"GT_opened":False,
     }
 
 
