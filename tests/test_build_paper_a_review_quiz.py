@@ -105,6 +105,13 @@ class OfflineReviewTests(unittest.TestCase):
             self.assertNotIn("__REVIEW_DATA_JSON__",html)
             again=q.generate(biped=b,multicue=m,output=out,frontend=ROOT/"tools/paper_a_revisao",sources=source)
             self.assertTrue(again["reused_sha_checked_thumbnails"])
+            # A reused slim MANIFEST must not strip selection flags and
+            # original file URI links from the browser's full data model.
+            reused_html=(out/"index.html").read_text(encoding="utf-8")
+            self.assertIn('"in_initial_cohort":true',reused_html)
+            self.assertIn('"in_initial_cohort":false',reused_html)
+            self.assertIn('"original_href":"file://',reused_html)
+            self.assertIn('"visual_candidates_n":293',reused_html)
             # Corrupting a generated image must fail rather than silently reusing.
             (out/"assets/images/BIPED_"+ids[0]+".jpg").write_bytes(b"bad")
             with self.assertRaises(RuntimeError):
