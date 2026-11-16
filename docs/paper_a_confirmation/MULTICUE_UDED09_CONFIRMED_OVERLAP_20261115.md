@@ -68,3 +68,37 @@ cenas de outros quadros ou grandes mudanças de aparência.
 **Próximo gate pendente:** auditoria por cena e captura dos demais
 originais históricos, verificação de tarefa/GT e análise de poder
 antes do freeze de H1/H2.
+
+## Verificação na imagem de origem — SIFT/RANSAC (15/11/2026)
+
+Execução real na workstation:
+`python .\scripts\audit_paper_a_multicue_mdbd_geometry.py`
+
+- **100/100** quadros MultiCue finais esquerdos analisados.
+- **1/100** correspondência sinalizada pelo critério geométrico fixado.
+- **`4113_left_0082` ↔ `09-MDBD-1C.png`**:
+  2.116 correspondências após razão de Lowe, **2.101 inliers RANSAC**,
+  fração 0,99291. Resultado em **imagens originais**, não somente
+  miniaturas das pranchas.
+- **`4113_left_2396`**: 38 matches, 10 inliers,
+  fração 0,26316; não sinalizada, mas permanece em HOLD porque
+  compartilha o prefixo de captura 4113.
+- Próximos resultados abaixo do limiar de flags:
+  `4641_left_0030` (15/30, fração 0,50) e
+  `4492_left_0090` (15/67, fração 0,22388).
+- **Nenhuma avaliação de GT, H5, mapas ou F1** realizada.
+  O script não exclui candidatos automaticamente.
+
+Este resultado **confirma a decisão anterior** de excluir
+`4113_left_0082` por exposição histórica. Para fins de
+amostragem conservadora, manter todo o prefixo de captura
+`4113` fora da seleção provisória. Dos 96 prefixos
+distintos, restam no máximo **95 grupos de captura candidatos**,
+antes de qualquer outra exclusão ou certificação de independência.
+
+Os hashes globais produziram falso negativo para recorte vertical
+versus quadro original horizontal. Esta falha impede considerar a
+ausência de flags dHash/pHash como garantia de independência; o
+próximo gate é auditoria geométrica das demais **27 imagens UDED
+historicamente decodificáveis** versus as 100 originais MultiCue,
+sem ler as três originais de linhagem BSDS-test protegidas.

@@ -396,3 +396,12 @@ em hold** até revisão de independência da captura. Ver
 [`MULTICUE_UDED09_CONFIRMED_OVERLAP_20261115.md`](MULTICUE_UDED09_CONFIRMED_OVERLAP_20261115.md).
 Auditoria SIFT dos originais: `python .\scripts\audit_paper_a_multicue_mdbd_geometry.py`
 (sem GT/F1; sem exclusões automáticas).
+
+## Confirmado nas imagens originais: 2.101/2.116 correspondências
+
+Auditoria SIFT/RANSAC nos 100 originais MultiCue encontrou **1 sinalização**,
+precisamente `4113_left_0082`: 2.101/2.116 inliers = 99,291%. 
+Exposição prévia UDED `09-MDBD-1C` comprovada geometricamente; sequência
+excluída, prefixo `4113` retido integralmente por prudência.
+Máximo de grupos MultiCue antes de demais auditorias: **95**.
+Ver [`MULTICUE_UDED09_CONFIRMED_OVERLAP_20261115.md`](MULTICUE_UDED09_CONFIRMED_OVERLAP_20261115.md).

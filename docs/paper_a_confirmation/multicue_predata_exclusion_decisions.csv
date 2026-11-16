@@ -1,3 +1,3 @@
 sequence_id,capture_prefix,decision,status_basis,historical_image,scope,verification_status
-4113_left_0082,4113,EXCLUDE_PRIOR_EXPOSURE,Same bicycle rack wall sidewalk tree scene in original UDED and MultiCue screenshots,09-MDBD-1C.png,entire_annotated_sequence,visually_confirmed_one_review_with_geometric_screenshot_support
+4113_left_0082,4113,EXCLUDE_PRIOR_EXPOSURE,Same bicycle rack wall sidewalk tree scene in original UDED and MultiCue screenshots,09-MDBD-1C.png,entire_annotated_sequence,ORIGINAL_SIFT_RANSAC_2101_INLIERS_OF_2116_AND_VISUAL_CONFIRMED
 4113_left_2396,4113,HOLD_SHARED_CAPTURE_PREFIX,Same prefix as prior-exposed sequence; independent location not established,09-MDBD-1C.png,all_sequences_sharing_4113,pending_lineage_evidence
