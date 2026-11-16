@@ -6,6 +6,7 @@ import ctypes
 from datetime import datetime, timezone
 import json
 import os
+import stat
 from pathlib import Path
 import shutil
 import subprocess
@@ -31,6 +32,9 @@ ALLOWED_COMMIT = ALLOWED_CODEX | {
     "docs/paper_a_confirmation/NIGHTLY_PROGRESS.md",
 }
 
+# Existing untracked scientific results are preserved and not staged.
+BASELINE_UNTRACKED = None
+
 
 def run(args, *, stdin=None, timeout=120, git_env=False):
     env = dict(os.environ)
@@ -52,21 +56,74 @@ def git_head():
     return out.strip()
 
 
-def changed():
-    proc = subprocess.run(
-        ["git", "status", "--porcelain", "-z", "--untracked-files=normal"],
-        cwd=ROOT, capture_output=True, timeout=30, check=False)
-    if proc.returncode:
+def git_status_entries():
+    """Return NUL-safe status entries with untracked directories expanded."""
+    p = subprocess.run(
+        ["git", "status", "--porcelain", "-z", "--untracked-files=all"],
+        cwd=ROOT, capture_output=True, timeout=90, check=False)
+    if p.returncode:
         raise RuntimeError("git status unavailable")
-    result = []
-    for entry in proc.stdout.split(b"\x00"):
-        if not entry:
+    entries = []
+    for item in p.stdout.split(b"\x00"):
+        if not item:
             continue
-        flag = entry[:2].decode("ascii", "replace")
+        flag = item[:2].decode("ascii", "replace")
         if "R" in flag or "C" in flag:
-            raise RuntimeError("Renames/copies require human review")
-        result.append(entry[3:].decode("utf-8").replace("\\", "/"))
-    return sorted(set(result))
+            raise RuntimeError("Git renames/copies require manual review")
+        entries.append((flag, os.fsdecode(item[3:]).replace("\\", "/")))
+    return entries
+
+
+def _fingerprint_untracked(path):
+    """lstat only: no original scientific evidence content is read."""
+    info = (ROOT / path).lstat()
+    if not (stat.S_ISREG(info.st_mode) or stat.S_ISLNK(info.st_mode)):
+        raise RuntimeError("Untracked path is not a regular file or symlink: " + path)
+    return info.st_size, info.st_mtime_ns, info.st_mode
+
+
+def capture_preexisting_untracked():
+    """Allow existing untracked files only; tracked edits still fail closed."""
+    global BASELINE_UNTRACKED
+    entries = git_status_entries()
+    dirty = [path for flag, path in entries if flag != "??"]
+    if dirty:
+        raise RuntimeError("Tracked/index edits require human review: " + repr(dirty[:12]))
+    baseline = {
+        path: _fingerprint_untracked(path)
+        for flag, path in entries if flag == "??"
+    }
+    if len(baseline) != sum(flag == "??" for flag, _ in entries):
+        raise RuntimeError("Duplicate untracked filenames")
+    BASELINE_UNTRACKED = baseline
+    print("[GIT] Preserving", len(baseline),
+          "existing untracked files, without staging or deleting them.",
+          flush=True)
+    return baseline
+
+
+def filter_status_changes(entries, baseline, fingerprint):
+    """Ignore baseline untracked only when unchanged; protect all other paths."""
+    current = {path for flag, path in entries if flag == "??"}
+    missing = sorted(set(baseline) - current)
+    if missing:
+        raise RuntimeError("Preexisting untracked evidence disappeared: "
+                           + repr(missing[:12]))
+    fresh = []
+    for flag, path in entries:
+        if flag == "??" and path in baseline:
+            if fingerprint(path) != baseline[path]:
+                raise RuntimeError("Preexisting untracked evidence was modified: " + path)
+        else:
+            fresh.append(path)
+    return sorted(set(fresh))
+
+
+def changed():
+    if BASELINE_UNTRACKED is None:
+        raise RuntimeError("Record baseline untracked files before running Codex")
+    return filter_status_changes(
+        git_status_entries(), BASELINE_UNTRACKED, _fingerprint_untracked)
 
 
 def scope_check(generated=False):
@@ -249,8 +306,9 @@ def main():
     history = {"started": datetime.now(timezone.utc).isoformat(),
                "audits": [], "codex": [], "errors": []}
     try:
+        capture_preexisting_untracked()
         if scope_check() or changed():
-            raise RuntimeError("Initial worktree is not clean")
+            raise RuntimeError("Initial tracked worktree has unsafe changes")
         rc, remote, _ = git("remote", "get-url", "origin")
         if rc or "MicamAmorim/MFI-Edge" not in remote:
             raise RuntimeError("Wrong Git origin")
