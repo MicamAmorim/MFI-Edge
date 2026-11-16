@@ -546,3 +546,10 @@ Isso **não** certifica elegibilidade ou parâmetros treinados.
 Execute `python .\tests\test_paper_a_development_lineage_P0_2.py` e
 `python .\scripts\audit_paper_a_development_lineage_P0_2.py`.
 Ver [`DEVELOPMENT_LINEAGE_P0_2.md`](DEVELOPMENT_LINEAGE_P0_2.md).
+
+## P0.3 — cache UDED-14, verificação apenas de sidecars
+
+`python .\tests\test_paper_a_uded14_cache_sidecars_P0_3.py` e
+`python .\scripts\audit_paper_a_uded14_cache_sidecars_P0_3.py`.
+Inventaria sidecars e `stat()` de 56 mapas, sem abrir bytes NPY/GT/F1.
+Ver [`CACHE_SIDECAR_INVENTORY_P0_3.md`](CACHE_SIDECAR_INVENTORY_P0_3.md).
