@@ -63,3 +63,13 @@ The result JSON preserves Codex stderr/stdout tails on subsequent failures,
 and a failed editorial pass is listed explicitly in the errors array.
 If it fails again, inspect the local `*.log` and authentication; do not
 assume the manuscript was revised just because the technical audit passed.
+
+## Editorial-only recovery (no repeated cache hashing)
+
+After a successful 56/56 audit, use `python -u
+scripts/paper_a_overnight_agent.py --editorial-only` on the same branch.
+The runner checks that a recent verified audit exists and scientific-code
+and protocol files are unchanged since its Git commit. It then requests
+a direct manuscript edit without running the technical audit again.
+Preexisting untracked evidence is preserved. A Codex exit with no edit is
+recorded as `NO_EDITS`, and a retry is attempted with explicit guidance.

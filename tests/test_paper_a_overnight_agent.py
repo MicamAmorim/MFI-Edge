@@ -4,7 +4,7 @@ import sys
 import unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from paper_a_overnight_agent import (ALLOWED_CODEX, ALLOWED_COMMIT, BRANCH, DATA, filter_status_changes, codex_exec_command)
+from paper_a_overnight_agent import (ALLOWED_CODEX, ALLOWED_COMMIT, BRANCH, DATA, filter_status_changes, codex_exec_command, reuse_verified_audit)
 
 class OvernightSafety(unittest.TestCase):
     def test_branch(self):
@@ -66,6 +66,20 @@ class OvernightSafety(unittest.TestCase):
     def test_codex_exec_keeps_reasoning_level(self):
         args = codex_exec_command("codex.cmd")
         self.assertIn("model_reasoning_effort=medium", args)
+
+    def test_editorial_only_option_and_reuse_gate(self):
+        import inspect
+        from paper_a_overnight_agent import main
+        source = inspect.getsource(main)
+        self.assertIn('ap.add_argument("--editorial-only"', source)
+        self.assertIn('reuse_verified_audit() if args.editorial_only', source)
+
+    def test_nonediting_codex_is_not_success(self):
+        import inspect
+        from paper_a_overnight_agent import codex_pass
+        source = inspect.getsource(codex_pass)
+        self.assertIn('"NO_EDITS"', source)
+        self.assertIn('and expected not in files', source)
 
 if __name__ == "__main__":
     unittest.main()

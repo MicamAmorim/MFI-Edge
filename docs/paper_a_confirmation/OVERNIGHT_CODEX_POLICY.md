@@ -1,7 +1,8 @@
 # Paper A overnight Codex policy — autonomous but fail-closed
 
 Only run the local controller `scripts/paper_a_overnight_agent.py` on branch
-`experiment/paper-a-conditional-confirmation` with clean initial Git worktree.
+`experiment/paper-a-conditional-confirmation` with clean tracked/index files; preexisting untracked artifacts are preserved
+by the supervising controller without requiring their removal.
 The local user explicitly authorized overnight code repair, manuscript updates
 and Git commits/push on this branch. This authorization **does not** lift
 scientific restrictions or authorize publishing external datasets.
@@ -31,3 +32,12 @@ The controller checks file scope, diff, syntax, tests and Git branch before
 committing; Codex must not commit or push on its own. A complete paper
 with confirmed findings is scientifically impossible while protocol status
 is `draft_not_frozen`. Deliver a comprehensive truthful DRAFT instead.
+
+## Manuscript edits when untracked research files exist
+
+The supervisor has ALREADY validated the branch, tracked files and protected
+preexisting untracked evidence. Do NOT invoke the overnight controller,
+repeat a clean-worktree check, move evidence, stash or clean Git. Merely
+edit `docs/paper_a_confirmation/PAPER_A_MANUSCRIPT_DRAFT.md` directly,
+grounding every assertion in allowed scientific documentation. A no-op
+response is NOT a completed editorial pass. Leave scientific gates open.

@@ -160,8 +160,14 @@ def codex_pass(role, message, index):
     LOGS.mkdir(parents=True, exist_ok=True)
     name = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S") + f"_{index}_{role}"
     prompt = POLICY.read_text(encoding="utf-8") + "\n\nTASK:\n" + message + (
-        "\nOnly edit explicitly allowed Codex files. Do not git commit/push, "
-        "open GT/H5/F1, change protocol, train, refit or reprocess maps."
+        "\nThe supervising controller has ALREADY validated the Git branch "
+        "and protected the preexisting untracked scientific evidence. "
+        "Do NOT require a fully clean Git worktree, invoke the controller "
+        "again, move files, or open those artifacts. "
+        "For manuscript_editorial, EDIT ONLY "
+        "docs/paper_a_confirmation/PAPER_A_MANUSCRIPT_DRAFT.md directly. "
+        "Do not git commit/push, open GT/H5/F1, change protocol, train, "
+        "refit or reprocess maps. Unchanged manuscript is NOT success."
     )
     (LOGS / (name + ".prompt.txt")).write_text(prompt, encoding="utf-8")
     old_head = git_head()
@@ -176,7 +182,10 @@ def codex_pass(role, message, index):
         if git_head() != old_head:
             raise RuntimeError("Codex committed independently; stop for review")
         files = scope_check()
-        state = "OK" if rc == 0 else "CODEX_FAILED"
+        expected = "docs/paper_a_confirmation/PAPER_A_MANUSCRIPT_DRAFT.md"
+        state = ("CODEX_FAILED" if rc != 0 else
+                 "NO_EDITS" if role in ("manuscript", "manuscript_editorial")
+                 and expected not in files else "OK")
         print("[CODEX]", role, state, "edited", len(files), flush=True)
         return {"status": state, "returncode": rc, "log": str(log),
                 "modified": files,
@@ -236,6 +245,62 @@ def run_audit(attempt):
     }
     print("[AUDIT]", result["status"], "SHA", result["SHA_verified"], "/56", flush=True)
     return result
+
+
+def reuse_verified_audit(max_age_days=7):
+    """Reuse a recent SHA=56 audit only if scientific sources are unchanged."""
+    if not AUDIT.is_dir():
+        raise RuntimeError("No prior audit: run normal mode first")
+    candidates = sorted(AUDIT.glob("prefreeze_*.json"),
+                        key=lambda p: p.stat().st_mtime, reverse=True)
+    allow = ALLOWED_COMMIT | {
+        "scripts/paper_a_overnight_agent.py",
+        "tests/test_paper_a_overnight_agent.py",
+        "docs/paper_a_confirmation/OVERNIGHT_CODEX_POLICY.md",
+        "docs/paper_a_confirmation/PAPER_A_OVERNIGHT_AUTOPILOT.md",
+    }
+    for path in candidates[:15]:
+        if path.is_symlink() or path.stat().st_size > 700000:
+            continue
+        if time.time() - path.stat().st_mtime > max_age_days * 86400:
+            continue
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (UnicodeError, json.JSONDecodeError):
+            continue
+        count = data.get("phases", {}).get("P0_4_cache_SHA256", {}).get("matched")
+        if not (data.get("status") == "TECHNICAL_AUDITS_OK_SCIENTIFIC_GATES_STILL_OPEN"
+                and data.get("failures") == [] and count == 56
+                and data.get("GT_H5_F1_or_confirmatory_data_opened") is False
+                and data.get("new_training_or_descriptor_reprocessing") is False):
+            continue
+        origin = data.get("git_commit")
+        if (not isinstance(origin, str) or len(origin) != 40
+                or any(c not in "0123456789abcdef" for c in origin)):
+            continue
+        ancestor, _, _ = git("merge-base", "--is-ancestor", origin, "HEAD")
+        if ancestor != 0:
+            continue
+        rc, delta, err = git("diff", "--name-only", origin, "HEAD")
+        if rc:
+            raise RuntimeError("Cannot audit Git ancestry: " + err)
+        unexpected = set(delta.splitlines()) - allow
+        if unexpected:
+            raise RuntimeError(
+                "Science/source changed since audit; rehash required: "
+                + repr(sorted(unexpected)))
+        print("[AUDIT] Reusing prior verified 56/56 report; no rehash",
+              flush=True)
+        return {
+            "exit_code": 0,
+            "status": "TECHNICAL_AUDITS_OK_SCIENTIFIC_GATES_STILL_OPEN",
+            "SHA_verified": 56,
+            "report": str(path),
+            "log": "Reused fully verified audit",
+            "failures": [],
+            "reused_prior_audit": True,
+        }
+    raise RuntimeError("No eligible prior SHA=56 audit; run full mode")
 
 
 def write_progress(history):
@@ -312,6 +377,8 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--skip-codex", action="store_true")
     ap.add_argument("--no-push", action="store_true")
+    ap.add_argument("--editorial-only", action="store_true",
+                    help="Reuse safe 56/56 audit, skip cache hashing")
     ap.add_argument("--max-codex-calls", type=int, default=3)
     args = ap.parse_args()
     if os.name == "nt":
@@ -325,11 +392,12 @@ def main():
         rc, remote, _ = git("remote", "get-url", "origin")
         if rc or "MicamAmorim/MFI-Edge" not in remote:
             raise RuntimeError("Wrong Git origin")
-        current = run_audit(1)
+        current = reuse_verified_audit() if args.editorial_only else run_audit(1)
         history["audits"].append(current)
         enabled = bool(codex_exe()) and not args.skip_codex
         attempts = 0
-        while current["exit_code"] and enabled and attempts < min(2, args.max_codex_calls):
+        while (not args.editorial_only and current["exit_code"]
+               and enabled and attempts < min(2, args.max_codex_calls)):
             instruction = (
                 "Audit failed. Inspect exact log: " + current["log"]
                 + ". Failures: " + json.dumps(current["failures"], ensure_ascii=False)
@@ -349,19 +417,38 @@ def main():
         if current["exit_code"]:
             history["errors"].append("Technical audit incomplete: " + current["status"])
         if enabled and attempts < args.max_codex_calls:
-            editorial = (
-                "Improve ONLY docs/paper_a_confirmation/PAPER_A_MANUSCRIPT_DRAFT.md. "
-                "Ground all claims in prespecified H1/H2, existing Stage24 docs, "
-                "bibliography and audited metadata. Improve scientific English, "
-                "figures/tables plan, reproducibility, methods, and limitations. "
-                "Do NOT invent confirmatory F1, rho, p, DOI, or choose N/freeze."
+            instruction = (
+                "Make a SUBSTANTIVE EDIT of ONLY "
+                "docs/paper_a_confirmation/PAPER_A_MANUSCRIPT_DRAFT.md. "
+                "The supervisor has ALREADY checked tracked Git status and "
+                "approved preserved untracked research evidence. "
+                "Do NOT rerun the controller, require global clean status, "
+                "move or inspect untracked files. Improve scientific narrative, "
+                "methods, limitations and reproduction steps using allowed docs. "
+                "Do not invent H1/H2 confirmatory results, numbers or citations. "
+                "A no-op is NOT task completion."
             )
-            editorial_result = codex_pass("manuscript", editorial, attempts + 1)
-            history["codex"].append(editorial_result)
-            if editorial_result["status"] != "OK":
+            for repeat in range(min(2, args.max_codex_calls - attempts)):
+                extra = (
+                    " Prior Codex incorrectly stopped because it noticed "
+                    "untracked historical files. Those ARE EXPECTED and "
+                    "already protected. EDIT the manuscript directly now."
+                    if repeat else ""
+                )
+                step = codex_pass(
+                    "manuscript_editorial", instruction + extra,
+                    attempts + repeat + 1)
+                history["codex"].append(step)
+                if step["status"] == "OK":
+                    break
                 history["errors"].append(
-                    "Codex editorial incomplete: " + editorial_result["status"]
-                    + "; see " + str(editorial_result.get("log", "local Codex log")))
+                    "Editorial attempt incomplete: " + step["status"]
+                    + "; log: " + str(step.get("log", "(none)")))
+                if step["status"] != "NO_EDITS" or changed():
+                    break
+        elif args.editorial_only:
+            history["errors"].append(
+                "Editorial-only mode requires authenticated Codex CLI")
         try:
             scope_check()
             if (changed() and any(x.get("status") != "OK"
