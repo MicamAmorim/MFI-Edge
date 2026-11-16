@@ -499,3 +499,15 @@ O desenho 220 é **meta condicional**, depende de todos os 95 grupos
 MultiCue ainda não certificados; não substituir automaticamente grupos
 perdidos com BIPED sem nova simulação e decisão pré-F1.
 Ver [`SAMPLE_SIZE_CONDITIONAL_DECISION_20261115.md`](SAMPLE_SIZE_CONDITIONAL_DECISION_20261115.md).
+
+## Próximo gate: tarefa `edges` e política multi-anotador (proposta)
+
+Recomendação fundamentada nas documentações originais: BIPEDv2 fornece
+detecção de bordas (*edges*) e MultiCue tem anotações separadas de
+`edges` e `boundaries`. Para comparar H1/H2, a tarefa primária candidata
+é `edges`; o F1 de MultiCue seria calculado separadamente para cada uma
+das seis referências, depois **média por imagem**. O F1 de BIPED usa
+uma referência, se validada. **Nomes não certificam conteúdo.**
+Contrato e decisões ainda não congeladas:
+[`GT_EDGES_MULTIANNOTATOR_CONTRACT_PROPOSAL.md`](GT_EDGES_MULTIANNOTATOR_CONTRACT_PROPOSAL.md).
+Checagem sem GT: `python .\scripts\check_paper_a_multicue_gt_task_names.py`.
