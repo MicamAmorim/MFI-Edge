@@ -285,6 +285,112 @@ def materialize_protocol_and_cohort(decision: dict, sheet: list[dict],
     return recipe,cohort
 
 
+def issue_approval_after_remote_freeze(decision: dict, sheet_path: Path,
+                                       recipe: Path, cohort: Path,
+                                       commit: str) -> dict:
+    """Bind the preapproved reviewer decision to final exact hashes post-push."""
+    approval_path=WORK/"freeze_approval.json"
+    if approval_path.exists():
+        raise PermissionError("Existing freeze_approval.json must be reviewed, not overwritten")
+    record={
+        "schema_version":1,
+        "approved_for_first_confirmatory_outcome_access":True,
+        "reviewed_by":decision["reviewed_by"],
+        "approved_utc":decision["approved_utc"],
+        "freeze_commit":commit,
+        "protocol_sha256":sha(PROTOCOL),
+        "cohort_sha256":sha(cohort),
+        "recipe_sha256":sha(recipe),
+        "scientific_approvals":{k:True for k in APPROVALS},
+        "approved_executor_source_sha256":sha(EXECUTOR),
+        "executor_contract_independently_reviewed":True,
+        "gt_binary_decoding_contract":BIN_POLICY,
+        "review_notes":decision["review_notes"],
+        "review_decision_sha256":sha(SIGNED),
+        "review_sheet_sha256":sha(sheet_path),
+    }
+    with approval_path.open("x",encoding="utf-8") as f:
+        f.write(jsonify(record))
+    from paper_a_freeze_guard import validate_files
+    gate=validate_files(PROTOCOL,recipe,cohort,approval_path)
+    if gate["blockers"]:
+        raise RuntimeError("Scientific freeze guard rejected signed commit: "+
+                           "; ".join(gate["blockers"]))
+    return {
+        "status":"SIGNED_FREEZE_COMMITTED_AND_GUARD_VALIDATED",
+        "freeze_commit":commit,
+        "freeze_certified":True,
+        "review_decision_sha256":sha(SIGNED),
+        "protected_GT_opened_by_this_module":False,
+    }
+
+
+def resume_freeze_after_interrupted_push() -> dict:
+    """Resume a fully REVIEWED local Git freeze, never self-authorize."""
+    if not SIGNED.is_file():
+        return {"status":"FROZEN_PROTOCOL_MISSING_SIGNED_REVIEW",
+                "freeze_commit_created":False}
+    if (WORK/"freeze_approval.json").exists():
+        return {"status":"FROZEN_APPROVAL_PRESENT_DEFER_TO_GUARD"}
+    current=json.loads(PROTOCOL.read_text(encoding="utf-8"))
+    if current.get("status")!="frozen":
+        raise ValueError("Recovery requires frozen versioned protocol")
+    commit=git("rev-parse","HEAD")
+    if (git("branch","--show-current")!=BRANCH or
+        git("log","-1","--format=%s")!=OUT_COMMIT_NOTE or
+        git("status","--porcelain","--untracked-files=no")):
+        raise PermissionError("Cannot recover freeze: commit/branch/worktree unexpected")
+    process=subprocess.run(
+        ["git","show","HEAD^:docs/paper_a_confirmation/protocol.json"],
+        cwd=ROOT,capture_output=True,check=False,timeout=60)
+    if process.returncode or len(process.stdout)>4_000_000:
+        raise RuntimeError("Cannot recover frozen protocol's original reviewed parent")
+    original=SIGNOFF/"PRE_FREEZE_PROTOCOL_FROM_REVIEWED_PARENT.json"
+    if original.exists():
+        if original.read_bytes()!=process.stdout:
+            raise PermissionError("Original pre-freeze parent snapshot changed")
+    else:
+        original.write_bytes(process.stdout)
+    if (not SOURCE_SNAPSHOT.is_file() or
+        SOURCE_SNAPSHOT.read_bytes()!=PROTOCOL.read_bytes()):
+        raise PermissionError("Frozen commit differs from originally reviewed protocol")
+    decision=json.loads(SIGNED.read_text(encoding="utf-8"))
+    sheet_path=SIGNOFF/"REVIEW_220_IMAGES_PENDING.csv"
+    sheet=csvrows(sheet_path)
+    stage=ROOT/"results/automation/stage13c_biped_preflight/summary.json"
+    validate_signed_decision(decision,sheet,original,SOURCE_SNAPSHOT,
+                             P1,EXECUTOR,sheet_path,stage)
+    recipe=WORK/"frozen_H1_H2_recipe.json"
+    cohort=WORK/"frozen_cohort_manifest.csv"
+    if not recipe.is_file() or not cohort.is_file():
+        raise PermissionError("Cannot recover incomplete freeze inputs")
+    checked=json.loads(recipe.read_text(encoding="utf-8"))
+    source=json.loads(P1.read_text(encoding="utf-8"))
+    for a,b in zip(checked["hypotheses"],source["hypotheses"]):
+        for key in ("membership","candidate","control"):
+            if a[key].get("threshold")!=b[key].get("threshold"):
+                raise PermissionError("Recovery found modified fitted threshold")
+        for p in (a["membership"]["fit_provenance"],
+                  a["candidate"]["threshold_fit_provenance"],
+                  a["control"]["threshold_fit_provenance"],
+                  *((a["candidate"]["capacity_fit_provenance"],)
+                    if a["id"]=="H2" else ())):
+            if p.get("no_confirmatory_overlap_attested") is not True:
+                raise PermissionError("Recovery found unattested P1 source")
+    if len(sheet)!=len(csvrows_for_frozen(cohort)):
+        raise PermissionError("Recovery cohort rows changed")
+    git("push","origin",BRANCH)
+    return issue_approval_after_remote_freeze(decision,sheet_path,recipe,cohort,commit)
+
+
+def csvrows_for_frozen(cohort_path: Path) -> list[dict]:
+    with cohort_path.open(newline="",encoding="utf-8-sig") as f:
+        reader=csv.DictReader(f)
+        if tuple(reader.fieldnames or ())!=ROWS:
+            raise ValueError("Unexpected frozen cohort schema")
+        return list(reader)
+
+
 def attempt_freeze() -> dict:
     """Use a reviewer-supplied signed decision, never create it."""
     prep=prepare()
@@ -294,9 +400,10 @@ def attempt_freeze() -> dict:
                 "review_sheet":str(SIGNOFF/"REVIEW_220_IMAGES_PENDING.csv"),
                 "freeze_commit_created":False}
     protocol=json.loads(PROTOCOL.read_text(encoding="utf-8"))
+    if protocol.get("status")=="frozen":
+        return resume_freeze_after_interrupted_push()
     if protocol.get("status")!="draft_not_frozen":
-        return {"status":"FROZEN_PROTOCOL_ALREADY_PRESENT_USE_EXISTING_GUARD",
-                "freeze_commit_created":False}
+        raise PermissionError("Unexpected protocol status; no freeze transition")
     decision=json.loads(SIGNED.read_text(encoding="utf-8"))
     sheet_path=SIGNOFF/"REVIEW_220_IMAGES_PENDING.csv"
     sheet=csvrows(sheet_path)
@@ -330,33 +437,5 @@ def attempt_freeze() -> dict:
     # The freeze is not published until an explicit push succeeds. Never
     # generate an authorization to open protected outcomes before push.
     git("push","origin",BRANCH)
-    # Only after the versioned freeze is public/remote, bind approvals to
-    # this exact commit and all frozen input SHA256 digests.
-    appro={
-        "schema_version":1,
-        "approved_for_first_confirmatory_outcome_access":True,
-        "reviewed_by":decision["reviewed_by"],
-        "approved_utc":decision["approved_utc"],
-        "freeze_commit":commit,
-        "protocol_sha256":sha(PROTOCOL),
-        "cohort_sha256":sha(cohort),
-        "recipe_sha256":sha(recipe),
-        "scientific_approvals":{k:True for k in APPROVALS},
-        "approved_executor_source_sha256":sha(EXECUTOR),
-        "executor_contract_independently_reviewed":True,
-        "gt_binary_decoding_contract":BIN_POLICY,
-        "review_notes":decision["review_notes"],
-        "review_decision_sha256":sha(SIGNED),
-        "review_sheet_sha256":sha(sheet_path),
-    }
-    approval_path=WORK/"freeze_approval.json"
-    with approval_path.open("x",encoding="utf-8") as f:
-        f.write(jsonify(appro))
-    from paper_a_freeze_guard import validate_files
-    gate=validate_files(PROTOCOL,recipe,cohort,approval_path)
-    if gate["blockers"]:
-        raise RuntimeError("Freeze guard rejected reviewed commit: "+"; ".join(gate["blockers"]))
-    return {"status":"SIGNED_FREEZE_COMMITTED_AND_GUARD_VALIDATED",
-            "freeze_commit":commit,"freeze_certified":True,
-            "review_decision_sha256":sha(SIGNED),
-            "protected_GT_opened_by_this_module":False}
+    # Bind the reviewer-signed decision to exact frozen hashes after remote push.
+    return issue_approval_after_remote_freeze(decision,sheet_path,recipe,cohort,commit)
