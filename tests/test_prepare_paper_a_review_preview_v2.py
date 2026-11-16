@@ -10,6 +10,21 @@ import prepare_paper_a_review_preview_v2 as preview
 
 
 class WindowsPreviewEntrypointTests(unittest.TestCase):
+    def test_direct_script_import_isolated_outside_repo_without_data_access(self):
+        import subprocess
+        import tempfile
+        source=ROOT/"scripts"/"prepare_paper_a_review_preview_v2.py"
+        # runpy with run_name different from __main__ only imports the
+        # entrypoint. This tests Windows-like missing sibling sys.path
+        # without invoking real data/protocol preparation.
+        with tempfile.TemporaryDirectory() as tmp:
+            result=subprocess.run([
+                sys.executable, "-I", "-B", "-c",
+                "import runpy,sys;runpy.run_path(sys.argv[1],run_name='_import_only_')",
+                str(source)],
+                cwd=tmp,capture_output=True,text=True,timeout=30,check=False)
+        self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+
     def test_powershell_invokes_real_script_without_python_c_quotes(self):
         p=(ROOT/"scripts/preparar_paper_a_revisao_v2.ps1").read_text(encoding="utf-8")
         self.assertIn("& $python scripts/prepare_paper_a_review_preview_v2.py",p)
