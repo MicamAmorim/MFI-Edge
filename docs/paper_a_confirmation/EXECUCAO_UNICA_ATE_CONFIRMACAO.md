@@ -184,3 +184,8 @@ Após uma aprovação externa legítima, o commit de freeze passa a incluir tamb
 - `docs/paper_a_confirmation/FROZEN_FREEZE_INPUTS_MANIFEST.json` (hashes SHA256 das fontes locais, decisão externa, protocolo, avaliador e evidências).
 
 O guard valida os hashes contra os arquivos congelados no F: antes de qualquer GT. O texto detalhado de adjudicação, com nomes e justificativas do revisor, **não é publicado no Git**, apenas vinculado por hash para proteger a confidencialidade.
+
+
+### Retomada e testes após publicação
+
+O executor recupera tentativas interrompidas de publicação de freeze mediante a mesma decisão externa e comparação de SHA dos arquivos de revisão e do commit Git. Após o freeze, os testes específicos do rascunho deixam de ser exigidos; o guard continua obrigatório. A pipeline CI também não exige a presença de protocolo draft quando o status estiver corretamente congelado.

@@ -121,5 +121,50 @@ class FreezeSafetyTests(unittest.TestCase):
         self.assertEqual(d[PROTOCOL], hashlib.sha256((revision+":"+PROTOCOL).encode()).hexdigest())
 
 
+    def test_git_freeze_manifest_checks_signed_hashes_and_public_copy(self):
+        import json
+        import tempfile
+        from paper_a_freeze_guard import sha256, verify_versioned_freeze_inputs
+        with tempfile.TemporaryDirectory() as tmp:
+            repo=Path(tmp)
+            folder=repo/"docs"/"paper_a_confirmation"
+            folder.mkdir(parents=True)
+            protocol=folder/"protocol.json"
+            recipe=repo/"recipe.json"
+            cohort=repo/"cohort.csv"
+            recipe_git=folder/"FROZEN_H1_H2_RECIPE_P1.json"
+            public=folder/"FROZEN_COHORT_IDS_PUBLIC.csv"
+            protocol.write_text('{"status":"frozen"}',encoding="utf-8")
+            recipe.write_text('{"test":1}',encoding="utf-8")
+            cohort.write_text("dataset,image_id\nBIPED,RGB_01\n",encoding="utf-8")
+            recipe_git.write_bytes(recipe.read_bytes())
+            public.write_text("dataset,image_id\nBIPED,RGB_01\n",encoding="utf-8")
+            approval={
+                "review_decision_sha256":"a"*64,
+                "review_sheet_sha256":"b"*64,
+                "approved_executor_source_sha256":"c"*64,
+            }
+            manifest={
+                "status":"REVIEWED_PRE_GT_CONFIRMATORY_LOCK",
+                "schema_version":1,
+                "protocol_sha256":sha256(protocol),
+                "local_frozen_recipe_sha256":sha256(recipe),
+                "public_frozen_recipe_sha256":sha256(recipe_git),
+                "local_frozen_cohort_sha256":sha256(cohort),
+                "public_frozen_cohort_sha256":sha256(public),
+                "external_signed_decision_sha256":approval["review_decision_sha256"],
+                "external_review_sheet_sha256":approval["review_sheet_sha256"],
+                "executor_source_sha256":approval["approved_executor_source_sha256"],
+                "no_GT_opened_by_freeze_step":True,
+            }
+            (folder/"FROZEN_FREEZE_INPUTS_MANIFEST.json").write_text(
+                json.dumps(manifest),encoding="utf-8")
+            self.assertEqual(
+                verify_versioned_freeze_inputs(repo,protocol,recipe,cohort,approval),[])
+            public.write_text("modified",encoding="utf-8")
+            self.assertTrue(
+                verify_versioned_freeze_inputs(repo,protocol,recipe,cohort,approval))
+
+
 if __name__ == "__main__":
     unittest.main()

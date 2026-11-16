@@ -56,7 +56,11 @@ jobs:
       - name: Scientific review dossier safety tests (metadata/synthetic only)
         run: |
           python -m py_compile scripts/revisar_paper_a_pre_freeze.py
-          python tests/test_revisar_paper_a_pre_freeze.py
+          if python -c "import json,sys; p=json.load(open('docs/paper_a_confirmation/protocol.json')); sys.exit(0 if p.get('status')=='draft_not_frozen' else 1)"; then
+            python tests/test_revisar_paper_a_pre_freeze.py
+          else
+            echo "Versioned protocol is frozen; draft-only dossier tests skipped."
+          fi
       - name: Strict text-only prefreeze review bundle tests
         run: |
           python -m py_compile scripts/export_paper_a_review_bundle.py
