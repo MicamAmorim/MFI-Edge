@@ -23,6 +23,12 @@ class ReviewBundleTests(unittest.TestCase):
                 ("work", "scientific_signoff/GT_PIXEL_ENCODING_DETAIL_PRE_FREEZE_v1.json"),
             "review/signoff/P1_LINEAGE_METADATA_CROSSCHECK_NOT_APPROVED.json":
                 ("work", "scientific_signoff/P1_LINEAGE_METADATA_CROSSCHECK_NOT_APPROVED.json"),
+            "review/signoff/FROZEN_PROTOCOL_BYTES_TO_REVIEW_NOT_ACTIVE.json":
+                ("work", "scientific_signoff/FROZEN_PROTOCOL_BYTES_TO_REVIEW_NOT_ACTIVE.json"),
+            "review/signoff/FINAL_INDEPENDENT_REVIEW.template.json":
+                ("work", "scientific_signoff/FINAL_INDEPENDENT_REVIEW.template.json"),
+            "review/signoff/FREEZE_READINESS_PREVIEW.json":
+                ("work", "scientific_signoff/FREEZE_READINESS_PREVIEW.json"),
             "review/signoff/GT_PIXEL_ENCODING_REVIEW_REQUIRED.md":
                 ("work", "scientific_signoff/GT_PIXEL_ENCODING_REVIEW_REQUIRED.md"),
             "science/GT_PIXEL_ENCODING_PROSPECTIVE_v2_NOT_APPROVED.md":
