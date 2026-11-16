@@ -160,6 +160,42 @@ def check_freeze(protocol: dict, recipe: dict, approval: dict,
     return sorted(set(problems))
 
 
+def validate_fitted_recipe(recipe: dict, protocol: dict,
+                          repository: Path) -> list[str]:
+    """Apply full P0.1 fitted-parameter checks: monotone capacity, source
+    SHA, per-parameter lineage, no-confirmatory-overlap attestation, etc.
+
+    The original P0.1 source validation is reused directly, but without
+    requiring protocol.status==draft_not_frozen: frozen protocol is the
+    expected status for *outcome* authorization.
+    """
+    from prepare_paper_a_h1h2_recipe_P0_1 import (
+        code_provenance, validate as recipe_validate)
+    blockers=[]
+    pinned=recipe.get("source_commit")
+    if not isinstance(pinned,str) or not ancestor(repository,pinned):
+        return ["Recipe source commit is not a verified Git ancestor"]
+    try:
+        result=recipe_validate(recipe,protocol,code_provenance(repository),pinned)
+    except (ValueError,KeyError,TypeError) as error:
+        return ["P0.1 model parameters/provenance invalid: "+str(error)]
+    if result.get("pending_count")!=0:
+        blockers.append("P0.1 H1/H2 fitted values/proofs incomplete: "
+                        +str(result.get("pending_count")))
+    # All supervised-fitting commits must also precede the freeze.
+    for h in recipe.get("hypotheses",[]):
+        proofs=[h.get("membership",{}).get("fit_provenance",{}),
+                h.get("candidate",{}).get("threshold_fit_provenance",{}),
+                h.get("control",{}).get("threshold_fit_provenance",{})]
+        if h.get("id")=="H2":
+            proofs.append(h.get("candidate",{}).get("capacity_fit_provenance",{}))
+        for proof in proofs:
+            if not isinstance(proof,dict) or not ancestor(
+                    repository,str(proof.get("fitting_commit",""))):
+                blockers.append("Fitting commit not verified in Git ancestry")
+    return sorted(set(blockers))
+
+
 def validate_files(protocol_path: Path, recipe_path: Path,
                    cohort_path: Path, approval_path: Path,
                    repo: Path = ROOT) -> dict:
@@ -185,6 +221,8 @@ def validate_files(protocol_path: Path, recipe_path: Path,
     }
     blockers = check_freeze(protocol, recipe, approval, rows, digest,
                             lambda commit: ancestor(repo, commit))
+    blockers.extend(validate_fitted_recipe(recipe, protocol, repo))
+    blockers = sorted(set(blockers))
     return {
         "status": "FROZEN_OUTCOME_ACCESS_APPROVED" if not blockers else "FROZEN_ACCESS_BLOCKED",
         "blockers": blockers,
