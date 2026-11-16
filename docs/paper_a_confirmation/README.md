@@ -435,3 +435,12 @@ Foi identificado falso positivo geométrico sério (277/354 inliers em cenas
 visualmente sem relação), exigindo diagnóstico do matcher/homografia.
 Ver [`MULTICUE_VISUAL_25_ADJUDICATION_20261115.md`](MULTICUE_VISUAL_25_ADJUDICATION_20261115.md)
 e [`multicue_visual_25_decisions.csv`](multicue_visual_25_decisions.csv).
+
+## Diagnóstico de falsos positivos SIFT (cache, pré-F1)
+
+Antes de confiar em correspondências geométricas, execute os testes
+`tests/test_paper_a_multicue_sift_false_positives.py` e a análise
+`scripts/diagnose_paper_a_multicue_sift_false_positives.py`.
+Ela reaproveita `.npz` de SIFT e confere 25 alertas com matching recíproco
+e dispersão dos inliers, sem decodificar imagens ou abrir GT/F1.
+Ver [`MULTICUE_SIFT_FALSE_POSITIVE_DIAGNOSTICS.md`](MULTICUE_SIFT_FALSE_POSITIVE_DIAGNOSTICS.md).
