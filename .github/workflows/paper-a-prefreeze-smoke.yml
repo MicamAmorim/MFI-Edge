@@ -31,6 +31,12 @@ jobs:
           python tests/test_analyze_paper_a_confirmed.py
           python tests/test_finish_paper_a.py
           python tests/test_fit_paper_a_development_uded14.py
+      - name: Pre-GT H1-H2 predictor and P1 smoke tests (synthetic only)
+        run: |
+          python -m py_compile src/paper_a_h1h2_inference_core.py scripts/preflight_paper_a_h1h2_core.py tests/test_paper_a_h1h2_inference_core.py
+          python tests/test_paper_a_h1h2_inference_core.py
+          python scripts/preflight_paper_a_h1h2_core.py
+          python tests/test_paper_a_paired_f1_contract.py
       - name: Build package without scientific data
         run: python scripts/package_paper_a_repro.py --outdir dist
       - name: Preserve baseline preconfirmatory manuscript and ZIP
