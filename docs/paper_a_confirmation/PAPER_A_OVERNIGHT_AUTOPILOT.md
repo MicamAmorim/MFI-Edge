@@ -29,3 +29,12 @@ Files:
 The controller requests Windows remain awake during its process;
 do not shut the computer down. Overnight completion does not imply
 scientific protocol freeze or H1/H2 confirmation.
+
+## CI baseline reproducibility fallback
+
+On pushes to this branch, GitHub Actions runs a lightweight Python
+smoke test and builds a **preconfirmatory** ZIP artifact. It does not
+connect to local F: caches or run held-out outcomes; the local overnight
+controller remains responsible for bytewise checks and Codex editing.
+Download the artifact from the latest successful **Paper A prefreeze smoke
+checks** GitHub Actions run if the workstation was unavailable.

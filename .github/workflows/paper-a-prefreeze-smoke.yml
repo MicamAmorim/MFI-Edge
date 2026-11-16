@@ -1,0 +1,35 @@
+name: Paper A prefreeze smoke checks
+on:
+  push:
+    branches:
+      - experiment/paper-a-conditional-confirmation
+  workflow_dispatch:
+jobs:
+  safe-draft-and-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile overnight runner and safe packager
+        run: |
+          python -m py_compile scripts/paper_a_overnight_agent.py scripts/package_paper_a_repro.py scripts/run_paper_a_prefreeze_one_shot.py
+      - name: Controller synthetic safety tests
+        run: python tests/test_paper_a_overnight_agent.py
+      - name: Offline one-shot synthetic checks
+        run: python tests/test_paper_a_prefreeze_one_shot.py
+      - name: Build package without scientific data
+        run: python scripts/package_paper_a_repro.py --outdir dist
+      - name: Preserve baseline preconfirmatory manuscript and ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-a-preconfirmatory-manuscript-and-repro
+          path: |
+            dist/*.zip
+            dist/*.sha256.txt
+          if-no-files-found: error
+          retention-days: 14
