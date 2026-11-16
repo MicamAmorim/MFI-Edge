@@ -370,6 +370,11 @@ def run_pipeline(base:Path=WORK, *, no_reaudit:bool=False,
         state["reproducibility"]=make_repro_baseline(folder)
     else:
         state["reproducibility"]={"status":"SKIPPED_BY_USER"}
+    if state["reproducibility"]["status"] not in ("PACKAGED","SKIPPED_BY_USER"):
+        state["status"]="TECHNICAL_ERROR_BLOCKED"
+        state["blockers"].append("Reproducibility baseline packaging failed")
+    if state["development_fit"]["status"]=="DEVELOPMENT_FIT_FAILED":
+        state["status"]="TECHNICAL_ERROR_BLOCKED"
     write_gate_status(folder,state)
     if state.get("analysis"):
         state["confirmatory_package"]=package_confirmatory(folder,Path(state["analysis"]["path"]),state)
@@ -394,7 +399,9 @@ def main():
                             skip_baseline_zip=args.skip_baseline_zip,
                             authorize_uded_development_gt=args.authorize_uded_development_gt)
         # A gate being open is an expected, reportable result, not an execution crash.
-        return 0 if result["technical_audit"]["status"]!="TECHNICAL_AUDIT_FAILED" else 2
+        return 0 if (result["technical_audit"]["status"]==
+                     "REUSED_VERIFIED_56_56_WITH_UNCHANGED_SCIENTIFIC_CODE"
+                     and result["status"]!="TECHNICAL_ERROR_BLOCKED") else 2
     except Exception as exc:
         print("[FAIL CLOSED]",type(exc).__name__+":",str(exc),flush=True)
         return 2
