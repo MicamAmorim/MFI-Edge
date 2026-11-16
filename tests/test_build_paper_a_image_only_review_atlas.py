@@ -40,6 +40,7 @@ class GtFreeAtlasTests(unittest.TestCase):
                     p=base/rel
                     pixels=np.full((24,32,3),i%256,dtype=np.uint8)
                     pixels[0,0]=[0,1,2]
+                    pixels[0,1]=[7,8,9] if domain=="BIPED" else [10,11,12]
                     Image.fromarray(pixels).save(p)
                     records.append({
                         "dataset":domain,"image_id":name,"relative_path":rel,
