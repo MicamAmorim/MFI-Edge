@@ -1,6 +1,6 @@
 # Paper A — UDED-14 development-only fitted parameters (P1)
 
-**Recorded:** 2026-11-16. **Status:** `FITTED_UNATTESTED`; neither independently certified nor frozen. **Source of values:** workstation PowerShell output of `devfit_20261116T031932_410335Z_recipe_UNATTESTED.json`, as reported by the researcher. The complete source JSON and its SHA256 have **not yet been transferred to this repository**; transcription below is provisional until the source file is checked against the versioned snapshot.
+**Recorded:** 2026-11-16. **Status:** `FITTED_UNATTESTED`; neither independently certified nor frozen. **Source of values:** workstation PowerShell output of `devfit_20261116T031932_410335Z_recipe_UNATTESTED.json`, as reported by the researcher. The **complete P1 JSON is now versioned** as `P1_DEVELOPMENT_RECIPE_UNATTESTED.json` by commit `2b7be963` (versioned Git blob ID `4be2448b37db6adf79317d1de315b2ee2b155fa4`). The attempt to compare its SHA256 against the original workstation source was **not successful**: `Get-FileHash` was unavailable, causing two empty variables to compare equal. The researcher must run the Python SHA256 comparison below to prove the bytewise copy. A Git blob ID is not a SHA256 of the source file.
 
 ## Execution evidence and scope
 
@@ -50,7 +50,7 @@ Cue order: `fh_region_boundary`, `halfdisc_distribution_contrast`, `structure_te
 | 6 | second + third | 0.7149524977115809 |
 | 7 | all three | 1.0 |
 
-The reported capacity has normalized endpoints and is monotone under inclusion at the displayed precision. **The six exact Möbius coefficients were not included in the terminal extract**, so their consistency with the displayed capacity must be checked from the complete P1 file. This note does not replace the machine-readable recipe or the independent scientific review.
+The reported capacity has normalized endpoints and is monotone under inclusion at displayed precision. **The six Möbius coefficients from the actual versioned P1 recipe** are `(0.2850475022884192, 0.0, 0.3213385800523409, 0.0, 0.0, 0.3936139176592399)`. Reconstructing each subset value by the singleton and pairwise terms agrees with the eight recorded capacities at floating-point precision. This establishes an algebraic consistency check, not independent scientific certification.
 
 ## Interpretation and warnings
 
@@ -60,10 +60,23 @@ For H2, a zero midpoint on the first cue and an exact `scale=0.05` for the first
 
 ## Required independent scientific gates
 
-1. Transfer the **original complete P1 JSON** from the workstation into a small curated versioned path after reviewing its contents; record its SHA256, provenance, full Möbius coefficients and training image/GT hashes. Do not commit any raw source images, GT masks, scientific NPY caches, H5 files or dataset archives.
+1. **Complete the outstanding source-copy SHA256 check** for the already-versioned `P1_DEVELOPMENT_RECIPE_UNATTESTED.json`. The file includes training image/GT hashes and the six Möbius coefficients, but none of those metadata fields constitutes a human attestation of cohort independence. Do not commit raw source images, GT masks, scientific NPY caches, H5 files or dataset archives.
 2. Certify training/confirmatory scene independence and prior exposure; specifically exclude MultiCue capture-prefix `4113`, an exposed UDED overlap.
 3. Verify complete 2-additive H2 Möbius/capacity representation, gamma, all four fixed thresholds, common membership calibration and fixed evaluator semantics.
 4. Select independently eligible BIPED/MultiCue groups, freeze sampling unit, annotation task/decoder, size and domain-blocked statistical analysis **before opening held-out GT**.
 5. Only after independent review, create and sign `frozen_H1_H2_recipe.json`, `frozen_cohort_manifest.csv`, `freeze_approval.json` and a protocol freeze commit. Do not auto-assert approval fields.
 
 **Current conclusion:** successful development fitting; scientific provenance **NOT ATTESTED**; no confirmatory H1/H2 outcomes or journal-ready final Results section.
+
+## Workstation SHA256 source/copy verification (still required)
+
+The user's PowerShell session did not recognize `Get-FileHash`; the previous blank `$hashOrigem` and `$hashDestino` therefore **did not establish integrity**. From the project root run this read-only alternative, which uses the virtual-environment Python and terminates nonzero if the bytes differ:
+
+```powershell
+$src = "F:\MFI-Edge-Data\MultiCue\paper_a_completion\devfit_20261116T031932_410335Z_recipe_UNATTESTED.json"
+$dst = "docs/paper_a_confirmation/P1_DEVELOPMENT_RECIPE_UNATTESTED.json"
+.\.venv\Scripts\python.exe -c "import hashlib,sys,pathlib; H=lambda p: hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest(); a,b=map(H,sys.argv[1:]); print('SOURCE_SHA256',a); print('GIT_COPY_SHA256',b); sys.exit(0 if a==b else 2)" "$src" "$dst"
+if ($LASTEXITCODE -ne 0) { throw "P1 source-copy SHA256 MISMATCH" }
+```
+
+This checksum verifies file identity only. It does not certify training leakage, annotation interpretation or H1/H2 performance.
