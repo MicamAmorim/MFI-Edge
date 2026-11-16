@@ -189,6 +189,9 @@ def approval_template():
             "sample_size_and_inference":False,
             "independent_protocol_review":False,
         },
+        "approved_executor_source_sha256":None,
+        "executor_contract_independently_reviewed":False,
+        "gt_binary_decoding_contract":None,
         "review_notes":"NOT APPROVED; reviewer must document every scientific gate.",
     }
 

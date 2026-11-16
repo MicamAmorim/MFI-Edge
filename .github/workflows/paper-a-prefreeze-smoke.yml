@@ -49,6 +49,10 @@ jobs:
           python tests/test_paper_a_multicue_gt_task_names.py
       - name: One-command runner pure safety checks
         run: python tests/test_continuar_paper_a.py
+      - name: Check post-freeze executor on synthetic masks only
+        run: |
+          python -m py_compile scripts/execute_paper_a_frozen_cohort.py
+          python tests/test_execute_paper_a_frozen_cohort.py
       - name: Build package without scientific data
         run: python scripts/package_paper_a_repro.py --outdir dist
       - name: Preserve baseline preconfirmatory manuscript and ZIP

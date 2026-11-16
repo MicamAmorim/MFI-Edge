@@ -166,6 +166,36 @@ def one_shot() -> dict:
         sys.executable, str(ROOT / "scripts/preflight_paper_a_prefreeze_map_adapter.py"),
         "--real-stage23"], timeout=1200)
     info["steps"]["synthetic_tests"] = {"status": "ALL_PASSED"}
+    # The *real* image->F1 executor is only allowed when the separately signed
+    # scientific freeze passes and its exact source hash/policy were approved.
+    # Before that condition: do not inspect GT, TAR, or protected outcomes.
+    protocol = json.loads((ROOT / "docs/paper_a_confirmation/protocol.json")
+                          .read_text(encoding="utf-8"))
+    if protocol.get("status") == "frozen":
+        from paper_a_freeze_guard import validate_files
+        frozen = (WORK / "frozen_H1_H2_recipe.json",
+                  WORK / "frozen_cohort_manifest.csv",
+                  WORK / "freeze_approval.json")
+        if all(p.is_file() for p in frozen):
+            gate = validate_files(
+                ROOT / "docs/paper_a_confirmation/protocol.json", *frozen)
+            if not gate["blockers"]:
+                approval = json.loads(frozen[2].read_text(encoding="utf-8"))
+                from execute_paper_a_frozen_cohort import BIN_POLICY, digest
+                executor = ROOT / "scripts/execute_paper_a_frozen_cohort.py"
+                if (approval.get("approved_executor_source_sha256") == digest(executor)
+                    and approval.get("executor_contract_independently_reviewed") is True
+                    and approval.get("gt_binary_decoding_contract") == BIN_POLICY):
+                    outcomes = WORK / "certified_outcomes.csv"
+                    provenance = WORK / "certified_outcomes_provenance.json"
+                    if not outcomes.exists() and not provenance.exists():
+                        run("frozen_image_to_xy_executor",
+                            [sys.executable, str(executor)], timeout=172800)
+                        info["steps"]["certified_evaluator"] = {
+                            "status": "EXECUTED_AFTER_INDEPENDENT_SOURCE_AND_GT_REVIEW"}
+                else:
+                    info["steps"]["certified_evaluator"] = {
+                        "status": "AWAITING_INDEPENDENT_EXECUTOR_AND_GT_DECODING_REVIEW"}
     # The existing central controller already signs nothing, verifies freeze
     # before outcomes, and knows how to run Holm + 100000 permutations.
     # Reuse a prior validated SHA audit; if absent it creates one safely.
