@@ -163,6 +163,22 @@ def check_freeze(protocol: dict, recipe: dict, approval: dict,
     return sorted(set(problems))
 
 
+def source_sha256_at_pinned_commit(repo: Path, pinned: str) -> dict[str, str]:
+    """Compute original P1 training-code hashes from historical Git blobs."""
+    from prepare_paper_a_h1h2_recipe_P0_1 import CODE_FILES, PROTOCOL
+    if not ancestor(repo, pinned):
+        raise ValueError("P1 source revision is not a verified ancestor")
+    observed = {}
+    for relative in (PROTOCOL, *CODE_FILES):
+        proc = subprocess.run(
+            ["git", "show", f"{pinned}:{relative}"], cwd=repo,
+            capture_output=True, check=False, timeout=40)
+        if proc.returncode or len(proc.stdout) > 4_000_000:
+            raise ValueError("Historical P1 code file unavailable: " + relative)
+        observed[relative] = hashlib.sha256(proc.stdout).hexdigest()
+    return observed
+
+
 def validate_fitted_recipe(recipe: dict, protocol: dict,
                           repository: Path) -> list[str]:
     """Apply full P0.1 fitted-parameter checks: monotone capacity, source
@@ -173,7 +189,7 @@ def validate_fitted_recipe(recipe: dict, protocol: dict,
     expected status for *outcome* authorization.
     """
     from prepare_paper_a_h1h2_recipe_P0_1 import (
-        code_provenance, validate as recipe_validate)
+        validate as recipe_validate)
     blockers=[]
     pinned=recipe.get("source_commit")
     if not isinstance(pinned,str) or not ancestor(repository,pinned):
@@ -191,7 +207,7 @@ def validate_fitted_recipe(recipe: dict, protocol: dict,
     shadow["status"]="DRAFT_VALUES_UNVERIFIED_NOT_FROZEN"
     shadow["no_scientific_artifacts_or_outcomes_read"]=True
     try:
-        result=recipe_validate(shadow,protocol,code_provenance(repository),pinned)
+        result=recipe_validate(shadow,protocol,source_sha256_at_pinned_commit(repository,pinned),pinned)
     except (ValueError,KeyError,TypeError) as error:
         return ["P1 fitted parameters/provenance invalid: "+str(error)]
     if result.get("pending_count")!=0:

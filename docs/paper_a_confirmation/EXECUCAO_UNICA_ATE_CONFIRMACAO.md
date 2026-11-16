@@ -137,3 +137,8 @@ freeze não está aprovado. **Ausência do resultado confirmado não é falha
 técnica.** Após aprovação independentemente fundamentada dos GT, coorte,
 receita, prova de não sobreposição, teste estatístico, hash do avaliador e
 commit do protocolo, o mesmo comando continua para a etapa pós-freeze.
+
+
+### Proveniência original da receita P1
+
+A verificação da receita compara os hashes aos blobs versionados do commit histórico de ajuste P1, e não aos arquivos alterados no checkout de freeze. A implementação atual continua exigindo aprovação independente de seu SHA256.

@@ -104,5 +104,22 @@ class FreezeSafetyTests(unittest.TestCase):
         self.assertTrue(check_freeze(p,r,a,c,h,lambda _:True))
 
 
+    def test_pinned_provenance_reads_original_git_blob_bytes(self):
+        import hashlib
+        from unittest.mock import patch, Mock
+        from paper_a_freeze_guard import source_sha256_at_pinned_commit
+        from prepare_paper_a_h1h2_recipe_P0_1 import CODE_FILES, PROTOCOL
+        revision = "b5a79ec6bb5f9a1fbd38477cd2900b19e98b8d46"
+        with patch("paper_a_freeze_guard.ancestor", return_value=True), \
+             patch("paper_a_freeze_guard.subprocess.run") as proc:
+            def show(args, **kwargs):
+                self.assertEqual(args[0:2], ["git", "show"])
+                return Mock(returncode=0, stdout=args[2].encode())
+            proc.side_effect = show
+            d = source_sha256_at_pinned_commit(Path(__file__).resolve().parents[1], revision)
+        self.assertEqual(set(d), set((PROTOCOL, *CODE_FILES)))
+        self.assertEqual(d[PROTOCOL], hashlib.sha256((revision+":"+PROTOCOL).encode()).hexdigest())
+
+
 if __name__ == "__main__":
     unittest.main()
