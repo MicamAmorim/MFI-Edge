@@ -222,11 +222,21 @@ def one_shot() -> dict:
         ("P1", p1_metadata),
     ]:
         info["steps"][name] = action()
-    info["steps"]["cohort_proposal"] = propose_review_cohort()
-    # Read only prior metadata and write consolidated scientific review;
-    # never turn a candidate/proposal into a frozen eligible cohort.
-    from revisar_paper_a_pre_freeze import create_dossier
-    info["steps"]["scientific_review"] = create_dossier()
+    # Pre-freeze proposals must never be rewritten or required after a
+    # legitimately signed freeze. Otherwise the single-command executor
+    # could never reach its authorized post-freeze confirmation path.
+    protocol_status = json.loads(
+        (ROOT / "docs/paper_a_confirmation/protocol.json").read_text(encoding="utf-8")
+    ).get("status")
+    if protocol_status == "draft_not_frozen":
+        info["steps"]["cohort_proposal"] = propose_review_cohort()
+        from revisar_paper_a_pre_freeze import create_dossier
+        info["steps"]["scientific_review"] = create_dossier()
+    else:
+        info["steps"]["cohort_proposal"] = {
+            "status": "SKIPPED_AFTER_DRAFT_NO_FROZEN_ARTIFACT_CHANGES"}
+        info["steps"]["scientific_review"] = {
+            "status": "SKIPPED_AFTER_DRAFT_FREEZE_GUARD_STILL_REQUIRED"}
     for file in TESTS:
         run("test_" + file.replace(".py", ""), [
             sys.executable, str(ROOT / "tests" / file)], timeout=600)

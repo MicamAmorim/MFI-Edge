@@ -41,6 +41,12 @@ class OneCommandTests(unittest.TestCase):
         self.assertIn("validate_inventory", src)
         self.assertNotIn("Image.open", src)
 
+    def test_frozen_path_skips_draft_only_dossier(self):
+        import inspect
+        src = inspect.getsource(app.one_shot)
+        self.assertIn('if protocol_status == "draft_not_frozen"', src)
+        self.assertIn("SKIPPED_AFTER_DRAFT_FREEZE_GUARD_STILL_REQUIRED", src)
+
     def test_completion_uses_existing_gated_controller(self):
         import inspect
         src = inspect.getsource(app.one_shot)
