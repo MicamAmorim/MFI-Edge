@@ -26,6 +26,8 @@ FILES = {
     "review/NEXT_ACTIONS.md": ("work", "NEXT_ACTIONS.md"),
     "review/LAST_STATUS.json": ("work", "LAST_STATUS.json"),
     "review/signoff/NONCONFIRMATORY_GT_ENCODING_EVIDENCE.json": ("work", "scientific_signoff/NONCONFIRMATORY_GT_ENCODING_EVIDENCE.json"),
+    "review/signoff/GT_PIXEL_ENCODING_DETAIL_PRE_FREEZE_v1.json": ("work", "scientific_signoff/GT_PIXEL_ENCODING_DETAIL_PRE_FREEZE_v1.json"),
+    "review/signoff/GT_PIXEL_ENCODING_REVIEW_REQUIRED.md": ("work", "scientific_signoff/GT_PIXEL_ENCODING_REVIEW_REQUIRED.md"),
     "science/PARECER_CODEX_DUPLA_AUDITORIA_20261116.md": ("root", "docs/paper_a_confirmation/PARECER_CODEX_DUPLA_AUDITORIA_20261116.md"),
     "review/signoff/REVIEW_220_IMAGES_PENDING.csv": ("work", "scientific_signoff/REVIEW_220_IMAGES_PENDING.csv"),
     "review/signoff/REVIEWER_DECISION_REQUIRED.md": ("work", "scientific_signoff/REVIEWER_DECISION_REQUIRED.md"),
