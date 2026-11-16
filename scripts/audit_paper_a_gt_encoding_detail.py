@@ -143,6 +143,7 @@ def run() -> dict:
     if RESULT.exists():
         old = json.loads(RESULT.read_text(encoding="utf-8"))
         if (old.get("schema_version") != 1 or
+            old.get("status") != "NONCONFIRMATORY_GT_PIXEL_ENCODING_DETAIL_NOT_CERTIFIED" or
             old.get("source_report_sha256") != digest(source_raw) or
             not NOTES.is_file()):
             raise RuntimeError("Existing detail does not match this source; manual review")
