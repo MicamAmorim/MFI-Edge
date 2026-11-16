@@ -411,8 +411,18 @@ def issue_approval_after_remote_freeze(decision: dict, sheet_path: Path,
         "review_decision_sha256":sha(SIGNED),
         "review_sheet_sha256":sha(sheet_path),
     }
-    with approval_path.open("x",encoding="utf-8") as f:
-        f.write(jsonify(record))
+    # Do not expose a partially written approval after a crash. If a prior
+    # run was interrupted while staging, resume only identical reviewed bytes.
+    import os
+    staged=approval_path.with_suffix(".json.part")
+    approved_bytes=jsonify(record).encode("utf-8")
+    if staged.exists():
+        if staged.is_symlink() or staged.read_bytes()!=approved_bytes:
+            raise PermissionError("Unrecoverable partial freeze approval; requires manual review")
+    else:
+        with staged.open("xb") as out:
+            out.write(approved_bytes)
+    os.replace(staged,approval_path)
     from paper_a_freeze_guard import validate_files
     gate=validate_files(PROTOCOL,recipe,cohort,approval_path)
     if gate["blockers"]:
