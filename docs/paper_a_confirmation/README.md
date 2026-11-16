@@ -553,3 +553,10 @@ Ver [`DEVELOPMENT_LINEAGE_P0_2.md`](DEVELOPMENT_LINEAGE_P0_2.md).
 `python .\scripts\audit_paper_a_uded14_cache_sidecars_P0_3.py`.
 Inventaria sidecars e `stat()` de 56 mapas, sem abrir bytes NPY/GT/F1.
 Ver [`CACHE_SIDECAR_INVENTORY_P0_3.md`](CACHE_SIDECAR_INVENTORY_P0_3.md).
+
+## Uma única auditoria integrada P0–P0.4
+
+Execute `python -u .\scripts\run_paper_a_prefreeze_one_shot.py`.
+Revalida P0/P0.1/P0.2/P0.3, MultiCue e hashes reais dos 56 caches NPY,
+sem abrir GT/H5/F1 nem modificar Stage24. Veja
+[`ONE_SHOT_PREFREEZE_AUDIT.md`](ONE_SHOT_PREFREEZE_AUDIT.md).
