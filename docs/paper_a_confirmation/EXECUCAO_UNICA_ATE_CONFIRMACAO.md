@@ -173,3 +173,14 @@ necessariamente registrados para o revisor antes da primeira abertura de GT.
 ### Escopo real da inspeção Stage13c
 
 A versão histórica `automation/stage13c_biped_preflight.py` efetivamente contém código que abre imagens e GT **train** do BIPED para conferir dimensões (sem calcular F1 ou fazer ajuste nesse módulo). O relatório operacional existente deve ser revisado: afirmar que 'nenhum GT train foi aberto' é incorreto se o Stage13c executou esse bloco. A aprovação da independência deve distinguir inspeção de dimensões de uso de resultados para treinar/calibrar/selecionar.
+
+
+### Fontes científicas versionadas no freeze
+
+Após uma aprovação externa legítima, o commit de freeze passa a incluir também:
+
+- `docs/paper_a_confirmation/FROZEN_H1_H2_RECIPE_P1.json` (parâmetros P1 aprovados);
+- `docs/paper_a_confirmation/FROZEN_COHORT_IDS_PUBLIC.csv` (IDs/SHA256 com notas pessoais omitidas);
+- `docs/paper_a_confirmation/FROZEN_FREEZE_INPUTS_MANIFEST.json` (hashes SHA256 das fontes locais, decisão externa, protocolo, avaliador e evidências).
+
+O guard valida os hashes contra os arquivos congelados no F: antes de qualquer GT. O texto detalhado de adjudicação, com nomes e justificativas do revisor, **não é publicado no Git**, apenas vinculado por hash para proteger a confidencialidade.

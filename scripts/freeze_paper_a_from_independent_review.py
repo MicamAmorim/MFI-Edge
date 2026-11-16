@@ -252,10 +252,71 @@ def validate_signed_decision(decision: dict, sheet: list[dict],
         raise PermissionError("Proposed domain mix changed; re-plan independently before freeze")
 
 
+def version_freeze_evidence(recipe: Path, cohort: Path,
+                            decision: dict, sheet_path: Path) -> list[str]:
+    """Git-version protocol-linked recipe and minimal public cohort without PII.
+
+    All detailed reviewer evidence stays on F:. Commit only dataset identifiers,
+    independent scene identifiers, hash checksums and frozen fitted parameters.
+    """
+    docs=ROOT/"docs/paper_a_confirmation"
+    rec=docs/"FROZEN_H1_H2_RECIPE_P1.json"
+    selections=docs/"FROZEN_COHORT_IDS_PUBLIC.csv"
+    manifest=docs/"FROZEN_FREEZE_INPUTS_MANIFEST.json"
+    if any(p.exists() for p in (rec,selections,manifest)):
+        raise PermissionError("Existing versioned freeze metadata must not be overwritten")
+    rec.write_bytes(recipe.read_bytes())
+    with cohort.open(newline="",encoding="utf-8-sig") as original, \
+            selections.open("x",newline="",encoding="utf-8") as out:
+        reader=csv.DictReader(original)
+        writer=csv.DictWriter(out,fieldnames=ROWS)
+        writer.writeheader()
+        for row in reader:
+            public={k:row[k] for k in ROWS}
+            public["notes"]="Independent adjudication stored privately; bound by freeze manifest hashes."
+            writer.writerow(public)
+    stage=ROOT/"results/automation/stage13c_biped_preflight/summary.json"
+    record={
+        "status":"REVIEWED_PRE_GT_CONFIRMATORY_LOCK",
+        "schema_version":1,
+        "protocol_sha256":sha(SOURCE_SNAPSHOT),
+        "local_frozen_recipe_sha256":sha(recipe),
+        "public_frozen_recipe_sha256":sha(rec),
+        "local_frozen_cohort_sha256":sha(cohort),
+        "public_frozen_cohort_sha256":sha(selections),
+        "external_signed_decision_sha256":sha(SIGNED),
+        "external_review_sheet_sha256":sha(sheet_path),
+        "executor_source_sha256":sha(EXECUTOR),
+        "stage13c_summary_sha256":sha(stage) if stage.is_file() else None,
+        "reviewed_utc":decision["approved_utc"],
+        "no_GT_opened_by_freeze_step":True,
+        "explanation":"SHA-bound independent review; full reviewer notes retained privately on F:, not pushed to Git",
+    }
+    manifest.write_text(jsonify(record),encoding="utf-8")
+    return [str(p.relative_to(ROOT)).replace("\\","/") for p in
+            (rec,selections,manifest)]
+
+
 def materialize_protocol_and_cohort(decision: dict, sheet: list[dict],
                                     protocol_preview: Path, recipe_source: Path,
                                     work: Path) -> tuple[Path,Path]:
     # Generate reviewed artifacts, NEVER modify the human-completed review sheet.
+    # Verify historical fitted-source SHA and all seven independently approved
+    # provenance claims BEFORE writing or publishing any frozen files.
+    from paper_a_freeze_guard import validate_fitted_recipe as validate_historical
+    proposed=json.loads(protocol_preview.read_text(encoding="utf-8"))
+    probe=json.loads(recipe_source.read_text(encoding="utf-8"))
+    for item in probe["hypotheses"]:
+        proofs=(item["membership"]["fit_provenance"],
+                item["candidate"]["threshold_fit_provenance"],
+                item["control"]["threshold_fit_provenance"])
+        for record in proofs:
+            record["no_confirmatory_overlap_attested"]=True
+        if item["id"]=="H2":
+            item["candidate"]["capacity_fit_provenance"]["no_confirmatory_overlap_attested"]=True
+    proof_blockers=validate_historical(probe,proposed,ROOT)
+    if proof_blockers:
+        raise PermissionError("Review input cannot be frozen: "+"; ".join(proof_blockers))
     cohort=work/"frozen_cohort_manifest.csv"
     recipe=work/"frozen_H1_H2_recipe.json"
     if cohort.exists() or recipe.exists():
@@ -379,6 +440,15 @@ def resume_freeze_after_interrupted_push() -> dict:
                 raise PermissionError("Recovery found unattested P1 source")
     if len(sheet)!=len(csvrows_for_frozen(cohort)):
         raise PermissionError("Recovery cohort rows changed")
+    # Verify the versioned source and hashes again; a partially committed
+    # freeze must not be marked approved if its public evidence is missing.
+    from paper_a_freeze_guard import verify_versioned_freeze_inputs
+    manifest_blockers=verify_versioned_freeze_inputs(
+        ROOT, PROTOCOL, recipe, cohort, {"review_decision_sha256":sha(SIGNED),
+        "review_sheet_sha256":sha(sheet_path),
+        "approved_executor_source_sha256":sha(EXECUTOR)})
+    if manifest_blockers:
+        raise PermissionError("Review evidence changed during recovery: "+"; ".join(manifest_blockers))
     git("push","origin",BRANCH)
     return issue_approval_after_remote_freeze(decision,sheet_path,recipe,cohort,commit)
 
@@ -429,9 +499,11 @@ def attempt_freeze() -> dict:
     validate_fitted_recipe(json.loads(P1.read_text(encoding="utf-8")))
     recipe,cohort=materialize_protocol_and_cohort(
         decision,sheet,SOURCE_SNAPSHOT,P1,WORK)
-    # Reviewer explicitly approved byte-exact frozen protocol SHA; commit it.
+    # Version the recipe, a redacted cohort ID list and a SHA-only review
+    # manifest alongside the separately reviewed prospective protocol.
+    versioned=version_freeze_evidence(recipe,cohort,decision,sheet_path)
     PROTOCOL.write_bytes(actual)
-    git("add","--","docs/paper_a_confirmation/protocol.json")
+    git("add","--","docs/paper_a_confirmation/protocol.json",*versioned)
     git("commit","-m",OUT_COMMIT_NOTE)
     commit=git("rev-parse","HEAD")
     # The freeze is not published until an explicit push succeeds. Never

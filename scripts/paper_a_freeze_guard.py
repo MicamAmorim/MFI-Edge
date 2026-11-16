@@ -227,6 +227,47 @@ def validate_fitted_recipe(recipe: dict, protocol: dict,
     return sorted(set(blockers))
 
 
+def verify_versioned_freeze_inputs(repo: Path, protocol: Path,
+                                   recipe: Path, cohort: Path,
+                                   approval: dict) -> list[str]:
+    """Cross-check local signed frozen inputs against Git committed SHA manifest.
+
+    This reads no images, GT, F1 or analysis outcomes and never generates
+    signoffs. Full reviewer notes are private, public files have no notes/PII.
+    """
+    folder=repo/"docs/paper_a_confirmation"
+    manifest=folder/"FROZEN_FREEZE_INPUTS_MANIFEST.json"
+    recipe_public=folder/"FROZEN_H1_H2_RECIPE_P1.json"
+    cohort_public=folder/"FROZEN_COHORT_IDS_PUBLIC.csv"
+    expected=[manifest,recipe_public,cohort_public]
+    if any(not p.is_file() or p.is_symlink() or p.stat().st_size>4_000_000
+           for p in expected):
+        return ["Missing/unsafe Git-versioned frozen evidence bundle"]
+    try:
+        data=json.loads(manifest.read_text(encoding="utf-8"))
+    except (ValueError,UnicodeError,OSError):
+        return ["Malformed versioned freeze manifest"]
+    checks={
+        "status":"REVIEWED_PRE_GT_CONFIRMATORY_LOCK",
+        "schema_version":1,
+        "protocol_sha256":sha256(protocol),
+        "local_frozen_recipe_sha256":sha256(recipe),
+        "public_frozen_recipe_sha256":sha256(recipe_public),
+        "local_frozen_cohort_sha256":sha256(cohort),
+        "public_frozen_cohort_sha256":sha256(cohort_public),
+        "external_signed_decision_sha256":approval.get("review_decision_sha256"),
+        "external_review_sheet_sha256":approval.get("review_sheet_sha256"),
+        "executor_source_sha256":approval.get("approved_executor_source_sha256"),
+    }
+    problems=[]
+    for key,value in checks.items():
+        if not value or data.get(key)!=value:
+            problems.append("Versioned freeze evidence mismatch: "+key)
+    if data.get("no_GT_opened_by_freeze_step") is not True:
+        problems.append("Freeze provenance does not attest outcome lock")
+    return problems
+
+
 def validate_files(protocol_path: Path, recipe_path: Path,
                    cohort_path: Path, approval_path: Path,
                    repo: Path = ROOT) -> dict:
@@ -253,6 +294,9 @@ def validate_files(protocol_path: Path, recipe_path: Path,
     blockers = check_freeze(protocol, recipe, approval, rows, digest,
                             lambda commit: ancestor(repo, commit))
     blockers.extend(validate_fitted_recipe(recipe, protocol, repo))
+    if protocol.get("status")=="frozen":
+        blockers.extend(verify_versioned_freeze_inputs(
+            repo,protocol_path,recipe_path,cohort_path,approval))
     blockers = sorted(set(blockers))
     return {
         "status": "FROZEN_OUTCOME_ACCESS_APPROVED" if not blockers else "FROZEN_ACCESS_BLOCKED",
