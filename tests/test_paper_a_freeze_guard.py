@@ -189,6 +189,8 @@ class FreezeSafetyTests(unittest.TestCase):
                 "review_decision_sha256":"a"*64,
                 "review_sheet_sha256":"b"*64,
                 "approved_executor_source_sha256":"c"*64,
+                "nonconfirmatory_gt_format_sha256":"e"*64,
+                "nonconfirmatory_gt_detail_sha256":"f"*64,
                 "freeze_commit":"b"*40,
                 "approved_runtime_sources_sha256":{p:"d"*64 for p in RUNTIME_SOURCES},
             }
@@ -203,6 +205,8 @@ class FreezeSafetyTests(unittest.TestCase):
                 "external_signed_decision_sha256":approval["review_decision_sha256"],
                 "external_review_sheet_sha256":approval["review_sheet_sha256"],
                 "executor_source_sha256":approval["approved_executor_source_sha256"],
+                "nonconfirmatory_gt_format_sha256":approval["nonconfirmatory_gt_format_sha256"],
+                "nonconfirmatory_gt_detail_sha256":approval["nonconfirmatory_gt_detail_sha256"],
                 "approved_runtime_sources_sha256":approval["approved_runtime_sources_sha256"],
                 "no_GT_opened_by_freeze_step":True,
             }
