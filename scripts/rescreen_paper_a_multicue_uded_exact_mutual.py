@@ -200,11 +200,9 @@ def main():
             "gt_h5_f1_accessed": False,
             "pairs": [],
         }
-        original_ids = set()
         if path.exists():
             stored = json.loads(path.read_text(encoding="utf-8"))
             old_rows = check_resume(stored, ref, targets_digest, target_names)
-            original_ids = set(old_rows)
             checkpoint["pairs"] = list(old_rows.values())
             resumed_pairs += len(old_rows)
         else:
@@ -257,9 +255,12 @@ def main():
 
     positive = next((x for x in all_results if
                      (x["uded_id"], x["multicue_id"]) == REFERENCE_POSITIVE), None)
-    if positive is None or int(positive["mutual_ransac_inliers"]) < 2000:
-        raise ValueError("Known prior-exposure control not confirmed; no negative conclusion")
     complete = len(all_results) == 2700 and args.reference_limit == 27
+    if complete and (positive is None or int(positive["mutual_ransac_inliers"]) < 2000):
+        raise ValueError("Known prior-exposure control not confirmed; no negative conclusion")
+    # The provenance() gate validates the previously established positive
+    # control even during --reference-limit partial runs. Only a complete
+    # re-screen may claim the control was reproduced in its own 2700-pair set.
     if len({(r["uded_id"], r["multicue_id"]) for r in all_results}) != len(all_results):
         raise ValueError("Duplicate comparison in resumed report")
 
