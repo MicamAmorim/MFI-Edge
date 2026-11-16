@@ -372,11 +372,14 @@ def verify_versioned_freeze_inputs(repo: Path, protocol: Path,
                 problems.append("Runtime source SHA changed after scientific review")
     pinned=approval.get("freeze_commit")
     if isinstance(pinned,str) and GIT_SHA.fullmatch(pinned):
+        # All runtime modules must also be the version actually frozen in Git.
+        # A matching worktree-side checksum alone does not prove this.
         problems.extend(check_commit_blob_integrity(repo,pinned,(
             "docs/paper_a_confirmation/protocol.json",
             "docs/paper_a_confirmation/FROZEN_FREEZE_INPUTS_MANIFEST.json",
             "docs/paper_a_confirmation/FROZEN_H1_H2_RECIPE_P1.json",
             "docs/paper_a_confirmation/FROZEN_COHORT_IDS_PUBLIC.csv",
+            *RUNTIME_SOURCES,
         )))
     else:
         problems.append("No valid commit binding for frozen metadata")
