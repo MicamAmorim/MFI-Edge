@@ -4,7 +4,7 @@ import sys
 import unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
-from fit_paper_a_development_uded14 import training_ids_hash, fill_fit_proofs_unattested
+from fit_paper_a_development_uded14 import (training_ids_hash, fill_fit_proofs_unattested, p01_compatibility_shadow)
 
 class DevelopmentFitSafetyTests(unittest.TestCase):
     def test_ids_hash_deterministic(self):
@@ -24,6 +24,17 @@ class DevelopmentFitSafetyTests(unittest.TestCase):
         for h in fit["hypotheses"]:
             self.assertIsNone(h["membership"]["fit_provenance"]["no_confirmatory_overlap_attested"])
         self.assertIsNone(fit["hypotheses"][1]["candidate"]["capacity_fit_provenance"]["no_confirmatory_overlap_attested"])
+
+    def test_fitted_recipe_discloses_development_GT(self):
+        actual={"schema":"paper_a_h1h2_recipe_P1_fitted_development",
+                "status":"FITTED_ON_UDED14_DEVELOPMENT_GT_PENDING_LINEAGE_REVIEW",
+                "development_GT_and_cached_maps_read":True,
+                "no_scientific_artifacts_or_outcomes_read":False}
+        shadow=p01_compatibility_shadow(actual)
+        self.assertFalse(actual["no_scientific_artifacts_or_outcomes_read"])
+        self.assertTrue(shadow["no_scientific_artifacts_or_outcomes_read"])
+        self.assertEqual(shadow["schema"],"paper_a_h1h2_recipe_P0_1")
+        self.assertEqual(actual["schema"],"paper_a_h1h2_recipe_P1_fitted_development")
 
 if __name__=="__main__":
     unittest.main()
