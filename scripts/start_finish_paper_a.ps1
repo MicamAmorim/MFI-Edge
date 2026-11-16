@@ -1,3 +1,4 @@
+param([switch]$AuthorizeDevelopmentGT)
 # Paper A - ONE COMMAND checkpointed completion controller
 $ErrorActionPreference = 'Stop'
 $project = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
@@ -14,7 +15,9 @@ New-Item -ItemType Directory -Force -Path $logDir | Out-Null
 $stamp = Get-Date -Format 'yyyyMMdd_HHmmss'
 $out = Join-Path $logDir "completion_$stamp.stdout.log"
 $err = Join-Path $logDir "completion_$stamp.stderr.log"
-$p = Start-Process -FilePath $python -ArgumentList @('-u','scripts\finish_paper_a.py') -WorkingDirectory $project -RedirectStandardOutput $out -RedirectStandardError $err -PassThru
+$arguments = @('-u','scripts\finish_paper_a.py')
+if ($AuthorizeDevelopmentGT) { $arguments += '--authorize-uded-development-gt' }
+$p = Start-Process -FilePath $python -ArgumentList $arguments -WorkingDirectory $project -RedirectStandardOutput $out -RedirectStandardError $err -PassThru
 Write-Host "Paper A checkpointed completion process PID $($p.Id)"
 Write-Host "Log: $out"
 Write-Host "Review blockers: $logDir\NEXT_ACTIONS.md"
