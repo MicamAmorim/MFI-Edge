@@ -312,6 +312,8 @@ def attempt_freeze() -> dict:
     proposal=freeze_candidate(protocol)
     if actual!=jsonify(proposal).encode("utf-8"):
         raise PermissionError("Reviewed protocol preview no longer matches source draft")
+    # Authentication/push permission must be available BEFORE changing protocol.
+    git("push","--dry-run","origin",BRANCH)
     # Exact reviewed recipe source must still pass structural audit before freeze.
     import sys
     if str(ROOT) not in sys.path:

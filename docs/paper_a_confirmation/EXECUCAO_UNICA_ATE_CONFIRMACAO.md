@@ -168,3 +168,8 @@ independência científica por declarar que 220 amostras estão disponíveis.
 O preenchimento não pode ser delegado ao mesmo script, pois seria
 autorização circular. O estado de revisão e a exposição Stage13c são
 necessariamente registrados para o revisor antes da primeira abertura de GT.
+
+
+### Escopo real da inspeção Stage13c
+
+A versão histórica `automation/stage13c_biped_preflight.py` efetivamente contém código que abre imagens e GT **train** do BIPED para conferir dimensões (sem calcular F1 ou fazer ajuste nesse módulo). O relatório operacional existente deve ser revisado: afirmar que 'nenhum GT train foi aberto' é incorreto se o Stage13c executou esse bloco. A aprovação da independência deve distinguir inspeção de dimensões de uso de resultados para treinar/calibrar/selecionar.

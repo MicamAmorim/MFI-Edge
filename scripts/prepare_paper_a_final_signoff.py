@@ -228,7 +228,14 @@ def run(root: Path = ROOT, data: Path = DATA, work: Path = WORK) -> dict:
         "n_candidates":220,"BIPED":125,"MultiCue":95,
         "requires_evidence_per_capture":True,
         "provisional_CORES_not_approved":True,
-        "stage13c":stage_info,
+        "stage13c":{**stage_info,
+            "historical_code_scope": (
+                "The versioned Stage13c implementation explicitly opens BIPED train "
+                "GT files to inspect image dimensions, besides listing paths. "
+                "This is not evidence of fitting or F1 evaluation, but means "
+                "a blanket 'no previous GT read' statement would be inaccurate."),
+            "historical_opened_GT_justification_requires_reviewer": True,
+        },
         "P1_provenance_claims":seven,
         "P1_lineage_fully_attested":all(x["no_confirmatory_overlap_attested"] is True for x in seven),
         "technical_GT_executor_source_sha256":sha(evaluator) if evaluator.is_file() else None,
