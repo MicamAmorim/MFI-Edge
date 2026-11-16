@@ -32,7 +32,9 @@ class ReviewedFreezeTests(unittest.TestCase):
         m=[item("MultiCue",i,hashlib.sha256(f"MultiCue{i}".encode()).hexdigest())
            for i in range(12)]
         previous={
-            "schema_version":1,"only_nonconfirmatory_GT_opened":True,
+            "schema_version":1,
+            "status":"GT_FORMAT_SAMPLE_OBSERVED_NOT_INDEPENDENTLY_CERTIFIED",
+            "only_nonconfirmatory_GT_opened":True,
             "protected_confirmatory_GT_opened":False,
             "confirmation_F1_computed":False,
             "scientific_GT_semantics_approval":False,
@@ -49,6 +51,7 @@ class ReviewedFreezeTests(unittest.TestCase):
                 "source_report_sha256":fr.sha(a),
                 "status":"NONCONFIRMATORY_GT_PIXEL_ENCODING_DETAIL_NOT_CERTIFIED",
                 "confirmatory_GT_accessed":False,"F1_computed":False,
+                "excluded_capture_only":True,"no_threshold_selected":True,
                 "requires_independent_encoding_review":True,
                 "sample_counts":{"BIPED_test":3,"MultiCue_excluded_4113":12},
                 "BIPED_test":[x[1] for x in b],
