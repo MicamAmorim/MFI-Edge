@@ -313,3 +313,30 @@ O TAR/BZip2 será percorrido em streaming uma vez. Saídas no F::
 **Não** copia anotações, não abre HDF5/GT, não roda F1. Os 100 arquivos
 são usados apenas na auditoria de possível sobreposição de cena/linhagem.
 Gravação deliberadamente não permite sobrescrever imagens existentes.
+
+## Auditoria visual MultiCue vs UDED e BIPED (sem anotações)
+
+Após materializar os 100 originais no F:, execute:
+
+```powershell
+git pull --ff-only origin experiment/paper-a-conditional-confirmation
+python .\scripts\audit_paper_a_multicue_image_overlap.py
+Start-Process "F:\MFI-Edge-Data\MultiCue\multicue_image_only_100_scene_review.png"
+```
+
+A ferramenta checa novamente SHA256 de cada original MultiCue, compara
+dHash e pHash (Pillow) com os originais UDED previamente usados
+e as 198 candidatas BIPED train, e assinala similaridades *dentro* do
+MultiCue em prefixos distintos. Os originais UDED com linhagem identificável
+do split BSDS test não são decodificados perceptualmente.
+Não abre GT, HDF5 nem resultados F1.
+
+Os alertas aparecem em `multicue_image_only_overlap_flags.csv`
+e no resumo `multicue_image_only_overlap_summary.json`, ambos no F:.
+Uma prancha com as 100 imagens originais e, quando presente, a referência
+UDED `09-MDBD-1C` é gerada para revisão humana.
+
+A ausência de flags **não certifica independência**. As sequências
+compartilhando prefixos 4108 e 4113 permanecem em hold; usar no máximo
+uma unidade por prefixo antes de eventual confirmação documental de
+independência. Toda escolha deve preceder F1 e o freeze do protocolo.
