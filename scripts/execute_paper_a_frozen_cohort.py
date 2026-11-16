@@ -34,7 +34,7 @@ WORK = DATA / "paper_a_completion"
 PROTOCOL = ROOT / "docs/paper_a_confirmation/protocol.json"
 BIPED_IMAGES = ROOT / "datasets/BIPEDv2/edges/imgs/train/rgbr/real"
 BIPED_GT = ROOT / "datasets/BIPEDv2/edges/edge_maps/train/rgbr/real"
-BIN_POLICY = "STRICT_BINARY_0_1_OR_0_255_NATIVE_v1"
+from paper_a_freeze_guard import GT_POLICY_V2 as BIN_POLICY
 TAR_SHA = "8e5fdb2ff7343e4a55f110e9ffe189b2c81689cd326324e34c6c73562191819e"
 TAR_REV = "f47b14959e9764c8aa854cb7958d54462c46f8ef"
 GT_MEMBER = re.compile(r"^multicue/ground-truth/images/edges/(\d+_left_\d+)\.(\d+)\.png$")
@@ -114,28 +114,33 @@ def load_original(row: dict) -> np.ndarray:
     return result
 
 
-def binary_annotation(path: Path, native: tuple[int, int]) -> np.ndarray:
-    """STRICT contract; never resize, threshold soft GT or select a channel."""
+def binary_annotation(path: Path, native: tuple[int, int], *, dataset: str) -> np.ndarray:
+    """Dataset-specific EXACT GT encoding v2; never resize or threshold.
+
+    This decoder is gated by authorized() BEFORE any protected GT read.
+    BIPED 254=foreground and MultiCue 65535=foreground are scientific
+    interpretations requiring explicit pre-freeze independent approval.
+    """
+    if dataset not in ("BIPED", "MultiCue"):
+        raise ValueError("GT dataset must be explicitly identified")
     with Image.open(path) as image:
         if image.format != "PNG":
             raise ValueError("Expected lossless PNG GT")
         arr = np.asarray(image)
-    if arr.ndim == 3:
-        if arr.shape[2] not in (3, 4):
-            raise ValueError("GT has unexpected channel count")
-        if not np.array_equal(arr[..., :3], np.broadcast_to(arr[..., :1], arr[..., :3].shape)):
-            raise ValueError("GT RGB channels differ; no implicit first-channel policy")
-        if arr.shape[2] == 4 and not np.all(arr[..., 3] == 255):
-            raise ValueError("GT non-opaque alpha unsupported")
-        arr = arr[..., 0]
-    if arr.ndim != 2 or arr.shape != native or arr.dtype != np.uint8:
-        raise ValueError("GT not uint8 native 2-D geometry")
+    if arr.ndim != 2 or tuple(arr.shape) != tuple(native):
+        raise ValueError("GT is not grayscale at native 2-D geometry; no resize")
     vals = set(np.unique(arr).tolist())
-    if not vals or not vals.issubset({0, 1}) and not vals.issubset({0, 255}):
-        raise ValueError("GT is not exact binary 0/1 or 0/255; refuse ad hoc thresholding")
-    if 0 not in vals or len(vals) == 1:
+    if dataset == "BIPED":
+        if arr.dtype != np.uint8 or not vals.issubset({0, 254, 255}):
+            raise ValueError("BIPED GT requires exact uint8 {0,254,255}")
+        foreground = (arr == 254) | (arr == 255)
+    else:
+        if arr.dtype != np.uint16 or not vals.issubset({0, 65535}):
+            raise ValueError("MultiCue GT requires exact uint16 {0,65535}")
+        foreground = arr == 65535
+    if 0 not in vals or not np.any(foreground):
         raise ValueError("GT empty or fully foreground; stop for protocol review")
-    return np.asarray(arr > 0, dtype=bool)
+    return np.asarray(foreground, dtype=bool)
 
 
 def biped_gt(row: dict) -> Path:
@@ -320,7 +325,7 @@ def checkpoint_one(row: dict, recipe: dict, executor_sha: str,
     from src.paper_a_prefreeze_map_adapter import predict_original_pregt
     from src.paper_a_confirmation_paired_f1 import evaluate_paired_binary
     predictions = predict_original_pregt(original, recipe).predictions
-    masks = [binary_annotation(p, tuple(original.shape[:2])) for p in gt_paths]
+    masks = [binary_annotation(p, tuple(original.shape[:2]), dataset=row["dataset"]) for p in gt_paths]
     domain = row["dataset"]
     results = {}
     for tag in ("H1", "H2"):
