@@ -32,6 +32,7 @@ if (Test-Path (Join-Path $base "freeze_approval.json")) {
 
 Write-Host "[1/7] Testes sinteticos, sem GT real"
 $patterns = @(
+    "test_prepare_paper_a_review_preview_v2.py",
     "test_execute_paper_a_frozen_cohort.py",
     "test_freeze_paper_a_from_independent_review.py",
     "test_paper_a_freeze_guard.py",
