@@ -247,6 +247,12 @@ def generate(*, biped=BIPED, multicue=MULTICUE, output=OUT,
                 raise RuntimeError("Previously generated image altered: "+str(f))
         if len(prior["images"])!=293:
             raise RuntimeError("Previous visual review is incomplete")
+        # Recheck the ORIGINALS as well as cached thumbnails. A valid old
+        # thumbnail is not evidence that the underlying dataset stayed fixed.
+        for item in data["items"]:
+            path=original_source(item,biped,multicue)
+            if sha_bytes(path.read_bytes())!=item["sha256"]:
+                raise RuntimeError("Original image SHA drift since atlas generation: "+item["id"])
         reused=True
         images=prior["images"]
     else:
