@@ -6,7 +6,7 @@ import unittest
 import numpy as np
 
 SOURCE = (Path(__file__).resolve().parents[1] /
-          "src/paper_a_gt_decoder_candidate_NOT_APPROVED.py")
+          "scripts/paper_a_gt_decoder_candidate_NOT_APPROVED.py")
 spec = importlib.util.spec_from_file_location("paper_a_draft_gt", SOURCE)
 draft = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(draft)
