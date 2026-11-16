@@ -567,3 +567,13 @@ Launch with `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\s
 Runs local technical audits, optionally calls restricted Codex to repair
 audits and edit the manuscript, commits safe changes and packages ZIP/SHA
 on F:. See [`PAPER_A_OVERNIGHT_AUTOPILOT.md`](PAPER_A_OVERNIGHT_AUTOPILOT.md).
+
+## Pipeline de conclusão do Paper A
+
+Use `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\start_finish_paper_a.ps1`.
+Ele verifica/reutiliza os 56 hashes, registra os gates científicos,
+gera um ZIP de métodos e, depois de autorização independente e resultados
+realmente confirmatórios, executa Spearman por domínio/Holm e empacota
+um manuscrito para revisão. Não altera GT/coorte/hipóteses automaticamente.
+Veja [`PAPER_A_COMPLETION_PIPELINE.md`](PAPER_A_COMPLETION_PIPELINE.md)
+e [`PAPER_A_COMPLETION_TASKS.md`](PAPER_A_COMPLETION_TASKS.md).

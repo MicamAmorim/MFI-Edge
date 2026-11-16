@@ -67,3 +67,12 @@ To review the current blockers without waiting for SHA, use:
 ```powershell
 .\.venv\Scripts\python.exe scripts\finish_paper_a.py --no-reaudit
 ```
+
+## Optional supervised fit on known DEVELOPMENT data
+
+After scientific authorization to read only the 14 UDED development GT
+masks, run `python scripts/fit_paper_a_development_uded14.py
+--authorize-uded-development-gt`. This uses verified cached float maps,
+fits the exact operators, and writes an **UNATTESTED** recipe with no
+confirmatory-overlap approval. It cannot be frozen without independent
+image-source and training-data lineage certification.

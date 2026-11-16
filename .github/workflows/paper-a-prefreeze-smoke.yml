@@ -22,6 +22,15 @@ jobs:
         run: python tests/test_paper_a_overnight_agent.py
       - name: Offline one-shot synthetic checks
         run: python tests/test_paper_a_prefreeze_one_shot.py
+
+      - name: Install synthetic-validation scientific dependencies
+        run: python -m pip install numpy scipy scikit-image
+      - name: Test scientific freeze and inference gates (synthetic only)
+        run: |
+          python tests/test_paper_a_freeze_guard.py
+          python tests/test_analyze_paper_a_confirmed.py
+          python tests/test_finish_paper_a.py
+          python tests/test_fit_paper_a_development_uded14.py
       - name: Build package without scientific data
         run: python scripts/package_paper_a_repro.py --outdir dist
       - name: Preserve baseline preconfirmatory manuscript and ZIP
