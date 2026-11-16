@@ -142,6 +142,17 @@ def codex_exe():
     return shutil.which("codex") or shutil.which("codex.cmd")
 
 
+def codex_exec_command(exe):
+    """Compatible Codex exec syntax: approval policy belongs in config.
+
+    Some CLI releases reject --ask-for-approval AFTER the exec subcommand.
+    Keep the workspace sandbox and prohibit interactive approval prompts.
+    """
+    return [exe, "exec", "--sandbox", "workspace-write",
+            "--config", 'approval_policy="never"',
+            "--config", "model_reasoning_effort=medium", "-"]
+
+
 def codex_pass(role, message, index):
     exe = codex_exe()
     if not exe:
@@ -156,9 +167,7 @@ def codex_pass(role, message, index):
     old_head = git_head()
     print("[CODEX] Starting", role, flush=True)
     try:
-        cmd = [exe, "exec", "--sandbox", "workspace-write",
-               "--ask-for-approval", "never",
-               "--config", "model_reasoning_effort=medium", "-"]
+        cmd = codex_exec_command(exe)
         # Bytewise UTF-8 without BOM (avoids invalid Codex stdin encoding).
         rc, out, err = run(cmd, stdin=prompt.encode("utf-8"), timeout=1800)
         log = LOGS / (name + ".log")
@@ -170,7 +179,9 @@ def codex_pass(role, message, index):
         state = "OK" if rc == 0 else "CODEX_FAILED"
         print("[CODEX]", role, state, "edited", len(files), flush=True)
         return {"status": state, "returncode": rc, "log": str(log),
-                "modified": files}
+                "modified": files,
+                "stderr_tail": err[-2000:] if rc else "",
+                "stdout_tail": out[-1000:] if rc else ""}
     except Exception as exc:
         print("[CODEX]", role, "BLOCKED:", exc, flush=True)
         return {"status": "BLOCKED", "error": str(exc)}
@@ -345,7 +356,12 @@ def main():
                 "figures/tables plan, reproducibility, methods, and limitations. "
                 "Do NOT invent confirmatory F1, rho, p, DOI, or choose N/freeze."
             )
-            history["codex"].append(codex_pass("manuscript", editorial, attempts + 1))
+            editorial_result = codex_pass("manuscript", editorial, attempts + 1)
+            history["codex"].append(editorial_result)
+            if editorial_result["status"] != "OK":
+                history["errors"].append(
+                    "Codex editorial incomplete: " + editorial_result["status"]
+                    + "; see " + str(editorial_result.get("log", "local Codex log")))
         try:
             scope_check()
             if (changed() and any(x.get("status") != "OK"
@@ -376,6 +392,8 @@ def main():
             "repro_zip": history["package"].get("zip_path"),
             "last_status_json": str(final),
             "scientific_status": "draft_not_frozen",
+            "codex": [step["status"] for step in history["codex"]],
+            "errors": history["errors"],
         }, ensure_ascii=False, indent=2), flush=True)
         return 0 if (current["exit_code"] == 0
                      and history["package"].get("zip_path")
