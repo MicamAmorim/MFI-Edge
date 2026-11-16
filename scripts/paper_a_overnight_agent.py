@@ -288,12 +288,24 @@ def main():
             history["codex"].append(codex_pass("manuscript", editorial, attempts + 1))
         try:
             scope_check()
+            if (changed() and any(x.get("status") != "OK"
+                                  for x in history["codex"])):
+                raise RuntimeError(
+                    "An unsuccessful Codex pass left edits; manual review required")
             write_progress(history)
             history["git"] = commit_scoped(args.no_push)
         except Exception as exc:
             history["git"] = {"status": "PROTECTED_GIT_BLOCK", "reason": str(exc)}
             history["errors"].append("Git: " + str(exc))
-        history["package"] = package()
+        if history["git"]["status"] in {
+            "PROTECTED_GIT_BLOCK", "FAILED_CHECKS", "COMMIT_FAILED"
+        }:
+            history["package"] = {
+                "status": "SKIPPED_UNVERIFIED_WORKTREE",
+                "reason": "No package from unsafe or uncommitted source changes"
+            }
+        else:
+            history["package"] = package()
         history["finished"] = datetime.now(timezone.utc).isoformat()
         final = DATA / "paper_a_overnight_LAST_STATUS.json"
         final.write_text(json.dumps(history, indent=2, ensure_ascii=False),
