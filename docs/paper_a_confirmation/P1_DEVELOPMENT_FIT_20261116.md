@@ -1,6 +1,6 @@
 # Paper A — UDED-14 development-only fitted parameters (P1)
 
-**Recorded:** 2026-11-16. **Status:** `FITTED_UNATTESTED`; neither independently certified nor frozen. **Source of values:** workstation PowerShell output of `devfit_20261116T031932_410335Z_recipe_UNATTESTED.json`, as reported by the researcher. The **complete P1 JSON is now versioned** as `P1_DEVELOPMENT_RECIPE_UNATTESTED.json` by commit `2b7be963` (versioned Git blob ID `4be2448b37db6adf79317d1de315b2ee2b155fa4`). The attempt to compare its SHA256 against the original workstation source was **not successful**: `Get-FileHash` was unavailable, causing two empty variables to compare equal. The researcher must run the Python SHA256 comparison below to prove the bytewise copy. A Git blob ID is not a SHA256 of the source file.
+**Recorded:** 2026-11-16. **Status:** `FITTED_UNATTESTED`; neither independently certified nor frozen. **Source of values:** workstation PowerShell output of `devfit_20261116T031932_410335Z_recipe_UNATTESTED.json`, as reported by the researcher. The **complete P1 JSON is now versioned** as `P1_DEVELOPMENT_RECIPE_UNATTESTED.json` by commit `2b7be963` (versioned Git blob ID `4be2448b37db6adf79317d1de315b2ee2b155fa4`). The initial attempt to compare SHA256 through PowerShell Get-FileHash failed (the cmdlet was unavailable); **the subsequent Python SHA256 comparison succeeded**. The researcher supplied the command output for the original F: recipe and the versioned Git working-copy recipe: **both SHA256 = `628d1e345b6d1117c3cbfbc6ecaf75d4cac8db6a7796d328e2ea911ce9891a9c`; command printed `IDENTICOS` and returned successfully on 2026-11-16**. This establishes bit-for-bit equality at the time of the reported check. The Git blob ID is not the file SHA256; independent validation of historical training overlap is still outstanding.
 
 ## Execution evidence and scope
 
@@ -60,7 +60,7 @@ For H2, a zero midpoint on the first cue and an exact `scale=0.05` for the first
 
 ## Required independent scientific gates
 
-1. **Complete the outstanding source-copy SHA256 check** for the already-versioned `P1_DEVELOPMENT_RECIPE_UNATTESTED.json`. The file includes training image/GT hashes and the six Möbius coefficients, but none of those metadata fields constitutes a human attestation of cohort independence. Do not commit raw source images, GT masks, scientific NPY caches, H5 files or dataset archives.
+1. **Source-copy SHA256 check completed**: original F: recipe and Git working-copy recipe matched (`628d1e345b6d1117c3cbfbc6ecaf75d4cac8db6a7796d328e2ea911ce9891a9c`) as reported by the researcher on 2026-11-16. The file includes training image/GT hashes and the six Möbius coefficients, but those metadata fields do **not** constitute independent certification of cohort overlap or training-data history. Keep raw images, GT masks, NPY caches, H5 files and dataset archives outside Git.
 2. Certify training/confirmatory scene independence and prior exposure; specifically exclude MultiCue capture-prefix `4113`, an exposed UDED overlap.
 3. Verify complete 2-additive H2 Möbius/capacity representation, gamma, all four fixed thresholds, common membership calibration and fixed evaluator semantics.
 4. Select independently eligible BIPED/MultiCue groups, freeze sampling unit, annotation task/decoder, size and domain-blocked statistical analysis **before opening held-out GT**.
@@ -68,9 +68,9 @@ For H2, a zero midpoint on the first cue and an exact `scale=0.05` for the first
 
 **Current conclusion:** successful development fitting; scientific provenance **NOT ATTESTED**; no confirmatory H1/H2 outcomes or journal-ready final Results section.
 
-## Workstation SHA256 source/copy verification (still required)
+## Workstation SHA256 source/copy verification (passed; repeatable)
 
-The user's PowerShell session did not recognize `Get-FileHash`; the previous blank `$hashOrigem` and `$hashDestino` therefore **did not establish integrity**. From the project root run this read-only alternative, which uses the virtual-environment Python and terminates nonzero if the bytes differ:
+The earlier blank PowerShell comparison did **not** establish integrity, but the subsequent Python comparison below **did**: the original and Git copy both returned the same SHA256 and `IDENTICOS`. The following read-only command is retained for reproducibility and fails if bytes differ:
 
 ```powershell
 $src = "F:\MFI-Edge-Data\MultiCue\paper_a_completion\devfit_20261116T031932_410335Z_recipe_UNATTESTED.json"
@@ -80,3 +80,13 @@ if ($LASTEXITCODE -ne 0) { throw "P1 source-copy SHA256 MISMATCH" }
 ```
 
 This checksum verifies file identity only. It does not certify training leakage, annotation interpretation or H1/H2 performance.
+
+**Observed verification record (researcher terminal, 2026-11-16):**
+
+```text
+Original: 628d1e345b6d1117c3cbfbc6ecaf75d4cac8db6a7796d328e2ea911ce9891a9c
+Copia: 628d1e345b6d1117c3cbfbc6ecaf75d4cac8db6a7796d328e2ea911ce9891a9c
+IDENTICOS
+```
+
+The integrity result does not authorize or imply independent H1/H2 GT evaluation.
