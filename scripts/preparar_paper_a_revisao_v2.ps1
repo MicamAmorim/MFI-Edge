@@ -71,20 +71,9 @@ Write-Host "[3/7] Checando documentos de revisao; nenhuma linha aprovada automat
 if ($LASTEXITCODE -ne 0) { throw "Falha ao conferir planilha de revisao" }
 
 Write-Host "[4/7] Validando evidencia GT ja existente e gerando PREVIA, nao freeze"
-$cmd = @'
-import json, sys
-from pathlib import Path
-sys.path.insert(0,str(Path("scripts").resolve()))
-import freeze_paper_a_from_independent_review as f
-samples=f.verified_nonconfirmatory_gt_v2_evidence()
-plan=f.prepare()
-print(json.dumps({"status":plan["status"],"gt_metadata_sha256":samples,
-                  "preview":plan["reviewed_protocol_candidate"],
-                  "template":plan["review_template"],
-                  "approved":plan["scientific_signoff_issued"]},
-                 ensure_ascii=False,indent=2))
-'@
-& $python -c $cmd
+# Executar script Python independente para evitar perda de aspas em Python -c
+# no Windows PowerShell 5.1. Nao abre GT confirmatorio.
+& $python scripts/prepare_paper_a_review_preview_v2.py
 if ($LASTEXITCODE -ne 0) {
     throw "Falha na conferencia GT v2 ou na renovacao segura da previa"
 }
