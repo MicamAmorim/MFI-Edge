@@ -6,6 +6,14 @@ Run once on your Windows development workstation:
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\start_finish_paper_a.ps1
 ```
 
+To additionally authorize fitting on the 14 known UDED **development**
+GT masks in the same command (not the confirmatory datasets):
+
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\start_finish_paper_a.ps1 -AuthorizeDevelopmentGT
+
+This optional switch authorizes access to UDED-14 development GT only.
+The output remains UNATTESTED until source independence is verified;
+it never automatically approves H1/H2 confirmation.
 This program checkpoints the research state and preserves all historical
 Stage24 results. It reuses an existing verified 56/56 development-cache
 audit **when scientific code is unchanged**, otherwise runs only the
