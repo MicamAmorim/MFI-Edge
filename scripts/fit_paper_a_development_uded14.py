@@ -150,7 +150,24 @@ def fit_dev_models(items, maps, protocol, commit):
                           "scale":r["membership"]["scale"]},
             "operators":results,
         }
+    recipe["schema"]="paper_a_h1h2_recipe_P1_fitted_development"
+    recipe["status"]="FITTED_ON_UDED14_DEVELOPMENT_GT_PENDING_LINEAGE_REVIEW"
+    recipe["no_scientific_artifacts_or_outcomes_read"]=False
+    recipe["development_GT_and_cached_maps_read"]=True
     return recipe,export
+
+
+def p01_compatibility_shadow(recipe):
+    """Validate the parameter fields using P0.1 schema without claiming
+    the P1 fitted artifact was created without reading DEVELOPMENT GT.
+    The synthetic compatibility object is never written to disk.
+    """
+    shadow=dict(recipe)
+    shadow.pop("development_GT_and_cached_maps_read",None)
+    shadow["schema"]="paper_a_h1h2_recipe_P0_1"
+    shadow["status"]="DRAFT_VALUES_UNVERIFIED_NOT_FROZEN"
+    shadow["no_scientific_artifacts_or_outcomes_read"]=True
+    return shadow
 
 
 def fill_fit_proofs_unattested(recipe,export_sha,commit,train_ids):
@@ -206,7 +223,8 @@ def main():
         recipe,sha256(ex_path),commit,training_ids_hash(items))
     recipe_path=args.output_dir/(name+"_recipe_UNATTESTED.json")
     recipe_path.write_text(json.dumps(recipe,indent=2,ensure_ascii=False),encoding="utf-8")
-    check=validate_recipe(recipe,protocol,code_provenance(ROOT),commit)
+    check=validate_recipe(p01_compatibility_shadow(recipe),protocol,
+                          code_provenance(ROOT),commit)
     print(json.dumps({
         "status":"DEVELOPMENT_PARAMETERS_FITTED_NOT_INDEPENDENTLY_ATTESTED",
         "development_images":14,
