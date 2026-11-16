@@ -405,3 +405,13 @@ Exposição prévia UDED `09-MDBD-1C` comprovada geometricamente; sequência
 excluída, prefixo `4113` retido integralmente por prudência.
 Máximo de grupos MultiCue antes de demais auditorias: **95**.
 Ver [`MULTICUE_UDED09_CONFIRMED_OVERLAP_20261115.md`](MULTICUE_UDED09_CONFIRMED_OVERLAP_20261115.md).
+
+## Próximo gate: SIFT UDED histórico completo (com cache no F:)
+
+Para verificar recortes entre as 27 imagens UDED já usadas no desenvolvimento
+e os 100 quadros MultiCue originais, sem GT/F1, use
+`python .\scripts\audit_paper_a_multicue_all_uded_geometry.py`.
+Há cache de SIFT por SHA-256 e checkpoints por referência para evitar
+reprocessamento. O teste com imagens sintéticas é
+`python .\tests\test_paper_a_multicue_all_uded_geometry.py`.
+Documentação: [`MULTICUE_ALL_UDED_GEOMETRY_SCREEN_20261115.md`](MULTICUE_ALL_UDED_GEOMETRY_SCREEN_20261115.md).
