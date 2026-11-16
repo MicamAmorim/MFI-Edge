@@ -529,3 +529,11 @@ e `python .\scripts\audit_paper_a_parameter_provenance_P0.py`.
 A ferramenta só lê código-fonte e documento de protocolo; usa `stat()`
 para três artefatos históricos sem ler seus conteúdos (podem conter F1).
 Ver [`PARAMETER_PROVENANCE_P0.md`](PARAMETER_PROVENANCE_P0.md).
+
+## P0.1 — manifesto saneado das receitas específicas H1/H2
+
+Execute `python .\tests\test_paper_a_h1h2_recipe_P0_1.py` e
+`python .\scripts\prepare_paper_a_h1h2_recipe_P0_1.py`.
+Cria modelo JSON auditável, *sem F1 nem valores de capacidade/limiares
+inventados*, com checksums de código e pendências de proveniência.
+Veja [`PARAMETER_RECIPES_P0_1_DRAFT.md`](PARAMETER_RECIPES_P0_1_DRAFT.md).
