@@ -385,3 +385,14 @@ dHash = 23/64; melhor pHash = 20/63; nenhuma exclusão automática.
 **Não há certificação de não sobreposição entre cenas**: as duas pranchas
 foram geradas, mas ainda não se registrou uma inspeção visual humana.
 Ver [`MULTICUE_UDED09_RANKED_REVIEW_STATUS_20261115.md`](MULTICUE_UDED09_RANKED_REVIEW_STATUS_20261115.md).
+
+## Confirmado: UDED 09-MDBD-1C já aparece no MultiCue 4113
+
+Revisão visual das pranchas detectou a mesma imagem do bicicletário em
+`4113_left_0082` (com recorte diferente); SIFT/RANSAC dos thumbnails
+confirma forte alinhamento. Isso demonstra falso negativo dos hashes
+globais para recortes. **Excluir 4113_left_0082; manter 4113_left_2396
+em hold** até revisão de independência da captura. Ver
+[`MULTICUE_UDED09_CONFIRMED_OVERLAP_20261115.md`](MULTICUE_UDED09_CONFIRMED_OVERLAP_20261115.md).
+Auditoria SIFT dos originais: `python .\scripts\audit_paper_a_multicue_mdbd_geometry.py`
+(sem GT/F1; sem exclusões automáticas).
