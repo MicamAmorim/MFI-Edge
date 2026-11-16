@@ -112,3 +112,16 @@ O relatório verifica a existência do resumo Stage13c somente por metadados.
 Na ausência de logs, mantém a pendência aberta; jamais declara
 independência/ausência de exposição. O review ZIP inclui os três arquivos
 (captura estática, antes da primeira leitura de dados confirmatórios).
+
+
+## Evitar repetição das 100.000 permutações após aprovação
+
+Quando e somente quando houver protocolo frozen, aprovação independente
+válida e resultados reais certificados, \`resume_paper_a_confirmation.py\`
+registra assinatura com SHA256 do protocolo, receita, amostra, aval,
+CSV de outcomes, provenance e versões do avaliador/estatística. Caso
+os mesmos arquivos sejam encontrados numa execução posterior, o
+resultado estatístico anterior é verificado por hash e reaproveitado.
+O ZIP de análise também não é sobrescrito; seus membros são conferidos
+contra o MANIFEST interno antes do reaproveitamento.
+A própria revalidação do freeze precede qualquer leitura de outcome.

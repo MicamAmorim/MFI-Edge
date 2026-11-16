@@ -245,6 +245,18 @@ def write_gate_status(folder: Path, state: dict):
 
 def package_confirmatory(folder:Path,analysis_folder:Path,state:dict):
     """Curated research supplement, explicitly pending independent review."""
+    # A repeated launcher must not overwrite a previously reviewed ZIP.
+    # Verify each archived member against the ZIP's OWN signed manifest;
+    # the new run's status file may have different timestamps/paths.
+    already=analysis_folder/"PaperA_frozen_analysis_review_bundle.zip"
+    if already.is_file():
+        with zipfile.ZipFile(already) as z:
+            old=json.loads(z.read("MANIFEST.json"))
+            for entry in old["files"]:
+                if hashlib.sha256(z.read(entry["path"])).hexdigest()!=entry["sha256"]:
+                    raise ValueError("Existing confirmatory package was modified")
+        return {"status":"EXISTING_CERTIFIED_ANALYSIS_PACKAGE_REUSED",
+                "zip":str(already),"sha256":file_sha256(already)}
     draft=ROOT/"docs/paper_a_confirmation/PAPER_A_MANUSCRIPT_DRAFT.md"
     supplement=analysis_folder/"results.md"
     combined=analysis_folder/"PAPER_A_COMPLETE_REVIEW_DRAFT.md"
@@ -368,9 +380,9 @@ def run_pipeline(base:Path=WORK, *, no_reaudit:bool=False,
     if gate and not gate["blockers"] and outcomes.is_file() and outcome_prov.is_file():
         print("[3/5] Signed freeze validated; analyzing certified image outcomes",
               flush=True)
-        from analyze_paper_a_confirmed import run_confirmation
-        result,path=run_confirmation(PROTOCOL,frozen_recipe,cohort,approval,
-                                     outcomes,outcome_prov,base)
+        from resume_paper_a_confirmation import run_once
+        result,path=run_once(PROTOCOL,frozen_recipe,cohort,approval,
+                             outcomes,outcome_prov,base)
         state["analysis"]={"status":result["status"],"path":str(path),
                           "primary_decisions":{a["hypothesis"]:a["confirmed"]
                                                for a in result["analyses"]}}

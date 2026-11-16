@@ -65,6 +65,8 @@ jobs:
         run: |
           python -m py_compile scripts/prepare_paper_a_final_signoff.py
           python tests/test_prepare_paper_a_final_signoff.py
+      - name: Static validation for frozen analysis caching
+        run: python -m py_compile scripts/resume_paper_a_confirmation.py
       - name: Build package without scientific data
         run: python scripts/package_paper_a_repro.py --outdir dist
       - name: Preserve baseline preconfirmatory manuscript and ZIP
