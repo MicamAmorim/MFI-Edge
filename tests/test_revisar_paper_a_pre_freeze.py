@@ -25,7 +25,7 @@ class ReviewSafety(unittest.TestCase):
         self.biped = [
             {"image_id": "RGB_%03d" % x,
              "confirmatory_eligibility": "PENDING_HISTORICAL_AND_SCENE_LINEAGE_AUDIT"}
-            for x in range(1, 199)]
+            for x in range(500, 698)]
         self.multi = [
             {"sequence_id": "x%d" % i, "capture_prefix": str(i if i < 96 else 4108)}
             for i in range(100)]
