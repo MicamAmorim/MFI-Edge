@@ -145,7 +145,7 @@ def generate(p1: Path = P1, uded: Path = UD14,
     manifest=json.loads(original["uded_manifest"].decode("utf-8-sig"))
     cohort=list(csv.DictReader(io.StringIO(original["cohort"].decode("utf-8-sig"))))
     check=validate_and_compare(manifest,recipe,cohort)
-    status=("P1_TRAINING_DIGEST_MATCH_EXACT_SOURCE_CHECK_NO_OVERLAP_NOT_APPROVED"
+    status=("P1_TRAINING_DIGEST_MATCH_NO_EXACT_IMAGE_SHA_COLLISION_NOT_APPROVED"
             if check["all_seven_training_digests_match"] and
                check["all_seven_provenance_fields_internally_consistent"] and
                not check["cross_domain_exact_source_image_sha256_matches"] and
