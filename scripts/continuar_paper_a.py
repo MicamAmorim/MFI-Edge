@@ -46,6 +46,7 @@ TESTS = (
     "test_freeze_paper_a_from_independent_review.py",
     "test_paper_a_codex_finalizer.py",
     "test_paper_a_nonconfirmatory_gt_format.py",
+    "test_paper_a_post_codex_regressions.py",
 )
 
 

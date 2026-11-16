@@ -80,6 +80,8 @@ jobs:
           python -m py_compile scripts/paper_a_codex_finalizer.py scripts/paper_a_nonconfirmatory_gt_format.py
           python tests/test_paper_a_codex_finalizer.py
           python tests/test_paper_a_nonconfirmatory_gt_format.py
+      - name: Post-Codex scientific gate regression tests (synthetic only)
+        run: python tests/test_paper_a_post_codex_regressions.py
       - name: Build package without scientific data
         run: python scripts/package_paper_a_repro.py --outdir dist
       - name: Preserve baseline preconfirmatory manuscript and ZIP
