@@ -117,6 +117,25 @@ class FreezeSafetyTests(unittest.TestCase):
         self.assertTrue(check_freeze(p,r,a,c,h,lambda _:True))
 
 
+    def test_pinned_windows_crlf_equivalence_is_restricted(self):
+        import hashlib
+        from unittest.mock import Mock, patch
+        from paper_a_freeze_guard import source_sha256_at_pinned_commit
+        from prepare_paper_a_h1h2_recipe_P0_1 import CODE_FILES, PROTOCOL
+        rev="b5a79ec6bb5f9a1fbd38477cd2900b19e98b8d46"
+        raw=b"line_one\nline_two\n"
+        crlf=raw.replace(b"\n",b"\r\n")
+        valid={p:hashlib.sha256(crlf).hexdigest() for p in (PROTOCOL,*CODE_FILES)}
+        with patch("paper_a_freeze_guard.ancestor",return_value=True), \
+             patch("paper_a_freeze_guard.subprocess.run",
+                   return_value=Mock(returncode=0,stdout=raw)):
+            observed=source_sha256_at_pinned_commit(Path("."),rev,valid)
+            self.assertEqual(observed,valid)
+            wrong=dict(valid)
+            wrong[PROTOCOL]=hashlib.sha256(b"modified").hexdigest()
+            with self.assertRaises(ValueError):
+                source_sha256_at_pinned_commit(Path("."),rev,wrong)
+
     def test_pinned_provenance_reads_original_git_blob_bytes(self):
         import hashlib
         from unittest.mock import patch, Mock

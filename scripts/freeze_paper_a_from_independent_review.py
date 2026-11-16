@@ -125,7 +125,9 @@ def prepare() -> dict:
         if SOURCE_SNAPSHOT.read_text(encoding="utf-8")!=desired:
             raise RuntimeError("Existing reviewed protocol preview differs from current source")
     else:
-        SOURCE_SNAPSHOT.write_text(desired,encoding="utf-8")
+        # Windows open(...,"w") otherwise translates LF to CRLF. New
+        # previews are serialized as exact UTF-8 LF bytes for reproducibility.
+        SOURCE_SNAPSHOT.write_bytes(desired.encode("utf-8"))
     reviewed=SIGNOFF/"REVIEW_220_IMAGES_PENDING.csv"
     original_sha=sha(PROTOCOL)
     candidate_sha=sha(SOURCE_SNAPSHOT)
@@ -153,7 +155,22 @@ def prepare() -> dict:
     if stage.is_file() and not stage.is_symlink() and stage.stat().st_size<2_000_000:
         plan["stage13c_summary_sha256"]=sha(stage)
     if not TEMPLATE.exists():
-        TEMPLATE.write_text(jsonify(plan),encoding="utf-8")
+        TEMPLATE.write_bytes(jsonify(plan).encode("utf-8"))
+    elif not SIGNED.exists():
+        # The reviewer has not signed: preserve the old template as evidence
+        # of the previous revision and provide a current hash-bound template.
+        template_old=json.loads(TEMPLATE.read_text(encoding="utf-8"))
+        if any(template_old.get(k)!=plan[k] for k in (
+                "reviewed_draft_protocol_sha256",
+                "reviewed_frozen_protocol_preview_sha256",
+                "reviewed_cohort_sheet_sha256",
+                "reviewed_P1_recipe_sha256",
+                "approved_executor_source_sha256")):
+            backup=TEMPLATE.with_name(TEMPLATE.stem+"_SUPERSEDED_"+
+                hashlib.sha256(TEMPLATE.read_bytes()).hexdigest()[:12]+".json")
+            if not backup.exists():
+                backup.write_bytes(TEMPLATE.read_bytes())
+            TEMPLATE.write_bytes(jsonify(plan).encode("utf-8"))
     output=SIGNOFF/"FREEZE_READINESS_PREVIEW.json"
     info={
         "status":"REVIEWED_FREEZE_READY_ONLY_WHEN_SIGNED_AND_EVIDENCED",
@@ -407,11 +424,11 @@ def resume_freeze_after_interrupted_push() -> dict:
     if process.returncode or len(process.stdout)>4_000_000:
         raise RuntimeError("Cannot recover frozen protocol's original reviewed parent")
     original=SIGNOFF/"PRE_FREEZE_PROTOCOL_FROM_REVIEWED_PARENT.json"
-    if original.exists():
-        if original.read_bytes()!=process.stdout:
-            raise PermissionError("Original pre-freeze parent snapshot changed")
-    else:
-        original.write_bytes(process.stdout)
+    if not original.is_file() or original.is_symlink():
+        raise PermissionError("Missing exact pre-freeze reviewed working tree backup")
+    if original.read_bytes().replace(b"\r\n",b"\n") != (
+            process.stdout.replace(b"\r\n",b"\n")):
+        raise PermissionError("Pre-freeze backup contradicts committed Git parent")
     if (not SOURCE_SNAPSHOT.is_file() or
         SOURCE_SNAPSHOT.read_bytes()!=PROTOCOL.read_bytes()):
         raise PermissionError("Frozen commit differs from originally reviewed protocol")
@@ -487,7 +504,9 @@ def attempt_freeze() -> dict:
     # the reviewer approved; no post-signoff protocol field edits.
     actual=SOURCE_SNAPSHOT.read_bytes()
     proposal=freeze_candidate(protocol)
-    if actual!=jsonify(proposal).encode("utf-8"):
+    # Existing Windows CRLF previews were already SHA-bound to reviews.
+    # Compare their text semantics without changing their reviewed bytes.
+    if actual.replace(b"\r\n",b"\n")!=jsonify(proposal).encode("utf-8"):
         raise PermissionError("Reviewed protocol preview no longer matches source draft")
     # Authentication/push permission must be available BEFORE changing protocol.
     git("push","--dry-run","origin",BRANCH)
@@ -499,6 +518,16 @@ def attempt_freeze() -> dict:
     validate_fitted_recipe(json.loads(P1.read_text(encoding="utf-8")))
     recipe,cohort=materialize_protocol_and_cohort(
         decision,sheet,SOURCE_SNAPSHOT,P1,WORK)
+    # Save exact PRE-FREEZE reviewed bytes before any write. Git may normalize
+    # the parent blob to LF, while the reviewed working tree used CRLF.
+    parent_backup=SIGNOFF/"PRE_FREEZE_PROTOCOL_FROM_REVIEWED_PARENT.json"
+    original_bytes=PROTOCOL.read_bytes()
+    if parent_backup.exists():
+        if parent_backup.read_bytes()!=original_bytes:
+            raise PermissionError("Pre-freeze source backup does not match reviewed draft")
+    else:
+        with parent_backup.open("xb") as stream:
+            stream.write(original_bytes)
     # Version the recipe, a redacted cohort ID list and a SHA-only review
     # manifest alongside the separately reviewed prospective protocol.
     versioned=version_freeze_evidence(recipe,cohort,decision,sheet_path)

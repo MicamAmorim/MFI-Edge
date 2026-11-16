@@ -174,8 +174,15 @@ def check_freeze(protocol: dict, recipe: dict, approval: dict,
     return sorted(set(problems))
 
 
-def source_sha256_at_pinned_commit(repo: Path, pinned: str) -> dict[str, str]:
-    """Compute original P1 training-code hashes from historical Git blobs."""
+def source_sha256_at_pinned_commit(
+        repo: Path, pinned: str,
+        expected_hashes: dict[str, str] | None = None) -> dict[str, str]:
+    """Verify historical P1 bytes under the exact LF or Windows CRLF encoding.
+
+    Does not rewrite any source, provenance or science decision. A historical
+    working-tree checksum is admissible only if it matches the committed blob
+    byte-for-byte or the deterministic LF->CRLF checkout transformation.
+    """
     from prepare_paper_a_h1h2_recipe_P0_1 import CODE_FILES, PROTOCOL
     if not ancestor(repo, pinned):
         raise ValueError("P1 source revision is not a verified ancestor")
@@ -186,7 +193,20 @@ def source_sha256_at_pinned_commit(repo: Path, pinned: str) -> dict[str, str]:
             capture_output=True, check=False, timeout=40)
         if proc.returncode or len(proc.stdout) > 4_000_000:
             raise ValueError("Historical P1 code file unavailable: " + relative)
-        observed[relative] = hashlib.sha256(proc.stdout).hexdigest()
+        blob=proc.stdout
+        canonical=hashlib.sha256(blob).hexdigest()
+        if expected_hashes is None:
+            observed[relative]=canonical
+        else:
+            expected=expected_hashes.get(relative)
+            # Exact Git checkout conversion; do not accept arbitrary whitespace,
+            # reordered lines, code edits or normalized scientific parameters.
+            windows=blob.replace(b"\r\n",b"\n").replace(b"\n",b"\r\n")
+            candidates={canonical,hashlib.sha256(windows).hexdigest()}
+            if (not isinstance(expected,str) or not SHA.fullmatch(expected)
+                    or expected not in candidates):
+                raise ValueError("Historical fitted-source SHA not equivalent to Git blob: "+relative)
+            observed[relative]=expected
     return observed
 
 
@@ -218,7 +238,8 @@ def validate_fitted_recipe(recipe: dict, protocol: dict,
     shadow["status"]="DRAFT_VALUES_UNVERIFIED_NOT_FROZEN"
     shadow["no_scientific_artifacts_or_outcomes_read"]=True
     try:
-        result=recipe_validate(shadow,protocol,source_sha256_at_pinned_commit(repository,pinned),pinned)
+        result=recipe_validate(shadow,protocol,source_sha256_at_pinned_commit(repository,pinned,
+                recipe.get("source_sha256")),pinned)
     except (ValueError,KeyError,TypeError) as error:
         return ["P1 fitted parameters/provenance invalid: "+str(error)]
     if result.get("pending_count")!=0:
