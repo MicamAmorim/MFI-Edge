@@ -537,3 +537,12 @@ Execute `python .\tests\test_paper_a_h1h2_recipe_P0_1.py` e
 Cria modelo JSON auditável, *sem F1 nem valores de capacidade/limiares
 inventados*, com checksums de código e pendências de proveniência.
 Veja [`PARAMETER_RECIPES_P0_1_DRAFT.md`](PARAMETER_RECIPES_P0_1_DRAFT.md).
+
+## P0.2 — auditoria dos metadados de desenvolvimento UDED-14
+
+Os manifestos históricos versionados contêm 14 imagens exploratórias,
+13 descritores cada, e metadados dos 56 mapas H1/H2 necessários.
+Isso **não** certifica elegibilidade ou parâmetros treinados.
+Execute `python .\tests\test_paper_a_development_lineage_P0_2.py` e
+`python .\scripts\audit_paper_a_development_lineage_P0_2.py`.
+Ver [`DEVELOPMENT_LINEAGE_P0_2.md`](DEVELOPMENT_LINEAGE_P0_2.md).
