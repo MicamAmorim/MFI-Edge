@@ -67,3 +67,18 @@ são obrigatórias ANTES de gerar frozen_cohort_manifest.csv.
 
 Atualização de 16/11: corrigido o caminho de importações Python em execução
 Windows por arquivo, com testes de regressão usando python -I, sem acesso a GT.
+
+
+## Dossiê científico automático (metadata-only)
+
+O mesmo comando único chama o auditor consolidado e produz também:
+
+- `F:\MFI-Edge-Data\MultiCue\paper_a_completion\DOSSIE_CIENTIFICO_PRE_FREEZE.md`
+- `F:\MFI-Edge-Data\MultiCue\paper_a_completion\REVISAO_CIENTIFICA_PRE_FREEZE.json`
+- `F:\MFI-Edge-Data\MultiCue\paper_a_completion\PROTOCOLO_220_PROPOSTA_NAO_CONGELADO.json`
+
+A proposta do protocolo não altera `docs/paper_a_confirmation/protocol.json`
+original nem configura um congelamento. Registra 125+95 como desenho
+condicional a verificação de independência, os requisitos de anotação
+`edges` e a estatística ponderada dentro dos dois domínios. O dossiê
+preserva pendências como não aprovadas, inclusive a verificação de GT real.

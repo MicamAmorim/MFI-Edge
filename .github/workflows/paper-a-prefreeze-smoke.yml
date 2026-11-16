@@ -53,6 +53,10 @@ jobs:
         run: |
           python -m py_compile scripts/execute_paper_a_frozen_cohort.py
           python tests/test_execute_paper_a_frozen_cohort.py
+      - name: Scientific review dossier safety tests (metadata/synthetic only)
+        run: |
+          python -m py_compile scripts/revisar_paper_a_pre_freeze.py
+          python tests/test_revisar_paper_a_pre_freeze.py
       - name: Build package without scientific data
         run: python scripts/package_paper_a_repro.py --outdir dist
       - name: Preserve baseline preconfirmatory manuscript and ZIP

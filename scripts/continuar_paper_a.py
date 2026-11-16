@@ -223,6 +223,10 @@ def one_shot() -> dict:
     ]:
         info["steps"][name] = action()
     info["steps"]["cohort_proposal"] = propose_review_cohort()
+    # Read only prior metadata and write consolidated scientific review;
+    # never turn a candidate/proposal into a frozen eligible cohort.
+    from revisar_paper_a_pre_freeze import create_dossier
+    info["steps"]["scientific_review"] = create_dossier()
     for file in TESTS:
         run("test_" + file.replace(".py", ""), [
             sys.executable, str(ROOT / "tests" / file)], timeout=600)
