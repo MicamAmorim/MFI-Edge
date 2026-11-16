@@ -21,6 +21,7 @@ import sys
 import numpy as np
 
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT))
 sys.path.insert(0,str(ROOT/"scripts"))
 from audit_paper_a_uded14_cache_sidecars_P0_3 import (
     CACHE, MANIFEST, PROVENANCE, audit_index)
@@ -56,7 +57,7 @@ def training_ids_hash(items:list[dict]) -> str:
     return hashlib.sha256(body).hexdigest()
 
 
-def metadata_cache_lookup(items:list[dict]) -> tuple[dict,dict]:
+def metadata_cache_lookup(items:list[dict], loaded:dict) -> tuple[dict,dict]:
     historic=json.loads(MANIFEST.read_text(encoding="utf-8"))
     with PROVENANCE.open(encoding="utf-8-sig",newline="") as f:
         rows=list(csv.DictReader(f))
@@ -67,11 +68,15 @@ def metadata_cache_lookup(items:list[dict]) -> tuple[dict,dict]:
     by_id={x["id"]:x for x in items}
     if len(by_id)!=len(historic_by_id) or set(by_id)!=set(historic_by_id):
         raise RuntimeError("Development GT original-image cohort drift")
+    current_by_id={r["image_id"]:r for r in loaded["records"] if r["excluded"] is False}
     for iid,item in by_id.items():
         ref=historic_by_id[iid]
+        actual=current_by_id.get(iid,{})
         if (item["source_sha256"]!=ref["source_sha256"] or
-            list(item["gt"].shape)!=ref["native_gt_shape"]):
-            raise RuntimeError("Development original/GT native geometry drift")
+            list(item["gt"].shape)!=ref["native_gt_shape"] or
+            actual.get("gt_sha256")!=ref.get("gt_sha256") or
+            actual.get("source_sha256")!=ref["source_sha256"]):
+            raise RuntimeError("Development original/GT SHA or native geometry drift")
     pairs={(r["image_id"],r["descriptor_id"]):r
            for r in index["records"] if "image_id" in r}
     if len(pairs)!=56:
@@ -187,7 +192,7 @@ def main():
     items,loaded=load_uded_native(root)
     if len(items)!=14:
         raise RuntimeError("Expected exactly 14 UDED original images")
-    pairs,manifest=metadata_cache_lookup(items)
+    pairs,manifest=metadata_cache_lookup(items,loaded)
     maps,artifacts=read_verified_maps(items,pairs)
     commit=git_head()
     recipe,export=fit_dev_models(items,maps,protocol,commit)
