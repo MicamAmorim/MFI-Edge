@@ -1,6 +1,6 @@
 # Paper A — Manuscript draft: Predicting fusion benefits from ground-truth-free edge-descriptor statistics
 
-**Manuscript status:** METHODS AND EXPLORATORY EVIDENCE DRAFT; NOT A CONFIRMATORY RESULT. Updated on 2026-11-15.
+**Manuscript status:** METHODS, EXPLORATORY EVIDENCE AND REPRODUCIBILITY DRAFT; NOT A CONFIRMATORY RESULT. Technical-audit update: 2026-11-16.
 **Authors, journal, final title and affiliations:** to be confirmed. This text is an evidence-grounded working manuscript.
 
 ## Abstract
@@ -47,7 +47,7 @@ The proposed test statistic is a weighted mean of Spearman correlations *within 
 
 ## 7. Pre-freeze results: technical evidence, not confirmatory findings
 
-Metadata-only controls verified the filenames of 100 MultiCue annotated sequences, the existence of 600 `edges` and 500 `boundaries` annotation files, and the 4113 hold. The UDED-14 development inventory contains 13 descriptor types for each of 14 originals, with the 56 source-metadata entries needed for H1/H2 present. Sidecar audits matched all 56 cached descriptor identities, dimensions and declared historical SHA256 values, but **as of the previous verified P0.3 audit, NPY payload bytes had not been rehashed**. The integrated overnight technical audit will report actual bytewise SHA256 separately and must not be presented as evidence of model accuracy.
+Metadata-only controls verified the filenames of 100 MultiCue annotated sequences, the existence of 600 `edges` and 500 `boundaries` annotation files, and the 4113 hold. The UDED-14 development inventory contains 13 descriptor types for each of 14 originals, with the 56 source-metadata entries needed for H1/H2 present. Sidecar audits matched all 56 cached descriptor identities, geometries and historical SHA256 declarations. **The integrated workstation audit on 16 November 2026 additionally streamed and verified the bytes of all 56 development-cache NPY files: 56/56 SHA256 matches** against the versioned provenance metadata. The audit returned TECHNICAL_AUDITS_OK_SCIENTIFIC_GATES_STILL_OPEN with zero reported failures, documented in local report prefreeze_20261116T023522_659579Z.json. This establishes cache-integrity consistency, **not** that the fitted operator achieves a better F1, that GT annotations are valid, or that H1/H2 have been confirmed.
 
 Pre-freeze Monte Carlo simulation with 1,000 replicates per scenario and 20,000 reusable null draws per candidate design produced the following *synthetic joint* probabilities of rejecting both H1 and H2:
 
@@ -63,11 +63,48 @@ These are conditional Gaussian-copula model outputs, not empirically estimated p
 
 **Confirmatory outcomes for H1/H2: NOT MEASURED.** Do not insert a numerical rho, p-value, F1 gain, confidence interval, or significance declaration here until a versioned protocol freeze precedes outcome access.
 
+### 7.1. Technical audit-trail summary (observed, not confirmatory)
+
+| Gate | Evidence established on 16 November 2026 | What remains unproven |
+|---|---|---|
+| UDED development metadata | 14 original images, 13 descriptor kinds, 182 provenance entries | Independent confirmation from the discovery set |
+| H1/H2 map inventory | 56 of 56 required UDED image/descriptor cache identities match metadata | No image-level benefit established |
+| Bytewise development-cache integrity | 56 of 56 NPY SHA256 values equal versioned provenance hashes | No fitted H1/H2 model parameter certified |
+| MultiCue prospective candidate triage | 100 indexed annotated sequences, 96 capture prefixes, historical prefix 4113 withheld | Full capture independence and annotation decoding |
+| BIPED prospective triage | 198 preliminary deduplicated candidate images | Final eligibility, absence of historic exposure and independent scenes |
+| Confirmatory H1/H2 | NOT EVALUATED | All signed hypotheses and primary outcome tests remain pending |
+
+The machine audit report is stored on the workstation data volume as paper_a_prefreeze_combined_audit/prefreeze_20261116T023522_659579Z.json, separately from the versioned source tree. The end-of-run status recorded no confirmatory GT/H5/F1 access, no model training and no descriptor recomputation. These are technical traceability statements rather than evidence of predictive discrimination.
+
+### 7.2. Explicit per-capture analysis and prespecified evaluation
+
+For image or independent capture group i, the outcome of hypothesis h is Y(h,i) = F1(candidate(h),i) - F1(equal_mean(h),i). For annotations k=1,...,K(i), compute F1(a,i,k) = 2 TP(a,i,k) / [2 TP(a,i,k) + FP(a,i,k) + FN(a,i,k)] under the fixed native-geometry one-to-one boundary matcher. The image-level score is the arithmetic mean over annotators, calculated independently for candidate and control. MultiCue's proposed six edge annotations, if validated, yield **one** averaged response per independent capture; annotator masks are not replicated samples.
+
+The proposed primary test computes within-domain Spearman correlations rho(h,d), then their n(d)-1 weighted mean T(h) = [sum_d (n(d)-1) rho(h,d)] / [sum_d (n(d)-1)]. Permuting paired outcomes within each domain, not globally, defines the one-sided null distribution. The two resulting p-values will be adjusted by Holm at family-wise alpha=0.05. The original protocol draft still requires amendment and a separate freeze to adopt this estimand; it is not retrospectively assumed to be frozen.
+
+Before outcome inspection the study also needs deterministic rules for constant evidence maps (undefined Pearson), identical ranks, missing data, zero-denominator F1, invalid annotation pixels and shared captures. None may be chosen because it improves held-out p-values.
+
 ## 8. Reproducibility and independent audit
 
 Code, the signed protocol draft, synthetic unit tests, data-lineage assessments and the existing Stage24GL Tier-A numeric evidence archive are recorded in the GitHub repository. A local reproducibility ZIP generated by `scripts/package_paper_a_repro.py` includes the manuscript, preregistration, source scripts, reproducibility instructions, evidence metadata, a manifest of checksums and the latest safe overnight audit report if present. It excludes source images, GT/H5, original dataset files, heavy map caches and unreviewed protected test outputs. The archived Stage24GL evidence is explicitly exploratory; its extensive per-fold/official evaluation archives do not convert post-hoc discoveries into independent confirmation.
 
 The staged package is **not an independent laboratory replication**. For final replication, investigators must obtain datasets under applicable licenses, verify source and cache hashes, fix H1/H2 fitted parameters on authorized development data, preregister independent groups and evaluate untouched GT only after the freeze. A paper describing successful pre-freeze checks but no held-out outcomes must be labeled methodological or preliminary; it cannot claim confirmed hypotheses or superior performance.
+
+### 8.1. Reproducibility procedure and output provenance
+
+A third-party audit should (i) check out a pinned code commit and the declared environment, (ii) review the protocol draft and freeze checklist without relabeling historical development as confirmation, (iii) run the synthetic evaluator tests and metadata checks, (iv) compare actual UDED development cache SHA256 values with their declared versioned hashes, and (v) read the Stage24GL numerical evidence archive as exploratory provenance only. It must then wait for independently fitted and signed H1/H2 recipes, the approved cohort and an immutable preregistration before opening new confirmatory GT or running either signed hypothesis test.
+
+The local package PaperA_repro_preconfirmatory_20261116T023603_855866Z.zip was generated after the successful integrated audit, with a SHA256 sidecar and a manifest for 37 included files. Its recorded hash is c45c87dc34a1674f769e46cc5432e4fe5e63318f5b4c12e9eec4778fe5848e37. **That package predates these manuscript revisions**; a new reproducibility ZIP must be generated before distributing the updated draft.
+
+### 8.2. Planned figures and tables (not fabricated outcomes)
+
+- Figure 1: separation of historical hypothesis discovery, permitted development calibration, technical preflight, independent-cohort freeze and untouched outcome evaluation.
+- Figure 2: fixed H1 and H2 descriptor groups, shared membership calibration and paired candidate-versus-equal-mean aggregation paths.
+- Figure 3: sample lineage and known cross-dataset hold for capture prefix 4113; graph explicitly labels preliminary versus independently certified groups.
+- Figure 4: joint synthetic power sensitivity for alternative sample mixes, with the model assumptions and Monte Carlo error made visible.
+- Figure 5 (reserved): confirmatory X-versus-delta-F1 relationships by domain, inserted only after genuinely independent outcomes exist.
+
+Every publication figure, table and sentence that would imply observed H1/H2 significance remains reserved rather than synthesized from exploratory F1.
 
 ## 9. Limitations and next decision gates
 
