@@ -89,6 +89,11 @@ class CandidateATests(unittest.TestCase):
             self.assertEqual(status["counts"],{"BIPED":125,"MultiCue":94,"N":219})
             self.assertEqual(status["retained_BIPED"],83)
             self.assertEqual(status["replacement_BIPED"],42)
+            powers=status["illustrative_normal_approx_joint_power_not_validated"]
+            self.assertGreater(powers["scenario_A_N219"],0.80)
+            self.assertLess(powers["scenario_A_N219"],
+                            powers["legacy_mix_N220_same_approximation"])
+            self.assertTrue(powers["cannot_authorize_power_or_freeze"])
             self.assertTrue(status["P1_lineage_metadata_consistent"])
             self.assertFalse(status["scientific_signoff"])
             self.assertFalse(status["GT_accessed"])
