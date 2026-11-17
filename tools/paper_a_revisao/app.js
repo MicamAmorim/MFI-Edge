@@ -16,7 +16,6 @@ function persist(){try{localStorage.setItem(key,JSON.stringify(S))}catch(e){E("p
 const getGroup=id=>S.groups[id]||(S.groups[id]={decision:"",representative:"",subgroups:"",evidence:""});
 const getImage=x=>S.images[x]||(S.images[x]={scene:"",exposure:"",evidence:""});
 const getCheck=(kind,id)=>S[kind][id]||(S[kind][id]={decision:"",evidence:""});
-function groupDone(g){const a=S.groups[g.id]||{};return !!(a.decision&&a.evidence&&a.evidence.trim().length>=25&&(a.decision!=="ONE"||g.ids.includes(a.representative))&&(a.decision!=="SUBGROUPS"||a.subgroups&&a.subgroups.trim().length>=8))}
 function imageDone(i){const a=S.images[i.dataset+":"+i.id]||{};return !!(a.scene&&a.exposure&&a.evidence&&a.evidence.trim().length>=25)}
 function checkDone(kind,id){const a=S[kind][id]||{};return !!(a.decision&&a.evidence&&a.evidence.trim().length>=25)}
 function stats(){const g=D.groups.filter(groupDone).length,im=D.items.filter(imageDone).length,p=D.p1.filter(x=>checkDone("p1",x.id)).length,s=D.science.filter(x=>checkDone("science",x.id)).length;return{groups:g,images:im,p1:p,science:s,total:g+im+p+s,maximum:D.groups.length+D.items.length+D.p1.length+D.science.length}}
@@ -34,22 +33,108 @@ function options(items,selected,kind,id){
   '" data-kind="'+esc(kind)+'" data-key="'+esc(id)+'" data-value="'+esc(value)+
   '" aria-pressed="'+String(selected===value)+'">'+esc(label)+"</button>").join("")+"</div>"
 }
-const groupOptions=[["ONE","Uma única cena"],["SUBGROUPS","Há subgrupos"],["DISTINCT","Cenas distintas"],["UNCERTAIN","Inconclusivo","maybe"]];
-function renderGroup(){const g=D.groups[groupIndex],v=getGroup(g.id);E("group-pos").textContent="Grupo "+(groupIndex+1)+" / "+D.groups.length;
- E("group-index").innerHTML=D.groups.map((x,i)=>'<button class="'+(i===groupIndex?"active ":"")+(groupDone(x)?"done":"")+'" data-group-go="'+i+'">'+String(i+1).padStart(2,"0")+"</button>").join("");
- const imgset=g.ids.map(id=>{const im=lookup["BIPED:"+id];return '<div><img class="thumb" src="'+esc(im.thumbnail)+'" alt="Original '+esc(id)+'"><b>'+esc(id)+'</b><a class="smalllink" href="'+esc(im.original_href)+'" target="_blank" rel="noopener">Abrir original</a></div>'}).join("");
- E("group-content").innerHTML='<article class="card"><div class="toolbar"><span class="badge flag">Agrupamento candidato, não certificado</span><span class="badge '+(groupDone(g)?"selected":"")+'">'+(groupDone(g)?"Respondido":"Pendente")+'</span></div><h2>'+esc(g.ids.join(" · "))+'</h2><div class="split"><div><div class="visual"><img src="'+esc(g.panel)+'" alt="Painel comparativo de originais"></div><div class="previewgrid">'+imgset+'</div></div><div><h3>Estas capturas correspondem a quantas cenas independentes?</h3>'+options(groupOptions,v.decision,"group",g.id)+
- '<label class="'+(v.decision==="ONE"?"":"hidden")+'" id="group-keep-label">Se a cena for única, qual original manter?<select id="group-keep"><option value="">Selecione</option>'+g.ids.map(id=>'<option value="'+esc(id)+'" '+(v.representative===id?"selected":"")+'>'+esc(id)+'</option>').join("")+"</select></label>"+
- '<label class="'+(v.decision==="SUBGROUPS"?"":"hidden")+'" id="group-subgroups-label">Descreva os subgrupos<input id="group-subgroups" placeholder="RGB_001 + RGB_002; RGB_003 isolada" value="'+esc(v.subgroups)+'"></label>'+
- '<label>Justificativa visual (mínimo 25 caracteres)<textarea id="group-evidence" placeholder="Compare fachadas, placas, veículos, cenário, ponto de vista...">'+esc(v.evidence)+"</textarea></label>"+
- '<p class="hint">O grupo foi sinalizado por semelhança geométrica; não foi comprovado como repetição. A independência histórica exige análise documental.</p><button class="btn primary" id="group-save">Registrar grupo e continuar</button></div></div></article>';
+const groupOptions=[
+ ["ONE","Sim, todas mostram o mesmo lugar"],
+ ["SUBGROUPS","Apenas algumas mostram o mesmo lugar"],
+ ["DISTINCT","Não, mostram lugares diferentes"],
+ ["UNCERTAIN","Não consigo decidir","maybe"]
+];
+const cueOptions=[
+ ["BUILDINGS","Os mesmos prédios/fachadas"],
+ ["ROADS","As mesmas ruas, placas ou postes"],
+ ["NATURE","As mesmas árvores ou paisagem"],
+ ["OTHER","Outras estruturas fixas iguais"],
+ ["MOVING","Apenas veículos ou pessoas parecidos"],
+ ["NONE","Não identifiquei estruturas comuns"]
+];
+function groupDone(g){
+ const v=S.groups[g.id]||{};
+ if(!v.decision)return false;
+ if(v.decision==="UNCERTAIN")return true;
+ const cue=v.cue || (v.evidence?.trim().length>=25?"LEGACY_NOTES":"");
+ if(!cue)return false;
+ if(v.decision==="ONE")return Boolean(g.ids.includes(v.representative))&&!["MOVING","NONE"].includes(cue);
+ if(v.decision==="SUBGROUPS"){
+   const checked=(v.sameAsFirst||[]).filter(id=>g.ids.slice(1).includes(id));
+   return (checked.length>0 && checked.length<g.ids.length-1) ||
+     Boolean(v.subgroups && v.subgroups.trim().length>=8);
+ }
+ if(v.decision==="DISTINCT")return true;
+ return false;
+}
+function readGroupFields(g,v){
+ const keep=E("group-keep"),sub=E("group-subgroups"),notes=E("group-evidence");
+ if(keep)v.representative=keep.value;
+ if(sub)v.subgroups=sub.value;
+ if(notes)v.evidence=notes.value;
+}
+function renderGroup(){
+ const g=D.groups[groupIndex],v=getGroup(g.id);
+ E("group-pos").textContent="Grupo "+(groupIndex+1)+" / "+D.groups.length;
+ E("group-index").innerHTML=D.groups.map((x,i)=>
+  '<button class="'+(i===groupIndex?"active ":"")+(groupDone(x)?"done":"")+
+  '" data-group-go="'+i+'">'+String(i+1).padStart(2,"0")+"</button>").join("");
+ const imgset=g.ids.map(id=>{const im=lookup["BIPED:"+id];return '<div><img class="thumb" src="'+esc(im.thumbnail)+
+ '" alt="Original '+esc(id)+'"><b>'+esc(id)+'</b><a class="smalllink" href="'+esc(im.original_href)+
+ '" target="_blank" rel="noopener">Abrir original</a></div>'}).join("");
+ const checkboxChoices=g.ids.slice(1).map(id=>'<label class="scene-checkbox"><input type="checkbox" data-group-same="'+esc(id)+
+ '" '+((v.sameAsFirst||[]).includes(id)?"checked":"")+'><span>'+esc(id)+'</span></label>').join("");
+ const cueHtml=options(cueOptions,v.cue||"","groupcue",g.id);
+ E("group-content").innerHTML='<article class="card"><div class="toolbar"><span class="badge flag">'+
+  'Alerta de possível repetição, não decisão automática</span><span class="badge '+(groupDone(g)?"selected":"")+
+  '">'+(groupDone(g)?"Resposta registrada":"Aguardando resposta")+'</span></div><h2>'+esc(g.ids.join(" · "))+'</h2>'+
+  '<div class="split"><div><div class="visual"><img src="'+esc(g.panel)+'" alt="Painel comparativo de originais"></div>'+
+  '<div class="previewgrid">'+imgset+'</div></div><div>'+
+  '<h3>1. As fotos mostram o mesmo lugar, com os mesmos prédios, rua ou paisagem, mesmo que a câmera tenha mudado de posição?</h3>'+
+  '<p class="hint">Exemplo: mesma fachada vista de frente e de lado = mesmo lugar. Carros e pessoas parecidos, sozinhos, não comprovam que a cena é igual.</p>'+
+  options(g.ids.length===2?groupOptions.filter(x=>x[0]!=="SUBGROUPS"):groupOptions,v.decision,"group",g.id)+
+  '<div class="'+(v.decision==="UNCERTAIN"?"hidden":"")+'"><div class="question">2. Qual detalhe fixo você usou para comparar?</div>'+cueHtml+'</div>'+
+  '<label class="'+(v.decision==="ONE"?"":"hidden")+'">3. Qual foto é a melhor representante desse lugar?'+
+  '<span class="hint">É apenas uma sugestão para decidir depois; nenhuma foto é excluída agora.</span>'+
+  '<select id="group-keep"><option value="">Escolha uma foto</option>'+g.ids.map(id=>'<option value="'+esc(id)+
+  '" '+(v.representative===id?"selected":"")+'>'+esc(id)+'</option>').join("")+'</select></label>'+
+  '<div class="'+(v.decision==="SUBGROUPS"?"":"hidden")+'"><div class="question">3. Quais fotos abaixo mostram o mesmo lugar que '+esc(g.ids[0])+'?</div>'+
+  '<div class="scene-checkboxes">'+checkboxChoices+'</div>'+
+  '<label>Se houver mais de dois lugares, explique a divisão (opcional)<input id="group-subgroups" placeholder="'+
+  esc(g.ids[0])+' e outra foto formam o lugar A; as demais o lugar B" value="'+esc(v.subgroups||"")+
+  '"></label></div>'+
+  '<label>Observação adicional (opcional)<textarea id="group-evidence" placeholder="Ex.: mesmos edifícios, árvores e placa; mudou apenas o ângulo da câmera.">'+
+  esc(v.evidence||"")+'</textarea></label>'+
+  '<p class="hint">Sua resposta é uma triagem visual. Ela não autoriza excluir imagens, nem comprova histórico de uso anterior.</p>'+
+  '<button class="btn primary" id="group-save">Salvar resposta e ir ao próximo</button></div></div></article>';
 }
 E("group-content").addEventListener("click",event=>{
-const b=event.target.closest("[data-kind=group]");if(b){const g=D.groups[groupIndex],v=getGroup(g.id);v.representative=E("group-keep").value;v.subgroups=E("group-subgroups").value;v.evidence=E("group-evidence").value;v.decision=b.dataset.value;persist();renderGroup();return}
-if(event.target.closest("#group-save")){const g=D.groups[groupIndex],v=getGroup(g.id);v.representative=E("group-keep").value;v.subgroups=E("group-subgroups").value;v.evidence=E("group-evidence").value;persist();if(groupDone(g)){groupIndex=(groupIndex+1)%D.groups.length;renderGroup()}else alert("Selecione uma decisão e justifique-a. Informe representante ou subgrupos quando necessário.")}
+ const g=D.groups[groupIndex],v=getGroup(g.id);
+ const b=event.target.closest("[data-kind]");
+ if(b && (b.dataset.kind==="group" || b.dataset.kind==="groupcue")){
+  readGroupFields(g,v);
+  if(b.dataset.kind==="group")v.decision=b.dataset.value;
+  else v.cue=b.dataset.value;
+  persist();renderGroup();return;
+ }
+ if(event.target.closest("#group-save")){
+  readGroupFields(g,v);persist();
+  if(groupDone(g)){groupIndex=(groupIndex+1)%D.groups.length;renderGroup()}
+  else alert("Escolha uma resposta. Se indicou o mesmo lugar, identifique o elemento fixo e a foto representante; se escolheu 'algumas', marque as fotos correspondentes.");
+ }
 });
-E("group-content").addEventListener("input",e=>{const g=D.groups[groupIndex],v=getGroup(g.id);if(e.target.id==="group-evidence")v.evidence=e.target.value;if(e.target.id==="group-subgroups")v.subgroups=e.target.value;if(e.target.id==="group-keep")v.representative=e.target.value;persist()});
-E("group-content").addEventListener("change",e=>{if(e.target.id==="group-keep"){getGroup(D.groups[groupIndex].id).representative=e.target.value;persist()}});
+E("group-content").addEventListener("input",e=>{
+ const g=D.groups[groupIndex],v=getGroup(g.id);
+ if(e.target.id==="group-evidence")v.evidence=e.target.value;
+ if(e.target.id==="group-subgroups")v.subgroups=e.target.value;
+ persist();
+});
+E("group-content").addEventListener("change",e=>{
+ const g=D.groups[groupIndex],v=getGroup(g.id);
+ if(e.target.id==="group-keep")v.representative=e.target.value;
+ if(e.target.matches("[data-group-same]")){
+  const selected=new Set(v.sameAsFirst||[]);
+  if(e.target.checked)selected.add(e.target.dataset.groupSame);
+  else selected.delete(e.target.dataset.groupSame);
+  v.sameAsFirst=Array.from(selected);
+ }
+ persist();
+});
 E("group-index").addEventListener("click",e=>{const b=e.target.closest("[data-group-go]");if(b){groupIndex=Number(b.dataset.groupGo);renderGroup()}});
 E("group-prev").addEventListener("click",()=>{groupIndex=(groupIndex+D.groups.length-1)%D.groups.length;renderGroup()});
 E("group-next").addEventListener("click",()=>{groupIndex=(groupIndex+1)%D.groups.length;renderGroup()});
