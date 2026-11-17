@@ -97,3 +97,28 @@ Importante: conferência de metadados não equivale à prova de ausência
 de uso histórico nem à assinatura independente; nenhum PASS científico,
 freeze, reamostragem ou acesso a GT confirmatório é realizado por esta rotina.
 O JSON da reconciliação deve ser analisado antes de atualizar a coorte.
+
+
+## Segunda passagem após as 17 decisões de reconciliação
+
+O segundo JSON de reconciliação não deve sobrescrever o relatório inicial.
+A auditoria cruza as duas versões e sinaliza inconsistências por transitividade
+de cenas, que não são detectadas somente ao comparar um par de cada vez.
+
+    git pull --ff-only origin experiment/paper-a-conditional-confirmation
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\abrir_segunda_passagem_paper_a.ps1
+
+A rotina procura o JSON mais recente PaperA_RECONCILIACAO_*.json em Downloads
+e encontra o relatório original pelo SHA-256 indicado no JSON. Se os arquivos
+estiverem em outras pastas, passe -ReconciliationPath e -ReportPath.
+
+Serão gerados, em scientific_signoff/SEGUNDA_PASSAGEM_<SHA>/:
+- AUDITORIA_POS_RECONCILIACAO.json (rastreabilidade das duas revisões,
+  contagem de agrupamentos estritamente provisória, conflitos lógicos)
+- REVISAR_CONFLITOS_RESTANTES.html (comparação local somente dos casos
+  restantes; ao terminar, exporte seu JSON de segunda passagem)
+
+Não abre GT/H5/F1, não altera a coorte 125+95, não recalcula mapas,
+não emite revisão independente ou freeze. A contagem de cenas proposta
+depende da validade das comparações, da semântica de "mesmo lugar" e
+das verificações históricas ainda abertas.
