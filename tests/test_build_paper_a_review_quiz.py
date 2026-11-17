@@ -99,6 +99,9 @@ class OfflineReviewTests(unittest.TestCase):
             self.assertFalse(result["freeze_authorized"])
             self.assertEqual(len(list((out/"assets/images").glob("*.jpg"))),293)
             self.assertEqual(len(list((out/"assets/groups").glob("*.jpg"))),22)
+            manifest=json.loads((out/"MANIFEST.json").read_text(encoding="utf-8"))
+            self.assertEqual(len(manifest["images"]),293)
+            self.assertTrue(all(len(r["original_sha256"])==64 for r in manifest["images"]))
             html=(out/"index.html").read_text(encoding="utf-8")
             self.assertIn("198 candidatas BIPED",html)
             self.assertIn('"visual_candidates_n":293',html)
@@ -113,7 +116,7 @@ class OfflineReviewTests(unittest.TestCase):
             self.assertIn('"original_href":"file://',reused_html)
             self.assertIn('"visual_candidates_n":293',reused_html)
             # Corrupting a generated image must fail rather than silently reusing.
-            (out/"assets/images/BIPED_"+ids[0]+".jpg").write_bytes(b"bad")
+            (out/"assets/images"/("BIPED_"+ids[0]+".jpg")).write_bytes(b"bad")
             with self.assertRaises(RuntimeError):
                 q.generate(biped=b,multicue=m,output=out,frontend=ROOT/"tools/paper_a_revisao",sources=source)
 
