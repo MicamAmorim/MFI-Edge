@@ -8,7 +8,24 @@ const groupById={};for(const g of D.groups)for(const id of g.ids)groupById[id]=g
 const lookup=Object.fromEntries(D.items.map(r=>[r.dataset+":"+r.id,r]));
 const STATE=()=>({meta:{reviewer:"",affiliation:"",role:"",conflicts:""},groups:{},images:{},p1:{},science:{},notes:""});
 let S=STATE();
-try{const old=JSON.parse(localStorage.getItem(key)||"null");if(old&&old.meta&&old.groups&&old.images&&old.p1&&old.science)S=old}catch(_){}
+try{
+ const old=JSON.parse(localStorage.getItem(key)||"null");
+ if(old&&old.meta&&old.groups&&old.images&&old.p1&&old.science)S=old;
+ // Legacy "Sustentado por evidências" clicks with no document cited must
+ // not be silently promoted to "Sim, conferi a evidência" after UX upgrade.
+ const migration=key+":objective_questions_v2";
+ if(localStorage.getItem(migration)!=="1"){
+  for(const kind of ["p1","science"]){
+   for(const answer of Object.values(S[kind]||{})){
+    if(answer.decision==="SUPPORTED"&&(answer.evidence||"").trim().length<15){
+     answer.decision="";
+    }
+   }
+  }
+  localStorage.setItem(key,JSON.stringify(S));
+  localStorage.setItem(migration,"1");
+ }
+}catch(_){}
 let groupIndex=0,page=0,search="",filter="all",tab="inicio";const perPage=6;
 const selectedImages=D.items.filter(i=>i.in_initial_cohort);
 const altImages=D.items.filter(i=>!i.in_initial_cohort);
