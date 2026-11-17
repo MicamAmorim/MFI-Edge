@@ -29,6 +29,21 @@ def group(names,decision):
 
 
 class ConsolidateReconciliationTests(unittest.TestCase):
+    def test_direct_launcher_imports_sibling_helper_with_isolated_python(self):
+        import subprocess
+        script=ROOT/"scripts/consolidar_reconciliacao_paper_a.py"
+        helper=ROOT/"scripts/auditar_paper_a_pos_quiz.py"
+        self.assertTrue(helper.is_file())
+        with tempfile.TemporaryDirectory() as tmp:
+            # -I removes inherited PYTHONPATH and current-folder imports;
+            # runpy with a non-main name verifies import without reading data.
+            process=subprocess.run(
+                [sys.executable,"-I","-B","-c",
+                 "import runpy,sys;runpy.run_path(sys.argv[1],run_name='_import_only_')",
+                 str(script)],
+                cwd=tmp,capture_output=True,text=True,timeout=30,check=False)
+        self.assertEqual(process.returncode,0,process.stdout+process.stderr)
+
     def test_transitive_negative_does_not_certify_independence(self):
         doc=sample([
             row("RGB_001",{"RGB_002":"SAME","RGB_003":"DIFFERENT"}),
