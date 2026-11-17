@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0c1221" />
+  <title>Paper A219 · Auditoria científica local</title>
+  <link rel="stylesheet" href="/app.css" />
+  <script src="/app.js" defer></script>
+</head>
+<body>
+ <section id="login" class="login-frame">
+   <div class="login-panel">
+     <div class="eyebrow">MFI‑EDGE / PAPER A</div>
+     <h1>Auditoria científica <em>A219</em></h1>
+     <p>Servidor local, acessível somente pela sua rede Tailscale. O painel mostra exclusivamente originais RGB e metadados de pré-freeze.</p>
+     <form id="loginForm" autocomplete="off">
+       <label for="pin">Código temporário exibido no PowerShell</label>
+       <input id="pin" name="pin" type="password" inputmode="numeric" pattern="[0-9]*" placeholder="12 dígitos" required autocomplete="off" />
+       <button class="primary full" type="submit">Entrar no painel</button>
+     </form>
+     <p class="error" id="loginError" role="alert"></p>
+     <small>Nenhum GT confirmatório, mapa, predição ou F1 será aberto. As aprovações são somente avaliações preliminares do autor/revisor e não liberam o freeze.</small>
+   </div>
+ </section>
+ <div id="app" hidden>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">M</span><div><b>MFI‑EDGE</b><small>Paper A · auditoria local</small></div></div>
+    <div class="header-status"><span class="status-dot"></span><span>PRÉ‑FREEZE · NÃO APROVADO</span></div>
+    <button id="download" class="button soft">Exportar dossiê ↓</button>
+  </header>
+  <main class="layout">
+   <aside class="sidebar">
+     <div class="side-title">PAINEL DE AUDITORIA</div>
+     <nav id="tabs" aria-label="Seções">
+       <button class="tab active" data-tab="overview">◫ Visão geral</button>
+       <button class="tab" data-tab="mosaic">▦ Mosaicos RGB</button>
+       <button class="tab" data-tab="comparison">⇄ Comparar cenas</button>
+       <button class="tab" data-tab="evidence">⌕ Evidências históricas</button>
+       <button class="tab" data-tab="review">☑ Oito decisões</button>
+       <button class="tab" data-tab="export">⇩ Relatório e exportação</button>
+     </nav>
+     <div class="side-foot">A219 · 125 BIPED + 94 MultiCue<br/>Tailscale Serve + senha temporária<br/><strong>Sem signoff automático</strong></div>
+   </aside>
+   <section class="content">
+     <section class="pane active" id="pane-overview">
+       <div class="head"><div class="eyebrow">PAINEL DE EVIDÊNCIAS</div><h1>Antes de testar H1 / H2</h1><p>Analise o que os arquivos realmente mostram, registre dúvidas e produza um dossiê que um revisor independente possa examinar.</p></div>
+       <div class="metrics"><div class="metric"><b id="metric-total">219</b><span>Originais na coorte</span></div><div class="metric"><b id="metric-pending">219</b><span>Revisões de imagem sem decisão</span></div><div class="metric"><b id="metric-power">81,5%</b><span>Poder simulado para |ρ|=0,20</span></div><div class="metric warning"><b>Bloqueado</b><span>Freeze e GT confirmatório</span></div></div>
+       <div class="section-title">O que o painel consegue e não consegue concluir</div>
+       <div class="two-col">
+        <article class="surface"><h3>Comprovação técnica</h3><p class="muted">A identificação das imagens está vinculada aos manifests e hashes. Pode-se comparar visualmente cenas, procurar candidatos semelhantes e confrontar registros históricos.</p><div class="tags"><span class="pill">219 originais verificados</span><span class="pill">42 alternativas BIPED</span></div></article>
+        <article class="surface caution"><h3>Limite científico</h3><p>Uma imagem estar no conjunto train ou aparecer em um arquivo de código <strong>não comprova fitting, validação ou contaminação</strong>. O contrário também não é provado apenas pela ausência de referência textual.</p></article>
+       </div>
+       <article class="surface"><h3>Disponibilidade das fontes no computador</h3><div id="sources" class="source-grid"><span class="muted">Lendo inventários locais...</span></div></article>
+       <article class="surface"><h3>Fatos sobre os registros anteriores</h3><div id="knownFacts"></div></article>
+       <article class="surface"><h3>Integridade do protocolo</h3><div class="hashes" id="hashes"></div></article>
+     </section>
+     <section class="pane" id="pane-mosaic">
+       <div class="head"><div class="eyebrow">VISUALIZAÇÃO SEGURA</div><h1>Mosaicos de originais RGB</h1><p>Escolha a coorte proposta ou uma coleção de originais disponível no PC. O conjunto train é mostrado como <strong>universo de imagens</strong>, não como prova de que cada foto foi usada para ajustar parâmetros.</p></div>
+       <div class="toolbar"><label>Conjunto<select id="set"></select></label><label>Filtrar<input id="search" placeholder="RGB_128, 4582..." /></label><button id="refreshMosaic" class="button">Buscar</button></div>
+       <div class="mosaic-note" id="setNote"></div><div class="mosaic" id="mosaic"></div>
+       <div class="pagination"><button id="prevPage" class="button soft">← Anterior</button><span id="pageLabel"></span><button id="nextPage" class="button soft">Próxima →</button></div>
+     </section>
+     <section class="pane" id="pane-comparison">
+       <div class="head"><div class="eyebrow">INSPEÇÃO VISUAL</div><h1>Comparação lado a lado</h1><p>Selecione uma imagem A219 no mosaico e compare com vizinhas perceptualmente semelhantes, imagens do train e outras capturas. A similaridade dHash é <strong>triagem</strong> — não é prova de mesma cena ou de uso anterior.</p></div>
+       <div class="comparison-grid"><div class="comp-card"><h3>A · Imagem selecionada</h3><div class="comp-image" id="leftImage"><div class="placeholder">Selecione uma imagem A219 no mosaico.</div></div><div id="leftDesc" class="small muted"></div></div><div class="comp-card"><h3>B · Referência para comparação</h3><div class="comp-image" id="rightImage"><div class="placeholder">Clique em um resultado semelhante abaixo.</div></div><div id="rightDesc" class="small muted"></div></div></div>
+       <div class="toolbar"><button class="primary" id="findSimilar">Encontrar imagens semelhantes (RGB)</button><label>Universo<select id="similarScope"><option value="all">Todos os originais autorizados</option><option value="biped_train">BIPED train</option><option value="biped_test">BIPED test</option><option value="multicue_pool">MultiCue RGB</option><option value="uded_originais_disponiveis">UDED RGB, se houver</option></select></label></div>
+       <p id="similarNotice" class="muted small">Nenhum cálculo usa GT ou mapas de predição.</p><div class="similar" id="similar"></div>
+       <article class="surface" id="selectedReview"><h3>Decisão sobre a imagem selecionada</h3><div class="placeholder">Selecione uma imagem da coorte A219.</div></article>
+     </section>
+     <section class="pane" id="pane-evidence">
+       <div class="head"><div class="eyebrow">AUDITORIA DE PROVENIÊNCIA</div><h1>Histórico, treinamento e exposição</h1><p>Explore as menções em metadados e o contexto Stage13c, Stage23/24, P1 e GT v2. Referências textuais não equivalem a registros de execução de treinamento.</p></div>
+       <article class="surface"><h3>Stage13c · cuidado metodológico</h3><div id="stageOverview"></div></article>
+       <article class="surface"><h3>P1 · sete ajustes</h3><div id="p1Table"></div></article>
+       <article class="surface"><h3>Histórico da imagem selecionada</h3><div id="historyImage"><div class="placeholder">Selecione uma imagem na aba Mosaicos RGB.</div></div></article>
+       <article class="surface"><h3>O que revisar no histórico</h3><p>Registros de execução verificáveis, manifesto das imagens usadas para ajuste de limiares/capacidades, geração de resultados sobre treino/validação e evidência de que essas decisões ocorreram antes da escolha da coorte confirmatória. Quando faltar documentação, registre <strong>pendente</strong> ou <strong>possível uso</strong>.</p></article>
+     </section>
+     <section class="pane" id="pane-review">
+       <div class="head"><div class="eyebrow">JULGAMENTO HUMANO</div><h1>As oito decisões antes do freeze</h1><p>As escolhas são <strong>avaliações preliminares</strong>. “Aprovar preliminarmente” não produz certificação independente, não preenche o signoff científico e não libera o executor.</p></div>
+       <div id="reviews" class="review-stack"></div>
+     </section>
+     <section class="pane" id="pane-export">
+       <div class="head"><div class="eyebrow">RASTREABILIDADE</div><h1>Dossiê para o revisor</h1><p>O pacote contém as decisões registradas, os hashes do protocolo, todas as 219 linhas e uma síntese das justificativas. <strong>Não substitui o revisor independente.</strong></p></div>
+       <article class="surface"><h3>Estado das avaliações</h3><div id="reviewProgress"></div><button id="download2" class="primary">Exportar ZIP auditável</button><p class="small muted">O servidor mantém suas decisões em MOBILE_A219_RASCUNHO/decisions_DRAFT.json, com cópias históricas. Não altera as planilhas oficiais nem FINAL_INDEPENDENT_REVIEW.json.</p></article>
+       <article class="surface caution"><h3>Condição para H1/H2</h3><p>Somente após a revisão independente de cenas/exposição, P1, semântica GT e estatística, aprovação fundamentada e commit do freeze, o executor confirmatório poderá abrir os resultados. Este painel deliberadamente não oferece o botão de executar H1/H2.</p></article>
+     </section>
+   </section>
+  </main>
+ </div>
+ <div id="toast" aria-live="polite" role="status"></div>
+</body>
+</html>
