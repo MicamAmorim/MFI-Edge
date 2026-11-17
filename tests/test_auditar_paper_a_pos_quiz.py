@@ -71,10 +71,21 @@ class PostQuizAuditTests(unittest.TestCase):
         tasks,info=mod.reconcile_tasks(doc)
         s=info["summary"]
         self.assertEqual(s["directional_pair_conflicts"],1)
-        self.assertEqual(s["pass_with_same_comparison"],1)
+        # RGB_003 and both MultiCue frames are PASS yet declare SAME.
+        self.assertEqual(s["pass_with_same_comparison"],3)
         self.assertEqual(s["group_question_conflicts"],2)
         self.assertEqual(s["multicue_same_pairs"],1)
-        self.assertEqual(len(tasks),5)
+        # 1 directional conflict + 3 PASS/SAME + 2 group + 1 MultiCue.
+        self.assertEqual(len(tasks),7)
+        from collections import Counter
+        kinds=Counter(t["type"] for t in tasks)
+        self.assertEqual(kinds,{
+            "PAIR_CONFLICT":1,
+            "IMAGE_PASS_SAME":3,
+            "GROUP_CONTRADICTION":1,
+            "GROUP_SUBGROUPS":1,
+            "MULTICUE_SAME":1,
+        })
         self.assertEqual(s["historical_unchecked_captures"],293)
         self.assertFalse(s["reconciled_or_independent"])
         html=mod.visual_html({"report_sha256":"a"*64,
