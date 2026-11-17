@@ -220,6 +220,86 @@ def original_source(item: dict, biped: Path, multicue: Path) -> Path:
     return path
 
 
+def thumbnail_visual_signature(path: Path) -> tuple[int, int, tuple[float, ...]]:
+    """Coarse heuristic for suggestions, NEVER evidence of independence.
+
+    Compute difference/average hashes plus a low-resolution color histogram
+    on original-only thumbnails. Does not open protected GT or descriptors.
+    Results are a shortlist only; shifts of camera pose can evade similarity.
+    """
+    with Image.open(path) as opened:
+        if opened.format != "JPEG":
+            raise ValueError("Unexpected cached review thumbnail type")
+        rgb = opened.convert("RGB").resize((32, 32), Image.Resampling.BILINEAR)
+    gray = rgb.convert("L")
+    dh = list(gray.resize((9, 8), Image.Resampling.BILINEAR).getdata())
+    bits_d = 0
+    for y in range(8):
+        for x in range(8):
+            bits_d = (bits_d << 1) | int(dh[y * 9 + x] > dh[y * 9 + x + 1])
+    ah = list(gray.resize((8, 8), Image.Resampling.BILINEAR).getdata())
+    mean = sum(ah) / 64
+    bits_a = 0
+    for val in ah:
+        bits_a = (bits_a << 1) | int(val > mean)
+    hist = rgb.histogram()
+    bins = tuple(
+        sum(hist[channel * 256 + k:channel * 256 + k + 32]) / 1024
+        for channel in range(3) for k in range(0, 256, 32)
+    )
+    return bits_d, bits_a, bins
+
+
+def nearest_original_references(
+        images: list[dict], directory: Path,
+        groups: list[dict], top: int = 5) -> dict[tuple[str,str], list[dict]]:
+    """List comparable originals from the same dataset, never auto-approve.
+
+    Known visual suspect-group partners are retained as reminders. Top coarse
+    matches are then filled from all 198 BIPED or all 95 MultiCue captures.
+    """
+    feats = {}
+    for row in images:
+        key = (row["dataset"], row["id"])
+        if key in feats:
+            raise ValueError("Repeated original in visual suggestion index")
+        location = directory / row["thumbnail"]
+        if location.is_symlink() or not location.is_file():
+            raise ValueError("Cached thumbnail missing for suggestion index")
+        feats[key] = thumbnail_visual_signature(location)
+    suspect = {}
+    for group in groups:
+        for name in group["ids"]:
+            suspect[("BIPED",name)] = [("BIPED",x) for x in group["ids"] if x != name]
+    ranked = {}
+    for source, feature in feats.items():
+        distances = []
+        for candidate, other in feats.items():
+            if source[0] != candidate[0] or source == candidate:
+                continue
+            d = (feature[0] ^ other[0]).bit_count() / 64
+            a = (feature[1] ^ other[1]).bit_count() / 64
+            color = sum(abs(x - y) for x, y in zip(feature[2], other[2])) / 6
+            distances.append((.55 * d + .25 * a + .20 * color, candidate))
+        distances.sort(key=lambda x: (x[0],x[1]))
+        selected = []
+        for candidate in suspect.get(source, []):
+            if candidate in feats and candidate not in selected:
+                selected.append(candidate)
+        for _,candidate in distances:
+            if len(selected) >= max(top,len(suspect.get(source,[]))):
+                break
+            if candidate not in selected:
+                selected.append(candidate)
+        ranked[source] = [
+            {"dataset":key[0],"id":key[1],
+             "reason":"suspected_shared_scene" if key in suspect.get(source,[])
+                      else "approximate_visual_similarity"}
+            for key in selected
+        ]
+    return ranked
+
+
 def generate(*, biped=BIPED, multicue=MULTICUE, output=OUT,
              frontend=FRONT, sources=None) -> dict:
     data=sources if sources is not None else inspect_sources()
@@ -322,6 +402,9 @@ def generate(*, biped=BIPED, multicue=MULTICUE, output=OUT,
             "thumbnail_sha256":cached["thumbnail_sha256"],
             "original_href":source_path.as_uri(),
         })
+    visual_refs=nearest_original_references(images,output,data["groups"])
+    for item in browser_items:
+        item["visual_references"]=visual_refs[(item["dataset"],item["id"])]
     present={**data,"items":browser_items}
     raw_json=json.dumps(present,ensure_ascii=False,separators=(",",":")).replace("<","\\u003c")
     html_source=(frontend/"index.template.html").read_text(encoding="utf-8")
