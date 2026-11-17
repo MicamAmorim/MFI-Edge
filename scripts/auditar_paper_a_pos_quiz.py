@@ -247,7 +247,7 @@ def historical_matrix(metadata: dict, *, zip_path: Path) -> dict:
 def visual_html(report: dict) -> str:
     payload=json.dumps(report,ensure_ascii=False,separators=(",",":")).replace("<","\\u003c")
     template=r"""<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Paper A | Conciliar 17 pendências visuais</title>
+<title>Paper A | Reconciliação visual pós-quiz</title>
 <style>body{font:14px/1.55 system-ui;margin:0;background:#eef3f7;color:#192c41}
 header{background:#17324a;color:white;padding:26px max(20px,calc((100vw - 1100px)/2))}
 header h1{margin:5px 0;font-size:27px}header p{color:#c3d5e0}
