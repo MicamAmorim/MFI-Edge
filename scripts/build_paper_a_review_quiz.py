@@ -274,7 +274,7 @@ def generate(*, biped=BIPED, multicue=MULTICUE, output=OUT,
                 dest=f"assets/images/{row['dataset']}_{row['id']}.jpg"
                 (stage/dest).parent.mkdir(parents=True,exist_ok=True)
                 rgb.save(stage/dest,format="JPEG",quality=82,optimize=True,exif=b"")
-            images.append({**row,"thumbnail":dest,
+            images.append({**row,"original_sha256":row["sha256"],"thumbnail":dest,
                            "thumbnail_sha256":sha_bytes((stage/dest).read_bytes())})
         image_by_id={r["id"]:r for r in images if r["dataset"]=="BIPED"}
         for group in data["groups"]:
@@ -312,7 +312,8 @@ def generate(*, biped=BIPED, multicue=MULTICUE, output=OUT,
     browser_items=[]
     for row in data["items"]:
         cached=by_thumb.get((row["dataset"],row["id"]))
-        if cached is None or cached["original_sha256"]!=row["sha256"]:
+        if (cached is None or cached.get("original_sha256")!=row["sha256"] or
+                cached.get("thumbnail_sha256") is None):
             raise RuntimeError("Review image/manifest identity drift")
         source_path=original_source(row,biped,multicue)
         browser_items.append({
