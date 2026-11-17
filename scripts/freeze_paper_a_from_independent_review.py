@@ -333,15 +333,16 @@ def validate_signed_decision(decision: dict, sheet: list[dict],
         item=decision.get(key)
         if not isinstance(item,str) or len(item.strip())<60:
             raise PermissionError("Missing independently reviewed evidence: "+key)
+    source_binding=a219.validate_sources()
     required={
         "reviewed_draft_protocol_sha256":sha(source_protocol),
         "reviewed_frozen_protocol_preview_sha256":sha(preview),
         "reviewed_cohort_sheet_sha256":sha(sheet_path),
         "reviewed_P1_recipe_sha256":sha(source_recipe),
-        "reviewed_candidate_A_sha256":a219.validate_sources()["candidate_A_sha256"],
-        "reviewed_A219_roster_sha256":a219.validate_sources()["roster_A_sha256"],
-        "reviewed_A219_power_report_sha256":a219.validate_sources()["power_A_sha256"],
-        "reviewed_N219_preliminary_protocol_sha256":a219.validate_sources()["N219_preliminary_protocol_sha256"],
+        "reviewed_candidate_A_sha256":source_binding["candidate_A_sha256"],
+        "reviewed_A219_roster_sha256":source_binding["roster_A_sha256"],
+        "reviewed_A219_power_report_sha256":source_binding["power_A_sha256"],
+        "reviewed_N219_preliminary_protocol_sha256":source_binding["N219_preliminary_protocol_sha256"],
         "approved_executor_source_sha256":sha(executor),
         "approved_runtime_sources_sha256":__import__(
             "paper_a_freeze_guard",fromlist=["runtime_source_hashes"]
@@ -387,8 +388,7 @@ def validate_signed_decision(decision: dict, sheet: list[dict],
             raise PermissionError("Previously exposed MultiCue group 4113 forbidden")
     if counts!=A_COUNTS:
         raise PermissionError("Proposed A219 mix changed; re-plan independently before freeze")
-    evidence=a219.validate_sources()
-    a219.validate_reviewed_rows(sheet,evidence["baseline_rows"],require_groups=True)
+    a219.validate_reviewed_rows(sheet,source_binding["baseline_rows"],require_groups=True)
 
 
 def version_freeze_evidence(recipe: Path, cohort: Path,
