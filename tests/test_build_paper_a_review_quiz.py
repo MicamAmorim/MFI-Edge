@@ -106,6 +106,28 @@ class OfflineReviewTests(unittest.TestCase):
             self.assertIn("198 candidatas BIPED",html)
             self.assertIn('"visual_candidates_n":293',html)
             self.assertNotIn("__REVIEW_DATA_JSON__",html)
+            # Every visual eligibility question must now have real references
+            # from its own dataset, including all 73 alternative BIPED images.
+            label='<script type="application/json" id="review-data">'
+            browser=json.loads(html.split(label,1)[1].split("</script>",1)[0])
+            self.assertEqual(len(browser["items"]),293)
+            for record in browser["items"]:
+                refs=record["visual_references"]
+                self.assertGreaterEqual(len(refs),4)
+                self.assertEqual(len(refs),len(set(r["id"] for r in refs)))
+                for reference in refs:
+                    self.assertEqual(reference["dataset"],record["dataset"])
+                    self.assertNotEqual(reference["id"],record["id"])
+                    self.assertIn(reference["reason"],(
+                        "suspected_shared_scene","approximate_visual_similarity"))
+            first_group=q.EXPECTED_GROUPS[0]
+            group_item=next(x for x in browser["items"]
+                if x["dataset"]=="BIPED" and x["id"]==first_group[0])
+            self.assertTrue(set(first_group[1:]).issubset(
+                {x["id"] for x in group_item["visual_references"]}))
+            self.assertIn("comparison-card",(
+                ROOT/"tools/paper_a_revisao/app.js").read_text(encoding="utf-8"))
+
             again=q.generate(biped=b,multicue=m,output=out,frontend=ROOT/"tools/paper_a_revisao",sources=source)
             self.assertTrue(again["reused_sha_checked_thumbnails"])
             # A reused slim MANIFEST must not strip selection flags and
