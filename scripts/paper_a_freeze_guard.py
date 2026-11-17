@@ -36,6 +36,7 @@ RUNTIME_SOURCES = (
     "scripts/paper_a_freeze_guard.py",
     "scripts/continuar_paper_a.py",
     "scripts/freeze_paper_a_from_independent_review.py",
+    "scripts/paper_a_a219_freeze_policy.py",
     "src/paper_a_prefreeze_map_adapter.py",
     "src/paper_a_h1h2_inference_core.py",
     "src/paper_a_confirmation_paired_f1.py",
