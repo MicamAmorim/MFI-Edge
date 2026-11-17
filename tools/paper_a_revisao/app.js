@@ -17,7 +17,7 @@ const getGroup=id=>S.groups[id]||(S.groups[id]={decision:"",representative:"",su
 const getImage=x=>S.images[x]||(S.images[x]={scene:"",exposure:"",evidence:""});
 const getCheck=(kind,id)=>S[kind][id]||(S[kind][id]={decision:"",evidence:""});
 function imageDone(i){const a=S.images[i.dataset+":"+i.id]||{};return !!(a.scene&&a.exposure&&a.evidence&&a.evidence.trim().length>=25)}
-function checkDone(kind,id){const a=S[kind][id]||{};return !!(a.decision&&a.evidence&&a.evidence.trim().length>=25)}
+function checkDone(kind,id){const a=S[kind][id]||{};return !!(a.decision&&(a.decision==="UNCERTAIN"||(a.evidence||"").trim().length>=15))}
 function stats(){const g=D.groups.filter(groupDone).length,im=D.items.filter(imageDone).length,p=D.p1.filter(x=>checkDone("p1",x.id)).length,s=D.science.filter(x=>checkDone("science",x.id)).length;return{groups:g,images:im,p1:p,science:s,total:g+im+p+s,maximum:D.groups.length+D.items.length+D.p1.length+D.science.length}}
 function updateProgress(){const st=stats();E("n-groups").textContent=st.groups+"/22";E("n-images").textContent=st.images+"/293";E("n-p1").textContent=st.p1+"/7";E("n-science").textContent=st.science+"/10";E("progress-label").textContent=st.total+"/"+st.maximum+" itens";E("progress-bar").style.width=(100*st.total/st.maximum).toFixed(1)+"%"}
 function go(to){if(!names[to])return;tab=to;document.querySelectorAll(".page").forEach(x=>x.classList.toggle("active",x.id==="page-"+to));document.querySelectorAll(".nav").forEach(x=>x.classList.toggle("active",x.dataset.tab===to));E("section-name").textContent=names[to];if(to==="grupos")renderGroup();if(to==="imagens")renderImages();if(to==="p1")renderChecks("p1");if(to==="ciencia")renderChecks("science");if(to==="relatorio")renderFinal();window.scrollTo(0,0)}
@@ -189,12 +189,128 @@ E("image-search").addEventListener("input",e=>{search=e.target.value.toLowerCase
 E("image-filter").addEventListener("change",e=>{filter=e.target.value;page=0;renderImages()});
 E("images-prev").addEventListener("click",()=>{page=Math.max(0,page-1);renderImages();window.scrollTo(0,0)});
 E("images-next").addEventListener("click",()=>{page++;renderImages();window.scrollTo(0,0)});
-const checkOptions=[["SUPPORTED","Sustentado por evidências"],["REFUTED","Não sustentado / contradito","negative"],["UNCERTAIN","Inconclusivo","maybe"]];
-function renderChecks(kind){const list=kind==="p1"?D.p1:D.science,id=kind==="p1"?"p1-list":"science-list";
- E(id).innerHTML=list.map((item,n)=>{const v=getCheck(kind,item.id);
- return '<article class="card" data-check="'+esc(kind+":"+item.id)+'"><div class="toolbar"><span class="badge">Questão '+(n+1)+" / "+list.length+'</span><span class="badge '+(checkDone(kind,item.id)?"selected":"")+'">'+(checkDone(kind,item.id)?"Respondida":"Pendente")+'</span></div><h3>'+esc(item.title)+'</h3><p>'+esc(item.description||("Commit do fitting: "+item.commit+" · SHA de treino: "+item.training_hash))+'</p><div class="question">'+esc(item.question)+'</div>'+options(checkOptions,v.decision,kind,item.id)+'<label>Justificativa e referência documental<textarea data-check-evidence="'+esc(kind+":"+item.id)+'" placeholder="Indique arquivos, SHA, trechos de código ou referências verificadas.">'+esc(v.evidence)+'</textarea></label>'+(item.source?'<p class="hint">Fonte: '+esc(item.source)+'</p>':"")+'</article>'}).join("");
+const checkOptions=[
+ ["SUPPORTED","Sim, conferi a evidência indicada"],
+ ["REFUTED","Encontrei um problema","negative"],
+ ["UNCERTAIN","Não consegui conferir / não sei","maybe"]
+];
+const CHECK_EXPLANATIONS={
+ "GT_BIPED":{
+  known:"Foram observados os valores 0, 254 e 255 em três máscaras do BIPED test, fora da coorte.",
+  unknown:"Esses valores, isoladamente, NÃO demonstram que 254 significa borda. A semântica depende da documentação original.",
+  question:"Você consultou uma fonte da versão do BIPED que confirme que 254 e 255 significam borda?",
+  how:"Se não encontrou documento ou não sabe interpretar, escolha “Não consegui conferir”. Isso é uma resposta útil."},
+ "GT_MULTICUE":{
+  known:"Doze máscaras MultiCue do grupo excluído 4113 tinham os valores 0 e 65535.",
+  unknown:"Não foi demonstrada documentalmente a polaridade para toda a coorte.",
+  question:"Você encontrou na documentação do MultiCue que o valor 65535 representa borda?",
+  how:"Não basta o número aparecer na imagem. Se não leu uma fonte que explique seu significado, marque “Não consegui conferir”."},
+ "GT_MULTIANNOTATOR":{
+  known:"Há seis anotações edges relacionadas a cada captura MultiCue no contrato proposto.",
+  unknown:"A regra de agregar as seis avaliações deve ser aceita como escolha prévia, sem contá-las como seis fotos independentes.",
+  question:"Você conferiu que cada foto MultiCue conta uma vez, combinando suas seis anotações sem multiplicar o tamanho da amostra?",
+  how:"Leia a proposta do contrato multi-anotador. Se não teve acesso ao cálculo e às regras, marque que não conseguiu conferir."},
+ "STAGE13C":{
+  known:"O histórico registra acesso a GT BIPED train para verificações técnicas de dimensão.",
+  unknown:"Esse registro sozinho não demonstra que os resultados jamais orientaram escolhas científicas.",
+  question:"Você conseguiu conferir nos logs que o uso do GT no Stage13c não foi usado para ajustar os parâmetros do Paper A?",
+  how:"Para responder SIM, verifique os relatórios de execução e a sequência histórica. Apenas ver uma foto não responde."},
+ "BIPED_UNIVERSE":{
+  known:"O inventário contém 198 candidatas BIPED; 125 foram escolhidas inicialmente.",
+  unknown:"Algumas dessas fotos mostram a mesma cena. Ter 125 arquivos não equivale a 125 cenas independentes.",
+  question:"Após comparar as imagens, você conseguiu identificar 125 cenas BIPED diferentes e elegíveis?",
+  how:"Use as seções 02 e 03. Se restarem cenas suspeitas ou fotos não avaliadas, selecione “Não consegui conferir”."},
+ "MULTICUE_SCENE":{
+  known:"Existem 95 capturas MultiCue propostas; o grupo histórico 4113 foi excluído.",
+  unknown:"A ausência de repetição entre as 95 capturas não está certificada apenas pelos nomes dos arquivos.",
+  question:"Você conseguiu conferir que nenhuma das 95 capturas MultiCue representa a mesma cena ou uma captura dependente?",
+  how:"Use a comparação de imagens e os metadados de sequência. Atenção ao alerta do prefixo 4108."},
+ "UDED_LINEAGE":{
+  known:"A checagem anterior não encontrou colisão exata de SHA-256 entre os originais comparados.",
+  unknown:"Hashes diferentes não descartam fotos do mesmo lugar ou exposição anterior durante desenvolvimento.",
+  question:"Você conseguiu excluir sobreposição de cena ou uso anterior entre UDED-14 e as imagens confirmatórias?",
+  how:"É necessário examinar a história do desenvolvimento, não apenas os hashes. Se não conferiu, responda “Não consegui conferir”."},
+ "SAMPLE_SIZE":{
+  known:"O número 220 (125 BIPED + 95 MultiCue) e o poder estimado são provisórios e anteriores à confirmação.",
+  unknown:"Uma duplicação de cena pode reduzir o número de observações independentes.",
+  question:"Depois da revisão de cenas, o plano mantém um tamanho amostral justificado sem contar duplicatas como independentes?",
+  how:"Não aprove o N só porque há 220 arquivos. Registre os agrupamentos e avalie se há alternativas suficientes."},
+ "INFERENCE":{
+  known:"O plano propõe H1 negativo, H2 positivo, Spearman por domínio, 100 mil permutações e correção de Holm.",
+  unknown:"A adequação dessa escolha estatística exige leitura do protocolo e de seus critérios de dados ausentes e empates.",
+  question:"Você leu o protocolo e confirmou que as regras de H1/H2 estão fixadas antes de abrir os resultados?",
+  how:"Confira direções, correção Holm, unidade por cena, valores ausentes e critérios de exclusão."},
+ "GT_EDGE_CASES":{
+  known:"O executor v2 foi programado para interromper a análise ao encontrar máscaras com valores ou formatos inesperados.",
+  unknown:"A forma de tratar esses casos e seus efeitos no N ainda precisa estar justificada no protocolo.",
+  question:"Você encontrou no protocolo a regra a seguir se uma máscara estiver vazia, constante ou inválida?",
+  how:"Se há ambiguidade, marque “Encontrei um problema” e descreva-a, ou “Não consegui conferir”."},
+};
+const P1_DESCRIPTIONS={
+ "H1.membership":"Parâmetros que ajustam as duas características usadas na hipótese H1.",
+ "H1.candidate_threshold":"Limiar escolhido durante o desenvolvimento para o operador candidato H1.",
+ "H1.control_threshold":"Limiar escolhido durante o desenvolvimento para o controle H1.",
+ "H2.membership":"Parâmetros que ajustam as três características da hipótese H2.",
+ "H2.candidate_threshold":"Limiar escolhido para o operador candidato H2.",
+ "H2.control_threshold":"Limiar escolhido para o controle H2.",
+ "H2.capacity":"Pesos/capacidade ajustados para o operador Choquet H2."
+};
+function renderChecks(kind){
+ const list=kind==="p1"?D.p1:D.science,id=kind==="p1"?"p1-list":"science-list";
+ E(id).innerHTML=list.map((item,n)=>{
+  const v=getCheck(kind,item.id);
+  const p1=kind==="p1";
+  const explain=p1?{
+    known:"O pipeline recompôs o hash dos 14 exemplos de desenvolvimento UDED-14 para esta parte do ajuste.",
+    unknown:"Isso não prova, sozinho, a ausência de cenas repetidas ou de exposição histórica.",
+    question:"Você conseguiu conferir nos registros que este ajuste foi feito apenas com os 14 exemplos de desenvolvimento?",
+    how:"Os identificadores de commit e SHA estão abaixo. Se você não os verificou, escolha “Não consegui conferir”."
+   }:(CHECK_EXPLANATIONS[item.id]||{
+    known:item.description||"",unknown:"Ainda precisa de revisão documental.",
+    question:item.question,how:"Marque 'Não consegui conferir' se não dispõe de evidência."
+   });
+  const technical=p1?
+   '<details class="technical"><summary>Ver dados técnicos usados como evidência</summary>'+
+   '<p class="hint">'+esc(item.title)+" — "+esc(P1_DESCRIPTIONS[item.id]||"Parte ajustada em desenvolvimento")+'</p>'+
+   '<p class="hash">Commit do ajuste: '+esc(item.commit)+'<br>SHA da lista UDED-14: '+esc(item.training_hash)+'</p>'+
+   '<p class="hint">Arquivo: P1_LINEAGE_METADATA_CROSSCHECK_NOT_APPROVED.json</p></details>':
+   '<details class="technical"><summary>Ver arquivo citado pela proposta</summary>'+
+   '<p class="hash">'+esc(item.source||"Referência documental não especificada")+'</p>'+
+   '<p class="hint">A referência é um caminho para verificação; não significa que esta tela tenha validado a documentação original.</p></details>';
+  return '<article class="card guided-review" data-check="'+esc(kind+":"+item.id)+'">'+
+   '<div class="toolbar"><span class="badge">Pergunta '+(n+1)+" / "+list.length+
+   '</span><span class="badge '+(checkDone(kind,item.id)?"selected":"")+'">'+
+   (checkDone(kind,item.id)?"Resposta registrada":"Ainda não respondida")+'</span></div>'+
+   '<h3>'+esc(item.title)+'</h3>'+
+   '<div class="evidence-explainer"><p><strong>O que o sistema já verificou ou registrou:</strong> '+esc(explain.known)+'</p>'+
+   '<p><strong>O que ainda não podemos afirmar:</strong> '+esc(explain.unknown)+'</p></div>'+
+   '<div class="question">'+esc(explain.question)+'</div>'+
+   options(checkOptions,v.decision,kind,item.id)+
+   '<p class="hint"><strong>Como responder:</strong> '+esc(explain.how)+'</p>'+
+   technical+
+   '<label>Qual documento você conferiu ou qual problema encontrou? '+
+   '<span class="hint">'+(v.decision==="UNCERTAIN"?'Opcional quando não souber':
+    'Obrigatório se marcou que conferiu ou encontrou um problema')+'</span>'+
+   '<textarea data-check-evidence="'+esc(kind+":"+item.id)+'" placeholder="Ex.: conferi o arquivo X, seção Y; ou não encontrei documentação suficiente.">'+
+   esc(v.evidence||"")+'</textarea></label>'+
+   '<p class="hint">Uma resposta “Não consegui conferir” registra a pendência; não aprova o freeze.</p>'+
+   '</article>';
+ }).join("");
 }
-for(const kind of ["p1","science"]){const id=kind==="p1"?"p1-list":"science-list";E(id).addEventListener("click",e=>{const b=e.target.closest("[data-kind]");if(!b)return;const v=getCheck(kind,b.dataset.key);v.decision=b.dataset.value;persist();renderChecks(kind)});E(id).addEventListener("input",e=>{if(e.target.matches("[data-check-evidence]")){const k=e.target.dataset.checkEvidence.split(":");getCheck(k[0],k.slice(1).join(":")).evidence=e.target.value;persist()}})}
+for(const kind of ["p1","science"]){
+ const id=kind==="p1"?"p1-list":"science-list";
+ E(id).addEventListener("click",e=>{
+  const b=e.target.closest("[data-kind]");if(!b)return;
+  const v=getCheck(kind,b.dataset.key);v.decision=b.dataset.value;
+  persist();renderChecks(kind);
+ });
+ E(id).addEventListener("input",e=>{
+  if(e.target.matches("[data-check-evidence]")){
+   const k=e.target.dataset.checkEvidence.split(":");
+   getCheck(k[0],k.slice(1).join(":")).evidence=e.target.value;persist();
+  }
+ });
+}
 function payload(){return{schema:"paper_a_human_local_visual_review_293_v1",status:"DRAFT_HUMAN_REVIEW_NOT_SCIENTIFIC_SIGNOFF",generated_utc:new Date().toISOString(),source_sha256:D.meta,reviewer:S.meta,review_notes:S.notes,stats:stats(),group_reviews:D.groups.map(g=>({id:g.id,image_ids:g.ids,...getGroup(g.id),complete:groupDone(g)})),capture_reviews:D.items.map(i=>({dataset:i.dataset,image_id:i.id,original_sha256:i.sha256,in_initial_cohort:i.in_initial_cohort,scene_group:i.scene_group,flagged_group:groupById[i.id]||null,...getImage(i.dataset+":"+i.id),complete:imageDone(i)})),P1_seven_review:D.p1.map(x=>({id:x.id,title:x.title,...getCheck("p1",x.id),complete:checkDone("p1",x.id)})),methodological_review:D.science.map(x=>({id:x.id,title:x.title,...getCheck("science",x.id),complete:checkDone("science",x.id)})),scientific_signoff_granted:false,protected_GT_access_authorized:false}}
 function download(text,filename,type){const url=URL.createObjectURL(new Blob([text],{type}));const a=document.createElement("a");a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),4000)}
 function stamp(){return new Date().toISOString().replace(/[:.]/g,"-").slice(0,19)}
