@@ -8,6 +8,7 @@ import csv
 import hashlib
 import io
 import json
+import math
 from pathlib import Path
 import re
 
@@ -44,6 +45,24 @@ def load_csv(path:Path)->list[dict]:
     with io.StringIO(read(path).decode("utf-8-sig"),newline="") as f:
         return list(csv.DictReader(f))
 
+
+
+def illustrative_two_test_holm_power(biped_n:int,multicue_n:int,abs_rho:float=0.20)->float:
+    """ANALYTICAL SENSITIVITY ONLY, NOT the preregistered power simulation.
+
+    Approximate each one-sided blocked-domain Spearman test with an independent
+    N(mu,1) statistic, mu=abs_rho*sqrt(sum_d(n_d-1)). For 2 independent
+    hypotheses Holm requires both p<=0.05 and min p<=0.025.
+    This ignores rank effects, between-test correlation and actual permutation
+    null distribution. Never use it to authorize the scientific freeze.
+    """
+    if biped_n<3 or multicue_n<3 or not 0<abs_rho<1:
+        raise ValueError("Invalid planning-only sample size/effect")
+    normal_cdf=lambda x:(1+math.erf(x/math.sqrt(2)))/2
+    mean=abs_rho*math.sqrt((biped_n-1)+(multicue_n-1))
+    p05=1-normal_cdf(1.6448536269514722-mean)
+    p025=1-normal_cdf(1.959963984540054-mean)
+    return p05*p05-(p05-p025)**2
 
 def audit(config:Path=CFG,inventory:Path=INV,selected_old:Path=OLD,
           p1_path:Path=P1,protocol:Path=PROTO,
@@ -124,6 +143,14 @@ def audit(config:Path=CFG,inventory:Path=INV,selected_old:Path=OLD,
         "roster_sha256":manifest,"proposal_source_sha256":digest(config),
         "initial_cohort_source_sha256":digest(selected_old),
         "retained_BIPED":retained,"replacement_BIPED":42,
+        "illustrative_normal_approx_joint_power_not_validated":{
+            "scenario_A_N219":round(illustrative_two_test_holm_power(125,94),4),
+            "legacy_mix_N220_same_approximation":round(illustrative_two_test_holm_power(125,95),4),
+            "assumed_homogeneous_abs_Spearman_rho":0.20,
+            "assumed_independent_H1_H2_tests":True,
+            "not_the_protocol_simulation":True,
+            "cannot_authorize_power_or_freeze":True
+        },
         "P1_lineage_metadata_consistent":p1meta,
         "existing_protocol_target_n":protocol_data.get("cohort",{}).get("target_n_independent_images"),
         "required_new_target_n":219,
