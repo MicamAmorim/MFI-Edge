@@ -71,3 +71,29 @@ a revisão anterior e gerar outra versão.
 
 **Segurança:** nenhuma resposta de "sim" altera automaticamente o protocolo,
 substitui o parecer do revisor independente ou autoriza GT confirmatório.
+
+
+## Depois de exportar o quiz — conciliação pós-quiz
+
+**Não reavalie as 293 imagens.** O pós-quiz usa o HTML/JSON que você já
+exportou e monta uma página somente com os pares/grupos contraditórios.
+
+No PowerShell, na raiz MFI-Edge, após git pull:
+
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\abrir_auditoria_paper_a_pos_quiz.ps1
+
+O script procura o relatório mais recente em Downloads e imprime seu nome
+e SHA-256. Para indicar explicitamente um relatório:
+
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\abrir_auditoria_paper_a_pos_quiz.ps1 -ReportPath "C:\Users\Windows 11\Downloads\PaperA_RELATORIO_293_2026-11-17T03-24-05.html"
+
+É gerado um diretório RECONCILIACAO_POS_QUIZ_<SHA> dentro de
+F:\MFI-Edge-Data\MultiCue\paper_a_completion\scientific_signoff\ com:
+- REVISAR_PENDENCIAS.html: decisões curtas e exportação JSON
+- AUDITORIA_POS_QUIZ.json: cruzamento de conflitos e grupos
+- MATRIZ_HISTORICA_PENDENTE.json: status técnico, histórico e limitações
+
+Importante: conferência de metadados não equivale à prova de ausência
+de uso histórico nem à assinatura independente; nenhum PASS científico,
+freeze, reamostragem ou acesso a GT confirmatório é realizado por esta rotina.
+O JSON da reconciliação deve ser analisado antes de atualizar a coorte.
