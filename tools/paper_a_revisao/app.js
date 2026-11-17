@@ -16,7 +16,17 @@ function persist(){try{localStorage.setItem(key,JSON.stringify(S))}catch(e){E("p
 const getGroup=id=>S.groups[id]||(S.groups[id]={decision:"",representative:"",subgroups:"",evidence:""});
 const getImage=x=>S.images[x]||(S.images[x]={scene:"",exposure:"",evidence:""});
 const getCheck=(kind,id)=>S[kind][id]||(S[kind][id]={decision:"",evidence:""});
-function imageDone(i){const a=S.images[i.dataset+":"+i.id]||{};return !!(a.scene&&a.exposure&&a.evidence&&a.evidence.trim().length>=25)}
+function imageDone(i){
+ const a=S.images[i.dataset+":"+i.id]||{};
+ if(!a.scene || !a.exposure)return false;
+ const pair=Object.values(a.pairReviews||{});
+ if(a.scene==="GROUP"&&!pair.includes("SAME")&&(a.evidence||"").trim().length<20)return false;
+ if(a.scene==="PASS"&&!pair.includes("DIFFERENT")&&(a.evidence||"").trim().length<25)return false;
+ if(a.scene==="EXCLUDE"&&(a.evidence||"").trim().length<15)return false;
+ if(a.exposure==="NO_RELEVANT_EXPOSURE"&&(a.evidence||"").trim().length<25)return false;
+ if(a.exposure==="EXPOSURE"&&(a.evidence||"").trim().length<15)return false;
+ return true;
+}
 function checkDone(kind,id){const a=S[kind][id]||{};return !!(a.decision&&(a.decision==="UNCERTAIN"||(a.evidence||"").trim().length>=15))}
 function stats(){const g=D.groups.filter(groupDone).length,im=D.items.filter(imageDone).length,p=D.p1.filter(x=>checkDone("p1",x.id)).length,s=D.science.filter(x=>checkDone("science",x.id)).length;return{groups:g,images:im,p1:p,science:s,total:g+im+p+s,maximum:D.groups.length+D.items.length+D.p1.length+D.science.length}}
 function updateProgress(){const st=stats();E("n-groups").textContent=st.groups+"/22";E("n-images").textContent=st.images+"/293";E("n-p1").textContent=st.p1+"/7";E("n-science").textContent=st.science+"/10";E("progress-label").textContent=st.total+"/"+st.maximum+" itens";E("progress-bar").style.width=(100*st.total/st.maximum).toFixed(1)+"%"}
@@ -142,9 +152,10 @@ E("group-pending").addEventListener("click",()=>{for(let n=1;n<=D.groups.length;
 function filtered(){return D.items.filter(i=>{const k=i.dataset+":"+i.id;if(search&&!([i.id,i.dataset,i.scene_group,i.warning,groupById[i.id]||""].join(" ").toLowerCase().includes(search)))return false;
  switch(filter){case"pending":return !imageDone(i);case"selected":return i.in_initial_cohort;case"alternate":return !i.in_initial_cohort;case"biped":return i.dataset==="BIPED";case"multicue":return i.dataset==="MultiCue";case"flagged":return Boolean(groupById[i.id]);default:return true}});
 }
-const sceneOpts=[["PASS","Independente: evidenciado"],["GROUP","Mesma cena / agrupar","negative"],["EXCLUDE","Inelegível / excluir","negative"],["UNCERTAIN","Inconclusivo","maybe"]];
-const histOpts=[["NO_RELEVANT_EXPOSURE","Ausência fundamentada"],["EXPOSURE","Exposição relevante","negative"],["UNCERTAIN","Histórico insuficiente","maybe"]];
+const sceneOpts=[["GROUP","Sim, encontrei outra foto do mesmo lugar"],["PASS","Não encontrei repetição nas fotos comparadas"],["EXCLUDE","Imagem com problema técnico","negative"],["UNCERTAIN","Ainda não sei / preciso comparar mais","maybe"]];
+const histOpts=[["NO_RELEVANT_EXPOSURE","Conferi registros: sem uso relevante"],["EXPOSURE","Achei indício de uso anterior","negative"],["UNCERTAIN","Não consultei os registros / não sei","maybe"]];
 const comparisonSelection={};
+const pairOptions=[["SAME","Sim, mostram o mesmo lugar"],["DIFFERENT","Não, são lugares diferentes"],["UNSURE","Não consigo decidir","maybe"]];
 function comparisonPanel(item){
  const sourceKey=item.dataset+":"+item.id;
  const sameDataset=D.items.filter(x=>x.dataset===item.dataset&&x.id!==item.id);
@@ -161,6 +172,12 @@ function comparisonPanel(item){
  const options= sameDataset.map(x=>'<option value="'+esc(x.id)+'" '+(x.id===reference.id?'selected':'')+
   '>'+esc(x.id)+(item.visual_references?.some(n=>n.id===x.id)?' · sugerida':'')+
   '</option>').join("");
+ const review=getImage(sourceKey).pairReviews?.[reference.id]||"";
+ const pairButtons='<div class="question">Olhando estas DUAS fotos, elas mostram o mesmo lugar?</div><div class="choices">'+
+  pairOptions.map(([value,label,tone])=>'<button type="button" class="choice '+(tone||"")+
+  ' '+(review===value?"chosen":"")+'" data-pair-source="'+esc(sourceKey)+
+  '" data-pair-target="'+esc(reference.id)+'" data-pair-value="'+esc(value)+
+  '" aria-pressed="'+String(review===value)+'">'+esc(label)+'</button>').join("")+'</div>';
  return '<div class="comparison-card"><div class="question">Compare com outras capturas antes de responder</div>'+
   '<p class="hint">Referências sugeridas por semelhança visual aproximada (não representam prova). '+
   'A seleção inclui todas as '+sameDataset.length+' outras imagens '+esc(item.dataset)+
@@ -175,14 +192,32 @@ function comparisonPanel(item){
   esc(reference.original_href)+'" target="_blank" rel="noopener">Ver original completo</a></div></div>'+
   '<p class="hint">Motivo da sugestão: '+esc(guessed?.reason==='suspected_shared_scene'?
   'par conhecido da triagem geométrica':'semelhança visual aproximada ou escolha manual')+
-  '. Registre na justificativa quais IDs comparou. A exposição histórica exige documentação, não apenas fotos.</p></div>';
+  '. Estas sugestões são uma triagem: não descartam outras imagens semelhantes.</p>'+pairButtons+
+  '<p class="hint">Comparações registradas nesta imagem: '+Object.keys(getImage(sourceKey).pairReviews||{}).length+
+  '. Use o seletor acima para conferir outras fotografias.</p></div>';
 }
 function renderImages(){const list=filtered(),pages=Math.max(1,Math.ceil(list.length/perPage));page=Math.min(page,pages-1);E("images-pos").textContent=(page+1)+" / "+pages+" · "+list.length+" imagens";E("images-prev").disabled=page===0;E("images-next").disabled=page===pages-1;
  E("image-list").innerHTML=list.slice(page*perPage,(page+1)*perPage).map(i=>{const k=i.dataset+":"+i.id,v=getImage(k),flag=groupById[i.id];
- return '<article class="card image-card" data-item="'+esc(k)+'"><div><img class="thumb" loading="lazy" src="'+esc(i.thumbnail)+'" alt="Imagem original '+esc(i.id)+'"><div class="toolbar"><span class="badge '+(i.in_initial_cohort?"selected":"alternate")+'">'+(i.in_initial_cohort?"Selecionada":"Alternativa")+'</span>'+(flag?'<span class="badge flag">'+esc(flag)+'</span>':"")+'</div><div class="hash">SHA256: '+esc(i.sha256.slice(0,22))+'…</div><a class="smalllink" href="'+esc(i.original_href)+'" target="_blank" rel="noopener">Abrir original completo</a></div><div><h3>'+esc(i.dataset+" · "+i.id)+'</h3><p class="hint">'+esc(i.warning.replaceAll("_"," "))+' · Grupo: '+esc(i.scene_group)+'</p>'+comparisonPanel(i)+'<div class="question">1. É uma observação visualmente independente das demais?</div>'+options(sceneOpts,v.scene,"scene",k)+'<div class="question">2. A evidência histórica demonstra elegibilidade sem exposição relevante?</div>'+options(histOpts,v.exposure,"exposure",k)+'<p class="hint">Para marcar ausência fundamentada, consulte logs, inventários e sobreposição com UDED-14/Stage23/24. A imagem, sozinha, não permite essa conclusão.</p>'+ 
- '<label>Documentos e justificativa para AMBAS decisões<textarea data-image-evidence="'+esc(k)+'" placeholder="Descreva cena, outras imagens comparadas, histórico e fontes.">'+esc(v.evidence)+'</textarea></label><p class="hint">'+(imageDone(i)?"Resposta fundamentada registrada":"Pendente: escolha duas respostas e forneça pelo menos 25 caracteres de justificativa.")+'</p></div></article>'}).join("");
+ return '<article class="card image-card" data-item="'+esc(k)+'"><div><img class="thumb" loading="lazy" src="'+esc(i.thumbnail)+'" alt="Imagem original '+esc(i.id)+'"><div class="toolbar"><span class="badge '+(i.in_initial_cohort?"selected":"alternate")+'">'+(i.in_initial_cohort?"Selecionada":"Alternativa")+'</span>'+(flag?'<span class="badge flag">'+esc(flag)+'</span>':"")+'</div><div class="hash">SHA256: '+esc(i.sha256.slice(0,22))+'…</div><a class="smalllink" href="'+esc(i.original_href)+'" target="_blank" rel="noopener">Abrir original completo</a></div><div><h3>'+esc(i.dataset+" · "+i.id)+'</h3><p class="hint">'+esc(i.warning.replaceAll("_"," "))+' · Grupo: '+esc(i.scene_group)+'</p>'+comparisonPanel(i)+'<div class="question">Após comparar com outras fotos, você encontrou repetição do mesmo lugar?</div>'+options(sceneOpts,v.scene,"scene",k)+
+ '<p class="hint">“Não encontrei” significa apenas que nenhuma repetição apareceu nas comparações registradas; não é garantia de independência absoluta.</p>'+
+ '<div class="question">Você consultou logs ou inventários para saber se esta foto foi usada antes no desenvolvimento?</div>'+
+ options(histOpts,v.exposure,"exposure",k)+
+ '<p class="hint">Se olhou apenas fotos, escolha “Não consultei os registros / não sei”. UDED-14 e Stage23/24 precisam de evidência documental.</p>'+ 
+ '<label>Observação ou documento consultado <span class="hint">(opcional se marcou “não sei”; necessário para afirmar ausência de uso anterior ou exclusão)</span><textarea data-image-evidence="'+esc(k)+'" placeholder="Ex.: comparei RGB_001 com RGB_002; mesma fachada. O histórico não foi analisado.">'+esc(v.evidence)+'</textarea></label>'+
+ '<p class="hint">'+(imageDone(i)?"Resposta registrada; ainda não é certificação científica":"Se indicar repetição, escolha uma comparação “mesmo lugar”. Se disser que não encontrou, registre ao menos uma comparação “lugares diferentes”.")+'</p></div></article>'}).join("");
 }
-E("image-list").addEventListener("click",e=>{const reference=e.target.closest("[data-compare-source]");if(reference){comparisonSelection[reference.dataset.compareSource]=reference.dataset.compareTarget;renderImages();return}const b=e.target.closest("[data-kind]");if(!b)return;const v=getImage(b.dataset.key);v[b.dataset.kind]=b.dataset.value;const area=E("image-list").querySelector('textarea[data-image-evidence="'+CSS.escape(b.dataset.key)+'"]');if(area)v.evidence=area.value;persist();renderImages()});
+E("image-list").addEventListener("click",e=>{
+ const pair=e.target.closest("[data-pair-source]");
+ if(pair){
+  const v=getImage(pair.dataset.pairSource);
+  if(!v.pairReviews)v.pairReviews={};
+  v.pairReviews[pair.dataset.pairTarget]=pair.dataset.pairValue;
+  comparisonSelection[pair.dataset.pairSource]=pair.dataset.pairTarget;
+  persist();renderImages();return;
+ }
+ const reference=e.target.closest("[data-compare-source]");
+ if(reference){comparisonSelection[reference.dataset.compareSource]=reference.dataset.compareTarget;renderImages();return}
+ const b=e.target.closest("[data-kind]");if(!b)return;const v=getImage(b.dataset.key);v[b.dataset.kind]=b.dataset.value;const area=E("image-list").querySelector('textarea[data-image-evidence="'+CSS.escape(b.dataset.key)+'"]');if(area)v.evidence=area.value;persist();renderImages()});
 E("image-list").addEventListener("change",e=>{if(e.target.matches("[data-compare-key]")){comparisonSelection[e.target.dataset.compareKey]=e.target.value;renderImages()}});
 E("image-list").addEventListener("input",e=>{if(e.target.matches("textarea[data-image-evidence]")){getImage(e.target.dataset.imageEvidence).evidence=e.target.value;persist()}});
 E("image-search").addEventListener("input",e=>{search=e.target.value.toLowerCase().trim();page=0;renderImages()});
