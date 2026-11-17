@@ -21,6 +21,7 @@ SIGNOFF=WORK/"scientific_signoff"
 PROTOCOL=ROOT/"docs/paper_a_confirmation/protocol.json"
 CANDIDATE=ROOT/"docs/paper_a_confirmation/COORTE_A_N219_PROPOSTA_NAO_CONGELADA.json"
 ROSTER=SIGNOFF/"COORTE_A_N219_PARA_REVISAO_NAO_FROZEN.csv"
+OLD=SIGNOFF/"REVIEW_220_IMAGES_PENDING.csv"
 READINESS=SIGNOFF/"COORTE_A_N219_READINESS_NOT_APPROVED.json"
 POWER=SIGNOFF/"PODER_A_N219_SENSIBILIDADE_NAO_APROVADA.json"
 P1=SIGNOFF/"P1_LINEAGE_METADATA_CROSSCHECK_NOT_APPROVED.json"
@@ -36,8 +37,6 @@ APPROVALS=("training_lineage","capacity_and_thresholds","ground_truth_semantics"
     "independent_scenes_and_exposure","sample_size_and_inference","independent_protocol_review")
 PROOFS=("H1.membership","H1.candidate_threshold","H1.control_threshold",
     "H2.membership","H2.candidate_threshold","H2.control_threshold","H2.capacity")
-EXPECTED_SHA_POWER_FILE="5bdb4ce167ce7d95495cc6708fd8adf02ff4247669f79220ff2a56882e9b9d3d"
-
 
 def sha(raw:bytes)->str:
     return hashlib.sha256(raw).hexdigest()
@@ -67,7 +66,7 @@ def load_csv(path:Path)->list[dict]:
 
 
 def build(*,protocol:Path=PROTOCOL,candidate:Path=CANDIDATE,
-          roster:Path=ROSTER,readiness:Path=READINESS,power:Path=POWER,
+          roster:Path=ROSTER,old:Path=OLD,readiness:Path=READINESS,power:Path=POWER,
           p1_path:Path=P1,stage:Path=STAGE13C,exe:Path=EXE,
           fmt:Path=GT_FORMAT,detail:Path=GT_DETAIL)->dict:
     cfg=load_json(candidate)
@@ -88,6 +87,16 @@ def build(*,protocol:Path=PROTOCOL,candidate:Path=CANDIDATE,
     rows=load_csv(roster)
     if len(rows)!=219 or Counter(r["dataset"] for r in rows)!={"BIPED":125,"MultiCue":94}:
         raise ValueError("Not the exact candidate-A N219 roster")
+    if sha(read_exact(old))!=cfg.get("source_cohort_sha256"):
+        raise ValueError("Legacy provisional 220-row sheet changed since human review")
+    with io.StringIO(read_exact(old).decode("utf-8-sig"),newline="") as stream:
+        old_rows=list(csv.DictReader(stream))
+    if len(old_rows)!=220 or Counter(r.get("dataset") for r in old_rows)!={"BIPED":125,"MultiCue":95}:
+        raise ValueError("Previous reviewed roster size changed")
+    old_biped={r["image_id"] for r in old_rows if r["dataset"]=="BIPED"}
+    selected_biped={r["image_id"] for r in rows if r["dataset"]=="BIPED"}
+    if len(selected_biped & old_biped)!=83 or len(selected_biped-old_biped)!=42:
+        raise ValueError("Previously reviewed vs new BIPED candidate partition changed")
     if sha(read_exact(roster))!=ready.get("review_roster_sha256"):
         raise ValueError("N219 roster SHA mismatch")
     idlist={ds:cfg["images"][ds].split(",") for ds in ("BIPED","MultiCue")}
@@ -176,8 +185,7 @@ def build(*,protocol:Path=PROTOCOL,candidate:Path=CANDIDATE,
             "reviewed_utc":"",
             "historical_attention":(
                 "NEW_BIPED_ALTERNATIVE_HISTORY_AND_SCENE_CHECK_REQUIRED"
-                if row["dataset"]=="BIPED" and row["image_id"] not in
-                   set(cfg["images"]["BIPED"].split(",")[:0])
+                if row["dataset"]=="BIPED" and row["image_id"] not in old_biped
                 else "HISTORY_AND_SCENE_CHECK_REQUIRED"),
         })
     # Every row is a pending human decision, not a machine-issued PASS.
