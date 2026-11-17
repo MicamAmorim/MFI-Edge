@@ -27,8 +27,13 @@ Write-Host "[2/3] Synthetic independent-review and freeze-invariant checks"
 & $python -m unittest discover -s tests -p "test_freeze_paper_a_from_independent_review.py" -v
 if ($LASTEXITCODE -ne 0) {throw "Legacy-to-A219 freeze tests failed"}
 Write-Host "[3/3] Generate ONLY a pending freeze preview and an unsigned human signoff template"
-$command = 'import sys,json; sys.path.insert(0,"scripts"); from freeze_paper_a_from_independent_review import prepare; print(json.dumps(prepare(),indent=2,ensure_ascii=False))'
-& $python -B -c $command
+# Native Windows process argument quoting can strip quote characters from
+# python -c; execute a dedicated script with a normal filesystem path instead.
+$entrypoint=Join-Path $PSScriptRoot "gerar_preview_freeze_a219.py"
+if (-not (Test-Path -LiteralPath $entrypoint -PathType Leaf)) {
+    throw "Missing standalone A219 preview entrypoint"
+}
+& $python -B $entrypoint
 if ($LASTEXITCODE -ne 0) {throw "N219 reviewed-freeze preflight blocked"}
 $template=Join-Path $signoff "FINAL_INDEPENDENT_REVIEW.template.json"
 $preview=Join-Path $signoff "FROZEN_PROTOCOL_BYTES_TO_REVIEW_NOT_ACTIVE.json"
