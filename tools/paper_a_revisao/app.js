@@ -59,12 +59,46 @@ function filtered(){return D.items.filter(i=>{const k=i.dataset+":"+i.id;if(sear
 }
 const sceneOpts=[["PASS","Independente: evidenciado"],["GROUP","Mesma cena / agrupar","negative"],["EXCLUDE","Inelegível / excluir","negative"],["UNCERTAIN","Inconclusivo","maybe"]];
 const histOpts=[["NO_RELEVANT_EXPOSURE","Ausência fundamentada"],["EXPOSURE","Exposição relevante","negative"],["UNCERTAIN","Histórico insuficiente","maybe"]];
+const comparisonSelection={};
+function comparisonPanel(item){
+ const sourceKey=item.dataset+":"+item.id;
+ const sameDataset=D.items.filter(x=>x.dataset===item.dataset&&x.id!==item.id);
+ const suggestions=(item.visual_references||[]).map(x=>lookup[x.dataset+":"+x.id]).filter(Boolean);
+ const selected=comparisonSelection[sourceKey]||suggestions[0]?.id||sameDataset[0]?.id;
+ const reference=sameDataset.find(x=>x.id===selected)||sameDataset[0];
+ if(!reference)return '<p class="hint">Não há imagem de referência disponível.</p>';
+ const guessed=(item.visual_references||[]).find(x=>x.id===reference.id);
+ const visualCards=suggestions.slice(0,5).map(x=>
+  '<button type="button" class="reference-chip '+(x.id===reference.id?'active ':'')+
+  '" data-compare-source="'+esc(sourceKey)+'" data-compare-target="'+esc(x.id)+'">'+
+  '<img src="'+esc(x.thumbnail)+'" loading="lazy" alt="Referência '+esc(x.id)+'"><span>'+esc(x.id)+
+  '</span></button>').join("");
+ const options= sameDataset.map(x=>'<option value="'+esc(x.id)+'" '+(x.id===reference.id?'selected':'')+
+  '>'+esc(x.id)+(item.visual_references?.some(n=>n.id===x.id)?' · sugerida':'')+
+  '</option>').join("");
+ return '<div class="comparison-card"><div class="question">Compare com outras capturas antes de responder</div>'+
+  '<p class="hint">Referências sugeridas por semelhança visual aproximada (não representam prova). '+
+  'A seleção inclui todas as '+sameDataset.length+' outras imagens '+esc(item.dataset)+
+  '; a busca não detecta necessariamente mudanças grandes de ângulo.</p>'+
+  '<div class="reference-chips">'+visualCards+'</div>'+
+  '<label>Escolha qualquer imagem do mesmo conjunto para comparar'+
+  '<select class="comparison-select" data-compare-key="'+esc(sourceKey)+'">'+options+'</select></label>'+
+  '<div class="comparison-result"><div><img class="comparison-image" src="'+esc(item.thumbnail)+
+  '" alt="Imagem principal '+esc(item.id)+'"><strong>'+esc(item.id)+' · atual</strong></div>'+
+  '<div><img class="comparison-image" src="'+esc(reference.thumbnail)+'" alt="Referência '+esc(reference.id)+
+  '"><strong>'+esc(reference.id)+' · comparação</strong><a class="smalllink" href="'+
+  esc(reference.original_href)+'" target="_blank" rel="noopener">Ver original completo</a></div></div>'+
+  '<p class="hint">Motivo da sugestão: '+esc(guessed?.reason==='suspected_shared_scene'?
+  'par conhecido da triagem geométrica':'semelhança visual aproximada ou escolha manual')+
+  '. Registre na justificativa quais IDs comparou. A exposição histórica exige documentação, não apenas fotos.</p></div>';
+}
 function renderImages(){const list=filtered(),pages=Math.max(1,Math.ceil(list.length/perPage));page=Math.min(page,pages-1);E("images-pos").textContent=(page+1)+" / "+pages+" · "+list.length+" imagens";E("images-prev").disabled=page===0;E("images-next").disabled=page===pages-1;
  E("image-list").innerHTML=list.slice(page*perPage,(page+1)*perPage).map(i=>{const k=i.dataset+":"+i.id,v=getImage(k),flag=groupById[i.id];
- return '<article class="card image-card" data-item="'+esc(k)+'"><div><img class="thumb" loading="lazy" src="'+esc(i.thumbnail)+'" alt="Imagem original '+esc(i.id)+'"><div class="toolbar"><span class="badge '+(i.in_initial_cohort?"selected":"alternate")+'">'+(i.in_initial_cohort?"Selecionada":"Alternativa")+'</span>'+(flag?'<span class="badge flag">'+esc(flag)+'</span>':"")+'</div><div class="hash">SHA256: '+esc(i.sha256.slice(0,22))+'…</div><a class="smalllink" href="'+esc(i.original_href)+'" target="_blank" rel="noopener">Abrir original completo</a></div><div><h3>'+esc(i.dataset+" · "+i.id)+'</h3><p class="hint">'+esc(i.warning.replaceAll("_"," "))+' · Grupo: '+esc(i.scene_group)+'</p><div class="question">1. É uma observação visualmente independente das demais?</div>'+options(sceneOpts,v.scene,"scene",k)+'<div class="question">2. A evidência histórica demonstra elegibilidade sem exposição relevante?</div>'+options(histOpts,v.exposure,"exposure",k)+
+ return '<article class="card image-card" data-item="'+esc(k)+'"><div><img class="thumb" loading="lazy" src="'+esc(i.thumbnail)+'" alt="Imagem original '+esc(i.id)+'"><div class="toolbar"><span class="badge '+(i.in_initial_cohort?"selected":"alternate")+'">'+(i.in_initial_cohort?"Selecionada":"Alternativa")+'</span>'+(flag?'<span class="badge flag">'+esc(flag)+'</span>':"")+'</div><div class="hash">SHA256: '+esc(i.sha256.slice(0,22))+'…</div><a class="smalllink" href="'+esc(i.original_href)+'" target="_blank" rel="noopener">Abrir original completo</a></div><div><h3>'+esc(i.dataset+" · "+i.id)+'</h3><p class="hint">'+esc(i.warning.replaceAll("_"," "))+' · Grupo: '+esc(i.scene_group)+'</p>'+comparisonPanel(i)+'<div class="question">1. É uma observação visualmente independente das demais?</div>'+options(sceneOpts,v.scene,"scene",k)+'<div class="question">2. A evidência histórica demonstra elegibilidade sem exposição relevante?</div>'+options(histOpts,v.exposure,"exposure",k)+'<p class="hint">Para marcar ausência fundamentada, consulte logs, inventários e sobreposição com UDED-14/Stage23/24. A imagem, sozinha, não permite essa conclusão.</p>'+ 
  '<label>Documentos e justificativa para AMBAS decisões<textarea data-image-evidence="'+esc(k)+'" placeholder="Descreva cena, outras imagens comparadas, histórico e fontes.">'+esc(v.evidence)+'</textarea></label><p class="hint">'+(imageDone(i)?"Resposta fundamentada registrada":"Pendente: escolha duas respostas e forneça pelo menos 25 caracteres de justificativa.")+'</p></div></article>'}).join("");
 }
-E("image-list").addEventListener("click",e=>{const b=e.target.closest("[data-kind]");if(!b)return;const v=getImage(b.dataset.key);v[b.dataset.kind]=b.dataset.value;const area=E("image-list").querySelector('textarea[data-image-evidence="'+CSS.escape(b.dataset.key)+'"]');if(area)v.evidence=area.value;persist();renderImages()});
+E("image-list").addEventListener("click",e=>{const reference=e.target.closest("[data-compare-source]");if(reference){comparisonSelection[reference.dataset.compareSource]=reference.dataset.compareTarget;renderImages();return}const b=e.target.closest("[data-kind]");if(!b)return;const v=getImage(b.dataset.key);v[b.dataset.kind]=b.dataset.value;const area=E("image-list").querySelector('textarea[data-image-evidence="'+CSS.escape(b.dataset.key)+'"]');if(area)v.evidence=area.value;persist();renderImages()});
+E("image-list").addEventListener("change",e=>{if(e.target.matches("[data-compare-key]")){comparisonSelection[e.target.dataset.compareKey]=e.target.value;renderImages()}});
 E("image-list").addEventListener("input",e=>{if(e.target.matches("textarea[data-image-evidence]")){getImage(e.target.dataset.imageEvidence).evidence=e.target.value;persist()}});
 E("image-search").addEventListener("input",e=>{search=e.target.value.toLowerCase().trim();page=0;renderImages()});
 E("image-filter").addEventListener("change",e=>{filter=e.target.value;page=0;renderImages()});
