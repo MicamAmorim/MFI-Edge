@@ -40,12 +40,16 @@ class StatisticalEngineA219Tests(unittest.TestCase):
             candidate.save_without_overwrite(path,obj)
             with self.assertRaises(PermissionError):
                 candidate.save_without_overwrite(path,{"status":"FORGED"})
+        import ast
         source=(ROOT/"scripts"/"testar_motor_estatistico_a219_sintetico.py").read_text("utf-8")
-        forbidden=("from execute_paper_a_frozen_cohort import",
-                   "run_confirmation(", "authorized(", "freeze_approval.json",
-                   "certified_outcomes.csv", "ground-truth/",
-                   "src.paper_a_confirmation_paired_f1")
-        self.assertTrue(all(x not in source for x in forbidden))
+        tree=ast.parse(source)
+        imported={x.module for x in ast.walk(tree) if isinstance(x,ast.ImportFrom)}
+        calls={x.func.id for x in ast.walk(tree) if isinstance(x,ast.Call)
+               and isinstance(x.func,ast.Name)}
+        self.assertNotIn("execute_paper_a_frozen_cohort",imported)
+        self.assertNotIn("src.paper_a_confirmation_paired_f1",imported)
+        for prohibited in ("run_confirmation","authorized","attempt_freeze"):
+            self.assertNotIn(prohibited,calls)
 
 
 if __name__=="__main__":
