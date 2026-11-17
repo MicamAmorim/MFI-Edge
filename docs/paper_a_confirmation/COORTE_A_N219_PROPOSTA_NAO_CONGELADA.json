@@ -1,0 +1,32 @@
+{
+  "schema": "paper_a_candidate_A_219_pre_freeze_v1",
+  "status": "PROPOSAL_NOT_FROZEN_NOT_APPROVED",
+  "counts": {
+    "BIPED": 125,
+    "MultiCue": 94,
+    "N": 219
+  },
+  "legacy_proposal_counts": {
+    "BIPED": 125,
+    "MultiCue": 95,
+    "N": 220
+  },
+  "images": {
+    "BIPED": "RGB_128,RGB_011,RGB_200,RGB_227,RGB_069,RGB_028,RGB_086,RGB_185,RGB_177,RGB_224,RGB_208,RGB_105,RGB_131,RGB_099,RGB_023,RGB_255,RGB_198,RGB_076,RGB_014,RGB_180,RGB_146,RGB_074,RGB_174,RGB_137,RGB_040,RGB_223,RGB_044,RGB_018,RGB_055,RGB_193,RGB_115,RGB_173,RGB_148,RGB_143,RGB_046,RGB_118,RGB_142,RGB_157,RGB_006,RGB_002,RGB_051,RGB_240,RGB_230,RGB_211,RGB_060,RGB_053,RGB_186,RGB_119,RGB_123,RGB_082,RGB_127,RGB_155,RGB_205,RGB_007,RGB_050,RGB_126,RGB_166,RGB_175,RGB_065,RGB_129,RGB_251,RGB_009,RGB_109,RGB_164,RGB_163,RGB_244,RGB_100,RGB_161,RGB_049,RGB_027,RGB_015,RGB_054,RGB_203,RGB_151,RGB_204,RGB_156,RGB_021,RGB_072,RGB_019,RGB_168,RGB_179,RGB_153,RGB_063,RGB_144,RGB_233,RGB_108,RGB_097,RGB_149,RGB_001,RGB_101,RGB_012,RGB_116,RGB_080,RGB_048,RGB_095,RGB_041,RGB_210,RGB_043,RGB_122,RGB_078,RGB_140,RGB_034,RGB_062,RGB_135,RGB_202,RGB_061,RGB_171,RGB_004,RGB_235,RGB_117,RGB_245,RGB_246,RGB_121,RGB_079,RGB_073,RGB_134,RGB_130,RGB_162,RGB_159,RGB_016,RGB_064,RGB_087,RGB_036,RGB_110,RGB_207",
+    "MultiCue": "4386_left_0020,4552_left_0080,4491_left_0070,4220_left_0221,4172_left_0067,4609_left_0080,4561_left_0100,4175_left_0184,4475_left_0010,4486_left_0036,4190_left_0161,4208_left_0052,4625_left_0140,4407_left_0100,4100_left_2268,4377_left_0016,4684_left_0010,4452_left_0010,4404_left_0010,4187_left_0071,4524_left_0040,4378_left_0011,4402_left_0040,4504_left_0025,4668_left_0130,4184_left_0048,4641_left_0030,4403_left_0010,4409_left_0020,4676_left_0093,4663_left_0010,4453_left_0020,4200_left_0221,4687_left_0130,4603_left_0050,4192_left_0221,4680_left_0170,4101_left_0382,4484_left_0040,4564_left_0010,4451_left_0020,4665_left_0040,4178_left_0052,4567_left_0030,4596_left_0020,4398_left_0100,4588_left_0200,4186_left_0127,4449_left_0290,4644_left_0120,4209_left_0034,4210_left_0296,4382_left_0015,4571_left_0062,4457_left_0050,4494_left_0070,4171_left_0221,4523_left_0070,4163_left_0052,4673_left_0115,4669_left_0080,4710_left_0035,4420_left_0040,4198_left_0034,4674_left_0100,4097_left_0667,4483_left_0170,4605_left_0220,4685_left_0045,4179_left_0315,4188_left_0315,4108_left_0082,4629_left_0050,4383_left_0010,4568_left_0020,4470_left_0010,4406_left_0030,4689_left_0050,4396_left_0050,4380_left_0025,4177_left_0071,4582_left_0020,4114_left_0611,4597_left_0010,4548_left_0080,4638_left_0070,4176_left_0273,4640_left_0080,4492_left_0090,4580_left_0165,4592_left_0020,4569_left_0060,4385_left_0020,4558_left_0260"
+  },
+  "roster_sha256_sorted_dataset_id_source_sha": "78cc7c4b36e0fc6faf9996c3dd760cbc8b97f21cfe23c18e26d4f31f7e8ae1d2",
+  "original_csv_sha256": "a10f8645b1dba8e0677834911149d9e3177bb55aaee200189949612f62fd4694",
+  "source_cohort_sha256": "03a56e57ad85b6b6872b9f3b2d55433738d1b76a7d705059113d002a5b4886c8",
+  "source_review_sha256": "01fb18f6e368b9f3d9bda036eb56982b1c423e79369e2365043923c6c5225206",
+  "source_reconciliation_sha256": "78f7264164c9c35cab1103b87fff2569e531697ab8dc462f73ca09efaf0108c3",
+  "source_second_pass_sha256": "e7c35a8f505076229e87c041abf49a74447f9ec05d5c21e440095b60fe55d88b",
+  "conflicted_BIPED_quarantined_count": 16,
+  "historical_exposure_approved": false,
+  "GT_semantics_approved": false,
+  "independent_scene_approval": false,
+  "power_for_new_domain_mix_approved": false,
+  "freeze_authorized": false,
+  "outcomes_access_authorized": false,
+  "note": "Prospective draft after three human visual review rounds, not an approved cohort. Never use GT/F1/H1/H2 to change this roster."
+}
