@@ -24,7 +24,7 @@ P1=ROOT/"docs/paper_a_confirmation/P1_DEVELOPMENT_RECIPE_UNATTESTED.json"
 EXECUTOR=ROOT/"scripts/execute_paper_a_frozen_cohort.py"
 from paper_a_freeze_guard import GT_POLICY_V2 as BIN_POLICY
 BRANCH="experiment/paper-a-conditional-confirmation"
-OUT_COMMIT_NOTE="freeze(paper-a): reviewed prospective H1/H2 protocol and N220 cohort"
+OUT_COMMIT_NOTE="freeze(paper-a): independently reviewed prospective H1/H2 protocol and N219 cohort"
 PROOFS=("H1.membership","H1.candidate_threshold","H1.control_threshold",
         "H2.membership","H2.candidate_threshold","H2.control_threshold","H2.capacity")
 APPROVALS=("training_lineage","capacity_and_thresholds","ground_truth_semantics",
@@ -38,6 +38,14 @@ REVIEW_FIELDS=ROWS+("reviewer_independence_decision",
 SOURCE_SNAPSHOT=SIGNOFF/"FROZEN_PROTOCOL_BYTES_TO_REVIEW_NOT_ACTIVE.json"
 TEMPLATE=SIGNOFF/"FINAL_INDEPENDENT_REVIEW.template.json"
 SIGNED=SIGNOFF/"FINAL_INDEPENDENT_REVIEW.json"
+A_DIR=SIGNOFF/"CANDIDATE_A_N219_SCIENCE_REVIEW_NOT_ACTIVE"
+REVIEW_SHEET=A_DIR/"REVIEW_A_N219_ALL_PENDING.csv"
+CANDIDATE_A=ROOT/"docs/paper_a_confirmation/COORTE_A_N219_PROPOSTA_NAO_CONGELADA.json"
+ROSTER_A=SIGNOFF/"COORTE_A_N219_PARA_REVISAO_NAO_FROZEN.csv"
+READINESS_A=SIGNOFF/"COORTE_A_N219_READINESS_NOT_APPROVED.json"
+POWER_A=SIGNOFF/"PODER_A_N219_SENSIBILIDADE_NAO_APROVADA.json"
+SCIENTIFIC_PREVIEW_A=A_DIR/"PROTOCOLO_N219_PARA_REVISAO_NAO_ATIVO.json"
+A_COUNTS={"BIPED":125,"MultiCue":94}
 GT_FORMAT_EVIDENCE=SIGNOFF/"NONCONFIRMATORY_GT_ENCODING_EVIDENCE.json"
 GT_DETAIL_EVIDENCE=SIGNOFF/"GT_PIXEL_ENCODING_DETAIL_PRE_FREEZE_v1.json"
 
@@ -73,19 +81,19 @@ def freeze_candidate(protocol: dict) -> dict:
     candidate["status"]="frozen"
     candidate["confirmatory_outcomes_opened"]=False
     candidate["freeze_commit"]=None
-    candidate["cohort"]["target_n_independent_images"]=220
+    candidate["cohort"]["target_n_independent_images"]=219
     candidate["cohort"]["dataset_names"]=["BIPED","MultiCue"]
     candidate["measures"]["unit"]="independent_capture_or_scene"
     candidate["cohort"]["selection"]=(
-        "Prospective fixed sample: 125 BIPED independent originals and 95 "
-        "independent MultiCue captures, one per reviewed scene/prefix, with "
-        "hash-ranked deterministic representatives and historic 4113 exclusion. "
+        "Prospective candidate A: 125 BIPED and 94 MultiCue originals. "
+        "Identities fixed by 219 source SHA256s, 42 BIPED replacements, "
+        "16 disputed BIPED scenes quarantined, 4113 excluded. "
         "Each one must have passed the independent exposure and scene audit "
         "before this protocol is committed.")
     candidate["cohort"]["power_analysis"]=(
-        "Pre-outcome simulation: 1000 repetitions, homogeneous absolute "
-        "rho=0.20, 125 BIPED + 95 MultiCue, joint power about 0.823; "
-        "conditional only, not observed post-confirmatory evidence.")
+        "Pre-outcome 10000-replicate Gaussian copula planning simulation, homogeneous "
+        "rho=0.20, 125 BIPED + 94 MultiCue, planning joint power about 0.815; "
+        "asymptotic normal rather than exact permutation p; conditionally assumed independent scenes. Not confirmed outcomes.")
     contract=candidate["measures"].pop("ground_truth_contract_proposal")
     contract["encoding"]=BIN_POLICY
     contract["validation"]=(
@@ -207,7 +215,7 @@ def prepare() -> dict:
         SOURCE_SNAPSHOT.write_bytes(desired_bytes)
     elif not SOURCE_SNAPSHOT.exists():
         SOURCE_SNAPSHOT.write_bytes(desired_bytes)
-    reviewed=SIGNOFF/"REVIEW_220_IMAGES_PENDING.csv"
+    reviewed=REVIEW_SHEET
     original_sha=sha(PROTOCOL)
     candidate_sha=sha(SOURCE_SNAPSHOT)
     plan={
@@ -337,8 +345,8 @@ def validate_signed_decision(decision: dict, sheet: list[dict],
     # The matching metadata does not grant approval; the independently
     # authored scientific_approvals.ground_truth_semantics and full reviewer
     # evidence are separate mandatory checks above.
-    if len(sheet)!=220:
-        raise PermissionError("Review sheet does not have 220 original captures")
+    if len(sheet)!=219:
+        raise PermissionError("Review sheet does not have 219 original captures")
     counts={"BIPED":0,"MultiCue":0}
     ids,groups,hashes=set(),set(),set()
     for i,row in enumerate(sheet):
@@ -362,8 +370,8 @@ def validate_signed_decision(decision: dict, sheet: list[dict],
         ids.add(key);groups.add(grp);hashes.add(hashval)
         if row.get("scene_group")=="4113" and ds=="MultiCue":
             raise PermissionError("Previously exposed MultiCue group 4113 forbidden")
-    if counts!={"BIPED":125,"MultiCue":95}:
-        raise PermissionError("Proposed domain mix changed; re-plan independently before freeze")
+    if counts!=A_COUNTS:
+        raise PermissionError("Proposed A219 mix changed; re-plan independently before freeze")
 
 
 def version_freeze_evidence(recipe: Path, cohort: Path,
@@ -546,7 +554,7 @@ def resume_freeze_after_interrupted_push() -> dict:
         SOURCE_SNAPSHOT.read_bytes()!=PROTOCOL.read_bytes()):
         raise PermissionError("Frozen commit differs from originally reviewed protocol")
     decision=json.loads(SIGNED.read_text(encoding="utf-8"))
-    sheet_path=SIGNOFF/"REVIEW_220_IMAGES_PENDING.csv"
+    sheet_path=REVIEW_SHEET
     sheet=csvrows(sheet_path)
     stage=ROOT/"results/automation/stage13c_biped_preflight/summary.json"
     validate_signed_decision(decision,sheet,original,SOURCE_SNAPSHOT,
@@ -598,7 +606,7 @@ def attempt_freeze() -> dict:
     if not SIGNED.is_file():
         return {"status":"AWAITING_INDEPENDENT_SCIENTIFIC_SIGNOFF",
                 "review_template":str(TEMPLATE),
-                "review_sheet":str(SIGNOFF/"REVIEW_220_IMAGES_PENDING.csv"),
+                "review_sheet":str(REVIEW_SHEET),
                 "freeze_commit_created":False}
     protocol=json.loads(PROTOCOL.read_text(encoding="utf-8"))
     if protocol.get("status")=="frozen":
@@ -606,7 +614,7 @@ def attempt_freeze() -> dict:
     if protocol.get("status")!="draft_not_frozen":
         raise PermissionError("Unexpected protocol status; no freeze transition")
     decision=json.loads(SIGNED.read_text(encoding="utf-8"))
-    sheet_path=SIGNOFF/"REVIEW_220_IMAGES_PENDING.csv"
+    sheet_path=REVIEW_SHEET
     sheet=csvrows(sheet_path)
     stage=ROOT/"results/automation/stage13c_biped_preflight/summary.json"
     validate_signed_decision(decision,sheet,PROTOCOL,SOURCE_SNAPSHOT,
