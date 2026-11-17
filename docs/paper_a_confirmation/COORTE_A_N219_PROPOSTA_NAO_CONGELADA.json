@@ -28,5 +28,7 @@
   "power_for_new_domain_mix_approved": false,
   "freeze_authorized": false,
   "outcomes_access_authorized": false,
-  "note": "Prospective draft after three human visual review rounds, not an approved cohort. Never use GT/F1/H1/H2 to change this roster."
+  "note": "Prospective draft after three human visual review rounds, not an approved cohort. Never use GT/F1/H1/H2 to change this roster.",
+  "quarantine_BIPED_ids": "RGB_088,RGB_089,RGB_091,RGB_093,RGB_103,RGB_104,RGB_178,RGB_112,RGB_113,RGB_213,RGB_216,RGB_217,RGB_218,RGB_219,RGB_220,RGB_221",
+  "excluded_MultiCue_possible_repeated_capture": "4586_left_0080"
 }
