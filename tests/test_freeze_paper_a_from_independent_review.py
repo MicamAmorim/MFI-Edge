@@ -80,7 +80,9 @@ class ReviewedFreezeTests(unittest.TestCase):
             out=fr.freeze_candidate(p)
             self.assertEqual(out["status"],"frozen")
             self.assertIsNone(out["freeze_commit"])
-            self.assertEqual(out["cohort"]["target_n_independent_images"],220)
+            self.assertEqual(out["cohort"]["target_n_independent_images"],219)
+            self.assertIn("125 BIPED and 94 MultiCue",out["cohort"]["selection"])
+            self.assertIn("0.815",out["cohort"]["power_analysis"])
             self.assertEqual(p["status"],"draft_not_frozen")
 
     def test_rejects_missing_external_authorization_without_touching_gt(self):
@@ -96,6 +98,17 @@ class ReviewedFreezeTests(unittest.TestCase):
         self.assertIn("P1_seven_lineage_reviews",s)
         self.assertIn("ground_truth_encoding_evidence",s)
         self.assertIn("stage13c_exposure_evidence",s)
+
+    def test_n219_external_review_is_exactly_bound_to_unsigned_sources(self):
+        import inspect
+        self.assertIn("a219.validate_sources()",inspect.getsource(fr.prepare))
+        self.assertIn("a219.validate_reviewed_rows",inspect.getsource(fr.prepare))
+        self.assertIn("source_binding=a219.validate_sources()",inspect.getsource(fr.validate_signed_decision))
+        self.assertIn('require_groups=True',inspect.getsource(fr.validate_signed_decision))
+        self.assertIn("reviewed_A219_power_report_sha256",
+                      inspect.getsource(fr.validate_signed_decision))
+        self.assertTrue(fr.REVIEW_SHEET.name.startswith("REVIEW_A_N219"))
+        self.assertIn("N219 cohort",fr.OUT_COMMIT_NOTE)
 
     def test_duplicate_scene_protection_exists(self):
         import inspect
