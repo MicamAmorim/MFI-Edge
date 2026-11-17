@@ -1,0 +1,85 @@
+scope,dataset,id_a,role_a,id_b,role_b,inliers,decision,evidence
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_015,candidate,RGB_016,candidate,370,SAME_SCENE_VISUAL,"Estruturas e objetos fixos coincidentes no par, confirmados visualmente; correspondências SIFT registradas."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_156,candidate,RGB_159,candidate,326,SAME_SCENE_VISUAL,"Estruturas e objetos fixos coincidentes no par, confirmados visualmente; correspondências SIFT registradas."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_063,candidate,RGB_062,candidate,290,SAME_SCENE_VISUAL,"Estruturas e objetos fixos coincidentes no par, confirmados visualmente; correspondências SIFT registradas."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_129,candidate,RGB_130,candidate,235,SAME_SCENE_VISUAL,"Estruturas e objetos fixos coincidentes no par, confirmados visualmente; correspondências SIFT registradas."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_062,candidate,RGB_061,candidate,234,SAME_SCENE_VISUAL,"Estruturas e objetos fixos coincidentes no par, confirmados visualmente; correspondências SIFT registradas."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_116,candidate,RGB_117,candidate,214,SAME_SCENE_VISUAL,"Estruturas e objetos fixos coincidentes no par, confirmados visualmente; correspondências SIFT registradas."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_040,candidate,RGB_041,candidate,189,SAME_SCENE_VISUAL,"Estruturas e objetos fixos coincidentes no par, confirmados visualmente; correspondências SIFT registradas."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_203,candidate,RGB_202,candidate,188,SAME_SCENE_VISUAL,"Estruturas e objetos fixos coincidentes no par, confirmados visualmente; correspondências SIFT registradas."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_244,candidate,RGB_245,candidate,187,SAME_SCENE_VISUAL,"Estruturas e objetos fixos coincidentes no par, confirmados visualmente; correspondências SIFT registradas."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_131,candidate,RGB_129,candidate,185,SAME_SCENE_VISUAL,"Estruturas e objetos fixos coincidentes no par, confirmados visualmente; correspondências SIFT registradas."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_063,candidate,RGB_061,candidate,174,SAME_SCENE_VISUAL,"Estruturas e objetos fixos coincidentes no par, confirmados visualmente; correspondências SIFT registradas."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_055,candidate,RGB_054,candidate,157,SAME_SCENE_VISUAL,"Estruturas e objetos fixos coincidentes no par, confirmados visualmente; correspondências SIFT registradas."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_233,candidate,RGB_235,candidate,147,SAME_SCENE_VISUAL,"Estruturas e objetos fixos coincidentes no par, confirmados visualmente; correspondências SIFT registradas."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_148,candidate,RGB_149,candidate,146,SAME_SCENE_VISUAL,"Mesmo cruzamento: correspondências SIFT em estruturas de fundo, além da revisão visual."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_227,candidate,RGB_230,candidate,114,SAME_SCENE_VISUAL,Mesma fachada e jardim do edifício do campus; vistas deslocadas.
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_211,candidate,RGB_210,candidate,103,SAME_SCENE_VISUAL,"Mesmo trecho de muro e grade, estrutura de tijolos e campo ao fundo."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_185,candidate,RGB_186,candidate,77,SAME_SCENE_VISUAL,"Mesma cerca viva, edifício ao fundo e esquina com sinalização."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_028,candidate,RGB_027,candidate,69,SAME_SCENE_VISUAL,"Mesmo cruzamento, contêineres e muros de pedra/tijolos."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_006,candidate,RGB_007,candidate,64,SAME_SCENE_VISUAL,"Mesma faixa de pedestres, van e linha de veículos."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_119,candidate,RGB_121,candidate,56,SAME_SCENE_VISUAL,"Estruturas e objetos fixos coincidentes no par, confirmados visualmente; correspondências SIFT registradas."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_080,candidate,RGB_079,candidate,49,SAME_SCENE_VISUAL,"Mesmo cruzamento, carros branco/vermelho e muro de pedras."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_050,candidate,RGB_049,candidate,43,SAME_SCENE_VISUAL,"Estruturas e objetos fixos coincidentes no par, confirmados visualmente; correspondências SIFT registradas."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_109,candidate,RGB_110,candidate,38,SAME_SCENE_VISUAL,"Estruturas e objetos fixos coincidentes no par, confirmados visualmente; correspondências SIFT registradas."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_014,candidate,RGB_018,candidate,37,SAME_SCENE_VISUAL,"Estruturas e objetos fixos coincidentes no par, confirmados visualmente; correspondências SIFT registradas."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_046,candidate,RGB_043,candidate,33,SAME_SCENE_VISUAL,"Mesmo muro de pedras, cerca viva, poste e portão cinza em outra porção da fachada."
+A219_SIFT_WITHIN_DOMAIN,MultiCue,4567_left_0030,candidate,4568_left_0020,candidate,28,SAME_SCENE_VISUAL,"Mesmo recinto, troncos e parede ao fundo; gorila em posições diferentes."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_122,candidate,RGB_121,candidate,26,SAME_SCENE_VISUAL,"Estruturas e objetos fixos coincidentes no par, confirmados visualmente; correspondências SIFT registradas."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_118,candidate,RGB_119,candidate,25,SAME_SCENE_VISUAL,"Mesma entrada, carro prata e automóvel preto vistos de pontos vizinhos."
+A219_SIFT_WITHIN_DOMAIN,MultiCue,4398_left_0100,candidate,4396_left_0050,candidate,22,SAME_SCENE_VISUAL,"Estruturas e objetos fixos coincidentes no par, confirmados visualmente; correspondências SIFT registradas."
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_099,candidate,RGB_100,candidate,20,SAME_SCENE_VISUAL,Mesmo muro de pedra e portão horizontal cinza.
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_012,candidate,RGB_016,candidate,10,SAME_SCENE_VISUAL,Mesmo muro e placa Carrer de Segre.
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_203,candidate,RGB_130,candidate,7,FALSE_POSITIVE_VISUAL,Falso positivo: placa de proibição e padrões de portão em edifícios diferentes.
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_161,candidate,RGB_116,candidate,6,FALSE_POSITIVE_VISUAL,Falso positivo visual: casas e materiais diferentes; correspondências insuficientes para o mesmo local.
+A219_SIFT_WITHIN_DOMAIN,BIPED,RGB_203,candidate,RGB_140,candidate,6,FALSE_POSITIVE_VISUAL,Falso positivo: padrões de persianas/portão; fachadas visualmente diferentes.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_102,historical_test,RGB_101,candidate,832,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_059,historical_test,RGB_060,candidate,712,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_170,historical_test,RGB_171,candidate,557,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_094,historical_test,RGB_095,candidate,499,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_066,historical_test,RGB_065,candidate,473,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_056,historical_test,RGB_055,candidate,468,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_090,historical_test,RGB_087,candidate,433,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_124,historical_test,RGB_123,candidate,432,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_160,historical_test,RGB_161,candidate,423,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_052,historical_test,RGB_053,candidate,395,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_010,historical_test,RGB_009,candidate,371,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_081,historical_test,RGB_082,candidate,371,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_181,historical_test,RGB_180,candidate,357,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_120,historical_test,RGB_119,candidate,275,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_192,historical_test,RGB_193,candidate,269,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_120,historical_test,RGB_121,candidate,266,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_206,historical_test,RGB_204,candidate,260,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_139,historical_test,RGB_140,candidate,243,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_075,historical_test,RGB_074,candidate,235,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_035,historical_test,RGB_034,candidate,227,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_033,historical_test,RGB_028,candidate,203,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_234,historical_test,RGB_235,candidate,201,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_107,historical_test,RGB_108,candidate,197,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_228,historical_test,RGB_227,candidate,188,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_248,historical_test,RGB_251,candidate,149,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_254,historical_test,RGB_255,candidate,137,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_033,historical_test,RGB_027,candidate,107,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_081,historical_test,RGB_080,candidate,98,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_237,historical_test,RGB_240,candidate,95,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_132,historical_test,RGB_131,candidate,83,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_083,historical_test,RGB_080,candidate,77,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_234,historical_test,RGB_233,candidate,66,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_083,historical_test,RGB_079,candidate,62,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_071,historical_test,RGB_072,candidate,61,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_111,historical_test,RGB_109,candidate,41,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_057,historical_test,RGB_055,candidate,38,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_247,historical_test,RGB_244,candidate,34,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_008,historical_test,RGB_007,candidate,32,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_228,historical_test,RGB_230,candidate,31,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_145,historical_test,RGB_151,candidate,30,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_254,historical_test,RGB_246,candidate,25,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_035,historical_test,RGB_027,candidate,17,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_120,historical_test,RGB_122,candidate,16,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_145,historical_test,RGB_149,candidate,16,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_226,historical_test,RGB_230,candidate,15,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_212,historical_test,RGB_211,candidate,14,UNRESOLVED_SHARED_SCENE,Apenas trecho de meio-fio/asfalto: não há identidade visual suficiente.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_067,historical_test,RGB_069,candidate,10,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_042,historical_test,RGB_041,candidate,7,SAME_SCENE_HISTORICALLY_EVALUATED,Mesmos veículos e/ou estruturas permanentes em tomadas vizinhas; histórico test confirmado no resumo Stage13d.
+A219_VS_HISTORICAL_TEST,BIPED,RGB_066,historical_test,RGB_078,candidate,6,PROBABLE_SHARED_SCENE,"Contêineres e corredor de rua compatíveis, mas correspondência escassa; manter em quarentena."
+A219_VS_HISTORICAL_TEST,BIPED,RGB_090,historical_test,RGB_203,candidate,6,FALSE_POSITIVE_VISUAL,Falso positivo de portões/placa; fachadas diferentes.
