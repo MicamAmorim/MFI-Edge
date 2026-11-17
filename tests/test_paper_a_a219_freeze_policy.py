@@ -37,6 +37,17 @@ class A219FreezeBindingTests(unittest.TestCase):
         self.assertEqual(proc.returncode,0,proc.stdout+proc.stderr)
         self.assertIn("A219_PREVIEW_IMPORTS_OK_NO_ACTION",proc.stdout)
 
+    def test_standalone_preview_import_in_isolated_python(self):
+        import subprocess
+        script=ROOT/"scripts"/"gerar_preview_freeze_a219.py"
+        with tempfile.TemporaryDirectory() as other_directory:
+            proc=subprocess.run(
+                [sys.executable,"-I","-B",str(script),"--check-import-only"],
+                cwd=other_directory,capture_output=True,text=True,
+                timeout=30,check=False)
+        self.assertEqual(proc.returncode,0,proc.stdout+proc.stderr)
+        self.assertIn("A219_PREVIEW_IMPORTS_OK_NO_ACTION",proc.stdout)
+
     def test_standalone_preview_never_invokes_freeze(self):
         import ast
         script=ROOT/"scripts"/"gerar_preview_freeze_a219.py"
