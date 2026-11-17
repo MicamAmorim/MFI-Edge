@@ -83,7 +83,7 @@ class ConsolidateReconciliationTests(unittest.TestCase):
             "images":t["images"],"decision":t["choices"][-1][0],
             "note":""} for t in tasks]
         rec={"schema":audit.SCHEMA,"source_report_sha256":"a"*64,
-             "source_cohort_sha256":"b"*64,
+             "source_cohort_sha256":doc["source_sha256"]["cohort_sheet_sha256"],
              "scientific_signoff_granted":False,
              "protected_gt_access_authorized":False,
              "status":"RECONCILIATION_NOT_SIGNOFF","answers":responses}
@@ -113,10 +113,11 @@ class ConsolidateReconciliationTests(unittest.TestCase):
                 "latest_group_vs_pair_conflict":False,
                 "positive_evidence":[],"negative_evidence":[]}]}
         html=audit.review_page(report)
-        self.assertIn("RGB_001 → RGB_002 → RGB_003",html if "RGB_001 →" in html else "RGB_001 → RGB_002 → RGB_003")
+        self.assertIn('"positive_path":["RGB_001","RGB_002","RGB_003"]',html)
+        self.assertIn("c.positive_path.join",html)
         self.assertIn("scientific_signoff:false",html)
         self.assertIn("protected_gt_access:false",html)
-        self.assertIn("REVISAR_CONFLITOS_RESTANTES",audit.main.__code__.co_consts.__str__() if False else "REVISAR_CONFLITOS_RESTANTES")
+        self.assertNotIn("grant_approval",html)
 
 
 def first_fixture():
