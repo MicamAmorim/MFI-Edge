@@ -23,6 +23,7 @@ PROTOCOL=ROOT/"docs/paper_a_confirmation/protocol.json"
 P1=ROOT/"docs/paper_a_confirmation/P1_DEVELOPMENT_RECIPE_UNATTESTED.json"
 EXECUTOR=ROOT/"scripts/execute_paper_a_frozen_cohort.py"
 from paper_a_freeze_guard import GT_POLICY_V2 as BIN_POLICY
+import paper_a_a219_freeze_policy as a219
 BRANCH="experiment/paper-a-conditional-confirmation"
 OUT_COMMIT_NOTE="freeze(paper-a): independently reviewed prospective H1/H2 protocol and N219 cohort"
 PROOFS=("H1.membership","H1.candidate_threshold","H1.control_threshold",
@@ -199,6 +200,8 @@ def prepare() -> dict:
     if protocol.get("status")!="draft_not_frozen":
         return {"status":"VERSIONED_PROTOCOL_ALREADY_NON_DRAFT",
                 "external_approval_not_issued":True}
+    metadata=a219.validate_sources()
+    a219.validate_reviewed_rows(csvrows(REVIEW_SHEET),metadata["baseline_rows"])
     draft=freeze_candidate(protocol)
     desired=jsonify(draft)
     desired_bytes=desired.encode("utf-8")
@@ -235,6 +238,10 @@ def prepare() -> dict:
         "reviewed_frozen_protocol_preview_sha256":candidate_sha,
         "reviewed_cohort_sheet_sha256":sha(reviewed) if reviewed.is_file() else None,
         "reviewed_P1_recipe_sha256":sha(P1),
+        "reviewed_candidate_A_sha256":metadata["candidate_A_sha256"],
+        "reviewed_A219_roster_sha256":metadata["roster_A_sha256"],
+        "reviewed_A219_power_report_sha256":metadata["power_A_sha256"],
+        "reviewed_N219_preliminary_protocol_sha256":metadata["N219_preliminary_protocol_sha256"],
         "approved_executor_source_sha256":sha(EXECUTOR),
         "approved_runtime_sources_sha256":__import__(
             "paper_a_freeze_guard",fromlist=["runtime_source_hashes"]
@@ -257,6 +264,10 @@ def prepare() -> dict:
                 "reviewed_frozen_protocol_preview_sha256",
                 "reviewed_cohort_sheet_sha256",
                 "reviewed_P1_recipe_sha256",
+                "reviewed_candidate_A_sha256",
+                "reviewed_A219_roster_sha256",
+                "reviewed_A219_power_report_sha256",
+                "reviewed_N219_preliminary_protocol_sha256",
                 "approved_executor_source_sha256",
                 "approved_runtime_sources_sha256",
                 "nonconfirmatory_gt_format_sha256",
@@ -327,6 +338,10 @@ def validate_signed_decision(decision: dict, sheet: list[dict],
         "reviewed_frozen_protocol_preview_sha256":sha(preview),
         "reviewed_cohort_sheet_sha256":sha(sheet_path),
         "reviewed_P1_recipe_sha256":sha(source_recipe),
+        "reviewed_candidate_A_sha256":a219.validate_sources()["candidate_A_sha256"],
+        "reviewed_A219_roster_sha256":a219.validate_sources()["roster_A_sha256"],
+        "reviewed_A219_power_report_sha256":a219.validate_sources()["power_A_sha256"],
+        "reviewed_N219_preliminary_protocol_sha256":a219.validate_sources()["N219_preliminary_protocol_sha256"],
         "approved_executor_source_sha256":sha(executor),
         "approved_runtime_sources_sha256":__import__(
             "paper_a_freeze_guard",fromlist=["runtime_source_hashes"]
@@ -372,6 +387,8 @@ def validate_signed_decision(decision: dict, sheet: list[dict],
             raise PermissionError("Previously exposed MultiCue group 4113 forbidden")
     if counts!=A_COUNTS:
         raise PermissionError("Proposed A219 mix changed; re-plan independently before freeze")
+    evidence=a219.validate_sources()
+    a219.validate_reviewed_rows(sheet,evidence["baseline_rows"],require_groups=True)
 
 
 def version_freeze_evidence(recipe: Path, cohort: Path,
