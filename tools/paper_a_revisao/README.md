@@ -48,3 +48,26 @@ O HTML usa CSS/JS locais e não exige rede, servidor, serviços externos ou logi
 Se o inventário mudar, o gerador bloqueia reutilizar o mesmo diretório de
 revisão com metadados distintos. Exporte suas respostas antes de arquivar
 a revisão anterior e gerar outra versão.
+
+
+## Como responder ao quiz simplificado
+
+- **Grupos 02:** olhe edifícios, postes, rua e paisagem. Responda se todas as
+  fotos mostram o mesmo lugar, apenas algumas, nenhuma, ou se não sabe.
+  Se todas forem uma cena, indique um original representativo; não exclui nada.
+  Se apenas algumas forem uma cena, marque quais se parecem com a primeira.
+- **Capturas 03:** use a comparação lado a lado. Para cada par respondido,
+  marque "mesmo lugar", "lugares diferentes" ou "não consigo decidir".
+  O resultado da comparação fica registrado no JSON, com os IDs das fotos.
+  O quiz também separa a pergunta sobre histórico de desenvolvimento:
+  **olhar a imagem não é evidência de ausência de exposição**.
+- **P1 04 e GT/método 05:** cada questão mostra o que o pipeline já registrou
+  e o que ainda falta provar documentalmente. Você NÃO precisa aprovar sem
+  conhecer a fonte: selecione "Não consegui conferir / não sei" quando for
+  esse o caso. Essa resposta fica registrada como pendência, não signoff.
+- **Relatório:** exporte HTML e JSON. Os grupos, referências comparadas,
+  critérios visuais e respostas P1/GT são incluídos. O JSON permite retomar
+  a revisão sem fabricar aprovação.
+
+**Segurança:** nenhuma resposta de "sim" altera automaticamente o protocolo,
+substitui o parecer do revisor independente ou autoriza GT confirmatório.
