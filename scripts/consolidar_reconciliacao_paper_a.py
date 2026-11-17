@@ -14,6 +14,17 @@ import hashlib
 import itertools
 import json
 from pathlib import Path
+import sys
+
+# Resolve the helper from this exact repository's scripts/ directory. Windows
+# direct execution and isolated launchers may not inherit that import path.
+SCRIPTS_DIR = Path(__file__).resolve().parent
+if not (SCRIPTS_DIR / "auditar_paper_a_pos_quiz.py").is_file():
+    raise FileNotFoundError(
+        "Missing sibling scripts/auditar_paper_a_pos_quiz.py; update branch and inspect checkout"
+    )
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
 
 from auditar_paper_a_pos_quiz import load_quiz_report, reconcile_tasks, verify_sources, SIGNOFF
 
