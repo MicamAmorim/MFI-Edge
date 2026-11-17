@@ -16,6 +16,50 @@ import build_paper_a_review_quiz as q
 
 
 class OfflineReviewTests(unittest.TestCase):
+    def test_objective_review_questions_and_json_roundtrip_contract(self):
+        ui=(ROOT/"tools/paper_a_revisao/app.js").read_text(encoding="utf-8")
+        html=(ROOT/"tools/paper_a_revisao/index.template.html").read_text(encoding="utf-8")
+        for text in (
+            "Sim, todas mostram o mesmo lugar",
+            "Apenas algumas mostram o mesmo lugar",
+            "Não, mostram lugares diferentes",
+            "Não consigo decidir",
+            "Qual detalhe fixo você usou para comparar?",
+            "Os mesmos prédios/fachadas",
+            "As mesmas ruas, placas ou postes",
+            "data-group-same",
+            "S.groups[g.id]={decision:g.decision,representative:g.representative,subgroups:g.subgroups,evidence:g.evidence,cue:g.cue",
+            "sameAsFirst:Array.isArray(g.sameAsFirst)",
+            "data-pair-value",
+            "v.pairReviews[pair.dataset.pairTarget]=pair.dataset.pairValue",
+            "pairReviews:i.pairReviews",
+            "comparisons_summary",
+            "Não consegui conferir / não sei",
+            "O que ainda não podemos afirmar:",
+            "a.decision===\"UNCERTAIN\"",
+            "scientific_signoff_granted:false",
+            "protected_GT_access_authorized:false",
+        ):
+            with self.subTest(text=text):
+                self.assertIn(text,ui)
+        self.assertIn("não precisa escrever uma justificativa longa",html)
+        self.assertIn("Não consegui conferir",html)
+        self.assertNotIn(
+            "Estas capturas correspondem a quantas cenas independentes?",ui)
+        self.assertNotIn(
+            "É uma observação visualmente independente das demais?",ui)
+
+    def test_frontend_javascript_syntax_when_node_available(self):
+        import shutil
+        import subprocess
+        node=shutil.which("node")
+        if node is None:
+            self.skipTest("Node.js not installed; skip supplemental JS parsing")
+        proc=subprocess.run(
+            [node,"--check",str(ROOT/"tools/paper_a_revisao/app.js")],
+            cwd=ROOT,capture_output=True,text=True,timeout=30,check=False)
+        self.assertEqual(proc.returncode,0,proc.stdout+proc.stderr)
+
     def test_all_293_originals_and_22_panels_sha_checked_without_gt(self):
         with tempfile.TemporaryDirectory() as td:
             d=Path(td)
