@@ -26,6 +26,26 @@ def manifest(path,rows):
 
 
 class A219FreezeBindingTests(unittest.TestCase):
+    def test_standalone_preview_import_from_different_working_directory(self):
+        import subprocess
+        script=ROOT/"scripts"/"gerar_preview_freeze_a219.py"
+        with tempfile.TemporaryDirectory() as other_directory:
+            proc=subprocess.run(
+                [sys.executable,"-B",str(script),"--check-import-only"],
+                cwd=other_directory,capture_output=True,text=True,
+                timeout=30,check=False)
+        self.assertEqual(proc.returncode,0,proc.stdout+proc.stderr)
+        self.assertIn("A219_PREVIEW_IMPORTS_OK_NO_ACTION",proc.stdout)
+
+    def test_standalone_preview_never_invokes_freeze(self):
+        import ast
+        script=ROOT/"scripts"/"gerar_preview_freeze_a219.py"
+        tree=ast.parse(script.read_text(encoding="utf-8"))
+        calls={n.func.id for n in ast.walk(tree)
+               if isinstance(n,ast.Call) and isinstance(n.func,ast.Name)}
+        self.assertIn("prepare",calls)
+        self.assertNotIn("attempt_freeze",calls)
+
     def fixture(self,base):
         p=Path(base)
         ids={"BIPED":[f"RGB_{i:03d}" for i in range(1,126)],
