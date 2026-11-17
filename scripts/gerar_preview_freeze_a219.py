@@ -11,6 +11,19 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+import sys
+
+# Windows virtualenv launchers and isolated interpreters need not place the
+# executed script's folder on sys.path. Resolve the sibling module by its
+# actual location rather than relying on working-directory/PYTHONPATH.
+SCRIPTS_DIR = Path(__file__).resolve().parent
+FREEZE_MODULE = SCRIPTS_DIR / "freeze_paper_a_from_independent_review.py"
+if not FREEZE_MODULE.is_file() or FREEZE_MODULE.is_symlink():
+    raise FileNotFoundError(
+        "Missing/unsafe sibling freeze module in repository scripts/"
+    )
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
 
 from freeze_paper_a_from_independent_review import (
     PROTOCOL, SIGNED, WORK, prepare,
