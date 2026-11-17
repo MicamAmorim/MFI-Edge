@@ -167,6 +167,13 @@ def build(*,protocol:Path=PROTOCOL,candidate:Path=CANDIDATE,
         "fail closed; no outcome-dependent replacement.")
     draft["inference"]["multiplicity"]="Two-test Holm familywise stepdown"
     draft["measures"]["unit"]="proposed independent original scene/capture, never GT annotator"
+    draft["measures"]["ground_truth_contract_proposal"]={
+        "BIPED":"one original binary edge-map GT per image (scientific semantics not yet independently attested)",
+        "MultiCue":"six edges GT masks per original capture, averaged at capture level, not six independent observations",
+        "encoding_proposed_not_approved":"BIPED_UINT8_0_254_255_MULTICUE_UINT16_0_65535_NATIVE_v2",
+        "empty_or_invalid_masks":"fail closed; handle only under prospectively approved missingness rules",
+        "validation":"REQUIRES documented independent review of GT semantics and the six-annotator aggregation",
+    }
     draft["status"]="draft_not_frozen"
     draft["freeze_commit"]=None
     draft["confirmatory_outcomes_opened"]=False
