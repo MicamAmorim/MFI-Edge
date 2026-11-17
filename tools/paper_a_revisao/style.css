@@ -15,3 +15,20 @@ a.smalllink{display:inline-block;margin-top:7px;color:#126a81;text-decoration:un
 .comparison-image{display:block;width:100%;height:200px;object-fit:contain;background:#dfe8ed;border-radius:8px;border:1px solid #bfd3de}
 .comparison-result strong{font-size:12px;color:#34536c}
 @media(max-width:690px){.comparison-result{grid-template-columns:1fr}.comparison-image{height:220px}}
+
+/* Accessible objective-question review controls. */
+.scene-checkboxes{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.scene-checkbox{display:flex;gap:8px;align-items:center;border:1px solid #cbdce3;border-radius:10px;padding:9px 12px;background:#f4fafc;font-weight:650;cursor:pointer}
+.scene-checkbox input{display:inline;width:auto;margin:0;accent-color:#14829a}
+.scene-checkbox:has(input:checked){border-color:#14829a;background:#dff4f5}
+.evidence-explainer{background:#f0f7fa;border:1px solid #c6dfe8;border-radius:12px;padding:15px;margin:15px 0}
+.evidence-explainer p{margin:0 0 10px;color:#425a6a}
+.evidence-explainer p:last-child{margin-bottom:0}
+.evidence-explainer strong{color:#174c63}
+.guided-review .question{font-size:16px;border-top:1px solid #dce6ed;padding-top:14px}
+.guided-review .choices{margin-bottom:10px}
+.guided-review .hint{display:block;line-height:1.55}
+.technical{margin:12px 0 16px;border:1px solid #c7d6df;background:#fbfdff;border-radius:10px;padding:10px 12px}
+.technical summary{cursor:pointer;font-weight:700;color:#175d76}
+.technical p{margin:10px 0 0}
+.technical .hash{word-break:break-all}
