@@ -1,0 +1,103 @@
+{
+  "status": "FROZEN_EVALUATION_COMPLETED_NUMERICAL_REVIEW_PENDING",
+  "freeze_commit": "3faff3660043ee0b063f423c0801b0fc740568d7",
+  "independent_review_sha256": "718464bdfd67f3d79e9f918ceb83f78b8e774ee77578cb468fdc7d78c796e4c9",
+  "outcomes_sha256": "f3cee6cf14451d3e2815b17e75859893a5e37dbfe9e64587c2fab29d55acae7f",
+  "N_primary": 312,
+  "N_secondary_BIPED": 48,
+  "N_total": 360,
+  "analyses": [
+    {
+      "hypothesis": "H1",
+      "statistic_within_domain": -0.137910167959739,
+      "domain_rho": {
+        "MultiCue": {
+          "n": 62,
+          "rho": -0.13560474427740424
+        },
+        "NYUDv2": {
+          "n": 153,
+          "rho": -0.17818275635613096
+        },
+        "VSB100": {
+          "n": 97,
+          "rho": -0.07561014096360194
+        }
+      },
+      "direction": "negative",
+      "permutations": 100000,
+      "extreme_permutations": 751,
+      "p_one_sided": 0.007519924800751992,
+      "mean_paired_F1_difference": -0.01157012048105788,
+      "fraction_positive_difference": 0.16346153846153846,
+      "holm_p_adjusted": 0.015039849601503985,
+      "bootstrap95": {
+        "ci95_lower": -0.24275121718281123,
+        "ci95_upper": -0.032544281340086675,
+        "valid_bootstrap_replicates": 2000,
+        "rejected_bootstrap_replicates": 0
+      },
+      "confirmed": true
+    },
+    {
+      "hypothesis": "H2",
+      "statistic_within_domain": -0.04030280725381133,
+      "domain_rho": {
+        "MultiCue": {
+          "n": 62,
+          "rho": 0.1335398252373398
+        },
+        "NYUDv2": {
+          "n": 153,
+          "rho": -0.06731400694248992
+        },
+        "VSB100": {
+          "n": 97,
+          "rho": -0.10799758047548917
+        }
+      },
+      "direction": "positive",
+      "permutations": 100000,
+      "extreme_permutations": 76109,
+      "p_one_sided": 0.7610923890761092,
+      "mean_paired_F1_difference": 0.010898839831334675,
+      "fraction_positive_difference": 0.6153846153846154,
+      "holm_p_adjusted": 0.7610923890761092,
+      "bootstrap95": {
+        "ci95_lower": -0.1516118275798622,
+        "ci95_upper": 0.07234155056121351,
+        "valid_bootstrap_replicates": 2000,
+        "rejected_bootstrap_replicates": 0
+      },
+      "confirmed": false
+    }
+  ],
+  "secondary_BIPED": {
+    "status": "EXPLORATORY_ONLY_NOT_COUNTED_IN_PRIMARY_TESTS",
+    "n": 48,
+    "hypotheses": {
+      "H1": {
+        "rho": -0.26899696048632227,
+        "mean_paired_delta_F1": -0.019164799498106556,
+        "primary_confirmation_claim": false
+      },
+      "H2": {
+        "rho": -0.16597915762049503,
+        "mean_paired_delta_F1": 0.03692390484852175,
+        "primary_confirmation_claim": false
+      }
+    }
+  },
+  "environment": {
+    "python": "3.12.10",
+    "packages": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "scikit-image": "0.26.0",
+      "opencv-python": "5.0.0.93",
+      "Pillow": "12.3.0"
+    }
+  },
+  "no_confirmatory_tuning": true,
+  "not_official_Berkeley_or_VSB_benchmark": true
+}

@@ -1,0 +1,25 @@
+{
+  "status": "FROZEN_FIXED_EVALUATION_AND_INDEPENDENT_NUMERICAL_AUDIT_COMPLETED",
+  "updated_utc": "2026-11-18T01:00:06.431823+00:00",
+  "freeze_commit": "3faff3660043ee0b063f423c0801b0fc740568d7",
+  "freeze_is_local_not_public_preregistration": true,
+  "N_primary": 312,
+  "N_secondary_BIPED": 48,
+  "N_total": 360,
+  "primary_domains": [
+    "MultiCue",
+    "NYUDv2",
+    "VSB100"
+  ],
+  "frozen_inputs_unchanged": true,
+  "confirmatory_outcomes_now_opened": true,
+  "freeze_snapshot_outcomes_flag_meaning": "protocol.json and FREEZE_RECEIPT.json preserve the state at freeze, before any candidate GT access; this separate file records completion",
+  "inference_sha256": "0e4ff50a6eb1538bf0d7f7c2279ad6dbccbe658b4a8072fb6c2fe3f419fa2868",
+  "outcomes_sha256": "f3cee6cf14451d3e2815b17e75859893a5e37dbfe9e64587c2fab29d55acae7f",
+  "numerical_audit_sha256": "38c72b8915cf2d1c90e129b7eabe122b73657f3577b11f0406428069a624cb87",
+  "decisions": {
+    "H1": true,
+    "H2": false
+  },
+  "publication_status": "PUBLIC_PUSH_PENDING_EXPLICIT_AUTHORIZATION_AFTER_AUTOMATIC_REVIEW_REJECTION"
+}
