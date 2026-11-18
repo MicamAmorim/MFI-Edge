@@ -12,10 +12,17 @@ The project began with functional-information-guided multiscale edge detection a
 | `mfi-edge-local-dev` | active CH-MFI-v2 research and workstation benchmarking |
 | `mfi-edge-webui` | local Next.js/FastAPI inference and model-comparison interface |
 | `experiment/uded-railway` | server-side UDED experiment lineage |
+| `repro/paper-a-end-to-end` | **experimental/unvalidated** modular Paper A reproduction adapter; original scientific sources preserved |
 
 For the current project checklist and next milestones, see **[`ROADMAP.md`](ROADMAP.md)**.
 
 > The active experimental architecture is ahead of `main`.  Do not interpret the `main` branch as automatically containing the best exploratory configuration; candidates move here only after validation/promotion.
+
+## Paper A — community reproduction (experimental, unvalidated)
+
+A separately maintained, **unvalidated** modular wrapper for Paper A is available at [repro/paper-a-end-to-end](https://github.com/MicamAmorim/MFI-Edge/tree/repro/paper-a-end-to-end). It preserves the scientific source files, provenance and published results from [experiment/paper-a-conditional-confirmation](https://github.com/MicamAmorim/MFI-Edge/tree/experiment/paper-a-conditional-confirmation), but does **not** claim an independently verified end-to-end replay of the original datasets or MATLAB evaluator.
+
+The wrapper supports an archive-based numeric check and an experimental stage-by-stage route with explicit source/portability limitations. For Linux or Windows prerequisites, commands, dataset rights, and limitations read the [reproduction guide on that branch](https://github.com/MicamAmorim/MFI-Edge/blob/repro/paper-a-end-to-end/reproduction/README.md). Community bug reports and contributions are welcome through [Issues](https://github.com/MicamAmorim/MFI-Edge/issues). In particular, a numerical verification is **not** a regeneration of the image-level result.
 
 ## Stable historical core
 
