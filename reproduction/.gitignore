@@ -1,0 +1,5 @@
+# No scientific caches, original data, logs or large binary results in the repository
+/reproduction-work/
+/.venv-paper-a/
+__pycache__/
+*.pyc
