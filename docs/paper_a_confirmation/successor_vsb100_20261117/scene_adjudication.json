@@ -1,0 +1,29 @@
+{
+  "status": "INDEPENDENT_CERTIFICATION_PENDING",
+  "all_flags_adjudicated": true,
+  "supplemental_criterion": "(>=6 inliers AND fraction>=.50) OR >=20 inliers; SIFT1000 max800x600, mutualratio.72, RANSAC3px",
+  "new_history_and_scene_findings": "See independently reported correction summary; full B200/MC94 components propagated",
+  "evidence": {
+    "VSB100_history_search.json": "6ac5cfe6b510b3c1dba53485201c60d8d33f1941836b1ad8a8e1521dc630c29d",
+    "VSB100_nonconfirmatory_GT_format.json": "fed05e923039a6255d3b7b459ff950797416c47565cf609c27866909d87538f6",
+    "INDEPENDENT_SCENE_CORRECTION_SUMMARY.json": "9888f9971742a93748f465607824fa3f42cdfe2ba26fe814bb576cae9594865e",
+    "INDEPENDENT_AUDIT_PROPAGATED_BIPED200_MULTICUE94.csv": "799537bf38fd5df36e6e6f4eac7a718b2fdcca63c245b5e87f7490d122e35737",
+    "NYUD_names_and_scenes.json": "daf0a65e8d1fce2a4e631f8c1dc0205bec23f2ec0906b7ba747eebe955acf7ab",
+    "NYUD_rgb_only_inventory.json": "36ed08c9090f77cc2bdc4676265aec4b17c016215b7c03a870f4ca79c4aa983a",
+    "NYUD_historical_RGB_adjudicated.json": "a937f9defa3dafb85fe217b5a4ef35acf5e617f9247968e2b9c04a82e4a7b6ce",
+    "NYUD_training_only_GT_format.json": "8bfd5f07924fd274abf17ab69df7a70ccb5463e89a3fc529fe96cebe5749f4c5",
+    "successor_conservative_scene_revision.json": "58fa5a889a07f3dea8bd0656a1f4dc4b118c3fc9762454ceaef4127638586351",
+    "GT_semantics_nonconfirmatory.json": "7cda41fb2b6a4fb08f9b6e168ad71b8336b5c9c80f47871c3c6b103666e072e3",
+    "NYUD_all153_official_RGB_crop_verification.json": "d7e9dd35e1500e2909eb4a76719543e305dd04f7bb770a2bc7f64a004a041d43",
+    "NYUD_RGB_two_differences.json": "e836be9caefbe156cf4e942d5f620f9a6585fdc46dfd44bcc97e2cb67c8c5ac2",
+    "independent_lineage_checks.json": "e457258123eb5626e47ac8b72f55d39fbf39666e9422afb66f01ed681ba7e483",
+    "independent_reserved_GT_format_checks.json": "7cacb6a3a028a759190ef985d6c5108b69fd9648860aec4e302afc54273307f3",
+    "VSB100_full_scene_screen_v2.json": "afb0debd274160ad18bbb7556df37ff6ad4aea6cb46a298457e6f1d580b63d9d",
+    "NYUD153_full_cross_screen.json": "7449268ce198dd5b4959808847ed2d17789371649837055e0e652665e5e26d6d",
+    "SUPPLEMENTAL_SCENE_ADJUDICATION.json": "51197cdc3e34f7cfe35f99cc6a1359eb4186fbca79858aab5f92cb784bea2a17"
+  },
+  "confirmatory_GT_or_outcomes_opened": false,
+  "NYUD_operational_unit": "Room-ID plus RGB reviewed physical room; dwelling/household IDs unavailable, no claim of household independence",
+  "primary_scope": "MultiCue/NYUDv2/VSB100 weighted within-domain association; does not confirm H1/H2 specifically on BIPED",
+  "BIPED_scope": "Fixed48 secondary exploratory only; excluded from primaryN/p because below original min60"
+}

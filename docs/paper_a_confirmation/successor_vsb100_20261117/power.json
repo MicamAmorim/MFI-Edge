@@ -1,0 +1,103 @@
+{
+  "status": "SYNTHETIC_PROSPECTIVE_NOT_APPROVAL",
+  "seed": 20261117,
+  "replicates_per_scenario": 10000,
+  "rank_null_draws": 100000,
+  "FWER": 0.05,
+  "correction": "Holm for 2 directional hypotheses",
+  "statistic": "weighted within-domain Spearman, weights n_d-1",
+  "H1_H2_predictor_and_noise_correlation": 0.4,
+  "annotation_or_image_or_outcome_read": false,
+  "reports": [
+    {
+      "domain_counts": {
+        "MultiCue": 62,
+        "NYUDv2": 153,
+        "VSB100": 97
+      },
+      "N": 312,
+      "results": [
+        {
+          "scenario": "null",
+          "assumed_domain_rhos": [
+            0,
+            0,
+            0
+          ],
+          "H1_power": 0.0248,
+          "H2_power": 0.0226,
+          "joint_rejection_rate": 0.0005,
+          "any_rejection_rate": 0.0469,
+          "joint_MC95_Wilson": [
+            0.00021358842616383042,
+            0.0011700259461420676
+          ]
+        },
+        {
+          "scenario": "homogeneous_020",
+          "assumed_domain_rhos": [
+            0.2,
+            0.2,
+            0.2
+          ],
+          "H1_power": 0.969,
+          "H2_power": 0.9647,
+          "joint_rejection_rate": 0.9359,
+          "any_rejection_rate": 0.9978,
+          "joint_MC95_Wilson": [
+            0.9309300598615783,
+            0.9405351703588657
+          ]
+        },
+        {
+          "scenario": "homogeneous_025",
+          "assumed_domain_rhos": [
+            0.25,
+            0.25,
+            0.25
+          ],
+          "H1_power": 0.9985,
+          "H2_power": 0.9971,
+          "joint_rejection_rate": 0.9956,
+          "any_rejection_rate": 1.0,
+          "joint_MC95_Wilson": [
+            0.9940988218543872,
+            0.9967205589605982
+          ]
+        },
+        {
+          "scenario": "VSB_zero_others_020",
+          "assumed_domain_rhos": [
+            0.2,
+            0.2,
+            0
+          ],
+          "H1_power": 0.7493,
+          "H2_power": 0.7472,
+          "joint_rejection_rate": 0.5879,
+          "any_rejection_rate": 0.9086,
+          "joint_MC95_Wilson": [
+            0.5782208433316453,
+            0.5975116497547898
+          ]
+        },
+        {
+          "scenario": "VSB_reversed_others_020",
+          "assumed_domain_rhos": [
+            0.2,
+            0.2,
+            -0.1
+          ],
+          "H1_power": 0.5242,
+          "H2_power": 0.5236,
+          "joint_rejection_rate": 0.3132,
+          "any_rejection_rate": 0.7346,
+          "joint_MC95_Wilson": [
+            0.30418297923853693,
+            0.3223604825527477
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "schema": "paper_a_h1h2_recipe_P1_fitted_development",
+  "status": "FITTED_ON_UDED14_DEVELOPMENT_GT_PENDING_LINEAGE_REVIEW",
+  "source_commit": "b5a79ec6bb5f9a1fbd38477cd2900b19e98b8d46",
+  "source_sha256": {
+    "docs/paper_a_confirmation/protocol.json": "6158bea7d873ac128a9a9a718d761157d04f73465d23f2e46cfed53eaf6f7e05",
+    "src/stage24_recertification_ops.py": "d13bad5d38deddeaee2a118223a6bc6afdf3182edde9787611f46dc62325687c",
+    "src/stage24_recertification_cv.py": "5d70b9919148e5921fd62825b738da55ccb1f0f81a23e9e1a3c805b2ad0ee83d",
+    "src/stage24_residual.py": "4a34fc2a1b6685b52d9d8e397dd7928b0001f4978a08710758e339be3d666bad",
+    "src/stage24_integrity.py": "fdbfd30876ee89d6b8e5de39648ef3f38134d456f341c9756bada446a62c7f6b",
+    "src/stage23_descriptors.py": "847c5771274187426f69e6e9b700bb8cf45c88811ba80c3ce5ce9807f3415d7a",
+    "src/stage24_strict_generalized_cf1f2.py": "aea2d170ca52ac6244a6920cc92b135bb0a9f320accc8f4040cc64f7bc60e8e2",
+    "src/postprocess.py": "d2a9a5d28a7a2d91c8484f2c5f797fe46b3be12f14c39e2130812fcf164adcf2",
+    "src/paper_a_confirmation_paired_f1.py": "a9890db1edb3cd876feaab14b8904caf954c8efb23781cc3ecca8fc2d4bdb815",
+    "scripts/prepare_paper_a_h1h2_recipe_P0_1.py": "bedfafcc088c471fa583653e921ad6bbcb3480a36be760147674dc6f558fbd35"
+  },
+  "fixed_method_choices": {
+    "task_proposal": "edges",
+    "map_dtype": "float32",
+    "thinning": "nms_image",
+    "calibration": "legacy_sigmoid",
+    "suppressor": "identity",
+    "suppression_strength": 1.0,
+    "matching_tolerance_ratio": 0.0075,
+    "H2_gamma": 1.5
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "group": [
+        "halfdisc_distribution_contrast",
+        "pmi_dependency_deficit"
+      ],
+      "preoutcome_feature": "abs(mean(halfdisc_distribution_contrast)-mean(pmi_dependency_deficit))",
+      "signed_prediction": "negative",
+      "membership": {
+        "mode": "legacy_sigmoid",
+        "midpoint": [
+          0.2599221169948578,
+          0.08362714946269989
+        ],
+        "scale": [
+          0.2126612812280655,
+          0.10658749751746655
+        ],
+        "fit_provenance": {
+          "development_dataset_id": "UDED14_exploratory_development_only",
+          "split_role": "development_train",
+          "training_ids_sha256": "fe3d84382947e8eab5f084c3e51a60d6fec0d0bff7fa1e048d8764858d77b05c",
+          "fitting_commit": "b5a79ec6bb5f9a1fbd38477cd2900b19e98b8d46",
+          "parameter_export_sha256": "56cec6723dde5ba10c0824e9a04ef87bafdc15dfac15b1c30161ae6e9915e5e7",
+          "no_confirmatory_overlap_attested": null
+        }
+      },
+      "candidate": {
+        "family": "maximum",
+        "n_inputs": 2,
+        "capacity": "NOT_APPLICABLE",
+        "mobius": "NOT_APPLICABLE",
+        "threshold": 0.8604570209980016,
+        "capacity_fit_provenance": "NOT_APPLICABLE",
+        "threshold_fit_provenance": {
+          "development_dataset_id": "UDED14_exploratory_development_only",
+          "split_role": "development_train",
+          "training_ids_sha256": "fe3d84382947e8eab5f084c3e51a60d6fec0d0bff7fa1e048d8764858d77b05c",
+          "fitting_commit": "b5a79ec6bb5f9a1fbd38477cd2900b19e98b8d46",
+          "parameter_export_sha256": "56cec6723dde5ba10c0824e9a04ef87bafdc15dfac15b1c30161ae6e9915e5e7",
+          "no_confirmatory_overlap_attested": null
+        }
+      },
+      "control": {
+        "family": "equal_mean",
+        "n_inputs": 2,
+        "threshold": 0.6064166694879536,
+        "threshold_fit_provenance": {
+          "development_dataset_id": "UDED14_exploratory_development_only",
+          "split_role": "development_train",
+          "training_ids_sha256": "fe3d84382947e8eab5f084c3e51a60d6fec0d0bff7fa1e048d8764858d77b05c",
+          "fitting_commit": "b5a79ec6bb5f9a1fbd38477cd2900b19e98b8d46",
+          "parameter_export_sha256": "56cec6723dde5ba10c0824e9a04ef87bafdc15dfac15b1c30161ae6e9915e5e7",
+          "no_confirmatory_overlap_attested": null
+        }
+      }
+    },
+    {
+      "id": "H2",
+      "group": [
+        "fh_region_boundary",
+        "halfdisc_distribution_contrast",
+        "structure_tensor_coherence"
+      ],
+      "preoutcome_feature": "mean of pairwise Pearson correlations between three descriptor score maps",
+      "signed_prediction": "positive",
+      "membership": {
+        "mode": "legacy_sigmoid",
+        "midpoint": [
+          0.0,
+          0.2599221169948578,
+          0.0008532314823241904
+        ],
+        "scale": [
+          0.05,
+          0.2126612812280655,
+          0.05
+        ],
+        "fit_provenance": {
+          "development_dataset_id": "UDED14_exploratory_development_only",
+          "split_role": "development_train",
+          "training_ids_sha256": "fe3d84382947e8eab5f084c3e51a60d6fec0d0bff7fa1e048d8764858d77b05c",
+          "fitting_commit": "b5a79ec6bb5f9a1fbd38477cd2900b19e98b8d46",
+          "parameter_export_sha256": "56cec6723dde5ba10c0824e9a04ef87bafdc15dfac15b1c30161ae6e9915e5e7",
+          "no_confirmatory_overlap_attested": null
+        }
+      },
+      "candidate": {
+        "family": "choquet_generalized_150",
+        "n_inputs": 3,
+        "capacity": [
+          0.0,
+          0.2850475022884192,
+          0.0,
+          0.2850475022884192,
+          0.3213385800523409,
+          0.6063860823407601,
+          0.7149524977115809,
+          1.0
+        ],
+        "mobius": [
+          0.2850475022884192,
+          0.0,
+          0.3213385800523409,
+          0.0,
+          0.0,
+          0.3936139176592399
+        ],
+        "threshold": 0.4981063321232796,
+        "capacity_fit_provenance": {
+          "development_dataset_id": "UDED14_exploratory_development_only",
+          "split_role": "development_train",
+          "training_ids_sha256": "fe3d84382947e8eab5f084c3e51a60d6fec0d0bff7fa1e048d8764858d77b05c",
+          "fitting_commit": "b5a79ec6bb5f9a1fbd38477cd2900b19e98b8d46",
+          "parameter_export_sha256": "56cec6723dde5ba10c0824e9a04ef87bafdc15dfac15b1c30161ae6e9915e5e7",
+          "no_confirmatory_overlap_attested": null
+        },
+        "threshold_fit_provenance": {
+          "development_dataset_id": "UDED14_exploratory_development_only",
+          "split_role": "development_train",
+          "training_ids_sha256": "fe3d84382947e8eab5f084c3e51a60d6fec0d0bff7fa1e048d8764858d77b05c",
+          "fitting_commit": "b5a79ec6bb5f9a1fbd38477cd2900b19e98b8d46",
+          "parameter_export_sha256": "56cec6723dde5ba10c0824e9a04ef87bafdc15dfac15b1c30161ae6e9915e5e7",
+          "no_confirmatory_overlap_attested": null
+        }
+      },
+      "control": {
+        "family": "equal_mean",
+        "n_inputs": 3,
+        "threshold": 0.5953009873628617,
+        "threshold_fit_provenance": {
+          "development_dataset_id": "UDED14_exploratory_development_only",
+          "split_role": "development_train",
+          "training_ids_sha256": "fe3d84382947e8eab5f084c3e51a60d6fec0d0bff7fa1e048d8764858d77b05c",
+          "fitting_commit": "b5a79ec6bb5f9a1fbd38477cd2900b19e98b8d46",
+          "parameter_export_sha256": "56cec6723dde5ba10c0824e9a04ef87bafdc15dfac15b1c30161ae6e9915e5e7",
+          "no_confirmatory_overlap_attested": null
+        }
+      }
+    }
+  ],
+  "no_scientific_artifacts_or_outcomes_read": false,
+  "protocol_frozen": false,
+  "development_GT_and_cached_maps_read": true
+}

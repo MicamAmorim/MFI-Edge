@@ -1,0 +1,50 @@
+{
+  "decision": "APPROVE_PROSPECTIVE_FREEZE",
+  "independently_authored": true,
+  "reviewer_identity": "Codex independent agent /root/independent_vsb100_review",
+  "reviewed_utc": "2026-11-18T00:23:52.557596+00:00",
+  "approvals": {
+    "training_lineage": true,
+    "capacity_and_thresholds": true,
+    "ground_truth_semantics": true,
+    "independent_scenes_and_exposure": true,
+    "sample_size_and_inference": true,
+    "independent_protocol_review": true
+  },
+  "executor_and_analysis_reviewed": true,
+  "no_development_confirmation_overlap": true,
+  "reviewed_files": {
+    "protocol.json": "335ddd2b790a3e861f869d950e90b5dab79702b2642ffb0a7eb1fbf6058ced41",
+    "cohort.csv": "57f4116ec53947158b03164fd368fe5c4ebcde13cbc11870faf8d303ac21c4af",
+    "recipe.json": "628d1e345b6d1117c3cbfbc6ecaf75d4cac8db6a7796d328e2ea911ce9891a9c",
+    "source_pins.json": "fba205f97cd7fc861cd185f17699923a43f628f6b2a736f681e229d2f2d73fe0",
+    "scene_adjudication.json": "573b86203d7d76ed1925e9527302d08b7aac7598283ad096c2683660c8755c70",
+    "power.json": "ae3c2968b37d04efa91d9f57e83388cded9688a3bcc8a2678770393aa1a6613f",
+    "row_review.csv": "6dc9623998c000dcec551a7f2312683cb1a2d28abab8093fdb0f20710709caa1",
+    "environment.json": "1380d5023c4240369083a2f4cb6157c0b9764ce5be9821e53f7d327fa1bb0dec"
+  },
+  "reviewer_notes": "Independent scientific/code audit performed by a separate authorized Codex agent, not by the preparer and not represented as human/institutional peer review. I rejected the initial N221 design, personally found additional within-scene and historical overlaps, required propagation/GT provenance/cache/status fixes, and rechecked the corrected exact final package. Approve only the prospective freeze and fixed evaluation of primary MC62/NYUD153/VSB97 (N312) plus BIPED48 secondary (N360). No confirmatory candidate GT was decoded and no candidate maps, XY or F1 were computed/read by this reviewer. This is bounded evidence-based eligibility; residual scene dependence and undocumented history remain possible. NYUD room IDs do not identify independent households; two supplied face-region RGB differences are preserved. The original P1 bytes remain unchanged, and the separate reviewed overlap declaration supplies its previously null metadata attestations only for this exact cohort. Confirmation is of the specified signed association, not positive average gain, universal superiority or an evaluated adaptive selector. Numerical post-freeze results require separate checking.",
+  "independent_review_evidence_sha256": {
+    "FINAL_INDEPENDENT_PREFLIGHT.json": "8a30584e40039c1dee7f5e231343ca7508d7e68e9d8359873f4a5ea00354a5b3",
+    "independent_lineage_checks.json": "e457258123eb5626e47ac8b72f55d39fbf39666e9422afb66f01ed681ba7e483",
+    "independent_reserved_GT_format_checks.json": "7cacb6a3a028a759190ef985d6c5108b69fd9648860aec4e302afc54273307f3",
+    "NYUD_all153_official_RGB_crop_verification.json": "d7e9dd35e1500e2909eb4a76719543e305dd04f7bb770a2bc7f64a004a041d43",
+    "NYUD_RGB_two_differences.json": "e836be9caefbe156cf4e942d5f620f9a6585fdc46dfd44bcc97e2cb67c8c5ac2",
+    "SUPPLEMENTAL_SCENE_ADJUDICATION.json": "51197cdc3e34f7cfe35f99cc6a1359eb4186fbca79858aab5f92cb784bea2a17",
+    "INDEPENDENT_SCENE_CORRECTION_SUMMARY.json": "9888f9971742a93748f465607824fa3f42cdfe2ba26fe814bb576cae9594865e",
+    "regression_validation.json": "a9529feb858cb21da334da7b3f8ed7d6c2efd11bcc2ec04ceecae905f427b99e"
+  },
+  "scope": {
+    "primary_counts": {
+      "MultiCue": 62,
+      "NYUDv2": 153,
+      "VSB100": 97
+    },
+    "primary_N": 312,
+    "secondary_BIPED_N": 48,
+    "all_evaluation_N": 360,
+    "min_per_primary_domain": 60,
+    "confirmatory_outcomes_opened": false,
+    "approval_is_not_freeze_commit": true
+  }
+}
