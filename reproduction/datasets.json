@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "notes": "Unpinned URLs are intentionally not guessed. Provide authorized HTTPS download_url and official sha256, or place sources manually; no rerouting protected GT.",
+  "datasets": {
+    "UDED": {
+      "relative_path": "UDED/test_pair.lst",
+      "source_page": "https://github.com/xavysp/UDED",
+      "instruction": "Obtain full official dataset, including test_pair.lst and its referenced paths, under reproduction-work/datasets/UDED"
+    },
+    "BSDS500": {
+      "relative_path": "BSDS500/data/images/val",
+      "source_page": "Berkeley BSDS500 official distribution",
+      "instruction": "Obtain original official BSDS500 images, boundary GT, and evaluator. Set --bsds-val to 100 JPG validation images"
+    },
+    "MultiCue": {
+      "relative_path": "MultiCue/multicue-dataset.tar.bz2",
+      "source_page": "https://huggingface.co/datasets/Serrelab/multicue-boundary-detection",
+      "instruction": "Original verified downloader is invoked separately when full mode has been explicitly requested"
+    },
+    "NYUDv2": {
+      "relative_path": "NYUDv2/eccv14-data.tgz",
+      "source_page": "NYUDv2 authors' ECCV14 data release",
+      "instruction": "Obtain the exact original ECCV14 RGB and annotations; no HDF substitution for frozen confirmation"
+    },
+    "VSB100": {
+      "relative_path": "VSB100/General_train_fullres.zip",
+      "source_page": "VSB100 official dataset distribution",
+      "instruction": "Obtain both train/test fullres archives and exact RGB frames for frozen manifest"
+    },
+    "BIPED": {
+      "relative_path": "BIPEDv2/edges/imgs/train/rgbr/real",
+      "source_page": "BIPEDv2 official data distribution",
+      "instruction": "Only 48 secondary images, exact frozen hashes; not primary H1/H2 inference"
+    }
+  }
+}
