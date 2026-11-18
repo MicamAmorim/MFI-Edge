@@ -126,6 +126,13 @@ proveniência ou reutilizar outra divisão do dataset.
 | VSB100 | 97 vídeos primários | Requer os arquivos General fullres e frames selecionados originais |
 | BIPEDv2 | 48 imagens secundárias | Requer distribuição original e os hashes congelados; nunca é domínio principal |
 
+O MultiCue dispõe de um downloader do código original, mas seu
+arquivo é grande e **não é obtido por padrão** durante a reprodução
+Stage23. Somente quando houver necessidade e espaço disponível, opte
+explicitamente pelo download com --download-multicue no modo full.
+A confirmação baseada em imagens desse conjunto ainda permanece
+não-portável na interface modular.
+
 O manifesto de fontes padrão não contém downloads diretos não
 verificados. Um pesquisador poderá copiar reproduction/datasets.json
 para um arquivo local e fornecer --datasets-config com URLs HTTPS e

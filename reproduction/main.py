@@ -22,9 +22,12 @@ from .reporting import publish
 def reproduce_scientific_method(ctx:Context,results:dict) -> None:
     """Explicit Stage23C → D → E → F → Stage24 → confirmatory H1/H2."""
     results["dataset_inventory"]=acquire(ctx)
-    # MultiCue is a special case with an existing author-provided verified downloader.
-    if ctx.download:
+    # MultiCue is large and is not used by the original Stage23 path.
+    # Explicit opt-in prevents an unnecessary multi-GB download before Stage23 preflight.
+    if ctx.download and ctx.multicue_download_requested:
         results["multicue_acquisition"]=acquire_multicue_official(ctx)
+    else:
+        results["multicue_acquisition"]={"status":"DEFERRED_NOT_REQUIRED_FOR_STAGE23"}
 
     results["descriptor_evidence"]=extract_evidence(ctx)
     results["complementarity"]=characterize_complementarity(ctx)
@@ -54,6 +57,8 @@ def main(argv:list[str]|None=None)->int:
     p.add_argument("--bsds-val",type=Path)
     p.add_argument("--datasets-config",type=Path,default=ROOT/"reproduction/datasets.json")
     p.add_argument("--no-download",action="store_true")
+    p.add_argument("--download-multicue",action="store_true",
+                   help="Opt in to downloading the ~3.5 GB MultiCue archive; not used by Stage23")
     p.add_argument("--deep",action="store_true",
                    help="Rerun exact 100000 permutation and 2000 bootstrap inference per hypothesis")
     p.add_argument("--allow-legacy-stage24",action="store_true",
@@ -68,6 +73,7 @@ def main(argv:list[str]|None=None)->int:
         bsds_val=(args.bsds_val or work/"datasets/BSDS500/data/images/val").expanduser().resolve(),
         config_file=args.datasets_config.expanduser().resolve(),
         download=not args.no_download and args.mode=="full",
+        multicue_download_requested=args.download_multicue,
         allow_legacy=args.allow_legacy_stage24,deep=args.deep,
     )
     result={"mode":args.mode,"commit":source_commit(),"status":"STARTED","stages":{},"errors":[]}
@@ -78,7 +84,7 @@ def main(argv:list[str]|None=None)->int:
         else:
             reproduce_scientific_method(ctx,result["stages"])
             result["status"]="PARTIAL_IMAGE_REPRODUCTION_CONFIRMATION_NOT_PORTED"
-    except (ReproductionError,ValueError,KeyError,FileNotFoundError,ImportError) as exc:
+    except Exception as exc:
         result["status"]="INCOMPLETE_STOPPED_SAFELY"
         result["errors"].append(f"{type(exc).__name__}: {exc}")
     json_path,md_path=publish(ctx,result)

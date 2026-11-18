@@ -16,6 +16,7 @@ class Context:
     bsds_val: Path
     config_file: Path
     download: bool
+    multicue_download_requested: bool
     allow_legacy: bool
     deep: bool
 

@@ -33,3 +33,7 @@ results/official_eval/**/matlab_compat/
 
 # Runtime-only official MATLAB per-image outputs
 results/official_eval/**/matlab/
+
+# Experimental community Paper A reproduction artifacts (branch-specific)
+/.venv-paper-a/
+/reproduction-work/
