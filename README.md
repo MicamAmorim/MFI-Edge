@@ -1,4 +1,13 @@
-# MFI-Edge / CH-MFI
+# MFI-Edge / CH-MFI — Paper A Community Reproduction
+
+> **PAPER A — REPRODUÇÃO COMUNITÁRIA (EXPERIMENTAL / NÃO VALIDADA)**
+>
+> Esta branch `repro/paper-a-end-to-end` se baseia em
+> `experiment/paper-a-conditional-confirmation`. A nova interface modular **não foi validada
+> ponta a ponta** e não substitui o código científico original.
+> Consulte [reproduction/README.md](reproduction/README.md) para execução e limitações.
+>
+
 
 MFI-Edge is an experimental edge-detection research project centered on **multiscale fuzzy aggregation, context-aware evidence fusion and precise spatial localization**.  The project started from functional-information-guided multiscale edge detection and has evolved into **CH-MFI (Contextual Hierarchical MFI)**.
 

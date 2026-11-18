@@ -1,0 +1,11 @@
+# Unvalidated community adapter. Exact original environment may differ.
+numpy>=1.24,<3
+scipy>=1.10,<2
+scikit-image>=0.22,<1
+pandas>=2.0,<3
+matplotlib>=3.7,<4
+Pillow>=10,<14
+opencv-python>=4.8,<6
+requests>=2.31,<3
+tqdm>=4.66,<6
+huggingface_hub[hf_xet]>=1.33,<2
